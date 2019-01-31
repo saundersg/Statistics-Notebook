@@ -1,0 +1,60 @@
+---
+title: "Stephanie's Housing Request"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+    toc: true
+    toc_float: true
+---
+
+**Week 1 Analysis**
+
+```{r, include=FALSE}
+library(mosaic)
+library(DT) # If you get an error stating: 
+            # Error in library(DT): there is no package called 'DT'
+            # You will need to run: install.packages("DT") 
+            # in your Console, then try "Knit HTML" again.
+Rent <- read.csv("../Data/Rent.csv", header=TRUE)
+```
+
+<br />
+
+## Background
+
+Stephanie[^1] is a student that will be starting school at BYU-Idaho next semester. Suppose she sent you the following email.
+
+----
+
+"Hi. My name is Stephanie. I would like to learn about what housing options I have for living at BYU-Idaho next semester. It will be my first semester there, so I would like to find something that is close to campus and around $300 a month in rent. I'm not too picky on roomates, but I would like somewhere that has a lot of people around so I can get to know as many people as possible. Thanks in advance!"
+
+----
+
+Write your response to Stephanie below. Use the "Rent" dataset, good statistical analysis, and clear writing to make some well supported suggestions to her about apartments that meet her stated criterions. You are free to use other criterion that you think she might find more meaningful as well.
+
+## Response
+
+Dear Stephanie,
+
+Write your response here... (delete this line).
+
+
+<!-- Hint, you should probably subset the Rent dataset to only show the "Approved Women's Housing" since Stephanie won't be interested in Male Housing options. Notice how this text in green doesn't show up in the HTML output because we used the HTML comment tags around this text. --> 
+
+```{r}
+# Code to get you started, be sure to use a subset of Rent instead of Rent in this code though.
+datatable(Rent, options=list(lengthMenu = c(3,10,30)), extensions="Responsive")
+```
+
+
+
+
+
+
+
+
+
+
+
+[^1]: Note that Stephanie is a fictional character who is based on real experiences of many faculty and staff here at BYU-Idaho.

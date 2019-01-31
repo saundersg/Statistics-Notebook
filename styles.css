@@ -1,0 +1,120 @@
+
+.hoverchunk {
+    border: 1px solid #cccccc;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding-left: 8px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-right: 8px;
+    font-family: Monospace, sans-serif;
+    margin-top: .5em;
+}
+
+.hoverchunk:hover {
+    border: 1px solid #cccccc;
+    background-color: #c8c8c8;
+    border-radius: 3px;
+    padding-left: 8px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-right: 8px;
+    font-family: Monospace, sans-serif;
+    margin-top: .5em;
+}
+
+.tooltipr {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltipr .tooltiprtext {
+    display: none;
+    width: 200px;
+    background-color: gray;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -170px;
+}
+
+.tooltipr:hover .tooltiprtext {
+    display: block;
+}
+
+.tooltipr:hover {
+    background-color: #f8f8f8;
+    border-radius: 6px;
+}
+
+
+
+
+
+.tooltipr .tooltipRtext {
+    display: none;
+    width: 200px;
+    background-color: gray;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: 0px;
+}
+
+.tooltipr:hover .tooltipRtext {
+    display: block;
+}
+
+
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+

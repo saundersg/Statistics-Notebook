@@ -1,0 +1,261 @@
+---
+title: "R Markdown Hints"
+output: 
+  html_document: 
+    theme: cerulean
+    highlight: tango
+    css: styles.css
+---
+
+Think of an `R Markdown File`, or `Rmd` for short, as a command center. You write commands, then Knit the file, and an html output file is created according to your commands. 
+
+Study this image to get the idea.
+
+![](./Images/Rmd2html.png)
+
+## Creating Headers
+
+There are six available sizes of headings you can use in an Rmd file (left in image) that show up as shown below (right in image).
+
+![](./Images/Rmd2html_Headers.png)
+
+
+
+
+
+
+<br />
+
+# Emphasizing Words
+
+To *italisize* a word use the asterisk (Shift 8) `*italisize*`. To **bold** a word use the double asterisk `**bold**`. (Notice how the back tic ` ` ` can be used to emphasize words as well.)
+
+<br />
+
+# Bullet Points
+
+#### Simple Lists
+
+<div style="float:left;width:300px;">
+To achieve the result:
+
+* This is the first item.
+
+* This is the second.
+
+* This is the third.
+
+</div>
+
+<div style="padding-left:350px;">
+
+Use the code:
+
+```{r, eval=FALSE}
+* This is the first item.
+
+* This is the second.
+
+* This is the third.
+```
+</div>
+
+<div style="clear:both;"></div>
+
+#### Numbered Lists
+
+<div style="float:left;width:300px;">
+
+To achieve the result:
+
+1. This is the first item.
+
+2. This is the second.
+
+3. This is the third.
+
+</div>
+
+<div style="padding-left:350px;">
+
+Use the code:
+
+```{r, eval=FALSE}
+1. This is the first item.
+
+2. This is the second.
+
+3. This is the third.
+```
+
+</div>
+
+<div style="clear:both;"></div>
+
+#### Lettered Lists
+
+<div style="float:left;width:300px;">
+
+To achieve the result:
+
+A) This is the first item.
+
+B) This is the second.
+
+C) This is the third.
+
+</div>
+
+<div style="padding-left:350px;">
+Use the code:
+
+```{r, eval=FALSE}
+A) This is the first item.
+
+B) This is the second.
+
+C) This is the third.
+```
+
+
+</div>
+
+<div style="clear:both;"></div>
+
+
+#### Nested Lists
+
+<div style="float:left;width:300px;">
+
+1. What is $2+2$?
+
+    a. **4**
+    
+    b. 8
+  
+2. What is $3\times5$?
+
+    a. 14
+    
+    b. **15**
+
+</div>
+
+<div style="padding-left:350px;">
+
+```{r, eval=FALSE}
+1. What is $2+2$?
+
+    a. **4**
+    
+    b. 8
+  
+2. What is $3\times5$?
+
+    a. 14
+    
+    b. **15**
+
+```
+
+</div>
+    
+# Math Equations
+
+Use the dollar signs `$x=5$` to write $x=5$ or `$z=\frac{x-\mu}{\sigma}$` to write $z=\frac{x-\mu}{\sigma}$. For a nicely centered equation use the double dollar signs `$$ $$` on separate lines 
+
+```{r, eval=FALSE}
+$$
+  z = \frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}
+$$
+```
+
+to get
+$$
+  z = \frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}
+$$
+
+Or
+
+```{r, eval=FALSE}
+$$
+  H_0: \mu_1 = \mu_2
+$$
+$$ 
+  H_a: \mu_1 \neq \mu_2
+$$
+```
+
+to get
+$$
+  H_0: \mu_1 = \mu_2
+$$
+$$ 
+  H_a: \mu_1 \neq \mu_2
+$$
+
+<br />
+
+# Insert a Picture
+
+To add a picture to your document, say some notes you took down on paper from class,
+
+`![](./Images/insertPictureNotes.jpg)`
+
+![](./Images/insertPictureNotes.jpg)
+
+<br />
+
+# Tables
+
+There are many ways to [make tables](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#tables) in R Markdown. Here is a simple way to make a "pipe" table.
+
+```{r, eval=FALSE}
+| Name          | Age           | Gender       | 
+|---------------|---------------|--------------|
+| Jill          | 8             |  Female      |
+| Jack          | 9             |  Male        |
+```
+
+| Name          | Age           | Gender       | 
+|---------------|---------------|--------------|
+| Jill          | 8             |  Female      |
+| Jack          | 9             |  Male        |
+
+
+<br />
+
+# Themes
+
+Notice in the YAML (at the top of the RMD file) there is a line that reads:
+
+"theme: cerulean"
+
+Other possible themes are
+
+* "default", "cerulean", "journal", "flatly", "readable", "spacelab", "united", and "cosmo".
+
+You can also change the `highlighting` by adding the line "highlight: tango" to the YAML as follows.
+
+```{r, eval=FALSE}
+---
+title: "Markdown Hints"
+output: 
+  html_document:
+    theme: cerulean
+    highlight: tango
+---
+```
+
+Other highlighting options are
+
+* "default", "tango", "pygments", "kate", "monochrome", "espresso", "zenburn", "haddock", and "textmate".
+
+<br />
+
+# 
+
+# More Information
+
+Go to the [rmarkdown.rstudio.com](http://rmarkdown.rstudio.com/html_document_format.html) website for more information on how to use R Markdown.
+

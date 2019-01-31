@@ -1,0 +1,182 @@
+---
+title: "Table of Contents"
+output: 
+  html_document:
+    theme: cerulean
+---
+
+<br>
+
+----
+
+Customize this page and any of the Math 325 Notebook so that it becomes a useful *Guide to Statistical Analysis* for your *current* and *future* self. 
+
+<!-- This is how to comment text out. You can comment out the above instructions if you wish. Comments allow the text to remain in the Rmd file, but not be displayed in the html file. -->
+
+[Customization Help](RMarkdownHints.html)
+
+----
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QuantY.png" width=35px;>
+</div>
+<div style="padding-left:125px;">
+<!-- Add your customizations in the area below: -->
+
+**1 Quantitative Variable**
+
+
+
+
+
+
+
+
+<!------------------------------------------------>
+</div>
+<div style="clear:both;"></div>
+
+----
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QuantYQualXg2.png" width=59px;>
+</div>
+<div style="padding-left:125px;">
+<!-- Add your customizations in the area below: -->
+
+**1 Quantitative Variable | 2 Groups**
+
+
+
+
+
+
+
+<!------------------------------------------------>
+</div>
+<div style="clear:both;"></div>
+
+----
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QuantYQualXg3plus.png" width=59px;>
+</div>
+<div style="padding-left:125px;">
+<!-- Add your customizations in the area below: -->
+
+**1 Quantitative Variable | 3+ Groups**
+
+
+
+
+
+
+
+<!------------------------------------------------>
+</div>
+<div style="clear:both;"></div>
+
+----
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QuantYQuantX.png" width=59px;>
+</div>
+<div style="padding-left:125px;">
+<!-- Add your customizations in the area below: -->
+
+**2 Quantitative Variables**
+
+
+
+
+
+
+
+<!------------------------------------------------>
+</div>
+<div style="clear:both;"></div>
+
+----
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QuantYMultX.png" width=110px;>
+</div>
+<div style="padding-left:125px;">
+<!-- Add your customizations in the area below: -->
+
+**1 Quantitative Response | Multiple Explanatory Variables**
+
+
+
+
+
+
+
+<!------------------------------------------------>
+</div>
+<div style="clear:both;"></div>
+
+----
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/BinomYQuantX.png" width=59px;>
+</div>
+<div style="padding-left:125px;">
+<!-- Add your customizations in the area below: -->
+
+**Binomial Response | 1 Explanatory Variable**
+
+
+
+
+
+
+
+<!------------------------------------------------>
+</div>
+<div style="clear:both;"></div>
+
+----
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/BinomYMultX.png" width=110px;>
+</div>
+<div style="padding-left:125px;">
+<!-- Add your customizations in the area below: -->
+
+**Binomial Response | Multiple Explanatory Variables**
+
+
+
+
+
+
+
+<!------------------------------------------------>
+</div>
+<div style="clear:both;"></div>
+
+----
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QualYQualX.png" width=59px;>
+</div>
+<div style="padding-left:125px;">
+<!-- Add your customizations in the area below: -->
+
+**2 Qualitative Variables**
+
+
+
+
+
+
+
+<!------------------------------------------------>
+</div>
+<div style="clear:both;"></div>
+
+----
+
+<footer></footer>
+

@@ -1,0 +1,37 @@
+---
+title: "R Cheat Sheets & Notes"
+output: 
+  html_document: 
+    theme: cerulean
+    highlight: tango
+    css: styles.css
+---
+
+## Cheat Sheets
+
+* [R Colors](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
+
+* [R Base Graphics Cheat Sheet](http://www.joyce-robbins.com/wp-content/uploads/2016/04/BaseGraphicsCheatsheet.pdf)
+
+* [R Base Commands Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf)
+
+* [R Markdown Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+
+## Notes
+
+Add your own notes here...
+
+```{r}
+# Add R commands you want to remember here...
+
+```
+
+```{r}
+# Or create other R chunks to put them in like this...
+
+```
+
+```{r, eval=FALSE}
+# Using ```{r, eval=FALSE} turns off the chunk, but still shows it.
+# Useful when you want to remember code, but not run it in this file.
+```

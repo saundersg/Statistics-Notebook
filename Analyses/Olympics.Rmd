@@ -1,0 +1,44 @@
+---
+title: "The Olympics"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+    toc: true
+    toc_float: true
+---
+
+**Week 2 Analysis**
+
+```{r, include=FALSE}
+library(mosaic)
+library(pander)
+library(DT) 
+Olympics <- read.csv("../Data/Olympics.csv", header=TRUE)
+```
+
+<br />
+
+## Background
+
+Come up with an interesting question about the olympics and answer it here using good statistical analysis and a powerful graphic... (delete this line). <!-- or comment it out -->
+
+
+
+```{r, warning=FALSE}
+# Code to get you started. 
+# Only the first 100 observations are shown here because the dataset is really too big to show all of it in a markdown file.
+datatable(head(Olympics,100), options=list(lengthMenu = c(3,10,30)), extensions="Responsive")
+```
+
+
+
+
+
+
+
+
+
+
+
+[^1]: Note that Stephanie is a fictional character who is based on real experiences of many faculty and staff here at BYU-Idaho.

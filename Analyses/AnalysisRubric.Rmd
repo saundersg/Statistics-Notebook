@@ -1,0 +1,94 @@
+---
+title: "Analysis Rubric"
+output: 
+  html_document:
+    theme: cerulean
+---
+
+<br />
+
+#### A Quote to Remember
+
+When critiquing other people's work, remember that "The Lord’s way consists of helping people help themselves." <sup>[1](https://www.lds.org/ensign/2015/06/helping-others-in-the-lords-way?lang=eng)</sup> 
+
+
+<br />
+
+
+### Rubric Categories
+
+There are five main elements to a good statistical analysis.
+
+
+* **{ } Questions and Hypotheses**
+
+<div style="padding-left:60px;font-size:.8em;width:80%;">
+Does the analysis clearly state its question with proper motivation for why the question is interesting? If the data for the analysis came from a sample, are the proper statistical hypotheses being stated along with the question? (Census data does not require the use of statistical hypotheses.)
+</div>
+
+* **{ } Data Analysis**
+
+<div style="padding-left:60px;font-size:.8em;width:80%;">
+This is the most difficult part of an analysis to check, but there are two main parts. First, is the analysis technique appropriate for the data? Second, is the analysis properly performed from start to finish?
+</div>
+
+* **{ } Graphical Summaries**
+
+<div style="padding-left:60px;font-size:.8em;width:80%;">
+A good graphical summary should follow the "stand alone" principal. This means that the graphic communicates all the necessary information all on its own. If it were removed from the analysis, one could still understand what it is presenting.
+</div>
+
+* **{ } Interpretation**
+
+<div style="padding-left:60px;font-size:.8em;width:80%;">
+This is the most important part of the analysis. Does the analysis reach a conclusion that is soundly supported by data, cited references, or statistical analysis? Does the analysis clearly answer the stated question?
+</div>
+
+* **{ } Presentation**
+
+<div style="padding-left:60px;font-size:.8em;width:80%;">
+This is certainly subject to opinions on style, but is still a useful criterion to consider. First, does the document flow cleanly from beginning to end? Was it interesting to read? Was it nice to look at? Was it organized? Were colors, fonts, section headers, and other stylistic elements used in a way that improved the reading experience? Did any stylistic elements take away from or clutter up the message that was being delivered?
+</div>     
+
+<br />
+
+
+### Category Points
+
+Each Rubric Category is graded with a **{0}**, **{1}**, **{2}**, or **{3}**. 
+  
+<div style="padding-left:15px;">
+
+**{3}** Excellent quality.
+
+<div style="padding-left:60px;font-size:.8em;width:80%;">
+This analysis could be included in the Math 325 Notebook as an example of a very well done analysis.
+</div>
+
+**{2}** Fair quality.
+
+<div style="padding-left:60px;font-size:.8em;width:80%;">
+Some important but not overly dramatic improvements are needed before this could be used as an example of a very well done analysis.
+</div>
+
+**{1}** Poor quality.
+
+<div style="padding-left:60px;font-size:.8em;width:80%;">
+Some substantial work is needed before this analysis could be used as an example of a very well done analysis.
+</div>
+
+**{0}** Element missing
+
+<div style="padding-left:60px;font-size:.8em;width:80%;">
+It seems the student forgot to include this element.
+</div>
+
+</div>
+
+</br>
+
+
+
+Continued resubmissions are expected until you achieve a {**3**} in each Category. 
+
+<br/>

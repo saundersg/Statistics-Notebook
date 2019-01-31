@@ -1,0 +1,36 @@
+name: "math-325-notebook"
+navbar:
+  title: "Math 325 Notebook"
+  left:
+    - text: "Table of Contents"
+      href: index.html
+    - text: "Describing Data"
+      menu:
+        - text: "Graphical Summaries"
+          href: GraphicalSummaries.html
+        - text: "Numerical Summaries"
+          href: NumericalSummaries.html
+    - text: "R Help"
+      menu:
+        - text: "R Commands"
+          href: RCommands.html
+        - text: "R Markdown Hints"
+          href: RMarkdownHints.html
+        - text: "R Cheatsheets & Notes"
+          href: RCheatSheetsAndNotes.html
+    - text: "Analyses"
+      menu:
+        - text: "Analysis Rubric"
+          href: ./Analyses/AnalysisRubric.html
+        - text: "Good Example Analysis"
+          href: ./Analyses/StudentHousing.html
+        - text: "Poor Example Analysis"
+          href: ./Analyses/StudentHousingPOOR.html
+        - text: "Stephanie Analysis"
+          href: ./Analyses/Stephanie.html
+        - text: "Olympics Analysis"
+          href: ./Analyses/Olympics.html
+          
+output_dir: '.'
+
+  

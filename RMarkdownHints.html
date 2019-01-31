@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>R Markdown Hints</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Math 325 Notebook</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Table of Contents</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Describing Data
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="GraphicalSummaries.html">Graphical Summaries</a>
+    </li>
+    <li>
+      <a href="NumericalSummaries.html">Numerical Summaries</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    R Help
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="RCommands.html">R Commands</a>
+    </li>
+    <li>
+      <a href="RMarkdownHints.html">R Markdown Hints</a>
+    </li>
+    <li>
+      <a href="RCheatSheetsAndNotes.html">R Cheatsheets &amp; Notes</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Analyses
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="./Analyses/AnalysisRubric.html">Analysis Rubric</a>
+    </li>
+    <li>
+      <a href="./Analyses/StudentHousing.html">Good Example Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/StudentHousingPOOR.html">Poor Example Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/Stephanie.html">Stephanie Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/Olympics.html">Olympics Analysis</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">R Markdown Hints</h1>
+
+</div>
+
+
+<p>Think of an <code>R Markdown File</code>, or <code>Rmd</code> for short, as a command center. You write commands, then Knit the file, and an html output file is created according to your commands.</p>
+<p>Study this image to get the idea.</p>
+<div class="figure">
+<img src="Images/Rmd2html.png" />
+
+</div>
+<div id="creating-headers" class="section level2">
+<h2>Creating Headers</h2>
+<p>There are six available sizes of headings you can use in an Rmd file (left in image) that show up as shown below (right in image).</p>
+<div class="figure">
+<img src="Images/Rmd2html_Headers.png" />
+
+</div>
+<p><br /></p>
+</div>
+<div id="emphasizing-words" class="section level1">
+<h1>Emphasizing Words</h1>
+<p>To <em>italisize</em> a word use the asterisk (Shift 8) <code>*italisize*</code>. To <strong>bold</strong> a word use the double asterisk <code>**bold**</code>. (Notice how the back tic <code>`</code> can be used to emphasize words as well.)</p>
+<p><br /></p>
+</div>
+<div id="bullet-points" class="section level1">
+<h1>Bullet Points</h1>
+<div id="simple-lists" class="section level4">
+<h4>Simple Lists</h4>
+<div style="float:left;width:300px;">
+<p>To achieve the result:</p>
+<ul>
+<li><p>This is the first item.</p></li>
+<li><p>This is the second.</p></li>
+<li><p>This is the third.</p></li>
+</ul>
+</div>
+<div style="padding-left:350px;">
+<p>Use the code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">*</span><span class="st"> </span>This is the first item.
+
+<span class="op">*</span><span class="st"> </span>This is the second.
+
+<span class="op">*</span><span class="st"> </span>This is the third.</code></pre></div>
+</div>
+<div style="clear:both;">
+
+</div>
+</div>
+<div id="numbered-lists" class="section level4">
+<h4>Numbered Lists</h4>
+<div style="float:left;width:300px;">
+<p>To achieve the result:</p>
+<ol style="list-style-type: decimal">
+<li><p>This is the first item.</p></li>
+<li><p>This is the second.</p></li>
+<li><p>This is the third.</p></li>
+</ol>
+</div>
+<div style="padding-left:350px;">
+<p>Use the code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span>. This is the first item.
+
+<span class="dv">2</span>. This is the second.
+
+<span class="dv">3</span>. This is the third.</code></pre></div>
+</div>
+<div style="clear:both;">
+
+</div>
+</div>
+<div id="lettered-lists" class="section level4">
+<h4>Lettered Lists</h4>
+<div style="float:left;width:300px;">
+<p>To achieve the result:</p>
+<ol style="list-style-type: upper-alpha">
+<li><p>This is the first item.</p></li>
+<li><p>This is the second.</p></li>
+<li><p>This is the third.</p></li>
+</ol>
+</div>
+<div style="padding-left:350px;">
+<p>Use the code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A<span class="er">)</span> This is the first item.
+
+B<span class="er">)</span> This is the second.
+
+C<span class="er">)</span> This is the third.</code></pre></div>
+</div>
+<div style="clear:both;">
+
+</div>
+</div>
+<div id="nested-lists" class="section level4">
+<h4>Nested Lists</h4>
+<div style="float:left;width:300px;">
+<ol style="list-style-type: decimal">
+<li><p>What is <span class="math inline">\(2+2\)</span>?</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><strong>4</strong></p></li>
+<li><p>8</p></li>
+</ol></li>
+<li><p>What is <span class="math inline">\(3\times5\)</span>?</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>14</p></li>
+<li><p><strong>15</strong></p></li>
+</ol></li>
+</ol>
+</div>
+<div style="padding-left:350px;">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span>. What is <span class="op">$</span><span class="dv">2</span><span class="op">+</span><span class="dv">2</span><span class="op">$</span>?
+
+    a. <span class="op">**</span><span class="dv">4</span><span class="op">**</span>
+<span class="st">    </span>
+<span class="st">    </span>b. <span class="dv">8</span>
+  
+<span class="dv">2</span>. What is <span class="op">$</span><span class="dv">3</span>\times5<span class="op">$</span>?
+
+    a. <span class="dv">14</span>
+    
+    b. <span class="op">**</span><span class="dv">15</span><span class="op">**</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="math-equations" class="section level1">
+<h1>Math Equations</h1>
+<p>Use the dollar signs <code>$x=5$</code> to write <span class="math inline">\(x=5\)</span> or <code>$z=\frac{x-\mu}{\sigma}$</code> to write <span class="math inline">\(z=\frac{x-\mu}{\sigma}\)</span>. For a nicely centered equation use the double dollar signs <code>$$ $$</code> on separate lines</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">$</span><span class="er">$</span>
+<span class="st">  </span>z =<span class="st"> </span>\frac{\bar{x}<span class="op">-</span>\mu}{\frac{\sigma}{\sqrt{n}}}
+<span class="op">$</span><span class="er">$</span></code></pre></div>
+<p>to get <span class="math display">\[
+  z = \frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}
+\]</span></p>
+<p>Or</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">$</span><span class="er">$</span>
+<span class="st">  </span>H_<span class="dv">0</span><span class="op">:</span><span class="st"> </span>\mu_<span class="dv">1</span> =<span class="st"> </span>\mu_<span class="dv">2</span>
+<span class="op">$</span><span class="er">$</span>
+<span class="er">$$</span><span class="st"> </span>
+<span class="st">  </span>H_a<span class="op">:</span><span class="st"> </span>\mu_<span class="dv">1</span> \neq \mu_<span class="dv">2</span>
+<span class="op">$</span><span class="er">$</span></code></pre></div>
+<p>to get <span class="math display">\[
+  H_0: \mu_1 = \mu_2
+\]</span> <span class="math display">\[ 
+  H_a: \mu_1 \neq \mu_2
+\]</span></p>
+<p><br /></p>
+</div>
+<div id="insert-a-picture" class="section level1">
+<h1>Insert a Picture</h1>
+<p>To add a picture to your document, say some notes you took down on paper from class,</p>
+<p><code>![](./Images/insertPictureNotes.jpg)</code></p>
+<div class="figure">
+<img src="Images/insertPictureNotes.jpg" />
+
+</div>
+<p><br /></p>
+</div>
+<div id="tables" class="section level1">
+<h1>Tables</h1>
+<p>There are many ways to <a href="http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#tables">make tables</a> in R Markdown. Here is a simple way to make a “pipe” table.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">|</span><span class="st"> </span>Name          <span class="op">|</span><span class="st"> </span>Age           <span class="op">|</span><span class="st"> </span>Gender       <span class="op">|</span><span class="st"> </span>
+<span class="er">|</span><span class="op">---------------</span><span class="er">|</span><span class="op">---------------</span><span class="er">|</span><span class="op">--------------</span><span class="er">|</span>
+<span class="er">|</span><span class="st"> </span>Jill          <span class="op">|</span><span class="st"> </span><span class="dv">8</span>             <span class="op">|</span><span class="st">  </span>Female      <span class="op">|</span>
+<span class="er">|</span><span class="st"> </span>Jack          <span class="op">|</span><span class="st"> </span><span class="dv">9</span>             <span class="op">|</span><span class="st">  </span>Male        <span class="op">|</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Age</th>
+<th>Gender</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Jill</td>
+<td>8</td>
+<td>Female</td>
+</tr>
+<tr class="even">
+<td>Jack</td>
+<td>9</td>
+<td>Male</td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
+</div>
+<div id="themes" class="section level1">
+<h1>Themes</h1>
+<p>Notice in the YAML (at the top of the RMD file) there is a line that reads:</p>
+<p>“theme: cerulean”</p>
+<p>Other possible themes are</p>
+<ul>
+<li>“default”, “cerulean”, “journal”, “flatly”, “readable”, “spacelab”, “united”, and “cosmo”.</li>
+</ul>
+<p>You can also change the <code>highlighting</code> by adding the line “highlight: tango” to the YAML as follows.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">---</span>
+title<span class="op">:</span><span class="st"> &quot;Markdown Hints&quot;</span>
+output<span class="op">:</span><span class="st"> </span>
+<span class="st">  </span>html_document<span class="op">:</span>
+<span class="st">    </span>theme<span class="op">:</span><span class="st"> </span>cerulean
+    highlight<span class="op">:</span><span class="st"> </span>tango
+<span class="op">---</span></code></pre></div>
+<p>Other highlighting options are</p>
+<ul>
+<li>“default”, “tango”, “pygments”, “kate”, “monochrome”, “espresso”, “zenburn”, “haddock”, and “textmate”.</li>
+</ul>
+<p><br /></p>
+</div>
+<div id="section" class="section level1">
+<h1></h1>
+</div>
+<div id="more-information" class="section level1">
+<h1>More Information</h1>
+<p>Go to the <a href="http://rmarkdown.rstudio.com/html_document_format.html">rmarkdown.rstudio.com</a> website for more information on how to use R Markdown.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

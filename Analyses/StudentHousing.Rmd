@@ -1,0 +1,66 @@
+---
+title: "Student Housing Costs"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+```{r, message=FALSE, warning=FALSE}
+library(mosaic)
+library(DT)
+library(pander)
+library(plotly)
+Rent <- read.csv("../Data/Rent.csv", header=TRUE)
+```
+
+<br />
+
+## Background
+
+With the start of a new semester here at BYU-Idaho most college students have recently made decisions about where to live. Many factors go into housing decisions. But certainly some important considerations involve the cost of rent and distance from campus. 
+
+So just how much does student housing in Rexburg cost? And are apartments close to campus more expensive? These are just a few possible questions one could ask as they look for housing in Rexburg.
+
+Data was collected from the [BYU-Idaho Housing Website](https://web.byui.edu/tis/search) to answer these questions. The first three observations are shown in the following table. There are a total of `r nrow(Rent)` observations in the dataset. Clicking the green `+` signs opens more information about each apartment.
+
+```{r, echo=FALSE}
+datatable(Rent, extensions="Responsive", options=list(lengthMenu=c(3,5,10)))
+```
+
+<br />
+
+## Analysis
+
+The following histogram shows the distribution of the (entry level contract) prices of one-semester contracts for the full population of BYU-Idaho approved housing complexes. This includes both approved men's and women's housing. 
+
+```{r}
+hist(Rent$Price, xlab="Rent (In U.S. Dollars)", main="BYU-Idaho Housing \n One-Semester Entry Level Contract Prices", col=c("skyblue3","skyblue3","skyblue","skyblue","skyblue","skyblue","skyblue","skyblue"))
+```
+
+This plot shows a fair percentage of apartments have entry level contracts ranging between $\$800$ and $\$1000$ a semester. This is shown in the graphic above by the dark blue bars. However, there are still a fair number of apartments above $\$1000$. In fact, half of the available entry price rental options cost more than the median price of $\$`r median(Rent$Price, na.rm=TRUE)`$, as shown in the table below. The cheapest available option is $\$`r min(Rent$Price, na.rm=TRUE)`$ while the most expensive is $\$`r max(Rent$Price, na.rm=TRUE)`$. The following table summarizes this information as well as the pricing for the high end options, such as what people would pay for a private room, for each complex.
+
+```{r, warning=FALSE}
+outputTable <- rbind(Price=favstats(Rent$Price), `High Price`=favstats(Rent$PrivateRoomPrice))
+pander(outputTable[c("min","Q1","median","mean","Q3","max","n")], caption="BYU-Idaho One-semester Rent Contract Price Summary")
+# Note that the options you can select from are
+# "min"	"Q1"	"median"	"Q3"	"max"	"mean"	"sd"	"n"	"missing"
+# removing the [,c(...)] from favstats(...) would give all of the options.
+```
+
+As shown in the plot below however, it does not appear that there is any strong relationship between the rent cost of an apartment and how far the apartment is from campus. This is good news however, as there are apartments in all price ranges that are close to campus.
+
+```{r, message=FALSE, warning=FALSE}
+plot_ly(Rent) %>%
+  add_markers(y= ~Price, x= ~MilesToCampus, text= ~Apartment, color= ~Gender) %>%
+  layout(title="2018 BYU-Idaho Housing", xaxis=list(title="Distance from Manwaring Center"), yaxis=list(title="One-Semester Entry Level Contract Prices"))
+```
+
+#### Interpretation
+
+The [Burea of Labor Statistics](http://www.bls.gov/opub/btn/volume-1/a-comparison-of-25-years-of-consumer-expenditures-by-homeowners-and-renters.htm) shows that in 2010, the average annual reported expenditure of renters was $\$8798$, which figures to $\$`r round(8798/12,2)`$ a month. Considering that one-semester rental contracts at BYU-Idaho represent roughly 4 months, and that the average entry price rental cost was $\$1026.20$, single BYU-Idaho students entry level rent options average around $\$`r round(mean(Rent$Price)/4,2)`$ a month. This appears to be a pretty good deal for single BYU-Idaho students. 
+
+Note that this analysis does not consider the number of students that are housed in a given apartment. This is certainly an important factor in deciding the true cost of student housing at BYU-Idaho. However, the goal of this analysis was simply to understand the per student cost of housing at BYU-Idaho for single students.
+
+
+

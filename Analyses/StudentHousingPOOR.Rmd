@@ -1,0 +1,35 @@
+---
+title: "Student Housing Costs"
+output: 
+  html_document:
+    theme: cerulean
+---
+
+
+```{r, include=FALSE}
+library(mosaic)
+Rent <- read.csv("../Data/Rent.csv", header=TRUE)
+```
+
+<br />
+
+#### Background
+
+I got data from the BYU-Idaho Housing Website. I wanted to see how much rent costs for BYUI students.
+
+<br />
+
+#### Analysis
+
+
+```{r, echo=FALSE}
+hist(Rent$Price, xlab="", main="")
+```
+
+
+#### Interpretation
+
+Houssing seems to cost around a 1000 dollers.
+
+
+
