@@ -1,0 +1,84 @@
+---
+title: "Sleep -- One Sample t Test"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+<br />
+
+#### Background
+
+An experiment was conducted to determine if, on average, a certain soporific drug increased the hours of sleep of individuals. There were 10 patients that participated in the study. The amount of extra sleep that individuals received when drugged is contained in the `sleep1` data set.
+
+
+```{r, include=FALSE}
+library(mosaic)
+library(car)
+library(pander)
+library(DT)
+```
+
+```{r}
+sleep1 <- sleep[sleep$group==1,c("ID","extra")]
+datatable(sleep1)
+```
+
+<br />
+
+It is assumed that the amount of extra sleep individuals will receive when using this drug is normally distributed. Thus, the interest is in knowing if $\mu$, the average hours of extra sleep received by individuals while drugged, is greater than zero. 
+
+Formally, the null and alternative hypotheses are written as
+$$
+  H_0: \mu_\text{extra sleep} = 0
+$$
+$$
+  H_a: \mu_\text{extra sleep} > 0
+$$
+
+The significance level for this study will be set at
+$$
+  \alpha = 0.05
+$$
+
+Note that whether the true average hours of extra sleep is zero or less, $\mu = 0$ or $\mu < 0$, the conclusion will be the same, that the drug does not increase hours of sleep, on average.
+
+<br />
+
+#### Analysis
+
+As shown by the dotplot below, there was not a uniform improvement in hours of extra sleep for all individuals in the experiment ($n=10$). Two individuals received a little over an hour less of sleep while using the drug. Three individuals received the same hours of sleep or slightly less when using the drug as when not using the drug. Five individuals demonstrated an increase in sleep while using the drug, with two individuals experiencing more than 3 hours of extra sleep. 
+
+```{r, fig.height=2.5}
+stripchart(sleep1$extra, pch=16, method="stack")
+abline(v=0)
+points(mean(sleep1$extra), pch=3, cex=2, col="skyblue")
+```
+
+The QQ-Plot below demonstrates that the population data can be assumed to be normally distributed as all points remain within the dotted lines.
+
+```{r}
+qqPlot(sleep1$extra)
+```
+
+The One-sample t Test is thus appropriate for testing the null hypothesis stated previously. (This is because the requirement of the test, that the sampling distribution of the sample mean is normal, is satisfied when the population data is normal.)
+
+```{r, warning=FALSE}
+pander(t.test(sleep1$extra, mu = 0, alternative = "greater", conf.level = 0.95), caption="One Sample t-Test: Hours of Extra Sleep")
+```
+
+There is insufficient evidence to reject the null hypothesis $(p = 0.1088 > \alpha)$.
+
+<br />
+
+#### Interpretation
+
+There appears to be no real ability of this drug to increase sleep for individuals (p = 0.1088). Though on average, there was 0.75 hours of extra sleep for these 10 individuals, the results are likely just due to random chance. The drug does not appear to have any real ability to increase sleep for all indivuals.
+
+It may be interesting to explore any differences between the five individuals that experienced more sleep while using the drug as opposed to the five that experiences less (or the same) amount of sleep. If there was meaningful information, like all five that experienced more sleep were males, and all five that experienced less sleep were females, then another study could be conducted to determine the effects of the drug according to the gender of the participant, or whatever interesting characteristics were obtained. However, it is important to note that the only conclusion that can be obtained from this data is that the drug does not show evidence of consistently increasing sleep for individuals.
+
+
+
+
+

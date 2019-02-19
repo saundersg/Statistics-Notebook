@@ -118,3 +118,9 @@
     border-top: none;
 }
 
+
+.expand-caption {
+   font-size: .8em;
+   color: darkgray;
+   padding-left: 60px;
+}

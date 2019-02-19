@@ -1,0 +1,25 @@
+---
+title: "Car Prices"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+<br>
+
+## Background
+
+Delete these words and write your own background here.  
+
+```{r, include=FALSE}
+# Be sure to download the CarPrices.csv file and save it
+# into your Data folder prior to knitting this file.
+CarPrices <- read.csv("../Data/CarPrices.csv", header=TRUE)
+
+# Remember, to get the CarPrices data into your Console you have
+# to use the "Import Dataset" option in the "Environment" window.
+```
+
+
+

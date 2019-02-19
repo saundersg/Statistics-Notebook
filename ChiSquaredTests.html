@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Chi-squared Tests</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Math 325 Notebook</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Table of Contents</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Describing Data
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="GraphicalSummaries.html">Graphical Summaries</a>
+    </li>
+    <li>
+      <a href="NumericalSummaries.html">Numerical Summaries</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    R Help
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="RCommands.html">R Commands</a>
+    </li>
+    <li>
+      <a href="RMarkdownHints.html">R Markdown Hints</a>
+    </li>
+    <li>
+      <a href="RCheatSheetsAndNotes.html">R Cheatsheets &amp; Notes</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Making Inference
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="MakingInference.html">Making Inference</a>
+    </li>
+    <li>
+      <a href="tTests.html">t Tests</a>
+    </li>
+    <li>
+      <a href="WilcoxonTests.html">Wilcoxon Tests</a>
+    </li>
+    <li>
+      <a href="ANOVA.html">ANOVA</a>
+    </li>
+    <li>
+      <a href="Kruskal.html">Kruskal-Wallis</a>
+    </li>
+    <li>
+      <a href="LinearRegression.html">Linear Regression</a>
+    </li>
+    <li>
+      <a href="LogisticRegression.html">Logistic Regression</a>
+    </li>
+    <li>
+      <a href="ChiSquaredTests.html">Chi Squared Tests</a>
+    </li>
+    <li>
+      <a href="PermutationTests.html">Randomization Testing</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Analyses
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="./Analyses/AnalysisRubric.html">Analysis Rubric</a>
+    </li>
+    <li>
+      <a href="./Analyses/StudentHousing.html">Good Example Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/StudentHousingPOOR.html">Poor Example Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/Stephanie.html">Stephanie Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/Olympics.html">Olympics Analysis</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Chi-squared Tests</h1>
+
+</div>
+
+
+<script type="text/javascript">
+ function showhide(id) {
+    var e = document.getElementById(id);
+    e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+ }
+</script>
+<hr />
+<p>Association testing for two qualitative variables with at least two levels to each variable.</p>
+<hr />
+<div id="chi-squared-test-of-independence" class="section level3 tabset tabset-pills tabset-fade">
+<h3>Chi-squared Test of Independence</h3>
+<table>
+<tr>
+<td style="vertical-align:top;width:20%;">
+<div style="float:left;width:125px;" align="center">
+<p><img src="Images/QualYQualX.png" width=58px;></p>
+</div>
+</td>
+<td style="vertical-align:top;width:80%;">
+<div id="overview" class="section level4">
+<h4>Overview</h4>
+<p>A method of comparing observed counts to the expected counts in a contingency table to decide if two qualitative variables are associated (alternative hypothesis) or are independent, i.e., not associated (null hypothesis).</p>
+<p>Typically, all expected counts are required to be 5 or greater for the test to be appropriate. However, the test is still appropriate if all expected counts are at least 1 and the average of the expected counts is at least 5.</p>
+<hr />
+</div>
+<div id="r-instructions" class="section level4">
+<h4>R Instructions</h4>
+<p><strong>Console</strong> Help Command: <code>?chisq.test()</code></p>
+<p><code>chisq.test(x)</code></p>
+<ul>
+<li><p><code>x</code> is either a matrix or a table.</p></li>
+<li><p>To make a matrix:</p>
+<ul>
+<li><code>cbind(column1, column2, ... column n)</code></li>
+<li><code>rbind(row1, row2, ..., row m)</code></li>
+</ul></li>
+<li><p>To make a table:</p>
+<ul>
+<li><code>table(rowVariable, columnVariable)</code></li>
+</ul></li>
+</ul>
+<p><code>chisq.test(rowVariable,columnVariable)</code></p>
+<ul>
+<li><code>rowVariable</code> and <code>columVariable</code> are columns of data from a data set.</li>
+</ul>
+<div id="diagnostics" class="section level5">
+<h5>Diagnostics</h5>
+<p><code>yourNamedTestResults &lt;- chisq.test(x)</code></p>
+<p><code>yourNamedTestResults$expected</code></p>
+</div>
+<div id="interpretation-pearson-residuals" class="section level5">
+<h5>Interpretation: Pearson Residuals</h5>
+<p><code>yourNamedTestResults$residuals</code></p>
+<hr />
+</div>
+</div>
+<div id="explanation" class="section level4">
+<h4>Explanation</h4>
+<p>To demonstrate the theory behind the Chi-squared Test, consider the following data about the survival of the Titanic passengers as a specific example. The rows of the following contingency table (a table of counts) show the <strong>Class</strong> of the passenger, while the columns show the <strong>Survival</strong> of the passenger. Note that each passenger is placed in exactly one <strong>Class</strong> and one level of <strong>Survival</strong>. Also, the two factors, <strong>Class</strong> and <strong>Survival</strong>, are qualitative variables with at least two levels. Thus, the data meets the basic requirements of the Chi-squared Test.</p>
+<div style="padding-left:15%; padding-right:15%;">
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">No</th>
+<th align="right">Yes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1st</td>
+<td align="right">122</td>
+<td align="right">203</td>
+</tr>
+<tr class="even">
+<td>2nd</td>
+<td align="right">167</td>
+<td align="right">118</td>
+</tr>
+<tr class="odd">
+<td>3rd</td>
+<td align="right">528</td>
+<td align="right">178</td>
+</tr>
+<tr class="even">
+<td>Crew</td>
+<td align="right">673</td>
+<td align="right">212</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="the-hypotheses" class="section level5">
+<h5>The Hypotheses</h5>
+<p>The hypotheses of the Chi-squared Test are written as verbal statements.</p>
+<p><span class="math inline">\(H_0\)</span>: The row variable and column variable are independent.</p>
+<p><span class="math inline">\(H_a\)</span>: The row variable and column variable are associated (not independent).</p>
+<p>For the Titanic data, these hypotheses would be written as</p>
+<p><span class="math inline">\(H_0\)</span>: Class and Survival are independent.</p>
+<p><span class="math inline">\(H_a\)</span>: Class and Survival are associated.</p>
+</div>
+<div id="the-model" class="section level5">
+<h5>The Model</h5>
+<p>Recall that to obtain a <span class="math inline">\(p\)</span>-value for a hypothesis test two things are required, 1) a test statistic, and 2) the distribution of the test statistic under the null hypothesis.</p>
+<p>The test statistic for the Chi-squared Test is given by the formula <span class="math display">\[
+  \chi^2 = \sum_{i=1}^m \frac{(O_i - E_i)^2}{E_i}
+\]</span> where <span class="math inline">\(O_i\)</span> represents each of the <span class="math inline">\(m\)</span> observed counts and <span class="math inline">\(E_i\)</span> represents the <span class="math inline">\(m\)</span> expected counts.</p>
+<p>Note that <span class="math inline">\(m = r\times c\)</span>, were <span class="math inline">\(r\)</span> represents the number of rows in the contingency table and <span class="math inline">\(c\)</span> represents the number of columns.</p>
+<p>The expected counts are obtained by the formula <span class="math display">\[
+  E_i = \frac{\text{(row total)(column total)}}{\text{(total total)}}
+\]</span></p>
+<p>The <span class="math inline">\(\chi^2\)</span> test statistic can be assumed to follow a <a href="MakingInference.html#chisquared">chi-squared distribution</a> with degrees of freedom <span class="math inline">\(p = (r-1)\times(c-1)\)</span> as long as the distribution of counts meets either of the following requirements.</p>
+<ul>
+<li>All expected counts are greater than five.</li>
+</ul>
+<p>OR</p>
+<ul>
+<li>All expected counts are greater than one, and the average of the expected counts is at least five.</li>
+</ul>
+<div id="where-the-chi2-statistic-comes-from" class="section level6">
+<h6>Where the <span class="math inline">\(\chi^2\)</span> statistic Comes From</h6>
+<div style="padding-left:15px;">
+<p>Consider the following graphic of the Titanic data. The data suggests that <strong>Survival</strong> of passengers appears to be associated with the <strong>Class</strong> of the passenger (the alternative hypothesis). This is due to the fact that more 1st class passengers survived than perished but far more 3rd class and Crew members perished than survived. It seems that the chances of survival were much greater for the 1st and 2nd class passengers than the 3rd class and Crew. Thus, survival appears to be associated with class.</p>
+<p><img src="ChiSquaredTests_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>If the null hypothesis were true for the Titanic data, then we would expect to see roughly the same percentage of survival across all classes. In other words, if <strong>Class</strong> and <strong>Survival</strong> were independent, we would expect to see plots more like the theoretical ones depicted below.</p>
+<p><img src="ChiSquaredTests_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>The theoretical plot above depicts the expected counts for each <strong>Class</strong> and <strong>Survival</strong> combination. To see where these expected counts come from, note that there are a total of 2,201 passengers recorded for the Titanic data (the sum of all values in the table). Further, there are a total of <span class="math inline">\(122+203 = 325\)</span> passengers that were 1st class, <span class="math inline">\(167 + 118 = 285\)</span> passengers in 2nd class, <span class="math inline">\(528 + 178 = 706\)</span> passengers in 3rd class, and <span class="math inline">\(673 + 212 = 885\)</span> Crew members. Thus, we have the following percentage of each class of passenger. Note that these percentages were obtained by taking the row totals and dividing them by the “total total”.</p>
+<div style="padding-left:25%; padding-right:35%;">
+<table>
+<thead>
+<tr class="header">
+<th align="left">Class</th>
+<th align="right">Percentage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1st</td>
+<td align="right">0.1476602</td>
+</tr>
+<tr class="even">
+<td align="left">2nd</td>
+<td align="right">0.1294866</td>
+</tr>
+<tr class="odd">
+<td align="left">3rd</td>
+<td align="right">0.3207633</td>
+</tr>
+<tr class="even">
+<td align="left">Crew</td>
+<td align="right">0.4020900</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Thus, if the null hypothesis is true, we would “expect” these percentages to remain consistent across both categories of <strong>Survival</strong>. Since there were <span class="math inline">\(122+167+528+673 = 1490\)</span> passengers that did not survive and <span class="math inline">\(203+118+178+212 =711\)</span> passengers that survived, we have the following expected counts. The counts under <strong>Survived</strong> were obtained by multiplying the number of passengers that survived, <span class="math inline">\(711\)</span> by each of the percentages for the different classes. The counts under <strong>Perished</strong> were obtained by multiplying the number of passengers that perished, <span class="math inline">\(1,490\)</span> by each of the percentages for the different classes.</p>
+<div style="padding-left:20%; padding-right:30%;">
+<table>
+<thead>
+<tr class="header">
+<th align="left">Class</th>
+<th align="right">Percentage</th>
+<th align="right">Survived</th>
+<th align="right">Perished</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1st</td>
+<td align="right">0.1476602</td>
+<td align="right">104.98637</td>
+<td align="right">220.0136</td>
+</tr>
+<tr class="even">
+<td align="left">2nd</td>
+<td align="right">0.1294866</td>
+<td align="right">92.06497</td>
+<td align="right">192.9350</td>
+</tr>
+<tr class="odd">
+<td align="left">3rd</td>
+<td align="right">0.3207633</td>
+<td align="right">228.06270</td>
+<td align="right">477.9373</td>
+</tr>
+<tr class="even">
+<td align="left">Crew</td>
+<td align="right">0.4020900</td>
+<td align="right">285.88596</td>
+<td align="right">599.1140</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Notice that the above process followed the procedure of dividing the row totals by the total total and then multiplying that percentage to the column totals. Because the order of multiplication and division does not matter, we can phrase this as (row total)(column total) / (total total). These provide the counts we would expect if the null hypothesis were true.</p>
+<p>When the observed counts differ dramatically from the expected counts, we will reject the null hypothesis. To measure how dramatically the observed counts differ from the expected counts we use the formula <span class="math display">\[
+  \chi^2 = \sum_{i=1}^m \frac{(O_i - E_i)^2}{E_i}
+\]</span> which is the formula that was stated previously. Notice that <span class="math inline">\(\chi^2\)</span> will become large when the observed counts differ dramatically from the expected counts, and will be relatively small when the expected counts and observed counts are similar.</p>
+<p>The <span class="math inline">\(p\)</span>-value for the <span class="math inline">\(\chi^2\)</span> statistic can be calculated using a chi-squared distribution with degrees of freedom equal to the product of (the number of rows - 1) and (the number of columns - 1).</p>
+</div>
+</div>
+</div>
+<div id="interpretation" class="section level5">
+<h5>Interpretation</h5>
+<p>If the null hypothesis is true, then the interpretation is simple, the two variables are independent. End of story. However, when the null hypothesis is rejected and the alternative is concluded, it becomes interesting to interpret the results because all we know now is that the two variables are somehow associated.</p>
+<p>One way to interpret the results is to consider the individual values of <span class="math display">\[
+  \frac{(O_i-E_i)^2}{E_i}
+\]</span> which, when square-rooted are sometimes called the Pearson residuals. <span class="math display">\[
+  \sqrt{\frac{(O_i-E_i)^2}{E_i}} =   \frac{(O_i-E_i)}{\sqrt{E_i}}
+\]</span></p>
+<p>The Pearson residuals allow a quick understanding of which observed counts are responsible for the <span class="math inline">\(\chi^2\)</span> statistic being large. They also show the direction in which the observed counts differ from the expected counts.</p>
+<p>For the Titanic data the Pearson residuals are given in the following table. Note that the most dramatic depatures in the observed counts (from the expected counts) were for the 1st Class survivors (Pearson residual = 9.566) and the 1st class passengers that perished (Pearson residual = -6.608). These tell us that far more 1st class passengers survived than we would have expected and far fewer perished than we expected. The next interesting scenario is for the Crew members, where more than expected perished and fewer than expected survived. A similar story to a lesser degree is true for the 3rd class passengers. The 2nd class passengers were similar to the 1st class passengers (more survived and less perished than expected) but to a far lesser degree.</p>
+<div style="padding-left:20%; padding-right:30%;">
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">No</th>
+<th align="right">Yes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1st</td>
+<td align="right">-6.607873</td>
+<td align="right">9.565772</td>
+</tr>
+<tr class="even">
+<td>2nd</td>
+<td align="right">-1.867159</td>
+<td align="right">2.702959</td>
+</tr>
+<tr class="odd">
+<td>3rd</td>
+<td align="right">2.289965</td>
+<td align="right">-3.315027</td>
+</tr>
+<tr class="even">
+<td>Crew</td>
+<td align="right">3.018611</td>
+<td align="right">-4.369840</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+</div>
+</div>
+</div>
+<div id="section" class="section level3">
+<h3></h3>
+</td>
+</tr>
+</table>
+<div style="padding-left:125px;">
+<p><strong>Examples</strong>: <a href="./Analyses/Chi%20Squared%20Tests/Examples/Math325StudentRatings.html">StudentRatings</a> | <a href="./Analyses/Chi%20Squared%20Tests/Examples/HairEyeColor.html">HairEyeColor</a></p>
+</div>
+<hr />
+</div>
+<div id="nonparametric-chi-squared-test" class="section level3 tabset tabset-pills tabset-fade">
+<h3>Nonparametric Chi-squared Test</h3>
+<table>
+<tr>
+<td style="vertical-align:top;width:20%;">
+<div style="float:left;width:125px;" align="center">
+<p><img src="Images/QualYQualX.png" width=58px;></p>
+</div>
+</td>
+<td style="vertical-align:top;width:80%;">
+<div id="overview-1" class="section level4">
+<h4>Overview</h4>
+<p>The test to perform when all observed counts are at least 1. The hypotheses and interpretation are the same as the Chi-Squared Test of Independence. The distribution of the test statistic is calculated in a nonparametric way.</p>
+<hr />
+</div>
+<div id="r-instructions-1" class="section level4">
+<h4>R Instructions</h4>
+<p><strong>Console</strong> Help Command: <code>?chisq.test()</code></p>
+<p><code>chisq.test(x, simulate.p.value=TRUE)</code></p>
+<hr />
+</div>
+<div id="explanation-1" class="section level4">
+<h4>Explanation</h4>
+<p>The nonparametric chi-squared test is very similar to the chi-squared test. The hypotheses, expected counts, and test statistic are all exactly the same as the chi-squared test. The only difference is that the test statistic is not assumed to follow a parametric chi-squared distribution.</p>
+<div id="the-hypotheses-1" class="section level5">
+<h5>The Hypotheses</h5>
+<p><span class="math inline">\(H_0\)</span>: The row variable and column variable are independent.</p>
+<p><span class="math inline">\(H_a\)</span>: The row variable and column variable are associated.</p>
+</div>
+<div id="the-model-1" class="section level5">
+<h5>The Model</h5>
+<p>The test statistic for the Nonparametric Chi-squared Test is the same as the Chi-Squared Test. <span class="math display">\[
+  \chi^2 = \sum_{i=1}^m \frac{(O_i - E_i)^2}{E_i}
+\]</span> where <span class="math inline">\(O_i\)</span> represents each of the <span class="math inline">\(m\)</span> observed counts and <span class="math inline">\(E_i\)</span> represents the <span class="math inline">\(m\)</span> expected counts.</p>
+<p>Note that <span class="math inline">\(m = r\times c\)</span>, were <span class="math inline">\(r\)</span> represents the number of rows in the contingency table and <span class="math inline">\(c\)</span> represents the number of columns.</p>
+<p>The expected counts are also still obtained by the formula <span class="math display">\[
+  E_i = \frac{\text{(row total)(column total)}}{\text{(total total)}}
+\]</span></p>
+<p>However, the <span class="math inline">\(\chi^2\)</span> test statistic is no longer assumed to follow a <a href="../ParametricDistributions.html#chisquared">chi-squared distribution</a>. Instead, a nonparametric distribution of the <span class="math inline">\(\chi^2\)</span> test statistic is generated using the following logic using the assumption that the null hypothesis is true. This is how it works.</p>
+</div>
+<div id="calculating-the-p-value" class="section level5">
+<h5>Calculating the P-Value</h5>
+<p>If the null hypothesis of a Chi-squared Test is true, then the row variable and the column variable are independent. This means that the probability of a certain level of the column variable occurring is the same in all rows. This is the driving idea behind the method of the Nonparametric Chi-squared Test.</p>
+<p><strong>Step 1</strong>: Randomly reassign values in each row to a different column so that they are somewhat close to the original expected counts, but random. In other words, try to mimic a possible outcome for what would have happened if the row variable and column variable really were independent.</p>
+<div style="padding-left:15px;">
+<p>For the Titanic data, it would look something like this.</p>
+<div style="color:#EE7942;">
+<p><span style="font-size:.8em;"> <em>Remember, this is not the actual data, it is a randomly made up version of the Titanic data that reflects what we might have observed if Survival was actually independent of Class.</em> </span></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Yes</th>
+<th align="right">No</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1st</td>
+<td align="right">110</td>
+<td align="right">215</td>
+</tr>
+<tr class="even">
+<td>2nd</td>
+<td align="right">87</td>
+<td align="right">198</td>
+</tr>
+<tr class="odd">
+<td>3rd</td>
+<td align="right">230</td>
+<td align="right">476</td>
+</tr>
+<tr class="even">
+<td>Crew</td>
+<td align="right">275</td>
+<td align="right">610</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Step 2</strong>: Perform a Chi-squared Test of Independence of the rearranged data and record the value of the <span class="math inline">\(\chi^2\)</span> test statistic.</p>
+<div style="padding-left:15px;">
+<p>For the made up data above, the Chi-squared Test of Independence gives the test statistic of</p>
+<div style="color:#EE7942;">
+<p><span class="math display">\[\chi^2 = 1.2419442\]</span></p>
+</div>
+</div>
+<p><strong>Step 3</strong>: Repeat the process thousands of times, always keeping track of the <span class="math inline">\(\chi^2\)</span> value from each test.</p>
+<div style="padding-left:15px;">
+<p>For 2,000 made up versions of the Titanic data (each similar to the orange table in <strong>Step 1</strong>), the 2,000 corresponding test statistics are summarized in the histogram below.</p>
+<p><img src="ChiSquaredTests_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<p><strong>Step 4</strong>: Calculate the number of <span class="math inline">\(\chi^2\)</span> statistics (from the thousands of simulated data sets) that are as extreme or more extreme than the original test statistic observed for the real data. Add 1 to this value (to avoid the possibility of getting a p-value of 0) and then divide by the number of test statistics that were simulated to get the p-value of the Nonparametric Chi-squared Test.</p>
+<div style="padding-left:15px;">
+<p>For the Titanic data, the original Chi-squared Test statistic was <span class="math inline">\(190.4011036\)</span>. Notice that this statistic is dramatically larger than all of the test statistics that were simulated under the assumption that the null hypothesis was true. (See the histogram in <strong>Step 3</strong> to see that no simulated test statistic was above 20, and very few were higher than 15!) Thus, for the Titanic data, no simulated test statistics were as extreme or more extreme than the observed test statistic. We add 1 to this, and divide by 2,000 to get that the p-value = <span class="math inline">\((0 + 1)/2000 = 0.00005\)</span>. This is sufficient evidence to reject the null hypothesis.</p>
+</div>
+</div>
+<div id="interpretation-1" class="section level5">
+<h5>Interpretation</h5>
+<p>The interpretation of the Nonparametric Chi-squared Test is exactly the same as the Chi-squared Test. The only difference is in the calculation of the p-value. Fortunately, most software will automatically perform the Nonparametric Chi-squared Test, so all of the above calculations will be performed automatically.</p>
+<hr />
+</div>
+</div>
+</div>
+<div id="section-1" class="section level3">
+<h3></h3>
+</td>
+</tr>
+</table>
+<div style="padding-left:125px;">
+<p><strong>Examples</strong>: <a href="./Analyses/Chi%20Squared%20Tests/Examples/CowlickNonparChiSquare.html">Cowlick</a></p>
+</div>
+<hr />
+<footer>
+</footer>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
