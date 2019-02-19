@@ -1,0 +1,64 @@
+---
+title: "Chick Weights -- One-way ANOVA"
+output: 
+  html_document:
+    theme: cerulean
+---
+
+<br />
+
+#### Background
+
+This experiment comes from the R help file `?chickwts` and the data is correspondingly recorded in the `chickwts` dataset. 
+
+"An experiment was conducted to measure and compare the effectiveness of various feed supplements on the growth rate of chickens. Newly hatched chicks were randomly allocated into six groups, and each group was given a different feed supplement. Their weights in grams after six weeks are given along with feed types."
+
+```{r, include=FALSE}
+library(mosaic)
+```
+
+
+#### Analysis
+
+Applying a one-way ANOVA to this study, we have the hypotheses
+$$
+  H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4 = \mu_5 = \mu_6 = \mu
+$$
+$$
+  H_a: \mu_i \neq \mu \ \text{for at least one}\ i\in\{1,\ldots,m\}
+$$
+These hypotheses will allow us the ability to answer the question, is the average chick weight the same for each feed type? Or is at least one feed type different on average than the others?
+
+To perform the analysis we compute the following ANOVA. (R Code is shown for teaching purposes.)
+
+```{r, comment=NA}
+chick.aov <- aov(weight ~ feed, data=chickwts)
+summary(chick.aov)
+```
+
+The $p$-value of the test is highly significant $(p = 5.9\times10^{-10})$, therefore we conclude the alternative, that at least one feed type has a different average weight. The following plots demonstrate that the assumptions of ANOVA were satisfied as the residuals versus fitted values plot shows roughly constant variance, and the QQ-Plot shows normality of the residuals.
+
+```{r}
+par(mfrow=c(1,2))
+plot(chick.aov, which=1:2, pch=16)
+```
+
+The following graphic provides an explanation of which feed types are producing the highest average weights. (Note, this plot was created using `mPlot(chickwts)` and then editing the code slightly.)
+
+```{r}
+xyplot(weight ~ feed, data=chickwts, main="", type=c("p","a")) 
+```
+
+The detailed values depicted in the plot above are summarized in the table below.
+
+```{r, results='asis'}
+knitr::kable(favstats(weight ~ feed, data=chickwts)[,c(".group","mean","sd","n")])
+```
+
+#### Interpretation
+
+It appears that horsebean and linseed should not be used as feed types, as they have the lowest average weights at $160.2$ and $218.8$, respectively. The best two feed types appear to be casein and sunflower at $323.6$ and $328.9$, respectively. At this point, a cost analysis would also be important in deciding which feed type would provide the greatest average weight at the lowest cost. If significantly cheaper, meatmeal may be worth considering at an average weight of 276.9.
+
+
+
+

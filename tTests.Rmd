@@ -1,0 +1,422 @@
+---
+title: "t Tests"
+output: 
+  html_document: 
+    theme: cerulean
+---
+
+----
+
+Much of statistical inference concerns the location of the population mean $\mu$ for a given parametric distribution. Some of the most common approaches to making inference about $\mu$ utilize a test statistic that follows a t distribution.
+
+----
+
+
+### One Sample t Test {.tabset .tabset-fade .tabset-pills}
+
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QuantY.png" width=35px;>
+</div>
+
+A one sample t test is used when there is a hypothesized value for the population mean $\mu$ of a single quantitative variable. 
+
+#### Overview 
+
+<div style="padding-left:125px;">
+This test is only appropriate when both of the following are satisfied.
+
+(1) The sample is **representative** of the population. (Having a simple random sample is the best way to do this.)
+
+(2) The sampling distribution of the sample mean $\bar{x}$ *can be assumed to be normal*. This is a safe assumption when either (a) the population data can be assumed to be normally distributed using a Q-Q Plot or (b) the size of the sample (n) that was taken from the population is large (at least n > 30, but "large" really depends on how badly the data is skewed).
+
+**Hypotheses** 
+
+<div style="padding-left:15px;">
+$H_0: \mu = \text{some number}$
+
+$H_a: \mu \ \left\{\underset{<}{\stackrel{>}{\neq}}\right\} \ \text{some number}$
+</div>
+
+**Examples**: [sleepOne](./Analyses/t Tests/Examples/SleepOneSamplet.html)
+
+</div>
+
+
+
+----
+
+#### R Instructions
+
+<div style="padding-left:125px;">
+
+**Console** Help Command: `?t.test()`
+
+`t.test(Y, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)`
+
+* `Y` must be a "numeric" vector of quantitative data.
+* `YourNull` is the numeric value from your null hypothesis for $\mu$.
+* `YourAlternative` is one of the three options: `"two.sided"`, `"greater"`, `"less"` and should correspond to your alternative hypothesis.
+* The value for `conf.level = 0.95` can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to $1-\alpha$.
+
+Testing Assumptions
+
+`library(car)`
+
+`qqPlot(Y)`
+
+</div>
+
+
+----
+
+#### Explanation
+
+<div style="padding-left:125px;">
+
+In many cases where it is of interest to test a claim about a single population mean $\mu$, the one sample t test is used. This is an appropriate decision whenever the sampling distribution of the sample mean can be assumed to be normal and the data represents a simple random sample from the population. 
+
+In the figure below, the null hypothesis $H_0: \mu = \mu_0$ is represented by the normal distribution (gray) centered at $\mu_0$. Note that $\mu_0$ is just some specified number. This shows how the null hypothesis represents the assumption about the center of the distribution of the data. 
+
+```{r, echo=FALSE}
+x <- seq(9,21, length.out=500)
+sig <- 1.2
+mu <- 13
+y <- dnorm(x, mu, sig)
+set.seed(15)
+s <- rnorm(10, mu+5, sig)
+plot(x, y, type='l', lty=1, lwd=2, col='darkgray', yaxt='n', xaxt='n',
+     ylab=' ', xlab='', ylim=c(-.05,max(y)+.03))
+abline(h=0, col='gray')
+lines(c(mu,mu),c(0,dnorm(mu,mu,sig)), lty=1, col='darkgray')
+points(s, rep(0,length(s)), pch=16, col='skyblue3')
+text(mu,-0.025, expression(mu[0]), col='darkgray')
+sbar <- mean(s)
+lines(c(sbar,sbar), c(-0.01,0.01), col='skyblue3', lwd=2)
+text(sbar, -0.025, expression(bar(x)), col='skyblue3')
+x2 <- seq(14,22, length.out=100)
+lines(x2,dnorm(x2,sbar,sig), lty=2, col='skyblue')
+```
+
+After a hypothesis (null) is established and an alternative hypothesis similarly declared, a simple random sample of data of size $n$ is obtained from the population of interest. In the plot above, this is depicted by the points (blue dots) which are centered around their sample mean $\bar{x}$.
+
+Above the points (blue dots) is shown a second normal distribution (blue dashed line) which represents the idea that the alternative hypothesis allows for a normal distribution which is potentially more consistent with the data than the one specified under the null hypothesis. 
+
+The role of the one sample t test is to measure the probability of a sample mean being as extreme or more extreme from the hypothesized value of $\mu_0$ than the one observed assuming the null hypothesis is true. This probability is of course the p-value of the test. This works because the sampling distribution of the sample mean has been assumed to be normal. In this case, the distribution of the test statistic t, 
+$$
+  t = \frac{\bar{x}-\mu}{s/\sqrt{n}}
+$$  
+is known to follow a t distribution with $n-1$ degrees of freedom. (The mathematics that provide this result are phenominal! You can consult any advanced statistical textbook for the details.)
+
+The p-value of the one sample t test represents the probability that the test statistic $t$ is as extreme or more extreme than the one observed according to a t-distribution with $n-1$ degrees of freedom.
+
+If the probability (the p-value) is close enough to zero (smaller than $\alpha$) then it is determined that the most *plausible* hypothesis is the alternative hypothesis, and thus the null is "rejected" in favor of the alternative. 
+
+</div>
+
+----
+
+
+
+
+
+
+
+### Paired Samples t Test {.tabset .tabset-fade .tabset-pills}
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QuantY.png" width=35px;>
+</div>
+
+The paired samples t test is used when a value is hypothesized for the popluation mean of the differences, $\mu_d$, obtained from paired observations. 
+
+#### Overview
+
+<div style="padding-left:125px;">
+
+Paired samples include pre-test post-test scenarios and matched-pairs scenarios, where the only interest is in the difference between the two scores. Such scenarios begin with two sets of measurements for each individual (or each matched-pair). However, in the end, these two measurements are reduced to a single set of "differences". Thus, paired data is essentially one sample of differences. 
+
+**Requirements**
+
+The test is only appropriate when both of the following are satisfied.
+
+(1) The sample of differences is representative of the population differences.
+
+(2) The sampling distribution of the sample mean of the differences $\bar{d}$ ($\bar{x}$ of the differences) can be assumed to be normal. (This second requirement can be assumed to be satisfied when (a) the differences themselves can be assumed to be normal from a Q-Q Plot, or (b) when the sample size $n$ of the differences is large.)
+
+
+**Hypotheses**
+
+<div style="padding-left:15px;">
+$H_0: \mu_d = \text{some number, but typically 0}$  
+$H_a: \mu_d \ \left\{\underset{<}{\stackrel{>}{\neq}}\right\} \ \text{some number, but typically 0}$
+</div>
+
+**Examples**: [sleepPaired](./Analyses/t Tests/Examples/SleepPairedt.html) [studentPaired](./Analyses/t Tests/Examples/Student1Paired.html)
+
+</div>
+
+----
+
+#### R Instructions
+
+<div style="padding-left:125px;">
+**Console** Help Command: `?t.test()`
+
+Option 1:
+
+`t.test(Y1, Y2, paired = TRUE, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)`
+
+* `Y1` must be a "numeric" vector that represents the quantitative data from the first sample of data.
+* `Y2` must be a "numeric" vector that represents the quantitative data from the second sample of data. This vector must be in the same order as the first sample so that the pairing can take place.
+* `YourNull` is the numeric value from your null hypothesis for $\mu_d$.
+* `YourAlternative` is one of the three options: `"two.sided"`, `"greater"`, `"less"` and should correspond to your alternative hypothesis.
+* The value for `conf.level = 0.95` can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to $1-\alpha$.
+
+Testing Assumptions
+
+`library(car)`
+
+`qqPlot(Y1 - Y2)`
+
+<br />
+
+Option 2:
+
+Compute the differences yourself instead of using `paired=TRUE`.
+
+`differences = Y1 - Y2`
+`t.test(differences, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)`
+
+* `Y1` must be a "numeric" vector that represents the quantitative data from the first sample of data.
+* `Y2` must be a "numeric" vector that represents the quantitative data from the second sample of data. This vector must be in the same order as the first sample so that the pairing can take place.
+* `differences` are the resulting differences obtained from subtracting `Y1 - Y2`.
+* `YourNull` is the numeric value from your null hypothesis for $\mu_d$.
+* `YourAlternative` is one of the three options: `"two.sided"`, `"greater"`, `"less"` and should correspond to your alternative hypothesis.
+* The value for `conf.level = 0.95` can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to $1-\alpha$.
+
+
+Testing Assumptions
+
+`library(car)`
+
+`qqPlot(differences)`
+
+
+</div>
+
+---- 
+
+#### Explanation
+
+<div style="padding-left:125px;">
+
+The paired samples t test considers the single mean of all the differences from the paired values. Thus, the paired samples t test essentially becomes a one sample t test on the differences between paired observations. Hence the requirement is that the sampling distribution of the sample mean of the differences, $\bar{d}$, can be assumed to be normally distributed. (It is also required that the obtained differences represent a simple random sample of the full population of possible differences.) 
+
+The paired samples t test is similar to the independent samples t test scenario, except that there is extra information that allows values from one sample to be paired with a value from the other sample. This pairing of values allows for a more direct analysis of the change or difference individuals experience between the two samples. 
+
+The points in the plot below demonstrate how points are paired together, and the only thing of interest are the differences between the paired points.
+
+```{r, echo=FALSE}
+x <- seq(9,21, length.out=500)
+sig <- .8
+mu1 <- 13
+mu2 <- 14.25
+y1 <- dnorm(x, mu1, sig)
+#plot(x, y1, type='l', lty=2, lwd=1, col='darkgray', yaxt='n', xaxt='n',
+#     ylab=' ', xlab='', ylim=c(-.05,max(y1)+.03))
+#abline(h=0, col='gray')
+#lines(c(mu1,mu1),c(-0.015,dnorm(mu1,mu1,sig)), lty=2, col='darkgray')
+y2 <- dnorm(x, mu2, sig) 
+#lines(x, y2, lty=2, lwd=1, col='darkgray', yaxt='n', xaxt='n',
+#     ylab=' ', xlab='')
+#lines(c(mu2,mu2),c(-0.015,dnorm(mu2,mu2,sig)), lty=2, col='darkgray')
+
+set.seed(123)
+s1 <- rnorm(5, mu1, sig)
+s2 <- rnorm(5, mu2, sig)
+plot(rep(0,length(s1)), s1, pch=16, col='skyblue3', xlim=c(-1,2), ylim=c(min(s1),max(s2)), xaxt='n', yaxt='n', xlab="", ylab="")
+points(rep(1,length(s2)), s2, pch=16, col='skyblue')
+text(mu1,-0.04, expression(mu[1]), col='darkgray')
+text(mu2,-0.04, expression(mu[2]), col='darkgray')
+for (i in 1:length(s1)){
+  lines(c(0,1), c(s1[i],s2[i]), col='skyblue3')
+  text(1,s2[i], paste("differece = ",round(s2[i]-s1[i],2)), pos=4, col=rgb(.41,.41,.41))
+}
+
+```
+
+</div>
+
+----
+
+
+
+
+
+
+### Independent Samples t Test {.tabset .tabset-fade .tabset-pills}
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QuantYQualXg2.png" width=62px;>
+</div>
+
+The independent samples t test is used when a value is hypothesized for the difference between two (possibly) different population means, $\mu_1 - \mu_2$. 
+
+
+#### Overview 
+
+<div style="padding-left:125px;">
+
+The test is only appropriate when both of the following are satisfied.
+
+(1) Both samples are **representative** of the population. (Simple random samples are the best way to do this.) 
+
+(2) The sampling distribution of the difference of the sample means $(\bar{x}_1 - \bar{x}_2)$ *can be assumed to be normal*. (This is a safe assumption when the sample size of each group is $30$ or greater or when the population data from each group can be assumed to be normal with a Q-Q Plot.)
+
+**Hypotheses**
+
+<div style="padding-left:15px;">
+$H_0: \mu_1 - \mu_2 = \text{some number, but typically 0}$
+$H_a: \mu_1 - \mu_2 \ \left\{\underset{<}{\stackrel{>}{\neq}}\right\} \ \text{some number, but typically 0}$
+</div>
+
+**Examples**: [sleepInd](./Analyses/t Tests/Examples/SleepIndependentt.html) [student1](./Analyses/t Tests/Examples/Student1Independent.html) [student2](./Analyses/t Tests/Examples/Student2Independent.html)
+
+
+</div>
+
+----
+
+#### R Instructions
+
+<div style="padding-left:125px;">
+
+**Console** Help Command: `?t.test()`
+
+There are two ways to perform the test.
+
+Option 1:
+
+`t.test(Y ~ X, data = YourData, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)`
+
+* `Y` must be a "numeric" vector from `YourData` that represents the data for both samples.
+* `X` must be a "factor" or "character" vector from `YourData` that represents the group assignment for each observation. There can only be two groups specified in this column of data.
+* `YourNull` is the numeric value from your null hypothesis for $\mu_1-\mu_2$.
+* `YourAlternative` is one of the three options: `"two.sided"`, `"greater"`, `"less"` and should correspond to your alternative hypothesis.
+* The value for `conf.level = 0.95` can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to $1-\alpha$.
+
+Testing Assumptions
+
+`library(car)`
+
+`qqPlot(Y ~ X, data=YourData)`
+
+<br />
+
+Option 2:
+
+`t.test(y1, y2, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)`
+
+* `y1` must be a "numeric" vector that represents the quantitative data from the first sample.
+* `y2` must be a "numeric" vector that represents the quantitative data from the second sample.
+* `YourNull` is the numeric value from your null hypothesis for the difference of $\mu_1-\mu_2$. This is typically zero.
+* `YourAlternative` is one of the three options: `"two.sided"`, `"greater"`, `"less"` and should correspond to your alternative hypothesis.
+* The value for `conf.level = 0.95` can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to $1-\alpha$.
+
+Testing Assumptions
+
+`library(car)`
+
+`par(mfrow=c(1,2))`
+
+`qqPlot(Y1)`
+
+`qqPlot(Y2)`
+
+</div>
+
+----
+
+#### Explanation
+
+<div style="padding-left:125px;">
+
+The first figure below depicts the scenario where the difference in means of two separate normal distributions is non-zero. In other words, the two distributions have different means, $\mu_1$ and $\mu_2$, respectively. It is worth emphasizing that the values of $\mu_1$ and $\mu_2$ are unknown to the researcher. The only thing observed are two separate samples of data (blue dots) of sizes $n_1$ and $n_2$, respectively. For the scenario depicted, the null hypothesis that $H_0: \mu_1 - \mu_2 = 0$ (i.e., that $\mu_1=\mu_2$) is rejected in favor of the alternative that $H_a: \mu_1 - \mu_2 \neq 0$ based on the sample data observed. This dicision would be correct as the true difference in means, $\mu_1-\mu_2$ is non-zero in this case.
+
+```{r, echo=FALSE}
+x <- seq(9,21, length.out=500)
+sig <- .8
+mu1 <- 13
+mu2 <- 17.25
+y1 <- dnorm(x, mu1, sig)
+plot(x, y1, type='l', lty=2, lwd=1, col='darkgray', yaxt='n', xaxt='n',
+     ylab=' ', xlab='', ylim=c(-.05,max(y1)+.03))
+abline(h=0, col='gray')
+lines(c(mu1,mu1),c(-0.015,dnorm(mu1,mu1,sig)), lty=2, col='darkgray')
+y2 <- dnorm(x, mu2, sig) 
+lines(x, y2, lty=2, lwd=1, col='darkgray', yaxt='n', xaxt='n',
+     ylab=' ', xlab='')
+lines(c(mu2,mu2),c(-0.015,dnorm(mu2,mu2,sig)), lty=2, col='darkgray')
+
+set.seed(123)
+s1 <- rnorm(10, mu1, sig)
+points(s1, rep(0,length(s1)), pch=16, col='skyblue3')
+s2 <- rnorm(10, mu2, sig)
+points(s2, rep(0,length(s2)), pch=16, col='skyblue')
+text(mu1,-0.04, expression(mu[1]), col='darkgray')
+text(mu2,-0.04, expression(mu[2]), col='darkgray')
+sbar1 <- mean(s1)
+sbar2 <- mean(s2)
+lines(c(sbar1,sbar1), c(-0.01,0.02), col='skyblue3', lwd=2)
+lines(c(sbar2,sbar2), c(-0.01,0.02), col='skyblue', lwd=2)
+text(sbar1+.25, 0.04, expression(bar(x)[1]), col='skyblue3')
+text(sbar2+.25, 0.04, expression(bar(x)[2]), col='skyblue')
+```
+
+When the null hypothesis is true, that $H_0: \mu_1 - \mu_2 = 0$, then it follows that the test statistic $t$ that is obtained by measuring the distance between the two sample means, $\bar{x}_1-\bar{x}_2$, and appropriately standardizing the result follows a $t$ distribution with degrees of freedom less than or equal to $n_1+n_2-2$. Thus, the $p$-value of the independent samples $t$ test is obtained by using this $t$ distribution to calculate the probability of a test statistic $t$ being as extreme or more extreme than the one observed assuming the null hypothesis is true. 
+$$
+  t = \frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{\sqrt{s_1/n_1+s_2/n_2 }}
+$$
+
+The plot below demonstrates what data might look like when the null hypothesis is actually true. In other words, when both samples come from the same distribution.
+
+```{r, echo=FALSE}
+x <- seq(9,21, length.out=500)
+sig <- 2.1
+mu1 <- 15
+mu2 <- 15
+y1 <- dnorm(x, mu1, sig)
+plot(x, y1, type='l', lty=2, lwd=1, col='darkgray', yaxt='n', xaxt='n',
+     ylab=' ', xlab='', ylim=c(-.05,max(y1)+.03))
+abline(h=0, col='gray')
+lines(c(mu1,mu1),c(-0.015,dnorm(mu1,mu1,sig)), lty=2, col='darkgray')
+y2 <- dnorm(x, mu2, sig) 
+lines(x, y2, lty=2, lwd=1, col='darkgray', yaxt='n', xaxt='n',
+     ylab=' ', xlab='')
+lines(c(mu2,mu2),c(-0.015,dnorm(mu2,mu2,sig)), lty=2, col='darkgray')
+
+set.seed(23)
+s1 <- rnorm(10, mu1, sig)
+points(s1, rep(0.0025,length(s1)), pch=16, col='skyblue3', cex=0.8)
+s2 <- rnorm(10, mu2, sig)
+points(s2, rep(-0.0025,length(s2)), pch=16, col='skyblue', cex=0.8)
+text(mu1,-0.04, expression(mu[1]==mu[2]), col='darkgray')
+sbar1 <- mean(s1)
+sbar2 <- mean(s2)
+lines(c(sbar1,sbar1), c(-0.005,0.02), col='skyblue3', lwd=2)
+lines(c(sbar2,sbar2), c(-0.01,0.015), col='skyblue', lwd=2)
+text(sbar1+.25, 0.04, expression(bar(x)[1]), col='skyblue3')
+text(sbar2-.25, 0.04, expression(bar(x)[2]), col='skyblue')
+```
+
+</div>
+
+----
+
+
+
+
+<footer></footer>
+
+

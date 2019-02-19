@@ -1,0 +1,86 @@
+---
+title: "Moral Integration of American Cities"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+```{r, include=FALSE}
+library(car)
+library(mosaic)
+library(tidyverse)
+library(pander)
+```
+
+This document uses the `Angell` dataset from `library(car)` to determine if there is greater `mobility` between the `East` and the `West` among the cities in the U.S. (around 1950).
+
+First, because this file is being used to demonstrate the Wilcoxon Rank Sum Test, we need to isolate the data to two groups, `East` and `West`. We will do this by combining `S` and `NE` to be `E` and combining `MW` and `W` to be `W`. We will use the `library(tidyverse)` and the function `recode` to do this. Notice how the dataset is modifed by the recode command in the code below.
+
+```{r}
+Angell2 <- Angell %>%
+  mutate(area = recode(region, S="E", NE="E", MW="W"))
+
+# alternatively we could have used:
+# Angell2 <- Angell %>%
+#    mutate(area = mapvalues(region,
+#                            from = c("S", "MW"), 
+#                            to = c("E", "W")))
+
+rownames(Angell2) <- rownames(Angell)
+```
+
+
+## {.tabset .tabset-fade .tabset-pills}
+
+### Hide Data
+
+### Show Data {.tabset}
+
+#### Original Angell Data
+
+```{r}
+pander(Angell)
+```
+
+#### Modified Angell Data
+
+```{r}
+pander(Angell2)
+```
+
+##
+
+Now we can compare the `East` and `West` with respect to their `mobility` scores.
+
+```{r}
+boxplot(mobility ~ area, data=Angell2, names=c("Eastern Cities","Western Cities"), ylab="Mobility Score", col='gray', boxwex=.25, main = "Geographic Mobility of U.S. Cities, 1950", xlab="Cities in the Western U.S. Show Higher Mobility")
+```
+
+It appears there may be a slight shift in medians with the `West` being higher. Since the distibutions are similarly shaped (slightly right skewed), an official test of the hypotheses
+$$
+  H_0: \text{difference in medians} = 0
+$$
+$$
+  H_a: \text{difference in medians} \neq 0
+$$
+can be performed. Using a Wilcoxon Rank Sum Test (using the normal approximation with continuity correction due to ties in the data), we obtain a test statistic of $W = 181$ and a p-value of $0.2376$. There is insufficient evidence to reject the null. We conclude that any differences in medians demonstrated by the above boxplot is simply due to random sampling. The mobility scores for the entire U.S. appear to be the same on average (median) between the `East` and `West`.
+
+----
+
+
+## Appendix {.tabset .tabset-fade .tabset-pills}
+
+### Hide
+
+### Show
+
+To see the R Code that produced the Wilcoxon Test results reported above, click the code button to the right.
+
+```{r}
+wilcox.test(mobility ~ area, data=Angell2)
+```
+
+
+
+

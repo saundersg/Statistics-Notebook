@@ -1,0 +1,130 @@
+---
+title: "Hair Eye Color / Chi-squared Test"
+output: 
+  html_document: 
+    theme: cerulean
+---
+
+<br />
+
+#### Background
+
+The hair and eye color as well as gender was recorded for 592 statistics students from the University of Deleware. 
+
+#### Questions & Hypotheses
+
+There are a few different questions that could be asked to these data. To show several examples of how a chi-squared test could be implemented, each of the following three questions will be answered with a separate chi-squared test. Any one of these questions would be sufficient for a single analysis.
+
+Is hair color associated with eye color regardless of gender? 
+
+$$
+  H_{01}:\ \text{Hair color and eye color are not associated.}
+$$
+$$
+  H_{a1}:\ \text{Hair color and eye color are associated.}
+$$
+
+Is hair color associated with gender?
+
+$$
+  H_{02}:\ \text{Hair color and gender are not associated.}
+$$
+$$
+  H_{a2}:\ \text{Hair color and gender are associated.}
+$$
+
+
+Is eye color associated with gender? 
+
+$$
+  H_{03}:\ \text{Eye color and gender are not associated.}
+$$
+$$
+  H_{a3}:\ \text{Eye color and gender are associated.}
+$$
+
+
+#### Data Analysis
+
+```{r}
+# Test H_{01}:
+HEC1 <- HairEyeColor[,,"Male"] + HairEyeColor[,,"Female"]
+chi.HEC1 <- chisq.test(HEC1)
+chi.HEC1
+chi.HEC1$expected > 5
+```
+
+All expected counts are greater than 5, so the requirements are met. (If this failed, it will still be appropriate as long as all expected counts are at least 1 and the average expected count is at least 5.)
+
+<br />
+<hr />
+
+```{r}
+# Test H_{02}:
+MH <- apply(HairEyeColor[,,"Male"],1,sum)
+FH <- apply(HairEyeColor[,,"Female"],1,sum)
+HEC2 <- cbind(MH,FH)
+chi.HEC2 <- chisq.test(HEC2)
+chi.HEC2 
+chi.HEC2$expected > 5
+```
+
+All expected counts are greater than 5, so the requirements are met.
+
+<br />
+<hr />
+
+```{r}
+# Test H_{03}:
+ME <- apply(HairEyeColor[,,"Male"],2,sum)
+FE <- apply(HairEyeColor[,,"Female"],2,sum)
+HEC3 <- cbind(ME,FE)
+chi.HEC3 <- chisq.test(HEC3)
+chi.HEC3 
+chi.HEC3$expected > 5
+```
+
+All expected counts are greater than 5, so the requirements are met.
+
+#### Graphics
+
+```{r}
+barplot(HEC1, beside=TRUE, legend.text=TRUE, xlab="Eye Color", main="Eye Color vs. Hair Color")
+```
+
+<div style="padding-left:30px; padding-right:10%;">
+The Chi-squared test above showed a significant relationship exists between Hair Color and Eye Color $(p<0.0001)$. This is seen in the above plot by noting that the pattern of heights on the bars is changed across the different colors of hair. For Brown eyes, the most common hair color is brown, followed by black, then red, then blond. For Blue eyes, the most common hair color is blond, then brown with black and red being much more rare. For Hazel eyes, most people also seem to have brown hair with black, then red, then blond ranking as much less common. People with green eyes also have brown hair as the most common result, with blond, red, and black following behind. If there was no relationship between hair color and eye color, then the pattern of hair color would have remained much the same across the levels of eye color. 
+</div>
+
+<br />
+
+```{r}
+barplot(HEC2, beside=TRUE, legend.text=TRUE, xlab="Gender", main="Gender vs. Hair Color",
+        names.arg=c("Male","Female"))
+```
+
+<div style="padding-left:30px; padding-right:10%;">
+The relationship between Gender and Hair Color is stated to be significant according to the chi-squared test $(p=0.04613)$. As can be seen in the above plot, the pattern of brown hair being the most common and red hair being the least common is consistent across both genders. However, the reversal of the pattern is seen in that for males, black hair is more common than blond while for women, blond hair is more common than black.
+</div>
+
+<br />
+
+
+```{r}
+barplot(HEC3, beside=TRUE, legend.text=TRUE, xlab="Gender", main="Gender vs. Eye Color",
+        names.arg=c("Male","Female"))
+```
+
+<div style="padding-left:30px; padding-right:10%;">
+That there is no relationship between Gender and Eye Color $(p=0.6754)$ is seen by the fact that the general pattern of eye color is relatively consistent across genders. Brown and blue are the most common colors and hazel and green are the least common. While the sample showed some evidence that perhaps brown is more common than blue in women and blue is more common than brown in males, there is insufficient evidence to make such a conclusion about the population. Thus we conclude that eye color is not associated with gender. It is interesting to note that these plots do support the conclusion that brown eyes and blue eyes are much more common that hazel and green in the general population.
+</div>
+
+#### Interpretation
+
+(See captions below each plot.)
+
+###### Note
+
+If all three tests were actually performed simultaneously on the same data, then only the first test would be considered significant because each test would need to be tested at the $\alpha=0.05/3 \approx 0.0167$ level to account for the multiplicity of tests. The three tests performed here were simply to give three different examples in a concise way.
+
+

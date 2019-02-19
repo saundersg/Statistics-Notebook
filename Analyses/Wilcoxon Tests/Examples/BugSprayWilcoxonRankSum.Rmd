@@ -1,0 +1,91 @@
+---
+title: "Bug Spray -- Wilcoxon Rank Sum Test"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+<br />
+
+```{r, message=FALSE, warning=FALSE}
+library(pander)
+```
+
+#### Background
+
+<div style="color:#a8a8a8;">
+
+Note: the data for this example comes from the original 1945 paper [Individual Comparison by Ranking Methods](http://sci2s.ugr.es/keel/pdf/algorithm/articulo/wilcoxon1945.pdf) by Frank Wilcoxon. 
+
+</div>
+
+The percent of flies (bugs) killed from two different concentrations of a certain spray were recorded from 16 different trials, 8 trials per treatment concentration. The experiment hypothesized that the center of the distributions of the percent killed by either concentration were the same. In other words, that both treatments were equally effective. The alternative hypothesis was that the treatments differed in their effectiveness. In short, we wish to know which bug spray is more effective at killing flies (bugs).
+
+<div style="padding-left:15px;">
+
+| Spray Concentration | Percent Killed |
+|---------------------|----------------|
+| A | 68, 68, 59, 72, 64, 67, 70, 74 |
+| B | 60, 67, 61, 62, 67, 63, 56, 58 |
+
+```{r, include=FALSE}
+library(mosaic)
+bugspray <- data.frame(Killed = c(68,68,59,72,64,67,70,74,
+                                  60,67,61,62,67,63,56,58),
+                       Spray = rep(c("A","B"), each=8))
+```
+
+Formally, the null and alternative hypotheses are written as
+$$
+  H_0: \text{difference in medians} = 0
+$$
+$$
+  H_a: \text{difference in medians} \neq 0
+$$
+
+The significance level for this study will be set at
+$$
+  \alpha = 0.05
+$$
+
+<br />
+
+#### Analysis
+
+The side-by-side dotplots below (with boxplots overlaid) suggest that Spray A is more effective than Spray B at killing bugs. 
+
+```{r, echo=FALSE}
+boxplot(Killed ~ Spray, data=bugspray, boxwex=.3,
+        xlim=c(.5,2.5), col="gray", main="Bugspray A More Effective", xlab="Brand of Bug Spray", ylab="Percent of Bug Colony Exterminated")
+stripchart(Killed ~ Spray, data=bugspray, method="stack", 
+           vertical=TRUE, pch=16, col="steelblue4", cex=1.25,
+           add=TRUE)
+```
+
+The actual summary values depicted in the plot above are shown in the following table.
+
+```{r}
+bugspray %>%
+  group_by(Spray) %>%
+  summarise(min = min(Killed), median = median(Killed), mean = mean(Killed), max = max(Killed), sd = sd(Killed), `Number of Trials` = n()) %>%
+pander(caption="Summary of Bug Spray Effectiveness")
+```
+
+To determine if it is reasonable to *infer* that this conclusion is valid in general (for the full population) a Wilcoxon Rank Sum Test will be used. While the two samples are not identically shaped (shown in the boxplots above) they are not different enough to violate the assumption of identical shape and spread that is required by the Rank Sum Test.
+
+Note that since there are ties present in the data, an exact $p$-value cannot be computed. An approximation will be used instead. Because of the small sample size, a continuity correction will also be applied. The results of the test are still valid and show sufficient evidence to reject the null hypothesis $(p=0.01771 < \alpha)$.
+
+```{r, comment=NA, echo=FALSE, warning=FALSE}
+wilcox.test(Killed ~ Spray, data=bugspray, mu = 0, alternative = "two.sided", conf.level = 0.95)
+```
+
+
+<br />
+
+#### Interpretation
+
+Spray A is the more effective spray. Sadly, it still only kills roughly 68% of bugs that make contact with the spray, on average. 
+
+
+

@@ -1,0 +1,78 @@
+---
+title: "Chicken Weight -- ANOVA Block Design"
+output: 
+  html_document:
+    theme: cerulean
+---
+
+<br />
+
+```{r, include=FALSE}
+library(mosaic)
+```
+
+#### Background
+
+An experiment was conducted "on the effect of diet on early growth of chicks." A total of 50 chicks were assigned to one of four possible diets.
+
+| Diet | Number of Chicks Assigned |
+|------|---------------------------|
+| 1    | 20 |
+| 2    | 10 |
+| 3    | 10 |
+| 4    | 10 |
+
+Weight measurements on each chick were taken (in grams) at birth (day 0) as well as on days 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, and 21. Five chicks do not have measurements at all times (chicks 8, 15, 16, 18, and 44). The dataset `ChickWeight` contains the data from this experiment. 
+
+The goal of the study is to identify the diet that produces the greatest increase in chick weights. Even though measurements were made at many time intervals, the growth of the chicks over time is not of direct interest. Thus, we will treat time as a blocking factor. This is justified because there is reason to believe that within each time period measurements will be similar although they should differ across time periods. Since our main interest is in the effect of Diet on growth, using time as a blocking factor will allow us to decide if any Diet affects growth consistently over time.
+
+
+<br />
+
+#### Analysis
+
+The mathematical model for this study is written as 
+$$
+  Y_{li} = \mu + B_l + \alpha_i + \epsilon_{li}
+$$
+where $B_l$ represents the blocking factor of time so that $l=1,\ldots,11$; $\alpha_i$ represents the different Diets with $i=1,\ldots,4$. The null hypothesis is written as
+$$
+  H_0: \alpha_1 = \alpha_2 = \alpha_3 = \alpha_4 = 0
+$$
+$$
+  H_a: \alpha_i \neq 0 \ \text{for at least one}\ i
+$$
+
+```{r, comment=NA}
+cw.aov <- aov(weight ~ as.factor(Time) + Diet, data=ChickWeight)
+summary(cw.aov)
+```
+
+While the blocking factor of Time is significant, that is not really of interest to us. We just included time in the model so that it would account for some of the variation (or a LOT of the variation as witnessed by the size of the "Mean Sq" which is just the variation due to Time). This gives a clearer picture on how Diet affects the weight of the chicks over all time periods. Clearly Diet is a significant factor $(p < 2x10^{-16})$. We conclude that at least one Diet has a different average weight than the others.
+
+However, a further look at the residuals show that the ANOVA design is really not appropriate for these data. Neither the constant variance assumption (left plot) nor the normality assupmtion (right plot) are satisfied.
+
+```{r}
+par(mfrow=c(1,2))
+plot(cw.aov, which=1:2)
+```
+
+It behooves us to try a different approach to analyzing the data. While the ANOVA Block design would have been the best approach, the Kruskal-Wallis test could be used to see if Diet has a different average over all Time periods. 
+
+```{r, comment=NA}
+kruskal.test(weight ~ Diet, data=ChickWeight)
+```
+
+The conclusion of the test is that yes, at least one Diet shows a distribution of weights that is different from the others.
+
+<br />
+
+#### Interpretation
+
+```{r}
+xyplot(weight ~ Diet, data=ChickWeight, type=c("p","a"))
+```
+
+The above plot shows Diets 3 and 4 carry the highest average weights of chicks over all time periods, with a potentially slight advantage to Diet 3.
+
+

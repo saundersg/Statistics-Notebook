@@ -1,0 +1,90 @@
+---
+title: "CO2 -- Three-way ANOVA"
+output: 
+  html_document:
+    theme: cerulean
+---
+
+<br />
+
+#### Background
+
+This example is taken from an experiment listed in the R help files under `?CO2`.
+
+"An experiment on the cold tolerance of the grass species Echinochloa crus-galli was conducted. The CO2 uptake of six plants from Quebec and six plants from Mississippi was measured at several levels of ambient CO2 concentration. Half the plants of each type were chilled overnight before the experiment was conducted." Plants were considered tolerant to the cold if they were still able to acheive high CO2 uptake values after being chilled.
+
+```{r, include=FALSE}
+library(mosaic)
+```
+
+```{r, results='asis'}
+knitr::kable(head(CO2))
+```
+
+Ignoring the Plant ID for a moment, there are three factors that possibly effect the `uptake` of a plant. These include `Type`, `Treatment`, and `conc`. The factor `Type` has two levels, **Quebec** and **Mississippi**. The factor `Treatment` has two levels **chilled** and **nonchilled** and the factor `conc` has seven levels 95, 175, 250, 350, 500, 675, and 1000. An ANOVA could be performed on this data using the model
+
+$$
+  y_{ijkl} = \mu + \alpha_i + \beta_j + \gamma_k + \epsilon_{ijkl} \ \text{where} \ \epsilon_{ijkl}\sim N(0,\sigma)
+$$
+
+This analysis would be performed in R by running the code
+
+```{r}
+CO2.aov <- aov(uptake ~ Type + Treatment + as.factor(conc), data=CO2)
+summary(CO2.aov)
+```
+
+Notice that in the summary output the factors of `Type`, `Treatment`, and `conc` all show significant p-values. This claims that each of these factors significantly affect the uptake level. In other words, if you recall the hypotheses of ANOVA, the conclusion is that at least one level of each significant factor (in this case all factors are significant) has a different average value of `uptake` from the other levels of that factor. We can demonstrate the results of the ANOVA test by showing the plots for each factor.
+
+```{r, include=FALSE}
+library(mosaic)
+```
+
+```{r, fig.height=3.5}
+# Plot demonstrating Type:
+xyplot( uptake ~ Type, data=CO2, main="", jitter.x=TRUE, pch=16)
+
+# Plot demonstrating Treatment:
+xyplot( uptake ~ Treatment, data=CO2, main="", jitter.x=TRUE, pch=16)
+
+# Plot demonstrating conc:
+xyplot( uptake ~ conc, data=CO2, main="", jitter.x=TRUE, pch=16)
+```
+
+Of course, these results are only meaningful if the ANOVA is appropriate. To assess the appropriateness of performing the current ANOVA on these data we need to check the residuals. This is done as shown below. The two assumptions are certainly questionable. The left plot shows that the constant variance may not be satisfied and the right plot shows that normality is uncertain. Official tests of these requirements confirm the difficulty of using ANOVA on these data by showing that at the 0.05 level, normality should not be assumed while the constant variance technically could be.
+
+```{r}
+par(mfrow=c(1,2))
+plot(CO2.aov, which=1:2)
+
+# Test for constant variance:
+library(lmtest)
+bptest(CO2.aov)
+
+# Test for normality
+shapiro.test(CO2.aov$residuals)
+```
+
+This is certainly a frustration and needs to be resolved before conclusions about the data can be reached. A common reason that the assumptions of an ANOVA are not satisfied is that there are important interactions that have not been included in the ANOVA model. Consider how the plot (made previously but repeated here for convenience) of `uptake ~ conc` shows the possibility of an interaction due to the separate groups of data (a low group and a high group). 
+
+```{r, fig.height=3.5}
+# Repeated plot demonstrating conc:
+xyplot( uptake ~ as.factor(conc), data=CO2, main="", jitter.x=TRUE, pch=16)
+```
+
+Thus, we could perform an ANOVA that expands the model to include all possible interactions between `Type`, `Treatment`, and `Uptake`. 
+
+```{r}
+CO2int.aov <- aov(uptake ~ Type * Treatment * as.factor(conc), data=CO2)
+summary(CO2int.aov)
+```
+
+As shown in the output summary above, the interactions of `Type:Treatment` and `Type:conc` are significant. However, the interactions of `Treatment:conc` and `Type:Treatment:conc` are not significant. Notice that the residual plots still show some difficulties. There is still more to this story that will need to be resolved.
+
+```{r}
+plot(CO2int.aov, which=1:2)
+```
+
+
+
+
