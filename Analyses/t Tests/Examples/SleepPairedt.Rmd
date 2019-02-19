@@ -1,0 +1,100 @@
+---
+title: "Sleep -- Paired Samples t Test"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+<br />
+
+
+
+## Background
+
+An experiment was conducted to determine which of two soporific drugs was better at increasing the hours of sleep individuals received, on average. Ten patients took each of the two drugs at different times. The amount of extra sleep that each individual received when using each drug was measured. The data is contained in the `sleep` data set. Note that the variable `group` would be better labeled as `drug` because the 10 individuals in each group are the same individuals as shown in the `ID` column.
+
+```{r, message=FALSE, warning=FALSE}
+library(mosaic)
+library(car)
+library(pander)
+```
+
+The only point of interest in this study is the difference in hours of extra sleep each individual received under the two drugs. Hence, this is a paired study as two measurements were obtained for each individual, one measurement under each condition.
+
+Formally, the null and alternative hypotheses are written as
+$$
+  H_0: \mu_\text{difference in hours of sleep (drug 2 - drug 1)} = 0
+$$
+$$
+  H_a: \mu_\text{difference in hours of sleep (drug 2 - drug 1)} \neq 0
+$$
+
+The significance level for this study will be set at
+$$
+  \alpha = 0.05
+$$
+
+<div style="color:#8a8a8a; font-size:.8em;">
+
+Note that the $\neq$ alternative hypothesis is the best choice for this study because we want to know which of the two drugs gives more sleep over the other.
+
+</div>
+
+# {.tabset .tabset-fade .tabset-pills}
+
+## Hide Data
+
+## Show Data
+
+```{r}
+pander(sleep)
+```
+
+#
+
+<br />
+
+#### Analysis
+
+The dotplot below shows the differences (drug 2 extra sleep $-$ drug 1 extra sleep) in extra sleep for each individual. Since 9 out of 10 differences are positive, it shows that most individuals are getting more extra sleep while using drug 2 than when using drug 1.
+
+```{r, fig.height=2.5}
+differences <- sleep$extra[sleep$group==2] - sleep$extra[sleep$group==1]
+boxplot(differences, main="Drug 2 Increase In Extra Sleep Over Drug 1", horizontal = TRUE, border = "gray", xlab="Hours of Extra Sleep")
+stripchart(differences, pch=16, add=TRUE)
+```
+
+The paired samples t test is only appropriate if the sampling distribution of the sample mean of the differences, $\bar{d}$, is normally distributed. 
+
+
+# {.tabset .tabset-fade .tabset-pills}
+
+## Hide Q-Q Plot
+
+## Show Q-Q Plot
+
+```{r}
+qqPlot(differences, ylab="difference", main="Group 2 - Group 1 extra sleep differences", id=FALSE)     
+```
+
+#
+
+
+
+Based on the Q-Q Plot (click the botton above to show the plot), it appears that the normality assumption of the differences is questionable. This is because three points go out of the "bounds of normality". As seen in the combinded dot plot boxplot graphic above, the distribution seems to be right-skewed, not normal. The paired samples t test will be performed, but the validity of the test is highly questionable because the sample size is small (under 30) and the data appears to not be normal.
+
+```{r}
+pander(t.test(differences, mu = 0, alternative = "two.sided", conf.level = 0.95), caption="Paired t Test: Hours of Extra Sleep (Drug 2 - Drug 1)", split.table=Inf)
+```
+
+There is sufficient evidence to reject the null hypothesis ($p = 0.002833 < \alpha$), but again, the validity of this result is questionable as discussed above.
+
+<br />
+
+#### Interpretation
+
+The assumptions of the t test were not shown to be satisfied, so the results of this test are questionable. The significance of the p-value does suggest that Drug 2 would provide, on average, 1.58 more hours of extra sleep than Drug 2. Also, as all individuals in the study experienced an equal, or greater amount of sleep under Drug 2 than they did with Drug 1, our recommendation would be for Drug 2.
+
+However, for validity purposes we recommend performing a nonparametric paired samples test (Wilcoxon Signed-Rank Test) instead of this t test. Fortunately, when this the nonparametric version of the test is performed, a similar result is obtained. So we are able to safely conclude that drug 2 out performs drug 1 at increasing the extra hours of sleep individuals will obtain when using the drug.
+

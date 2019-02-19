@@ -5,6 +5,8 @@ output:
     theme: cerulean
     highlight: tango
     css: styles.css
+    toc: true
+    toc_float: true
 ---
 
 <script type="text/javascript">
@@ -1191,7 +1193,7 @@ KidsFeet %>%
 ```
 </div>
 
-
+For more uses of `summarise(...)` and `group_by(...)` see the Example codes on the various "R Instructions" of the [Numerical Summaries](NumericalSummaries.html) page.
 
 </div>
 <br />
@@ -1250,6 +1252,9 @@ lengthIN = length / 2.54,
 </span><br/><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gender = recode(sex, B = "Boy", G = "Girl")
   <span class="tooltipRtext">"gender" is a name we came up with that will store the results of the transformation of the "sex" column. The recode(...) function is being used to change the values of "B" to "Boy" and the values of "G" to "Girl".</span>
+</span><br/><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lengthSplit = ifelse(length < median(length), "Under 50th Percentile", "50th Percentile or Greater")
+  <span class="tooltipRtext">"lengthSplit" is a name we came up with that will store the results of the ifelse(...) function. The ifelse(...) function in this case is being used to split the length column by the median of that column. The ifelse(...) function is of the form ifelse( Logical Condition , valueIfConditionTrue, valueIfConditionFalse).</span>
 </span><span class="tooltipr">
 ) 
   <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span>
@@ -1268,7 +1273,8 @@ lengthIN = length / 2.54,
 Kids3 <- KidsFeet %>%
   mutate(lengthIN = length / 2.54,
          widthIN = width / 2.54,
-         gender = recode(sex, B = "Boy", G = "Girl"))
+         gender = recode(sex, B = "Boy", G = "Girl"),
+         lengthSplit = ifelse(length < median(length), "Under 50th Percentile", "50th Percentile or Greater"))
 ```
 ![](./Images/Kids3.png)
 </div>

@@ -1,0 +1,52 @@
+---
+title: "Normal Probability Plot"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+```{r, include=FALSE}
+library(mosaic)
+library(car)
+```
+
+----
+
+There are four main trends that occur in a normal probability plot. Examples of each are plotted below with a histogram of the data next to the normal probability plot.
+
+Often the plot is called a Q-Q Plot, which stands for quantile-quantile plot. The idea is to compare the observed distribution of data to what the distribution should look like in theory if it was normal. Q-Q Plots are more general than normal probability plots because they can be used with any theoretical distribution, not just the normal distribution.  
+
+```{r}
+
+par(mfrow=c(2,2),  mai=c(.5,.5,.25,.25), mgp=c(1,.75,0))
+
+set.seed(123)
+
+  tmp <- rnorm(100)
+  qqnorm(tmp, pch=20, ylab="Observed", xaxt='n', yaxt='n')
+  qqline(tmp)
+  hist(tmp, xlab="", xaxt='n', yaxt='n', main="Normal")
+  
+  tmp <- Davis$weight
+  qqnorm(tmp, pch=20, ylab="Observed", xaxt='n', yaxt='n')
+  qqline(tmp)
+  hist(tmp, xlab="", xaxt='n', yaxt='n', main="Right-skewed",
+       breaks=15)
+  
+par(mfrow=c(2,2),  mai=c(.5,.5,.25,.25), mgp=c(1,.75,0))
+
+  tmp <- rbeta(100, 5,1)
+  qqnorm(tmp, pch=20, ylab="Observed", xaxt='n', yaxt='n')
+  qqline(tmp)
+  hist(tmp, xlab="", xaxt='n', yaxt='n', main="Left-skewed",
+       breaks=seq(min(tmp),max(tmp), length.out=13))
+  
+  tmp <- rbeta(100,2,2)
+  qqnorm(tmp, pch=20, ylab="Observed", xaxt='n', yaxt='n')
+  qqline(tmp)
+  hist(tmp, xlab="", xaxt='n', yaxt='n', main="Heavy-tailed")
+
+  
+  
+```

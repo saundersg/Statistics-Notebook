@@ -1,0 +1,121 @@
+---
+title: "Sleep -- Independent Samples t Test"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+```{r, include=FALSE}
+library(mosaic)
+library(car)
+library(pander)
+library(tidyverse)
+library(DT)
+```
+
+<br />
+
+#### Background
+
+An experiment was conducted to determine which of two soporific drugs was better at increasing the hours of sleep individuals received, on average. There were two groups of 10 patients each. One group received the first drug, and the other group received the second drug. The amount of extra sleep that individuals received when drugged was measured. The data is contained in the `sleep` data set in R.
+
+# {.tabset .tabset-fade .tabset-pills}
+
+## Hide Data
+
+## Show Data
+
+```{r}
+datatable(sleep)
+```
+
+#
+
+
+It is assumed that the amount of extra sleep individuals will receive when using each drug is normally distributed. Thus, the interest is in knowing if the difference in average hours of extra sleep for each drug, symbolically $\mu_\text{Drug 1} \mu_\text{Drug 2}$, is different from zero. In other words, is one drug better than the other at increasing the average hours of extra sleep?
+
+Formally, the null and alternative hypotheses are written as
+$$
+  H_0: \mu_\text{Extra Hours of Sleep with Drug 1} - \mu_\text{Extra Hours of Sleep with Drug 2} = 0
+$$
+$$
+  H_a: \mu_\text{Extra Hours of Sleep with Drug 1} - \mu_\text{Extra Hours of Sleep with Drug 2} \neq 0
+$$
+
+The significance level for this study will be set at
+$$
+  \alpha = 0.05
+$$
+
+<div style="color:#8a8a8a; font-size:.8em;">
+
+Note that the $\neq$ alternative hypothesis allows for either possibility, $\mu_1 > \mu_2$ or $\mu_1 < \mu_2$. If we selected a one-sided hypothesis, then only the stated alternative is considered possible, or of interest. 
+
+</div>
+
+<br />
+
+#### Analysis
+
+The side-by-side dotplots of extra sleep demonstrate that the individuals in the study who took the second drug received more extra sleep on average than those taking the first drug. Also, notice that 9 out of 10 individuals taking the second drug experienced an increase in extra sleep. Of those taking the first drug, 5 out of 10 individuals experienced an increase in extra sleep. While these results are true for the individuals in the study, it is of interest to know if these results can be considered to hold generally in the population.
+
+```{r}
+stripchart(extra ~ group, data=sleep, pch=16, col=c("skyblue","firebrick"), 
+           vertical = TRUE, xlim=c(0.5,2.5), xlab="Soporific Drug No.", 
+           ylab="Hours of Extra Sleep", main="Effectiveness of two Different Soporific Drugs \n at Increasing Sleep Times")
+abline(h=0, lty=2, col="gray")
+sleepmeans <- mean(extra ~ group, data=sleep)
+lines(sleepmeans ~ c(1,2), lty=2, lwd=2, col="darkgray")
+points(sleepmeans ~ c(1,2), pch=3, cex=2, col=c("skyblue","firebrick"))
+legend("topleft", bty="n", pch=3, col=c("skyblue","firebrick"), title="Mean", legend=c("Drug 1", "Drug 2"))
+```
+
+An independent samples t test could be used to test the previously stated null hypothesis. This will allow us to decide if the pattern in the sample data can be assumed to hold for the full population. 
+
+Before we can use an independent samples t test, the assumptions of the test must be shown to be satisfied. It is difficult to verify if the sampling distribution of $\bar{x}_1 - \bar{x}_2$ is normal. However, it is true that if the separate sampling distributions of $\bar{x}_1$ and $\bar{x}_2$ are normally distributed, then it follows that the sampling distribution of $\bar{x}_1 - \bar{x}_2$ will be normally distributed. As long as the population data is normal, it follows that the sampling distribution of the sample mean is normal.
+
+# {.tabset .tabset-fade .tabset-pills}
+
+## Hide Q-Q Plots
+
+## Show Q-Q Plots
+
+```{r}
+qqPlot(extra ~ group, data=sleep, ylab="extra sleep")
+```
+
+#
+
+Based on the Q-Q Plots above, it appears that the extra sleep data can be considered normal for each drug group, which implies it is okay to assume that $\bar{x}_1 - \bar{x}_2$ is normally distributed, even though the sample size for each group is small (less than 30). The independent samples t test is appropriate for these data.
+
+```{r, warning=FALSE}
+pander(t.test(extra ~ group, data = sleep, mu = 0, alternative = "two.sided",
+       conf.level = 0.95), caption="Independent Samples t Test of Extra Sleep for Drug 1 and 2", split.table=Inf)
+
+MyResults <- sleep %>%
+  group_by(group) %>%
+  summarise(min=min(extra), median=median(extra), mean=mean(extra), max=max(extra), sd=sd(extra), n=n()) %>%
+  rename(Drug = group)
+```
+
+
+There is insufficient evidence to reject the null hypothesis ($p = 0.07939 > \alpha$).
+
+```{r}
+pander(MyResults, caption="Summary Statistics of Extra Hours of Sleep by Drug")
+```
+
+
+<br />
+
+#### Interpretation
+
+The data from the experiment showed a higher average number of hours of extra sleep for drug 2 (2.33 hours) than drug 1 (0.75 hours). However, as demonstrated by the p-value from the Independent Samples t Test, there is insufficient evidence to claim that this pattern will remain true for the general population, or even for repeated versions of this study (p = 0.07939). It appears that drugs 1 and 2 generally do the same thing at increasing sleep. Thus, while this particular study happened to show more favorable results for Drug 2, the lack of significance leads us to believe that these results are simply due to random chance. We recommend further studies be performed before making any definitive conclusions about the advantage of drug 2 over drug 1. Potentially a paired analysis study could look more carefully at how the drugs effect individuals differently. This may reveal further insights.
+
+
+
+
+
+
+

@@ -1,0 +1,109 @@
+---
+title: "Sleep -- Wilcoxon Signed-Rank Test"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+<br />
+
+#### Background
+
+An experiment was conducted to determine which of two soporific drugs was better at increasing the hours of sleep individuals received, on average. Ten patients took each of the two drugs at different times. The amount of extra sleep that each individual received when using each drug was measured. The data is contained in the `sleep` data set. Note that the variable `group` would be better labeled as `drug` because the 10 individuals in each group are the same individuals as shown in the `ID` column.
+
+
+```{r, include=FALSE}
+library(car)
+library(pander)
+library(tidyverse)
+```
+
+## {.tabset .tabset-fade .tabset-pills}
+
+### Hide Data
+
+### Show Data {.tabset}
+
+#### Long Version
+
+```{r}
+pander(sleep)
+```
+
+----
+
+#### Wide Version
+
+```{r}
+sleepWide <- sleep %>%
+  spread(key=group, value=extra, sep="") %>%
+  mutate(g1_minus_g2 = group1 - group2)
+pander(sleepWide)
+```
+
+----
+
+##
+
+</div>
+
+The only point of interest in this study is the difference in hours of extra sleep each individual received under the two drugs. Hence, this is a paired study as two measurements were obtained for each individual, one measurement under each condition.
+
+Formally, the null and alternative hypotheses are written as
+$$
+  H_0: \text{median of the differences} = 0
+$$
+$$
+  H_a: \text{median of the differences} \neq 0
+$$
+
+The significance level for this study will be set at
+$$
+  \alpha = 0.05
+$$
+
+<br />
+
+#### Analysis
+
+The dotplot below shows the differences (drug 2 extra sleep $-$ drug 1 extra sleep) in extra sleep for each individual. Since 9 out of 10 differences are positive, it shows that most individuals are getting more extra sleep while using drug 2 than when using drug 1.
+
+```{r, fig.height=2}
+ggplot(sleepWide, aes(x=g1_minus_g2)) +
+  geom_dotplot(binwidth = 0.1) +
+  theme_bw() 
+  
+  
+```
+
+The Wilcoxon Signed-Rank test is appropriate for any distribution of data, and especially for small sample sizes. 
+
+```{r}
+with(sleep,
+     wilcox.test(extra[group==1], extra[group==2], mu = 0, alternative = "two.sided", paired = TRUE, conf.level = 0.95)
+)
+```
+
+<div style="padding-left:30px; padding-right:30px; color:#a8a8a8;">
+
+Note: the Warnings above remind us of some problems that sometimes arise when using the Wilcoxon Signed-Rank Test. These problems do not occur in the Rank Sum Test. The problems are that the normal approximation to the $p$-value has to be used when there are ties present in the data and when a value of 0 is present in the data. Since two differences (see dotplot above) have the same value, there is a tie present in the data. Also, since one individual experienced the same amount of extra sleep under both scenarios, there is a zero present in the data. 
+
+When the sample size gets larger, the normal approximation is pretty good. However, when the sample size is small the normal approximation is not the best. Thus, when using a normal approximation with small sample sizes, it is important to also use the "continuity correction." Note that the output states that it is using the continuity correction, which accounts for the difficulties encountered by using the normal approximation with a small sample size. 
+
+The results are still valid when this happens. It just needs to be stated in the report somewhere that the normal approximation was used, along with the continuity correction because ties (or zeros) were present in the data.
+
+</div>
+
+There is sufficient evidence to reject the null hypothesis ($p = 0.009091 < \alpha$).
+
+<br />
+
+#### Interpretation
+
+The results of the statistical test claim that the patterns in the data stated above can be considered to apply to the general population. Drug 2 will provide more extra sleep for most individuals in the full population than will Drug 1. 
+
+Most people should expect about one hour more of extra sleep while using Drug 2 than they would get while using Drug 1. Further descriptive statistics could now be performed describing how many extra hours of sleep Drug 2 should give individuals so that a marketing campaign could be put together. But that is for a different analysis. The goals of this analysis have been accomplished.
+
+
+

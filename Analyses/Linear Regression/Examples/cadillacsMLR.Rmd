@@ -1,0 +1,142 @@
+---
+title: "Price of Cadillacs -- Multiple Linear Regression"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+
+```{r, include=FALSE}
+library(mosaic)
+library(car)
+```
+
+Note: This "analysis" is meant more as an instructional document than a full example of an analysis.
+
+#### Background
+
+The `Cad` data set consists of 80 observations on Cadillacs. For each vehicle the selling price, mileage, and model was recorded. The first six observations are shown below.
+
+<div style="padding-left:30px;padding-right:15px;">
+
+```{r, results='asis'}
+Cad <- read.table("../../../Data/Cadillac.txt", header=TRUE, quote="\"")
+knitr::kable(head(Cad))
+```
+
+</div>
+
+We would like to come up with a model that is useful for accurately predicting the price of a given Cadillac.
+
+#### Analysis
+
+
+Notice a few things about the `Cad` dataset. First,  the response variable `Price` is a quantitative variable. This is required for both simple and multiple linear regression. Second, notice that the explanatory variables can be either quantitative, like `Mileage`, or qualitative, like `Model`. Third, even though there is only one qualitative variable, `Model`, there are several "levels" to this variable. As shown in the following bar chart, there are 10 of every type of `Model` other than the "Deville" for which there are 30 observations. This final comment is important when building the mathematical model for the multiple regression. The "levels" of a qualitative variable are not numbers, so how do we include them in a mathematical model? 
+
+```{r}
+plot(Cad$Model, col='skyblue')
+```
+
+For the `Cad` dataset, the mathematical model for the `Price` of a vehicle, $Y_i$, is written (rather complicatedly) as
+$$
+  Y_i = \beta_0 + \beta_1 X_{i1} + \beta_2 X_{i2} + \beta_3 X_{i3} + \beta_4 X_{i4} + \beta_5 X_{i5} + \beta_6 X_{i6} + \epsilon_i
+$$
+where we still assume $\epsilon_i \sim N(0,\sigma^2)$, but the coefficients and $X_i$ are as follows:
+
+| Coefficient | X-Variable   |  Meaning  |
+|-------------|-----|-----------|
+$\beta_0$  |  | The average cost of a Cadillac CST with zero miles |
+ $\beta_1$\rule{0pt}{16pt}  | $X_{i1} =$ vehicle Mileage | Effect of each mile on average price |[4pt]
+ $\beta_2$   |  $X_{i2} = \left\{\begin{array}{ll} 1, & \text{if Model} = \text{CTS} \\ 0, & \text{if Model}\neq \text{CTS} \end{array}\right.$ | How much more or less a Cadillac CTS costs on average over a Cadillac CST |
+ $\beta_3$   |  $X_{i3} = \left\{\begin{array}{ll} 1, & \text{if Model} = \text{Deville} \\ 0, & \text{if Model}\neq \text{Deville} \end{array}\right.$ | How much more or less a Cadillac Deville costs on average over a Cadillac CST |
+ $\beta_4$   |  $X_{i4} = \left\{\begin{array}{ll} 1, & \text{if Model} = \text{STS-V6} \\ 0, & \text{if Model}\neq \text{STS-V6} \end{array}\right.$ | How much more or less a Cadillac STS-V6 costs on average over a Cadillac CST |
+ $\beta_5$   |  $X_{i5} = \left\{\begin{array}{ll} 1, & \text{if Model} = \text{STS-V8} \\ 0, & \text{if Model}\neq \text{STS-V8} \end{array}\right.$ | How much more or less a Cadillac STS-V8 costs on average over a Cadillac CST |
+ $\beta_6$   |  $X_{i6} = \left\{\begin{array}{ll} 1, & \text{if Model} = \text{XLR-V8} \\ 0, & \text{if Model}\neq \text{XLR-V8} \end{array}\right.$ | How much more or less a Cadillac XLR-V8 costs on average over a Cadillac CST |
+
+
+We won't concern ourselves with the details of how to compute the estimates for each parameter, $\beta_j$. We will let software take care of the maximum likelihood estimation for us. This is done for the current dataset by
+
+```{r}
+Cad.lm <- lm(Price ~ Mileage + Model, data=Cad)
+summary(Cad.lm)
+```
+
+Notice how simple it was to put the model into R, but how complicated the output is. This is because R recognizes that the variable `Model` is qualitative and creates several "dummy" variables automatically. These dummy variables are 1 if Model = the given model and 0 if the Model is not the given model. Notice how similar the R `summary()` output looks to the table of Coefficients, $X$, and Meaning given previously.
+
+Knowing how to interpret the coefficents in a multiple regression is important. While the interpretation is similiar to that of simple linear regression, an extra statement is necessary. For example, $\beta_1$ denotes the change in the expected value of `Price` $(E\{Y\})$ for a unit change in `Mileage`, $X_{i1}$, *holding all other variables constant*. This last statement is the only difference in interpretation of the coefficients between simple linear regression and multiple linear regression, but it is very important. It states that to consider the effect of one variable on `Price` we have to consider all the other variables to be held constant. For example, the effect of Mileage is to decrease the average `Price` of a Cadillac by \$0.34 $(b_1 = -3.379e-01)$ for any fixed value of `Model`. Said differently, choose any value of `Model` you want, within that `Model` of Cadillac, the effect of `Mileage` is to decrease the average price of that `Model` by 34 cents. 
+
+While there is usually no way to graphically show a multiple regression model like you can in simple regression using a scatterplot, we can depict the current multiple regression as follows. This is because one variable is quantitative and one variable is qualitative. This allows us to place the quantitative variable on the x-axis and make the different colored lines represent the different levels of the qualitative variable.
+
+```{r}
+palette(c("skyblue4","firebrick","skyblue","sienna1","gray","sienna4"))
+plot(Price ~ Mileage, data=Cad, pch=16, col=Cad$Model, xlim=c(0,50000))
+abline(Cad.lm$coef[1]               , Cad.lm$coef[2], col=palette()[1])
+abline(Cad.lm$coef[1]+Cad.lm$coef[3], Cad.lm$coef[2], col=palette()[2])
+abline(Cad.lm$coef[1]+Cad.lm$coef[4], Cad.lm$coef[2], col=palette()[3])
+abline(Cad.lm$coef[1]+Cad.lm$coef[5], Cad.lm$coef[2], col=palette()[4])
+abline(Cad.lm$coef[1]+Cad.lm$coef[6], Cad.lm$coef[2], col=palette()[5])
+abline(Cad.lm$coef[1]+Cad.lm$coef[7], Cad.lm$coef[2], col=palette()[6])
+legend("topright",Cad.lm$xlevels$Model, lty=1, lwd=5, col=palette(), cex=0.7)
+```
+
+Finally, in multiple linear regression it is important to note that the expected value, $E\{Y_i\}$, is now given by 
+$$
+ E\{Y_i\} = \beta_0 + \beta_1 X_{i1} + \beta_2 X_{i2} + \beta_3 X_{i3} + \beta_4 X_{i4} + \beta_5 X_{i5} + \beta_6 X_{i6}
+$$
+and that the estimated regression line (technically a hyperplane now) $\hat{Y}_i$ is given by
+$$
+ \hat{Y}_i = b_0 + b_1 X_{i1} + b_2 X_{i2} + b_3 X_{i3} + b_4 X_{i4} + b_5 X_{i5} + b_6 X_{i6}
+$$
+
+
+\subsection{Requirements of the Multiple Regression Model}
+
+Checking for departures from the model assumptions in multiple linear regression is carried out using the residuals in precisely the same way as was done for simple linear regression. Refer to the Simple Linear Regression document for the details. The only difference is that it is more typical to have extra explanatory variables in multiple regression that may or may not be of benefit to include in the model. Thus, it is possible in multiple regression to check for departures from Assumption 6, that one or several important predictor variables have been omitted from the model, by trying to add additional variables into the model. This could be done by going back and finding out other information about each vehicle. The current data uses all known information in the model.
+
+To check the appropriateness of the multiple linear regression model we run the following commands.
+
+```{r}
+# Check for departures 1, 2, 3 and 4:
+par(mfrow=c(1,2), mai=c(1,1,1,.2))
+ plot(Cad.lm, which=1:2)
+```
+```{r, fig.height=2}
+# Check for departure 5:
+par(mai=c(.8,1,0.1,.2))
+plot(Cad.lm$residuals, ylab="Residuals", las=1, cex.axis=.8)
+```
+
+The normality of the residuals is questionable. There is also some evidence of a potentially non-linear trend in the residuals versus fitted values plot. However, the violations are not overly dramatic, thus this regression could well be presented as valid and useful for predicting the price of a Cadillac.
+
+##### Interactions
+
+Notice that if interactions between each dummy variable for model and the mileage are included in the model, then each set of points gets its own slope. In other words, the slope of the lines are not all forced to be the same anymore. However, the phrase "holding all other variables constant" is no longer applicable. Thus, interpretation of the model is severely decreased.
+
+```{r, echo=FALSE}
+Cad.lm <- lm(Price ~ Mileage*Model, data=Cad)
+palette(c("skyblue4","firebrick","skyblue","sienna1","gray","sienna4"))
+plot(Price ~ Mileage, data=Cad, pch=16, col=Cad$Model, xlim=c(0,50000), main="Price of Cadillacs")
+abline(Cad.lm$coef[1]               , Cad.lm$coef[2], col=palette()[1])
+abline(Cad.lm$coef[1]+Cad.lm$coef[3], Cad.lm$coef[2]+Cad.lm$coef[8], col=palette()[2])
+abline(Cad.lm$coef[1]+Cad.lm$coef[4], Cad.lm$coef[2]+Cad.lm$coef[9], col=palette()[3])
+abline(Cad.lm$coef[1]+Cad.lm$coef[5], Cad.lm$coef[2]+Cad.lm$coef[10], col=palette()[4])
+abline(Cad.lm$coef[1]+Cad.lm$coef[6], Cad.lm$coef[2]+Cad.lm$coef[11], col=palette()[5])
+abline(Cad.lm$coef[1]+Cad.lm$coef[7], Cad.lm$coef[2]+Cad.lm$coef[12], col=palette()[6])
+legend("topright",Cad.lm$xlevels$Model, lty=1, lwd=5, col=palette(), cex=0.7)
+```
+
+Notice, that with this expanded model the residuals seem to be doing much better. The single difficulty now is that the Deville Model seems to have two distinctly different types of vehicles that our model does poorly at capturing.
+
+```{r}
+# Check for departures 1, 2, 3 and 4:
+par(mfrow=c(1,2), mai=c(1,1,1,.2))
+ plot(Cad.lm, which=1:2)
+```
+```{r, fig.height=2}
+# Check for departure 5:
+par(mai=c(.8,1,0.1,.2))
+plot(Cad.lm$residuals, ylab="Residuals", las=1, cex.axis=.8)
+```
+
+A final important note to consider is that while the model appears to be visibly improved by allowing the different slopes, no interaction term is actually significant. Thus, even though there appears to be some advantage to the more coplex model, the statistics show we are likely overfitting the data, trying to say too much with the data we have. Thus, for these data it is recommended to stay with the simpler and more interpretable model presented previously. It would also be recommended to go and figure out what makes for two different classes of the Deville model. 

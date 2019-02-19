@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Permutation Tests</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Math 325 Notebook</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Table of Contents</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Describing Data
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="GraphicalSummaries.html">Graphical Summaries</a>
+    </li>
+    <li>
+      <a href="NumericalSummaries.html">Numerical Summaries</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    R Help
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="RCommands.html">R Commands</a>
+    </li>
+    <li>
+      <a href="RMarkdownHints.html">R Markdown Hints</a>
+    </li>
+    <li>
+      <a href="RCheatSheetsAndNotes.html">R Cheatsheets &amp; Notes</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Making Inference
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="MakingInference.html">Making Inference</a>
+    </li>
+    <li>
+      <a href="tTests.html">t Tests</a>
+    </li>
+    <li>
+      <a href="WilcoxonTests.html">Wilcoxon Tests</a>
+    </li>
+    <li>
+      <a href="ANOVA.html">ANOVA</a>
+    </li>
+    <li>
+      <a href="Kruskal.html">Kruskal-Wallis</a>
+    </li>
+    <li>
+      <a href="LinearRegression.html">Linear Regression</a>
+    </li>
+    <li>
+      <a href="LogisticRegression.html">Logistic Regression</a>
+    </li>
+    <li>
+      <a href="ChiSquaredTests.html">Chi Squared Tests</a>
+    </li>
+    <li>
+      <a href="PermutationTests.html">Randomization Testing</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Analyses
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="./Analyses/AnalysisRubric.html">Analysis Rubric</a>
+    </li>
+    <li>
+      <a href="./Analyses/StudentHousing.html">Good Example Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/StudentHousingPOOR.html">Poor Example Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/Stephanie.html">Stephanie Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/Olympics.html">Olympics Analysis</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Permutation Tests</h1>
+
+</div>
+
+
+<script type="text/javascript">
+ function showhide(id) {
+    var e = document.getElementById(id);
+    e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+ }
+</script>
+<hr />
+<p>A nonparametric approach to computing the p-value for any test statistic in just about any scenario.</p>
+<hr />
+<div id="section" class="section level3 tabset tabset-pills tabset-fade">
+<h3></h3>
+<div id="overview" class="section level4">
+<h4>Overview</h4>
+<div style="padding-left:30px;">
+<p>In almost all hypothesis testing scenarios, the null hypothesis can be interpreted as follows.</p>
+<div style="padding-left:15px;padding-right:15px;">
+<p><span class="math inline">\(H_0\)</span>: Any pattern that has been witnessed in the sampled data is simply due to random chance.</p>
+</div>
+<p>Permutation Tests depend completely on this single idea. If all patterns in the data really are simply due to random chance, then the null hypothesis is true. Further, random <strong>re</strong>-samples of the data should show similar lack of patterns. However, if the pattern in the data is <em>real</em>, then random <strong>re</strong>-samples of the data will show very different patterns from the original.</p>
+<p>Consider the following image. In that image, the toy blocks on the left show a clear pattern or structure. They are nicely organized into colored piles. This suggests a <em>real</em> pattern that is not random. Someone certainly organized those blocks into that pattern. The blocks didn’t land that way by random chance. On the other hand, the pile of toy blocks shown on the right is certainly a random pattern. This is a pattern that would result if the toy blocks were put into a bag, shaken up, and dumped out. This is the idea of the permutation test. If there is structure in the data, then “mixing up the data and dumping it out again” will show very different patterns from the original. However, if the data was just random to begin with, then we would see a similar pattern by “mixing up the data and dumping it out again.”</p>
+<center>
+<img src="Images/legoPermutationExample.png" width=600px;>
+</center>
+<p>The process of a permutation test is:</p>
+<ol style="list-style-type: decimal">
+<li>Compute a test statistic for the original data.</li>
+<li>Re-sample the data (“shake it up and dump it out”) thousands of times, computing a new test statistic each time, to create a sampling distribution of the test statistic.</li>
+<li>Compute the p-value of the permutation test as the percentage of test statistics that are as extreme or more extreme than the one originally observed.</li>
+</ol>
+<p>In review, the sampling distribution is created by permuting (randomly rearranging) the data thousands of times and calculating a test statistic on each permuted version of the data. A histogram of the test statistics then provides the sampling distribution of the test statistic needed to compute the p-value of the original test statistic.</p>
+</div>
+<hr />
+</div>
+<div id="r-instructions" class="section level4">
+<h4>R Instructions</h4>
+<div style="padding-left:50px;">
+<p>Any permutation test can be performed in R with a <code>for</code> loop.</p>
+<div style="padding-left:80px;">
+<a href="javascript:showhide('perm1')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> #Step 1 <span class="tooltiprtext">Compute a test statistic for the original data.</span> </span><br/><span class="tooltipr"> myTest &lt;- …perform the initial test… <span class="tooltiprtext">This could be a <code>t.test</code>, <code>wilcox.test</code>, <code>aov</code>, <code>kruskal.test</code>, <code>lm</code>, <code>glm</code>, <code>chisq.test</code>, or any other R code that results in a test statistic. It could even simply be the mean or standard deviation of the data.</span> </span><br/><span class="tooltipr"> observedTestStat &lt;- …get the test statistic… <span class="tooltiprtext">Save the test statistic of your test into the object called <code>observedTestStat</code>. For tests that always result in a single test statistic like a <code>t.test</code>, <code>wilcox.test</code>, <code>kruskal.test</code>, and <code>chisq.test</code> it is <code>myTest$statistic</code>. For an <code>aov</code>, <code>lm</code>, or <code>glm</code> try printing <code>summary(myTest)[]</code> to see what values you are interested in using.</span> </span><br/><br/><span class="tooltipr"> #Step 2 <span class="tooltiprtext">Re-sample the data (“shake it up and dump it out”) thousands of times, computing a new test statistic each time, to create a sampling distribution of the test statistic.</span> </span><br/><span class="tooltipr"> N &lt;- 2000       <span class="tooltiprtext">N is the number of times you will reuse the data to create the sampling distribution of the test statistic. A typical choice is 2000, but sometimes 10000, or 100000 reuses are needed before useful answers can be obtained.</span> </span><br/><span class="tooltipr"> permutedTestStats &lt;-  <span class="tooltiprtext">This is a storage container that will be used to store the test statistics from each of the thousands of reuses of the data.</span> </span><span class="tooltipr"> rep(NA, N) <span class="tooltiprtext">The rep() function repeats a given value N times. This particular statement repeats NA’s or “missing values” N times. This gives us N “empty” storage spots inside of <code>permutedTestStats</code> that we can use to store the N test statistics from the N reuses of the data we will make in our <code>for</code> loop.</span> </span><br/><span class="tooltipr"> for <span class="tooltiprtext">The <code>for</code> loop is a programming tool that lets us tell R to run a certain code over and over again for a certain number of times.</span> </span><span class="tooltipr">  (i in   <span class="tooltiprtext">In R, the <code>for</code> loop must be followed by a space, then an opening parenthesis, then a variable name (in this case the variable is called “i”), then the word “in” then a list of values.</span> </span><span class="tooltipr"> 1:N <span class="tooltiprtext">The 1:N gives R the list of values 1, 2, 3, … and so on all the way up to N. These values are passed into <code>i</code> one at a time and the code inside the <code>for</code> loop is performed first for <code>i=1</code>, then again for <code>i=2</code>, then again for <code>i=3</code> and so on until finally <code>i=N</code>. At that point, the <code>for</code> loop ends.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Required closing parenthesis on the <code>for (i in 1:N)</code> statement.</span> </span><span class="tooltipr"> { <span class="tooltiprtext">This bracket opens the code section of the <code>for</code> loop. Any code placed between the opening { and closing } brackets will be performed over and over again for each value of <code>i=1</code>, <code>i=2</code>, … up through <code>i=N</code>.</span> </span><br/><span class="tooltipr">    <span class="tooltiprtext">Two spaces in front of every line inside of the opening { and closing } brackets helps keep your code organized.</span> </span><span class="tooltipr"> permutedData &lt;- …randomly permute the data… <span class="tooltiprtext">This is the most important part of the permutation test and takes some thinking. The data must be randomly reorganized in a way consistent with the null hypothesis. What that means exactly is specific to each scenario. Read the Explanation tab for further details on the logic you should use here.</span> </span><br/><span class="tooltipr">    <span class="tooltiprtext">Two spaces in front of every line inside of the opening { and closing } brackets helps keep your code organized.</span> </span><span class="tooltipr"> permutedTest &lt;- …perform test with permutedData… <span class="tooltiprtext">The same test that was performed on the original data, should be performed again on the randomly permuted data.</span> </span><br/><span class="tooltipr">    <span class="tooltiprtext">Two spaces in front of every line inside of the opening { and closing } brackets helps keep your code organized.</span> </span><span class="tooltipr"> permutedTestStats <span class="tooltiprtext">This is the storage container that was built prior to the <code>for (i in 1:N)</code> code. Inside the <code>for</code> loop, this container is filled value by value using the square brackets <code>[i]</code>.</span> </span><span class="tooltipr"> [i] <span class="tooltiprtext">The square brackets <code>[i]</code> allows us to access the “i”th position of <code>permutedTestStats</code>. Remember, since this code is inside of the <code>for</code> loop, <code>i=1</code> the first time through the code, then <code>i=2</code> the second time through the code, <code>i=3</code> the third time through, and so on up until <code>i=N</code> the <code>N</code>th time through the code.</span> </span><span class="tooltipr">  &lt;- …get test statistic… <span class="tooltiprtext">The test statistic from <code>permutedTest</code> is accessed here and stored into <code>permutedTestStats[i]</code>.</span> </span><br/><span class="tooltipr"> } <span class="tooltiprtext">The closing } bracket ends the code that is repeated over and over again inside the <code>for</code> loop.</span> </span><br/><span class="tooltipr"> hist(permutedTestStats) <span class="tooltiprtext">Creating a histogram of the sampling distribution of the test statistics obtained from the reused and permuted data allows us to visually compare the <code>observedTestStat</code> to the distribution of test statistics to visually see the percentage of test statistics that are as extreme or more extreme than the observed test statistic value. This is the p-value.</span> </span><br/><span class="tooltipr"> abline(v=observedTestStat) <span class="tooltiprtext">This adds the <code>observedTestStat</code> to the distribution of test statistics to visually see the percentage of test statistics that are as extreme or more extreme than the observed test statistic value. This is the p-value.</span> </span><br/><br/><span class="tooltipr"> #Step 3 <span class="tooltiprtext">Compute the p-value of the permutation test as the percentage of test statistics that are as extreme or more extreme than the one originally observed.</span> </span><br/><span class="tooltipr"> sum(permutedTestStats &gt;= observedTestStat)/N <span class="tooltiprtext">This computes a “greater than” p-value. A two-sided p-value could be obtained by multiplying this value by 2 if the observed test statistic was on the right hand side of the histogram.</span> </span><br/><span class="tooltipr"> sum(permutedTestStats &lt;= observedTestStat)/N <span class="tooltiprtext">This computes a “less than” p-value. A two-sided p-value could be obtained by multiplying this value by 2 if the observed test statistic was on the left hand side of the histogram.</span> </span></p>
+</div>
+<p></a></p>
+<div id="perm1" style="display:none;">
+<ul>
+<li><p><code>myTest &lt;- ...perform the initial test...</code></p>
+<p>This could be a <code>t.test</code>, <code>wilcox.test</code>, <code>aov</code>, <code>kruskal.test</code>, <code>lm</code>, <code>glm</code>, <code>chisq.test</code>, or any other R code that results in a test statistic. It could even simply be the mean or standard deviation of the data.</p></li>
+<li><p><code>observedTestStat &lt;- ...get the test statistic...</code></p>
+<p>Save the test statistic of your test into the object called <code>observedTestStat</code>. For tests that always result in a single test statistic like a <code>t.test</code>, <code>wilcox.test</code>, <code>kruskal.test</code>, and <code>chisq.test</code> it is <code>myTest$statistic</code>. For an <code>aov</code>, <code>lm</code>, or <code>glm</code> try printing <code>summary(myTest)[]</code> to see what values you are interested in using.</p></li>
+<li><p><code>N &lt;- 2000</code> N is the number of times you will reuse the data to create the sampling distribution of the test statistic. A typical choice is 2000, but sometimes 10000, or 100000 reuses are needed before useful answers can be obtained.</p></li>
+<li><p><code>permutedTestStats &lt;- rep(NA, N)</code> This is a storage container that will be used to store the test statistics from each of the thousands of reuses of the data. The <code>rep()</code> function repeats a given value N times. This particular statement repeats NA’s or “missing values” N times. This gives us N “empty” storage spots inside of <code>permutedTestStats</code> that we can use to store the N test statistics from the N reuses of the data we will make in our <code>for</code> loop.</p></li>
+<li><p><code>for (i in 1:N)\{</code> The <code>for</code> loop is a programming tool that lets us tell R to run a certain code over and over again for a certain number of times. In R, the <code>for</code> loop must be followed by a space, then an opening parenthesis, then a variable name (in this case the variable is called “i”), then the word “in” then a list of values. The <code>1:N</code> gives R the list of values 1, 2, 3, … and so on all the way up to N. These values are passed into <code>i</code> one at a time and the code inside the <code>for</code> loop is performed first for <code>i=1</code>, then again for <code>i=2</code>, then again for <code>i=3</code> and so on until finally <code>i=N</code>. At that point, the <code>for</code> loop ends. There is a required closing parenthesis on the <code>for (i in 1:N)</code> statement. Any code placed between the opening { and closing } brackets will be performed over and over again for each value of <code>i=1</code>, <code>i=2</code>, … up through <code>i=N</code>.</p></li>
+<li><p>Two spaces in front of every line inside of the opening { and closing } brackets helps keep your code organized.</p></li>
+<li><p><code>permutedData &lt;- ...randomly permute the data...</code> This is the most important part of the permutation test and takes some thinking. The data must be randomly reorganized in a way consistent with the null hypothesis. What that means exactly is specific to each scenario. Read the Explanation tab for further details on the logic you should use here.</p></li>
+<li><p><code>permutedTest &lt;- ...perform test with permutedData...</code> The same test that was performed on the original data, should be performed again on the randomly permuted data.</p></li>
+<li><p><code>permutedTestStats[i] &lt;- ...get test statistic...</code> This is the storage container that was built prior to the <code>for (i in 1:N)</code> code. Inside the <code>for</code> loop, this container is filled value by value using the square brackets <code>[i]</code>. The square brackets <code>[i]</code> allows us to access the “i”th position of <code>permutedTestStats</code>. Remember, since this code is inside of the <code>for</code> loop, <code>i=1</code> the first time through the code, then <code>i=2</code> the second time through the code, <code>i=3</code> the third time through, and so on up until <code>i=N</code> the <code>N</code>th time through the code. The test statistic from <code>permutedTest</code> is accessed here and stored into <code>permutedTestStats[i]</code>.</p></li>
+<li><p><code>}</code> The closing } bracket ends the code that is repeated over and over again inside the <code>for</code> loop.</p></li>
+<li><p><code>hist(permutedTestStats)</code> Creating a histogram of the sampling distribution of the test statistics obtained from the reused and permuted data allows us to visually compare the <code>observedTestStat</code> to the distribution of test statistics to visually see the percentage of test statistics that are as extreme or more extreme than the observed test statistic value. This is the p-value.</p></li>
+<li><p><code>abline(v=observedTestStat)</code> This adds the <code>observedTestStat</code> to the distribution of test statistics to visually see the percentage of test statistics that are as extreme or more extreme than the observed test statistic value. This is the p-value.</p></li>
+<li><p><code>sum(permutedTestStats &gt;= observedTestStat)/N</code> This computes a “greater than” p-value. A two-sided p-value could be obtained by multiplying this value by 2 if the observed test statistic was on the right hand side of the histogram.</p></li>
+<li><p><code>sum(permutedTestStats &lt;= observedTestStat)/N</code> This computes a “less than” p-value. A two-sided p-value could be obtained by multiplying this value by 2 if the observed test statistic was on the left hand side of the histogram.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<hr />
+</div>
+<div id="explanation" class="section level4">
+<h4>Explanation</h4>
+<div style="padding-left:30px;">
+<p>The most difficult part of a permutation test is in the random permuting of the data. How the permuting is performed depends on the type of hypothesis test being performed. It is important to remember that the permutation test only changes the way the p-value is calculated. Everything else about the original test is unchanged when switching to a permutation test.</p>
+<h5 id="paired-data-example">Paired Data Example</h5>
+<p>See the <a href="./Analyses/SleepPairedt.html">Sleep Paired t Test</a> example for the background and context of the study. Here is how to perform the test as a permutation test instead of a t test.</p>
+<p>The question that this <code>sleep</code> data can answer concerns which drug is more effective at increasing the amount of extra sleep an individual receives. The associated hypotheses would be <span class="math display">\[
+  H_0: \mu_d = 0
+\]</span> <span class="math display">\[
+  H_a: \mu_d \neq 0
+\]</span> where <span class="math inline">\(\mu_d\)</span> denotes the true mean of the differences between the observations for each drug obtained from each individual. Differences would be obtained by <span class="math inline">\(d_i = \text{extra}_{1i} - \text{extra}_{2i}\)</span>.</p>
+<p>To perform a permutation test of the hypothesis that the drugs are equally effective, we use the following code.</p>
+<pre class="r"><code># Perform the initial test:
+myTest &lt;- with(sleep, t.test(extra[group==1], extra[group==2], paired = TRUE, mu = 0))
+# Get the test statistic from the test:
+observedTestStat &lt;- myTest$statistic
+
+
+# Obtain the permutation sampling distribution 
+N &lt;- 2000
+permutedTestStats &lt;- rep(NA, N)
+for (i in 1:N){
+  permuteData &lt;- sample(x=c(-1,1), size=10, replace=TRUE) 
+  permutedTest &lt;- with(sleep, t.test(permuteData*(extra[group==1] - extra[group==2]), mu = 0))
+  #Note, t.test(group1 - group2) is the same as t.test(group1, group2, paired=TRUE).
+  permutedTestStats[i] &lt;- permutedTest$statistic
+}
+hist(permutedTestStats)
+abline(v=observedTestStat, col=&#39;skyblue&#39;, lwd=3)</code></pre>
+<p><img src="PermutationTests_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code># Greater than p-value: (not what we want here)
+sum(permutedTestStats &gt;= observedTestStat)/N</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code># Less than p-value:
+sum(permutedTestStats &lt;= observedTestStat)/N</code></pre>
+<pre><code>## [1] 0.001</code></pre>
+<pre class="r"><code># Correct two sided p-value for this study:
+2*sum(permutedTestStats &lt;= observedTestStat)/N</code></pre>
+<pre><code>## [1] 0.002</code></pre>
+<h5 id="other-examples-from-students">Other Examples from Students</h5>
+<p><a href="javascript:showhide('ItTest')">Independent Samples t Test (and Wilcoxon) <span style="font-size:8pt;">(click to show/hide)</span></a></p>
+<div id="ItTest" style="display:none;">
+<p>For the independent sample t Test, we will use the data from the <a href="Analyses/SleepIndependentt.html">independent sleep</a> analysis.</p>
+<pre class="r"><code># First run the initial test and gain the test statistic:
+myTest &lt;- t.test(extra ~ group, data = sleep, mu = 0)
+observedTestStat &lt;- myTest$statistic
+
+# Now we run the permutation for a distribution of test statistics
+N &lt;- 2000
+permutedTestStats &lt;- rep(NA, N)
+for (i in 1:N){
+  permutedData &lt;- sample(sleep$group)
+  permutedTest &lt;- t.test(extra ~ permutedData, data = sleep, mu = 0)
+  permutedTestStats[i] &lt;- permutedTest$statistic
+}
+
+# Now we create a histogram of that distribution
+hist(permutedTestStats, col = &quot;skyblue&quot;)
+abline(v = observedTestStat, col = &quot;red&quot;, lwd = 3)
+
+#Greater-Than p-value: Not the correct one in this case
+sum(permutedTestStats &gt;= observedTestStat)/N
+
+# Less-Than p-value: This is the corret one
+sum(permutedTestStats &lt;= observedTestStat)/N
+
+# Two-Sided p-value
+2*sum(permutedTestStats &lt;= observedTestStat)/N</code></pre>
+<p><strong>Note</strong> The Kruskal-Wallis Rank Sum test is ran using the same code except with <code>myTest &lt;- kruskal.test(y ~ X, data)</code> instead.</p>
+</div>
+<p><a href="javascript:showhide('ANOVA')">ANOVA <span style="font-size:8pt;">(click to show/hide)</span></a></p>
+<div id="ANOVA" style="display:none;">
+<h5 id="one-way-anova">One-Way ANOVA</h5>
+<p>For this example, we will use the data from the <a href="Analyses/chickwtsOneWayANOVA.html">chick weights</a> analysis.</p>
+<pre class="r"><code># Again, we run the initial test and find the test statistic
+myTest &lt;- aov(weight ~ feed, data = chickwts)
+observedTestStat &lt;- summary(myTest)[[1]]$`F value`[1]
+
+# For this permutation, we need to shake up the groups similar to the Independent Sample example
+N &lt;- 2000
+permutedTestStats &lt;- rep(NA, N)
+for (i in 1:N){
+  permutedData &lt;- sample(chickwts$weight)
+  permutedTest &lt;- aov(permutedData ~ feed, data = chickwts)
+  permutedTestStats[i] &lt;- summary(permutedTest)[[1]]$`F value`[1]
+}
+
+# The histogram of this distribution gives an interesting insight into the results
+hist(permutedTestStats, col = &quot;skyblue&quot;, xlim = c(0,16))
+abline(v = observedTestStat, col = &quot;red&quot;, lwd = 3)
+
+# Here is the greater-than p-value:
+sum(permutedTestStats &gt;= observedTestStat)/N
+
+# Here is the less-than p-value: not the one that we want
+sum(permutedTestStats &lt;= observedTestStat)/N
+
+# And here is the two-sided p-value: the same used in the original analysis
+2*sum(permutedTestStats &gt;= observedTestStat)/N</code></pre>
+<h5 id="two-way-anova">Two-Way ANOVA</h5>
+<p>For the two-way ANOVA, I will use the data from the <a href="Analyses/warpbreaksTwoWayANOVA.html">warpbreaks</a> analysis.</p>
+<pre class="r"><code># The initial test is done in the same way as one-way ANOVA but there is a little more to find the test statistic
+myTest &lt;- aov(breaks ~ wool + tension + wool:tension, data=warpbreaks)
+
+# This first test statistic is the comparison between the two types of wool
+observedTestStatW &lt;- summary(myTest)[[1]]$`F value`[1]
+
+# This second test statistic is the comparison between the three types of tension
+observedTestStatT &lt;- summary(myTest)[[1]]$`F value`[2]
+
+# The third test statistic is the comparison of the interaction of wool types and tension
+observedTestStatWT &lt;- summary(myTest)[[1]]$`F value`[3]
+
+# Now comes three different permutations for the test. First is for wool, second is for tension, and third is the interaction
+N &lt;- 2000
+permutedTestStatsW &lt;- rep(NA, N)
+permutedTestStatsT &lt;- rep(NA, N)
+permutedTestStatsWT &lt;- rep(NA, N)
+for (i in 1:N){
+  permuteData &lt;- sample(warpbreaks$breaks)
+  permutedTest &lt;- aov(permuteData ~ wool + tension + wool:tension, data=warpbreaks)
+  permutedTestStatsW[i] &lt;- summary(permutedTest)[[1]]$`F value`[1]
+  permutedTestStatsT[i] &lt;- summary(permutedTest)[[1]]$`F value`[2]
+  permutedTestStatsWT[i] &lt;- summary(permutedTest)[[1]]$`F value`[3]
+}
+
+# We likewise need three differenct plots to show the distribution. First is wool, second is tension, and third is the interaction
+hist(permutedTestStatsW, col = &quot;skyblue&quot;, xlim = c(3,14))
+abline(v = observedTestStatW, col = &quot;red&quot;, lwd = 3)
+
+hist(permutedTestStatsT, col = &quot;skyblue&quot;)
+abline(v = observedTestStatT, col = &quot;red&quot;, lwd = 3)
+
+hist(permutedTestStatsWT, col = &quot;skyblue&quot;)
+abline(v = observedTestStatWT, col = &quot;red&quot;, lwd = 3)
+
+# Greater-than p-value: the three situations are in order
+sum(permutedTestStatsW &gt;= observedTestStatW)/N
+
+sum(permutedTestStatsT &gt;= observedTestStatT)/N
+
+sum(permutedTestStatsWT &gt;= observedTestStatWT)/N
+
+# Less-than p-value: again, they are in order
+sum(permutedTestStatsW &lt;= observedTestStatW)/N
+
+sum(permutedTestStatsT &lt;= observedTestStatT)/N
+
+sum(permutedTestStatsWT &lt;= observedTestStatWT)/N
+
+# Two-sided p-values:
+2*sum(permutedTestStatsW &gt;= observedTestStatW)/N
+
+2*sum(permutedTestStatsT &gt;= observedTestStatT)/N
+
+2*sum(permutedTestStatsWT &gt;= observedTestStatWT)/N</code></pre>
+</div>
+<p><a href="javascript:showhide('LinR')">Simple Linear Regression <span style="font-size:8pt;">(click to show/hide)</span></a></p>
+<div id="LinR" style="display:none;">
+<p>For this example, I will use the <code>trees</code> dataset to compare the <code>Girth</code> and <code>Height</code> of black cherry trees.</p>
+<pre class="r"><code># The test and then the test statistic is found in a similar way to that of an ANOVA (this is the t statistic)
+myTest &lt;- lm(Height ~ Girth, data = trees)
+observedTestStat &lt;- summary(myTest)[[4]][2,3]
+
+# The permutation part is set up in this way
+N &lt;- 2000
+permutedTestStats &lt;- rep(NA, N)
+for (i in 1:N){
+  permutedData &lt;- sample(trees$Height)
+  permutedTest &lt;- lm(permutedData ~ Girth, data = trees)
+  permutedTestStats[i] &lt;- summary(permutedTest)[[4]][2,3]
+}
+
+# Here, as before, is the histogram of the distribution of the test statistics
+hist(permutedTestStats, col = &quot;skyblue&quot;)
+abline(v = observedTestStat, col = &quot;red&quot;, lwd = 3)
+
+# Less-than p-value:
+sum(permutedTestStats &lt;= observedTestStat)/N
+
+# Greater-than p-value:
+sum(permutedTestStats &gt;= observedTestStat)/N
+
+# Two-Sided p-value:
+2*sum(permutedTestStats &gt;= observedTestStat)/N</code></pre>
+</div>
+</div>
+<hr />
+<footer>
+</footer>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
