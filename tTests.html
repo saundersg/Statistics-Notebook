@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>t Tests</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Statistics Notebook</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Table of Contents</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Describing Data
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="GraphicalSummaries.html">Graphical Summaries</a>
+    </li>
+    <li>
+      <a href="NumericalSummaries.html">Numerical Summaries</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    R Help
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="RCommands.html">R Commands</a>
+    </li>
+    <li>
+      <a href="RMarkdownHints.html">R Markdown Hints</a>
+    </li>
+    <li>
+      <a href="RCheatSheetsAndNotes.html">R Cheatsheets &amp; Notes</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Making Inference
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="MakingInference.html">Making Inference</a>
+    </li>
+    <li>
+      <a href="tTests.html">t Tests</a>
+    </li>
+    <li>
+      <a href="WilcoxonTests.html">Wilcoxon Tests</a>
+    </li>
+    <li>
+      <a href="ANOVA.html">ANOVA</a>
+    </li>
+    <li>
+      <a href="Kruskal.html">Kruskal-Wallis</a>
+    </li>
+    <li>
+      <a href="LinearRegression.html">Linear Regression</a>
+    </li>
+    <li>
+      <a href="LogisticRegression.html">Logistic Regression</a>
+    </li>
+    <li>
+      <a href="ChiSquaredTests.html">Chi Squared Tests</a>
+    </li>
+    <li>
+      <a href="PermutationTests.html">Randomization Testing</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Analyses
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="./Analyses/AnalysisRubric.html">Analysis Rubric</a>
+    </li>
+    <li>
+      <a href="./Analyses/StudentHousing.html">Good Example Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/StudentHousingPOOR.html">Poor Example Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/Stephanie.html">Stephanie Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/Olympics.html">Olympics Analysis</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">t Tests</h1>
+
+</div>
+
+
+<hr />
+<p>Much of statistical inference concerns the location of the population mean <span class="math inline">\(\mu\)</span> for a given parametric distribution. Some of the most common approaches to making inference about <span class="math inline">\(\mu\)</span> utilize a test statistic that follows a t distribution.</p>
+<hr />
+<div id="one-sample-t-test" class="section level3 tabset tabset-fade tabset-pills">
+<h3>One Sample t Test</h3>
+<div style="float:left;width:125px;" align="center">
+<p><img src="Images/QuantY.png" width=35px;></p>
+</div>
+<p>A one sample t test is used when there is a hypothesized value for the population mean <span class="math inline">\(\mu\)</span> of a single quantitative variable.</p>
+<div id="overview" class="section level4">
+<h4>Overview</h4>
+<div style="padding-left:125px;">
+<p>This test is only appropriate when both of the following are satisfied.</p>
+<ol style="list-style-type: decimal">
+<li><p>The sample is <strong>representative</strong> of the population. (Having a simple random sample is the best way to do this.)</p></li>
+<li><p>The sampling distribution of the sample mean <span class="math inline">\(\bar{x}\)</span> <em>can be assumed to be normal</em>. This is a safe assumption when either (a) the population data can be assumed to be normally distributed using a Q-Q Plot or (b) the size of the sample (n) that was taken from the population is large (at least n &gt; 30, but “large” really depends on how badly the data is skewed).</p></li>
+</ol>
+<p><strong>Hypotheses</strong></p>
+<div style="padding-left:15px;">
+<p><span class="math inline">\(H_0: \mu = \text{some number}\)</span></p>
+<p><span class="math inline">\(H_a: \mu \ \left\{\underset{&lt;}{\stackrel{&gt;}{\neq}}\right\} \ \text{some number}\)</span></p>
+</div>
+<p><strong>Examples</strong>: <a href="./Analyses/t%20Tests/Examples/SleepOneSamplet.html">sleepOne</a></p>
+</div>
+<hr />
+</div>
+<div id="r-instructions" class="section level4">
+<h4>R Instructions</h4>
+<div style="padding-left:125px;">
+<p><strong>Console</strong> Help Command: <code>?t.test()</code></p>
+<p><code>t.test(Y, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)</code></p>
+<ul>
+<li><code>Y</code> must be a “numeric” vector of quantitative data.</li>
+<li><code>YourNull</code> is the numeric value from your null hypothesis for <span class="math inline">\(\mu\)</span>.</li>
+<li><code>YourAlternative</code> is one of the three options: <code>&quot;two.sided&quot;</code>, <code>&quot;greater&quot;</code>, <code>&quot;less&quot;</code> and should correspond to your alternative hypothesis.</li>
+<li>The value for <code>conf.level = 0.95</code> can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to <span class="math inline">\(1-\alpha\)</span>.</li>
+</ul>
+<p>Testing Assumptions</p>
+<p><code>library(car)</code></p>
+<p><code>qqPlot(Y)</code></p>
+</div>
+<hr />
+</div>
+<div id="explanation" class="section level4">
+<h4>Explanation</h4>
+<div style="padding-left:125px;">
+<p>In many cases where it is of interest to test a claim about a single population mean <span class="math inline">\(\mu\)</span>, the one sample t test is used. This is an appropriate decision whenever the sampling distribution of the sample mean can be assumed to be normal and the data represents a simple random sample from the population.</p>
+<p>In the figure below, the null hypothesis <span class="math inline">\(H_0: \mu = \mu_0\)</span> is represented by the normal distribution (gray) centered at <span class="math inline">\(\mu_0\)</span>. Note that <span class="math inline">\(\mu_0\)</span> is just some specified number. This shows how the null hypothesis represents the assumption about the center of the distribution of the data.</p>
+<p><img src="tTests_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>After a hypothesis (null) is established and an alternative hypothesis similarly declared, a simple random sample of data of size <span class="math inline">\(n\)</span> is obtained from the population of interest. In the plot above, this is depicted by the points (blue dots) which are centered around their sample mean <span class="math inline">\(\bar{x}\)</span>.</p>
+<p>Above the points (blue dots) is shown a second normal distribution (blue dashed line) which represents the idea that the alternative hypothesis allows for a normal distribution which is potentially more consistent with the data than the one specified under the null hypothesis.</p>
+<p>The role of the one sample t test is to measure the probability of a sample mean being as extreme or more extreme from the hypothesized value of <span class="math inline">\(\mu_0\)</span> than the one observed assuming the null hypothesis is true. This probability is of course the p-value of the test. This works because the sampling distribution of the sample mean has been assumed to be normal. In this case, the distribution of the test statistic t, <span class="math display">\[
+  t = \frac{\bar{x}-\mu}{s/\sqrt{n}}
+\]</span><br />
+is known to follow a t distribution with <span class="math inline">\(n-1\)</span> degrees of freedom. (The mathematics that provide this result are phenominal! You can consult any advanced statistical textbook for the details.)</p>
+<p>The p-value of the one sample t test represents the probability that the test statistic <span class="math inline">\(t\)</span> is as extreme or more extreme than the one observed according to a t-distribution with <span class="math inline">\(n-1\)</span> degrees of freedom.</p>
+<p>If the probability (the p-value) is close enough to zero (smaller than <span class="math inline">\(\alpha\)</span>) then it is determined that the most <em>plausible</em> hypothesis is the alternative hypothesis, and thus the null is “rejected” in favor of the alternative.</p>
+</div>
+<hr />
+</div>
+</div>
+<div id="paired-samples-t-test" class="section level3 tabset tabset-fade tabset-pills">
+<h3>Paired Samples t Test</h3>
+<div style="float:left;width:125px;" align="center">
+<p><img src="Images/QuantY.png" width=35px;></p>
+</div>
+<p>The paired samples t test is used when a value is hypothesized for the popluation mean of the differences, <span class="math inline">\(\mu_d\)</span>, obtained from paired observations.</p>
+<div id="overview-1" class="section level4">
+<h4>Overview</h4>
+<div style="padding-left:125px;">
+<p>Paired samples include pre-test post-test scenarios and matched-pairs scenarios, where the only interest is in the difference between the two scores. Such scenarios begin with two sets of measurements for each individual (or each matched-pair). However, in the end, these two measurements are reduced to a single set of “differences”. Thus, paired data is essentially one sample of differences.</p>
+<p><strong>Requirements</strong></p>
+<p>The test is only appropriate when both of the following are satisfied.</p>
+<ol style="list-style-type: decimal">
+<li><p>The sample of differences is representative of the population differences.</p></li>
+<li><p>The sampling distribution of the sample mean of the differences <span class="math inline">\(\bar{d}\)</span> (<span class="math inline">\(\bar{x}\)</span> of the differences) can be assumed to be normal. (This second requirement can be assumed to be satisfied when (a) the differences themselves can be assumed to be normal from a Q-Q Plot, or (b) when the sample size <span class="math inline">\(n\)</span> of the differences is large.)</p></li>
+</ol>
+<p><strong>Hypotheses</strong></p>
+<div style="padding-left:15px;">
+<p><span class="math inline">\(H_0: \mu_d = \text{some number, but typically 0}\)</span><br />
+<span class="math inline">\(H_a: \mu_d \ \left\{\underset{&lt;}{\stackrel{&gt;}{\neq}}\right\} \ \text{some number, but typically 0}\)</span></p>
+</div>
+<p><strong>Examples</strong>: <a href="./Analyses/t%20Tests/Examples/SleepPairedt.html">sleepPaired</a> <a href="./Analyses/t%20Tests/Examples/Student1Paired.html">studentPaired</a></p>
+</div>
+<hr />
+</div>
+<div id="r-instructions-1" class="section level4">
+<h4>R Instructions</h4>
+<div style="padding-left:125px;">
+<p><strong>Console</strong> Help Command: <code>?t.test()</code></p>
+<p>Option 1:</p>
+<p><code>t.test(Y1, Y2, paired = TRUE, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)</code></p>
+<ul>
+<li><code>Y1</code> must be a “numeric” vector that represents the quantitative data from the first sample of data.</li>
+<li><code>Y2</code> must be a “numeric” vector that represents the quantitative data from the second sample of data. This vector must be in the same order as the first sample so that the pairing can take place.</li>
+<li><code>YourNull</code> is the numeric value from your null hypothesis for <span class="math inline">\(\mu_d\)</span>.</li>
+<li><code>YourAlternative</code> is one of the three options: <code>&quot;two.sided&quot;</code>, <code>&quot;greater&quot;</code>, <code>&quot;less&quot;</code> and should correspond to your alternative hypothesis.</li>
+<li>The value for <code>conf.level = 0.95</code> can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to <span class="math inline">\(1-\alpha\)</span>.</li>
+</ul>
+<p>Testing Assumptions</p>
+<p><code>library(car)</code></p>
+<p><code>qqPlot(Y1 - Y2)</code></p>
+<p><br /></p>
+<p>Option 2:</p>
+<p>Compute the differences yourself instead of using <code>paired=TRUE</code>.</p>
+<p><code>differences = Y1 - Y2</code> <code>t.test(differences, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)</code></p>
+<ul>
+<li><code>Y1</code> must be a “numeric” vector that represents the quantitative data from the first sample of data.</li>
+<li><code>Y2</code> must be a “numeric” vector that represents the quantitative data from the second sample of data. This vector must be in the same order as the first sample so that the pairing can take place.</li>
+<li><code>differences</code> are the resulting differences obtained from subtracting <code>Y1 - Y2</code>.</li>
+<li><code>YourNull</code> is the numeric value from your null hypothesis for <span class="math inline">\(\mu_d\)</span>.</li>
+<li><code>YourAlternative</code> is one of the three options: <code>&quot;two.sided&quot;</code>, <code>&quot;greater&quot;</code>, <code>&quot;less&quot;</code> and should correspond to your alternative hypothesis.</li>
+<li>The value for <code>conf.level = 0.95</code> can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to <span class="math inline">\(1-\alpha\)</span>.</li>
+</ul>
+<p>Testing Assumptions</p>
+<p><code>library(car)</code></p>
+<p><code>qqPlot(differences)</code></p>
+</div>
+<hr />
+</div>
+<div id="explanation-1" class="section level4">
+<h4>Explanation</h4>
+<div style="padding-left:125px;">
+<p>The paired samples t test considers the single mean of all the differences from the paired values. Thus, the paired samples t test essentially becomes a one sample t test on the differences between paired observations. Hence the requirement is that the sampling distribution of the sample mean of the differences, <span class="math inline">\(\bar{d}\)</span>, can be assumed to be normally distributed. (It is also required that the obtained differences represent a simple random sample of the full population of possible differences.)</p>
+<p>The paired samples t test is similar to the independent samples t test scenario, except that there is extra information that allows values from one sample to be paired with a value from the other sample. This pairing of values allows for a more direct analysis of the change or difference individuals experience between the two samples.</p>
+<p>The points in the plot below demonstrate how points are paired together, and the only thing of interest are the differences between the paired points.</p>
+<p><img src="tTests_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<hr />
+</div>
+</div>
+<div id="independent-samples-t-test" class="section level3 tabset tabset-fade tabset-pills">
+<h3>Independent Samples t Test</h3>
+<div style="float:left;width:125px;" align="center">
+<p><img src="Images/QuantYQualXg2.png" width=62px;></p>
+</div>
+<p>The independent samples t test is used when a value is hypothesized for the difference between two (possibly) different population means, <span class="math inline">\(\mu_1 - \mu_2\)</span>.</p>
+<div id="overview-2" class="section level4">
+<h4>Overview</h4>
+<div style="padding-left:125px;">
+<p>The test is only appropriate when both of the following are satisfied.</p>
+<ol style="list-style-type: decimal">
+<li><p>Both samples are <strong>representative</strong> of the population. (Simple random samples are the best way to do this.)</p></li>
+<li><p>The sampling distribution of the difference of the sample means <span class="math inline">\((\bar{x}_1 - \bar{x}_2)\)</span> <em>can be assumed to be normal</em>. (This is a safe assumption when the sample size of each group is <span class="math inline">\(30\)</span> or greater or when the population data from each group can be assumed to be normal with a Q-Q Plot.)</p></li>
+</ol>
+<p><strong>Hypotheses</strong></p>
+<div style="padding-left:15px;">
+<p><span class="math inline">\(H_0: \mu_1 - \mu_2 = \text{some number, but typically 0}\)</span> <span class="math inline">\(H_a: \mu_1 - \mu_2 \ \left\{\underset{&lt;}{\stackrel{&gt;}{\neq}}\right\} \ \text{some number, but typically 0}\)</span></p>
+</div>
+<p><strong>Examples</strong>: <a href="./Analyses/t%20Tests/Examples/SleepIndependentt.html">sleepInd</a> <a href="./Analyses/t%20Tests/Examples/Student1Independent.html">student1</a> <a href="./Analyses/t%20Tests/Examples/Student2Independent.html">student2</a></p>
+</div>
+<hr />
+</div>
+<div id="r-instructions-2" class="section level4">
+<h4>R Instructions</h4>
+<div style="padding-left:125px;">
+<p><strong>Console</strong> Help Command: <code>?t.test()</code></p>
+<p>There are two ways to perform the test.</p>
+<p>Option 1:</p>
+<p><code>t.test(Y ~ X, data = YourData, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)</code></p>
+<ul>
+<li><code>Y</code> must be a “numeric” vector from <code>YourData</code> that represents the data for both samples.</li>
+<li><code>X</code> must be a “factor” or “character” vector from <code>YourData</code> that represents the group assignment for each observation. There can only be two groups specified in this column of data.</li>
+<li><code>YourNull</code> is the numeric value from your null hypothesis for <span class="math inline">\(\mu_1-\mu_2\)</span>.</li>
+<li><code>YourAlternative</code> is one of the three options: <code>&quot;two.sided&quot;</code>, <code>&quot;greater&quot;</code>, <code>&quot;less&quot;</code> and should correspond to your alternative hypothesis.</li>
+<li>The value for <code>conf.level = 0.95</code> can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to <span class="math inline">\(1-\alpha\)</span>.</li>
+</ul>
+<p>Testing Assumptions</p>
+<p><code>library(car)</code></p>
+<p><code>qqPlot(Y ~ X, data=YourData)</code></p>
+<p><br /></p>
+<p>Option 2:</p>
+<p><code>t.test(y1, y2, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)</code></p>
+<ul>
+<li><code>y1</code> must be a “numeric” vector that represents the quantitative data from the first sample.</li>
+<li><code>y2</code> must be a “numeric” vector that represents the quantitative data from the second sample.</li>
+<li><code>YourNull</code> is the numeric value from your null hypothesis for the difference of <span class="math inline">\(\mu_1-\mu_2\)</span>. This is typically zero.</li>
+<li><code>YourAlternative</code> is one of the three options: <code>&quot;two.sided&quot;</code>, <code>&quot;greater&quot;</code>, <code>&quot;less&quot;</code> and should correspond to your alternative hypothesis.</li>
+<li>The value for <code>conf.level = 0.95</code> can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to <span class="math inline">\(1-\alpha\)</span>.</li>
+</ul>
+<p>Testing Assumptions</p>
+<p><code>library(car)</code></p>
+<p><code>par(mfrow=c(1,2))</code></p>
+<p><code>qqPlot(Y1)</code></p>
+<p><code>qqPlot(Y2)</code></p>
+</div>
+<hr />
+</div>
+<div id="explanation-2" class="section level4">
+<h4>Explanation</h4>
+<div style="padding-left:125px;">
+<p>The first figure below depicts the scenario where the difference in means of two separate normal distributions is non-zero. In other words, the two distributions have different means, <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span>, respectively. It is worth emphasizing that the values of <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span> are unknown to the researcher. The only thing observed are two separate samples of data (blue dots) of sizes <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>, respectively. For the scenario depicted, the null hypothesis that <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span> (i.e., that <span class="math inline">\(\mu_1=\mu_2\)</span>) is rejected in favor of the alternative that <span class="math inline">\(H_a: \mu_1 - \mu_2 \neq 0\)</span> based on the sample data observed. This dicision would be correct as the true difference in means, <span class="math inline">\(\mu_1-\mu_2\)</span> is non-zero in this case.</p>
+<p><img src="tTests_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>When the null hypothesis is true, that <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span>, then it follows that the test statistic <span class="math inline">\(t\)</span> that is obtained by measuring the distance between the two sample means, <span class="math inline">\(\bar{x}_1-\bar{x}_2\)</span>, and appropriately standardizing the result follows a <span class="math inline">\(t\)</span> distribution with degrees of freedom less than or equal to <span class="math inline">\(n_1+n_2-2\)</span>. Thus, the <span class="math inline">\(p\)</span>-value of the independent samples <span class="math inline">\(t\)</span> test is obtained by using this <span class="math inline">\(t\)</span> distribution to calculate the probability of a test statistic <span class="math inline">\(t\)</span> being as extreme or more extreme than the one observed assuming the null hypothesis is true. <span class="math display">\[
+  t = \frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{\sqrt{s_1/n_1+s_2/n_2 }}
+\]</span></p>
+<p>The plot below demonstrates what data might look like when the null hypothesis is actually true. In other words, when both samples come from the same distribution.</p>
+<p><img src="tTests_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<hr />
+<footer>
+</footer>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

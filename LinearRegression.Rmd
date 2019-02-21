@@ -1,0 +1,2134 @@
+---
+title: "Linear Regression"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+    css: styles.css
+header-includes: 
+  - \usepackage{amsmath}
+---
+
+<script type="text/javascript">
+ function showhide(id) {
+    var e = document.getElementById(id);
+    e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+ }
+ 
+ function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+ }
+</script>
+
+```{r, include=FALSE}
+library(car)
+library(mosaic)
+library(pander)
+library(scatterplot3d)
+```
+
+----
+
+Determine which explanatory variables have a significant effect on the mean of the quantitative response variable.
+
+----
+
+## Simple Linear Regression {.tabset .tabset-fade .tabset-pills}
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QuantYQuantX.png" width=58px;>
+</div>
+
+Simple linear regression is a good analysis technique when the data consists of a single quantitative response variable $Y$ and a single quantitative explanatory variable $X$. 
+
+### Overview {.tabset}
+
+<div style="padding-left:125px;">
+
+**Mathematical Model**
+
+The true regression model assumed by a regression analysis is given by
+$$
+  Y_i = \underbrace{\overbrace{\beta_0}^\text{y-intercept} + \overbrace{\beta_1}^\text{slope} X_i \ }_\text{true regression relation} + \overbrace{\epsilon_i}^\text{error term} \quad \text{where} \ \overbrace{\epsilon_i \sim N(0, \sigma^2)}^\text{error term normally distributed}
+$$
+
+The estimated regression line obtained from a regression analysis, pronounced "y-hat", is written as 
+
+$$
+  \hat{Y}_i = \underbrace{\overbrace{\ b_0 \ }^\text{y-intercept} + \overbrace{b_1}^\text{slope} X_i \ }_\text{estimated regression relation}
+$$
+
+<div style="font-size:0.8em;">
+Note: see the **Explanation** tab for details about these equations.
+</div>
+
+
+**Hypotheses**
+
+$$
+\left.\begin{array}{ll}
+H_0: \beta_1 = 0 \\  
+H_a: \beta_1 \neq 0
+\end{array}
+\right\} \ \text{Slope Hypotheses}^{\quad \text{(most common)}}\quad\quad
+$$
+
+$$
+\left.\begin{array}{ll}
+H_0: \beta_0 = 0 \\  
+H_a: \beta_0 \neq 0
+\end{array}
+\right\} \ \text{Intercept Hypotheses}^{\quad\text{(sometimes useful)}}
+$$
+
+
+If $\beta_1 = 0$, then the model reduces to $Y_i = \beta_0 + \epsilon_i$, which is a flat line. This means $X$ does not improve our understanding of the mean of $Y$ if the null hypothesis is true.
+
+
+If $\beta_0 = 0$, then the model reduces to $Y_i = \beta_1 X + \epsilon_i$, a line going through the origin. This means the average $Y$-value is $0$ when $X=0$ if the null hypothesis is true.
+
+**Assumptions** 
+
+This regression model is appropriate for the data when five assumptions can be made.
+
+1. **Linear Relation**: the true regression relation between $Y$ and $X$ is linear.
+    
+2. **Normal Errors**: the error terms $\epsilon_i$ are normally distributed with a mean of zero.
+
+3. **Constant Variance**: the variance $\sigma^2$ of the error terms is constant (the same) over all $X_i$ values.
+
+4. **Fixed X**: the $X_i$ values can be considered fixed and measured without error.
+
+5. **Independent Errors**: the error terms $\epsilon_i$ are independent.
+
+<div style="font-size:0.8em;">
+Note: see the **Explanation** tab for details about checking the regression assumptions.
+</div>
+
+**Interpretation**
+
+The slope is interpreted as, "the change in the average y-value for a one unit change in the x-value." It **is not** the average change in y. **It is** the change in the average y-value.
+
+The y-intercept is interpreted as, "the average y-value when x is zero." It is often not meaningful, but is sometimes useful. It just depends if x being zero is meaningful or not. For example, knowing the average price of a car with zero miles is useful. However, pretending to know the average height of adult males that weigh zero pounds, is not useful.
+
+
+----
+
+</div>
+
+
+### R Instructions
+
+<div style="padding-left:125px;">
+**Console** Help Command: `?lm()`
+
+**Perform the Regression**
+
+`mylm <- lm(Y ~ X, data=YourDataSet)` 
+
+`summary(mylm)` 
+
+* `mylm` is some name you come up with to store the results of the `lm()` test. Note that `lm()` stands for "linear model."
+* `Y` must be a "numeric" vector of the quantitative response variable.
+* `X` is the explanatory variable. It can either be quantitative (most usual) or qualitative.
+* `YourDataSet` is the name of your data set.
+
+
+**Check Assumptions 1, 2, 3, and 5**
+
+`par(mfrow=c(1,3))`
+
+`plot(mylm, which=1:2)` 
+
+`plot(mylm$residuals)`
+
+**Plotting the Regression Line**
+
+To add the regression line to a scatterplot use the `abline(...)` command:
+
+`plot(Y ~ X, data=YourDataSet)`
+
+`abline(mylm)`
+
+You can customize the look of the regression line with
+
+`abline(mylm, lty=1, lwd=1, col="someColor")`
+
+where `lty` stands for line-type with options (0=blank, 1=solid (default), 2=dashed, 3=dotted, 4=dotdash, 5=longdash, 6=twodash) and `lwd` stands for line-width.
+
+**Accessing Parts of the Regression**
+
+Finally, note that the `mylm` object contains the `names(mylm)` of
+
+* `mylm$coefficients` Contains two values. The first is the estimated $y$-intercept. The second is the estimated slope.
+* `mylm$residuals` Contains the residuals from the regression in the same order as the actual dataset.
+* `mylm$fitted.values` The values of $\hat{Y}$ in the same order as the original dataset.
+* `mylm$...` several other things that will not be explained here.
+
+
+----
+
+</div>
+
+### Explanation
+
+
+<div style="padding-left:125px;">
+
+Linear regression has a rich mathematical theory behind it. This is because it uses a mathematical function and a random error term to describe the regression relation between a response variable $Y$ and an explanatory variable called $X$.
+
+<div style="padding-left:30px;color:darkgray;">
+Expand each element below to learn more.
+</div>
+
+<span style="color:steelblue;font-size:.8em;padding-left:160px;">Regression Cheat Sheet</span> <a href="javascript:showhide('regressioncheatsheet')" style="font-size:.6em;color:skyblue;">(Expand)</a>
+
+<div id="regressioncheatsheet" style="display:none;font-size:.7em;">
+
+| Term | Pronunciation | Meaning | Math  | R Code | 
+|------|----------------|-------|--------|---------|
+| $Y_i$| "why-eye"      | The data |$Y_i = \beta_0 + \beta_1 X_i + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2)$ | `YourDataSet$YourYvariable` | 
+| $\hat{Y}_i$ | "why-hat-eye" | The fitted line |$\hat{Y}_i = b_0 + b_1 X_i$ | `lmObject$fitted.values` | 
+| $E\{Y_i\}$ | "expected value of why-eye" | True mean y-value | $E\{Y_i\} = \beta_0 + \beta_1 X_i$ | `<none>` | 
+| $\beta_0$ | "beta-zero" | True y-intercept | `<none>` | `<none>` | 
+| $\beta_1$ | "beta-one" | True slope | `<none>` | `<none>` | 
+| $b_0$ | "b-zero" | Estimated y-intercept | $b_0 = \bar{Y} - b_1\bar{X}$ | `b_0 <- mean(Y) - b_1*mean(X)` | 
+| $b_1$ | "b-one" | Estimated slope | $b_1 = \frac{\sum X_i(Y_i - \bar{Y})}{\sum(X_i - \bar{X})^2}$ | `b_1 <- sum( X*(Y - mean(Y)) ) / sum( (X - mean(X))^2 )` | 
+| $\epsilon_i$ | "epsilon-eye" | Distance of dot to true line | $\epsilon_i = Y_i - E\{Y_i\}$ | `<none>` | 
+| $r_i$ | "r-eye" or "residual-eye" | Distance of dot to estimated line | $r_i = Y_i - \hat{Y}_i$ | `lmObject$residuals` | 
+| $\sigma^2$ | "sigma-squared" | Variance of the $\epsilon_i$ | $Var\{\epsilon_i\} = \sigma^2$ | `<none>` |
+| $MSE$ | "mean squared error" | Estimate of $\sigma^2$ | $MSE = \frac{SSE}{n-p}$ | `sum( lmObject$res^2 ) / (n - p)` |
+| $SSE$ | "sum of squared error" (residuals) | Measure of dot's total deviation from the line | $SSE = \sum_{i=1}^n (Y_i - \hat{Y}_i)^2$ | `sum( lmObject$res^2 )` | 
+| $SSR$ | "sum of squared regression error" | Measure of line's deviation from y-bar | $SSR = \sum_{i=1}^n (\hat{Y}_i - \bar{Y})^2$ | `sum( (lmObject$fit - mean(YourData$Y))^2 )` | 
+| $SSTO$ | "total sum of squares" | Measure of total variation in Y | $SSR + SSE = SSTO = \sum_{i=1}^n (Y_i - \bar{Y})^2$ | `sum( (YourData$Y - mean(YourData$Y)^2 )` | 
+| $R^2$ | "R-squared" | Proportion of variation in Y explained by the regression | $R^2 = \frac{SSR}{SSTO} = 1 - \frac{SSE}{SSTO}$ | `SSR/SSTO` |
+| $\hat{Y}_h$ | "why-hat-aitch" | Estimated mean y-value for some x-value called $X_h$ | $\hat{Y}_h = b_0 + b_1 X_h$ | `predict(lmObject, data.frame(XvarName=#))` |
+| $X_h$ | "ex-aitch" | Some x-value, not necessarily one of the $X_i$ values used in the regression | $X_h = $ some number | `Xh = #` |
+
+</div>
+
+<br />
+
+
+
+#### The Mathematical Model <a href="javascript:showhide('mathmodel1')" style="font-size:.6em;color:skyblue;">(Expand)</a>
+
+<span class="expand-caption">$Y_i$, $\hat{Y}_i$, and $E\{Y_i\}$...</span>
+
+<div id="mathmodel1" style="display:none;">
+
+There are three main elements to the mathematical model of regression. Each of these three elements is pictured below in the "Regression Relation Diagram." 
+
+<div style="padding-left:60px;color:darkgray;font-size:.8em;">
+Study both the three bullet points and their visual representations in the plot below for a clearer understanding.
+</div>
+
+1. The **true line**, i.e., the regression relation: 
+
+<div style="padding-left:60px;color:darkgray;">
+<div style="color:steelblue;">
+$\underbrace{E\{Y\}}_{\substack{\text{true mean} \\ \text{y-value}}} = \underbrace{\overbrace{\beta_0}^\text{y-intercept} + \overbrace{\beta_1}^\text{slope} X}_\text{equation of a line}$
+</div>
+
+<a href="javascript:showhide('readmoretrueline')" style="font-size:.8em;color:skyblue;">(Read more...)</a>
+
+<div id="readmoretrueline" style="display:none;">
+The true line is shown by the dotted line in the graph pictured below. This is typically unobservable. Think of it as "natural law" or "God's law". It is some true line that is unknown to us.
+
+The regression relation $E\{Y\} = \beta_0 + \beta_1 X$ creates the line of regression where $\beta_0$ is the $y$-intercept of the line and $\beta_1$ is the slope of the line. The regression relationship provides the average $Y$-value, denoted $E\{Y_i\}$, for a given $X$-value, denoted by $X_i$. 
+
+Note: $E\{Y\}$ is pronounced "the expected value of y" because, well... the mean is the typical, average, or "expected" value.
+</div>
+</div>
+
+
+2. The **dots**, i.e., the regression relation plus an error term:
+
+<div style="padding-left:60px;color:darkgray;">
+<div style="color:steelblue;">
+$Y_i = \underbrace{\beta_0 + \beta_1 X_i}_{E\{Y_i\}} + \underbrace{\epsilon_i}_\text{error term} \quad \text{where} \ \epsilon_i\sim N(0,\sigma^2)$
+</div>
+
+<a href="javascript:showhide('readmoredots')" style="font-size:.8em;color:skyblue;">(Read more...)</a>
+
+<div id="readmoredots" style="display:none;">
+This is shown by the dots in the graph below. This is the data. In regression, the assumtion is that the y-value for individual $i$, denoted by $Y_i$, was "created" by adding an error term $\epsilon_i$ to each individual's "expected" value $\beta_0 + \beta_1 X_i$. Note the "order of creation" would require first knowing an indivual's x-value, $X_i$, then their expected value from the regression relation $E\{Y_i\} = \beta_0 + \beta_1 X_i$ and then adding their $\epsilon_i$ value to the result. The $\epsilon_i$ allows each individual to deviate from the line. Some individuals deviate dramatically, some deviate only a little, but all dots vary some distance $\epsilon_i$ from the line.
+
+Note: $Y_i$ is pronounced "why-eye" because it is the y-value for individual $i$. Sometimes also called "why-sub-eye" because $i$ is in the subscript of $Y$.
+</div>
+</div>
+
+
+3. The **estimated line**, i.e., the line we get from a sample of data.
+
+<div style="padding-left:60px;color:darkgray;">
+
+<div style="color:steelblue;">
+$\underbrace{\hat{Y}_i}_{\substack{\text{estimated mean} \\ \text{y-value}}} = \underbrace{b_0 + b_1 X_i}_\text{estimated regression equation}$
+</div>
+
+<a href="javascript:showhide('readmoreestimatedline')" style="font-size:.8em;color:skyblue;">(Read more...)</a>
+
+<div id="readmoreestimatedline" style="display:none;">
+The estimated line is shown by the solid line in the graph below. $\hat{Y}$ is the estimated regression equation obtained from the sample of data. It is the estimator of the true regression equation $E\{Y\}$. So $\hat{Y}$ is interpreted as the estimated average (or mean) $Y$-value for any given $X$-value. Thus, $b_0$ is the estimated y-intercept and $b_1$ is the estimated slope. The b's are sample statistics, like $\bar{x}$ and the $\beta$'s are population parameters like $\mu$. The $b$'s estimate the $\beta$'s.
+
+Note: $\hat{Y}_i$ is pronounced "why-hat-eye" and is known as the "estimated y-value" or "fitted y-value" because it is the y-value you get from $b_0 + b_1 X_i$. It is always different from $Y_i$ because dots are rarely if ever exactly on the estimated regression line.
+
+</div>
+</div>
+
+
+This graphic depicts the true, but typically unknown, regression relation (dotted line). It also shows how a sample of data from the true regression relation (the dots) can be used to obtain an estimated regression equation (solid line) that is fairly close to the truth (dotted line).
+
+```{r, echo=FALSE}
+set.seed(6)
+beta0 <- 5
+beta1 <- 0.8
+N <- 100
+epsilon <- rnorm(N,sd=0.5)
+x <- rbeta(N,5,5)*10 
+y <- beta0 + beta1*x + epsilon
+plot(x,y, pch=20, xlab="", ylab="", main="Regression Relation Diagram", xaxt='n', yaxt='n', xlim=c(1,8), ylim=c(5,13))
+tmp <- legend("topleft", lty=c(2,0,1), legend=c(expression(paste(E, group("{",Y,"}"), " is the true regression relation (usually unknown)")), expression(paste(Y[i], " is the observed data")), expression(paste(hat(Y), " is the estimated regression relation"))), bty='n', cex=0.8, y.intersp=1.3)
+points(.5*tmp$text$x[1]+.5*tmp$rect$left[1], tmp$text$y[2], pch=20)
+abline(beta0,beta1, lty=2)
+xylm <- lm(y ~ x)
+abline(xylm)
+```
+
+Something to ponder: The true line, when coupled with the error terms, "creates" the data. The estimated (or fitted) line uses the sampled data to try to "re-create" the true line.
+
+
+
+```{r simulatingTheRegressionModel, eval=FALSE}
+## Simulating Data from a Regression Model
+## This R-chunk is meant to be played in your R Console.
+## It allows you to explore how the various elements
+## of the regression model combine together to "create"
+## data and then use the data to "re-create" the line.
+
+set.seed(101) #Allows us to always get the same "random" sample
+              #Change to a new number to get a new sample
+
+  n <- 30 #set the sample size
+
+  X_i <- runif(n, 15, 45) #Gives n random values from a uniform distribution between 15 to 45.
+
+  beta0 <- 3 #Our choice for the y-intercept. 
+
+  beta1 <- 1.8 #Our choice for the slope. 
+
+  sigma <- 2.5 #Our choice for the std. deviation of the error terms.
+
+  epsilon_i <- rnorm(n, 0, sigma) #Gives n random values from a normal distribution with mean = 0, st. dev. = sigma.
+
+  Y_i <- beta0 + beta1*X_i + epsilon_i #Create Y using the normal error regression model
+
+  fabData <- data.frame(y=Y_i, x=X_i) #Store the data as data
+
+  View(fabData) 
+  
+  #In the real world, we begin with data (like fabData) and try to recover the model that (we assume) was used to created it.
+
+  fab.lm <- lm(y ~ x, data=fabData) #Fit an estimated regression model to the fabData.
+
+  summary(fab.lm) #Summarize your model. 
+
+  plot(y ~ x, data=fabData) #Plot the data.
+
+  abline(fab.lm) #Add the estimated regression line to your plot.
+
+# Now for something you can't do in real life... but since we created the data...
+
+  abline(beta0, beta1, lty=2) #Add the true regression line to your plot using a dashed line (lty=2). 
+
+  legend("topleft", legend=c("True Line", "Estimated Line"), lty=c(2,1), bty="n") #Add a legend to your plot specifying which line is which.
+  
+
+```
+
+
+
+
+
+</div>
+
+<br />
+
+
+
+
+#### Interpreting the Model Parameters <a href="javascript:showhide('interpretingparameters')" style="font-size:.6em;color:skyblue;">(Expand)</a>
+
+<span class="expand-caption">$\beta_0$ (intercept) and $\beta_1$ (slope), estimated by $b_0$ and $b_1$, interpreted as...</span>
+
+<div id="interpretingparameters" style="display:none;">
+
+The interpretation of $\beta_0$ is only meaningful if $X=0$ is in the scope of the model. If $X=0$ is in the scope of the model, then the intercept is interpreted as the average y-value, denoted $E\{Y\}$, when $X=0$. 
+
+The interpretation of $\beta_1$ is the amount of increase (or decrease) in the average y-value, denoted $E\{Y\}$, per unit change in $X$. It is often misunderstood to be the "average change in y" or just "the change in y" but it is more correctly referred to as the "change in the average y". 
+
+To better see this, consider the three graphics shown below. 
+
+```{r, fig.height=3}
+par(mfrow=c(1,3))
+hist(mtcars$mpg, main="Gas Mileage of mtcars Vehicles", ylab="Number of Vehicles", xlab="Gas Mileage (mpg)", col="skyblue")
+boxplot(mpg ~ cyl, data=mtcars, border="skyblue", boxwex=0.5, main="Gas Mileage of mtcars Vehicles", ylab="Gas Mileage (mpg)", xlab="Number of Cylinders of Engine (cyl)")
+plot(mpg ~ qsec, data=subset(mtcars, am==0), pch=16, col="skyblue", main="Gas Mileage of mtcars Vehicles", ylab="Gas Mileage (mpg)", xlab="Quarter Mile Time (qsec)")
+abline(lm(mpg ~ qsec, data=subset(mtcars, am==0)), col="darkgray")
+mtext(side=3, text="Automatic Transmissions Only (am==0)", cex=0.5)
+abline(v = seq(16,22,2), h=seq(10,30,5), lty=3, col="gray")
+```
+
+| The Histogram | The Boxplot | The Scatterplot |
+|-------------------|-------------------|----------------------|
+| The **histogram** on the left shows gas mileages of vehicles from the mtcars data set. The average gas mileage is `r round(mean(mtcars$mpg),2)`. | The **boxplot** in the middle shows that if we look at gas mileage for 4, 6, and 8 cylinder vehicles separately, we find the means to be 26.66, 19.74, and 15.1, respectively. If we wanted to, we could talk about the change in the means across cylinders, and would see that the mean is decreasing, first by $26.66 - 19.74 = 6.92$ mpg, then by $19.74 - 15.1 = 4.64$ mpg. | The **scatterplot** on the right shows that the average gas mileage (for just automatic transmission vehicles) increases by a slope of `r round(coef(lm(mpg ~ qsec, data=subset(mtcars, am==0)))[2],2)` for each 1 second increase in quarter mile time. In other words, the line gives the average y-value for any x-value. Thus, the slope of the line is the change in the average y-value.|
+
+
+
+</div>
+
+<br />
+
+
+
+
+
+#### Residuals and Errors <a href="javascript:showhide('residualsanderrors')" style="font-size:.6em;color:skyblue;">(Expand)</a>
+
+<span class="expand-caption">$r_i$, the residual, estimates $\epsilon_i$, the true error...</span>
+
+<div id="residualsanderrors" style="display:none;">
+
+
+Residuals are the difference between the observed value of $Y_i$ (the point) and the predicted, or estimated value, for that point called $\hat{Y_i}$. The errors are the true distances between the observed $Y_i$ and the actual regression relation for that point, $E\{Y_i\}$.
+
+We will denote a **residual** for individual $i$ by $r_i$,
+$$
+  r_i = \underbrace{Y_i}_{\substack{\text{Observed} \\ \text{Y-value}}} - \underbrace{\hat{Y}_i}_{\substack{\text{Predicted} \\ \text{Y-value}}} \quad \text{(residual)}
+$$
+The residual $r_i$ estimates the true **error** for individual $i$, $\epsilon_i$, 
+$$
+  \epsilon_i = \underbrace{Y_i}_{\substack{\text{Observed} \\ \text{Y-value}}} - \underbrace{E\{Y_i\}}_{\substack{\text{True Mean} \\ \text{Y-value}}} \quad \text{(error)}
+$$
+
+In summary...
+
+<div style="padding-left:30px;">
+
+| Residual $r_i$ | Error $\epsilon_i$ |
+|----------------|--------------------|
+| Distance between the dot $Y_i$ and the estimated line $\hat{Y}_i$ | Distance between the dot $Y_i$ and the true line $E\{Y_i\}$. |
+| $r_i = Y_i - \hat{Y}_i$ | $\epsilon_i = Y_i - E\{Y_i\}$ |
+| Known | Typically Unknown |
+
+</div>
+
+As shown in the graph below, the residuals are known values and they estimate the unknown (but true) error terms.
+
+```{r, echo=FALSE}
+set.seed(19)
+x <- c(1, 2, 3, 4, 5, 6)
+sigma <- 0.9
+epsilon <- rnorm(6, 0, sigma)
+beta_0 <- 2
+beta_1 <- 0.35
+y <- beta_0 + beta_1*x + epsilon
+lmr <- lm(y ~ x)
+plot(y ~ x, pch=16, col="skyblue3", xlim=c(0,7), cex=2, yaxt='n', xaxt='n', xlab="", ylab="", main="Visual Comparison of Residuals and Errors")
+for (i in 1:6){
+  lines(rep(x[i]-0.02, 2), c(y[i], sum(lmr$coef*c(1,x[i]-0.02))), col="skyblue", lty=1, lwd=2)  
+  lines(rep(x[i]+0.02, 2), c(y[i], beta_0 + beta_1*(x[i]+0.02)), col="darkgray", lty=2)  
+}
+points(y ~ x, pch=16, col="skyblue3", xlim=c(0,7), cex=2)
+abline(lmr, col="skyblue", lwd=2)
+abline(beta_0, beta_1, col="darkgray", lty=2)
+legend("topleft", bty='n', lwd=2, lty=c(1,2), legend=c("Estimated Line & Residuals (known)", "True Line & Errors (typically unknown)"), col=c("skyblue","gray"))
+text(x[2], y[2]-.2, expression(r[i]), col="skyblue", pos=2, cex=1.2)
+text(x[2], y[2]-.15, expression(epsilon[i]), col="gray", pos=4, cex=1.2)
+
+```
+
+Keep in mind the idea that the errors $\epsilon_i$ "created" the data and that the residuals $r_i$ are computed after using the data to "re-create" the line.
+
+Residuals have many uses in regression analysis. They allow us to 
+
+1. diagnose the regression assumptions, 
+
+<div style="padding-left:60px;color:darkgray;font-size:.8em;">
+See the "Assumptions" section below for more details.
+</div>
+
+2. estimate the regression relation, 
+
+<div style="padding-left:60px;color:darkgray;font-size:.8em;">
+See the "Estimating the Model Parameters" section below for more details.
+</div>
+
+3. estimate the variance of the error terms, 
+
+<div style="padding-left:60px;color:darkgray;font-size:.8em;">
+See the "Estimating the Model Variance" section below for more details.
+</div>
+
+4. and assess the fit of the regression relation.
+
+<div style="padding-left:60px;color:darkgray;font-size:.8em;">
+See the "Assessing the Fit of a Regression" section below for more details.
+</div>
+
+</div>
+
+<br />
+
+
+#### Residual Plots & Regression Assumptions <a href="javascript:showhide('assumptions1')" style="font-size:.6em;color:skyblue;">(Expand)</a>
+
+<span class="expand-caption">Residuals vs. fitted-values, Q-Q Plot of the residuals, and residuals vs. order plots...</span>
+
+<div id="assumptions1" style="display:none;">
+
+There are five assumptions that should be met for the mathematical model of simple linear regression to be appropriate. 
+
+<div style="padding-left:60px;color:darkgray;font-size:.8em;">
+Each assumption is labeled in the regression equation below.
+</div>
+
+1. The regression relation between $Y$ and $X$ is linear.
+2. The error terms are normally distributed with $E\{\epsilon_i\}=0$.
+3. The variance of the error terms is constant over all $X$ values.
+4. The $X$ values can be considered fixed and measured without error.
+5. The error terms are independent.
+
+<span style="color:darkgray;">Regression Equation</span>
+$$
+  Y_i = \underbrace{\beta_0 + \beta_1 \overbrace{X_i}^\text{#4}}_{\text{#1}} + \epsilon_i \quad \text{where} \ \overbrace{\epsilon_i \sim}^\text{#5} \overbrace{N(0}^\text{#2}, \overbrace{\sigma^2}^\text{#3})
+$$
+
+
+Residuals are used to diagnose departures from the regression assumptions. 
+
+<a href="javascript:showhide('moreassumptionsdetail')" style="font-size:.8em;color:skyblue;">(Read more...)</a>
+
+<div id="moreassumptionsdetail" style="display:none;">
+
+As shown above, the regression equation makes several claims, or assumptions, about the error terms $\epsilon_i$, specifically 2, 3, and 5 of the regression assumptions are hidden inside the statement $\epsilon_i \sim N(0, \sigma^2)$ as shown here
+$$
+  \epsilon_i \underbrace{\sim}_{\substack{\text{Independent} \\ \text{Errors}}} \overbrace{N}^{\substack{\text{Normally} \\ \text{distributed}}}(\underbrace{0}_{\substack{\text{mean of} \\ \text{zero}}}, \underbrace{\sigma^2}_{\substack{\text{Constant} \\ \text{Variance}}})
+$$
+
+While the actual error terms ($\epsilon_i$) are unknown in real life, the residuals ($r_i$) are known. Thus, we can use the residuals to check if the assumptions of the regression appear to be satisfied or not.
+
+</div>
+
+
+<br />
+
+<div style="padding-left:15px;">
+
+##### Residuals versus Fitted-values Plot: Checks Assumptions \#1 and \#3
+
+<table width=90%>
+<tr><td with=15%>
+
+```{r, fig.height=1.25, fig.width=1.5, echo=FALSE}
+set.seed(18)
+tmp0 <- rnorm(30)
+par(mai=c(.3,.3,0,.2), mgp=c(.2,0,0))
+plot(tmp0 ~ rnorm(30), pch=20, cex=0.5, 
+     ylab="Residuals",
+     xlab="Fitted Values", xaxt='n', yaxt='n',
+     cex.lab = 0.7)
+abline(h=0, lty=3, col='gray')
+```
+
+</td>
+<td width=75%>
+
+The linear relationship and constant variance assumptions can be diagnosed using a residuals versus fitted-values plot. The fitted values are the $\hat{Y}_i$.  The residuals are the $r_i$. This plot compares the residual to the magnitude of the fitted-value. No discernable pattern in this plot is desirable.
+
+ | <a href="javascript:showhide('residualsvsfittedvalues')" style="font-size:.8em;color:steelblue2;">Show Examples</a> |
+
+</td>
+</tr>
+</table>
+
+<div id="residualsvsfittedvalues" style="display:none;">
+
+<a href="javascript:showhide('residualsvsfittedvaluesread')" style="font-size:.8em;color:skyblue;">(Read more...)</a>
+
+<div id="residualsvsfittedvaluesread" style="display:none;">
+
+The residuals versus fitted values plot checks for departures from the linear relation assumption and the constant variance assumption. 
+
+* The linear relation is assumed to be satisfied if there are no apparent trends in the plot. 
+
+* The constant variance assumption is assumed to be satisfied if the vertical spread of the residuals remains roughly consistent across all fitted values.
+
+The left column of plots below show scenarios that would be considered not linear. The right column of plots show scenarios that would be considered linear, but lacking constant variance. The middle column of plots shows scenarios that would satisfy both assumptions, linear and constant variance. 
+
+</div>
+
+```{r}
+set.seed(2)
+X <- rnorm(30,15,3)
+notLin <- data.frame(X = X, Y = 500-X^2+rnorm(30,1,8))
+notLin.lm <- lm(Y~X, data=notLin)
+set.seed(15)
+Lin <- data.frame(X=X, Y = 5+1.8*X+rnorm(30,2,1.3))
+Lin.lm <- lm(Y~X, data=Lin)
+par(mfrow=c(3,3),  mai=c(.25,.25,.25,.25), mgp=c(1,.75,0))
+  plot(notLin.lm$fitted.values,notLin.lm$residuals, pch=20,
+       xlab="Fitted Values", ylab="Residuals", 
+       main="Not Linear", cex.main=0.95,
+       xaxt='n', yaxt='n', col="firebrick")
+  mycurve <- lowess(notLin.lm$fitted.values,notLin.lm$residuals)
+  mycurveOrder <- order(mycurve$x)
+  mycurve$x <- mycurve$x[mycurveOrder]
+  mycurve$y <- mycurve$y[mycurveOrder]
+  polygon(c(mycurve$x,rev(mycurve$x)), c(mycurve$y+10, rev(mycurve$y-10)), col=rgb(.7,.7,.7,.2), border=NA) 
+  abline(h=0)
+  plot(Lin.lm$fitted.values,Lin.lm$residuals, pch=20, 
+       xlab="Fitted Values", ylab="Residuals", 
+       main="Good: Linear, Constant Variance", 
+       cex.main=0.95, xaxt='n', yaxt='n', col="skyblue")
+  abline(h=0)
+
+  set.seed(6)
+notCon <- data.frame(X = X, Y = 5+1.8*X + rnorm(30,2,X^1.5))
+notCon.lm <- lm(Y~X, data=notCon)
+LinO <- data.frame(X=X, Y = 5+1.8*X+rnorm(30,2,1.3))
+LinO[1] <- LinO[1]^2
+LinO.lm <- lm(Y~X, data=LinO)
+  plot(notCon.lm$fitted.values,notCon.lm$residuals, pch=20, xlab="Fitted Values", ylab="Residuals", main="Unconstant Variance", cex.main=0.95, yaxt='n', xaxt='n', col="firebrick")
+  polygon(c(rep(min(notCon.lm$fit),2), rep(max(notCon.lm$fit), 2)), c(-30,30,1.2*max(notCon.lm$res),1.2*min(notCon.lm$res)), col=rgb(.7,.7,.7,.2), border=NA) 
+  abline(h=0)
+#  plot(LinO.lm$fitted.values,LinO.lm$residuals, pch=20, xlab="Fitted Values", ylab="Residuals", main="Outliers", cex.main=0.95)
+#  abline(h=0)
+
+  
+  tmp <- lm(height ~ age, data=Loblolly)
+  plot(tmp$residuals ~ tmp$fitted.values, pch=20,
+       xlab="Fitted Values", ylab="Residuals", 
+       main="", cex.main=0.95,
+       xaxt='n', yaxt='n', col="firebrick")
+  mycurve <- lowess(tmp$fitted.values,tmp$residuals)
+  mycurveOrder <- order(mycurve$x)
+  mycurve$x <- mycurve$x[mycurveOrder]
+  mycurve$y <- mycurve$y[mycurveOrder]
+  polygon(c(mycurve$x,rev(mycurve$x)), c(mycurve$y+3, rev(mycurve$y-1)), col=rgb(.7,.7,.7,.2), border=NA) 
+  abline(h=0)
+  
+  tmp <- lm(Girth ~ Volume, data=trees[-31,])
+  plot(tmp$residuals ~ tmp$fitted.values, pch=20,
+       xlab="Fitted Values", ylab="Residuals", 
+       main="", cex.main=0.95,
+       xaxt='n', yaxt='n', col="skyblue")
+  abline(h=0)
+
+  tmp <- lm(Height ~ Volume, data=trees)
+  plot(tmp$residuals ~ tmp$fitted.values, pch=20,
+       xlab="Fitted Values", ylab="Residuals", 
+       main="", cex.main=0.95,
+       xaxt='n', yaxt='n', col="firebrick")
+  polygon(c(rep(min(tmp$fit), 2), max(tmp$fit)), c(1.3*max(tmp$res),1.2*min(tmp$res),0), col=rgb(.8,.8,.8,.2), border=NA) 
+  abline(h=0)
+  
+  
+  
+  
+  tmp <- lm(mpg ~ disp, data=mtcars)
+  plot(tmp$residuals ~ tmp$fitted.values, pch=20,
+       xlab="Fitted Values", ylab="Residuals", 
+       main="", cex.main=0.95,
+       xaxt='n', yaxt='n', col="firebrick")
+  mycurve <- lowess(tmp$fitted.values,tmp$residuals, f=.4)
+  mycurveOrder <- order(mycurve$x)
+  mycurve$x <- mycurve$x[mycurveOrder]
+  mycurve$y <- mycurve$y[mycurveOrder]
+  polygon(c(mycurve$x,rev(mycurve$x)), c(mycurve$y+3.5, rev(mycurve$y-2)), col=rgb(.7,.7,.7,.2), border=NA) 
+  abline(h=0) 
+  
+  
+  tmp <- lm(weight ~ repwt, data=Davis[-12,])
+  plot(tmp$residuals ~ tmp$fitted.values, pch=20,
+       xlab="Fitted Values", ylab="Residuals", 
+       main="", cex.main=0.95,
+       xaxt='n', yaxt='n', col="skyblue")
+  abline(h=0) 
+
+  tmp <- lm(weight ~ repht, data=Davis[-12,])
+  plot(tmp$residuals ~ tmp$fitted.values, pch=20,
+       xlab="Fitted Values", ylab="Residuals", 
+       main="", cex.main=0.95,
+       xaxt='n', yaxt='n', col="firebrick")
+  polygon(c(min(tmp$fit),rep(max(tmp$fit), 2)), c(2,max(tmp$res),1.6*min(tmp$res)), col=rgb(.85,.85,.85,.2), border=NA) 
+  abline(h=0) 
+  
+```
+
+
+</div>
+
+
+<br />
+
+##### Q-Q Plot of the Residuals: Checks Assumption \#2
+
+<table width=90%>
+<tr><td with=15%>
+```{r, fig.height=1.25, fig.width=1.5, echo=FALSE}
+par(mai=c(.3,.3,0,.2), mgp=c(.2,0,0))
+qqnorm(tmp0, pch=20, cex=0.5, 
+       xaxt='n', yaxt='n',
+       cex.lab = 0.7, main="")
+qqline(tmp0)
+```
+</td>
+<td width=75%>
+
+The normality of the error terms can be assessed by considering a normal probability plot (Q-Q Plot) of the residuals. If the residuals appear to be normal, then the error terms are also considered to be normal. If the residuals do not appear to be normal, then the error terms are also assumed to violate the normality assumption.
+
+
+ | <a href="javascript:showhide('qqplots')" style="font-size:.8em;color:steelblue2;">Show Examples</a> |
+
+</td>
+</tr>
+</table>
+
+<div id="qqplots" style="display:none;">
+
+<a href="javascript:showhide('qqplotsread')" style="font-size:.8em;color:skyblue;">(Read more...)</a>
+
+<div id="qqplotsread" style="display:none;">
+
+
+There are four main trends that occur in a normal probability plot. Examples of each are plotted below with a histogram of the data next to the normal probability plot.
+
+Often the plot is called a Q-Q Plot, which stands for quantile-quantile plot. The idea is to compare the observed distribution of data to what the distribution should look like in theory if it was normal. Q-Q Plots are more general than normal probability plots because they can be used with any theoretical distribution, not just the normal distribution.  
+
+</div>
+
+```{r}
+
+par(mfrow=c(2,2),  mai=c(.5,.5,.25,.25), mgp=c(1,.75,0))
+
+set.seed(123)
+
+  tmp <- rnorm(100)
+  qqnorm(tmp, pch=20, ylab="Observed", xaxt='n', yaxt='n', col="skyblue")
+  qqline(tmp)
+  hist(tmp, xlab="", xaxt='n', yaxt='n', main="Normal", col="skyblue")
+  
+  tmp <- Davis$weight
+  qqnorm(tmp, pch=20, ylab="Observed", xaxt='n', yaxt='n', col="firebrick")
+  qqline(tmp)
+  hist(tmp, xlab="", xaxt='n', yaxt='n', main="Right-skewed",
+       breaks=15, col="firebrick")
+  
+par(mfrow=c(2,2),  mai=c(.5,.5,.25,.25), mgp=c(1,.75,0))
+
+  tmp <- rbeta(100, 5,1)
+  qqnorm(tmp, pch=20, ylab="Observed", xaxt='n', yaxt='n', col="firebrick")
+  qqline(tmp)
+  hist(tmp, xlab="", xaxt='n', yaxt='n', main="Left-skewed",
+       breaks=seq(min(tmp),max(tmp), length.out=13), col="firebrick")
+  
+  tmp <- rbeta(100,2,2)
+  qqnorm(tmp, pch=20, ylab="Observed", xaxt='n', yaxt='n', col="firebrick")
+  qqline(tmp)
+  hist(tmp, xlab="", xaxt='n', yaxt='n', main="Heavy-tailed", col="firebrick")
+
+  
+  
+```
+
+</div>
+
+
+<br />
+
+##### Residuals versus Order Plot: Checks Assumption \#5
+
+<table width=90%>
+<tr><td with=15%>
+```{r, fig.height=1.25, fig.width=1.5, echo=FALSE}
+par(mai=c(.3,.3,0,.2), mgp=c(.2,0,0))
+plot(tmp0, pch=20, cex=0.5, 
+       xaxt='n', yaxt='n',
+       cex.lab = 0.7, main="", ylab="Residuals", xlab="Order")
+abline(h=0, lty=3, col='gray')
+```
+</td>
+<td width=75%>
+
+When the data is collected in a specific order, or has some other important ordering to it, then the independence of the error terms can be assessed. This is typically done by plotting the residuals against their order of occurrance. If any dramatic trends are visible in the plot, then the independence assumption is violated. 
+
+ | <a href="javascript:showhide('resorderplots')" style="font-size:.8em;color:steelblue2;">Show Examples</a> |
+
+</td>
+</tr>
+</table>
+
+<div id="resorderplots" style="display:none;">
+
+<a href="javascript:showhide('resorderplotsread')" style="font-size:.8em;color:skyblue;">(Read more...)</a>
+
+<div id="resorderplotsread" style="display:none;">
+
+Plotting the residuals against the order in which the data was collected provides insight as to whether or not the observations can be considered independent. If the plot shows no trend, then the error terms are considered independent and the regression assumption satisfied. If there is a visible trend in the plot, then the regression assumption is likely violated.
+
+</div>
+
+```{r}
+par(mfrow=c(2,2),  mai=c(.5,.5,.25,.25), mgp=c(1,.75,0))
+
+  tmp <- lm(mpg ~ disp, data=mtcars)
+  plot(tmp$residuals, pch=20,
+       xlab="Order", ylab="Residuals", 
+       main="Good: No Trend", cex.main=0.95,
+       xaxt='n', yaxt='n', col="skyblue")
+
+  tmp <- lm(height ~ age, data=Loblolly)
+  plot(tmp$residuals, pch=20,
+       xlab="Order", ylab="Residuals", 
+       main="Questionable: General Trend", cex.main=0.95,
+       xaxt='n', yaxt='n', col="orangered")
+
+  tmp <- lm(hp ~ qsec, data=mtcars)
+  plot(tmp$residuals, pch=20,
+       xlab="Order", ylab="Residuals", 
+       main="Questionable: Interesting Patterns", cex.main=0.95,
+       xaxt='n', yaxt='n', col="orangered")
+  
+  tmp <- lm(hp ~ drat, data=mtcars[order(mtcars$cyl),])
+  plot(tmp$residuals, pch=20,
+       xlab="Order", ylab="Residuals", 
+       main="Bad: Obvious Trend", cex.main=0.95,
+       xaxt='n', yaxt='n', col="firebrick")
+  
+```
+
+
+</div>
+
+</div>
+
+<br />
+
+</div>
+
+<br />
+
+
+#### Assessing the Fit of a Regression  <a href="javascript:showhide('assessingthefit')" style="font-size:.6em;color:skyblue;">(Expand)</a>
+
+<span class="expand-caption">$R^2$, SSTO, SSR, and SSE...</span>
+
+<div id="assessingthefit" style="display:none;">
+
+Not all regressions are created equally as the three plots below show. Sometimes the dots are a clustered very tightly to the line. At other times, the dots spread out fairly dramatically from the line.
+
+```{r, fig.height=2}
+par(mfrow=c(1,3), mai=c(.1,.1,.5,.1))
+set.seed(2)
+x <- runif(30,0,20)
+y1 <- 2 + 3.5*x + rnorm(30,0,2)
+y2 <- 2 + 3.5*x + rnorm(30,0,8)
+y3 <- 2 + 3.5*x + rnorm(30,0,27)
+plot(y1 ~ x, pch=16, col="darkgray", xlim=c(-1,21), yaxt='n', xaxt='n', ylim=c(-10,100), main="Excellent Fit")
+abline(lm(y1 ~ x), col="gray")
+plot(y2 ~ x, pch=16, col="darkgray", xlim=c(-1,21), yaxt='n', xaxt='n', ylim=c(-10,100), main="Good Fit")
+abline(lm(y2 ~ x), col="gray")
+plot(y3 ~ x, pch=16, col="darkgray", xlim=c(-1,21), yaxt='n', xaxt='n', ylim=c(-10,100), main="Poor Fit")
+abline(lm(y3 ~ x), col="gray")
+```
+
+A common way to measure the fit of a regression is with [correlation](NumericalSummaries.html#correlation). While this can be a useful measurement, there is greater insight in using the square of the correlation, called $R^2$. Before you can understand $R^2$, you must understand three important "sums of squares".
+
+<div style="padding-left:30px;">
+<a href="javascript:showhide('sumsofsquaresread')" style="font-size:.8em;color:skyblue;">(Read more about sums...)</a>
+
+<div id="sumsofsquaresread" style="display:none;">
+
+A sum is just a fancy word for adding things together.
+$$
+  1 + 2 + 3 + 4 + 5 + 6 = 21
+$$
+
+Long sums get tedious to write out by hand. So we use the symbol $\Sigma$ to denote the word "sum". Further, we use a subscript $\Sigma_{i=1}$ to state what value the sum is beginning with, and a superscript $\Sigma_{i=1}^6$ to state the value we are ending at. This gives
+$$
+  \sum_{i=1}^6 i = 1 + 2 + 3 + 4 + 5 + 6 = 21
+$$
+
+Test your knowledge, do you see why the answer is 6 to the sum below?
+$$
+  \sum_{i=1}^3 i = 6
+$$
+
+Computing sums in R is fairly easy. Type the following codes in your R Console.
+
+`sum(1:6) #gives the answer of 21`
+
+`sum(1:3) #gives the answer of 6`
+  
+However, sums really become useful when used with a data set. 
+
+Each row of a data set represents an "individual's" data. We can reference each individual with a row number. In the data below, individual 3, denoted by $i=3$, has a `speed` of 7 and a `dist` of 3.
+
+```{r}
+pander(head(cbind(Individual = 1:50, cars), 6), emphasize.strong.rows=3)
+```
+
+To compute the sum of the **speed** column, use `sum(speed)`. If we divided this sum by 6, we would get the mean of speed `mean(speed)`. In fact, the two most used statistics `mean(...)` and `sd(...)` both use sums. Take a moment to review the formulas for [mean](NumericalSummaries.html#mean) and [standard deviation](NumericalSummaries.html#standard-deviation). It is strongly recommended that you study the Explanation tab for both as well. We'll wait. See you back here shortly.
+
+...
+
+Welcome back.
+
+Suppose we let `X = speed` and `Y = dist`. Then $X_3 = 7$ and $Y_3 = 4$ because we are accessing row 3 of both the $X$ (or speed) column and $Y$ (or dist) column. (Remember from the above discussion that for individual \#3, the speed was 7 and the dist was 4.) Further, `sum(speed)` would be written mathematically as $\sum_{i=1}^6 X_i$ and `sum(dist)` would be written as $\sum_{i=1}^6 X_i$.
+
+
+
+</div>
+</div>
+
+
+| **Sum of Squared Errors** | **Sum of Squares Regression** | **Total Sum of Squares** |
+|---------------------------|-------------------------------|--------------------------|
+| $\text{SSE} = \sum_{i=1}^n \left(Y_i - \hat{Y}_i\right)^2$ | $\text{SSR} = \sum_{i=1}^n \left(\hat{Y}_i - \bar{Y}\right)^2$ | $\text{SSTO} = \sum_{i=1}^n \left(Y_i - \bar{Y}\right)^2$ |
+|Measures how much the residuals deviate from the line. | Measures how much the regression line deviates from the average y-value. | Measures how much the y-values deviate from the average y-value.|
+| Equals SSTO - SSR | Equals SSTO - SSE | Equals SSE + SSR |
+| `sum( (Y - mylm$fit)^2 )` | `sum( (mylm$fit - mean(Y))^2 )` | `sum( (Y - mean(Y))^2 )` |
+| | | |
+
+```{r, echo=FALSE, fig.height=2.5}
+set.seed(19)
+x <- c(1, 2, 3, 4, 5, 6)
+sigma <- 0.9
+epsilon <- rnorm(6, 0, sigma)
+beta_0 <- 2
+beta_1 <- 0.35
+y <- beta_0 + beta_1*x + epsilon
+lmr <- lm(y ~ x)
+par(mfrow=c(1,3), mai=c(.01,.4,.4,.01))
+
+plot(y ~ x, pch=16, col="skyblue3", xlim=c(0,7), cex=2, yaxt='n', xaxt='n', xlab="", ylab="", main="SSE")
+for (i in 1:6){
+  lines(rep(x[i]-0.02, 2), c(y[i], sum(lmr$coef*c(1,x[i]-0.02))), col="skyblue", lty=1, lwd=3)  
+}
+points(y ~ x, pch=16, col="skyblue3", xlim=c(0,7), cex=2)
+abline(lmr, col="skyblue", lwd=2)
+
+plot(y ~ x, pch=16, col="gray100", xlim=c(0,7), cex=2, yaxt='n', xaxt='n', xlab="", ylab="", main="SSR")
+for (i in 1:6){
+  lines(rep(x[i]-0.06, 2), c(mean(y),sum(coef(lmr)*c(1,x[i]-0.06))), col="lightslategray", lty=1, lwd=2) 
+}
+abline(h=mean(y), col="gray", lty=2, lwd=2)
+abline(lmr, col="skyblue", lwd=2)
+
+plot(y ~ x, pch=16, col="skyblue3", xlim=c(0,7), cex=2, yaxt='n', xaxt='n', xlab="", ylab="", main="SSTO")
+for (i in 1:6){
+  lines(rep(x[i]+0.02, 2), c(mean(y),y[i]), col="gray", lty=2, lwd=2) 
+}
+abline(h=mean(y), col="gray", lty=2, lwd=2)
+
+
+
+```
+
+
+<hr style="border-color:#d5d5d5; border-style:solid;"/>
+
+```{r, echo=FALSE}
+set.seed(19)
+x <- c(1, 2, 3, 4, 5, 6)
+sigma <- 0.9
+epsilon <- rnorm(6, 0, sigma)
+beta_0 <- 2
+beta_1 <- 0.35
+y <- beta_0 + beta_1*x + epsilon
+lmr <- lm(y ~ x)
+plot(y ~ x, pch=16, col="skyblue3", xlim=c(0,7), cex=2, yaxt='n', xaxt='n', xlab="", ylab="", main="Comparison of Sums of Squares")
+for (i in 1:6){
+  lines(rep(x[i]-0.02, 2), c(y[i], sum(lmr$coef*c(1,x[i]-0.02))), col="skyblue", lty=1, lwd=3)  
+  lines(rep(x[i]+0.02, 2), c(mean(y),y[i]), col="gray", lty=2, lwd=2)  
+  lines(rep(x[i]-0.06, 2), c(mean(y),sum(coef(lmr)*c(1,x[i]-0.06))), col="lightslategray", lty=1, lwd=2) 
+}
+points(y ~ x, pch=16, col="skyblue3", xlim=c(0,7), cex=2)
+abline(lmr, col="skyblue", lwd=2)
+abline(h=mean(y), col="gray", lty=2, lwd=2)
+legend("topleft", bty='n', lwd=2, lty=c(1,2), legend=c(expression(hat(Y)), expression(bar(Y))), col=c("skyblue","gray"), text.col = c("skyblue","gray"))
+text(2,4.8, expression(SSE == sum((Y[i]-hat(Y)[i])^2, i==1, n)), col="skyblue", pos=1, cex=.8)
+text(2,4.4, expression(SSR == sum((hat(Y)[i]-bar(Y))^2, i==1, n)), col="lightslategray", pos=1, cex=.8)
+text(2,4, expression(SSTO == sum((Y[i]-bar(Y))^2, i==1, n)), col="darkgray", pos=1, cex=.8)
+
+```
+
+It is important to remember that SSE and SSR split up SSTO, so that
+$$
+  \text{SSTO} = \text{SSE} + \text{SSR}
+$$
+This implies that if SSE is large (close to SSTO) then SSR is small (close to zero) and visa versa. The following three graphics demonstrate how this works.
+
+```{r, echo=FALSE, fig.height=2.5}
+
+ymax <- 6
+set.seed(19)
+x <- c(1, 2, 3, 4, 5, 6)
+sigma <- 0.4
+epsilon <- rnorm(6, 0, sigma)
+beta_0 <- 2
+beta_1 <- 0.25
+Y <- beta_0 + beta_1*x + epsilon
+lmR <- lm(Y ~ x)
+
+
+
+par(mfrow=c(1,3), mai=c(.1,.1,.4,.1))
+y <- lmR$fitted.values + lmR$residuals*.8
+lmr <- lm(y ~ x)
+plot(y ~ x, pch=16, col="skyblue3", xlim=c(0,7), cex=2, yaxt='n', xaxt='n', xlab="", ylab="", main="SSE small SSR large", ylim=c(0,ymax))
+for (i in 1:6){
+  lines(rep(x[i]-0.02, 2), c(y[i], sum(lmr$coef*c(1,x[i]-0.02))), col="skyblue", lty=1, lwd=3)  
+  lines(rep(x[i]+0.02, 2), c(mean(y),y[i]), col="gray", lty=2, lwd=2)  
+}
+points(y ~ x, pch=16, col="skyblue3", xlim=c(0,7), cex=2)
+abline(lmr, col="skyblue", lwd=2)
+abline(h=mean(y), col="gray", lty=2, lwd=2)
+legend("topleft", bty='n', lwd=2, lty=c(1,2), legend=c(expression(hat(Y)), expression(bar(Y))), col=c("skyblue","gray"), text.col = c("skyblue","gray"))
+text(3,5.8, paste("SSE =", round(sum(lmr$res^2),2)), col="skyblue", pos=1, cex=.8)
+text(3,5.4, paste("SSR =", round(sum((lmr$fit - mean(y))^2),2)), col="lightslategray", pos=1, cex=.8)
+text(3,5, paste("SSTO =", round(sum((y - mean(y))^2),2)), col="lightslategray", pos=1, cex=.8)
+text(4,1, "Dots Close to Line", cex=1, col="darkgray")
+mtext(side=3, text="Excellent Fit", cex=0.7)
+
+
+y <- lmR$fitted.values + lmR$residuals*1.9
+lmr <- lm(y ~ x)
+plot(y ~ x, pch=16, col="skyblue3", xlim=c(0,7), cex=2, yaxt='n', xaxt='n', xlab="", ylab="", main="SSE medium SSR medium", ylim=c(0,ymax))
+for (i in 1:6){
+  lines(rep(x[i]-0.02, 2), c(y[i], sum(lmr$coef*c(1,x[i]-0.02))), col="skyblue", lty=1, lwd=3)  
+  lines(rep(x[i]+0.02, 2), c(mean(y),y[i]), col="gray", lty=2, lwd=2)  
+}
+points(y ~ x, pch=16, col="skyblue3", xlim=c(0,7), cex=2)
+abline(lmr, col="skyblue", lwd=2)
+abline(h=mean(y), col="gray", lty=2, lwd=2)
+legend("topleft", bty='n', lwd=2, lty=c(1,2), legend=c(expression(hat(Y)), expression(bar(Y))), col=c("skyblue","gray"), text.col = c("skyblue","gray"))
+text(3,5.8, paste("SSE =", round(sum(lmr$res^2),2)), col="skyblue", pos=1, cex=.8)
+text(3,5.4, paste("SSR =", round(sum((lmr$fit - mean(y))^2),2)), col="lightslategray", pos=1, cex=.8)
+text(3,5, paste("SSTO =", round(sum((y - mean(y))^2),2)), col="lightslategray", pos=1, cex=.8)
+text(4,1, "Dots Somewhat Away from Line", cex=1, col="darkgray")
+mtext(side=3, text="Good Fit", cex=0.7)
+
+
+y <- lmR$fitted.values + lmR$residuals*4
+lmr <- lm(y ~ x)
+plot(y ~ x, pch=16, col="skyblue3", xlim=c(0,7), cex=2, yaxt='n', xaxt='n', xlab="", ylab="", main="SSE large SSR small", ylim=c(0,ymax))
+for (i in 1:6){
+  lines(rep(x[i]-0.02, 2), c(y[i], sum(lmr$coef*c(1,x[i]-0.02))), col="skyblue", lty=1, lwd=3)  
+  lines(rep(x[i]+0.02, 2), c(mean(y),y[i]), col="gray", lty=2, lwd=2)  
+}
+points(y ~ x, pch=16, col="skyblue3", xlim=c(0,7), cex=2)
+abline(lmr, col="skyblue", lwd=2)
+abline(h=mean(y), col="gray", lty=2, lwd=2)
+legend("topleft", bty='n', lwd=2, lty=c(1,2), legend=c(expression(hat(Y)), expression(bar(Y))), col=c("skyblue","gray"), text.col = c("skyblue","gray"))
+text(3,5.8, paste("SSE =", round(sum(lmr$res^2),2)), col="skyblue", pos=1, cex=.8)
+text(3,5.4, paste("SSR =", round(sum((lmr$fit - mean(y))^2),2)), col="lightslategray", pos=1, cex=.8)
+text(3,5, paste("SSTO =", round(sum((y - mean(y))^2),2)), col="lightslategray", pos=1, cex=.8)
+text(4,1, "Dots Far from Line", cex=1, col="darkgray")
+mtext(side=3, text="Poor Fit", cex=0.7)
+
+```
+
+The above graphs reveal that the idea of correlation is tightly linked with sums of squares. In fact, the correlation squared is equal to SSR/SSTO. And this fraction, SSR/SSTO is called $R^2$ ("r-squared"). 
+
+**R-Squared ($R^2$)**
+$$
+  \underbrace{R^2 = \frac{SSR}{SSTO} = 1 - \frac{SSE}{SSTO}}_\text{Interpretation: Proportion of variation in Y explained by the regression.}
+$$
+
+The smallest $R^2$ can be is zero, and the largest it can be is 1. This is because $SSR$ must be between 0 and SSTO, inclusive.
+
+</div>
+
+<br />
+
+
+
+
+
+#### Estimating the Model Parameters  <a href="javascript:showhide('estimatingparameters')" style="font-size:.6em;color:skyblue;" id="estMod">(Expand)</a>
+
+<span class="expand-caption">How to get $b_0$ and $b_1$: least squares & maximum likelihood...</span>
+
+<div id="estimatingparameters" style="display:none;">
+
+There are two approaches to estimating the parameters $\beta_0$ and $\beta_1$ in the regression model. The oldest and most tradiational approach is using the idea of least squares. A more general approach uses the idea of maximum likelihood (see below). Fortunately, for simple linear regression, the estimates for $\beta_0$ and $\beta_1$ obtained from either method are identical. The estimates for the true parameter values $\beta_0$ and $\beta_1$ are typically denoted by $b_0$ and $b_1$, respectively, and are given by the following formulas.
+
+
+| Parameter Estimate | Mathematical Formula | R Code |
+|--------------------|----------------------|--------|
+| Slope | $b_1 = \frac{\sum X_i(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}$ | `b_1 <- sum( X*(Y - mean(Y)) ) / sum( (X - mean(X))^2 )`
+| Intercept   | $b_0 = \bar{Y} - b_1\bar{X}$ | `b_0 <- mean(Y) - b_1*mean(X)` |
+
+It is important to note that these estimates are entirely determined from the observed data $X$ and $Y$. When the regression equation is written using the estimates instead of the parameters, we use the notation $\hat{Y}$, which is the estimator of $E\{Y\}$. Thus, we write
+\begin{equation}
+  \hat{Y}_i = b_0 + b_1 X_i
+\end{equation}
+which is directly comparable to the true, but unknown values
+\begin{equation}
+  E\{Y_i\} = \beta_0 + \beta_1 X_i. 
+  \label{exp}
+\end{equation}
+
+
+##### Least Squares{#leastSquares}
+
+To estimate the model parameters $\beta_0$ and $\beta_1$ using least squares, we start by defining the function $Q$ as the sum of the squared errors, $\epsilon_i$.
+\[
+  Q = \sum_{i=1}^n \epsilon_i^2 = \sum_{i=1}^n (Y_i - (\beta_0 + \beta_1 X_i))^2
+\]
+Then we use the function Q as if it were a function of $\beta_0$ and $\beta_1$. Ironically, the values of $Y$ and $X$ are considered fixed. However, this makes sense because once a particular data set has been observed, these values are all known for that data set. What we don't know are the values of $\beta_0$ and $\beta_1$. 
+
+This [least squares applet](https://phet.colorado.edu/sims/html/least-squares-regression/latest/least-squares-regression_en.html) is a good way to explore how various choices of the slope and intercept yield different values of the "sum of squared residuals". But it turns out that there is one "best" choice of the slope and intercept that yields a "smallest" value of the "sum of squared residuals." This best choice can actually be found using calculus by taking the partial derivatives of $Q$ with respect to both $\beta_0$ and $\beta_1$. 
+\[
+  \frac{\partial Q}{\partial \beta_0} = -2\sum (Y_i - \beta_0 - \beta_1X_i)
+\]
+\[
+  \frac{\partial Q}{\partial \beta_1} = -2\sum X_i(Y_i-\beta_0-\beta_1X_i)
+\]
+Setting these partial derivatives to zero, and solving the resulting system of equations provides the values of the parameters which minimize $Q$ for a given set of data. After all the calculations are completed we find the values of the parameter estimators $b_0$ and $b_1$ (of $\beta_0$ and $\beta_1$, respectively) are as stated previously.
+
+
+
+##### Maximum Likelihood{#mle}
+
+The idea of maximum likelihood estimation is opposite that of least squares. Instead of choosing those values of $\beta_0$ and $\beta_1$ which minime the least squares $Q$ function, we choose the values of $\beta_0$ and $\beta_1$ which maximize the likelihood function. The likelihood function is created by first determining the joint distribution of the $Y_i$ for all observations $i=1,\ldots,n$. We can do this rather simply by using the assumption that the errors, $\epsilon_i$ are independently normally distributed. When events are independent, their joint probability is simply the product of their individual probabilities. Thus, if $f(Y_i)$ denotes the probability density function for $Y_i$, then the joint probability density for all $Y_i$, $f(Y_1,\ldots,Y_n)$ is given by
+\[
+  f(Y_1,\ldots,Y_n) = \prod_{i=1}^n f(Y_i) 
+\]
+Since each $Y_i$ is assumed to be normally distributed with mean $\beta_0 + \beta_1 X_i$ and variance $\sigma^2$ (see model (\ref{model})) we have that
+\[
+  f(Y_i) = \frac{1}{\sqrt{2\pi}\sigma}\exp{\left[-\frac{1}{2}\left(\frac{Y_i-\beta_0-\beta_1X_i}{\sigma}\right)^2\right]}
+\]
+which provides the joint probability as
+\[
+  f(Y_1,\ldots,Y_n) = \prod_{i=1}^n f(Y_i) = \frac{1}{(2\pi\sigma^2)^{n/2}}\exp{\left[-\frac{1}{2\sigma^2}\sum_{i=1}^n(Y_i-\beta_0-\beta_1X_i)^2\right]}
+\]
+The likelihood function $L$ is then given by consider the $Y_i$ and $X_i$ fixed and the parameters $\beta_0$, $\beta_1$ and $\sigma^2$ as the variables in the function. 
+\[
+  L(\beta_0,\beta_1,\sigma^2) = \frac{1}{(2\pi\sigma^2)^{n/2}}\exp{\left[-\frac{1}{2\sigma^2}\sum_{i=1}^n(Y_i-\beta_0-\beta_1X_i)^2\right]}
+\]
+Instead of taking partial derivatives of $L$ directly (with respect to all parameters) we take the partial derivatives of the $\log$ of $L$, which is easier to work with. In a similar, but more difficult calculation, to that of minimizing $Q$, we obtain the values of $\beta_0$, $\beta_1$, and $\sigma^2$ which maximize the log of $L$, and which therefore maximize $L$. (This is not an obvious result, but can be verified after some intense calculations.) The additional result that maximimum likelihood estimation provides that the least squares estimates did not give us is the estimate $\hat{\sigma}^2$ of $\sigma^2$.
+\[
+  \hat{\sigma}^2 = \frac{\sum(Y_i-\hat{Y}_i)^2}{n}
+\]
+
+</div>
+
+<br />
+
+
+
+
+
+#### Estimating the Model Variance  <a href="javascript:showhide('estimatingvariance')" style="font-size:.6em;color:skyblue;" id="varEst">(Expand)</a>
+
+<span class="expand-caption">Estimating $\sigma^2$ with MSE...</span>
+
+<div id="estimatingvariance" style="display:none;">
+
+As shown previously, we can obtain estimates for the model parameters $\beta_0$ and $\beta_1$ with either least squares estimation or maximum likelihood estimation. It turns out that these estimates for $\beta_0$ and $\beta_1$ are nice in the sense that on average they provide the correct estimate of the true parameter, i.e., they are unbiased estimators. On the other hand, the maximum likelihood estimate $\hat{\sigma}^2$ of the model variance $\sigma^2$ is a biased estimator. It is consistently wrong in its estimates of $\sigma^2$. Without going into all the details, $\hat{\sigma}^2$ is a biased estimator of $\sigma^2$ because its denominator needs to represent the degrees of freedom associated with the numerator. Since $\hat{Y}_i$ in the numerator of $\hat{\sigma}^2$ is defined by
+\begin{equation}
+  \hat{Y}_i = b_0 + b_1X_i
+  \label{hatY}
+\end{equation}
+it follows that two means, $\bar{X}$ and $\bar{Y}$, must be estimated from the data to obtain $\hat{Y}_i$, see formulas (\ref{bO}) and (\ref{bI}) for details. Anytime a mean is estimated from the data we lose a degree of freedom. Hence, the denominator for $\hat{\sigma}^2$ should be $n-2$ instead of $n$. Some incredibly long calculations will show that the estimator
+\begin{equation}
+  s^2 = MSE = \frac{\sum(Y_i-\hat{Y}_i)^2}{n-2}
+\end{equation}
+is an unbiased estimator of $\sigma^2$. Here $MSE$ stands for mean squared error, which is the most obvious name for a formula that squares the errors $Y_i-\hat{Y}_i$ then adds them up and divides by their degrees of freedom. Similarly, we call the numerator $\sum(Y_i-\hat{Y}_i)^2$ the sum of the squared errors, denoted by $SSE$. It is also important to note that the errors are often denoted by $e_i = Y_i-\hat{Y}_i$. Putting this all together we get the following equivalent statements for $MSE$.
+\begin{equation}
+  s^2 = MSE = \frac{SSE}{n-2} = \frac{\sum(Y_i-\hat{Y}_i)^2}{n-2} = \frac{\sum e_i^2}{n-2}
+\end{equation}
+As a final note, even though the $E\{MSE\} = \sigma^2$, $MSE$ is an unbiased estimator of $\sigma^2$, it unfortunately isn't true that $\sqrt{MSE}$ is an unbiased estimator of $\sigma$. This presents a few problems later on.
+
+</div>
+
+<br />
+
+
+
+
+
+#### Inference for the Model Parameters <a href="javascript:showhide('inference1')" style="font-size:.6em;color:skyblue;" id="infModelParam">(Expand)</a>
+
+<span class="expand-caption">t test formulas, sampling distributions, confidence intervals, and F tests...</span>
+
+<div id="inference1" style="display:none;">
+
+Most inference in regression is focused on the slope, $\beta_1$. Recall that the interpretation of $\beta_1$ is the amount of increase (or decrease) in the expected value of $Y$ per unit change in $X$. There are three main scenarios where inference about the slope is of interest.
+
+1. Determine if there is evidence of a meaningful linear relationship in the data. If $\beta_1 = 0$, then there is no relation between $X$ and $E\{Y\}$. Hence we might be interested in testing the hypotheses
+$$
+  H_0: \beta_1 = 0
+$$
+$$
+  H_a: \beta_1 \neq 0 
+$$
+
+2. Determine if the slope is greater, less than, or different from some other hypothesized value. In this case, we would be interested in using hypotheses of the form
+$$
+  H_0: \beta_1 = \beta_{10}
+$$
+$$
+  H_a: \beta_1 \neq \beta_{10} 
+$$
+where $\beta_{10}$ is some hypothesized number.
+
+3. To provide a confidence interval for the true value of $\beta_1$.
+
+<br />
+
+Before we discuss how to test the hypotheses listed above or construct a confidence interval, we must understand the **sampling distribution** of the estimate $b_1$ of the parameter $\beta_1$. And, while we are at it, we may as well come to understand the sampling distribution of the estimate $b_0$ of the parameter $\beta_0$. 
+
+<div style="padding-left:30px;color:darkgray;font-size:.8em;">
+Review [sampling distributions](http://statistics.byuimath.com/index.php?title=Lesson_6:_Distribution_of_Sample_Means_%26_The_Central_Limit_Theorem#Introduction_to_Sampling_Distributions) from Math 221.
+</div>
+
+Since $b_1$ is an estimate, it will vary from sample to sample, even though the truth, $\beta_1$, remains fixed. (The same holds for $b_0$ and $\beta_0$.) It turns out that the sampling distribution of $b_1$ (where the $X$ values remain fixed from study to study) is normal with mean and variance:
+$$
+  \mu_{b_1} = \beta_1
+$$
+$$
+  \sigma^2_{b_1} = \frac{\sigma^2}{\sum(X_i-\bar{X})^2}
+$$
+
+
+```{r}
+## Simulation to Show relationship between Standard Errors
+
+##-----------------------------------------------
+## Edit anything in this area... 
+
+n <- 100 #sample size
+Xstart <- 30 #lower-bound for x-axis
+Xstop <- 100 #upper-bound for x-axis
+
+beta_0 <- 2 #choice of true y-intercept
+beta_1 <- 3.5 #choice of true slope
+sigma <- 13.8 #choice of st. deviation of error terms
+
+## End of Editable area.
+##-----------------------------------------------
+
+
+# Create X, which will be used in the next R-chunk.
+X <- rep(seq(Xstart,Xstop, length.out=n/2), each=2) 
+
+## After playing this chunk, play the next chunk as well.
+```
+
+To see that this is true, consider the regression model with values specified for each parameter as follows.
+
+$$
+  Y_i = \overbrace{\beta_0}^{`r beta_0`} + \overbrace{\beta_1}^{`r beta_1`} X_i + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \overbrace{\sigma^2}^{\sigma=`r sigma`})
+$$
+
+Using the equations above for $\mu_{b_1}$ and $\sigma^2_{b_1}$ we obtain that the mean of the sampling distribution of $b_1$ will be 
+
+$\mu_{b_1} = \beta_1 = `r beta_1`$ 
+
+Further, we see that the variance of the sampling distribution of $b_1$ will be 
+
+$\sigma^2_{b_1} = \frac{\sigma^2}{\sum(X_i-\bar{X})^2} = \frac{`r sigma`^2}{`r sum((X-mean(X))^2)`}$ 
+
+Taking the square root of the variance, the standard deviation of the sampling distribution of $b_1$ will be 
+
+$\sigma_{b_1} = `r round(sqrt(sigma^2/sum((X-mean(X))^2)),3)`$.
+
+That's very nice. But to really believe it, let's run a simulation ourselves. The "Code" below is worth studying. It runs a simulation that (1) takes a sample of data from the true regression relation, (2) fits the sampled data with an estimated regression equation (gray lines in the plot), and (3) computes the estimated values of $b_1$ and $b_0$ for that regression. 
+
+After doing this many, many times, the results of every single regression are plotted (in gray lines, which creates a gray shaded region because there are so many lines) in the scatterplot below. Further, each obtained estimate of $b_0$ is plotted in the histogram on the left (below the scatterplot) and each obtained estimate of $b_1$ is plotted in the histogram on the right. Looking at the histograms carefully, it can be seen that the mean of each histogram is very close to the true parameter value of $\beta_0$ or $\beta_1$, respectively. Also, the "Std. Error" of each histogram is incredibly close (if not exact to 3 decimal places) to the computed value of $\sigma_{b_0}$ and $\sigma_{b_1}$, respectively. Amazing!
+
+
+```{r, fig.height=10, fig.width=8}
+N <- 5000 #number of times to pull a random sample
+storage_b0 <- storage_b1 <- storage_rmse <- rep(NA, N)
+for (i in 1:N){
+  Y <- beta_0 + beta_1*X + rnorm(n, 0, sigma) #Sample Y from true model
+  mylm <- lm(Y ~ X)
+  storage_b0[i] <- coef(mylm)[1]
+  storage_b1[i] <- coef(mylm)[2]
+  storage_rmse[i] <- summary(mylm)$sigma
+}
+
+
+layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE), widths=c(2,2), heights=c(3,3))
+
+Ystart <- 0 #min(0,min(Y)) 
+Ystop <- 500 #max(max(Y), 0)
+Yrange <- Ystop - Ystart
+
+plot(Y ~ X, xlim=c(min(0,Xstart-2), max(0,Xstop+2)), 
+     ylim=c(Ystart, Ystop), pch=16, col="gray",
+     main="Regression Lines from many Samples (gray lines) \n Plus Residual Standard Deviation Lines (green lines)")
+text(Xstart, Ystop, bquote(sigma == .(sigma)), pos=1)
+text(Xstart, Ystop-.1*Yrange, bquote(sum ((x[i]-bar(x))^2, i==1, n) == .(var(X)*(n-1))), pos=1)
+text(Xstart, Ystop-.25*Yrange, bquote(sqrt(MSE) == .(mean(storage_rmse))), pos=1)
+
+
+for (i in 1:N){
+  abline(storage_b0[i], storage_b1[i], col="darkgray")  
+}
+abline(beta_0, beta_1, col="green", lwd=3)
+abline(beta_0+sigma, beta_1, col="green", lwd=2)
+abline(beta_0-sigma, beta_1, col="green", lwd=2)
+abline(beta_0+2*sigma, beta_1, col="green", lwd=1)
+abline(beta_0-2*sigma, beta_1, col="green", lwd=1)
+abline(beta_0+3*sigma, beta_1, col="green", lwd=.5)
+abline(beta_0-3*sigma, beta_1, col="green", lwd=.5)
+
+par(mai=c(1,.6,.5,.01))
+
+  addnorm <- function(m,s, col="firebrick"){
+    curve(dnorm(x, m, s), add=TRUE, col=col, lwd=2)
+    lines(c(m,m), c(0, dnorm(m,m,s)), lwd=2, col=col)
+    lines(rep(m-s,2), c(0, dnorm(m-s, m, s)), lwd=2, col=col)
+    lines(rep(m-2*s,2), c(0, dnorm(m-2*s, m, s)), lwd=2, col=col)
+    lines(rep(m-3*s,2), c(0, dnorm(m-3*s, m, s)), lwd=2, col=col)
+    lines(rep(m+s,2), c(0, dnorm(m+s, m, s)), lwd=2, col=col)
+    lines(rep(m+2*s,2), c(0, dnorm(m+2*s, m, s)), lwd=2, col=col)
+    lines(rep(m+3*s,2), c(0, dnorm(m+3*s, m, s)), lwd=2, col=col)
+    legend("topleft", legend=paste("Std. Error = ", round(s,3)), cex=0.7, bty="n")
+  }
+
+  h0 <- hist(storage_b0, 
+             col="skyblue3", 
+             main="Sampling Distribution\n Y-intercept",
+             xlab=expression(paste("Estimates of ", beta[0], " from each Sample")),
+             freq=FALSE, yaxt='n', ylab="")
+  m0 <- mean(storage_b0)
+  s0 <- sd(storage_b0)
+  addnorm(m0,s0, col="green")
+  
+  h1 <- hist(storage_b1, 
+             col="skyblue3", 
+             main="Sampling Distribution\n Slope",
+             xlab=expression(paste("Estimates of ", beta[1], " from each Sample")),
+             freq=FALSE, yaxt='n', ylab="")
+  m1 <- mean(storage_b1)
+  s1 <- sd(storage_b1)
+  addnorm(m1,s1, col="green")
+
+
+
+```
+
+
+<div style="padding-left:15px;">
+
+##### t Tests{#tTests}
+
+Using the information above about the sampling distributions of $b_1$ and $b_0$, an immediate choice of statistical test to test the hypotheses 
+$$
+  H_0: \beta_1 = \beta_{10} 
+$$
+$$
+  H_a: \beta_1 \neq \beta_{10} 
+$$
+where $\beta_{10}$ can be zero, or any other value, is a t test given by
+$$
+  t = \frac{b_1 - \beta_{10}}{s_{b_1}}
+$$
+where $s^2_{b_1} = \frac{MSE}{\sum(X_i-\bar{X})^2}$. (You may want to review the section "Estimating the Model Variance" of this file to know where MSE came from.) With quite a bit of work it has been shown that $t$ is distributed as a $t$ distribution with $n-2$ degrees of freedom. The nearly identical test statistic for testing
+$$
+  H_0: \beta_0 = \beta_{00}
+$$
+$$
+  H_a: \beta_0 \neq \beta_{00} 
+$$
+is given by
+$$
+  t = \frac{b_0 - \beta_{00}}{s_{b_0}}
+$$
+where $s^2_{b_0} = MSE\left[\frac{1}{n}+\frac{\bar{X}^2}{\sum(X_i-\bar{X})^2}\right]$. This version of $t$ has also been shown to be distributed as a $t$ distribution with $n-2$ degrees of freedom. 
+
+##### Confidence Intervals
+
+Creating a confidence interval for either $\beta_1$ or $\beta_0$ follows immediately from these results using the formulas
+$$
+  b_1 \pm t^*_{n-2}\cdot s_{b_1}
+$$
+$$
+  b_0 \pm t^*_{n-2}\cdot s_{b_0}
+$$
+where $t^*_{n-2}$ is the critical value from a t distribution with $n-2$ degrees of freedom corresponding to the chosen confidence level.
+
+<br />
+
+##### F tests{#Ftests}
+
+Another way to test the hypotheses
+$$
+  H_0: \beta_1 = \beta_{10}  \quad\quad \text{or} \quad\quad H_0: \beta_0 = \beta_{00}
+$$
+$$
+  H_a: \beta_1 \neq \beta_{10} \quad\quad \ \ \quad \quad H_a: \beta_0 \neq \beta_{00}
+$$
+is with an $F$ Test. One downside of the F test is that we cannot construct confidence intervals. Another is that we can only perform two-sided tests, we cannot use one-sided alternatives with an F test. The upside is that an $F$ test is very general and can be used in many places that a t test cannot. 
+
+In its most general form, the $F$ test partitions the sums of squared errors into different pieces and compares the pieces to see what is accounting for the most variation in the data. To test the hypothesis that $H_0:\beta_1=0$ against the alternative that $H_a: \beta_1\neq 0$, we are essentially comparing two models against each other. If $\beta_1=0$, then the corresponding model would be $E\{Y_i\} = \beta_0$. If $\beta_1\neq0$, then the model remains $E\{Y_i\}=\beta_0+\beta_1X_i$. We call the model corresponding to the null hypothesis the reduced model because it will always have fewer parameters than the model corresponding to the alternative hypothesis (which we call the full model). This is the first requirement of the $F$ Test, that the null model (reduced model) have fewer "free" parameters than the alternative model (full model). To demonstrate what we mean by "free" parameters, consider the following example. 
+
+Say we wanted to test the hypothesis that $H_0:\beta_1 = 2.5$ against the alternative that $\beta_1\neq2.5$. Then the null, or reduced model, would be $E\{Y_i\}=\beta_0+2.5X_i$. The alternative, or full model, would be $E\{Y_i\}=\beta_0+\beta_1X_i$. Thus, the null (reduced) model contains only one "free" parameter because $\beta_1$ has been fixed to be 2.5 and is no longer free to be estimated from the data. The alternative (full) model contains two "free" parameters, both are to be estimated from the data. The null (reduced) model must contain fewer free parameters than the alternative (full) model.
+
+Once the null and alternative models have been specified, the General Linear Test is performed by appropriately partitioning the squared errors into pieces corresponding to each model. In the first example where we were testing $H_0: \beta_1=0$ against $H_a:\beta_1\neq0$ we have the partition 
+$$
+  \underbrace{Y_i-\bar{Y}}_{Total} = \underbrace{\hat{Y}_i - \bar{Y}}_{Regression} + \underbrace{Y_i-\hat{Y}_i}_{Error}
+$$
+The reason we use $\bar{Y}$ for the null model is that $\bar{Y}$ is the unbiased estimator of $\beta_0$ for the null model, $E\{Y_i\} = \beta_0$. Thus we would compute the following sums of squares:
+$$
+  SSTO = \sum(Y_i-\bar{Y})^2
+$$
+$$
+  SSR = \sum(\hat{Y}_i-\bar{Y})^2
+$$
+$$
+  SSE = \sum(Y_i-\hat{Y}_i)^2
+$$
+and note that $SSTO = SSR + SSE$. Important to note is that $SSTO$ uses the difference between the observations $Y_i$ and the null (reduced) model. The $SSR$ uses the diffences between the alternative (full) and null (reduced) model. The $SSE$ uses the differences between the observations $Y_i$ and the alternative (full) model. From these we could set up a General $F$ table of the form
+
+| &nbsp; | Sum Sq | Df | Mean Sq | F Value |
+|--------|--------|----|---------|---------|
+| Model Error |  $SSR$ | $df_R-df_F$ | $\frac{SSR}{df_R-df_F}$ | $\frac{SSR}{df_R-df_F}\cdot\frac{df_F}{SSE}$ |
+|    Residual Error | $SSE$ | $df_F$ | $\frac{SSE}{df_F}$ | |
+|    Total Error | $SSTO$ | $df_R$ | | |
+
+</div>
+
+</div>
+
+<br />
+
+
+
+
+
+
+
+#### Transformations  <a href="javascript:showhide('transformations')" style="font-size:.6em;color:skyblue;">(Expand)</a>
+
+<span class="expand-caption">$Y'$, $X'$, and returning to the original space...</span>
+
+<div id="transformations" style="display:none;">
+
+Y transformations are denoted by y-prime, written $Y'$, and consist of raising $Y$ to some power called $\lambda$.
+
+$$
+  Y' = Y^\lambda \quad \text{(Y Transformation)}
+$$
+
+| Value of $\lambda$ | Transformation to Use  | R Code     |
+|:------------------:|------------------------|------------|
+| -2                 |  $Y' = Y^{-2} = 1/Y^2$ | `lm(Y^-2 ~ X)` |
+| -1                 |  $Y' = Y^{-1} = 1/Y$   | `lm(Y^-1 ~ X)` |
+|  0                 |  $Y' = \log(Y)$        | `lm(log(Y) ~ X)` |
+|  0.5               |  $Y' = \sqrt(Y)$       | `lm(sqrt(Y) ~ X)` |
+|  1                 |  $Y' = Y$              | `lm(Y ~ X)` |
+|  2                 |  $Y' = Y^2$            | `lm(Y^2 ~ X)` |
+
+Using "maximum-likelihood" estimation, the Box-Cox procedure can actually automatically detect the "optimal" value of $\lambda$ to consider for a Y-transformation. Keep in mind however, that simply accepting a suggested Y-transformation without considering the scatterplot and diagnostic plots first, is unwise.
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'ScatterplotView')">Scatterplot Recognition</button>
+  <button class="tablinks" onclick="openTab(event, 'BoxCoxView')">Box-Cox Suggestion</button>
+  <button class="tablinks" onclick="openTab(event, 'YTransExample')">An Example</button>
+</div>
+
+<div id="ScatterplotView" class="tabcontent" style="display:block;">
+  <p>
+  
+###### Scatterplot Recognition
+
+The following panel of scatterplots can give you a good feel for when to try different values of $\lambda$.
+
+```{r}
+set.seed(15)
+N <- 300
+X <- runif(N, 5, 50)
+Y <- 25 + 3.5*X + rnorm(N, 0, 20)
+
+Ya <- 1/sqrt(Y)   #1/Y^2   Lam = -2
+Yb <- 1/Y         #1/Y     Lam = -1
+Yc <- exp(.02*Y)  #log(Y)  Lam =  0
+Yd <- Y^2         #sqrt(Y) Lam =  0.5
+Ye <- Y           #Y       Lam =  1
+Yf <- sqrt(Y)     #Y^2     Lam =  2
+
+
+par(mfrow=c(2,3), mai=c(.4,.4,.3,.2), mgp=c(0.5,0.5,0))
+
+plot(Ya ~ X, main=expression(paste("Use ", lambda == -2)), ylab="Y in Original Units", pch=16, col="gray45", cex=0.9, yaxt='n', xaxt='n', xlab="X in Original Units")
+b <- coef(lm(Ya^-2 ~ X))
+curve(1/sqrt(b[1] + b[2]*x), add=TRUE, col="green", lwd=2)
+
+
+plot(Yb ~ X, main=expression(paste("Use ", lambda == -1)), ylab="Y in Original Units", pch=16, col="gray45", cex=0.9, yaxt='n', xaxt='n', xlab="X in Original Units")
+b <- coef(lm(Yb^-1 ~ X))
+curve(1/(b[1] + b[2]*x), add=TRUE, col="green", lwd=2)
+
+plot(Yc ~ X, main=expression(paste("Use ", lambda == 0, " i.e., log(...)")), ylab="Y in Original Units", pch=16, col="gray45", cex=0.9, yaxt='n', xaxt='n', xlab="X in Original Units")
+b <- coef(lm(log(Yc) ~ X))
+curve(exp(b[1] + b[2]*x), add=TRUE, col="green", lwd=2)
+
+
+plot(Yd ~ X, main=expression(paste("Use ", lambda == 0.5)), ylab="Y in Original Units", pch=16, col="gray45", cex=0.9, yaxt='n', xaxt='n', xlab="X in Original Units")
+b <- coef(lm(sqrt(Yd) ~ X))
+curve((b[1] + b[2]*x)^2, add=TRUE, col="green", lwd=2)
+
+plot(Ye ~ X, main=expression(paste("Use ", lambda == 1, " (No Transformation)")), ylab="Y in Original Units", pch=16, col="gray45", cex=0.9, yaxt='n', xaxt='n', xlab="X in Original Units")
+b <- coef(lm(Ye ~ X))
+curve((b[1] + b[2]*x), add=TRUE, col="green", lwd=2)
+
+plot(Yf ~ X, main=expression(paste("Use ", lambda == 2)), 
+ylab="Y in Original Units", pch=16, col="gray45", cex=0.9, yaxt='n', xaxt='n', xlab="X in Original Units")
+b <- coef(lm(Yf^2 ~ X))
+curve(sqrt(b[1] + b[2]*x), add=TRUE, col="green", lwd=2)
+
+```
+
+</p>
+</div>
+
+<div id="BoxCoxView" class="tabcontent">
+  <p>
+
+###### Box-Cox Suggestion
+
+
+The `boxCox(...)` function in `library(car)` can also be helpful on finding values of $\lambda$ to try.
+
+```{r}
+
+par(mfrow=c(2,3), mai=c(.4,.4,.3,.2), mgp=c(2,0.5,0))
+
+boxCox(lm(Ya ~ X))
+mtext(side=3, text=expression(paste("Use ", lambda == -2)), line=.5)
+
+boxCox(lm(Yb ~ X))
+mtext(side=3, text=expression(paste("Use ", lambda == -1)), line=.5)
+
+boxCox(lm(Yc ~ X))
+mtext(side=3, text=expression(paste("Use ", lambda == 0, " i.e., log(...)")), line=.5)
+
+boxCox(lm(Yd ~ X))
+mtext(side=3, text=expression(paste("Use ", lambda == 0.5)), line=.5)
+
+boxCox(lm(Ye ~ X))
+mtext(side=3, text=expression(paste("Use ", lambda == 1, " (No Transformation)")), line=.5)
+
+boxCox(lm(Yf ~ X))
+mtext(side=3, text=expression(paste("Use ", lambda == 2)), line=.5)
+
+```
+
+</p>
+</div>
+
+<div id="YTransExample" class="tabcontent">
+  <p>
+
+###### An Example
+
+Suppose $\lambda = 0.5$, so that $Y' = \sqrt{Y}$. 
+
+A regression is performed using `sqrt(Y)`:
+
+`cars.lm.t <- lm(sqrt(dist) ~ speed, data=cars)`
+
+`summary(cars.lm.t)` 
+
+|  &nbsp; |  Estimate |  Std. Error |  t value  |  Pr(>|t|) |
+|---------|-----------|-------------|-----------|----------|
+| **(Intercept)** |   1.277   |    0.4844    |  2.636    | 0.01126 |  
+|    **speed**    |    0.3224   |  0.02978    |  10.83   | 1.773e-14 |
+
+Then,
+
+$$
+  \hat{Y}_i' = 1.277 + 0.3224 X_i
+$$
+
+And replacing $\hat{Y}_i' = \sqrt{\hat{Y}_i}$ we have
+
+$$
+  \sqrt{\hat{Y}_i} = 1.277 + 0.3224 X_i
+$$
+
+Solving for $\hat{Y}_i$ gives
+
+$$
+  \hat{Y}_i = (1.277 + 0.3224 X_i)^2
+$$
+
+Which, using `curve((1.277 + 0.3224*x)^2, add=TRUE)` (see code for details) looks like this:
+
+```{r}
+plot(dist ~ speed, data=cars, pch=20, col="firebrick", cex=1.2, las=1,
+     xlab="Speed of the Vehicle (mph) \n the Moment the Brakes were Applied", ylab="Distance (ft) it took the Vehicle to Stop",
+     main="Don't Step in front of a Moving 1920's Vehicle...")
+mtext(side=3, text="...they take a few feet to stop.", cex=0.7, line=.5)
+legend("topleft", legend="Stopping Distance Experiment", bty="n")
+
+curve( (1.277 + 0.3224*x)^2, add=TRUE, col="firebrick")
+```
+
+
+  
+</p>
+</div>
+
+<br />
+
+##### X-Transformations
+
+X-transformations are more difficult to recognize than y-transformations. This is partially because there is no Box-Cox method to automatically search for them.
+
+The best indicator that you should consider an x-transformation is when the variance of the residuals is constant across all fitted-values, but linearity is clearly violated.
+
+The following panel of scatterplots can give you a good feel for when to try different values of an x-transformation.
+
+```{r}
+set.seed(15)
+N <- 300
+X <- runif(N, 5, 50)
+Y <- 25 + 3.5*X + rnorm(N, 0, 20)
+
+Xa <- 1/sqrt(X)   #1/X^2   Lam = -2
+Xb <- 1/X         #1/X     Lam = -1
+Xc <- exp(.02*X)  #log(X)  Lam =  0
+Xd <- X^2         #sqrt(X) Lam =  0.5
+Xe <- X           #X       Lam =  1
+Xf <- sqrt(X)     #X^2     Lam =  2
+
+
+par(mfrow=c(2,3), mai=c(.4,.4,.3,.2), mgp=c(0.5,0.5,0))
+
+plot(Y ~ Xa, main=expression(paste("Use ", X*minute == X^-2)), ylab="Y in Original Units", pch=16, col="gray45", cex=0.9, yaxt='n', xaxt='n', xlab="X in Original Units")
+b <- coef(lm(Y ~ I(Xa^-2)))
+curve(b[1] + b[2]*x^-2, add=TRUE, col="green", lwd=2)
+
+
+plot(Y ~ Xb, main=expression(paste("Use ", X*minute == X^-1)), ylab="Y in Original Units", pch=16, col="gray45", cex=0.9, yaxt='n', xaxt='n', xlab="X in Original Units")
+b <- coef(lm(Y ~ I(Xb^-1)))
+curve(b[1] + b[2]*x^-1, add=TRUE, col="green", lwd=2)
+
+plot(Y ~ Xc, main=expression(paste("Use ", X*minute == log(X))), ylab="Y in Original Units", pch=16, col="gray45", cex=0.9, yaxt='n', xaxt='n', xlab="X in Original Units")
+b <- coef(lm(Y ~ log(Xc)))
+curve(b[1] + b[2]*log(x), add=TRUE, col="green", lwd=2)
+
+
+plot(Y ~ Xd, main=expression(paste("Use ", X*minute == sqrt(X))), ylab="Y in Original Units", pch=16, col="gray45", cex=0.9, yaxt='n', xaxt='n', xlab="X in Original Units")
+b <- coef(lm(Y ~ sqrt(Xd)))
+curve(b[1] + b[2]*sqrt(x), add=TRUE, col="green", lwd=2)
+
+plot(Y ~ Xe, main=expression(paste("Use ", X*minute == X, " (No Transformation)")), ylab="Y in Original Units", pch=16, col="gray45", cex=0.9, yaxt='n', xaxt='n', xlab="X in Original Units")
+b <- coef(lm(Y ~ Xe))
+curve((b[1] + b[2]*x), add=TRUE, col="green", lwd=2)
+
+plot(Y ~ Xf, main=expression(paste("Use ", X*minute == X^2)), 
+ylab="Y in Original Units", pch=16, col="gray45", cex=0.9, yaxt='n', xaxt='n', xlab="X in Original Units")
+b <- coef(lm(Y ~ I(Xf^2)))
+curve(b[1] + b[2]*x^2, add=TRUE, col="green", lwd=2)
+
+```
+
+
+
+</div>
+
+
+<br />
+
+
+#### Prediction and Confidence Intervals for $\hat{Y}_h$ <a href="javascript:showhide('predictionintervals')" style="font-size:.6em;color:skyblue;">(Expand)</a>
+
+<span class="expand-caption">predict(..., interval="prediction")... </span>
+
+<div id="predictionintervals" style="display:none;">
+It is a common mistake to assume that averages (means) describe individuals. They do not. So, when providing predictions on individuals, it is crucial to capture the variability of individuals around the line.
+
+| Interval | R Code | Math Equation | When to Use |
+|----------|--------|---------------|-------------|
+| Prediction | <span style="font-size:.8em;">`predict(..., interval="prediction")`</span> | $\hat{Y}_i \pm t^* \cdot s_{\text{Pred}\ Y}$ | Guess value for one observation |
+| Confidence | <span style="font-size:.8em;">`predict(..., interval="confidence")`</span> | $\hat{Y}_i \pm t^* \cdot s_{\hat{Y}}$ | Estimate location of mean y-value |
+
+`predict(mylm, data.frame(XvarName = number), interval=...)` 
+
+<br />
+<br />
+
+For example, consider this graph. Then <a href="javascript:showhide('predictionintervalsgraph')" style="color:skyblue;">click here</a>
+ to read about the graph.
+
+<div style="padding-left:30px;padding-right:30px;font-size:.9em;display:none;" id="predictionintervalsgraph">
+
+Notice the three dots above 15 mph in the graph. Each of these dots show a car that was going 15 mph when it applied the brakes. However, stopping distances of the three individual cars differ with one at 20 feet, one at 26 feet and one at 54 feet. 
+
+The regression line represents the average stopping distance of cars. In this case, cars going 15 mph are estimated to have an average stopping distance of about 40 feet, as shown by the line. But individual vehicles, all going the same speed of 15 mph, varied from stopping distances of 20 feet up to 54 feet! 
+
+So, to predict that a car going 15 mph will take 41.4 feet to stop, doesn't tell the whole story. Far more revealing is the complete statement, "Cars going 15 mph are predicted to take anywhere from 10.2 to 72.6 feet to stop, with an average stopping distance of 41.4 feet." This is called the "prediction interval" and is shown in the graph in blue. It is obtained in R with the codes:
+
+`cars.lm <- lm(dist ~ speed, data=cars)`
+
+`predict(cars.lm, data.frame(speed=15), interval="prediction")`
+
+```{r}
+cars.lm <- lm(dist ~ speed, data=cars)
+pander(predict(cars.lm, data.frame(speed=15), interval="prediction"))
+```
+
+
+</div>
+
+```{r}
+plot(dist ~ speed, data=cars, pch=20, col="firebrick", cex=1.2, las=1,
+     xlab="Speed of the Vehicle (mph) \n the Moment the Brakes were Applied", ylab="Distance (ft) it took the Vehicle to Stop",
+     main="Don't Step in front of a Moving 1920's Vehicle...")
+mtext(side=3, text="...they take a few feet to stop.", cex=0.7, line=.5)
+legend("topleft", legend="Stopping Distance Experiment", bty="n")
+points(dist ~ speed, data=subset(cars, speed==15), pch=20, col="firebrick2", cex=1.5)
+
+cars.lm <- lm(dist ~ speed, data=cars)
+abline(cars.lm, lwd=2, col=rgb(.689,.133,.133, .3))
+abline(h=seq(0,120,20), v=seq(5,25,5), lty=2, col=rgb(.2,.2,.2,.2))
+abline(v=15, lty=2, col="firebrick")
+
+preds <- predict(cars.lm, data.frame(speed=15), interval="prediction")
+lines(c(15,15), preds[2:3] - c(-.5,.5), col=rgb(.529,.8078,.9216,.4), lwd=12)
+lines(c(0,15), preds[c(2,2)], col=rgb(.529,.8078,.9216,.8))
+lines(c(0,15), preds[c(3,3)], col=rgb(.529,.8078,.9216,.8))
+```
+
+
+
+
+</div>
+
+
+
+
+
+
+<br />
+
+----
+
+</div>
+
+
+##
+
+<div style="padding-left:125px;">
+**Examples:** [bodyweight](./Analyses/Linear Regression/Examples/BodyWeightSLR.html), [cars](./Analyses/Linear Regression/Examples/carsSLR.html) 
+</div>
+
+
+
+
+
+----
+
+## Multiple Linear Regression {.tabset .tabset-fade .tabset-pills}
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QuantYMultX.png" width=108px;>
+</div>
+
+Multiple regression allows for more than one explanatory variable to be included in the modeling of the expected value of the quantitative response variable $Y_i$. 
+
+
+### Overview
+
+<div style="padding-left:125px;">
+
+A typical multiple regression model is given by the equation
+$$
+  Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \cdots + \beta_p X_{pi} + \epsilon_i
+$$
+where $\epsilon_i\sim N(0,\sigma^2)$.
+
+The coefficient $\beta_j$ is interpreted as the change in the expected value of $Y$ for a unit increase in $X_{j}$, holding all other variables constant, for $j=1,\ldots,p$.
+
+See the **Explanation** tab for details about possible hypotheses here.
+
+----
+
+</div>
+
+
+### R Instructions
+
+
+<div style="padding-left:125px;">
+**Console** Help Command: `?lm()`
+
+Everything is the same as in simple linear regression except that more variables are allowed in the call to `lm()`.
+
+`mylm <- lm(Y ~ X1 + X2 + X1:X2 + ..., data=YourDataSet)` 
+
+`summary(mylm)`
+
+* `mylm` is some name you come up with to store the results of the `lm()` test. Note that `lm()` stands for "linear model."
+* `Y` must be a "numeric" vector of the quantitative response variable.
+* `X1` and `X2` are the explanatory variables. These can either be quantitative or qualitative. Note that R treats "numeric" variables as quantitative and "character" or "factor" variables as qualitative. R will automatcially recode qualitative variables to become "numeric" variables using a 0,1 encoding. See the Explanation tab for details.
+* `YourDataSet` is the name of your data set.
+* `X1:X2` is called the interaction term. See the Explanation tab for details.
+* `...` emphasizes that as many explanatory variables as are desired can be included in the model.
+
+
+----
+
+</div>
+
+
+### Explanation
+
+<div style="padding-left:125px;">
+
+
+The extension of linear regression to multiple regression is fairly direct, include more than one explanatory variable, yet very powerful. 
+
+#### Extending The Mathematical Model <a href="javascript:showhide('mathmodel2')" style="font-size:.6em;color:skyblue;">(Expand)</a>
+
+<span class="expand-caption">Options for $E\{Y_i\}$ beyond $\beta_0 + \beta_1 X_i$...</span>
+
+<div id="mathmodel2" style="display:none;">
+
+The multiple linear regression model is given by "a model" for the mean y-value, denoted by $E\{Y_i\}$, and a normally distributed error term, $\epsilon_i$. 
+
+$$
+  Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \cdots + \beta_p X_{pi}}_{E\{Y_i\}}}^\text{"The Model"} + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2)
+$$
+
+The model can be many things. Here are some examples.
+
+$$
+ Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_i}_{E\{Y_i\}}}^\text{Simple Linear Model} + \epsilon_i
+$$
+
+$$
+ Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_i + \beta_2 X_i^2}_{E\{Y_i\}}}^\text{Quadratic Model} + \epsilon_i
+$$
+
+$$
+ Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \beta_3 X_{1i} X_{2i}}_{E\{Y_i\}}}^\text{Two-lines Model} + \epsilon_i \quad \text{where} \ X_{2i} = \left\{\begin{array}{ll} 1, & \text{Group B} \\ 0, & \text{Group A} \end{array}\right.
+$$
+
+
+
+```{r, fig.height=3}
+
+par(mfrow=c(1,3), mai=c(0.1,0.1,0.3,0.1), cex.main=1.5)
+
+plot(Wind ~ Temp, data=airquality, pch=21, bg="gray83", col="skyblue", yaxt='n', xaxt='n', main="Simple Linear Model", cex.main=1)
+lm.slr <- lm(Wind ~ Temp, data=airquality)
+abline(lm.slr, col="orange", lwd=2)
+
+
+plot(Temp ~ Month, data=airquality, pch=21, bg="gray83", col="skyblue", yaxt='n', xaxt='n', main="Quadratic Model", cex.main=1)
+lm.quad <- lm(Temp ~ Month + I(Month^2), data=airquality)
+b <- coef(lm.quad)
+curve(b[1] + b[2]*x + b[3]*x^2, col="orange", lwd=2, add=TRUE)
+
+
+plot(mpg ~ qsec, data=mtcars, col=c("skyblue","orange")[as.factor(am)], pch=21, bg="gray83", xaxt='n', yaxt='n', main="Two-lines Model", cex.main=1)
+lm.2lines <- lm(mpg ~ qsec + am + qsec:am, data=mtcars)
+b <- coef(lm.2lines)
+curve(b[1] + b[2]*x, col="skyblue", lwd=2, add=TRUE)
+curve(b[1] + b[3] + (b[2] + b[4])*x, col="orange", lwd=2, add=TRUE)
+
+
+  
+```
+
+
+In fact, the model for $E\{Y_i\}$ can be any "linear combination" of $\beta$'s, which means $\beta$ times some X-variable plus $\beta$ times some X-variable plus... plus the error term $\epsilon_i$. So you could have $\beta_1 \sin(X_i)$, $\beta_2 e^{X_2i}$, and anything else you can dream up. But $e^{\beta_1 X_i}$ is not allowed. Of course, you could fit the model $Y_i = e^{\beta_0 + \beta_1 X_i + \epsilon_i}$ using a $\log(Y_i)$ transformation, but then, the regression would actually be $\log(Y_i) = \beta_0 + \beta_1 X_i + \epsilon_i$ which is again a "linear regression".
+
+
+
+<div style="padding-left:15px; color:#a8a8a8;">
+
+**Note**: Interactions, transformations of other variables, and qualitative variables can all be included in the model. For example, if a model included three explanatory variables, $X_1,X_2,X_3$, then $X_{3i}$ could be defined to be the interaction between $X_1$ and $X_3$, i.e., $X_{3i} = X_{1i}\cdot X_{2i}$. If $X_3$ was instead to represent a qualitative variable with two levels, then we could use a 0 to represent one level of the variable and a 1 to represent the other level. If we had good reason to do so, we could even let $X_{3i} = X_{1i}^2$ or $\log(X_{1i})$ or some other transformation of another $X$ variable.
+
+</div>
+
+Say we are interested in the price of a vehicle, particularly the price of a Cadillac. Simple linear regression would just use the mileage of the vehicle to predict the price. This will probably not be very successful as different makes of Cadillacs vary widely in their prices. However, if we include other explanatory variables in our model, like model of the vehicle, we should be able to do very well at predicting the price of a particular vehicle. (Certainly other variables like the number of doors, engine size, automatic or manual transmission and so on could also be valuable explanatory variables.) 
+
+</div>
+
+<br />
+
+
+#### Interpretation
+
+The only change to interpretation from the simple linear regression model is that each coefficient, $\beta_j$ $j=1,\ldots,p$, represents the change in the $E\{Y\}$ for a unit change in $X_j$, *holding all other variables constant.*
+
+<br />
+
+#### Assumptions
+
+The assumptions of multiple linear regression are nearly identical to simple linear regression, with the addition of one new assumption.
+
+1. The regression relation between $Y$ and $X$ is linear.
+2. The error terms are normally distributed with $E\{\epsilon_i\}=0$.
+3. The variance of the error terms is constant over all $X$ values.
+4. The $X$ values can be considered fixed and measured without error.
+5. The error terms are independent.
+6. All important variables are included in the model.
+
+<br />
+
+#### Checking the Assumptions{#check}
+
+The process of checking assumptions is the same for multiple linear regression as it is for simple linear regression, with the addition of one more tool, the added variable plot. 
+Added variable plots can be used to determine if a new variable should be included in the model.
+
+<table width=90%>
+<tr><td with=15%>
+```{r, fig.height=1.25, fig.width=1.5, echo=FALSE}
+base.lm <- lm(dist ~ 1, data=cars)
+par(mai=c(.3,.3,0,.2), mgp=c(.2,0,0))
+plot(base.lm$residuals ~ speed, data=cars, pch=20, cex=0.5, 
+     ylab="Residuals",
+     xlab="Variable to Include", xaxt='n', yaxt='n',
+     cex.lab = 0.7)
+abline(h=0, lty=3, col='gray')
+```
+</td>
+<td width=75%>
+
+Let $X_{new}$ be a new explanatory variable that could be added to the current multiple regression model. Plotting the residuals from the current linear regression against $X_{new}$ allows us to determine if $X_{new}$ has any information to add to the current model. If there is a trend in the plot, then $X_{new}$ should be added to the model. If there is no trend in the plot, then the $X_{new}$ should be left out.
+
+
+ | <a href="javascript:showhide('addedvariableplots')" style="font-size:.8em;color:steelblue2;">Show Examples</a> |
+
+</td>
+</tr>
+</table>
+
+<div id="addedvariableplots" style="display:none;">
+
+<a href="javascript:showhide('addedvariableplotsread')" style="font-size:.8em;color:skyblue;">(Read more...)</a>
+
+<div id="addedvariableplotsread" style="display:none;">
+
+
+An added variable plot checks to see if a new variable has any information to add to the current multiple regression model. 
+
+The plot is made by taking the residuals from the current multiple regression model ($y$-axis) and plotting them against the new explanatory variable ($x$-axis). 
+
+* If there is a trend in the added variable plot, then the new explanatory variable contains extra information that is not already contained in the current multiple regression. The new variable should be included in the model.
+
+* If there is no trend in the added variable plot, then the information provided by the new explanatory variable is already contained in the current multiple regression model. The new variable should continue to be left out of the model.
+
+The left column of plots below show scenarios where the new explanatory variable should be included in the model. The right column of plots show scenarios where the new explanatory variable should not be included in the model. 
+
+
+</div>
+
+
+```{r,echo=FALSE}
+
+par(mfcol=c(3,2),  mai=c(.25,.6,.25,.6), mgp=c(1,.75,0))
+
+  # Include the Xnew variable:
+  tmp <- lm(mpg ~ qsec, data=mtcars)
+  plot(tmp$residuals ~ disp, data=mtcars, 
+       pch=20,
+       xlab=expression(X[new]), ylab="Residuals", 
+       main="Include New Variable, Extra Information", cex.main=0.95,
+       xaxt='n', yaxt='n', col="skyblue")
+  abline(h=0)
+
+  tmp <- lm(height ~ Seed, data=Loblolly)
+  plot(tmp$residuals ~ age, data=Loblolly,
+       pch=20,
+       xlab=expression(X[new]), ylab="Residuals", 
+       main="", cex.main=0.95,
+       xaxt='n', yaxt='n', col="skyblue")
+  abline(h=0)
+  
+  tmp <- lm(Girth ~ Height, data=trees[-31,])
+  plot(tmp$residuals ~ Volume, data=trees[-31,],
+       pch=20,
+       xlab=expression(X[new]), ylab="Residuals", 
+       main="", cex.main=0.95,
+       xaxt='n', yaxt='n', col="skyblue")
+  abline(h=0)
+  
+  
+  # No new information, don't include new variable:  
+  tmp <- lm(width ~ length, data=KidsFeet)
+  plot(tmp$residuals ~ birthmonth, data=KidsFeet,
+       pch=20,
+       xlab=expression(X[new]), ylab="Residuals", 
+       main="Leave Variable Out, Not Enough New Information", cex.main=0.95,
+       xaxt='n', yaxt='n', col="firebrick")
+  abline(h=0)
+
+  tmp <- lm(circumference ~ age, data=Orange)
+  plot(tmp$residuals ~ age, data=Orange,
+       pch=20,
+       xlab=expression(X[new]), ylab="Residuals", 
+       main="", cex.main=0.95,
+       xaxt='n', yaxt='n', col="firebrick")
+  abline(h=0)
+  
+  tmp <- lm(salary ~ yrs.since.phd, data=Salaries)
+  plot(tmp$residuals ~ yrs.service, data=Salaries,
+       pch=20, cex=0.8,
+       xlab=expression(X[new]), ylab="Residuals", 
+       main="", cex.main=0.95,
+       xaxt='n', yaxt='n', col="firebrick")
+  abline(h=0)  
+  
+
+
+  
+  # Include the Xnew variable:
+  tmp <- lm(mpg ~ drat, data=mtcars)
+  plot(tmp$residuals ~ wt, data=mtcars, 
+       pch=20,
+       xlab=expression(X[new]), ylab="Residuals", 
+       main="", cex.main=0.95,
+       xaxt='n', yaxt='n', col="skyblue")
+  abline(h=0)
+
+  tmp <- lm(Wind ~ Solar.R, data=na.omit(airquality))
+  plot(tmp$residuals ~ Temp, data=na.omit(airquality),
+       pch=20,
+       xlab=expression(X[new]), ylab="Residuals", 
+       main="", cex.main=0.95,
+       xaxt='n', yaxt='n', col="skyblue")
+  abline(h=0)
+  
+  tmp <- lm(Girth ~ Height, data=trees[-31,])
+  plot(tmp$residuals ~ Volume, data=trees[-31,],
+       pch=20,
+       xlab=expression(X[new]), ylab="Residuals", 
+       main="", cex.main=0.95,
+       xaxt='n', yaxt='n', col="skyblue")
+  abline(h=0)
+  
+  
+  # No new information, don't include new variable:  
+  tmp <- lm(width ~ length, data=KidsFeet)
+  plot(tmp$residuals ~ birthmonth, data=KidsFeet,
+       pch=20,
+       xlab=expression(X[new]), ylab="Residuals", 
+       main="", cex.main=0.95,
+       xaxt='n', yaxt='n', col="firebrick")
+  abline(h=0)
+
+  tmp <- lm(wt ~ gestation, data=na.omit(Gestation))
+  plot(tmp$residuals ~ dwt, data=na.omit(Gestation),
+       pch=20,
+       xlab=expression(X[new]), ylab="Residuals", 
+       main="", cex.main=0.95,
+       xaxt='n', yaxt='n', col="firebrick")
+  abline(h=0)
+  
+  tmp <- lm(Solar.R ~ Ozone, data=na.omit(airquality))
+  plot(tmp$residuals ~ Wind, data=na.omit(airquality),
+       pch=20,
+       xlab=expression(X[new]), ylab="Residuals", 
+       main="", cex.main=0.95,
+       xaxt='n', yaxt='n', col="firebrick")
+  abline(h=0)
+      
+```
+
+
+</div>
+
+<br />
+
+#### Inference for the Model Parameters{#infModelParam}
+
+Inference in the multiple regression model can be for any of the model coefficients, $\beta_0$, $\beta_1$, $\ldots$, $\beta_p$ or for several coefficients simultaneously.
+
+<br />
+
+##### t Tests
+
+The most typical tests for multiple regression are t Tests for a single coefficient. The hypotheses for these t Tests are written as
+$$
+  H_0: \beta_j = 0
+$$
+$$
+  H_a: \beta_j \neq 0
+$$
+Note that these hypotheses assume that all other variables (and coefficients) are already in the model. The significance of the single variable is thus assessed after accounting for the effect of all other variables. If a t Test of a single coefficient is significant, then that variable should remain in the model. If the t Test for a single coefficient is not significant, then the other variables in the model provide the same information that the variable being tested provides. Removing it from the model may be appropriate. However, whenever a single variable is removed from the model the other variables can change in their significance. 
+
+
+<br />
+
+##### F Tests
+
+Another approach to testing hypotheses about coefficients is to use an F Test. The F Test allows a single test for any group of hypotheses simultaneously.
+
+The most commonly used F Test is the one given by the hypotheses
+$$
+  H_0: \beta_0 = \beta_1 = \cdots = \beta_p = 0
+$$
+$$
+  H_a: \beta_j \neq 0 \ \text{for at least one}\ j \in \{0,1,\ldots,p\}
+$$
+However, any subset of coefficients could be tested in a similar way using a customized F Test. The details of how to do this are somewhat involved and are beyond the scope of this class. 
+
+
+<br />
+
+#### Assessing the Model Fit{#rsquared}
+
+There are many measures of the quality of a regression model. One of the most popular measurements is the $R^2$ value ("R-squared"). The $R^2$ value is a measure of the proportion of variation of the $Y$-variable that is explained by the model. Specifically,
+$$
+  R^2 = \frac{\text{SSR}}{\text{SSTO}} = 1-\frac{\text{SSE}}{\text{SSTO}}
+$$
+The range of $R^2$ is between 0 and 1. Values close to 1 imply a very good model. Values close to 0 imply a very poor model. 
+
+One difficulty of $R^2$ in multiple regression is that it will always get larger when more variables are included in the regression model. Thus, in multiple linear regression, it is best to make an adjustment to the $R^2$ value to protect against this difficulty. The value of the adjusted $R^2$ is given by
+$$
+  R^2_{adj} = 1 - \frac{(n-1)}{(n-p)}\frac{\text{SSE}}{\text{SSTO}}
+$$
+The interpretation of $R^2_{adj}$ is essentially the same as the interpretation of $R^2$, with the understanding that a correction has been made for the number of parameters included in the model, $(n-p)$.
+
+<br />
+<br />
+
+----
+
+</div>
+
+
+##
+
+<div style="padding-left:125px;">
+**Examples:** [Civic Vs Corolla](./Analyses/Linear Regression/Examples/CivicVsCorollaMLR.html) [cadillacs](./Analyses/Linear Regression/Examples/cadillacsMLR.html) 
+</div>
+
+----
+
+<footer></footer>

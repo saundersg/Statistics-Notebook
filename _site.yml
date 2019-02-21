@@ -1,9 +1,7 @@
-name: "math-325-notebook"
+name: "statistics-notebook"
 navbar:
-  title: "Math 325 Notebook"
+  title: "Statistics Notebook"
   left:
-    - text: "Table of Contents"
-      href: index.html
     - text: "Describing Data"
       menu:
         - text: "Graphical Summaries"
@@ -18,6 +16,26 @@ navbar:
           href: RMarkdownHints.html
         - text: "R Cheatsheets & Notes"
           href: RCheatSheetsAndNotes.html
+    - text: "Making Inference"
+      menu:
+        - text: "Making Inference"
+          href: MakingInference.html
+        - text: "t Tests"
+          href: tTests.html
+        - text: "Wilcoxon Tests"
+          href: WilcoxonTests.html
+        - text: "ANOVA"
+          href: ANOVA.html
+        - text: "Kruskal-Wallis"
+          href: Kruskal.html
+        - text: "Linear Regression"
+          href: LinearRegression.html
+        - text: "Logistic Regression"
+          href: LogisticRegression.html
+        - text: "Chi Squared Tests"
+          href: ChiSquaredTests.html
+        - text: "Randomization Testing"
+          href: PermutationTests.html
     - text: "Analyses"
       menu:
         - text: "Analysis Rubric"

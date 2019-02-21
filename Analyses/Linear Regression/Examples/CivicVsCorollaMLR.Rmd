@@ -1,0 +1,157 @@
+---
+title: "Honda Civic vs. Toyota Corolla"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+```{r, message=FALSE, warning=FALSE}
+library(mosaic)
+library(car)
+library(DT)
+library(pander)
+ccCars <- read.csv("../../../Data/CivicCorolla.csv", header=TRUE)
+```
+
+## The Comparison
+
+Two very popular cars on the road today are the Honda Civic and the Toyota Corolla. This analysis looks to see which car costs more when brand new and how well each vehicle holds its value over time. The goal is to see which one is the better buy from a purely monetary standpoint. It assumes the driving experience, pride of ownership, and other aspects are equal between the two vehicles.
+
+<br/>
+<center>
+<img src="../../../Images/CivicVsCorolla.png" style="width:500px;border:2px solid gray;border-radius:8px;">
+</center>
+<br/>
+
+## The Data
+
+To make the comparison as fair as possible, only the Civic LX and Corolla LE models are used in this analysis. Data was collected from [KSL Classifieds](https://www.ksl.com/auto/search/index?p=&make[]=Honda&model[]=Civic&yearFrom=2015&mileageFrom=5000&mileageTo=50000&page=0) on October 30th, 2018 with two separate searches. The first used "Honda, Civic, LX" and the second used "Toyota, Corolla, LE". In both cases, the mileage was also specified to be less than 50,000 miles and from 2015 or newer (up to 2019). Under those search criterion, the listing price and current mileage was recorded for 23 different Civic LX's and 25 different Corolla LE's. The data is shown below. While the year the vehicle was manufactured was also recorded, it is not being considered in this analysis.
+
+```{r}
+datatable(ccCars)
+```
+
+## The Model
+
+A multiple linear regression model was applied to the data to obtain two regression lines, one for each vehicle. To be precise, the (slightly involved) model is given by:
+
+$$
+  \underbrace{Y_i}_{\text{Price}} = \overbrace{\beta_0 + \beta_1 \underbrace{X_{i1}}_{\text{Mileage}}}^{\text{Civic Line}} + \overbrace{\beta_2 \underbrace{X_{i2}}_{\text{1 if Corolla}} + \beta_3 \underbrace{X_{i1} X_{i2}}_{\text{Interaction}}}^{\text{Corolla Adjustments to Line}} + \epsilon_i
+$$
+
+where $\epsilon_i\sim N(0,\sigma^2)$ and $X_{i2} = 0$ when the vehicle is a Civic and $X_{i2} = 1$ when the vehicle is a Corolla. This forced 0, 1 encoding for $X_{i2}$ produces the following models.
+
+<center>
+
+| Vehicle | Value of $X_{i2}$ | Resulting Model   |
+|---------|-------------------|-------------------|
+| Civic   | $X_{i2} = 0$      | $Y_i = \beta_0 + \beta_1 X_{i1} + \epsilon_i$ |
+| Corolla | $X_{i2} = 1$      | $Y_i = (\beta_0 + \beta_2) + (\beta_1 + \beta_3) X_{i1} + \epsilon_i$ |
+
+</center>
+
+Showing these separated models for each vehicle is to demonstrate that $\beta_2$ is the difference between the y-intercepts for the Civic and Corolla. Similarly, $\beta_3$ is the difference in the slopes for the two models.
+
+Since it is logical to assume that the average cost (y-intercept) of these vehicles is greater than zero, and that all vehicles lose value over time, there is no need to test the coefficients of $\beta_0$ or $\beta_1$ for differences from zero. These are the baseline intercept and slope for the Civic vehicles, and we will simply assume they are different from zero. What is of interest however, is whether the regression lines for the Civic and Corolla have different y-intercepts and different slopes. Thus, there is interest in testing $\beta_2$ and $\beta_3$ for differences from zero.
+
+### Test for Equal y-Intercepts
+
+If $\beta_2$ is zero in the combined regression model, then the y-intercepts, which represent the average cost of a brand new vehicle, are the same for the Civic and Corolla. If $\beta_2$ is greater than zero, then the Corolla costs more on average than the Civic when brand new, and if $\beta_2$ is less than zero, then the Corolla costs less. These hypotheses will be judged at the $\alpha=0.05$ significance level.
+
+$$
+  H_0: \beta_2 = 0 \quad \text{(Equal average cost when brand new)} \\
+  H_a: \beta_2 \neq 0 \quad \text{(Non-equal average cost when brand new)}
+$$
+
+### Test for Equal slopes
+
+If $\beta_3$ is zero, then the slopes of the two lines are the same. This would imply that the rate of depreciation is the same for both the Civic and the Corolla. However, if the slopes differ, i.e., $\beta_3 \neq 0$, then one vehicle loses its value faster than the other. These hypotheses will be judged at the $\alpha=0.05$ significance level.
+
+$$
+  H_0: \beta_3 = 0 \quad \text{(Equal rates of depreciation)} \\
+  H_a: \beta_3 \neq 0 \quad \text{(Non-equal rates of depreciation)}
+$$
+
+
+## The Results
+
+The scatterplot below of Price vs. Mileage of Civics and Corollas, and the corresponding regression summary output below the plot, show that the Toyota Corolla costs \$2,002 less that the Honda Civic on average when brand new (p-value = 0.01448), and holds its value better over time than the Honda Civic. More specifically, the Civic depreciates \$0.12 (12 cents) *more* on average each mile driven than does the Corolla (p-value = 0.00007969). 
+
+To demonstrate how much this could impact the owner of the vehicle monetarily, assume that both vehicles were purchased at their average new prices of \$19,408 (Civic) and \$17,406 (Corolla). Then, assume each vehicle was driven for 50,000 miles then sold for their average 50,000 miles prices of \$9,779 (Civic) and \$13,786 (Corolla). This would result in a loss of \$9,629 for the Civic as compared to just \$3,620 for the Corolla. That implies that over the first 50,000 miles, you could expect to save around \$6,000 owning the Corolla rather than the Civic. That's quite a bit of cash!
+
+```{r}
+## Code for the linear regression
+cars_lm <- lm(Price ~ Mileage + Model + Mileage:Model, data=ccCars)
+
+## Code to obtain 50,000 mileage average prices: (only run in Console)
+#  predict(cars_lm, data.frame(Mileage=c(50000,50000), Model=c("Civic","Corolla")))
+
+## Code for the plot:
+
+  # Declare the color palette for the plot:
+  palette(c("gray25","#86CA48"))
+
+  # Set some plotting arrangment commands:
+  par(fg="darkgray", #colors of the bounding box.
+      col.lab="gray35", #color of the xlab and ylab.
+      mai=c(1,1,.8,.4), #controls outside margins: bottom, left, top, right.
+      mgp=c(3.5,1,0)) #moves the xlab and ylab out to 3.5 lines.
+  
+  # Draw plot with default axis labels turned off (xaxt, yaxt):
+  plot(Price ~ Mileage, data=ccCars, col=Model, pch=16, main="Cost and Depreciation Comparison \n Honda Civic vs. Toyota Corolla", ylab="Listing Price of the Vehicle", xlab="Mileage of the Vehicle", yaxt="n", xaxt="n", xlim=c(0,60000), ylim=c(8000,20000))
+  
+  # Add grid lines:
+  abline(v=c(0,10000, 20000, 30000, 40000, 50000), h=c(10000,12000,14000,16000,18000), col=rgb(.8,.8,.8,.4), lty=2)
+  
+  # Add manually specified axes:
+  axis(1, at=c(10000,20000,30000,40000,50000), labels=c("10,000", "20,000", "30,000", "40,000", "50,000"), col.axis="gray55")
+  axis(2, at=c(10000, 12000, 14000, 16000, 18000), labels=c("$10k","$12k","$14k","$16k","$18k"), col.axis="gray55", las=2)
+  
+  # Add legend:
+  legend("topright", col=palette(), pch=21, legend=c("Honda Civic LX", "Toyota Corolla LE"), bty="n", text.col = palette())
+
+  # Add the regression lines:
+  abline(19408, -0.1926, col="gray55") #abline(intercept, slope, ...)
+  abline(19408-2002, -0.1926+0.1202, col=palette()[2])
+  
+  # Add text and dot for y-intercepts:
+  text(1300,19408, "$19,408", cex=0.6, col="gray55", pos=3, offset=.25)
+  points(0,19408, pch=16, col="gray55", cex=0.5)
+  
+  text(900,19408-2002, "$17,406", cex=0.6, col="#86CA48", pos=3, offset=.25)
+  points(0,19408-2002, pch=16, col="#86CA48", cex=0.5)
+  
+  # Add text for depreciation rates:
+  text(50000, 13900, "Drops $0.07 per mile", cex=0.6, col="#86CA48", pos=4)
+  text(46000, 8010, "Drops $0.19 per mile", cex=0.6, col="gray55", pos=4)
+  
+```
+
+The following table provides the actual numbers used in the conclusions given above.
+
+```{r}
+## Print regression summary output  
+pander(cars_lm, caption="Regression Summary output for Price on Mileage according to Model Type")
+  
+```
+
+Note that in the table above, "Mileage" is the coefficient estimate for $\beta_1$, "ModelCorolla" is the coefficient estimate for $\beta_2$, "Mileage:ModelCorolla" is the coefficient estimate for $\beta_3$, and "(Intercept)" is the coefficient estimate for $\beta_0$. Thus, "ModelCorolla" is the difference between the two y-intercepts and "Mileage:ModelCorolla" is the difference between the two slopes.
+
+## The Limitations
+
+The results of this analysis should be taken with a grain of salt for a few reasons. First, it should be remembered that these vehicles were only sampled from the Utah based Classifieds "KSL Classifieds". Also, the data was sampled on a single day, so these results don't actually show pricing trends over time. They just show the current value of various mileages. Most importantly the regression model assumptions are not fully satisfied as detailed in the next paragraph. This leaves some question as to validity of the specific detailed results of this analysis, though the general pattern in the data seems to demonstrate the Corolla costing less brand new and holding its value better over time. 
+
+The linearity of the data looks to be okay because of the relative flatness of the red lowess line in the residuals vs fitted plot. Also, the vertical variability of the dots in the residuals vs. fitted plot seems to be roughly constant across all fitted values, so constant variance can be assumed. There are two potential outliers shown in the residuals vs fitted plot (observations 17 and 30 in the original dataset) that could be unduly influencing the regression. It may be worth removing these to see how they are effecting the results of the regression. The most important violation of the model assumptions to note is the lack of normality of the residuals shown in the Q-Q Plot of the residuals. This is seen by how much the dots depart the green dashed lines bounding the "zone of normality" where data would typically land if it truly was normally distributed. There does not appear to be any independence issues in the data however, as witnessed by the random pattern in the residuals vs. order plot.
+
+```{r, fig.height=3}
+# This chunk uses ```{r, fig.height=3} to shrink the heigh of the graphs.
+par(mfrow=c(1,3))
+plot(cars_lm, which=1)
+qqPlot(cars_lm$residuals)
+mtext(side=3,text="Q-Q Plot of Residuals")
+plot(cars_lm$residuals, type="b")
+mtext(side=3, text="Residuals vs. Order")
+```
+
+

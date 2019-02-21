@@ -1,0 +1,89 @@
+---
+title: "Corn Heights -- Wilcoxon Signed-Rank Test"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+<br />
+
+```{r, message=FALSE, warning=FALSE}
+library(pander)
+```
+
+
+## Background
+
+<div style="color:#a8a8a8;">
+
+Note: the data for this example comes from the original 1945 paper [Individual Comparison by Ranking Methods](http://sci2s.ugr.es/keel/pdf/algorithm/articulo/wilcoxon1945.pdf) by Frank Wilcoxon. 
+
+</div>
+
+Height differences "between cross- and self- fertilized corn plants of the same pair" were collected. The experiment hypothesized that the center of the distribution of the height differences would be zero, with the alternative being that the center was not zero. The result of the data collection was 15 height differences: 
+
+<div style="padding-left:15px;">
+
+**Differences**: 14, 56, 60, 16, 6, 8, -48, 49, 24, 28, 29, 41, -67, 23, 75 
+
+</div>
+
+```{r, include=FALSE}
+library(mosaic)
+corn <- c(14, 56, 60, 16, 6, 8, -48, 49, 24, 28, 29, 41, -67, 23, 75)
+```
+
+Formally, the null and alternative hypotheses are written as
+$$
+  H_0: \text{median of the differences} = 0
+$$
+$$
+  H_a: \text{median of the differences} \neq 0
+$$
+
+The significance level for this study will be set at
+$$
+  \alpha = 0.05
+$$
+
+<br />
+
+## Analysis
+
+The dotplot below (with boxplot overlaid) shows the differences between the corn plants that were self-fertilzed versus those that were cross-fertilized. There seems to be strong evidence that the differences are generally positive. This implies that the cross-fertilized plants are generally taller than when self-fertilization was implemented.
+
+```{r, fig.height=2.5}
+boxplot(corn, horizontal=TRUE, col="cornsilk",
+        main="Differences in Corn Plant Heights",
+        xlab="Cross-Fertilized Height minus Self-Fertilized Height")
+stripchart(corn, pch=16, method="stack", 
+           col="darkgray", add=TRUE)
+
+```
+
+```{r, comment=NA}
+pander(summary(corn))
+```
+
+To determine if it is reasonable to *infer* that this conclusion is valid in general (for the full population) a Wilcoxon Signed-Rank Test will be used. 
+
+The Wilcoxon Signed-Rank test is appropriate for any distribution of data, and especially for small sample sizes. 
+
+```{r, comment=NA}
+pander(wilcox.test(corn, mu = 0, alternative = "two.sided", conf.level = 0.95))
+```
+
+There is sufficient evidence to reject the null hypothesis ($p = 0.04126 < \alpha$). It is safe to conclude that the median of the differences (for the full population) is greater than zero.
+
+<br />
+
+## Interpretation
+
+Every now and again a self-fertilized corn plant will be taller than its cross-fertilized counterpart. However, the evidence shows that it is overwhelming more common for cross-fertilized plants to be taller. This study shows that cross-fertilized plants are on median, 24 units taller (95% confindence interval: 4.0-41.5) than self-fertilized plants.
+
+```{r, eval=FALSE}
+# Code used to compute confidence interval:
+wilcox.test(corn, mu = 0, alternative = "two.sided", conf.level = 0.95, conf.int = TRUE)
+```
+

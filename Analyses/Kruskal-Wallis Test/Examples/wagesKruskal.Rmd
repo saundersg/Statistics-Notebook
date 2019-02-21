@@ -1,0 +1,101 @@
+---
+title: "Student Wages -- Kruskal-Wallis"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+
+```{r, include=FALSE}
+library(mosaic)
+library(pander)
+```
+
+#### Background
+
+Five different Math 221 courses at BYU-Idaho were given a brief start of semester survey. Two of the variables collected gave information about each student's class rank (Freshman, Sophomore, Junior, and Senior) and their off-track hourly wage (in U.S. Dollars). The survey data will be used to answer the following questions.
+
+<div style="font-size:.8em;color:#888888;">
+Note that the responses from two students were removed from the Class Survey data because they did not specify their class rank. Also, one other student's responses were removed because they claimed an hourly wage of \$100 an hour, which was likely a typo that was supposed to be \$10 an hour.
+
+
+```{r}
+ClassSurvey <- read.csv("../Data/ClassSurvey.csv", header=TRUE)
+# Note that to get the ClassSurvey data into your Console
+# you should go to "Import Dataset" under the "Environment" tab
+# in the top right of your workspace. 
+
+# There are a few problems in the data that need to be fixed
+# before we work with the data. Run the following code to
+
+# xyplot(Wage ~ Rank, data=ClassSurvey, type=c("p"))
+
+# see that there are two observations that don't have a class
+# rank recorded and that one person supposedly earned $100 an
+# hour, which is probably a typo and should be deleted.
+
+# Filter out the outlier:
+ClassSurvey <- subset(ClassSurvey, Wage<100)
+# xyplot(Wage ~ Rank, data=ClassSurvey, type=c("p"))
+
+# Filter out the missing Rank values:
+ClassSurvey <- droplevels(subset(ClassSurvey, Rank %in% c("FR","JR","SO","SR")))
+# xyplot(Wage ~ Rank, data=ClassSurvey, type=c("p"))
+```
+
+</div>
+
+How much do BYU-Idaho students make hourly during their off-track? 
+
+Do they earn more as they gain more education?
+
+
+
+
+#### Analysis
+
+Side-by-side boxplots show that in the sample, the Freshman have the highest median wage, while the Sophomores and Seniors have fairly right-skewed distributions with some very high outliers. This suggest that the shape of the distribution of wages is potentially different for the various class ranks. It may be the case that Freshman hourly wages are left skewed, Junior wages are fairly normal, and Sophomore and Senior wages are right-skewed.
+
+```{r}
+boxplot(Wage ~ as.character(Rank), data=ClassSurvey, type=c("p","a"), col='grey', ylab="Hourly Wage", main="Math 221 Students")
+```
+
+$$
+  H_0: \text{All samples represent a sample of data from the same distribution.}
+$$ 
+$$
+  H_a: \text{At least one distribution is stochastically different than the others.}
+$$
+
+<div style="font-size:.8em;color:#888888;">
+According to the original authors, what the alternative to the Kruskal-Wallis test really is, "is a tendency for observations in at least one of the populations to be larger (or smaller) than all the observations together, when paired randomly. In many cases, this is practically equivalent to the mean of at least one population differing from the others."
+</div>
+
+```{r, comment=NA}
+kruskal.test(Wage ~ Rank, data=ClassSurvey)
+```
+
+<center>
+```{r, commen=NA}
+pander(favstats(Wage ~ Rank, data=ClassSurvey)[,-10])
+```
+</center>
+
+There is insufficient evidence to reject the null hypothesis that each of these represents a sample from the same distribution. We will continue to assume that the hourly wage distributions are the same across all class ranks.
+
+#### Interpretation
+
+Since all samples can be assumed to be from the same distribution, Class Rank really has no apparent effect on hourly wages. So students in general aren't earning more or less during their off track as they progress through their college education. 
+
+It sufficies then to simply understand the off-track hourly wage of BYU-Idaho students as a whole since Class Rank has no apparent effect on hourly wages. The following histogram summarizes the relevant information. Oddly, some students are reporting earning \$5 or less an hour. Most state minimum wages are above \$7.25 an hour. So this is surprising. Typically students are earning around \$`r round(median(ClassSurvey$Wage),2)` (the median) an hour, although some are doing quite well, all the way up to \$30 an hour!
+
+```{r}
+hist(ClassSurvey$Wage, breaks=15, col='sandybrown', xlab="Hourly Wage", main="BYU-Idaho Math 221 Students")
+```
+
+<center>
+```{r}
+pander(favstats(ClassSurvey$Wage)[-9], caption="Numerical Summaries of Hourly Wages")
+```
+</center>

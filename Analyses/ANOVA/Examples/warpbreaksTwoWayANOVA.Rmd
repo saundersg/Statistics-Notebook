@@ -1,0 +1,96 @@
+---
+title: "Breaks in Warps while Weaving -- Two-way ANOVA"
+output: 
+  html_document:
+    theme: cerulean
+---
+
+<br />
+
+#### Background
+
+This experiment comes from the R help file `?warpbreaks` and the data is correspondingly recorded in the `warpbreaks` dataset. 
+
+This data appeared in one of the first textbooks ever written on statistics by L. H. C. Tippet, published in 1950. Thus, it concerns a rather old fashioned idea of rather extreme importance, warp breaks. A warp is the yarn held in tension by the loom, and when it breaks, it causes extreme difficulties. (See wikipedia on [Warp (weaving)](https://en.wikipedia.org/wiki/Warp_(weaving)) for details.) An experiment was conducted to determine which wool types and loom tensions produced the fewest warp breaks. 
+
+"This data set gives the number of warp breaks per loom, where a loom corresponds to a fixed length of yarn. There are measurements on 9 looms for each of the six types of warp (AL, AM, AH, BL, BM, BH)." 
+
+```{r, include=FALSE}
+library(mosaic)
+```
+
+
+#### Analysis
+
+Applying a Two-way ANOVA with an interaction term to this study, we have the model
+$$
+  Y_{ijk} = \mu + \alpha_i + \beta_j + \alpha\beta_{ij} + \epsilon_{ijk}
+$$
+where $\mu$ is the grand mean, $\alpha_i$ is the `wool` factor with levels $A=1$ and $B=2$, $\beta_j$ is the `tension` factor with levels $L=1$, $M=2$, and $H=3$, $\alpha\beta_{ij}$ is the interaction of the two factors which has $2\times3=6$ levels, and $\epsilon_{ijk} \sim N(0,\sigma^2)$ is the error term. 
+
+This model allows us to ask the following questions and hypotheses.
+
+1. Does the type of `wool` affect the avereage number of breaks?
+
+Factor: `wool` with levels $A$ and $B$.
+$$
+  H_0: \mu_A = \mu_B = \mu
+$$
+$$
+  H_a: \mu_i \neq \mu \ \text{for at least one}\ i\in\{1=A,2=B\}
+$$
+
+2. Does the `tension` affect the average number of breaks?
+
+Factor: `tension` with levels $L$, $M$, and $H$.
+$$
+  H_0: \mu_L = \mu_M = \mu_H = \mu
+$$
+$$
+  H_a: \mu_i \neq \mu \ \text{for at least one}\ i\in\{1=L,2=M,3=H\}
+$$
+
+3. Does the effect of `tension` change for different types of `wool`? (Does the effect of `wool` change for different levels of `tension`?) In other words, is there an interaction between `wool` and `tension`?
+
+$$
+  H_0: \text{The effect of tension is the same for all types of wool.}
+$$
+$$
+  H_a: \text{The effect of tension is not the same for all types of wool.}
+$$
+
+To perform the analysis we compute the following ANOVA. (R Code is shown for teaching purposes.)
+
+```{r, comment=NA}
+warp.aov <- aov(breaks ~ wool + tension + wool:tension, data=warpbreaks)
+summary(warp.aov)
+```
+
+The ANOVA table listed in the above output contains three p-values, one for each hypothesis test that was stated previously. The conclusions are that `wool` is not a significant factor $(p=0.05821)$, but `tension` does have a significant effect on the number of breaks $(p=0.00069)$, and the effect of `tension` seems to depend on the type of `wool` because the interaction term is also significant $(p=0.02104)$.
+
+The appropriateness of the above ANOVA is somewhat questionable as demonstrated in the plots below. Notice that while the normality of the error terms appears to be satisfied (Normal Q-Q Plot on the right) the constant variance assumption is questionable (Residuals vs Fitted values pont on the left). This is because the spread of the four sets of points seems to get larger as the groups move forward. However, the change in variance is not substantial enough to discredit the ANOVA. The results of the test can be considered valid.
+
+```{r}
+par(mfrow=c(1,2))
+plot(warp.aov, which=1:2, pch=16)
+```
+
+The following graphics emphasize the results of each of the three hypothesis tests.
+
+```{r}
+xyplot(breaks ~ wool, data=warpbreaks, type=c("p","a"), main="Nonsignificance of Wool", col='gray') 
+xyplot(breaks ~ tension, data=warpbreaks, type=c("p","a"), main="Significance of Tension") 
+xyplot(breaks ~ tension, data=warpbreaks, groups=wool, type=c("p","a"), main="Significance of the Interaction", auto.key=list(corner=c(1,1)))
+```
+
+
+#### Interpretation
+
+The conclusions of the ANOVA are two-fold. First, in general more tension means fewer breaks, a somewhat surprising conclusion. Further, for Type A wool, there appears to be little difference in the number of breaks between either high (H) or medium (M) tensions (average of 24 and 24.6), but far more breaks on average for the low (L) tension (average of 44.6). On the other hand, for type B wool, both low (L) and medium (M) tensions have similar average numbers of breaks (28.2 and 28.8), while the high tension (H) has significantly fewer breaks on average (18.8).  
+
+```{r, include=FALSE}
+# This code was run in the Console to get the desired means.
+mean(breaks ~ tension, groups=wool, data=warpbreaks)
+```
+
+

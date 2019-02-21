@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Kruskal-Wallis Test</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Statistics Notebook</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Table of Contents</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Describing Data
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="GraphicalSummaries.html">Graphical Summaries</a>
+    </li>
+    <li>
+      <a href="NumericalSummaries.html">Numerical Summaries</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    R Help
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="RCommands.html">R Commands</a>
+    </li>
+    <li>
+      <a href="RMarkdownHints.html">R Markdown Hints</a>
+    </li>
+    <li>
+      <a href="RCheatSheetsAndNotes.html">R Cheatsheets &amp; Notes</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Making Inference
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="MakingInference.html">Making Inference</a>
+    </li>
+    <li>
+      <a href="tTests.html">t Tests</a>
+    </li>
+    <li>
+      <a href="WilcoxonTests.html">Wilcoxon Tests</a>
+    </li>
+    <li>
+      <a href="ANOVA.html">ANOVA</a>
+    </li>
+    <li>
+      <a href="Kruskal.html">Kruskal-Wallis</a>
+    </li>
+    <li>
+      <a href="LinearRegression.html">Linear Regression</a>
+    </li>
+    <li>
+      <a href="LogisticRegression.html">Logistic Regression</a>
+    </li>
+    <li>
+      <a href="ChiSquaredTests.html">Chi Squared Tests</a>
+    </li>
+    <li>
+      <a href="PermutationTests.html">Randomization Testing</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Analyses
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="./Analyses/AnalysisRubric.html">Analysis Rubric</a>
+    </li>
+    <li>
+      <a href="./Analyses/StudentHousing.html">Good Example Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/StudentHousingPOOR.html">Poor Example Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/Stephanie.html">Stephanie Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/Olympics.html">Olympics Analysis</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Kruskal-Wallis Test</h1>
+
+</div>
+
+
+<hr />
+<p>The nonparametric equivalent to one-way <a href="ANOVA.html">ANOVA</a>.</p>
+<hr />
+<div id="kruskal-wallis-rank-sum-test" class="section level3 tabset tabset-fade tabset-pills">
+<h3>Kruskal-Wallis Rank Sum Test</h3>
+<div style="float:left;width:125px;" align="center">
+<p><img src="Images/QuantYQualXg3plus.png" width=58px;></p>
+</div>
+<p>Allows for deciding if several samples come from the same population or if at least one sample comes from a different population.</p>
+<div id="overview" class="section level4">
+<h4>Overview</h4>
+<div style="padding-left:125px;">
+<p>It is assumed that the various populations are of approximately the same form, but are shifted or translated.</p>
+<p>Can also be used when data is ordered (ordinal) but does not have an exact measurement.</p>
+<p>Best used when the distribution of the data is not normal. ANOVA is appropriate when the data is normal.</p>
+<p><strong>Hypotheses</strong></p>
+<p>Typically, the hypotheses of the Kruskal-Wallis test are:</p>
+<p><span class="math display">\[
+  H_0: \text{All samples are from the same distribution.}
+\]</span> <span class="math display">\[
+  H_a: \text{At least one sample&#39;s distribution is stochastically different.}
+\]</span></p>
+<p>However, according to the original authors, what the alternative to the Kruskal-Wallis test really is, “is a tendency for observations in at least one of the populations to be larger (or smaller) than all the observations together, when paired randomly. In many cases, this is practically equivalent to the mean of at least one population differing from the others.” Thus, it could also be appropriate to use the ANOVA style hypotheses</p>
+<p><span class="math display">\[
+  H_0: \mu_1 = \mu_2 = \ldots = \mu
+\]</span> <span class="math display">\[
+  H_a: \mu_i \neq \mu \ \text{for at least one} \ i
+\]</span></p>
+<hr />
+</div>
+</div>
+<div id="r-instructions" class="section level4">
+<h4>R Instructions</h4>
+<div style="padding-left:125px;">
+<p><strong>Console</strong> Help Command: <code>?kruskal.test()</code></p>
+<div style="padding-left:15px;">
+<p><code>kruskal.test(x ~ g, data=YourDataSet)</code></p>
+<ul>
+<li><code>x</code> is a numeric vector of data values that represents the quantatitive response variable.</li>
+<li><code>g</code> is a qualitative grouping variable defining which groups each value in <code>x</code> belongs to. It must either be a character vector or a factor vector.</li>
+<li><code>YourDataSet</code> is the name of your data set.</li>
+</ul>
+<p>Alternatively, you could use the following approach as well.</p>
+<p><code>kruskal.test(list(x, y, z))</code></p>
+<ul>
+<li><code>x</code> is a numeric vector of data values that represents the quantatitive response variable for the first group.</li>
+<li><code>y</code> is a numeric vector of data values that represents the quantatitive response variable for the second group.</li>
+<li><code>z</code> is a numeric vector of data values that represents the quantatitive response variable for the third group.</li>
+<li>Note that more than three vectors of data could be included inside of <code>list()</code>.</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="explanation" class="section level4">
+<h4>Explanation</h4>
+<div style="padding-left:125px;">
+<p>In many cases it is of interest to perform a hypothesis test about whether or not several samples come from the same population.</p>
+<p>The Kruskal-Wallis Rank Sum Test allows for this by extending the idea behind the Wilcoxon Rank Sum Test to allow for more than two samples.</p>
+<p>The following explanation of how the test works comes mainly from the original 1952 article, <a href="http://www.jstor.org/stable/2280779?seq=1#page_scan_tab_contents">Use of Ranks in One-Criterion Variance Analysis, 1952</a>, but is expanded here for increased clarity.</p>
+<h4 id="calculating-the-test-statistic">Calculating the Test Statistic</h4>
+<p>The following artificial data will be used to demonstrate how the Kruskal-Wallis Test statistic is calculated. (Taken from the original article.)</p>
+<div style="color:#a8a8a8;">
+<center>
+<p><strong>Daily Bottle-Cap Production of Three Machines</strong></p>
+<p>(Artificial data.)</p>
+<table>
+<thead>
+<tr class="header">
+<th>Standard</th>
+<th>Modification1</th>
+<th>Modification2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>340</td>
+<td>339</td>
+<td>347</td>
+</tr>
+<tr class="even">
+<td>345</td>
+<td>333</td>
+<td>343</td>
+</tr>
+<tr class="odd">
+<td>330</td>
+<td>344</td>
+<td>349</td>
+</tr>
+<tr class="even">
+<td>342</td>
+<td></td>
+<td>355</td>
+</tr>
+<tr class="odd">
+<td>338</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</center>
+</div>
+<p><strong>Step 1</strong>: Obtain <span class="math inline">\(C\)</span> samples, each of size <span class="math inline">\(n_i\)</span>. Note that the notation <span class="math inline">\(n_i\)</span> allows for each sample to be a different size.</p>
+<div style="padding-left:30px; color:#a8a8a8;">
+<p>In the bottle-cap data, <span class="math inline">\(C=3\)</span> and <span class="math inline">\(n_1 = 5\)</span>, <span class="math inline">\(n_2 = 3\)</span>, and <span class="math inline">\(n_3 = 4\)</span>.</p>
+</div>
+<p><strong>Step 2</strong>: Order the <span class="math inline">\(N=n_1 + \cdots + n_C\)</span> values from all samples from smallest to largest. Rank the values from smallest to largest with the ranks <span class="math inline">\(1,\ldots,N\)</span>. Award any tied values the average of the ranks of those values that are tied.</p>
+<div style="padding-left:30px; color:#a8a8a8;">
+<p>In the bottle-cap data we have the following.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Rank</th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right">3</th>
+<th align="right">4</th>
+<th align="right">5</th>
+<th align="right">6</th>
+<th align="right">7</th>
+<th align="right">8</th>
+<th align="right">9</th>
+<th align="right">10</th>
+<th align="right">11</th>
+<th align="right">12</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Value</td>
+<td align="right">330</td>
+<td align="right">333</td>
+<td align="right">338</td>
+<td align="right">339</td>
+<td align="right">340</td>
+<td align="right">342</td>
+<td align="right">343</td>
+<td align="right">344</td>
+<td align="right">345</td>
+<td align="right">347</td>
+<td align="right">349</td>
+<td align="right">355</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Machine</td>
+<td align="right">S</td>
+<td align="right">M1</td>
+<td align="right">S</td>
+<td align="right">M1</td>
+<td align="right">S</td>
+<td align="right">S</td>
+<td align="right">M2</td>
+<td align="right">M1</td>
+<td align="right">S</td>
+<td align="right">M2</td>
+<td align="right">M2</td>
+<td align="right">M2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Step 3</strong>: Sum the ranks for each sample. Denote the sum of the ranks for sample <span class="math inline">\(i\)</span> by <span class="math inline">\(R_i\)</span>.</p>
+<div style="padding-left:30px; color:#a8a8a8;">
+<p>In the bottle-cap data,</p>
+<p><span class="math inline">\(R_1 = 1 + 3 + 5 + 6 + 9 = 24\)</span></p>
+<p><span class="math inline">\(R_2 = 2 + 4 + 8 = 14\)</span></p>
+<p><span class="math inline">\(R_3 = 7 + 10 + 11 + 12 = 40\)</span></p>
+</div>
+<p><strong>Step 4</strong>: Compute the mean rank for each sample, <span class="math inline">\(\bar{R_i} = \frac{R_i}{n_i}\)</span>.</p>
+<div style="padding-left:30px; color:#a8a8a8;">
+<p>In the bottle-cap data,</p>
+<p><span class="math inline">\(\bar{R}_1 = \frac{R_1}{n_1} = \frac{24}{5} = 4.8\)</span></p>
+<p><span class="math inline">\(\bar{R}_2 = \frac{R_2}{n_2} = \frac{14}{3} = 4.667\)</span></p>
+<p><span class="math inline">\(\bar{R}_3 = \frac{R_3}{n_3} = \frac{40}{4} = 10.0\)</span></p>
+</div>
+<p><strong>Step 5</strong>: If there are no ties, calculate the test statistic <span class="math inline">\(H\)</span> by the formula <span class="math display">\[
+  H = \frac{N-1}{N}\sum_{i=1}^C \frac{n_i[\bar{R}_i-\frac{1}{2}(N+1)]^2}{\frac{1}{12}(N^2-1)}
+\]</span></p>
+<p>See the original article for the formula to use when there are ties present in the data.</p>
+<div style="padding-left:30px; color:#a8a8a8;">
+<p>In the bottle-cap data, <span class="math inline">\(H = 5.656\)</span>.</p>
+</div>
+<p>To understand the logic behind the test statistic <span class="math inline">\(H\)</span>, note that the null hypothesis assumes that each of the <span class="math inline">\(C\)</span> samples are taken from the same population. Under this assumption, the ranks assigned to each sample should represent a uniform sample of the ranks <span class="math inline">\(1,\ldots,N\)</span>. If the null hypothesis were true, we would expect the average of the ranks from each group, the <span class="math inline">\(\bar{R}_i\)</span>, to be roughly about the same. More precisely, using the properties of the <em>discrete uniform distribution</em> (<a href="https://en.wikipedia.org/wiki/Uniform_distribution_(discrete)">see wikipedia</a>), we expect each <span class="math inline">\(\bar{R}_i\)</span> to be close to <span class="math inline">\(\frac{1}{2}(N+1)\)</span>, which is the mean of the discrete uniform distribution. That <span class="math inline">\(\bar{R}_i\)</span> should be close to this value comes from the fact that the mean of a distribution of means is equal to the population mean. Further, the variance of <span class="math inline">\(\bar{R}_i\)</span> is given by the population variance, <span class="math inline">\(\frac{1}{12}(N^2-1)\)</span> in this case, divided by the sample size <span class="math inline">\(n_i\)</span>. Finally, the <span class="math inline">\(\frac{N-1}{N}\)</span> is a correction factor that will not be explained here. The full article explains the details about how a multivariate normal distribution is used to uncover the formula for <span class="math inline">\(H\)</span>. Thus, understanding <span class="math inline">\(H\)</span> completely will require an advanced degree in statistical theory. However, the short story is that the distribution of the test statistic <span class="math inline">\(H\)</span> is approximately a chi squared distribution with <span class="math inline">\(C-1\)</span> degrees of freedom and has the form of a sum of values consisting of the (observed mean - expected mean)^2/(variance of the observed mean).</p>
+<p><strong>Step 6</strong>: Calculate the p-value of <span class="math inline">\(H\)</span> using a <a href="MakingInference.html#chisquared">chi squared distribution</a> with <span class="math inline">\(C-1\)</span> degrees of freedom. <span class="math display">\[
+  H = \frac{N-1}{N}\sum_{i=1}^C \frac{n_i[\bar{R}_i-\frac{1}{2}(N+1)]^2}{\frac{1}{12}(N^2-1)}
+\]</span></p>
+<div style="padding-left:30px; color:#a8a8a8;">
+<p>In the bottle-cap data, <span class="math inline">\(p = 0.059\)</span>, which represents the probability of <span class="math inline">\(H\)</span> being as extreme or more extreme than the observed value of 5.656, assuming the null hypothesis is true.</p>
+</div>
+<hr />
+</div>
+</div>
+</div>
+<div id="section" class="section level3">
+<h3></h3>
+<div style="padding-left:125px;">
+<p><strong>Examples:</strong> <a href="./Analyses/Kruskal-Wallis%20Test/Examples/wagesKruskal.html">wages</a>, <a href="./Analyses/Kruskal-Wallis%20Test/Examples/pigweightsKruskal.html">pigweights</a></p>
+</div>
+<hr />
+<footer>
+</footer>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
