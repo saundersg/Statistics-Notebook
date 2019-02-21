@@ -186,7 +186,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Math 325 Notebook</a>
+      <a class="navbar-brand" href="index.html">Statistics Notebook</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -1831,13 +1831,15 @@ lines(c(0,15), preds[c(3,3)], col=rgb(.529,.8078,.9216,.8))</code></pre>
 <div style="padding-left:125px;">
 <p><strong>Console</strong> Help Command: <code>?lm()</code></p>
 <p>Everything is the same as in simple linear regression except that more variables are allowed in the call to <code>lm()</code>.</p>
-<p><code>mylm &lt;- lm(y ~ x1 + x2 + ... + xp + ..., data=YourDataSet)</code></p>
+<p><code>mylm &lt;- lm(Y ~ X1 + X2 + X1:X2 + ..., data=YourDataSet)</code></p>
+<p><code>summary(mylm)</code></p>
 <ul>
 <li><code>mylm</code> is some name you come up with to store the results of the <code>lm()</code> test. Note that <code>lm()</code> stands for “linear model.”</li>
-<li><code>y</code> must be a “numeric” vector of the quantitative response variable.</li>
-<li><code>x1</code>, <code>x2</code>, <code>...</code>, <code>xp</code> are the explanatory variables. These can either be quantitative or qualitative. Note that R treats “numeric” variables as quantitative and “character” or “factor” variables as qualitative. Further, when R thinks a variable is qualitative, then it creates a set of dummy variables that are each coded as 0,1 variables. It creates one fewer dummy variables than levels of the original qualitative variable.</li>
+<li><code>Y</code> must be a “numeric” vector of the quantitative response variable.</li>
+<li><code>X1</code> and <code>X2</code> are the explanatory variables. These can either be quantitative or qualitative. Note that R treats “numeric” variables as quantitative and “character” or “factor” variables as qualitative. R will automatcially recode qualitative variables to become “numeric” variables using a 0,1 encoding. See the Explanation tab for details.</li>
 <li><code>YourDataSet</code> is the name of your data set.</li>
-<li><code>...</code> interactions are also allowed.</li>
+<li><code>X1:X2</code> is called the interaction term. See the Explanation tab for details.</li>
+<li><code>...</code> emphasizes that as many explanatory variables as are desired can be included in the model.</li>
 </ul>
 <hr />
 </div>
@@ -1845,15 +1847,50 @@ lines(c(0,15), preds[c(3,3)], col=rgb(.529,.8078,.9216,.8))</code></pre>
 <div id="explanation-1" class="section level3">
 <h3>Explanation</h3>
 <div style="padding-left:125px;">
-<p>The extension of linear regression to multiple regression is fairly direct yet very powerful. Multiple regression expands the simple regression model to include more explanatory variables. These extra variables are sometimes called <em>covariates</em>. Like simple regression, multiple regression still only allows for a single quantitative response variable.</p>
-<h4 id="the-model">The Model</h4>
-<p>The multiple linear regression model is given by <span class="math display">\[
-  Y_i = \underbrace{\beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \cdots + \beta_p X_{pi}}_{E\{Y\}} + \epsilon_i
-\]</span> where <span class="math inline">\(\epsilon_i\sim N(0,\sigma^2)\)</span>. Thus, it is a direct extension of the simple linear regression model to the scenario where more than one explanatory variable can be included in the model.</p>
+<p>The extension of linear regression to multiple regression is fairly direct, include more than one explanatory variable, yet very powerful.</p>
+<h4 id="extending-the-mathematical-model-expand">Extending The Mathematical Model <a href="javascript:showhide('mathmodel2')" style="font-size:.6em;color:skyblue;">(Expand)</a></h4>
+<p><span class="expand-caption">Options for <span class="math inline">\(E\{Y_i\}\)</span> beyond <span class="math inline">\(\beta_0 + \beta_1 X_i\)</span>…</span></p>
+<div id="mathmodel2" style="display:none;">
+<p>The multiple linear regression model is given by “a model” for the mean y-value, denoted by <span class="math inline">\(E\{Y_i\}\)</span>, and a normally distributed error term, <span class="math inline">\(\epsilon_i\)</span>.</p>
+<p><span class="math display">\[
+  Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \cdots + \beta_p X_{pi}}_{E\{Y_i\}}}^\text{&quot;The Model&quot;} + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2)
+\]</span></p>
+<p>The model can be many things. Here are some examples.</p>
+<p><span class="math display">\[
+ Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_i}_{E\{Y_i\}}}^\text{Simple Linear Model} + \epsilon_i
+\]</span></p>
+<p><span class="math display">\[
+ Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_i + \beta_2 X_i^2}_{E\{Y_i\}}}^\text{Quadratic Model} + \epsilon_i
+\]</span></p>
+<p><span class="math display">\[
+ Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \beta_3 X_{1i} X_{2i}}_{E\{Y_i\}}}^\text{Two-lines Model} + \epsilon_i \quad \text{where} \ X_{2i} = \left\{\begin{array}{ll} 1, &amp; \text{Group B} \\ 0, &amp; \text{Group A} \end{array}\right.
+\]</span></p>
+<pre class="r"><code>par(mfrow=c(1,3), mai=c(0.1,0.1,0.3,0.1), cex.main=1.5)
+
+plot(Wind ~ Temp, data=airquality, pch=21, bg=&quot;gray83&quot;, col=&quot;skyblue&quot;, yaxt=&#39;n&#39;, xaxt=&#39;n&#39;, main=&quot;Simple Linear Model&quot;, cex.main=1)
+lm.slr &lt;- lm(Wind ~ Temp, data=airquality)
+abline(lm.slr, col=&quot;orange&quot;, lwd=2)
+
+
+plot(Temp ~ Month, data=airquality, pch=21, bg=&quot;gray83&quot;, col=&quot;skyblue&quot;, yaxt=&#39;n&#39;, xaxt=&#39;n&#39;, main=&quot;Quadratic Model&quot;, cex.main=1)
+lm.quad &lt;- lm(Temp ~ Month + I(Month^2), data=airquality)
+b &lt;- coef(lm.quad)
+curve(b[1] + b[2]*x + b[3]*x^2, col=&quot;orange&quot;, lwd=2, add=TRUE)
+
+
+plot(mpg ~ qsec, data=mtcars, col=c(&quot;skyblue&quot;,&quot;orange&quot;)[as.factor(am)], pch=21, bg=&quot;gray83&quot;, xaxt=&#39;n&#39;, yaxt=&#39;n&#39;, main=&quot;Two-lines Model&quot;, cex.main=1)
+lm.2lines &lt;- lm(mpg ~ qsec + am + qsec:am, data=mtcars)
+b &lt;- coef(lm.2lines)
+curve(b[1] + b[2]*x, col=&quot;skyblue&quot;, lwd=2, add=TRUE)
+curve(b[1] + b[3] + (b[2] + b[4])*x, col=&quot;orange&quot;, lwd=2, add=TRUE)</code></pre>
+<p><img src="LinearRegression_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p>In fact, the model for <span class="math inline">\(E\{Y_i\}\)</span> can be any “linear combination” of <span class="math inline">\(\beta\)</span>’s, which means <span class="math inline">\(\beta\)</span> times some X-variable plus <span class="math inline">\(\beta\)</span> times some X-variable plus… plus the error term <span class="math inline">\(\epsilon_i\)</span>. So you could have <span class="math inline">\(\beta_1 \sin(X_i)\)</span>, <span class="math inline">\(\beta_2 e^{X_2i}\)</span>, and anything else you can dream up. But <span class="math inline">\(e^{\beta_1 X_i}\)</span> is not allowed. Of course, you could fit the model <span class="math inline">\(Y_i = e^{\beta_0 + \beta_1 X_i + \epsilon_i}\)</span> using a <span class="math inline">\(\log(Y_i)\)</span> transformation, but then, the regression would actually be <span class="math inline">\(\log(Y_i) = \beta_0 + \beta_1 X_i + \epsilon_i\)</span> which is again a “linear regression”.</p>
 <div style="padding-left:15px; color:#a8a8a8;">
 <p><strong>Note</strong>: Interactions, transformations of other variables, and qualitative variables can all be included in the model. For example, if a model included three explanatory variables, <span class="math inline">\(X_1,X_2,X_3\)</span>, then <span class="math inline">\(X_{3i}\)</span> could be defined to be the interaction between <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_3\)</span>, i.e., <span class="math inline">\(X_{3i} = X_{1i}\cdot X_{2i}\)</span>. If <span class="math inline">\(X_3\)</span> was instead to represent a qualitative variable with two levels, then we could use a 0 to represent one level of the variable and a 1 to represent the other level. If we had good reason to do so, we could even let <span class="math inline">\(X_{3i} = X_{1i}^2\)</span> or <span class="math inline">\(\log(X_{1i})\)</span> or some other transformation of another <span class="math inline">\(X\)</span> variable.</p>
 </div>
 <p>Say we are interested in the price of a vehicle, particularly the price of a Cadillac. Simple linear regression would just use the mileage of the vehicle to predict the price. This will probably not be very successful as different makes of Cadillacs vary widely in their prices. However, if we include other explanatory variables in our model, like model of the vehicle, we should be able to do very well at predicting the price of a particular vehicle. (Certainly other variables like the number of doors, engine size, automatic or manual transmission and so on could also be valuable explanatory variables.)</p>
+</div>
+<p><br /></p>
 <h4 id="interpretation">Interpretation</h4>
 <p>The only change to interpretation from the simple linear regression model is that each coefficient, <span class="math inline">\(\beta_j\)</span> <span class="math inline">\(j=1,\ldots,p\)</span>, represents the change in the <span class="math inline">\(E\{Y\}\)</span> for a unit change in <span class="math inline">\(X_j\)</span>, <em>holding all other variables constant.</em></p>
 <p><br /></p>
@@ -1873,7 +1910,7 @@ lines(c(0,15), preds[c(3,3)], col=rgb(.529,.8078,.9216,.8))</code></pre>
 <table width="90%">
 <tr>
 <td with="15%">
-<img src="LinearRegression_files/figure-html/unnamed-chunk-24-1.png" width="144" />
+<img src="LinearRegression_files/figure-html/unnamed-chunk-25-1.png" width="144" />
 </td>
 <td width="75%">
 <p>Let <span class="math inline">\(X_{new}\)</span> be a new explanatory variable that could be added to the current multiple regression model. Plotting the residuals from the current linear regression against <span class="math inline">\(X_{new}\)</span> allows us to determine if <span class="math inline">\(X_{new}\)</span> has any information to add to the current model. If there is a trend in the plot, then <span class="math inline">\(X_{new}\)</span> should be added to the model. If there is no trend in the plot, then the <span class="math inline">\(X_{new}\)</span> should be left out.</p>
@@ -1892,7 +1929,7 @@ lines(c(0,15), preds[c(3,3)], col=rgb(.529,.8078,.9216,.8))</code></pre>
 </ul>
 <p>The left column of plots below show scenarios where the new explanatory variable should be included in the model. The right column of plots show scenarios where the new explanatory variable should not be included in the model.</p>
 </div>
-<p><img src="LinearRegression_files/figure-html/unnamed-chunk-25-1.png" width="672" /><img src="LinearRegression_files/figure-html/unnamed-chunk-25-2.png" width="672" /></p>
+<p><img src="LinearRegression_files/figure-html/unnamed-chunk-26-1.png" width="672" /><img src="LinearRegression_files/figure-html/unnamed-chunk-26-2.png" width="672" /></p>
 </div>
 <p><br /></p>
 <h4 id="infModelParam">Inference for the Model Parameters</h4>
