@@ -1,15 +1,19 @@
 ---
-title: "Table of Contents"
+title: "Statistics Notebook"
 output: 
   html_document:
     theme: cerulean
 ---
 
-<br>
+This page, and all pages of this notebook, are meant to be customized to become a useful *Guide to Statistical Analysis* for your *current* and *future* self. 
+
+<span style="font-size:.8em;color:gray;">
+To begin customizing, [download](https://github.com/saundersg/Statistics-Notebook) your own copy of the book. Please note the [GNU General Public License](https://choosealicense.com/licenses/gpl-3.0/) when downloading.
+</span>
+
+## Table of Contents
 
 ----
-
-Customize this page and any of the Math 325 Notebook so that it becomes a useful *Guide to Statistical Analysis* for your *current* and *future* self. 
 
 <!-- This is how to comment text out. You can comment out the above instructions if you wish. Comments allow the text to remain in the Rmd file, but not be displayed in the html file. -->
 

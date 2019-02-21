@@ -1,9 +1,7 @@
-name: "math-325-notebook"
+name: "statistics-notebook"
 navbar:
-  title: "Math 325 Notebook"
+  title: "Statistics Notebook"
   left:
-    - text: "Table of Contents"
-      href: index.html
     - text: "Describing Data"
       menu:
         - text: "Graphical Summaries"
