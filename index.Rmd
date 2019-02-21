@@ -5,7 +5,7 @@ output:
     theme: cerulean
 ---
 
-This page, and all pages of this notebook, are meant to be customized to become a useful *Guide to Statistical Analysis* for your *current* and *future* self. 
+This page, and all pages of this notebook, are meant to be customized to become a useful *Guide to Statistical Analysis* in R for your *current* and *future* self. 
 
 <span style="font-size:.8em;color:gray;">
 To begin customizing, [download](https://github.com/saundersg/Statistics-Notebook) your own copy of the book. Please note the [GNU General Public License](https://choosealicense.com/licenses/gpl-3.0/) when downloading.
