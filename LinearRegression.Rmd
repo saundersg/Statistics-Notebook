@@ -1903,6 +1903,129 @@ The Quadratic model uses the same $X$-variable twice, once with a $\beta_1 X_i$ 
 | $\beta_1$ | Controls the x-position of the vertex of the parabola by $\frac{-\beta_1}{2\cdot\beta_2}$. |
 | $\beta_2$ | Controls the concavity and "steepness" of the Model: negative values face down, positive values face up; large values imply "steeper" parabolas and low values imply "flatter" parabolas. Also involved in the position of the vertex, see $\beta_1$'s explanation. |
 
+
+
+
+<span style="padding-left:15px;"><a href="javascript:showhide('quadraticmodelelexample')" style="font-size:1.1em;color:skyblue;">(Show Example...)</a></span>
+
+<div id="quadraticmodelelexample" style="display:none;">
+
+**An Example**
+
+Using the `airquality` data set, we run the following "quadratic" regression.
+
+$$
+  \underbrace{Y_i}_\text{Temp} \underbrace{=}_{\sim} \overbrace{\beta_0}^{\text{y-int}} + \overbrace{\beta_1}^{\stackrel{\text{slope}}{\text{term}}} \underbrace{X_{i}}_\text{Month} + \overbrace{\beta_2}^{\stackrel{\text{quadratic}}{\text{term}}}  \underbrace{X_{i}^2}_\text{I(Month^2)} + \epsilon_i
+$$
+
+
+<a href="javascript:showhide('quadraticregressionexamplecode')">
+<div class="hoverchunk">
+<span class="tooltipr">
+lm.quad <- 
+  <span class="tooltiprtext">A name we made up for our "quadratic" regression.</span>
+</span><span class="tooltipr">
+lm(
+  <span class="tooltiprtext">R function lm used to perform linear regressions in R. The lm stands for "linear model".</span>
+</span><span class="tooltipr">
+Temp
+  <span class="tooltiprtext">Y-variable, should be quantitative.</span>
+</span><span class="tooltipr">
+&nbsp;~&nbsp;
+<span class="tooltiprtext">The tilde `~` is what lm(...) uses to state the regression equation $Y_i = ...$. Notice that the `~` is not followed by $\beta_0 + \beta_1$ like $Y_i = ...$. Instead, $X_{1i}$ is the first term following `~`. This is because the $\beta$'s are going to be estimated by the lm(...). These estimates can be found using summary(lmObject).</span>
+</span><span class="tooltipr">
+Month
+  <span class="tooltiprtext">$X_{i}$, should be quantitative.</span>
+</span><span class="tooltipr">
+&nbsp;+&nbsp;
+  <span class="tooltiprtext">The plus `+` is used between each term in the model. Note that only the x-variables are included in the lm(...) from the $Y_i = ...$ model. No beta's are included.</span>
+</span><span class="tooltipr">
+I(Month^2)
+  <span class="tooltiprtext">$X_{i}^2$, where the function I(...) protects the squaring of Month from how lm(...) would otherwise interpret that statement. The I(...) function must be used anytime you raise an x-variable to a power in the lm(...) statement.</span>
+</span><span class="tooltipr">
+, data=airquality
+  <span class="tooltiprtext">This is the data set we are using for the regression.</span>
+</span><span class="tooltipr">
+)  
+  <span class="tooltiprtext">Closing parenthsis for the lm(...) function.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="quadraticregressionexamplecode" style="display:none;">
+Pay special attention to how the lm(...) code uses $Y_i \sim X_{i} + X_{i}^2$ and drops all $\beta$'s and $\epsilon$ from the model statement. This is because the estimates for the $\beta$'s and $\epsilon$ are given by the output of the lm(...) funtion in the "Estimates" column of summary(....) and in `lmObject$residuals`.
+</div>
+
+
+```{r}
+lm.quad <- lm(Temp ~ Month + I(Month^2), data=airquality)
+pander(summary(lm.quad)$coefficients)
+```
+
+
+
+The **estimates** shown above approximate the $\beta$'s in the regression model: $\beta_0$ is estimated by the (Intercept) value of -95.73, $\beta_1$ is estimated by the `Month` value of 48.72, and $\beta_2$ is estimated by the `I(Month^2)` value of -3.283.
+
+Because the estimate of the $\beta_2$ term is negative, this parabola will "open down". The vertex of this parabola will be at $-(48.72)/(2\cdot (-95.73)) = 0.2544657$, and the y-intercept is -95.73.
+
+$$
+\hat{Y}_i = \overbrace{-95.73}^\text{y-int} + \overbrace{48.72}^{\stackrel{\text{slope}}{\text{term}}} X_{i} + \overbrace{-3.283}^{\stackrel{\text{quadratic}}{\text{term}}} X_{i}^2
+$$
+
+The regression function is drawn as follows. Be sure to look at the "Code" to understand how this graph was created using the ideas in the equation above.
+
+<table>
+<tr>
+<td>
+
+**Using Base R**
+
+```{r}
+plot(Temp ~ Month, data=airquality, col="skyblue", pch=21, bg="gray83", main="Quadratic Model using airquality data set", cex.main=1)
+
+#get the "Estimates" automatically:
+b <- coef(lm.quad)
+# Then b will have 3 estimates:
+# b[1] is the estimate of beta_0: 35.38
+# b[2] is the estimate of beta_1: -7.099
+# b[3] is the estimate of beta_2: 0.4759
+curve(b[1] + b[2]*x + b[3]*x^2, col="skyblue", lwd=2, add=TRUE)
+```
+  
+</td>
+<td>
+
+**Using ggplot2**
+
+```{r}
+#get the "Estimates" automatically:
+b <- coef(lm.quad)
+# Then b will have 3 estimates:
+# b[1] is the estimate of beta_0: 35.38
+# b[2] is the estimate of beta_1: -7.099
+# b[3] is the estimate of beta_2: 0.4759
+
+ggplot(airquality, aes(y=Temp, x=Month)) +
+  geom_point(pch=21, bg="gray83", color="skyblue") +
+  #geom_smooth(method="lm", se=F, formula = y ~ poly(x, 2)) + #easy way, but the more involved manual way using stat_function (see below) is more dynamic.
+  stat_function(fun = function(x) b[1] + b[2]*x + b[3]*x^2, color="skyblue") +
+  labs(title="Quadratic Model using airquality data set") 
+  
+
+```
+
+</td>
+</tr>
+</table>
+
+
+</div>
+
 </div>
 
 </p>
@@ -1961,7 +2084,7 @@ mpg
   <span class="tooltiprtext">Y-variable, should be quantitative.</span>
 </span><span class="tooltipr">
 &nbsp;~&nbsp;
-<span class="tooltiprtext">The tilde `~` is what lm(...) uses to state the regression equation $Y_i = ...$. Notice that the `~` is not followed by $\beta_0 + \beta_1$ like $Y_i = ...$. Instead, $X_{1i}$ is the first term following `~`. This is because $\beta$'s are not put into lm(...).</span>
+<span class="tooltiprtext">The tilde `~` is what lm(...) uses to state the regression equation $Y_i = ...$. Notice that the `~` is not followed by $\beta_0 + \beta_1$ like $Y_i = ...$. Instead, $X_{1i}$ is the first term following `~`. This is because $\beta$'s are going to be estimated by the lm(...). These estimates can be found using summary(lmObject).</span>
 </span><span class="tooltipr">
 qsec
   <span class="tooltiprtext">$X_{1i}$, should be quantitative.</span>
@@ -2020,8 +2143,14 @@ $$
 
 These lines are drawn as follows. Be sure to look at the "Code" to understand how this graph was created using the ideas in the two equations above.
 
+<table>
+<tr>
+<td>
+
+**Using Base R**
+
 ```{r}
-plot(mpg ~ qsec, data=mtcars, col=c("skyblue","orange")[as.factor(am)], pch=21, bg="gray83", xaxt='n', yaxt='n', main="Two-lines Model using mtcars data set", cex.main=1)
+plot(mpg ~ qsec, data=mtcars, col=c("skyblue","orange")[as.factor(am)], pch=21, bg="gray83", main="Two-lines Model using mtcars data set", cex.main=1)
 
 legend("topleft", legend=c("Baseline (am==0)", "Changed-line (am==1)"), bty="n", lty=1, col=c("skyblue","orange"), cex=0.8)
 
@@ -2035,6 +2164,35 @@ b <- coef(lm.2lines)
 curve(b[1] + b[2]*x, col="skyblue", lwd=2, add=TRUE)  #baseline (in blue)
 curve((b[1] + b[3]) + (b[2] + b[4])*x, col="orange", lwd=2, add=TRUE) #changed line (in orange)
 ```
+  
+</td>
+<td>
+
+**Using ggplot2**
+
+```{r}
+#get the "Estimates" automatically:
+b <- coef(lm.2lines)
+# Then b will have 4 estimates:
+# b[1] is the estimate of beta_0: -9.0099
+# b[2] is the estimate of beta_1:  1.4385
+# b[3] is the estimate of beta_2: -14.5107
+# b[4] is the estimate of beta_3: 1.3214
+
+ggplot(mtcars, aes(y=mpg, x=qsec, color=factor(am))) +
+  geom_point(pch=21, bg="gray83") +
+  #geom_smooth(method="lm", se=F) + #easy way, but only draws the full interaction model. The manual way using stat_function (see below) is more involved, but more dynamic.
+  stat_function(fun = function(x) b[1] + b[2]*x, color="skyblue") + #am==0 line
+  stat_function(fun = function(x) (b[1]+b[3]) + (b[2]+b[4])*x,color="orange") + #am==1 line 
+  scale_color_manual(name="Transmission (am)", values=c("skyblue","orange")) +
+  labs(title="Two-lines Model using mtcars data set") 
+  
+
+```
+
+</td>
+</tr>
+</table>
 
 </div>
 
