@@ -2332,13 +2332,148 @@ Say we are interested in the price of a vehicle, particularly the price of a Cad
 <br />
 
 
-#### Interpretation
+
+
+
+#### Assessing the Model Fit <a href="javascript:showhide('assessingFit2')" style="font-size:.6em;color:skyblue;">(Expand)</a>
+
+<span class="expand-caption">$R^2$, adjusted $R^2$, AIC, BIC...</span>
+
+<div id="assessingFit2" style="display:none;">
+
+There are many measures of the quality of a regression model. One of the most popular measurements is the $R^2$ value ("R-squared"). The $R^2$ value is a measure of the proportion of variation of the $Y$-variable that is explained by the model. Specifically,
+$$
+  R^2 = \frac{\text{SSR}}{\text{SSTO}} = 1-\frac{\text{SSE}}{\text{SSTO}}
+$$
+The range of $R^2$ is between 0 and 1. Values close to 1 imply a very good model. Values close to 0 imply a very poor model. 
+
+One difficulty of $R^2$ in multiple regression is that it will always get larger when more variables are included in the regression model. Thus, in multiple linear regression, it is best to make an adjustment to the $R^2$ value to protect against this difficulty. The value of the adjusted $R^2$ is given by
+$$
+  R^2_{adj} = 1 - \frac{(n-1)}{(n-p)}\frac{\text{SSE}}{\text{SSTO}}
+$$
+The interpretation of $R^2_{adj}$ is essentially the same as the interpretation of $R^2$, with the understanding that a correction has been made for the number of parameters included in the model, $(n-p)$.
+
+</div>
+
+<br/>
+
+
+
+#### Model Validation <a href="javascript:showhide('validation')" style="font-size:.6em;color:skyblue;">(Expand)</a>
+
+<span class="expand-caption">Verifying a model's ability to generalize to new data...</span>
+
+<div id="validation" style="display:none;">
+
+The following graph shows three things: (1) a true regression model, (2) a simple linear regression model that doesn't quite capture the full pattern in the data, and (3) a complicated model that seems to overly fit the data as it fits better than even the true model.
+
+```{r, fig.height=3, fig.width=5}
+set.seed(123) #gives us the same randomness 
+n <- 20 #sample size
+X <- runif(n, -1.5, 3.8) #uniform X from -1.5 to 3.8
+# Coefficients for the true model:
+beta0 <- 2
+beta1 <- -2.5
+beta2 <- 1
+beta3 <- 3
+beta4 <- -0.8
+# Get y-value using a true model
+Y <- beta0 + beta1*X + beta2*X^2 + beta3*X^3 + beta4*X^4 + rnorm(n, 0, 0.5) #normal errors
+
+# Plot it
+par(mai=c(.1,.5,.1,.1))
+plot(Y ~ X, pch=21, col="lightgray", bg="steelblue", cex=1.3, ylim=c(-5,22), yaxt='n', xaxt='n', ylab="", xlab="")
+
+# Draw true model
+curve(beta0 + beta1*x + beta2*x^2 + beta3*x^3 + beta4*x^4, add=TRUE, col=rgb(0.2745098, 0.5098039, 0.7058824, .5), lwd=4)
+lmt <- lm(Y ~ X + I(X^2) + I(X^3) + I(X^4)) #for later
+
+# Draw simple linear model
+lms <- lm(Y ~ X)
+b <- coef(lms)
+curve(b[1] + b[2]*x, add=TRUE, col=rgb(1,0.6470588,0, .3), lwd=2)
+
+# Draw overly complicated model
+lmo <- lm(Y ~ X + I(X^2) + I(X^3) + I(X^4) + I(X^5) + I(X^6) + I(X^7) + I(X^8) + I(X^9) + I(X^10) + I(X^11) + I(X^12) + I(X^13) + I(X^14))
+b <- coef(lmo)
+curve(b[1] + b[2]*x + b[3]*x^2 + b[4]*x^3 + b[5]*x^4 + b[6]*x^5 + b[7]*x^6 + b[8]*x^7 + b[9]*x^8 + b[10]*x^9 + b[11]*x^10 + b[12]*x^11 + b[13]*x^12 + b[14]*x^13 + b[15]*x^14, add=TRUE, col=rgb(0.6980392, 0.133333, 0.133333, .2), lwd=2)
+
+# Add legend
+legend("topleft", legend=c("True Model", "Simple Model", "Complicated Model"), lwd=c(4,2,2), col=c(rgb(0.2745098, 0.5098039, 0.7058824, .5), rgb(1,0.6470588,0, .3), rgb(0.6980392, 0.133333, 0.133333, .2)), bty='n')
+```
+
+
+| Model   | $R^2$ | Adjusted $R^2$ |
+|---------|-------|----------------|
+| True    | `r summary(lmt)$r.squared`  | `r summary(lmt)$adj.r.squared` |
+| Simple  | `r summary(lms)$r.squared`  | `r summary(lms)$adj.r.squared` |
+| Complicated | `r summary(lmo)$r.squared`  | `r summary(lmo)$adj.r.squared` |
+
+
+Now, let's remind ourselves why we use regression models in the first place. The main goal is to capture the "essence" of the data. In other words, the general pattern is what we are after. We want a model that tells us how "all such" data is created, not just the specific data we have sampled. So, the great test of a model is to see how well it works on a new sample of data. 
+
+This is precisely **model validation**, the verification that a model fit on one sample of data, continues to perform well on a new sample of data.
+
+
+```{r, fig.height=3, fig.width=5}
+set.seed(14551) #get same random sample
+# Get a new sample of data from the true model
+Xnew <- runif(n, -1.4, 3.7) #uniform X from -1.5 to 3.8
+Ynew <- beta0 + beta1*Xnew + beta2*Xnew^2 + beta3*Xnew^3 + beta4*Xnew^4 + rnorm(n, 0, 0.5) #normal errors
+
+# Plot it
+par(mai=c(.1,.5,.1,.1))
+plot(Y ~ X, pch=21, col=rgb(.827451,.827451,.827451, .1), bg=rgb(.2745098,.5098039,.7058824, .1), cex=1.3, ylim=c(-5,22), yaxt='n', xaxt='n', ylab="", xlab="")
+
+
+# Draw true model
+curve(beta0 + beta1*x + beta2*x^2 + beta3*x^3 + beta4*x^4, add=TRUE, col=rgb(0.2745098, 0.5098039, 0.7058824, .5), lwd=4)
+lmt <- lm(Y ~ X + I(X^2) + I(X^3) + I(X^4)) #for later
+
+# Draw simple linear model
+lms <- lm(Y ~ X)
+b <- coef(lms)
+curve(b[1] + b[2]*x, add=TRUE, col=rgb(1,0.6470588,0, .3), lwd=2)
+
+# Draw overly complicated model
+lmo <- lm(Y ~ X + I(X^2) + I(X^3) + I(X^4) + I(X^5) + I(X^6) + I(X^7) + I(X^8) + I(X^9) + I(X^10) + I(X^11) + I(X^12) + I(X^13) + I(X^14))
+b <- coef(lmo)
+curve(b[1] + b[2]*x + b[3]*x^2 + b[4]*x^3 + b[5]*x^4 + b[6]*x^5 + b[7]*x^6 + b[8]*x^7 + b[9]*x^8 + b[10]*x^9 + b[11]*x^10 + b[12]*x^11 + b[13]*x^12 + b[14]*x^13 + b[15]*x^14, add=TRUE, col=rgb(0.6980392, 0.133333, 0.133333, .2), lwd=2)
+
+# Add new data to plot
+points(Ynew ~ Xnew, pch=21, col=rgb(.827451,.827451,.827451, .1), bg="orange", cex=1.3)
+
+# Add legend
+legend("topleft", legend=c("True Model", "Simple Model", "Complicated Model"), lwd=c(4,2,2), col=c(rgb(0.2745098, 0.5098039, 0.7058824, .5), rgb(1,0.6470588,0, .3), rgb(0.6980392, 0.133333, 0.133333, .2)), bty='n')
+```
+
+
+</div>
+
+
+<br/>
+
+
+
+#### Interpretation <a href="javascript:showhide('interpretationMultiple')" style="font-size:.6em;color:skyblue;">(Expand)</a>
+
+<span class="expand-caption">$\beta_j$ is the change in the average y-value...</span>
+
+<div id="interpretationMultiple" style="display:none;">
 
 The only change to interpretation from the simple linear regression model is that each coefficient, $\beta_j$ $j=1,\ldots,p$, represents the change in the $E\{Y\}$ for a unit change in $X_j$, *holding all other variables constant.*
 
+</div>
+
 <br />
 
-#### Assumptions
+
+#### Added Variable Plots <a href="javascript:showhide('addedVariablePlots')" style="font-size:.6em;color:skyblue;">(Expand)</a>
+
+<span class="expand-caption">When to add another $X$-variable to the model...</span>
+
+<div id="addedVariablePlots" style="display:none;">
+
 
 The assumptions of multiple linear regression are nearly identical to simple linear regression, with the addition of one new assumption.
 
@@ -2514,9 +2649,18 @@ par(mfcol=c(3,2),  mai=c(.25,.6,.25,.6), mgp=c(1,.75,0))
 
 </div>
 
+</div>
+
 <br />
 
-#### Inference for the Model Parameters{#infModelParam}
+
+
+#### Inference for the Model Parameters <a href="javascript:showhide('inferenceMultiple')" style="font-size:.6em;color:skyblue;">(Expand)</a>
+
+<span class="expand-caption">t Tests and F tests in multiple regression...</span>
+
+<div id="inferenceMultiple" style="display:none;">
+
 
 Inference in the multiple regression model can be for any of the model coefficients, $\beta_0$, $\beta_1$, $\ldots$, $\beta_p$ or for several coefficients simultaneously.
 
@@ -2542,29 +2686,14 @@ Another approach to testing hypotheses about coefficients is to use an F Test. T
 
 The most commonly used F Test is the one given by the hypotheses
 $$
-  H_0: \beta_0 = \beta_1 = \cdots = \beta_p = 0
+  H_0: \beta_1 = \cdots = \beta_p = 0
 $$
 $$
-  H_a: \beta_j \neq 0 \ \text{for at least one}\ j \in \{0,1,\ldots,p\}
+  H_a: \beta_j \neq 0 \ \text{for at least one}\ j \in \{1,\ldots,p\}
 $$
 However, any subset of coefficients could be tested in a similar way using a customized F Test. The details of how to do this are somewhat involved and are beyond the scope of this class. 
 
-
-<br />
-
-#### Assessing the Model Fit{#rsquared}
-
-There are many measures of the quality of a regression model. One of the most popular measurements is the $R^2$ value ("R-squared"). The $R^2$ value is a measure of the proportion of variation of the $Y$-variable that is explained by the model. Specifically,
-$$
-  R^2 = \frac{\text{SSR}}{\text{SSTO}} = 1-\frac{\text{SSE}}{\text{SSTO}}
-$$
-The range of $R^2$ is between 0 and 1. Values close to 1 imply a very good model. Values close to 0 imply a very poor model. 
-
-One difficulty of $R^2$ in multiple regression is that it will always get larger when more variables are included in the regression model. Thus, in multiple linear regression, it is best to make an adjustment to the $R^2$ value to protect against this difficulty. The value of the adjusted $R^2$ is given by
-$$
-  R^2_{adj} = 1 - \frac{(n-1)}{(n-p)}\frac{\text{SSE}}{\text{SSTO}}
-$$
-The interpretation of $R^2_{adj}$ is essentially the same as the interpretation of $R^2$, with the understanding that a correction has been made for the number of parameters included in the model, $(n-p)$.
+</div>
 
 <br />
 <br />
