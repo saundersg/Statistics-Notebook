@@ -1728,8 +1728,157 @@ lines(c(0,15), preds[c(3,3)], col=rgb(.529,.8078,.9216,.8))
 
 </div>
 
+<br/>
 
 
+#### Lowess (and Loess) Curves <a href="javascript:showhide('lowesscurves')" style="font-size:.6em;color:skyblue;">(Expand)</a>
+
+<span class="expand-caption">A non-parametric approach to estimating $E\{Y_i\}$... </span>
+
+<div id="lowesscurves" style="display:none;">
+
+Robust **lo**cally **wei**ghted regression and **s**moothing **s**catterplots (LOWESS), is an effective way to visually model the average y-value. 
+
+The Lowess curve localizes the regression model to a "neighborhood" of points, and then joins these localized regressions together into a smooth line. It minimizes the effect of outliers, and let's the data "speak for itself". 
+
+As a downside, it is not interpretable, and has no final way to write the model mathematically. All the same, it is a very powerful tool for identifying an appropriate model, or verifying the fit of a model, or making predictions when no reasonable model does an adequate job.
+
+Study this graphic and the explanations below to learn how it works. 
+
+*Recommendation: run the code in this "Code" chunk to the right in your Console, and flip through the resulting graphics.*
+
+```{r, eval=FALSE}
+X <- cars$speed
+Y <- cars$dist
+X <- X[!is.na(X) & !is.na(Y)]
+Y <- Y[!is.na(X) & !is.na(Y)]
+f <- 1/2
+n <- length(X)
+
+lfit <- rep(NA,n)
+for (xh in 1:n){
+ xdists <- X - X[xh]
+ nn <- floor(n*f)
+ r <- sort(abs(xdists))[nn]
+ xdists.nbrhd <- which(abs(xdists) < r)
+ w <- rep(0, length(xdists))
+ w[xdists.nbrhd] <- (1 - abs(xdists[xdists.nbrhd]/r)^3)^3
+ plot(Y ~ X, pch=21, bg=rgb(.53,.81,.92, w),   
+      col=rgb(.2,.2,.2,.3), cex=1.5, yaxt='n', xaxt='n', xlab="", ylab="")
+ points(Y[xh] ~ X[xh], pch=16, col="orange")
+ lmc <- lm(Y ~ X, weights=w)
+ curve(lmc$coef[1] + lmc$coef[2]*x, from=min(X[xdists.nbrhd]), to=max(X[xdists.nbrhd]), col="orange", add=TRUE)
+ lines(lfit[1:xh] ~ X[1:xh], col="gray")
+ 
+ #lines(lowess(X,Y), col=rgb(0.698,0.133,0.133,.2))
+ cat("\n\n")
+ readline(prompt=paste0("Center point is point #", xh, "... Press [enter] to continue..."))
+ 
+
+ MADnotThereYet <- TRUE
+ count <- 0
+ while(MADnotThereYet){
+   
+      readline(prompt=paste0("\n   Adjusting line to account for outliers in the y-direction... Press [enter] to continue..."))   
+   
+   curve(lmc$coef[1] + lmc$coef[2]*x, from=min(X[xdists.nbrhd]), to=max(X[xdists.nbrhd]), col="wheat", add=TRUE)
+
+   MAD <- median(abs(lmc$res))
+   resm <- lmc$res/(6*MAD)
+   resm[resm>1] <- 1
+   bisq <- (1-resm^2)^2
+   w <- w*bisq
+   obs <- coef(lmc)
+   lmc <- lm(Y ~ X, weights=w)
+ 
+   curve(lmc$coef[1] + lmc$coef[2]*x, from=min(X[xdists.nbrhd]), to=max(X[xdists.nbrhd]), col="orange", add=TRUE)
+
+   count <- count + 1
+   if ( (sum(abs(obs-lmc$coef))<.1) | (count > 3))
+     MADnotThereYet <- FALSE
+       
+ }
+
+   curve(lmc$coef[1] + lmc$coef[2]*x, from=min(X[xdists.nbrhd]), to=max(X[xdists.nbrhd]), col="green", add=TRUE)
+   points(lmc$coef[1] + lmc$coef[2]*X[xh] ~ X[xh], pch=16, col="green")
+   
+
+  readline(prompt=paste0("\n   Use final line to get fitted value for this point... Press [enter] to continue to next point..."))
+ 
+ lfit[xh] <- predict(lmc, data.frame(X=X[xh]))
+ lines(lfit[1:xh] ~ X[1:xh], col="gray")
+ 
+
+ if (xh == n){
+     readline(prompt=paste0("\n  Press [enter] to see actual Lowess curve..."))
+    lines(lowess(X,Y, f=f), col="firebrick")
+    legend("topleft", bty="n", legend="Actual lowess Curve using lowess(...)", col="firebrick", lty=1)
+ }
+  
+  
+}
+
+
+
+```
+
+```{r, echo=FALSE}
+X <- cars$speed
+Y <- cars$dist
+X <- X[!is.na(X) & !is.na(Y)]
+Y <- Y[!is.na(X) & !is.na(Y)]
+f <- 1/2
+n <- length(X)
+
+lfit <- rep(NA,n)
+for (xh in 1:n){
+ xdists <- X - X[xh]
+ nn <- floor(n*f)
+ r <- sort(abs(xdists))[nn]
+ xdists.nbrhd <- which(abs(xdists) < r)
+ w <- rep(0, length(xdists))
+ w[xdists.nbrhd] <- (1 - abs(xdists[xdists.nbrhd]/r)^3)^3
+
+ lmc <- lm(Y ~ X, weights=w)
+ lfit[xh] <- predict(lmc, data.frame(X=X[xh]))
+
+ #lines(lowess(X,Y), col=rgb(0.698,0.133,0.133,.2))
+}
+
+ plot(Y ~ X, pch=21, bg=rgb(.53,.81,.92, w),   
+      col=rgb(.2,.2,.2,.3), cex=1.5, yaxt='n', xaxt='n', xlab="", ylab="")
+ points(Y[xh] ~ X[xh], pch=16, col="orange")
+ curve(lmc$coef[1] + lmc$coef[2]*x, from=min(X[xdists.nbrhd]), to=max(X[xdists.nbrhd]), col="orange", add=TRUE)
+ lines(lfit[1:xh] ~ X[1:xh], col="gray")
+ 
+```
+
+1. Select a fraction of the data to use for the "neighborhood" of points (shown in blue in the graph above). The `lowess` function in R uses "f=2/3" and the `loess` function uses "span=0.75" for this value, which selects the nearest two-thirds or 75% of the data, respectively, depending on which function you use. For this example, we set the fraction of points at 50%. Both functions can be set to whatever you want.
+
+2. Pick any point in the regression, eventually selecting all points one at a time. The selected point becomes the "center" of a "neighborhood" of points surrounding it. In this example, the center point is in orange, and the neighboring points are in blue.
+
+3. Use the points within the neighborhood to fit a regression line. However, make the regression depend most on points closest to "center" and least on points furthest from "center." This is called a weighted regression. Weights are decided according to what is called the tricubic weight function, so that the weight $w$ given to point $j$ of the neighborhood of points is defined by
+$$
+  w_j = \left(1- \left( \frac{|X_c - X_j|}{\max_k |X_c - X_k|}\right)^3\right)^3
+$$
+where $X_c$ is the x-value of the "center" dot and $X_j$ is the x-value of any other dot in the neighborhood. 
+
+4. The fitted-value of $\hat{Y}_c$ is obtained for the center point $X_c$ of the current regression. This point is used as the Lowess (or Loess) curve's value at that particular x-value. Well, almost. It's a first guess at where this value will end up, but there's a little more to the algorithm before we are done. Initial guesses for each of these fitted values are obtained for each point in the regression.
+
+5. Now each local regression for each neighborhood is re-run a few times in such a way the the effect of outliers is minimized. The final line for each neighborhood is obtained by the following steps.
+
+    * Compute all residuals for points in the neighborhood of the current regression, denoted by $r_i$.
+    * Then compute the MAD, median absolute deviation, of the residuals $MAD = \text{median} (|r_1|, |r_2|, \ldots)$. 
+    * Divide all residuals by 6 times the MAD: $u_i = r_i/(6\cdot MAD)$
+    * Compute what are called bisquare weights using the formula: $b_i = (1 - u_i^2)^2$
+    * Perform a regression using the weights $w_i = w_i b_i$
+    * Repeat the above process with the new weights $w_i$ until the weights stop changing very much.
+
+6. The final fitted values for each $X$-value in the regression are obtained from the final regression line for each neighborhood. These fitted values make up the Lowess (or loess) curve.
+
+Note that the default of the `loess` function in R is to use quadratic regressions in each neighborhood instead of linear regressions. This can be controlled with the `loess` option of "degree=2" (quadratic fits) or "degree = 1". In the `lowess` function only a linear regression in each neighborhood is allowed.
+
+</div>
 
 
 
