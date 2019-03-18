@@ -1739,6 +1739,65 @@ lines(c(0,15), preds[c(3,3)], col=rgb(.529,.8078,.9216,.8))
 
 Robust **lo**cally **wei**ghted regression and **s**moothing **s**catterplots (LOWESS), is an effective way to visually model the average y-value. 
 
+----
+
+<table>
+<tr>
+<td>
+
+**Using Base R**
+
+```{r}
+air2 <- na.omit(select(airquality, Temp, Ozone))
+
+# Just quickly draw the lowess curve:
+plot(Temp ~ Ozone, data=air2, pch=16, col="darkgray")
+lines(lowess(air2$Ozone, air2$Temp), col="firebrick")
+
+## OR optionally, 
+## allow for predictions as well as the graph:
+# plot(Temp ~ Ozone, data=air2, pch=16, col="darkgray")
+# air2 <- arrange(air2, desc(Ozone))
+# mylo <- loess(Temp ~ Ozone, data=air2, degree=1)
+# lines(mylo$fit ~ Ozone, data=air2)
+```
+
+</td><td>
+
+**Using ggplot2**
+
+```{r}
+air2 <- na.omit(select(airquality, Temp, Ozone))
+
+# Just quickly draw the lowess curve:
+ggplot(air2, aes(x=Ozone, y=Temp)) +
+  geom_point(color="darkgray") + 
+  geom_smooth(se=F, method="loess", method.args = list(degree=1)) + #Note, degree=2 by default.
+  theme_bw()
+
+## OR optionally, 
+## allow for predictions as well as the graph:
+# air2 <- arrange(air2, desc(Ozone))
+# mylo <- loess(Temp ~ Ozone, data=air2, degree=1)
+# ggplot(air2, aes(x=Ozone, y=Temp)) +
+#   geom_point() +
+#   geom_line(data=air2, aes(y=mylo$fit, x=Ozone))
+```
+
+</td>
+</tr>
+</table>
+
+----
+
+<br />
+
+| **Advantages** | **Disadvantages** |
+|----------------------------------|----------------------------------|
+| Quick. Good at ignoring outliers. Good at capturing the general pattern in the data. Good for making predictions within the scope of the data. | No mathematical model. Not interpretable. No p-values. No adjusted R-squared. |
+
+**How it Works**
+
 The Lowess curve localizes the regression model to a "neighborhood" of points, and then joins these localized regressions together into a smooth line. It minimizes the effect of outliers, and let's the data "speak for itself". 
 
 As a downside, it is not interpretable, and has no final way to write the model mathematically. All the same, it is a very powerful tool for identifying an appropriate model, or verifying the fit of a model, or making predictions when no reasonable model does an adequate job.
@@ -1869,7 +1928,7 @@ where $X_c$ is the x-value of the "center" dot and $X_j$ is the x-value of any o
 
     * Compute all residuals for points in the neighborhood of the current regression, denoted by $r_i$.
     * Then compute the MAD, median absolute deviation, of the residuals $MAD = \text{median} (|r_1|, |r_2|, \ldots)$. 
-    * Divide all residuals by 6 times the MAD: $u_i = r_i/(6\cdot MAD)$
+    * Divide all residuals by 6 times the MAD: $u_i = r_i/(6\cdot MAD)$ (If $r_i > 6\cdot MAD$ then set $u_i = 0$.)
     * Compute what are called bisquare weights using the formula: $b_i = (1 - u_i^2)^2$
     * Perform a regression using the weights $w_i = w_i b_i$
     * Repeat the above process with the new weights $w_i$ until the weights stop changing very much.
