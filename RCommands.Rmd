@@ -20,27 +20,19 @@ output:
 
 ----
 
-The best way to learn R is to open RStudio and try all the **Example** codes yourself.
+The best way to learn R is to open RStudio and try all the **Example** codes yourself that are listed on this page.
 
-Click on a code to learn more.
+Click on a code to see what it does. Hover to learn more.
 
 ----
 
-## data( )
+## Getting Started
 
 <div style="padding-left:15px;">
 
 R allows you to work with data. So, the first step to understanding R is to open a dataset.
 
-**Usage**
-
-`data()`
-
-* This command lists the available datasets in R.
-
-**Examples**
-
-Click to view. Hover to learn.
+Here is a command you can run to see the "built in" data sets in R.
 
 <a href="javascript:showhide('DataOutput')">
 <div class="hoverchunk">
@@ -53,13 +45,13 @@ data
 </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
-  <span class="tooltiprtext">Click to View Output.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Double-Click to Hide Output&nbsp; 
+  <span class="tooltiprtext">Click to see output.</span>
 </span>
 </div>
 </a>
-<div id="DataOutput" style="display:none;padding-left:20px;">
+<div id="DataOutput" style="display:show;padding-left:20px;">
 ![](./Images/DataOutput.png)
 
 
@@ -98,8 +90,8 @@ cars
 </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -122,8 +114,8 @@ data
 </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -169,8 +161,8 @@ cars
 </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -192,8 +184,8 @@ airquality)
 </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -245,8 +237,8 @@ Wind
   </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-  </span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+  </span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -279,8 +271,8 @@ Wind
 </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-  </span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+  </span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -314,8 +306,8 @@ Wind
 </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-  </span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+  </span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -382,8 +374,8 @@ cars2$speed \* 5280 / 3600
 </span><span class="tooltipr">
 View(cars2)
   <span class="tooltipRtext">The `cars2` dataset now contains a 3rd column called `feetpersec`. Compare this to the original `cars` dataset to see how it changed.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -501,26 +493,29 @@ Used to reduce a dataset to a smaller set of rows than the original dataset cont
 * `filter()` is the function that filters out certain rows of the dataset.
 * `NameOfDataset` is the name of a dataset, like `cars` or `airquality` or `KidsFeet`.
 * `columnName` is the name of one of the columns from the dataset. You can use `colnames(NameOfDataset)` or `View(NameOfDataset)` to see the names.
-* `filteringRules` consists of some <a href="javascript:showhide('logicals')">**Logical Expression**</a> (click to view) that selects only the rows from the original dataset that meet the criterion.
+* `filteringRules` consists of some **Logical Expression** (see table below) that selects only the rows from the original dataset that meet the criterion.
 
-<div id="logicals" style="display:none;">
 
 <div style="padding-left:30px;">
-| **Logical Expression** | **Syntax** | 
+
+| **Filtering Rule** | **Logical Expression** | 
 |--------------------|--------|
-| Equals (one value) | `==` |
-| Equals (several values) | `%in%` |
-| Not Equal | `!=` |
-| Less Than | `<` |
-| Less Then or Equal to | `<=` |
-| Greater Than | `>` |
-| Greater Than or Equal to | `>=` |
-| AND | `&` | 
-| OR | `|` |
+| Equals (one value) | `columnName` `==` `value` |
+| Equals Any Of (several values) | `columnName` `%in%` `c(value1,value2,...)` |
+| Not Equal (one value)| `columnName` `!=` `value` |
+| Not Equals Any of (several values) | `!columnName` `%in%` `c(value1,value2,...)` |
+| Less Than | `columnName` `<` `value` |
+| Less Then or Equal to | `columnName` `<=` `value` |
+| Greater Than | `columnName` `>` `value` |
+| Greater Than or Equal to | `columnName` `>=` `value` |
+| AND | `expression1` `&` `expression2` | 
+| OR | `expression1` `|` `expression2` |
 | Equals `NA` | `is.na(columnName)` | 
-</div>
+| Not `NA` | `!is.na(columnName)` | 
 
 </div>
+
+
 
 **Example Code**
 
@@ -544,8 +539,8 @@ birthyear
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -574,8 +569,8 @@ birthmonth
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -605,8 +600,8 @@ name
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -637,8 +632,8 @@ length
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -669,8 +664,8 @@ length
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -701,8 +696,8 @@ width
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -734,8 +729,8 @@ width
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -776,8 +771,8 @@ width
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -818,8 +813,8 @@ birthmonth
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -842,7 +837,7 @@ birthmonth
 
 
 
-### select( )
+## select( )
 
 <div style="padding-left:15px;">
 Used to select out certain columns from a dataset.
@@ -874,8 +869,8 @@ c(name, birthyear, birthmonth)
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -905,8 +900,8 @@ c(name, length)
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -985,8 +980,8 @@ c(name, birthyear, length)
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -1058,8 +1053,8 @@ aveLength
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -1112,8 +1107,8 @@ aveLength
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -1177,8 +1172,8 @@ aveLength
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -1250,8 +1245,8 @@ lengthIN = length / 2.54,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;widthIN = width / 2.54,
   <span class="tooltipRtext">"widthIN" is a name we came up with that will store the results of the transformation of the "width" column. This is just converting the width data from cm to inches.</span>
 </span><br/><span class="tooltipr">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gender = recode(sex, B = "Boy", G = "Girl")
-  <span class="tooltipRtext">"gender" is a name we came up with that will store the results of the transformation of the "sex" column. The recode(...) function is being used to change the values of "B" to "Boy" and the values of "G" to "Girl".</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gender = case_when(sex == "B" ~ "Boy", sex == "G" ~ "Girl")
+  <span class="tooltipRtext">"gender" is a name we came up with that will store the results of the transformation of the "sex" column. The case_when(...) function is being used to change the values of "B" to "Boy" and the values of "G" to "Girl".</span>
 </span><br/><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lengthSplit = ifelse(length < median(length), "Under 50th Percentile", "50th Percentile or Greater")
   <span class="tooltipRtext">"lengthSplit" is a name we came up with that will store the results of the ifelse(...) function. The ifelse(...) function in this case is being used to split the length column by the median of that column. The ifelse(...) function is of the form ifelse( Logical Condition , valueIfConditionTrue, valueIfConditionFalse).</span>
@@ -1261,8 +1256,8 @@ lengthIN = length / 2.54,
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
@@ -1273,12 +1268,59 @@ lengthIN = length / 2.54,
 Kids3 <- KidsFeet %>%
   mutate(lengthIN = length / 2.54,
          widthIN = width / 2.54,
-         gender = recode(sex, B = "Boy", G = "Girl"),
+         gender = case_when(sex == B ~ "Boy", 
+                            sex == G ~ "Girl"),
          lengthSplit = ifelse(length < median(length), "Under 50th Percentile", "50th Percentile or Greater"))
 ```
 ![](./Images/Kids3.png)
 </div>
 
+**Other case_when( ) Uses**
+
+```{}
+case_when(birthmonth == 1 ~ "January",
+          birthmonth == 2 ~ "February",
+          birthmonth == 3 ~ "March",
+          ...and so on...)
+```
+
+```{}
+case_when(birthmonth %in% c(12,1,2) ~ "Winter",
+          birthmonth %in% c(3,4,5) ~ "Spring",
+          birthmonth %in% c(6,7,8) ~ "Summer",
+          birthmonth %in% c(9,10,11) ~ "Fall")
+```
+
+```{}
+case_when(length > 25 & width > 9 ~ "Long and Wide",
+          length < 25 & width > 9 ~ "Short and Wide",
+          length > 25 & width < 9 ~ "Long and Thin",
+          length < 25 & width < 9 ~ "Short and Thin")
+```
+
+**replace_na( ) Function**
+
+```{}
+replace_na(columnName, value)
+```
+
+**as.numeric( ) Function**
+
+```{}
+as.numeric(columnName)
+```
+
+**as.character( ) Function**
+
+```{}
+as.character(columnName)
+```
+
+**as.factor( ) Function**
+
+```{}
+as.factor(columnName)
+```
 
 
 
@@ -1287,22 +1329,119 @@ Kids3 <- KidsFeet %>%
 <hr />
 
 
-<!--
 
-### ... {#}
+
+
+## arrange( )
 
 <div style="padding-left:15px;">
-**Console** Help Command: `?`
 
-`()`
+Arrange data by a certain column, or columns, i.e. "sort" the data.
 
-* 
+**Usage** 
+
+`NameofDataset %>%`
+
+&nbsp;&nbsp; `arrange(columnName1)`
+
+Note: `arrange(columnName1, columnName2, ...)` is also possible.
+
+* `NameOfDataset` is the name of a dataset, like `cars` or `airquality` or `KidsFeet`.
+* `%>%` is the pipe operator that "pipes data" down into R commands on the next line.
+* `arrange(...)` is an R function from `library(tidyverse)` that arranges a data set by order for the column given.
+* `columnName1` is the name of a column from the dataset that you want to compute numerical summaries on. 
+* `columnName2` is the name of a column from the dataset that you want to compute numerical summaries on. 
+* `...` implies that you can arrange by as many columns as you want.
+
 
 **Example Code**
 
-```{r, eval=FALSE, comment=NA}
-...
+<a href="javascript:showhide('arrange1')">
+<div class="hoverchunk">
+<span class="tooltipr">
+KidsFeet
+  <span class="tooltipRtext">`KidsFeet` is a dataset found in  `library(mosaic)`.</span>
+</span><span class="tooltipr">
+&nbsp;%>%&nbsp;
+  <span class="tooltipRtext">The pipe operator that will send the `KidsFeet` dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">
+&nbsp;&nbsp; arrange(
+  <span class="tooltipRtext">"arrange" is an R function from `library(tidyverse)` that arranges a data set by order for the column given.</span>
+</span><span class="tooltipr">
+birthmonth
+  <span class="tooltipRtext">birthmonth is the name of one of the columns of the KidsFeet data set. Specifying this name will cause the data to be sorted by birthmonth from 1 to 12.</span>
+</span><span class="tooltipr">
+) 
+  <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span>
+ </span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a> 
+  
+<div id="arrange1" style="display:none;padding-left:20px;">
+```{r, echo=FALSE, warning=FALSE, message=FALSE, comment=NA}
+library(tidyverse)
+library(mosaic)
+library(pander)
+KidsFeet %>%
+  arrange(birthmonth) %>%
+  pander( ) 
 ```
+</div>
+
+
+
+
+<a href="javascript:showhide('arrange2')">
+<div class="hoverchunk">
+<span class="tooltipr">
+KidsFeet
+  <span class="tooltipRtext">`KidsFeet` is a dataset found in  `library(mosaic)`.</span>
+</span><span class="tooltipr">
+&nbsp;%>%&nbsp;
+  <span class="tooltipRtext">The pipe operator that will send the `KidsFeet` dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">
+&nbsp;&nbsp; arrange(
+  <span class="tooltipRtext">"arrange" is an R function from `library(tidyverse)` that arranges a data set by order for the column given.</span>
+</span><span class="tooltipr">
+desc(
+  <span class="tooltipRtext">This causes the arranging to be done in descending order (highest to lowest).</span>
+</span><span class="tooltipr">
+birthmonth
+  <span class="tooltipRtext">birthmonth is the name of one of the columns of the KidsFeet data set. Specifying this name will cause the data to be sorted by birthmonth from 1 to 12.</span>
+</span><span class="tooltipr">
+) 
+  <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span>
+ </span><span class="tooltipr">
+) 
+  <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span>
+ </span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a> 
+  
+<div id="arrange2" style="display:none;padding-left:20px;">
+```{r, echo=FALSE, warning=FALSE, message=FALSE, comment=NA}
+library(tidyverse)
+library(mosaic)
+library(pander)
+KidsFeet %>%
+  arrange(desc(birthmonth)) %>%
+  pander( ) 
+```
+</div>
+
+
 
 </div>
 <br />
@@ -1311,12 +1450,158 @@ Kids3 <- KidsFeet %>%
 
 
 
-<br />
-<br />
-<br />
 
 
--->
+## pander( )
+
+<div style="padding-left:15px;">
+
+Makes output of most commands "beautiful".
+
+**Usage** 
+
+`library(pander)` then...
+
+`pander(someCode)`
+
+OR
+
+`someCode %>%`
+
+&nbsp;&nbsp; `pander( )`
+
+Note: `pander(stuff, caption="Some useful caption", ...)` is also possible.
+
+* `someCode` is exactly that, some coding you have done that creates output that you want displayed nicely.
+* `%>%` is the pipe operator that "pipes data" down into R commands on the next line.
+* `pander(...)` is an R function from `library(pander)` that makes most R output look nice.
+* `...` other useful commands like `split.table=Inf`.
+
+**Example Code**
+
+<a href="javascript:showhide('pander1')">
+<div class="hoverchunk">
+<span class="tooltipr">
+pander(
+  <span class="tooltipRtext">`pander` is an R function that makes output look nice.</span>
+</span><span class="tooltipr">
+table(KidsFeet\$sex, KidsFeet\$birthmonth),
+  <span class="tooltipRtext">Code that makes a table of how many boys and girls were born in each month of the year.</span>
+</span><span class="tooltipr">
+&nbsp; caption="Counts of Birthdays by Month" 
+  <span class="tooltipRtext">The caption=" " command is very useful for giving your output a small title.</span>
+ </span><span class="tooltipr">
+)
+  <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span>
+ </span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a> 
+  
+<div id="pander1" style="display:none;padding-left:20px;">
+```{r, echo=FALSE, warning=FALSE, message=FALSE, comment=NA}
+library(tidyverse)
+library(mosaic)
+library(pander)
+pander(table(KidsFeet$sex, KidsFeet$birthmonth), caption="Counts of Birthdays by Month")
+```
+</div>
+
+
+
+
+<a href="javascript:showhide('pander2')">
+<div class="hoverchunk">
+<span class="tooltipr">
+KidsFeet
+  <span class="tooltipRtext">`KidsFeet` is a dataset found in  `library(mosaic)`.</span>
+</span><span class="tooltipr">
+&nbsp;%>%&nbsp;
+  <span class="tooltipRtext">The pipe operator that will send the `KidsFeet` dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">
+&nbsp;&nbsp; group_by(
+  <span class="tooltipRtext">"group_by" is a function from library(tidyverse) that allows us to split the dataset up into "little groups" according to the column specified.</span>
+</span><span class="tooltipr">
+sex
+  <span class="tooltipRtext">"sex" is a column from the KidsFeet dataset that records the gender of each child.</span>
+</span><span class="tooltipr">
+) 
+  <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span>
+ </span><span class="tooltipr">
+&nbsp;%>%&nbsp;
+  <span class="tooltipRtext">The pipe operator that will send the grouped according to gender version of the `KidsFeet` dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">
+&nbsp;&nbsp; summarise(
+  <span class="tooltipRtext">"summarise" is a function from library(tidyverse) that allows us to compute numerical summaries on data.</span>
+</span><span class="tooltipr">
+aveLength
+  <span class="tooltipRtext">A name we came up with that will store the results of the numerical summary.</span>
+</span><span class="tooltipr">
+&nbsp;= mean(length),&nbsp;
+  <span class="tooltipRtext">This computes the `mean(...)` of the `length` column from the KidsFeet dataset.</span>
+</span><br/><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sdLength
+  <span class="tooltipRtext">A name we came up with that will store the results of the numerical summary.</span>
+</span><span class="tooltipr">
+&nbsp;= sd(length),&nbsp;
+  <span class="tooltipRtext">This computes the `sd(...)` of the `length` column from the KidsFeet dataset.</span>
+  </span><br/><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sampleSize
+  <span class="tooltipRtext">A name we came up with that will store the results of the numerical summary.</span>
+</span><span class="tooltipr">
+&nbsp;= n( )
+  <span class="tooltipRtext">This computes the `n(...)`, or sample size, of the `length` column from the KidsFeet dataset.</span>
+  </span><span class="tooltipr">
+) 
+  <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span>
+ </span><span class="tooltipr">
+&nbsp;%>%&nbsp;
+  <span class="tooltipRtext">The pipe operator that will send the `KidsFeet` dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">
+&nbsp;&nbsp; pander(
+  <span class="tooltipRtext">The pander function will make the output of the above code look nice.</span>
+ </span><span class="tooltipr">
+caption="Doesn't that look nice?") 
+  <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span>
+ </span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a> 
+  
+<div id="pander2" style="display:none;padding-left:20px;">
+```{r, echo=FALSE, warning=FALSE, message=FALSE, comment=NA}
+library(tidyverse)
+library(mosaic)
+library(pander)
+KidsFeet %>%
+  group_by(sex) %>%
+  summarise(aveLength = mean(length),
+            sdLength = sd(length),
+            sampleSize = n( )) %>%
+  pander(caption="Doesn't that look nice?") 
+
+cat("What it looks like if you don't pander:\n")
+KidsFeet %>%
+  group_by(sex) %>%
+  summarise(aveLength = mean(length),
+            sdLength = sd(length),
+            sampleSize = n( ))
+```
+</div>
+
+
+
+
 
 </div>
 

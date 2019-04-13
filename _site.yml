@@ -2,12 +2,6 @@ name: "statistics-notebook"
 navbar:
   title: "Statistics Notebook"
   left:
-    - text: "Describing Data"
-      menu:
-        - text: "Graphical Summaries"
-          href: GraphicalSummaries.html
-        - text: "Numerical Summaries"
-          href: NumericalSummaries.html
     - text: "R Help"
       menu:
         - text: "R Commands"
@@ -16,6 +10,12 @@ navbar:
           href: RMarkdownHints.html
         - text: "R Cheatsheets & Notes"
           href: RCheatSheetsAndNotes.html
+    - text: "Describing Data"
+      menu:
+        - text: "Graphical Summaries"
+          href: GraphicalSummaries.html
+        - text: "Numerical Summaries"
+          href: NumericalSummaries.html
     - text: "Making Inference"
       menu:
         - text: "Making Inference"

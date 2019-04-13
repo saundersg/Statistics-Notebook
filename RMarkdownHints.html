@@ -209,21 +209,6 @@ $(document).ready(function () {
       <ul class="nav navbar-nav">
         <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Describing Data
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="GraphicalSummaries.html">Graphical Summaries</a>
-    </li>
-    <li>
-      <a href="NumericalSummaries.html">Numerical Summaries</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     R Help
      
     <span class="caret"></span>
@@ -237,6 +222,21 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="RCheatSheetsAndNotes.html">R Cheatsheets &amp; Notes</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Describing Data
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="GraphicalSummaries.html">Graphical Summaries</a>
+    </li>
+    <li>
+      <a href="NumericalSummaries.html">Numerical Summaries</a>
     </li>
   </ul>
 </li>
@@ -318,10 +318,36 @@ $(document).ready(function () {
 
 
 <p>Think of an <code>R Markdown File</code>, or <code>Rmd</code> for short, as a command center. You write commands, then Knit the file, and an html output file is created according to your commands.</p>
-<p>Study this image to get the idea.</p>
+<div id="section" class="section level2 tabset tabset-pills tabset-fade">
+<h2></h2>
+<div id="hide-cheatsheet" class="section level3">
+<h3>Hide Cheatsheet</h3>
+</div>
+<div id="show" class="section level3">
+<h3>Show</h3>
+<p>Carefully read through all parts of this image to learn…</p>
 <div class="figure">
 <img src="Images/Rmd2html.png" />
 
+</div>
+</div>
+</div>
+<div id="section-1" class="section level2">
+<h2></h2>
+</div>
+<div id="creating-links" class="section level2">
+<h2>Creating Links</h2>
+<p>To make a link use the code <code>[Name of Link](addressForLink)</code>.</p>
+<p>Linking to parts of your textbook:</p>
+<ul>
+<li><code>[Numerical Summaries](NumericalSummaries.html)</code> <em>becomes</em> <a href="NumericalSummaries.html">Numerical Summaries</a></li>
+<li><code>[Boxplots](GraphicalSummaries.html#boxplots)</code> <em>becomes</em> <a href="GraphicalSummaries.html#boxplots">Boxplots</a></li>
+<li><code>[R Commands](RCommands.html)</code> <em>becomes</em> <a href="RCommands.html">R Commands</a></li>
+</ul>
+<p>Linking to outside resources:</p>
+<ul>
+<li><code>[R Colors](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)</code> <em>becomes</em> <a href="http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf">R Colors</a></li>
+</ul>
 </div>
 <div id="creating-headers" class="section level2">
 <h2>Creating Headers</h2>
@@ -334,7 +360,7 @@ $(document).ready(function () {
 </div>
 <div id="emphasizing-words" class="section level1">
 <h1>Emphasizing Words</h1>
-<p>To <em>italisize</em> a word use the asterisk (Shift 8) <code>*italisize*</code>. To <strong>bold</strong> a word use the double asterisk <code>**bold**</code>. (Notice how the back tic <code>`</code> can be used to emphasize words as well.)</p>
+<p>To <em>italisize</em> a word use the asterisk (Shift 8) <code>*italisize*</code>. To <strong>bold</strong> a word use the double asterisk <code>**bold**</code>. The back tic <code>`</code> can be used to <code>highlight</code> words by placing back tics on each side of a word: <code>`</code> highlight <code>`</code>.</p>
 <p><br /></p>
 </div>
 <div id="bullet-points" class="section level1">
@@ -351,7 +377,9 @@ $(document).ready(function () {
 </div>
 <div style="padding-left:350px;">
 <p>Use the code:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">*</span><span class="st"> </span>This is the first item.
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">To achieve the result<span class="op">:</span>
+<span class="st">  </span>
+<span class="er">*</span><span class="st"> </span>This is the first item.
 
 <span class="op">*</span><span class="st"> </span>This is the second.
 
@@ -373,7 +401,9 @@ $(document).ready(function () {
 </div>
 <div style="padding-left:350px;">
 <p>Use the code:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span>. This is the first item.
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">To achieve the result<span class="op">:</span>
+<span class="st">  </span>
+<span class="dv">1</span>. This is the first item.
 
 <span class="dv">2</span>. This is the second.
 
@@ -395,7 +425,9 @@ $(document).ready(function () {
 </div>
 <div style="padding-left:350px;">
 <p>Use the code:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A<span class="er">)</span> This is the first item.
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">To achieve the result<span class="op">:</span>
+<span class="st">  </span>
+A<span class="er">)</span> This is the first item.
 
 B<span class="er">)</span> This is the second.
 
@@ -453,16 +485,71 @@ C<span class="er">)</span> This is the third.</code></pre></div>
 <span class="st">  </span>H_a<span class="op">:</span><span class="st"> </span>\mu_<span class="dv">1</span> \neq \mu_<span class="dv">2</span>
 <span class="op">$</span><span class="er">$</span></code></pre></div>
 <p>to get <span class="math display">\[
-  H_0: \mu_1 = \mu_2
+  H_0: \mu_{\text{Group 1}} = \mu_{\text{Group 2}}
 \]</span> <span class="math display">\[ 
-  H_a: \mu_1 \neq \mu_2
+  H_a: \mu_{\text{Group 1}} \neq \mu_{\text{Group 2}}
 \]</span></p>
+<p>Symbol list:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>LaTeX Math Code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\alpha\)</span></td>
+<td><code>$\alpha$</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta\)</span></td>
+<td><code>$\beta$</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\sigma\)</span></td>
+<td><code>$\sigma$</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\bar{x}\)</span></td>
+<td><code>$\bar{x}$</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\hat{Y}\)</span></td>
+<td><code>$\hat{Y}$</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(=\)</span></td>
+<td><code>$=$</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\ne\)</span></td>
+<td><code>$\ne$</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(&gt;\)</span></td>
+<td><code>$&gt;$</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(&lt;\)</span></td>
+<td><code>$&lt;$</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\ge\)</span></td>
+<td><code>$\ge$</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\le\)</span></td>
+<td><code>$\le$</code></td>
+</tr>
+</tbody>
+</table>
 <p><br /></p>
 </div>
 <div id="insert-a-picture" class="section level1">
 <h1>Insert a Picture</h1>
 <p>To add a picture to your document, say some notes you took down on paper from class,</p>
-<p><code>![](./Images/insertPictureNotes.jpg)</code></p>
+<p>Use the code: <code>![](./Images/insertPictureNotes.jpg)</code> to get…</p>
 <div class="figure">
 <img src="Images/insertPictureNotes.jpg" />
 
@@ -521,7 +608,7 @@ output<span class="op">:</span><span class="st"> </span>
 </ul>
 <p><br /></p>
 </div>
-<div id="section" class="section level1">
+<div id="section-2" class="section level1">
 <h1></h1>
 </div>
 <div id="more-information" class="section level1">
