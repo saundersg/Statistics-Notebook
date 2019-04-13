@@ -9,9 +9,33 @@ output:
 
 Think of an `R Markdown File`, or `Rmd` for short, as a command center. You write commands, then Knit the file, and an html output file is created according to your commands. 
 
-Study this image to get the idea.
+
+## {.tabset .tabset-pills .tabset-fade}
+
+### Hide Cheatsheet
+
+### Show
+
+Carefully read through all parts of this image to learn...
 
 ![](./Images/Rmd2html.png)
+
+##
+
+## Creating Links
+
+To make a link use the code `[Name of Link](addressForLink)`. 
+
+Linking to parts of your textbook:
+
+* `[Numerical Summaries](NumericalSummaries.html)` *becomes* [Numerical Summaries](NumericalSummaries.html)
+* `[Boxplots](GraphicalSummaries.html#boxplots)` *becomes* [Boxplots](GraphicalSummaries.html#boxplots)
+* `[R Commands](RCommands.html)` *becomes* [R Commands](RCommands.html)
+
+Linking to outside resources:
+
+* `[R Colors](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)` *becomes* [R Colors](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
+
 
 ## Creating Headers
 
@@ -28,7 +52,7 @@ There are six available sizes of headings you can use in an Rmd file (left in im
 
 # Emphasizing Words
 
-To *italisize* a word use the asterisk (Shift 8) `*italisize*`. To **bold** a word use the double asterisk `**bold**`. (Notice how the back tic ` ` ` can be used to emphasize words as well.)
+To *italisize* a word use the asterisk (Shift 8) `*italisize*`. To **bold** a word use the double asterisk `**bold**`. The back tic ` ` ` can be used to `highlight` words by placing back tics on each side of a word: ` ` ` highlight ` ` `.
 
 <br />
 
@@ -52,6 +76,8 @@ To achieve the result:
 Use the code:
 
 ```{r, eval=FALSE}
+To achieve the result:
+  
 * This is the first item.
 
 * This is the second.
@@ -81,6 +107,8 @@ To achieve the result:
 Use the code:
 
 ```{r, eval=FALSE}
+To achieve the result:
+  
 1. This is the first item.
 
 2. This is the second.
@@ -110,6 +138,8 @@ C) This is the third.
 Use the code:
 
 ```{r, eval=FALSE}
+To achieve the result:
+  
 A) This is the first item.
 
 B) This is the second.
@@ -188,11 +218,29 @@ $$
 
 to get
 $$
-  H_0: \mu_1 = \mu_2
+  H_0: \mu_{\text{Group 1}} = \mu_{\text{Group 2}}
 $$
 $$ 
-  H_a: \mu_1 \neq \mu_2
+  H_a: \mu_{\text{Group 1}} \neq \mu_{\text{Group 2}}
 $$
+
+Symbol list:
+
+| Symbol | LaTeX Math Code |
+|--------|------------------|
+| $\alpha$ | `$\alpha$` |
+| $\beta$ | `$\beta$` |
+| $\sigma$ | `$\sigma$` |
+| $\bar{x}$ | `$\bar{x}$` |
+| $\hat{Y}$ | `$\hat{Y}$` |
+| $=$ | `$=$` |
+| $\ne$ | `$\ne$` |
+| $>$ | `$>$` |
+| $<$ | `$<$` |
+| $\ge$ | `$\ge$` |
+| $\le$ | `$\le$` |
+
+
 
 <br />
 
@@ -200,7 +248,7 @@ $$
 
 To add a picture to your document, say some notes you took down on paper from class,
 
-`![](./Images/insertPictureNotes.jpg)`
+Use the code: `![](./Images/insertPictureNotes.jpg)` to get...
 
 ![](./Images/insertPictureNotes.jpg)
 

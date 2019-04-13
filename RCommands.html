@@ -264,21 +264,6 @@ div.tocify {
       <ul class="nav navbar-nav">
         <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Describing Data
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="GraphicalSummaries.html">Graphical Summaries</a>
-    </li>
-    <li>
-      <a href="NumericalSummaries.html">Numerical Summaries</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     R Help
      
     <span class="caret"></span>
@@ -292,6 +277,21 @@ div.tocify {
     </li>
     <li>
       <a href="RCheatSheetsAndNotes.html">R Cheatsheets &amp; Notes</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Describing Data
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="GraphicalSummaries.html">Graphical Summaries</a>
+    </li>
+    <li>
+      <a href="NumericalSummaries.html">Numerical Summaries</a>
     </li>
   </ul>
 </li>
@@ -379,27 +379,21 @@ div.tocify {
  }
 </script>
 <hr />
-<p>The best way to learn R is to open RStudio and try all the <strong>Example</strong> codes yourself.</p>
-<p>Click on a code to learn more.</p>
+<p>The best way to learn R is to open RStudio and try all the <strong>Example</strong> codes yourself that are listed on this page.</p>
+<p>Click on a code to see what it does. Hover to learn more.</p>
 <hr />
-<div id="data" class="section level2">
-<h2>data( )</h2>
+<div id="getting-started" class="section level2">
+<h2>Getting Started</h2>
 <div style="padding-left:15px;">
 <p>R allows you to work with data. So, the first step to understanding R is to open a dataset.</p>
-<p><strong>Usage</strong></p>
-<p><code>data()</code></p>
-<ul>
-<li>This command lists the available datasets in R.</li>
-</ul>
-<p><strong>Examples</strong></p>
-<p>Click to view. Hover to learn.</p>
+<p>Here is a command you can run to see the “built in” data sets in R.</p>
 <a href="javascript:showhide('DataOutput')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> data <span class="tooltipRtext">An R function “data” used to bring up a list of available datasets in R.</span> </span><span class="tooltipr"> () <span class="tooltipRtext">Functions always have parantheses following the function name. For this function we do not put anything inside the parantheses.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Double-Click to Hide Output  <span class="tooltiprtext">Click to see output.</span> </span></p>
 </div>
 </a>
-<div id="DataOutput" style="display:none;padding-left:20px;">
+<div id="DataOutput" style="display:show;padding-left:20px;">
 <div class="figure">
 <img src="Images/DataOutput.png" />
 
@@ -423,7 +417,7 @@ div.tocify {
 <a href="javascript:showhide('HelpOutput')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> ? <span class="tooltipRtext">The quick way to access the help function in R.</span> </span><span class="tooltipr"> cars <span class="tooltipRtext">The name of a dataset can be typed to open the help file for that dataset.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="HelpOutput" style="display:none;padding-left:20px;">
@@ -435,7 +429,7 @@ div.tocify {
 <a href="javascript:showhide('HelpOutput2')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> ? <span class="tooltipRtext">The quick way to access the help function in R.</span> </span><span class="tooltipr"> data <span class="tooltipRtext">The name of an R function, like <code>data</code> can also be used to open the help file for that function.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="HelpOutput2" style="display:none;padding-left:20px;">
@@ -462,7 +456,7 @@ div.tocify {
 <a href="javascript:showhide('CarsOutput')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> View( <span class="tooltipRtext">An R function “View” allows us to view the datset that we select. This will open up a new tab in RStudio showing the dataset. Be sure to include the opening parantheses. </span> </span><span class="tooltipr"> cars <span class="tooltipRtext"><code>cars</code> is data set that is in R. R has datasets that are available for anyone to use. You can see them using the <code>data()</code> command. It would be good to explore <code>View()</code> a few different datasets. </span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always be sure to end your function with closing parantheses. </span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="CarsOutput" style="display:none;padding-left:20px;">
@@ -474,7 +468,7 @@ div.tocify {
 <a href="javascript:showhide('airqualityOutput1')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> View( <span class="tooltipRtext"> Function can work with datasets but also combinations and matrices that you create. </span> </span><span class="tooltipr"> airquality) <span class="tooltipRtext"> Gives us data concerning air quality measurements around New York City, NY. For more details on this dataset type: <code>?airquality</code></span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="airqualityOutput1" style="display:none;padding-left:20px;">
@@ -503,7 +497,7 @@ div.tocify {
 <a href="javascript:showhide('airqualityDollar')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> airquality <span class="tooltipRtext">The <code>airqaulity</code> dataset. This could be the name of any dataset instead of <code>airquality</code>.</span> </span><span class="tooltipr"> $ <span class="tooltipRtext"> Grabs the column, or variable, from the dataset to be used. This is typically used when computing say the mean (or other statistic) of a single column of the data. </span> </span><span class="tooltipr"> Wind <span class="tooltipRtext"> The name of any column of the dataset can be entered after the dollar sign. In the airquality dataset, this includes: <code>Ozone</code>, <code>Solar.R</code>, <code>Wind</code>, <code>Temp</code>, <code>Month</code>, or <code>Day</code> as shown by <code>View(airquality)</code>. </span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
 <div id="airqualityDollar" style="display:none;padding-left:20px;">
@@ -516,7 +510,7 @@ div.tocify {
 <a href="javascript:showhide('airqualityDollarCompute')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> mean( <span class="tooltipRtext">The <code>mean</code> function computes the mean of a column of quantitative data.</span> </span><span class="tooltipr"> airquality <span class="tooltipRtext">The <code>airqaulity</code> dataset. This could be the name of any dataset instead of <code>airquality</code>.</span> </span><span class="tooltipr"> $ <span class="tooltipRtext"> Grabs the column, or variable, from the dataset to be used. This is typically used when computing say the mean (or other statistic) of a single column of the data. </span> </span><span class="tooltipr"> Wind <span class="tooltipRtext"> The name of any column of the dataset can be entered after the dollar sign. In the airquality dataset, this includes: <code>Ozone</code>, <code>Solar.R</code>, <code>Wind</code>, <code>Temp</code>, <code>Month</code>, or <code>Day</code> as shown by <code>View(airquality)</code>. </span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Closing parenthesis to the mean() function.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
 <div id="airqualityDollarCompute" style="display:none;padding-left:20px;">
@@ -525,7 +519,7 @@ div.tocify {
 <a href="javascript:showhide('airqualityDollarComputeSD')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> sd( <span class="tooltipRtext">The <code>sd</code> function computes the standard deviation of a column of quantitative data.</span> </span><span class="tooltipr"> airquality <span class="tooltipRtext">The <code>airqaulity</code> dataset. This could be the name of any dataset instead of <code>airquality</code>.</span> </span><span class="tooltipr"> $ <span class="tooltipRtext"> Grabs the column, or variable, from the dataset to be used. This is typically used when computing say the mean (or other statistic) of a single column of the data. </span> </span><span class="tooltipr"> Wind <span class="tooltipRtext"> The name of any column of the dataset can be entered after the dollar sign. In the airquality dataset, this includes: <code>Ozone</code>, <code>Solar.R</code>, <code>Wind</code>, <code>Temp</code>, <code>Month</code>, or <code>Day</code> as shown by <code>View(airquality)</code>. </span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Closing parenthesis to the sd() function.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
 <div id="airqualityDollarComputeSD" style="display:none;padding-left:20px;">
@@ -552,7 +546,7 @@ div.tocify {
 <p><span class="tooltipr"> cars2 <span class="tooltipRtext">First we name the object we are creating. In this case, we are making a copy of the cars dataset, so it is logical to call it <code>cars2</code>, but it could be <code>bob</code>, <code>c2</code> or any name you wanted to use. Just be careful to not use names that are already in use! </span> </span><span class="tooltipr">   &lt;-   <span class="tooltipRtext"> The <code>&lt;-</code> assignment operator will take whatever is on the right hand side and save it into the name written on the left hand side. </span> </span><span class="tooltipr"> cars <span class="tooltipRtext">In this case the <code>cars</code> dataset is being copied to <code>cars2</code> so that we can change <code>cars2</code> without changing the original <code>cars</code> dataset.</span> </span><span class="tooltipr">     <br />
 <span class="tooltipRtext">Press Enter to run the code.</span></p>
 <p></span><span class="tooltipr"> cars2 <span class="tooltipRtext">The new copy of the <code>cars</code> dataset that we just created</span> </span><span class="tooltipr"> $ftpersec <span class="tooltipRtext">The <code>$</code> selection operator can be used to create a new column in a dataset when used with the <code>&lt;-</code> assignment operator. </span> </span><span class="tooltipr">  &lt;-  <span class="tooltipRtext">The <code>&lt;-</code> assignment operator will take the results of the right-hand-side and save them into the name on the left-hand-side. </span> </span><span class="tooltipr"> cars2$speed * 5280 / 3600 <span class="tooltipRtext">This calculation converts the miles per hour of the <code>cars2</code> <code>speed</code> column into feet per seconds because there are 5280 feet in a mile and 60 minutes in an hour and 60 seconds in a minute.</span> </span></p>
-<p></span><span class="tooltipr"> View(cars2) <span class="tooltipRtext">The <code>cars2</code> dataset now contains a 3rd column called <code>feetpersec</code>. Compare this to the original <code>cars</code> dataset to see how it changed.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p></span><span class="tooltipr"> View(cars2) <span class="tooltipRtext">The <code>cars2</code> dataset now contains a 3rd column called <code>feetpersec</code>. Compare this to the original <code>cars</code> dataset to see how it changed.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
 <div id="NamingCars1" style="display:none;padding-left:20px;">
@@ -607,67 +601,73 @@ div.tocify {
 <li><code>filter()</code> is the function that filters out certain rows of the dataset.</li>
 <li><code>NameOfDataset</code> is the name of a dataset, like <code>cars</code> or <code>airquality</code> or <code>KidsFeet</code>.</li>
 <li><code>columnName</code> is the name of one of the columns from the dataset. You can use <code>colnames(NameOfDataset)</code> or <code>View(NameOfDataset)</code> to see the names.</li>
-<li><code>filteringRules</code> consists of some <a href="javascript:showhide('logicals')"><strong>Logical Expression</strong></a> (click to view) that selects only the rows from the original dataset that meet the criterion.</li>
+<li><code>filteringRules</code> consists of some <strong>Logical Expression</strong> (see table below) that selects only the rows from the original dataset that meet the criterion.</li>
 </ul>
-<div id="logicals" style="display:none;">
 <div style="padding-left:30px;">
 <table>
 <thead>
 <tr class="header">
+<th><strong>Filtering Rule</strong></th>
 <th><strong>Logical Expression</strong></th>
-<th><strong>Syntax</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Equals (one value)</td>
-<td><code>==</code></td>
+<td><code>columnName</code> <code>==</code> <code>value</code></td>
 </tr>
 <tr class="even">
-<td>Equals (several values)</td>
-<td><code>%in%</code></td>
+<td>Equals Any Of (several values)</td>
+<td><code>columnName</code> <code>%in%</code> <code>c(value1,value2,...)</code></td>
 </tr>
 <tr class="odd">
-<td>Not Equal</td>
-<td><code>!=</code></td>
+<td>Not Equal (one value)</td>
+<td><code>columnName</code> <code>!=</code> <code>value</code></td>
 </tr>
 <tr class="even">
+<td>Not Equals Any of (several values)</td>
+<td><code>!columnName</code> <code>%in%</code> <code>c(value1,value2,...)</code></td>
+</tr>
+<tr class="odd">
 <td>Less Than</td>
-<td><code>&lt;</code></td>
+<td><code>columnName</code> <code>&lt;</code> <code>value</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Less Then or Equal to</td>
-<td><code>&lt;=</code></td>
+<td><code>columnName</code> <code>&lt;=</code> <code>value</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Greater Than</td>
-<td><code>&gt;</code></td>
+<td><code>columnName</code> <code>&gt;</code> <code>value</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Greater Than or Equal to</td>
-<td><code>&gt;=</code></td>
-</tr>
-<tr class="even">
-<td>AND</td>
-<td><code>&amp;</code></td>
+<td><code>columnName</code> <code>&gt;=</code> <code>value</code></td>
 </tr>
 <tr class="odd">
-<td>OR</td>
-<td><code>|</code></td>
+<td>AND</td>
+<td><code>expression1</code> <code>&amp;</code> <code>expression2</code></td>
 </tr>
 <tr class="even">
+<td>OR</td>
+<td><code>expression1</code> <code>|</code> <code>expression2</code></td>
+</tr>
+<tr class="odd">
 <td>Equals <code>NA</code></td>
 <td><code>is.na(columnName)</code></td>
 </tr>
+<tr class="even">
+<td>Not <code>NA</code></td>
+<td><code>!is.na(columnName)</code></td>
+</tr>
 </tbody>
 </table>
-</div>
 </div>
 <p><strong>Example Code</strong></p>
 <a href="javascript:showhide('filterEqual')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> Kids87 &lt;-  <span class="tooltipRtext">Kids87 is a name we made up. The assignment operator <code>&lt;-</code> will save the reduced version of the <code>KidsFeet</code> dataset created by the <code>filter(...)</code> function into this name.</span> </span><span class="tooltipr"> filter(KidsFeet,   <span class="tooltipRtext">“filter” is a function from library(tidyverse) that reduces the number of rows in the KidsFeet dataset by filtering according to certain criteria. Click on this code to see the original and filtered datasets.</span> </span><span class="tooltipr"> birthyear <span class="tooltipRtext">The column of the KidsFeet dataset that we want to use to reduce the dataset.</span> </span><span class="tooltipr">  == 87 <span class="tooltipRtext">This is the “filtering rule”. It will filter the data down to just those children who had a birthyear equal to 87.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="filterEqual" style="display:none;padding-left:20px;">
@@ -679,7 +679,7 @@ div.tocify {
 <a href="javascript:showhide('filterIN')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> KidsSummer &lt;-  <span class="tooltipRtext">KidsSummer is a name we made up. The assignment operator <code>&lt;-</code> will save the reduced version of the <code>KidsFeet</code> dataset created by the <code>filter(...)</code> function into this name.</span> </span><span class="tooltipr"> filter(KidsFeet,   <span class="tooltipRtext">“filter” is a function from library(tidyverse) that reduces the number of rows in the KidsFeet dataset by filtering according to certain criteria. Click on this code to see the original and filtered datasets.</span> </span><span class="tooltipr"> birthmonth <span class="tooltipRtext">The column of the KidsFeet dataset that we want to use to reduce the dataset.</span> </span><span class="tooltipr">  %in% c(6,7,8) <span class="tooltipRtext">This is the “filtering rule”. It will filter the data down to just those children who were born during the summer, i.e., birthmonth equal to either 6, 7, or 8. Notice how the c( ) function is being used to combine the values of 6, 7, and 8 together into a single list of numbers.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="filterIN" style="display:none;padding-left:20px;">
@@ -691,7 +691,7 @@ div.tocify {
 <a href="javascript:showhide('filterNotEqual')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> KidsNotJosh &lt;-  <span class="tooltipRtext">KidsNotJosh is a name we made up. The assignment operator <code>&lt;-</code> will save the reduced version of the <code>KidsFeet</code> dataset created by the <code>filter(...)</code> function into this name.</span> </span><span class="tooltipr"> filter(KidsFeet,   <span class="tooltipRtext">“filter” is a function from library(tidyverse) that reduces the number of rows in the KidsFeet dataset by filtering according to certain criteria. Click on this code to see the original and filtered datasets.</span> </span><span class="tooltipr"> name <span class="tooltipRtext">The column of the KidsFeet dataset that we want to use to reduce the dataset.</span> </span><span class="tooltipr">  != “Josh” <span class="tooltipRtext">This is the “filtering rule”. It will filter the data down to just those children who are NOT named “Josh”. In this case, it removed just two students who were named “Josh”.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="filterNotEqual" style="display:none;padding-left:20px;">
@@ -703,7 +703,7 @@ div.tocify {
 <a href="javascript:showhide('LessThan')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> KidsLength24 &lt;-  <span class="tooltipRtext">KidsLength24 is a name we made up. The assignment operator <code>&lt;-</code> will save the reduced version of the <code>KidsFeet</code> dataset created by the <code>filter(...)</code> function into this name.</span> </span><span class="tooltipr"> filter(KidsFeet,   <span class="tooltipRtext">“filter” is a function from library(tidyverse) that reduces the number of rows in the KidsFeet dataset by filtering according to certain criteria. Click on this code to see the original and filtered datasets.</span> </span><span class="tooltipr"> length <span class="tooltipRtext">The column of the KidsFeet dataset that we want to use to reduce the dataset.</span> </span><span class="tooltipr">  &lt; 24 <span class="tooltipRtext">This is the “filtering rule”. It will filter the data down to just those children who have a foot length less than 24 cm.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
 <div id="LessThan" style="display:none;padding-left:20px;">
@@ -715,7 +715,7 @@ div.tocify {
 <a href="javascript:showhide('LessThanorEqualTo')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> KidsLessEq24 &lt;-  <span class="tooltipRtext">KidsLessEq24 is a name we made up. The assignment operator <code>&lt;-</code> will save the reduced version of the <code>KidsFeet</code> dataset created by the <code>filter(...)</code> function into this name.</span> </span><span class="tooltipr"> filter(KidsFeet,   <span class="tooltipRtext">“filter” is a function from library(tidyverse) that reduces the number of rows in the KidsFeet dataset by filtering according to certain criteria. Click on this code to see the original and filtered datasets.</span> </span><span class="tooltipr"> length <span class="tooltipRtext">The column of the KidsFeet dataset that we want to use to reduce the dataset.</span> </span><span class="tooltipr">  &lt;= 24 <span class="tooltipRtext">This is the “filtering rule”. It will filter the data down to just those children who have a foot length less than or equal to 24 cm.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
 <div id="LessThanorEqualTo" style="display:none;padding-left:20px;">
@@ -727,7 +727,7 @@ div.tocify {
 <a href="javascript:showhide('GreaterThan')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> KidsWider9 &lt;-  <span class="tooltipRtext">KidsNotJosh is a name we made up. The assignment operator <code>&lt;-</code> will save the reduced version of the <code>KidsFeet</code> dataset created by the <code>filter(...)</code> function into this name.</span> </span><span class="tooltipr"> filter(KidsFeet,   <span class="tooltipRtext">“filter” is a function from library(tidyverse) that reduces the number of rows in the KidsFeet dataset by filtering according to certain criteria. Click on this code to see the original and filtered datasets.</span> </span><span class="tooltipr"> width <span class="tooltipRtext">The column of the KidsFeet dataset that we want to use to reduce the dataset.</span> </span><span class="tooltipr">  &gt; 9 <span class="tooltipRtext">This is the “filtering rule”. It will filter the data down to just those children who have a foot width greater than 9 cm.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
 <div id="GreaterThan" style="display:none;padding-left:20px;">
@@ -739,7 +739,7 @@ div.tocify {
 <a href="javascript:showhide('GreaterThanorEqualTo')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> KidsWiderEq9 &lt;-  <span class="tooltipRtext">KidsWiderEq9 is a name we made up. The assignment operator <code>&lt;-</code> will save the reduced version of the <code>KidsFeet</code> dataset created by the <code>filter(...)</code> function into this name.</span> </span><span class="tooltipr"> filter(KidsFeet,   <span class="tooltipRtext">“filter” is a function from library(tidyverse) that reduces the number of rows in the KidsFeet dataset by filtering according to certain criteria. Click on this code to see the original and filtered datasets.</span> </span><span class="tooltipr"> width <span class="tooltipRtext">The column of the KidsFeet dataset that we want to use to reduce the dataset.</span> </span><span class="tooltipr">  &gt;= 9 <span class="tooltipRtext">This is the “filtering rule”. It will filter the data down to just those children who have a foot width greater than or equal to 9 cm.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
 <div id="GreaterThanorEqualTo" style="display:none;padding-left:20px;">
@@ -751,7 +751,7 @@ div.tocify {
 <a href="javascript:showhide('And')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> GirlsWide9 &lt;-  <span class="tooltipRtext">GirlsWide9 is a name we made up. The assignment operator <code>&lt;-</code> will save the reduced version of the <code>KidsFeet</code> dataset created by the <code>filter(...)</code> function into this name.</span> </span><span class="tooltipr"> filter(KidsFeet,   <span class="tooltipRtext">“filter” is a function from library(tidyverse) that reduces the number of rows in the KidsFeet dataset by filtering according to certain criteria. Click on this code to see the original and filtered datasets.</span> </span><span class="tooltipr"> sex <span class="tooltipRtext">The first column of the KidsFeet dataset that we want to use to reduce the dataset.</span> </span><span class="tooltipr">  == “G” <span class="tooltipRtext">This is the first “filtering rule”. It will filter the data down to just those children who are girls.</span> </span><span class="tooltipr">  &amp;  <span class="tooltipRtext">The &amp; is the AND statement. It joins to filtering criteria together into a single criteria where both conditions must be met. In this case, it ensures we get only girls with foot widths greater than 9 cm.</span> </span><span class="tooltipr"> width <span class="tooltipRtext">The second column of the KidsFeet dataset that we want to use to reduce the dataset.</span> </span><span class="tooltipr">  &gt; 9 <span class="tooltipRtext">This is the second “filtering rule”. It will filter the data down to just those children who have a foot width greater than 9 cm.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
 <div id="And" style="display:none;padding-left:20px;">
@@ -763,7 +763,7 @@ div.tocify {
 <a href="javascript:showhide('Or')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> KidsWinter &lt;-  <span class="tooltipRtext">KidsWinter is a name we made up. The assignment operator <code>&lt;-</code> will save the reduced version of the <code>KidsFeet</code> dataset created by the <code>filter(...)</code> function into this name.</span> </span><span class="tooltipr"> filter(KidsFeet,   <span class="tooltipRtext">“filter” is a function from library(tidyverse) that reduces the number of rows in the KidsFeet dataset by filtering according to certain criteria. Click on this code to see the original and filtered datasets.</span> </span><span class="tooltipr"> birthmonth <span class="tooltipRtext">The first column of the KidsFeet dataset that we want to use to reduce the dataset.</span> </span><span class="tooltipr">  &lt;= 2 <span class="tooltipRtext">This is the first “filtering rule”. It will filter the data down to just those children who are born in January or February.</span> </span><span class="tooltipr">  |  <span class="tooltipRtext">The | is the OR statement. It joins to filtering criteria together into a single criteria where either condition gives us what we want. In this case, it keeps any child born in January, February, November, or December.</span> </span><span class="tooltipr"> birthmonth <span class="tooltipRtext">The second column of the KidsFeet dataset that we want to use to reduce the dataset. In this case, it is the same as the first column.</span> </span><span class="tooltipr">  &gt;= 11 <span class="tooltipRtext">This is the second “filtering rule”. It will filter the data down to just those children who are born in November or December.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
 <div id="Or" style="display:none;padding-left:20px;">
@@ -775,8 +775,9 @@ div.tocify {
 </div>
 <br />
 <hr />
-<div id="select" class="section level3">
-<h3>select( )</h3>
+</div>
+<div id="select" class="section level2">
+<h2>select( )</h2>
 <div style="padding-left:15px;">
 <p>Used to select out certain columns from a dataset.</p>
 <p><strong>Usage</strong></p>
@@ -790,7 +791,7 @@ div.tocify {
 <a href="javascript:showhide('select1')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> KidsNameBirth &lt;-  <span class="tooltipRtext">KidsNameBirth is a name we made up. The assignment operator <code>&lt;-</code> will save the reduced version of the <code>KidsFeet</code> dataset created by the <code>select(...)</code> function into this name.</span> </span><span class="tooltipr"> select(KidsFeet,   <span class="tooltipRtext">“select” is a function from library(tidyverse) that selects out specified columns from the original dataset in the order specified.</span> </span><span class="tooltipr"> c(name, birthyear, birthmonth) <span class="tooltipRtext">The columns of the KidsFeet dataset that we want to select out of the original dataset. Notice how the concatenation function <code>c(...)</code> is used to list out the columns we want.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
 <div id="select1" style="display:none;padding-left:20px;">
@@ -802,7 +803,7 @@ div.tocify {
 <a href="javascript:showhide('select2')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> KidsBigLength &lt;-  <span class="tooltipRtext">KidsBigLength is a name we made up. The assignment operator <code>&lt;-</code> will save the reduced version of the <code>KidsFeet</code> dataset created by the <code>select(...)</code> function into this name.</span> </span><span class="tooltipr"> select(KidsFeet,   <span class="tooltipRtext">“select” is a function from library(tidyverse) that selects out specified columns from the original dataset in the order specified.</span> </span><span class="tooltipr"> c(name, length) <span class="tooltipRtext">The columns of the KidsFeet dataset that we want to select out of the original dataset. Notice how the concatenation function <code>c(...)</code> is used to list out the columns we want.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
 <div id="select2" style="display:none;padding-left:20px;">
@@ -814,7 +815,6 @@ div.tocify {
 </div>
 <br />
 <hr />
-</div>
 </div>
 <div id="the-pipe-operator" class="section level2">
 <h2>%&gt;% The Pipe Operator</h2>
@@ -832,7 +832,7 @@ div.tocify {
 <a href="javascript:showhide('filterselect')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> Kids2 &lt;-  <span class="tooltipRtext">This provides a name for the new reduced version of the <code>KidsFeet</code> dataset that is going to be created by the combined use of <code>filter(...)</code> and <code>select(...)</code>.</span> </span><span class="tooltipr"> KidsFeet <span class="tooltipRtext"><code>KidsFeet</code> is a dataset found in <code>library(mosaic)</code>. Click on this code to View the dataset and the resulting Kids2 dataset.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>KidsFeet</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    filter( <span class="tooltipRtext">“filter” is a function from library(tidyverse) that allows us to reduce the number of rows in the KidsFeet dataset by filtering according to certain criteria.</span> </span><span class="tooltipr"> birthyear <span class="tooltipRtext"> Represents the column of data that we want to use to reduce the rows of the dataset.</span> </span><span class="tooltipr">  == 87 <span class="tooltipRtext">This is the “filtering rule”. It will filter the data down to just those children who had a birthyear equal to 87.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the filtered version of the <code>KidsFeet</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    select( <span class="tooltipRtext">“select” is a function from library(tidyverse) that selects out specified columns from the current dataset in the order specified.</span> </span><span class="tooltipr"> c(name, birthyear, length) <span class="tooltipRtext">The columns of the filtered KidsFeet dataset that we want to select. Notice how the concatenation function <code>c(...)</code> is used to list out the columns we want.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="filterselect" style="display:none;padding-left:20px;">
@@ -870,7 +870,7 @@ div.tocify {
 <a href="javascript:showhide('summarisegroupby1')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> KidsFeet <span class="tooltipRtext"><code>KidsFeet</code> is a dataset found in <code>library(mosaic)</code>.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>KidsFeet</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    summarise( <span class="tooltipRtext">“summarise” is a function from library(tidyverse) that allows us to compute numerical summaries on data.</span> </span><span class="tooltipr"> aveLength <span class="tooltipRtext">A name we came up with that will store the results of the numerical summary.</span> </span><span class="tooltipr">  = mean(length) <span class="tooltipRtext">This computes the <code>mean(...)</code> of the <code>length</code> column from the KidsFeet dataset.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
 <div id="summarisegroupby1" style="display:none;padding-left:20px;">
@@ -893,7 +893,7 @@ div.tocify {
 <a href="javascript:showhide('summarisegroupby2')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> KidsFeet <span class="tooltipRtext"><code>KidsFeet</code> is a dataset found in <code>library(mosaic)</code>.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>KidsFeet</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    summarise( <span class="tooltipRtext">“summarise” is a function from library(tidyverse) that allows us to compute numerical summaries on data.</span> </span><span class="tooltipr"> aveLength <span class="tooltipRtext">A name we came up with that will store the results of the numerical summary.</span> </span><span class="tooltipr">  = mean(length),  <span class="tooltipRtext">This computes the <code>mean(...)</code> of the <code>length</code> column from the KidsFeet dataset.</span> </span><br/><span class="tooltipr">              sdLength <span class="tooltipRtext">A name we came up with that will store the results of the numerical summary.</span> </span><span class="tooltipr">  = sd(length),  <span class="tooltipRtext">This computes the <code>sd(...)</code> of the <code>length</code> column from the KidsFeet dataset.</span> </span><br/><span class="tooltipr">              sampleSize <span class="tooltipRtext">A name we came up with that will store the results of the numerical summary.</span> </span><span class="tooltipr">  = n( ) <span class="tooltipRtext">This computes the <code>n(...)</code>, or sample size, of the <code>length</code> column from the KidsFeet dataset.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
 <div id="summarisegroupby2" style="display:none;padding-left:20px;">
@@ -922,7 +922,7 @@ div.tocify {
 <a href="javascript:showhide('summarisegroupby3')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> KidsFeet <span class="tooltipRtext"><code>KidsFeet</code> is a dataset found in <code>library(mosaic)</code>.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>KidsFeet</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    group_by( <span class="tooltipRtext">“group_by” is a function from library(tidyverse) that allows us to split the dataset up into “little groups” according to the column specified.</span> </span><span class="tooltipr"> sex <span class="tooltipRtext">“sex” is a column from the KidsFeet dataset that records the gender of each child.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the grouped according to gender version of the <code>KidsFeet</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    summarise( <span class="tooltipRtext">“summarise” is a function from library(tidyverse) that allows us to compute numerical summaries on data.</span> </span><span class="tooltipr"> aveLength <span class="tooltipRtext">A name we came up with that will store the results of the numerical summary.</span> </span><span class="tooltipr">  = mean(length),  <span class="tooltipRtext">This computes the <code>mean(...)</code> of the <code>length</code> column from the KidsFeet dataset.</span> </span><br/><span class="tooltipr">              sdLength <span class="tooltipRtext">A name we came up with that will store the results of the numerical summary.</span> </span><span class="tooltipr">  = sd(length),  <span class="tooltipRtext">This computes the <code>sd(...)</code> of the <code>length</code> column from the KidsFeet dataset.</span> </span><br/><span class="tooltipr">              sampleSize <span class="tooltipRtext">A name we came up with that will store the results of the numerical summary.</span> </span><span class="tooltipr">  = n( ) <span class="tooltipRtext">This computes the <code>n(...)</code>, or sample size, of the <code>length</code> column from the KidsFeet dataset.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
 <div id="summarisegroupby3" style="display:none;padding-left:20px;">
@@ -978,8 +978,8 @@ div.tocify {
 <p><strong>Example Code</strong></p>
 <a href="javascript:showhide('mutate1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> Kids3 &lt;-  <span class="tooltipRtext"><code>Kids3</code> is a new dataset we are creating that will contain all of <code>KidsFeet</code> data set along with a couple new columns we are creating.</span> </span><span class="tooltipr"> KidsFeet <span class="tooltipRtext"><code>KidsFeet</code> is a dataset found in <code>library(mosaic)</code>.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>KidsFeet</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    mutate( <span class="tooltipRtext">“mutate” is a function from library(tidyverse) that allows us to transform columns of data.</span> </span><span class="tooltipr"> lengthIN = length / 2.54, <span class="tooltipRtext">“lengthIN” is a name we came up with that will store the results of the transformation of the “length” column. This is just converting the length data from cm to inches.</span> </span><br/><span class="tooltipr">          widthIN = width / 2.54, <span class="tooltipRtext">“widthIN” is a name we came up with that will store the results of the transformation of the “width” column. This is just converting the width data from cm to inches.</span> </span><br/><span class="tooltipr">          gender = recode(sex, B = “Boy”, G = “Girl”) <span class="tooltipRtext">“gender” is a name we came up with that will store the results of the transformation of the “sex” column. The recode(…) function is being used to change the values of “B” to “Boy” and the values of “G” to “Girl”.</span> </span><br/><span class="tooltipr">          lengthSplit = ifelse(length &lt; median(length), “Under 50th Percentile”, “50th Percentile or Greater”) <span class="tooltipRtext">“lengthSplit” is a name we came up with that will store the results of the ifelse(…) function. The ifelse(…) function in this case is being used to split the length column by the median of that column. The ifelse(…) function is of the form ifelse( Logical Condition , valueIfConditionTrue, valueIfConditionFalse).</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> Kids3 &lt;-  <span class="tooltipRtext"><code>Kids3</code> is a new dataset we are creating that will contain all of <code>KidsFeet</code> data set along with a couple new columns we are creating.</span> </span><span class="tooltipr"> KidsFeet <span class="tooltipRtext"><code>KidsFeet</code> is a dataset found in <code>library(mosaic)</code>.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>KidsFeet</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    mutate( <span class="tooltipRtext">“mutate” is a function from library(tidyverse) that allows us to transform columns of data.</span> </span><span class="tooltipr"> lengthIN = length / 2.54, <span class="tooltipRtext">“lengthIN” is a name we came up with that will store the results of the transformation of the “length” column. This is just converting the length data from cm to inches.</span> </span><br/><span class="tooltipr">          widthIN = width / 2.54, <span class="tooltipRtext">“widthIN” is a name we came up with that will store the results of the transformation of the “width” column. This is just converting the width data from cm to inches.</span> </span><br/><span class="tooltipr">          gender = case_when(sex == “B” ~ “Boy”, sex == “G” ~ “Girl”) <span class="tooltipRtext">“gender” is a name we came up with that will store the results of the transformation of the “sex” column. The case_when(…) function is being used to change the values of “B” to “Boy” and the values of “G” to “Girl”.</span> </span><br/><span class="tooltipr">          lengthSplit = ifelse(length &lt; median(length), “Under 50th Percentile”, “50th Percentile or Greater”) <span class="tooltipRtext">“lengthSplit” is a name we came up with that will store the results of the ifelse(…) function. The ifelse(…) function in this case is being used to split the length column by the median of that column. The ifelse(…) function is of the form ifelse( Logical Condition , valueIfConditionTrue, valueIfConditionFalse).</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
 <div id="mutate1" style="display:none;padding-left:20px;">
@@ -988,40 +988,1038 @@ div.tocify {
 
 </div>
 </div>
+<p><strong>Other case_when( ) Uses</strong></p>
+<pre><code>case_when(birthmonth == 1 ~ &quot;January&quot;,
+          birthmonth == 2 ~ &quot;February&quot;,
+          birthmonth == 3 ~ &quot;March&quot;,
+          ...and so on...)</code></pre>
+<pre><code>case_when(birthmonth %in% c(12,1,2) ~ &quot;Winter&quot;,
+          birthmonth %in% c(3,4,5) ~ &quot;Spring&quot;,
+          birthmonth %in% c(6,7,8) ~ &quot;Summer&quot;,
+          birthmonth %in% c(9,10,11) ~ &quot;Fall&quot;)</code></pre>
+<pre><code>case_when(length &gt; 25 &amp; width &gt; 9 ~ &quot;Long and Wide&quot;,
+          length &lt; 25 &amp; width &gt; 9 ~ &quot;Short and Wide&quot;,
+          length &gt; 25 &amp; width &lt; 9 ~ &quot;Long and Thin&quot;,
+          length &lt; 25 &amp; width &lt; 9 ~ &quot;Short and Thin&quot;)</code></pre>
+<p><strong>replace_na( ) Function</strong></p>
+<pre><code>replace_na(columnName, value)</code></pre>
+<p><strong>as.numeric( ) Function</strong></p>
+<pre><code>as.numeric(columnName)</code></pre>
+<p><strong>as.character( ) Function</strong></p>
+<pre><code>as.character(columnName)</code></pre>
+<p><strong>as.factor( ) Function</strong></p>
+<pre><code>as.factor(columnName)</code></pre>
 </div>
 <br />
 <hr />
-<!--
-
-### ... {#}
-
+</div>
+<div id="arrange" class="section level2">
+<h2>arrange( )</h2>
 <div style="padding-left:15px;">
-**Console** Help Command: `?`
-
-`()`
-
-* 
-
-**Example Code**
-
-
-```r
-...
-```
-
+<p>Arrange data by a certain column, or columns, i.e. “sort” the data.</p>
+<p><strong>Usage</strong></p>
+<p><code>NameofDataset %&gt;%</code></p>
+<p>   <code>arrange(columnName1)</code></p>
+<p>Note: <code>arrange(columnName1, columnName2, ...)</code> is also possible.</p>
+<ul>
+<li><code>NameOfDataset</code> is the name of a dataset, like <code>cars</code> or <code>airquality</code> or <code>KidsFeet</code>.</li>
+<li><code>%&gt;%</code> is the pipe operator that “pipes data” down into R commands on the next line.</li>
+<li><code>arrange(...)</code> is an R function from <code>library(tidyverse)</code> that arranges a data set by order for the column given.</li>
+<li><code>columnName1</code> is the name of a column from the dataset that you want to compute numerical summaries on.</li>
+<li><code>columnName2</code> is the name of a column from the dataset that you want to compute numerical summaries on.</li>
+<li><code>...</code> implies that you can arrange by as many columns as you want.</li>
+</ul>
+<p><strong>Example Code</strong></p>
+<a href="javascript:showhide('arrange1')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> KidsFeet <span class="tooltipRtext"><code>KidsFeet</code> is a dataset found in <code>library(mosaic)</code>.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>KidsFeet</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    arrange( <span class="tooltipRtext">“arrange” is an R function from <code>library(tidyverse)</code> that arranges a data set by order for the column given.</span> </span><span class="tooltipr"> birthmonth <span class="tooltipRtext">birthmonth is the name of one of the columns of the KidsFeet data set. Specifying this name will cause the data to be sorted by birthmonth from 1 to 12.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+</div>
+<p></a></p>
+<div id="arrange1" style="display:none;padding-left:20px;">
+<table>
+<colgroup>
+<col width="13%" />
+<col width="16%" />
+<col width="14%" />
+<col width="11%" />
+<col width="9%" />
+<col width="7%" />
+<col width="16%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">name</th>
+<th align="center">birthmonth</th>
+<th align="center">birthyear</th>
+<th align="center">length</th>
+<th align="center">width</th>
+<th align="center">sex</th>
+<th align="center">biggerfoot</th>
+<th align="center">domhand</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Josh</td>
+<td align="center">1</td>
+<td align="center">88</td>
+<td align="center">25.2</td>
+<td align="center">9.8</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Hayley</td>
+<td align="center">1</td>
+<td align="center">88</td>
+<td align="center">21.6</td>
+<td align="center">7.9</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Lang</td>
+<td align="center">2</td>
+<td align="center">88</td>
+<td align="center">25.1</td>
+<td align="center">8.9</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Edward</td>
+<td align="center">2</td>
+<td align="center">88</td>
+<td align="center">26.1</td>
+<td align="center">9.6</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Abby</td>
+<td align="center">2</td>
+<td align="center">88</td>
+<td align="center">26.1</td>
+<td align="center">9.5</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Scotty</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">25.7</td>
+<td align="center">9.7</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Ray</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">24.8</td>
+<td align="center">8.9</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Cam</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">27</td>
+<td align="center">9.8</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Maggie</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">24.7</td>
+<td align="center">8.8</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Heather</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">25.5</td>
+<td align="center">9.5</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Leigh</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">24.5</td>
+<td align="center">8.6</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Hannah</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">22.9</td>
+<td align="center">8.5</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Teshanna</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">26</td>
+<td align="center">9</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Kate</td>
+<td align="center">4</td>
+<td align="center">88</td>
+<td align="center">23.7</td>
+<td align="center">7.9</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Dylan</td>
+<td align="center">4</td>
+<td align="center">88</td>
+<td align="center">23.6</td>
+<td align="center">9</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">L</td>
+</tr>
+<tr class="even">
+<td align="center">Peter</td>
+<td align="center">4</td>
+<td align="center">88</td>
+<td align="center">24.7</td>
+<td align="center">8.6</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">L</td>
+</tr>
+<tr class="odd">
+<td align="center">David</td>
+<td align="center">5</td>
+<td align="center">88</td>
+<td align="center">24.4</td>
+<td align="center">8.4</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Eleanor</td>
+<td align="center">5</td>
+<td align="center">88</td>
+<td align="center">23.6</td>
+<td align="center">9.3</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Caitlin</td>
+<td align="center">6</td>
+<td align="center">88</td>
+<td align="center">23</td>
+<td align="center">8.8</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Lee</td>
+<td align="center">6</td>
+<td align="center">88</td>
+<td align="center">26.7</td>
+<td align="center">9</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">L</td>
+</tr>
+<tr class="odd">
+<td align="center">Andy</td>
+<td align="center">6</td>
+<td align="center">88</td>
+<td align="center">24</td>
+<td align="center">9.2</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Danielle</td>
+<td align="center">6</td>
+<td align="center">88</td>
+<td align="center">24</td>
+<td align="center">9.3</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Josh</td>
+<td align="center">7</td>
+<td align="center">88</td>
+<td align="center">24.4</td>
+<td align="center">8.6</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Glen</td>
+<td align="center">7</td>
+<td align="center">88</td>
+<td align="center">27.1</td>
+<td align="center">9.4</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Caitlin</td>
+<td align="center">7</td>
+<td align="center">88</td>
+<td align="center">22.5</td>
+<td align="center">8.6</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Cal</td>
+<td align="center">8</td>
+<td align="center">87</td>
+<td align="center">26.1</td>
+<td align="center">9.1</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Dwayne</td>
+<td align="center">8</td>
+<td align="center">88</td>
+<td align="center">23.9</td>
+<td align="center">9.3</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">L</td>
+</tr>
+<tr class="even">
+<td align="center">Damon</td>
+<td align="center">9</td>
+<td align="center">88</td>
+<td align="center">22.9</td>
+<td align="center">8.8</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">L</td>
+</tr>
+<tr class="odd">
+<td align="center">Mark</td>
+<td align="center">9</td>
+<td align="center">87</td>
+<td align="center">27.5</td>
+<td align="center">9.8</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Laura</td>
+<td align="center">9</td>
+<td align="center">88</td>
+<td align="center">24</td>
+<td align="center">8.3</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">L</td>
+</tr>
+<tr class="odd">
+<td align="center">Erica</td>
+<td align="center">9</td>
+<td align="center">88</td>
+<td align="center">24.5</td>
+<td align="center">9</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Alisha</td>
+<td align="center">9</td>
+<td align="center">88</td>
+<td align="center">24.6</td>
+<td align="center">8.8</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Lars</td>
+<td align="center">10</td>
+<td align="center">87</td>
+<td align="center">25.4</td>
+<td align="center">8.8</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">L</td>
+</tr>
+<tr class="even">
+<td align="center">Peggy</td>
+<td align="center">10</td>
+<td align="center">88</td>
+<td align="center">24.2</td>
+<td align="center">8.1</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Julie</td>
+<td align="center">11</td>
+<td align="center">87</td>
+<td align="center">26</td>
+<td align="center">9.3</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Mike</td>
+<td align="center">11</td>
+<td align="center">88</td>
+<td align="center">24.2</td>
+<td align="center">8.9</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Zach</td>
+<td align="center">12</td>
+<td align="center">87</td>
+<td align="center">24.5</td>
+<td align="center">9.7</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Caroline</td>
+<td align="center">12</td>
+<td align="center">87</td>
+<td align="center">24</td>
+<td align="center">8.7</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">L</td>
+</tr>
+<tr class="odd">
+<td align="center">David</td>
+<td align="center">12</td>
+<td align="center">87</td>
+<td align="center">25.5</td>
+<td align="center">9.5</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+</tbody>
+</table>
+</div>
+<a href="javascript:showhide('arrange2')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> KidsFeet <span class="tooltipRtext"><code>KidsFeet</code> is a dataset found in <code>library(mosaic)</code>.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>KidsFeet</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    arrange( <span class="tooltipRtext">“arrange” is an R function from <code>library(tidyverse)</code> that arranges a data set by order for the column given.</span> </span><span class="tooltipr"> desc( <span class="tooltipRtext">This causes the arranging to be done in descending order (highest to lowest).</span> </span><span class="tooltipr"> birthmonth <span class="tooltipRtext">birthmonth is the name of one of the columns of the KidsFeet data set. Specifying this name will cause the data to be sorted by birthmonth from 1 to 12.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+</div>
+<p></a></p>
+<div id="arrange2" style="display:none;padding-left:20px;">
+<table>
+<colgroup>
+<col width="13%" />
+<col width="16%" />
+<col width="14%" />
+<col width="11%" />
+<col width="9%" />
+<col width="7%" />
+<col width="16%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">name</th>
+<th align="center">birthmonth</th>
+<th align="center">birthyear</th>
+<th align="center">length</th>
+<th align="center">width</th>
+<th align="center">sex</th>
+<th align="center">biggerfoot</th>
+<th align="center">domhand</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Zach</td>
+<td align="center">12</td>
+<td align="center">87</td>
+<td align="center">24.5</td>
+<td align="center">9.7</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Caroline</td>
+<td align="center">12</td>
+<td align="center">87</td>
+<td align="center">24</td>
+<td align="center">8.7</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">L</td>
+</tr>
+<tr class="odd">
+<td align="center">David</td>
+<td align="center">12</td>
+<td align="center">87</td>
+<td align="center">25.5</td>
+<td align="center">9.5</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Julie</td>
+<td align="center">11</td>
+<td align="center">87</td>
+<td align="center">26</td>
+<td align="center">9.3</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Mike</td>
+<td align="center">11</td>
+<td align="center">88</td>
+<td align="center">24.2</td>
+<td align="center">8.9</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Lars</td>
+<td align="center">10</td>
+<td align="center">87</td>
+<td align="center">25.4</td>
+<td align="center">8.8</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">L</td>
+</tr>
+<tr class="odd">
+<td align="center">Peggy</td>
+<td align="center">10</td>
+<td align="center">88</td>
+<td align="center">24.2</td>
+<td align="center">8.1</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Damon</td>
+<td align="center">9</td>
+<td align="center">88</td>
+<td align="center">22.9</td>
+<td align="center">8.8</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">L</td>
+</tr>
+<tr class="odd">
+<td align="center">Mark</td>
+<td align="center">9</td>
+<td align="center">87</td>
+<td align="center">27.5</td>
+<td align="center">9.8</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Laura</td>
+<td align="center">9</td>
+<td align="center">88</td>
+<td align="center">24</td>
+<td align="center">8.3</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">L</td>
+</tr>
+<tr class="odd">
+<td align="center">Erica</td>
+<td align="center">9</td>
+<td align="center">88</td>
+<td align="center">24.5</td>
+<td align="center">9</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Alisha</td>
+<td align="center">9</td>
+<td align="center">88</td>
+<td align="center">24.6</td>
+<td align="center">8.8</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Cal</td>
+<td align="center">8</td>
+<td align="center">87</td>
+<td align="center">26.1</td>
+<td align="center">9.1</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Dwayne</td>
+<td align="center">8</td>
+<td align="center">88</td>
+<td align="center">23.9</td>
+<td align="center">9.3</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">L</td>
+</tr>
+<tr class="odd">
+<td align="center">Josh</td>
+<td align="center">7</td>
+<td align="center">88</td>
+<td align="center">24.4</td>
+<td align="center">8.6</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Glen</td>
+<td align="center">7</td>
+<td align="center">88</td>
+<td align="center">27.1</td>
+<td align="center">9.4</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Caitlin</td>
+<td align="center">7</td>
+<td align="center">88</td>
+<td align="center">22.5</td>
+<td align="center">8.6</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Caitlin</td>
+<td align="center">6</td>
+<td align="center">88</td>
+<td align="center">23</td>
+<td align="center">8.8</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Lee</td>
+<td align="center">6</td>
+<td align="center">88</td>
+<td align="center">26.7</td>
+<td align="center">9</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">L</td>
+</tr>
+<tr class="even">
+<td align="center">Andy</td>
+<td align="center">6</td>
+<td align="center">88</td>
+<td align="center">24</td>
+<td align="center">9.2</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Danielle</td>
+<td align="center">6</td>
+<td align="center">88</td>
+<td align="center">24</td>
+<td align="center">9.3</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">David</td>
+<td align="center">5</td>
+<td align="center">88</td>
+<td align="center">24.4</td>
+<td align="center">8.4</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Eleanor</td>
+<td align="center">5</td>
+<td align="center">88</td>
+<td align="center">23.6</td>
+<td align="center">9.3</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Kate</td>
+<td align="center">4</td>
+<td align="center">88</td>
+<td align="center">23.7</td>
+<td align="center">7.9</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Dylan</td>
+<td align="center">4</td>
+<td align="center">88</td>
+<td align="center">23.6</td>
+<td align="center">9</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">L</td>
+</tr>
+<tr class="even">
+<td align="center">Peter</td>
+<td align="center">4</td>
+<td align="center">88</td>
+<td align="center">24.7</td>
+<td align="center">8.6</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">L</td>
+</tr>
+<tr class="odd">
+<td align="center">Scotty</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">25.7</td>
+<td align="center">9.7</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Ray</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">24.8</td>
+<td align="center">8.9</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Cam</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">27</td>
+<td align="center">9.8</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Maggie</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">24.7</td>
+<td align="center">8.8</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Heather</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">25.5</td>
+<td align="center">9.5</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Leigh</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">24.5</td>
+<td align="center">8.6</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Hannah</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">22.9</td>
+<td align="center">8.5</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Teshanna</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">26</td>
+<td align="center">9</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Lang</td>
+<td align="center">2</td>
+<td align="center">88</td>
+<td align="center">25.1</td>
+<td align="center">8.9</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Edward</td>
+<td align="center">2</td>
+<td align="center">88</td>
+<td align="center">26.1</td>
+<td align="center">9.6</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Abby</td>
+<td align="center">2</td>
+<td align="center">88</td>
+<td align="center">26.1</td>
+<td align="center">9.5</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="even">
+<td align="center">Josh</td>
+<td align="center">1</td>
+<td align="center">88</td>
+<td align="center">25.2</td>
+<td align="center">9.8</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+</tr>
+<tr class="odd">
+<td align="center">Hayley</td>
+<td align="center">1</td>
+<td align="center">88</td>
+<td align="center">21.6</td>
+<td align="center">7.9</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <br />
 <hr />
-
-
-
-
-<br />
-<br />
-<br />
-
-
--->
+</div>
+<div id="pander" class="section level2">
+<h2>pander( )</h2>
+<div style="padding-left:15px;">
+<p>Makes output of most commands “beautiful”.</p>
+<p><strong>Usage</strong></p>
+<p><code>library(pander)</code> then…</p>
+<p><code>pander(someCode)</code></p>
+<p>OR</p>
+<p><code>someCode %&gt;%</code></p>
+<p>   <code>pander( )</code></p>
+<p>Note: <code>pander(stuff, caption=&quot;Some useful caption&quot;, ...)</code> is also possible.</p>
+<ul>
+<li><code>someCode</code> is exactly that, some coding you have done that creates output that you want displayed nicely.</li>
+<li><code>%&gt;%</code> is the pipe operator that “pipes data” down into R commands on the next line.</li>
+<li><code>pander(...)</code> is an R function from <code>library(pander)</code> that makes most R output look nice.</li>
+<li><code>...</code> other useful commands like <code>split.table=Inf</code>.</li>
+</ul>
+<p><strong>Example Code</strong></p>
+<a href="javascript:showhide('pander1')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> pander( <span class="tooltipRtext"><code>pander</code> is an R function that makes output look nice.</span> </span><span class="tooltipr"> table(KidsFeet$sex, KidsFeet$birthmonth), <span class="tooltipRtext">Code that makes a table of how many boys and girls were born in each month of the year.</span> </span><span class="tooltipr">   caption=“Counts of Birthdays by Month” <span class="tooltipRtext">The caption=&quot; &quot; command is very useful for giving your output a small title.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+</div>
+<p></a></p>
+<div id="pander1" style="display:none;padding-left:20px;">
+<table style="width:83%;">
+<caption>Counts of Birthdays by Month</caption>
+<colgroup>
+<col width="12%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">8</th>
+<th align="center">9</th>
+<th align="center">10</th>
+<th align="center">11</th>
+<th align="center">12</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>B</strong></td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>G</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<a href="javascript:showhide('pander2')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> KidsFeet <span class="tooltipRtext"><code>KidsFeet</code> is a dataset found in <code>library(mosaic)</code>.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>KidsFeet</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    group_by( <span class="tooltipRtext">“group_by” is a function from library(tidyverse) that allows us to split the dataset up into “little groups” according to the column specified.</span> </span><span class="tooltipr"> sex <span class="tooltipRtext">“sex” is a column from the KidsFeet dataset that records the gender of each child.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the grouped according to gender version of the <code>KidsFeet</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    summarise( <span class="tooltipRtext">“summarise” is a function from library(tidyverse) that allows us to compute numerical summaries on data.</span> </span><span class="tooltipr"> aveLength <span class="tooltipRtext">A name we came up with that will store the results of the numerical summary.</span> </span><span class="tooltipr">  = mean(length),  <span class="tooltipRtext">This computes the <code>mean(...)</code> of the <code>length</code> column from the KidsFeet dataset.</span> </span><br/><span class="tooltipr">              sdLength <span class="tooltipRtext">A name we came up with that will store the results of the numerical summary.</span> </span><span class="tooltipr">  = sd(length),  <span class="tooltipRtext">This computes the <code>sd(...)</code> of the <code>length</code> column from the KidsFeet dataset.</span> </span><br/><span class="tooltipr">              sampleSize <span class="tooltipRtext">A name we came up with that will store the results of the numerical summary.</span> </span><span class="tooltipr">  = n( ) <span class="tooltipRtext">This computes the <code>n(...)</code>, or sample size, of the <code>length</code> column from the KidsFeet dataset.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>KidsFeet</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    pander( <span class="tooltipRtext">The pander function will make the output of the above code look nice.</span> </span><span class="tooltipr"> caption=“Doesn’t that look nice?”) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+</div>
+<p></a></p>
+<div id="pander2" style="display:none;padding-left:20px;">
+<table style="width:57%;">
+<caption>Doesn’t that look nice?</caption>
+<colgroup>
+<col width="8%" />
+<col width="16%" />
+<col width="15%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">sex</th>
+<th align="center">aveLength</th>
+<th align="center">sdLength</th>
+<th align="center">sampleSize</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">B</td>
+<td align="center">25.11</td>
+<td align="center">1.217</td>
+<td align="center">20</td>
+</tr>
+<tr class="even">
+<td align="center">G</td>
+<td align="center">24.32</td>
+<td align="center">1.33</td>
+<td align="center">19</td>
+</tr>
+</tbody>
+</table>
+<pre><code>What it looks like if you don&#39;t pander:</code></pre>
+<pre><code># A tibble: 2 x 4
+  sex   aveLength sdLength sampleSize
+  &lt;fct&gt;     &lt;dbl&gt;    &lt;dbl&gt;      &lt;int&gt;
+1 B          25.1     1.22         20
+2 G          24.3     1.33         19</code></pre>
+</div>
 </div>
 </div>
 <hr />

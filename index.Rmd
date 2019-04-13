@@ -8,7 +8,7 @@ output:
 This page, and all pages of this notebook, are meant to be customized to become a useful *Guide to Statistical Analysis* in R for your *current* and *future* self. 
 
 <span style="font-size:.8em;color:gray;">
-To begin customizing, [download](https://github.com/saundersg/Statistics-Notebook) your own copy of the book. Please note the [GNU General Public License](https://choosealicense.com/licenses/gpl-3.0/) when downloading.
+To begin customizing, [download](https://github.com/saundersg/Statistics-Notebook) your own copy of the book <span style="font-size:.8em;">(if you haven't already)</span>. Please note the [GNU General Public License](https://choosealicense.com/licenses/gpl-3.0/) when downloading.
 </span>
 
 ## Table of Contents
@@ -24,20 +24,58 @@ To begin customizing, [download](https://github.com/saundersg/Statistics-Noteboo
 <div style="float:left;width:125px;" align=center>
 <img src="./Images/QuantY.png" width=35px;>
 </div>
-<div style="padding-left:125px;">
+
+
+### One Quantitative Response Variable Y {.tabset .tabset-pills}
+
+#### Graphics
+<div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 
-**1 Quantitative Variable**
+Add your own notes about graphics to use for this type of data here.
 
 
 
-
-
-
-
-
-<!------------------------------------------------>
+<!--- End of Add content area.  ------------------>
 </div>
+
+#### Summaries
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Add your own notes about numerical summaries for this type of data here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+#### Tests
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Add your own notes about appropriate inferential procedures for this type of data here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+#### Notes
+<div style="padding-left:125px;color:steelblue;">
+<!-- Add your customizations in the area below: -->
+
+Add general notes here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+##
 <div style="clear:both;"></div>
 
 ----
@@ -45,19 +83,57 @@ To begin customizing, [download](https://github.com/saundersg/Statistics-Noteboo
 <div style="float:left;width:125px;" align=center>
 <img src="./Images/QuantYQualXg2.png" width=59px;>
 </div>
-<div style="padding-left:125px;">
+
+### Quantitative Y | Categorical X (2 Groups) {.tabset .tabset-pills}
+
+#### Graphics
+<div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 
-**1 Quantitative Variable | 2 Groups**
+Add your own notes about graphics to use for this type of data here.
 
 
 
-
-
-
-
-<!------------------------------------------------>
+<!--- End of Add content area.  ------------------>
 </div>
+
+#### Summaries
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Add your own notes about numerical summaries for this type of data here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+#### Tests
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Add your own notes about appropriate inferential procedures for this type of data here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+#### Notes
+<div style="padding-left:125px;color:steelblue;">
+<!-- Add your customizations in the area below: -->
+
+Add general notes here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+##
 <div style="clear:both;"></div>
 
 ----
@@ -65,59 +141,176 @@ To begin customizing, [download](https://github.com/saundersg/Statistics-Noteboo
 <div style="float:left;width:125px;" align=center>
 <img src="./Images/QuantYQualXg3plus.png" width=59px;>
 </div>
-<div style="padding-left:125px;">
+
+### Quantitative Y | Categorical X (3+ Groups) {.tabset .tabset-pills}
+
+#### Graphics
+<div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 
-**1 Quantitative Variable | 3+ Groups**
+Add your own notes about graphics to use for this type of data here.
 
 
 
-
-
-
-
-<!------------------------------------------------>
+<!--- End of Add content area.  ------------------>
 </div>
+
+#### Summaries
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Add your own notes about numerical summaries for this type of data here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+#### Tests
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Add your own notes about appropriate inferential procedures for this type of data here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+#### Notes
+<div style="padding-left:125px;color:steelblue;">
+<!-- Add your customizations in the area below: -->
+
+Add general notes here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+##
 <div style="clear:both;"></div>
+
 
 ----
 
 <div style="float:left;width:125px;" align=center>
 <img src="./Images/QuantYQuantX.png" width=59px;>
 </div>
-<div style="padding-left:125px;">
+
+### Quantitative Y | Quantitative X {.tabset .tabset-pills}
+
+#### Graphics
+<div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 
-**2 Quantitative Variables**
+Add your own notes about graphics to use for this type of data here.
 
 
 
-
-
-
-
-<!------------------------------------------------>
+<!--- End of Add content area.  ------------------>
 </div>
+
+#### Summaries
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Add your own notes about numerical summaries for this type of data here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+#### Tests
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Add your own notes about appropriate inferential procedures for this type of data here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+#### Notes
+<div style="padding-left:125px;color:steelblue;">
+<!-- Add your customizations in the area below: -->
+
+Add general notes here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+##
 <div style="clear:both;"></div>
+
 
 ----
 
 <div style="float:left;width:125px;" align=center>
-<img src="./Images/QuantYMultX.png" width=110px;>
+<img src="./Images/QuantYMultX.png" width=100px;>
 </div>
-<div style="padding-left:125px;">
+
+### Quantitative Y | Multiple X {.tabset .tabset-pills}
+
+#### Graphics
+<div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 
-**1 Quantitative Response | Multiple Explanatory Variables**
+Add your own notes about graphics to use for this type of data here.
 
 
 
-
-
-
-
-<!------------------------------------------------>
+<!--- End of Add content area.  ------------------>
 </div>
+
+#### Summaries
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Add your own notes about numerical summaries for this type of data here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+#### Tests
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Add your own notes about appropriate inferential procedures for this type of data here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+#### Notes
+<div style="padding-left:125px;color:steelblue;">
+<!-- Add your customizations in the area below: -->
+
+Add general notes here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+
+##
 <div style="clear:both;"></div>
 
 ----
@@ -125,60 +318,186 @@ To begin customizing, [download](https://github.com/saundersg/Statistics-Noteboo
 <div style="float:left;width:125px;" align=center>
 <img src="./Images/BinomYQuantX.png" width=59px;>
 </div>
-<div style="padding-left:125px;">
+
+
+
+
+### Binomial Y | Quantitative X {.tabset .tabset-pills}
+
+#### Graphics
+<div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 
-**Binomial Response | 1 Explanatory Variable**
+Add your own notes about graphics to use for this type of data here.
 
 
 
-
-
-
-
-<!------------------------------------------------>
+<!--- End of Add content area.  ------------------>
 </div>
+
+#### Summaries
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Add your own notes about numerical summaries for this type of data here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+#### Tests
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Add your own notes about appropriate inferential procedures for this type of data here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+#### Notes
+<div style="padding-left:125px;color:steelblue;">
+<!-- Add your customizations in the area below: -->
+
+Add general notes here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+
+##
 <div style="clear:both;"></div>
+
 
 ----
 
 <div style="float:left;width:125px;" align=center>
-<img src="./Images/BinomYMultX.png" width=110px;>
+<img src="./Images/BinomYMultX.png" width=100px;>
 </div>
-<div style="padding-left:125px;">
+
+
+
+### Binomial Y | Multiple X {.tabset .tabset-pills}
+
+#### Graphics
+<div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 
-**Binomial Response | Multiple Explanatory Variables**
+Add your own notes about graphics to use for this type of data here.
 
 
 
-
-
-
-
-<!------------------------------------------------>
+<!--- End of Add content area.  ------------------>
 </div>
+
+#### Summaries
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Add your own notes about numerical summaries for this type of data here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+#### Tests
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Add your own notes about appropriate inferential procedures for this type of data here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+#### Notes
+<div style="padding-left:125px;color:steelblue;">
+<!-- Add your customizations in the area below: -->
+
+Add general notes here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+
+##
 <div style="clear:both;"></div>
+
 
 ----
 
 <div style="float:left;width:125px;" align=center>
 <img src="./Images/QualYQualX.png" width=59px;>
 </div>
-<div style="padding-left:125px;">
+
+
+
+### Caterogical Y | Categorical X {.tabset .tabset-pills}
+
+#### Graphics
+<div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 
-**2 Qualitative Variables**
+Add your own notes about graphics to use for this type of data here.
 
 
 
-
-
-
-
-<!------------------------------------------------>
+<!--- End of Add content area.  ------------------>
 </div>
+
+#### Summaries
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Add your own notes about numerical summaries for this type of data here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+#### Tests
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Add your own notes about appropriate inferential procedures for this type of data here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+#### Notes
+<div style="padding-left:125px;color:steelblue;">
+<!-- Add your customizations in the area below: -->
+
+Add general notes here.
+
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
+##
 <div style="clear:both;"></div>
+
 
 ----
 
