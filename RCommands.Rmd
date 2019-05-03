@@ -458,10 +458,10 @@ c(
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
-  
-  
-
-</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>  
 </div>
 </a> 
 
@@ -476,6 +476,134 @@ c(
 <br />
 <hr />
 
+
+
+
+## table( ) {#table}
+
+<div style="padding-left:15px;">
+This is a way to quickly count how many times each value occurs in a column or columns.
+
+**Usage** 
+
+`table(NameOfDataset$columnName)`
+
+`table(NameOfDataset$columnName1, NameOfDataset$columnName2)`
+
+* The `table( )` function counts how many times each `value` in a column of data occurs. 
+* `NameOfDataset` is the ane of a data set, like `cars` or `airquality` or `KidsFeet`.
+* `columnName` is the name of a column from the data set.
+* `columnName1` and `columnName2` are two different names of columns from the data set.
+
+**Example Code**
+
+
+<a href="javascript:showhide('table1')">
+<div class="hoverchunk">
+<span class="tooltipr">
+speedCounts <-  
+  <span class="tooltipRtext">`speedCounts` is a new object being created using the assignment operator `<-` that will contain the counts of how many times each "speed" occurs in the `cars` data set speed column.</span>
+ </span><span class="tooltipr">
+&nbsp;table(
+  <span class="tooltipRtext">The table function `table( )` is being used in this case to count how many times each speed occurs in the cars data set speed column.  </span>
+  </span><span class="tooltipr">
+cars
+  <span class="tooltipRtext"> This is the name of the data set.  </span>
+ </span><span class="tooltipr">
+$
+  <span class="tooltipRtext">The $ is used to access a given column from the data set.</span>
+ </span><span class="tooltipr">
+speed
+  <span class="tooltipRtext">This is the name of the column we are interested in from the cars data set.</span>
+ </span><span class="tooltipr">
+) 
+  <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span>
+ </span><br/><span class="tooltipr">
+speedCounts
+  <span class="tooltipRtext">Typing the name of an object will print the results to the screen.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>  
+</div>
+</a> 
+
+<div id="table1" style="display:none;padding-left:20px;">
+```{r, echo=FALSE}
+speedCounts <- table(cars$speed)
+speedCounts
+```
+Notice how the speed of "4" occurs 2 times, same for the speed of 7, but the speed of 8 only occurs 1 time and so on with the other speeds. The first row of the output is the value from the speed column. The number on the second line shows how many times that value occurred in the speed column.
+</div>
+
+  
+
+<a href="javascript:showhide('table2')">
+<div class="hoverchunk">
+<span class="tooltipr">
+library(mosaic)
+  <span class="tooltipRtext" style="font-size:.8em;">`library(mosaic)` is needed to access the KidsFeet data set that is used in this example. If you don't have the mosaic library, you will need to run `install.packages("mosaic")` to install it first. From then on, you can open mosaic to use it with the command library(mosaic). You need only install packages once. You must library them each time you wish to use them.</span>
+ </span><br/><span class="tooltipr">
+birthdays <-  
+  <span class="tooltipRtext">`birthdays` is a new object being created using the assignment operator `<-` that will contain the counts of how many birthdays occur in each month for each gender in the KidsFeet dataset.</span>
+ </span><span class="tooltipr">
+&nbsp;table(
+  <span class="tooltipRtext">The table function `table( )` is being used in this case to count how many birthdays occur in each month for children of each gender.</span>
+  </span><span class="tooltipr">
+KidsFeet
+  <span class="tooltipRtext"> This is the name of the data set.</span>
+ </span><span class="tooltipr">
+$
+  <span class="tooltipRtext">The $ is used to access a given column from the data set.</span>
+ </span><span class="tooltipr">
+sex
+  <span class="tooltipRtext">This is the name of the column we are interested in becoming the rows of our final table.</span>
+ </span><span class="tooltipr">
+KidsFeet
+  <span class="tooltipRtext"> This is the name of the data set.</span>
+ </span><span class="tooltipr">
+$
+  <span class="tooltipRtext">The $ is used to access a given column from the data set.</span>
+ </span><span class="tooltipr">
+birthmonth
+  <span class="tooltipRtext">This is the name of the column we are interested in becoming the columns of our final table.</span>
+ </span><span class="tooltipr">
+) 
+  <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span>
+ </span><br/><span class="tooltipr">
+birthdays
+  <span class="tooltipRtext">Typing the name of an object will print the results to the screen.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>  
+</div>
+</a> 
+
+<div id="table2" style="display:none;padding-left:20px;">
+```{r, echo=FALSE}
+birthdays <- table(mosaicData::KidsFeet$sex, mosaicData::KidsFeet$birthmonth)
+birthdays
+```
+The left column contains the "sex" values of "B" and "G" (Boy and Girl). 
+
+The top row contains the birthmonths (1 through 12).
+
+The numbers within the row of the table next to the "B" show how many Boys had birthdays in each month of the year.
+
+The numbers within the row of the table next to the "G" show how many Girls had birthdays in each month of the year.
+</div>
+  
+
+</div>
+<br />
+<hr />
 
 
 
@@ -522,6 +650,12 @@ Used to reduce a dataset to a smaller set of rows than the original dataset cont
 <a href="javascript:showhide('filterEqual')">
 <div class="hoverchunk">
 <span class="tooltipr">
+library(tidyverse)
+  <span class="tooltipRtext">The tidyverse library is needed to access the filter function used in the following example codes.</span>
+</span><br/><span class="tooltipr">
+library(mosaic)
+  <span class="tooltipRtext">The mosaic library is needed to access the KidsFeet data set used in the following example codes.</span>
+</span><br/><span class="tooltipr">
 Kids87 <-&nbsp;
   <span class="tooltipRtext">Kids87 is a name we made up. The assignment operator `<-` will save the reduced version of the `KidsFeet` dataset created by the `filter(...)` function into this name.</span>
 </span><span class="tooltipr">
@@ -1245,7 +1379,7 @@ lengthIN = length / 2.54,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;widthIN = width / 2.54,
   <span class="tooltipRtext">"widthIN" is a name we came up with that will store the results of the transformation of the "width" column. This is just converting the width data from cm to inches.</span>
 </span><br/><span class="tooltipr">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gender = case_when(sex == "B" ~ "Boy", sex == "G" ~ "Girl")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gender = case_when(sex == "B" ~ "Boy", sex == "G" ~ "Girl"),
   <span class="tooltipRtext">"gender" is a name we came up with that will store the results of the transformation of the "sex" column. The case_when(...) function is being used to change the values of "B" to "Boy" and the values of "G" to "Girl".</span>
 </span><br/><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lengthSplit = ifelse(length < median(length), "Under 50th Percentile", "50th Percentile or Greater")

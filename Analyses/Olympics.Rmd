@@ -13,8 +13,9 @@ output:
 ```{r, include=FALSE}
 library(mosaic)
 library(pander)
+library(tidyverse)
 library(DT) 
-Olympics <- read.csv("../Data/Olympics.csv", header=TRUE)
+Olympics <- read_csv("../Data/Olympics.csv")
 ```
 
 <br />

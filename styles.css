@@ -81,6 +81,40 @@
 
 
 
+.tooltiprout {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltiprout .tooltiprouttext {
+    display: none;
+    width: 200px;
+    background-color: darkgray;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: 0px;
+}
+
+.tooltiprout:hover .tooltiprouttext {
+    display: block;
+}
+
+.tooltiprout:hover {
+    background-color: #888888;
+    color: #f3f3f3;
+    border-radius: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
 /* Style the tab */
 .tab {
     overflow: hidden;
@@ -123,4 +157,11 @@
    font-size: .8em;
    color: darkgray;
    padding-left: 60px;
+}
+
+
+/* This text is in Monaco */
+.rconsole { 
+	font-family: monaco,Consolas,Lucida Console,monospace; 
+	font-size: .7em;
 }

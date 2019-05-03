@@ -10,6 +10,7 @@ output:
 Think of an `R Markdown File`, or `Rmd` for short, as a command center. You write commands, then Knit the file, and an html output file is created according to your commands. 
 
 
+
 ## {.tabset .tabset-pills .tabset-fade}
 
 ### Hide Cheatsheet
@@ -21,6 +22,20 @@ Carefully read through all parts of this image to learn...
 ![](./Images/Rmd2html.png)
 
 ##
+
+The above tabs were created with the code:
+
+    ## {.tabset .tabset-pills .tabset-fade}
+
+    ### Hide Cheatsheet
+
+    ### Show
+
+    Text and image were placed here...
+
+    ##
+
+
 
 ## Creating Links
 
@@ -42,8 +57,6 @@ Linking to outside resources:
 There are six available sizes of headings you can use in an Rmd file (left in image) that show up as shown below (right in image).
 
 ![](./Images/Rmd2html_Headers.png)
-
-
 
 
 
@@ -231,14 +244,20 @@ Symbol list:
 | $\alpha$ | `$\alpha$` |
 | $\beta$ | `$\beta$` |
 | $\sigma$ | `$\sigma$` |
+| $\epsilon$ | `$\epsilon$` |
 | $\bar{x}$ | `$\bar{x}$` |
 | $\hat{Y}$ | `$\hat{Y}$` |
 | $=$ | `$=$` |
-| $\ne$ | `$\ne$` |
+| $\ne$ | `$\ne$` or `$\neq$` |
 | $>$ | `$>$` |
 | $<$ | `$<$` |
 | $\ge$ | `$\ge$` |
 | $\le$ | `$\le$` |
+| $\{ \}$ | `$\{ \}$` |
+| $\text{Type just text}$ | `$\text{Type just text}$` |
+| $\overbrace{Y_i}^\text{label}$ | `$\overbrace{Y_i}^\text{label}$`|
+| $\underbrace{Y_i}_\text{label}$ | `$\underbrace{Y_i}_\text{label}$`|
+
 
 
 
