@@ -12,11 +12,12 @@ output:
 
 ```{r, include=FALSE}
 library(mosaic)
+library(tidyverse)
 library(DT) # If you get an error stating: 
             # Error in library(DT): there is no package called 'DT'
             # You will need to run: install.packages("DT") 
             # in your Console, then try "Knit HTML" again.
-Rent <- read.csv("../Data/Rent.csv", header=TRUE)
+Rent <- read_csv("../Data/Rent.csv")
 ```
 
 <br />
