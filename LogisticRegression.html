@@ -70,9 +70,7 @@ h6 {
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -97,6 +95,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -111,7 +112,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -131,6 +131,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -152,19 +189,85 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
 });
 </script>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -196,6 +299,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="RCheatSheetsAndNotes.html">R Cheatsheets &amp; Notes</a>
+    </li>
+    <li>
+      <a href="DataSources.html">Data Sources</a>
     </li>
   </ul>
 </li>
@@ -328,6 +434,175 @@ $(document).ready(function () {
 <span class="tooltiprtext">NameOfYourDataset is the name of the dataset that contains Y and X. In other words, one column of your dataset would be called Y and another column would be called X.</span> </span><span class="tooltipr">  family=binomial) <span class="tooltiprtext">The family=binomial command tells the <code>glm(</code> function to perform a logistic regression. It turns out that <code>glm</code> can perform many different types of regressions, but we only study it as a tool to perform a logistic regression in this course.</span> </span><br/><span class="tooltipr"> summary(YourObjectName) <span class="tooltiprtext">The <code>summary</code> command allows you to print the results of your logistic regression that were previously saved in <code>YourObjectName</code>.</span> </span></p>
 </div>
 <p></a></p>
+<div id="logistic1" style="display:none;">
+<p>Example output from a regression. Hover each piece to learn more.</p>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> Call:<br/> glm(formula = am ~ disp, family = binomial, data = mtcars) <span class="tooltiprouttext">This is simply a statement of your original glm(…) “call” that you made when performing your regression. It allows you to verify that you ran what you thought you ran in the glm(…).</span> </span>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<table class="rconsole">
+<tr>
+<td colspan="2">
+<span class="tooltiprout"> Deviance Residuals: <span class="tooltiprouttext">EXPLANATION. </span>
+</td>
+</tr>
+<tr>
+<td align="right">
+<span class="tooltiprout"> Min<br/>   -1.5651 <span class="tooltiprouttext">“min” gives the value of the residual that is furthest below the regression line. Ideally, the magnitude of this value would be about equal to the magnitude of the largest positive residual (the max) because the hope is that the residuals are normally distributed around the line.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> 1Q<br/>   -0.6648 <span class="tooltiprouttext">“1Q” gives the first quartile of the residuals, which will always be negative, and ideally would be about equal in magnitude to the third quartile.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> Median<br/>   -0.2460 <span class="tooltiprouttext">“Median” gives the median of the residuals, which would ideally would be about equal to zero. Note that because the regression line is the least squares line, the mean of the residuals will ALWAYS be zero, so it is never included in the output summary. This particular median value of -0.2460 is a little smaller than zero than we would hope for and suggests a right skew in the data because the mean (0) is greater than the median (-0.2460) witnessing the residuals are right skewed. This can also be seen in the maximum being much larger in magnitude than the minimum.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> 3Q<br/>   0.7276 <span class="tooltiprouttext">“3Q” gives the third quartile of the residuals, which would ideally would be about equal in magnitude to the first quartile. In this case, it is pretty close, which helps us see that the first quartile of residuals on either side of the line is behaving fairly normally.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> Max</br>   2.2691 <span class="tooltiprouttext">“Max” gives the maximum positive residuals, which would ideally would be about equal in magnitude to the minimum residual. In this case, it is much larger than the minimum, which helps us see that the residuals are likely right skewed.</span> </span>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<table class="rconsole">
+<tr>
+<td colspan="2">
+<span class="tooltiprout"> Coefficients: <span class="tooltiprouttext">Notice that in your glm(…) you used only <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>. You did type out any coefficients, i.e., the <span class="math inline">\(\beta_0\)</span> or <span class="math inline">\(\beta_1\)</span> of the regression model. These coefficients are estimated by the glm(…) function and displayed in this part of the output along with standard errors, t-values, and p-values.</span> </span>
+</td>
+</tr>
+<tr>
+<td align="left">
+</td>
+<td align="right">
+<span class="tooltiprout">   Estimate <span class="tooltiprouttext">To learn more about the “Estimates” of the “Coefficients” see the “Explanation” tab, “Estimating the Model Parameters” section for details.</span>
+</td>
+<td align="right">
+<span class="tooltiprout">   Std. Error <span class="tooltiprouttext">To learn more about the “Standard Errors” of the “Coefficients” see the “Explanation” tab, “Inference for the Model Parameters” section.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   z value <span class="tooltiprouttext">EXPLANATION</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   Pr(&gt;|z|) <span class="tooltiprouttext">EXPLANATION </span> </span>
+</td>
+</tr>
+<tr>
+<td align="left">
+<span class="tooltiprout"> (Intercept) <span class="tooltiprouttext">This always says “Intercept” for any glm(…) you run in R. That is because R always assumes there is a y-intercept for your regression function.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   2.630849 <span class="tooltiprouttext">This is the estimate of the y-intercept, <span class="math inline">\(\beta_0\)</span>. It is called <span class="math inline">\(b_0\)</span>. It is the average y-value when X is zero.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   1.050170 <span class="tooltiprouttext">This is the standard error of <span class="math inline">\(b_0\)</span>. It tells you how much <span class="math inline">\(b_0\)</span> varies from sample to sample. The closer to zero, the better.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> 2.505 <span class="tooltiprouttext">EXPLANATION</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> 0.01224 <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that <span class="math inline">\(\beta_0 = 0\)</span>. It measures the probability of observing a t-value as extreme as the one observed. To compute it yourself in R, use <code>pt(-abs(your t-value), df of your regression)*2</code>.</span> </span>
+</td>
+<td align="left">
+<span class="tooltiprout"> * <span class="tooltiprouttext">This is called a “star”. One star means significant at the 0.1 level of <span class="math inline">\(\alpha\)</span>.</span> </span>
+</td>
+</tr>
+<tr>
+<td align="left">
+<span class="tooltiprout"> disp <span class="tooltiprouttext">This is always the name of your X-variable in your glm(Y ~ X, …).</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   -0.014604 <span class="tooltiprouttext">This is the estimate of the slope, <span class="math inline">\(\beta_1\)</span>. It is called <span class="math inline">\(b_1\)</span>. It is the change in the average y-value as X is increased by 1 unit.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   0.005168 <span class="tooltiprouttext">This is the standard error of <span class="math inline">\(b_1\)</span>. It tells you how much <span class="math inline">\(b_1\)</span> varies from sample to sample. The closer to zero, the better.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> -2.826 <span class="tooltiprouttext">EXPLANATION</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> 0.00471 <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that <span class="math inline">\(\beta_1 = 0\)</span>. To compute it yourself in R, use <code>pt(-abs(your t-value), df of your regression)*2</code></span> </span>
+</td>
+<td align="left">
+<span class="tooltiprout"> ** <span class="tooltiprouttext">This is called a “star”. Three stars means significant at the 0.001 level of <span class="math inline">\(\alpha\)</span>.</span> </span>
+</td>
+</tr>
+</table>
+<table class="rconsole">
+<tr>
+<td>
+<span> --- </span>
+</td>
+</tr>
+</table>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘’ 1 <span class="tooltiprouttext">These “codes” explain what significance level the p-value is smaller than based on how many “stars” * the p-value is labeled with in the Coefficients table above.</span> </span>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> (Dispersion parameter for binomial family taken to be 1) <span class="tooltiprouttext">EXPLANATION</span> </span>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout">   Null Deviance: <span class="tooltiprouttext">EXPLANATION</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">  43.230 <span class="tooltiprouttext">EXPLANATION</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">  on 31 degrees of freedom <span class="tooltiprouttext">EXPLANATION</span> </span>
+</td>
+</tr>
+</table>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> Residual deviance: <span class="tooltiprouttext">EXPLANATION</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">  29.732 <span class="tooltiprouttext">EXPLANATION</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">  on 30 degrees of freedom <span class="tooltiprouttext">This is <span class="math inline">\(n-p\)</span> where <span class="math inline">\(n\)</span> is the sample size and <span class="math inline">\(p\)</span> is the number of parameters in the regression model. In this case, there is a sample size of 32 and two parameters, <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>, so 32-2 = 30.</span> </span>
+</td>
+</tr>
+</table>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> AIC: <span class="tooltiprouttext">EXPLANATION</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">  33.732 <span class="tooltiprouttext">EXPLANATION</span> </span>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> Number of Fisher Scoring iterations: <span class="tooltiprouttext">EXPLANATION</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">  5 <span class="tooltiprouttext">EXPLANATION</span> </span>
+</td>
+</tr>
+</table>
+</div>
 <p>To check the <strong>goodness of fit</strong> of a logistic regression model when there are <strong>many replicated <span class="math inline">\(x\)</span>-values</strong> use the command</p>
 <a href="javascript:showhide('logistic2')">
 <div class="hoverchunk">

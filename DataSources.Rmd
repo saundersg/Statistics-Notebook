@@ -1,0 +1,21 @@
+---
+title: "Data Sources"
+output: 
+  html_document: 
+    theme: cerulean
+    highlight: tango
+    css: styles.css
+---
+
+* [Kaggle](http://www.kaggle.com)
+
+* [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets.html)
+
+* [U.S. Open Data Portal](https://www.data.gov/)
+
+* [EU Open Data Portal](http://data.europa.eu/euodp/en/data/)
+
+* [Google Public Data Explorer](https://www.google.com/publicdata/directory)
+
+* [U.S. Health Data](https://healthdata.gov/search/type/dataset)
+
