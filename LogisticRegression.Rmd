@@ -84,6 +84,284 @@ summary(YourObjectName)
 </div>
 </a>
 
+<div id="logistic1" style="display:none;">
+
+Example output from a regression. Hover each piece to learn more.
+
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout">
+  Call:<br/>
+  glm(formula = am ~ disp, family = binomial, data = mtcars)
+    <span class="tooltiprouttext">This is simply a statement of your original glm(...) "call" that you made when performing your regression. It allows you to verify that you ran what you thought you ran in the glm(...).</span>
+</span>
+</td>
+</tr>
+</table>
+      
+
+<br/>
+
+<table class="rconsole">
+<tr>
+<td colspan="2">
+  <span class="tooltiprout">
+    Deviance Residuals:
+      <span class="tooltiprouttext">EXPLANATION.
+  </span>
+</td>
+</tr>
+<tr>
+<td align="right">
+  <span class="tooltiprout">
+    Min<br/>
+    &nbsp; -1.5651
+      <span class="tooltiprouttext">"min" gives the value of the residual that is furthest below the regression line. Ideally, the magnitude of this value would be about equal to the magnitude of the largest positive residual (the max) because the hope is that the residuals are normally distributed around the line.</span>
+  </span>
+</td><td align="right">   
+  <span class="tooltiprout">
+    1Q<br/>
+    &nbsp; -0.6648
+      <span class="tooltiprouttext">"1Q" gives the first quartile of the residuals, which will always be negative, and ideally would be about equal in magnitude to the third quartile.</span>
+  </span>
+</td><td align="right"> 
+  <span class="tooltiprout">
+    Median<br/>
+    &nbsp; -0.2460
+      <span class="tooltiprouttext">"Median" gives the median of the residuals, which would ideally would be about equal to zero. Note that because the regression line is the least squares line, the mean of the residuals will ALWAYS be zero, so it is never included in the output summary. This particular median value of -0.2460 is a little smaller than zero than we would hope for and suggests a right skew in the data because the mean (0) is greater than the median (-0.2460) witnessing the residuals are right skewed. This can also be seen in the maximum being much larger in magnitude than the minimum.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    3Q<br/>
+    &nbsp; 0.7276
+      <span class="tooltiprouttext">"3Q" gives the third quartile of the residuals, which would ideally would be about equal in magnitude to the first quartile. In this case, it is pretty close, which helps us see that the first quartile of residuals on either side of the line is behaving fairly normally.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    Max</br>
+    &nbsp; 2.2691
+      <span class="tooltiprouttext">"Max" gives the maximum positive residuals, which would ideally would be about equal in magnitude to the minimum residual. In this case, it is much larger than the minimum, which helps us see that the residuals are likely right skewed.</span>
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+
+
+<table class="rconsole">
+<tr>
+<td colspan="2">
+  <span class="tooltiprout">
+    Coefficients:
+      <span class="tooltiprouttext">Notice that in your glm(...) you used only $Y$ and $X$. You did type out any coefficients, i.e., the $\beta_0$ or $\beta_1$ of the regression model. These coefficients are estimated by the glm(...) function and displayed in this part of the output along with standard errors, t-values, and p-values.</span>
+  </span>
+</td>
+</tr><tr>
+<td align="left"></td>
+<td align="right">
+  <span class="tooltiprout">
+    &nbsp; Estimate
+      <span class="tooltiprouttext">To learn more about the "Estimates" of the "Coefficients" see the "Explanation" tab, "Estimating the Model Parameters" section for details.</span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; Std. Error
+      <span class="tooltiprouttext">To learn more about the "Standard Errors" of the "Coefficients" see the "Explanation" tab, "Inference for the Model Parameters" section.</span>
+  </span>    
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; z value 
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; Pr(>|z|)
+      <span class="tooltiprouttext">EXPLANATION </span>
+  </span>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    (Intercept)
+      <span class="tooltiprouttext">This always says "Intercept" for any glm(...) you run in R. That is because R always assumes there is a y-intercept for your regression function.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 2.630849
+      <span class="tooltiprouttext">This is the estimate of the y-intercept, $\beta_0$. It is called $b_0$. It is the average y-value when X is zero.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 1.050170
+      <span class="tooltiprouttext">This is the standard error of $b_0$. It tells you how much $b_0$ varies from sample to sample. The closer to zero, the better.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    2.505
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    0.01224
+      <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that $\beta_0 = 0$. It measures the probability of observing a t-value as extreme as the one observed. To compute it yourself in R, use `pt(-abs(your t-value), df of your regression)*2`.</span>
+  </span>
+</td><td align="left">
+  <span class="tooltiprout">
+    *
+      <span class="tooltiprouttext">This is called a "star". One star means significant at the 0.1 level of $\alpha$.</span>
+  </span>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    disp
+      <span class="tooltiprouttext">This is always the name of your X-variable in your glm(Y ~ X, ...).</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; -0.014604
+      <span class="tooltiprouttext">This is the estimate of the slope, $\beta_1$. It is called $b_1$. It is the change in the average y-value as X is increased by 1 unit.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 0.005168
+      <span class="tooltiprouttext">This is the standard error of $b_1$. It tells you how much $b_1$ varies from sample to sample. The closer to zero, the better.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    -2.826
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    0.00471
+      <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that $\beta_1 = 0$. To compute it yourself in R, use `pt(-abs(your t-value), df of your regression)*2`</span>
+  </span>
+</td><td align="left">
+<span class="tooltiprout">
+    \*\*
+      <span class="tooltiprouttext">This is called a "star". Three stars means significant at the 0.001 level of $\alpha$.</span>
+  </span>
+</td>
+</tr>
+</table>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span>
+  \-\-\-
+  </span>
+</td>
+</tr>
+</table>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+    Signif. codes:  0 ‘\*\*\*’ 0.001 ‘\*\*’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+      <span class="tooltiprouttext">These "codes" explain what significance level the p-value is smaller than based on how many "stars" * the p-value is labeled with in the Coefficients table above.</span>
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+    (Dispersion parameter for binomial family taken to be 1)
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+    &nbsp; Null Deviance:
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp;43.230
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>    
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp;on 31 degrees of freedom 
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span> 
+</td> 
+</tr>
+</table>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+   Residual deviance:
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp;29.732
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>    
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp;on 30 degrees of freedom 
+      <span class="tooltiprouttext">This is $n-p$ where $n$ is the sample size and $p$ is the number of parameters in the regression model. In this case, there is a sample size of 32 and two parameters, $\beta_0$ and $\beta_1$, so 32-2 = 30.</span>
+  </span> 
+</td> 
+</tr>
+</table>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+   AIC:
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp;33.732
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>    
+</td> 
+</tr>
+</table>
+
+<br/>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+   Number of Fisher Scoring iterations:
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp;5
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>    
+</td> 
+</tr>
+</table>
+
+
+</div>
+
 
 To check the **goodness of fit** of a logistic regression model when there are **many replicated $x$-values** use the command
 

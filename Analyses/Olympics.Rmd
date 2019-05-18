@@ -34,6 +34,9 @@ datatable(head(Olympics,100), options=list(lengthMenu = c(3,10,30)), extensions=
 
 
 
+```{r}
+
+```
 
 
 
