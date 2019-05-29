@@ -3,7 +3,20 @@ title: "t Tests"
 output: 
   html_document: 
     theme: cerulean
+    css: styles.css
 ---
+
+<script type="text/javascript">
+ function showhide(id) {
+    var e = document.getElementById(id);
+    e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+ }
+</script>
+
+```{r, include=FALSE}
+library(mosaic)
+library(car)
+```
 
 ----
 
@@ -65,7 +78,88 @@ Testing Assumptions
 
 `qqPlot(Y)`
 
+<br>
+
+**Example Code** 
+
+Hover your mouse over the example codes to learn more.
+
+<a href="javascript:showhide('tTest')">
+<div class="hoverchunk">
+<span class="tooltipr">
+t.test(
+  <span class="tooltiprtext">'t.test' is an R function that performs one and two sample t-tests.</span>
+</span><span class="tooltipr">
+mtcars
+  <span class="tooltiprtext">'mtcars' is a dataset. Type 'View(mtcars)' in R to view the dataset.</span>
+</span><span class="tooltipr">
+$
+  <span class="tooltiprtext">The $ allows us to access any variable from the mtcars dataset.</span>
+</span><span class="tooltipr">
+mpg,&nbsp;
+  <span class="tooltiprtext">'mpg' is a quantitative variable (numeric vector) from the mtcars dataset.</span>
+</span><span class="tooltipr">
+mu = 20,&nbsp; 
+  <span class="tooltiprtext"> The numeric value from the null hypothesis is 20. </span>
+</span><span class="tooltipr">
+alternative = "two.sided",&nbsp; 
+  <span class="tooltiprtext"> The alternative hypothesis is "two.sided" meaning the alternative hypothesis is $\mu\neq20$.</span>
+  </span><span class="tooltipr">
+conf.level = 0.95
+  <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to 1−α. </span>
+</span><span class="tooltipr">
+)  
+  <span class="tooltiprtext">Closing parenthsis for the t.test function.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
 </div>
+</a>
+<div id="tTest" style="display:none;">
+```{r, echo=FALSE}
+t.test(mtcars$mpg, mu=20, alternative = "two.sided", conf.level = 0.95)
+```
+
+
+</div>
+
+
+<a href="javascript:showhide('onesampleQQplot')">
+<div class="hoverchunk">
+<span class="tooltipr">
+qqPlot(
+<span class="tooltiprtext">'qqPlot' is a R function from library(car) that creates a qqPlot.</span>
+</span><span class="tooltipr">
+mtcars
+  <span class="tooltiprtext">'mtcars' is a dataset. Type 'View(mtcars)' in R to view the dataset.</span>
+</span><span class="tooltipr">
+$
+  <span class="tooltiprtext">The $ allows us to access any variable from the mtcars dataset.</span>
+</span><span class="tooltipr">
+mpg)
+  <span class="tooltiprtext">'mpg' is a quantitative variable (numeric vector) from the mtcars dataset.</span>
+  </span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="onesampleQQplot" style="display:none;">
+```{r, echo=FALSE}
+qqPlot(mtcars$mpg)
+```
+
+
+</div>
+
+
+
+</div>
+
 
 
 ----
@@ -186,6 +280,7 @@ Option 2:
 Compute the differences yourself instead of using `paired=TRUE`.
 
 `differences = Y1 - Y2`
+
 `t.test(differences, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)`
 
 * `Y1` must be a "numeric" vector that represents the quantitative data from the first sample of data.
@@ -201,6 +296,82 @@ Testing Assumptions
 `library(car)`
 
 `qqPlot(differences)`
+
+
+<br>
+
+**Example Code** 
+
+Hover your mouse over the example codes to learn more.
+
+<a href="javascript:showhide('tTestPaired')">
+<div class="hoverchunk">
+<span class="tooltipr">
+differences&nbsp;<-&nbsp;
+  <span class="tooltiprtext"> Saved the computed differences to an object called 'differences'.</span>
+  </span><span class="tooltipr">
+(sleep\$extra[sleep\$group==2]
+  <span class="tooltiprtext">The hours of extra sleep that the group had with drug 2.</span>
+  </span><span class="tooltipr">
+&nbsp;-&nbsp;
+  <span class="tooltiprtext">Subtract the hours of extra sleep with drug 1 from the hours of extra sleep with drug 2 to get the difference.</span>
+  </span><span class="tooltipr">
+ sleep\$extra[sleep\$group==1])
+  <span class="tooltiprtext">The hours of extra sleep that the same group had with drug 1.</span>
+  </span><br><span class="tooltipr">
+t.test(
+  <span class="tooltiprtext">'t.test' is an R function that performs one and two sample t-tests.</span>
+</span><span class="tooltipr">
+differences,&nbsp;
+  <span class="tooltiprtext">'differences' are the resulting differences of the hours of extra sleep with drug 1 and the hours of extra sleep with drug 2.</span>
+</span><span class="tooltipr">
+mu = 0,&nbsp; 
+  <span class="tooltiprtext">The numeric value from the null hypothesis 0 meaning the null hypothesis is $\mu=0$.</span>
+</span><span class="tooltipr">
+alternative = "two.sided",&nbsp; 
+  <span class="tooltiprtext">The alternative hypothesis is "two.sided" meaning the alternative hypothesis is $\mu\neq0$.</span>
+  </span><span class="tooltipr">
+conf.level = 0.95)
+  <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to 1 - $\alpha$.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="tTestPaired" style="display:none;">
+```{r, echo=FALSE}
+differences <- sleep$extra[sleep$group==2] - sleep$extra[sleep$group==1]
+t.test(differences, mu = 0, alternative = "two.sided", conf.level = 0.95)
+```
+
+
+</div>
+
+<a href="javascript:showhide('pairedQQplot')">
+<div class="hoverchunk">
+<span class="tooltipr">
+qqPlot(
+<span class="tooltiprtext">'qqPlot' is a R function from library(car) that creates a qqPlot.</span>
+</span><span class="tooltipr">
+differences)
+  <span class="tooltiprtext">'differences' are the resulting differences of the hours of extra sleep with drug 1 and the hours of extra sleep with drug 2.</span>
+  </span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="pairedQQplot" style="display:none;">
+```{r, echo=FALSE}
+qqPlot(differences)
+```
+
+
+</div>
 
 
 </div>
@@ -333,6 +504,86 @@ Testing Assumptions
 `qqPlot(Y1)`
 
 `qqPlot(Y2)`
+
+<br>
+
+**Example Code** 
+
+Hover your mouse over the example codes to learn more.
+
+<a href="javascript:showhide('indptTest1')">
+<div class="hoverchunk">
+<span class="tooltipr">
+t.test(
+  <span class="tooltiprtext">'t.test' is an R function that performs one and two sample t-tests.</span>
+</span><span class="tooltipr">
+length&nbsp;
+  <span class="tooltiprtext">'length' is a quantitative variable (numeric vector).</span>
+</span><span class="tooltipr">
+~&nbsp;
+  <span class="tooltiprtext">'~' is the tilde symbol.</span>
+</span><span class="tooltipr">
+sex,&nbsp;
+  <span class="tooltiprtext">'sex' is a 'factor' or 'character' vector that represents the group assignment for each observation. There are two groups.</span>
+</span><span class="tooltipr">
+data=KidsFeet,&nbsp; 
+  <span class="tooltiprtext">'KidsFeet' is a dataset in library(mosaic). Type View(KidsFeet) to view it.</span>
+</span><span class="tooltipr">
+mu = 0,&nbsp; 
+  <span class="tooltiprtext">The numeric value from the null hypothesis for μ1-μ2 is 0 meaning the null hypothesis is $\mu1-\mu2 = 0$</span>
+</span><span class="tooltipr">
+alternative = "two.sided",&nbsp; 
+  <span class="tooltiprtext"> The alternative is "two-sided" meaning the alternative hypothesis is $\mu1-\mu2 \neq 0$.</span>
+  </span><span class="tooltipr">
+conf.level = 0.95)
+  <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to $1-\alpha$</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="indptTest1" style="display:none;">
+```{r, echo=FALSE}
+t.test(length ~ sex, data=KidsFeet, mu=0, alternative="two.sided", conf.level=0.95)
+```
+
+
+</div>
+
+<a href="javascript:showhide('indptTest1qqPlot')">
+<div class="hoverchunk">
+<span class="tooltipr">
+qqPlot(
+<span class="tooltiprtext">'qqPlot' is a R function from library(car) that creates a qqPlot.</span>
+</span><span class="tooltipr">
+length&nbsp;
+  <span class="tooltiprtext">'length' is a quantitative variable (numeric vector).</span>
+</span><span class="tooltipr">
+~&nbsp;
+  <span class="tooltiprtext">'~' is the tilde symbol.</span>
+</span><span class="tooltipr">
+sex,&nbsp;
+  <span class="tooltiprtext">'sex' is a “factor” or “character” vector that represents the group assignment for each observation. There are two groups.</span>
+</span><span class="tooltipr">
+data=KidsFeet) 
+  <span class="tooltiprtext">'KidsFeet' is a dataset in library(mosaic). Type View(KidsFeet) to view it.</span>
+  </span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="indptTest1qqPlot" style="display:none;">
+```{r, echo=FALSE}
+qqPlot(length ~ sex, data=KidsFeet)
+```
+
+
+</div>
 
 </div>
 

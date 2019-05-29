@@ -3,6 +3,7 @@ title: "Wilcoxon Tests"
 output: 
   html_document: 
     theme: cerulean
+    css: styles.css
 ---
 
 
@@ -12,6 +13,10 @@ output:
     e.style.display = (e.style.display == 'block') ? 'none' : 'block';
  }
 </script>
+
+```{r, include=FALSE}
+library(mosaic)
+```
 
 
 ----
@@ -63,6 +68,8 @@ $H_a: \text{median of differences} \ \left\{\underset{<}{\stackrel{>}{\neq}}\rig
 
 ##### Paired Data
 
+Option 1:
+
 `wilcox.test(object1, object2, mu = YourNull, alternative = YourAlternative, paired = TRUE, conf.level = 0.95)`
 
 * `object1` must be a "numeric" vector. One set of measurements from the pair.
@@ -70,6 +77,52 @@ $H_a: \text{median of differences} \ \left\{\underset{<}{\stackrel{>}{\neq}}\rig
 * `YourNull` is the numeric value from your null hypothesis for the median of differences from the paired data. Usually zero.
 * `YourAlternative` is one of the three options: `"two.sided"`, `"greater"`, `"less"` and should correspond to your alternative hypothesis.
 * The value for `conf.level = 0.95` can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to $1-\alpha$.
+
+<br>
+
+**Example Code** 
+
+Hover your mouse over the example codes to learn more.
+
+<a href="javascript:showhide('wilcoxonSignedRank')">
+<div class="hoverchunk">
+<span class="tooltipr">
+wilcox.test(
+  <span class="tooltiprtext">'wilcox.test' is a function for non-parametric one and two sample tests.</span>
+</span><span class="tooltipr">
+sleep\$extra[sleep\$group==1],&nbsp;
+  <span class="tooltiprtext">The hours of extra sleep that the group had with drug 2.</span>
+  </span><span class="tooltipr">
+ sleep\$extra[sleep\$group==2],&nbsp;
+  <span class="tooltiprtext">The hours of extra sleep that the same group had with drug 1.</span>
+  </span><span class="tooltipr">
+mu = 0,&nbsp; 
+  <span class="tooltiprtext">For the median of differences from the paired data the numeric value from the null hypothesis is 0 meaning the null hypothesis is $\text{median of differences} = 0$.</span>
+</span><span class="tooltipr">
+alternative = "two.sided",&nbsp; 
+  <span class="tooltiprtext">The alternative hypothesis is "two.sided" meaning the alternative hypothesis is $\text{median of differences} \neq0$.</span>
+  </span><span class="tooltipr">
+conf.level = 0.95)
+  <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to 1 - $\alpha$.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="wilcoxonSignedRank" style="display:none;">
+```{r, echo=FALSE, warning=FALSE}
+wilcox.test(sleep$extra[sleep$group==1], sleep$extra[sleep$group==2], mu = 0, alternative = "two.sided", paired = TRUE, conf.level = 0.95)
+```
+
+
+</div>
+
+<br>
+
 
 ##### One Sample
 
@@ -80,6 +133,51 @@ $H_a: \text{median of differences} \ \left\{\underset{<}{\stackrel{>}{\neq}}\rig
 * `YourAlternative` is one of the three options: `"two.sided"`, `"greater"`, `"less"` and should correspond to your alternative hypothesis.
 * The value for `conf.level = 0.95` can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to $1-\alpha$.
 
+<br>
+
+**Example Code** 
+
+Hover your mouse over the example codes to learn more.
+
+<a href="javascript:showhide('wilcoxOneSample')">
+<div class="hoverchunk">
+<span class="tooltipr">
+wilcox.test(
+  <span class="tooltiprtext">'wilcox.test' is a function for non-parametric one and two sample tests.</span>
+</span><span class="tooltipr">
+mtcars
+  <span class="tooltiprtext">'mtcars' is a dataset. Type 'View(mtcars)' in R to view the dataset.</span>
+</span><span class="tooltipr">
+$
+  <span class="tooltiprtext">The $ allows us to access any variable from the mtcars dataset.</span>
+</span><span class="tooltipr">
+mpg,&nbsp;
+  <span class="tooltiprtext">'mpg' is a quantitative variable (numeric vector) from the mtcars dataset.</span>
+</span><span class="tooltipr">
+mu = 20,&nbsp; 
+  <span class="tooltiprtext"> The numeric value from the null hypothesis is 20 meaning $\mu = 20$. </span>
+</span><span class="tooltipr">
+alternative = "two.sided",&nbsp; 
+  <span class="tooltiprtext"> The alternative is "two.sided" meaning the alternative hypothesis is $\mu\neq20$.</span>
+  </span><span class="tooltipr">
+conf.level = 0.95)
+  <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to 1−α. </span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="wilcoxOneSample" style="display:none;">
+```{r, echo=FALSE, warning=FALSE}
+wilcox.test(mtcars$mpg, mu=20, alternative = "two.sided", conf.level = 0.95)
+```
+
+
+</div>
 
 </div>
 
@@ -479,7 +577,7 @@ If these hypotheses are used, then the distributions do not have to be identical
 
 
 
-#### R Intstructions
+#### R Instructions
 
 <div style="padding-left:125px;">
 **Console** Help Command: `?wilcox.test()`
@@ -487,6 +585,17 @@ If these hypotheses are used, then the distributions do not have to be identical
 There are two ways to perform the test.
 
 Option 1:
+
+`wilcox.test(Y ~ X, data = YourData, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)`
+
+* `Y` must be a "numeric" vector from `YourData` that represents the data for both samples.
+* `X` must be a "factor" or "character" vector from `YourData` that represents the group assignment for each observation. There can only be two groups specified in this column of data.
+* `YourNull` is the numeric value from your null hypothesis for the difference in medians from the two groups.
+* `YourAlternative` is one of the three options: `"two.sided"`, `"greater"`, `"less"` and should correspond to your alternative hypothesis.
+* The value for `conf.level = 0.95` can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to $1-\alpha$.
+
+
+Option 2:
 
 `wilcox.test(object1, object2, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)`
 
@@ -496,15 +605,55 @@ Option 1:
 * `YourAlternative` is one of the three options: `"two.sided"`, `"greater"`, `"less"` and should correspond to your alternative hypothesis.
 * The value for `conf.level = 0.95` can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to $1-\alpha$.
 
-Option 2:
 
-`wilcox.test(column ~ group, data = YourData, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)`
+<br>
 
-* `column` must be a "numeric" vector from `YourData` that represents the data for both samples.
-* `group` must be a "factor" or "character" vector from `YourData` that represents the group assignment for each observation. There can only be two groups specified in this column of data.
-* `YourNull` is the numeric value from your null hypothesis for the difference in medians from the two groups.
-* `YourAlternative` is one of the three options: `"two.sided"`, `"greater"`, `"less"` and should correspond to your alternative hypothesis.
-* The value for `conf.level = 0.95` can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to $1-\alpha$.
+**Example Code** 
+
+Hover your mouse over the example codes to learn more.
+
+<a href="javascript:showhide('wilcoxonRankSum')">
+<div class="hoverchunk">
+<span class="tooltipr">
+wilcox.test(
+  <span class="tooltiprtext">'wilcox.test' is a function for non-parametric one and two sample tests.</span>
+</span><span class="tooltipr">
+length&nbsp;
+  <span class="tooltiprtext">'length' is a quantitative variable (numeric vector).</span>
+</span><span class="tooltipr">
+~&nbsp;
+  <span class="tooltiprtext">'~' is the tilde symbol.</span>
+</span><span class="tooltipr">
+sex,&nbsp;
+  <span class="tooltiprtext">'sex' is a 'factor' or 'character' vector that represents the group assignment for each observation. There are two groups.</span>
+</span><span class="tooltipr">
+data=KidsFeet,&nbsp; 
+  <span class="tooltiprtext">'KidsFeet' is a dataset in library(mosaic). Type View(KidsFeet) to view it.</span>
+</span><span class="tooltipr">
+mu = 0,&nbsp; 
+  <span class="tooltiprtext">The numeric value from the null hypothesis for μ1-μ2 is 0 meaning the null hypothesis is $\mu1-\mu2 = 0$</span>
+</span><span class="tooltipr">
+alternative = "two.sided",&nbsp; 
+  <span class="tooltiprtext"> The alternative is "two-sided" meaning the alternative hypothesis is $\mu1-\mu2 \neq 0$.</span>
+  </span><span class="tooltipr">
+conf.level = 0.95)
+  <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to $1-\alpha$</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="wilcoxonRankSum" style="display:none;">
+```{r, echo=FALSE, warning=FALSE}
+wilcox.test(length ~ sex, data=KidsFeet, mu=0, alternative="two.sided", conf.level=0.95)
+```
+
+</div>
+
 </div>
 
 ----

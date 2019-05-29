@@ -37,6 +37,7 @@ library(pander)
 library(scatterplot3d)
 library(plotly)
 library(reshape2)
+library(RColorBrewer)
 ```
 
 ----
@@ -1101,6 +1102,7 @@ ggplot(cars, aes(x = speed, y = dist)) +
 <br/>
 
 
+
 **Accessing Parts of the Regression**
 
 Finally, note that the `mylm` object contains the `names(mylm)` of
@@ -1324,23 +1326,23 @@ Expand each element below to learn more.
 
 | Term | Pronunciation | Meaning | Math  | R Code | 
 |------|----------------|-------|--------|---------|
-| $Y_i$| "why-eye"      | The data | <span class="tooltipr"> $Y_i = \beta_0 + \beta_1 X_i + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2)$<span class="tooltiprtext"> `Y_i = \beta_0 + \beta_1 X_i +`  `\epsilon_i \quad \text{where} \` `\epsilon_i \sim N(0, \sigma^2)`</span> </span><span class="tooltipr"> |`YourDataSet$YourYvariable` |
-| $\hat{Y}_i$ | "why-hat-eye" | The fitted line |<span class="tooltipr"> $\hat{Y}_i = b_0 + b_1 X_i$<span class="tooltiprtext"> `\hat{Y}_i = b_0 + b_1 X_i`</span> | `lmObject$fitted.values` |
-| $E\{Y_i\}$ | "expected value of why-eye" | True mean y-value | <span class="tooltipr">$E\{Y_i\} = \beta_0 + \beta_1 X_i$<span class="tooltiprtext"> `E\{Y_i\} = \beta_0 + \beta_1 X_i`</span> | `<none>` | 
-| $\beta_0$ | "beta-zero" | True y-intercept | `<none>` | `<none>` |
-| $\beta_1$ | "beta-one" | True slope | `<none>` | `<none>` |
-| $b_0$ | "b-zero" | Estimated y-intercept | <span class="tooltipr">$b_0 = \bar{Y} - b_1\bar{X}$<span class="tooltiprtext"> `b_0 = \bar{Y} - b_1\bar{X}`</span> | `b_0 <- mean(Y) - b_1*mean(X)` |
-| $b_1$ | "b-one" | Estimated slope |<span class="tooltipr">$b_1 = \frac{\sum X_i(Y_i - \bar{Y})}{\sum(X_i - \bar{X})^2}$<span class="tooltiprtext"> `b_1 = \frac{\sum X_i(Y_i - \bar{Y})}{\sum(X_i - \bar{X})^2}`</span> | `b_1 <- sum( X*(Y - mean(Y)) ) / sum( (X - mean(X))^2 )` |
-| $\epsilon_i$ | "epsilon-eye" | Distance of dot to true line | <span class="tooltipr">$\epsilon_i = Y_i - E\{Y_i\}$<span class="tooltiprtext"> `\epsilon_i = Y_i - E\{Y_i\}`</span> | `<none>` | 
-| $r_i$ | "r-eye" or "residual-eye" | Distance of dot to estimated line | <span class="tooltipr">$r_i = Y_i - \hat{Y}_i$<span class="tooltiprtext"> `r_i = Y_i - \hat{Y}_i`</span> | `lmObject$residuals` |
-| $\sigma^2$ | "sigma-squared" | Variance of the $\epsilon_i$ |<span class="tooltipr">$Var\{\epsilon_i\} = \sigma^2$<span class="tooltiprtext">`Var\{\epsilon_i\} = \sigma^2`</span> | `<none>` |
-| $MSE$ | "mean squared error" | Estimate of $\sigma^2$ | <span class="tooltipr">$MSE = \frac{SSE}{n-p}$<span class="tooltiprtext">`MSE = \frac{SSE}{n-p}`</span> | `sum( lmObject$res^2 ) / (n - p)` |
-| $SSE$ | "sum of squared error" (residuals) | Measure of dot's total deviation from the line |<span class="tooltipr">$SSE = \sum_{i=1}^n (Y_i - \hat{Y}_i)^2$<span class="tooltiprtext">`SSE = \sum_{i=1}^n (Y_i - \hat{Y}_i)^2`</span> | `sum( lmObject$res^2 )` | 
-| $SSR$ | "sum of squared regression error" | Measure of line's deviation from y-bar | <span class="tooltipr"> $SSR = \sum_{i=1}^n (\hat{Y}_i - \bar{Y})^2$<span class="tooltiprtext">`SSR = \sum_{i=1}^n (\hat{Y}_i - \bar{Y})^2`</span> | `sum( (lmObject$fit - mean(YourData$Y))^2 )` |
-| $SSTO$ | "total sum of squares" | Measure of total variation in Y | <span class="tooltipr">$SSR + SSE = SSTO = \sum_{i=1}^n (Y_i - \bar{Y})^2$<span class="tooltiprtext">`SSR + SSE = SSTO = \sum_{i=1}^n (Y_i - \bar{Y})^2`</span> | `sum( (YourData$Y - mean(YourData$Y)^2 )` |
-| $R^2$ | "R-squared" | Proportion of variation in Y explained by the regression | <span class="tooltipr">$R^2 = \frac{SSR}{SSTO} = 1 - \frac{SSE}{SSTO}$<span class="tooltiprtext">`R^2 = \frac{SSR}{SSTO} = 1 - \frac{SSE}{SSTO}`</span> | `SSR/SSTO` |
-| $\hat{Y}_h$ | "why-hat-aitch" | Estimated mean y-value for some x-value called $X_h$ | <span class="tooltipr">$\hat{Y}_h = b_0 + b_1 X_h$<span class="tooltiprtext">`\hat{Y}_h = b_0 + b_1 X_h`</span> | `predict(lmObject, data.frame(XvarName=#))` |
-| $X_h$ | "ex-aitch" | Some x-value, not necessarily one of the $X_i$ values used in the regression | <span class="tooltipr">$X_h =$ some number<span class="tooltiprtext">`X_h = `</span> | `Xh = #` |
+| <span class="tooltipr">$Y_i$<span class="tooltiprtext"> `$Y_i$`</span> </span><span class="tooltipr">| "why-eye"      | The data | <span class="tooltipr"> $Y_i = \beta_0 + \beta_1 X_i + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2)$<span class="tooltiprtext"> `$Y_i = \beta_0 + \beta_1 X_i +` `\epsilon_i \quad \text{where} \` `\epsilon_i \sim N(0, \sigma^2)$`</span> </span><span class="tooltipr"> |`YourDataSet$YourYvariable` |
+| <span class="tooltipr">$\hat{Y}_i$<span class="tooltiprtext"> `$\hat{Y}_i$`</span> </span><span class="tooltipr"> | "why-hat-eye" | The fitted line |<span class="tooltipr"> $\hat{Y}_i = b_0 + b_1 X_i$<span class="tooltiprtext"> `$\hat{Y}_i = b_0 + b_1 X_i$`</span> | `lmObject$fitted.values` |
+| <span class="tooltipr">$E\{Y_i\}$<span class="tooltiprtext"> `$E\{Y_i\}$`</span> </span><span class="tooltipr"> | "expected value of why-eye" | True mean y-value | <span class="tooltipr">$E\{Y_i\} = \beta_0 + \beta_1 X_i$<span class="tooltiprtext"> `$E\{Y_i\} = \beta_0 + \beta_1 X_i$`</span> | `<none>` |
+| <span class="tooltipr">$\beta_0$<span class="tooltiprtext"> `$\beta_0$`</span> </span><span class="tooltipr"> | "beta-zero" | True y-intercept | `<none>` | `<none>` |
+| <span class="tooltipr">$\beta_1$<span class="tooltiprtext"> `$\beta_1$`</span> </span><span class="tooltipr"> | "beta-one" | True slope | `<none>` | `<none>` |
+| <span class="tooltipr">$b_0$<span class="tooltiprtext"> `$b_0$`</span> </span><span class="tooltipr"> | "b-zero" | Estimated y-intercept | <span class="tooltipr">$b_0 = \bar{Y} - b_1\bar{X}$<span class="tooltiprtext"> `$b_0 = \bar{Y} - b_1\bar{X}`</span> | `b_0 <- mean(Y) - b_1*mean(X)$` |
+| <span class="tooltipr">$b_1$<span class="tooltiprtext"> `$b_1$`</span> </span><span class="tooltipr"> | "b-one" | Estimated slope |<span class="tooltipr">$b_1 = \frac{\sum X_i(Y_i - \bar{Y})}{\sum(X_i - \bar{X})^2}$<span class="tooltiprtext"> `$b_1 = \frac{\sum X_i(Y_i - \bar{Y})}` `{\sum(X_i - \bar{X})^2}$`</span> | `b_1 <- sum( X*(Y - mean(Y)) ) / sum( (X - mean(X))^2 )` |
+| <span class="tooltipr">$\epsilon_i$<span class="tooltiprtext"> `$\epsilon_i$`</span> </span><span class="tooltipr"> | "epsilon-eye" | Distance of dot to true line | <span class="tooltipr">$\epsilon_i = Y_i - E\{Y_i\}$<span class="tooltiprtext"> `$\epsilon_i = Y_i - E\{Y_i\}$`</span> | `<none>` |
+| <span class="tooltipr">$r_i$<span class="tooltiprtext"> `$r_i$`</span> </span><span class="tooltipr"> | "r-eye" or "residual-eye" | Distance of dot to estimated line | <span class="tooltipr">$r_i = Y_i - \hat{Y}_i$<span class="tooltiprtext"> `$r_i = Y_i - \hat{Y}_i$`</span> | `lmObject$residuals` |
+| <span class="tooltipr">$\sigma^2$<span class="tooltiprtext"> `$\sigma^2$`</span> </span><span class="tooltipr"> | "sigma-squared" | Variance of the $\epsilon_i$ |<span class="tooltipr">$Var\{\epsilon_i\} = \sigma^2$<span class="tooltiprtext">`$Var\{\epsilon_i\} = \sigma^2$`</span> | `<none>` |
+| <span class="tooltipr">$MSE$<span class="tooltiprtext"> `$MSE$`</span> </span><span class="tooltipr"> | "mean squared error" | Estimate of $\sigma^2$ | <span class="tooltipr">$MSE = \frac{SSE}{n-p}$<span class="tooltiprtext">`$MSE = \frac{SSE}{n-p}$`</span> | `sum( lmObject$res^2 ) / (n - p)` |
+| <span class="tooltipr">$SSE$<span class="tooltiprtext"> `$SSE$`</span> </span><span class="tooltipr"> | "sum of squared error" (residuals) | Measure of dot's total deviation from the line |<span class="tooltipr">$SSE = \sum_{i=1}^n (Y_i - \hat{Y}_i)^2$<span class="tooltiprtext">`$SSE = \sum_{i=1}^n` `(Y_i - \hat{Y}_i)^2$`</span> | `sum( lmObject$res^2 )` |
+| <span class="tooltipr">$SSR$<span class="tooltiprtext"> `$SSR$`</span> </span><span class="tooltipr"> | "sum of squared regression error" | Measure of line's deviation from y-bar | <span class="tooltipr"> $SSR = \sum_{i=1}^n (\hat{Y}_i - \bar{Y})^2$<span class="tooltiprtext">`$SSR = \sum_{i=1}^n` `(\hat{Y}_i - \bar{Y})^2$`</span> | `sum( (lmObject$fit - mean(YourData$Y))^2 )` |
+| <span class="tooltipr">$SSTO$<span class="tooltiprtext"> `$SSTO$`</span> </span><span class="tooltipr"> | "total sum of squares" | Measure of total variation in Y | <span class="tooltipr">$SSR + SSE = SSTO = \sum_{i=1}^n (Y_i - \bar{Y})^2$<span class="tooltiprtext">`$SSR + SSE = SSTO = \sum_{i=1}^n` `(Y_i - \bar{Y})^2$`</span> | `sum( (YourData$Y - mean(YourData$Y)^2 )` |
+| <span class="tooltipr">$R^2$<span class="tooltiprtext"> `$R^2$`</span> </span><span class="tooltipr"> | "R-squared" | Proportion of variation in Y explained by the regression | <span class="tooltipr">$R^2 = \frac{SSR}{SSTO} = 1 - \frac{SSE}{SSTO}$<span class="tooltiprtext">`$R^2 = \frac{SSR}{SSTO} = 1` `- \frac{SSE}{SSTO}$`</span> | `SSR/SSTO` |
+| <span class="tooltipr">$\hat{Y}_h$<span class="tooltiprtext"> `$\hat{Y}_h$`</span> </span><span class="tooltipr"> | "why-hat-aitch" | Estimated mean y-value for some x-value called $X_h$ | <span class="tooltipr">$\hat{Y}_h = b_0 + b_1 X_h$<span class="tooltiprtext">`$\hat{Y}_h = b_0 + b_1 X_h$`</span> | `predict(lmObject, data.frame(XvarName=#))` |
+| <span class="tooltipr">$X_h$<span class="tooltiprtext"> `$X_h$`</span> </span><span class="tooltipr"> | "ex-aitch" | Some x-value, not necessarily one of the $X_i$ values used in the regression | <span class="tooltipr">$X_h =$ some number<span class="tooltiprtext">`$X_h = $`</span> | `Xh = #` |
 
 
 | Parameter | Estimate |
@@ -3463,11 +3465,909 @@ Multiple regression allows for more than one explanatory variable to be included
 
 <div style="padding-left:125px;">
 
-A typical multiple regression model is given by the equation
+The multiple linear regression model is given by combining (1) a linear model for the mean y-value, denoted by $E\{Y_i\}$, and (2) a normally distributed error term, $\epsilon_i$. 
+
 $$
-  Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \cdots + \beta_{p-1} X_{p-1,i} + \epsilon_i
+  Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \cdots + \beta_{p-1} X_{p-1,i}}_{E\{Y_i\}}}^\text{"The Model"} + \epsilon_i 
 $$
-where $\epsilon_i\sim N(0,\sigma^2)$.
+
+where $\epsilon_i \sim N(0, \sigma^2)$.
+
+----
+
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'LearnMoresimpleLinearModel')">Simple</button>
+  <button class="tablinks" onclick="openTab(event, 'LearnMoreQuadraticModel')">Quadratic</button>
+  <button class="tablinks" onclick="openTab(event, 'LearnMoreCubicModel')">Cubic</button>
+  <button class="tablinks" onclick="openTab(event, 'LearnMoreTwoLinesModel')">Two-Lines</button>
+  <button class="tablinks" onclick="openTab(event, 'LearnMorethreeDModel')">3D</button>
+  <button class="tablinks" onclick="openTab(event, 'LearnMoreHDModel')">HD</button>
+</div>
+
+<div id="LearnMoresimpleLinearModel" class="tabcontent" style="display:block;">
+  <p>
+
+
+<table>
+  <tr>
+  <td>
+
+```{r, fig.width=1.5, fig.height=1.5, echo=FALSE}
+par(mai=c(0.1,0.1,0.3,0.1))
+plot(Wind ~ Temp, data=airquality, pch=21, bg="gray83", col="skyblue", yaxt='n', xaxt='n', axes=FALSE)
+lm.slr <- lm(Wind ~ Temp, data=airquality)
+abline(lm.slr, col="orange", lwd=2)
+```
+
+  </td><td style="text-align: center;padding-left:15px;">
+
+$$
+ Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_i}_{E\{Y_i\}}}^\text{Simple Model} + \epsilon_i
+$$
+
+  </td>
+  </tr>
+</table>
+
+<br/>
+
+The Simple Linear Regression model uses a single x-variable once: $X_i$.
+
+| Parameter | Effect |
+|-----------|--------|
+| $\beta_0$ | Y-intercept of the Model |
+| $\beta_1$ | Slope of the line |
+
+
+</p>
+</div>
+
+
+
+
+
+
+<div id="LearnMoreQuadraticModel" class="tabcontent">
+  <p>
+  
+<table>
+  <tr>
+  <td>
+
+```{r, fig.width=1.5, fig.height=1.5, echo=FALSE}
+par(mai=c(0.1,0.1,0.3,0.1))
+plot(ccf ~ month, data=Utilities, pch=21, bg="gray83", col="skyblue", yaxt='n', xaxt='n', main="", cex.main=1, axes=FALSE)
+lm.quad <- lm(ccf ~ month + I(month^2), data=Utilities)
+b <- coef(lm.quad)
+curve(b[1] + b[2]*x + b[3]*x^2, col="orange", lwd=2, add=TRUE)
+```
+
+  </td><td style="text-align: center;padding-left:15px;">
+
+$$
+ Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_i + \beta_2 X_i^2}_{E\{Y_i\}}}^\text{Quadratic Model} + \epsilon_i
+$$
+
+  </td>
+  </tr>
+</table>
+
+<br/>
+
+
+The Quadratic model uses the same $X$-variable twice, once with a $\beta_1 X_i$ term and once with a $\beta_2 X_i^2$ term. The $X_i^2$ term is called the "quadratic" term.
+
+| Parameter | Effect |
+|-----------|-------------------------------------------------------------------------|
+| $\beta_0$ | Y-intercept of the Model. |
+| $\beta_1$ | Controls the x-position of the vertex of the parabola by $\frac{-\beta_1}{2\cdot\beta_2}$. |
+| $\beta_2$ | Controls the concavity and "steepness" of the Model: negative values face down, positive values face up; large values imply "steeper" parabolas and low values imply "flatter" parabolas. Also involved in the position of the vertex, see $\beta_1$'s explanation. |
+
+
+
+
+<span style="padding-left:15px;"><a href="javascript:showhide('quadraticmodelelexample')" style="font-size:1.1em;color:skyblue;">(Show Example...)</a></span>
+
+<div id="quadraticmodelelexample" style="display:none;">
+
+**An Example**
+
+Using the `airquality` data set, we run the following "quadratic" regression.
+
+$$
+  \underbrace{Y_i}_\text{Temp} \underbrace{=}_{\sim} \overbrace{\beta_0}^{\text{y-int}} + \overbrace{\beta_1}^{\stackrel{\text{slope}}{\text{term}}} \underbrace{X_{i}}_\text{Month} + \overbrace{\beta_2}^{\stackrel{\text{quadratic}}{\text{term}}}  \underbrace{X_{i}^2}_\text{I(Month^2)} + \epsilon_i
+$$
+
+
+<a href="javascript:showhide('quadraticregressionexamplecode')">
+<div class="hoverchunk">
+<span class="tooltipr">
+lm.quad <- 
+  <span class="tooltiprtext">A name we made up for our "quadratic" regression.</span>
+</span><span class="tooltipr">
+lm(
+  <span class="tooltiprtext">R function lm used to perform linear regressions in R. The lm stands for "linear model".</span>
+</span><span class="tooltipr">
+Temp
+  <span class="tooltiprtext">Y-variable, should be quantitative.</span>
+</span><span class="tooltipr">
+&nbsp;~&nbsp;
+<span class="tooltiprtext">The tilde `~` is what lm(...) uses to state the regression equation $Y_i = ...$. Notice that the `~` is not followed by $\beta_0 + \beta_1$ like $Y_i = ...$. Instead, $X_{1i}$ is the first term following `~`. This is because the $\beta$'s are going to be estimated by the lm(...). These estimates can be found using summary(lmObject).</span>
+</span><span class="tooltipr">
+Month
+  <span class="tooltiprtext">$X_{i}$, should be quantitative.</span>
+</span><span class="tooltipr">
+&nbsp;+&nbsp;
+  <span class="tooltiprtext">The plus `+` is used between each term in the model. Note that only the x-variables are included in the lm(...) from the $Y_i = ...$ model. No beta's are included.</span>
+</span><span class="tooltipr">
+I(Month^2)
+  <span class="tooltiprtext">$X_{i}^2$, where the function I(...) protects the squaring of Month from how lm(...) would otherwise interpret that statement. The I(...) function must be used anytime you raise an x-variable to a power in the lm(...) statement.</span>
+</span><span class="tooltipr">
+, data=airquality
+  <span class="tooltiprtext">This is the data set we are using for the regression.</span>
+</span><span class="tooltipr">
+)  
+  <span class="tooltiprtext">Closing parenthsis for the lm(...) function.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="quadraticregressionexamplecode" style="display:none;">
+Pay special attention to how the lm(...) code uses $Y_i \sim X_{i} + X_{i}^2$ and drops all $\beta$'s and $\epsilon$ from the model statement. This is because the estimates for the $\beta$'s and $\epsilon$ are given by the output of the lm(...) funtion in the "Estimates" column of summary(....) and in `lmObject$residuals`.
+</div>
+
+
+```{r}
+lm.quad <- lm(Temp ~ Month + I(Month^2), data=airquality)
+pander(summary(lm.quad)$coefficients)
+```
+
+
+
+The **estimates** shown above approximate the $\beta$'s in the regression model: $\beta_0$ is estimated by the (Intercept) value of -95.73, $\beta_1$ is estimated by the `Month` value of 48.72, and $\beta_2$ is estimated by the `I(Month^2)` value of -3.283.
+
+Because the estimate of the $\beta_2$ term is negative, this parabola will "open down". The vertex of this parabola will be at $-(48.72)/(2\cdot (-95.73)) = 0.2544657$, and the y-intercept is -95.73.
+
+$$
+\hat{Y}_i = \overbrace{-95.73}^\text{y-int} + \overbrace{48.72}^{\stackrel{\text{slope}}{\text{term}}} X_{i} + \overbrace{-3.283}^{\stackrel{\text{quadratic}}{\text{term}}} X_{i}^2
+$$
+
+The regression function is drawn as follows. Be sure to look at the "Code" to understand how this graph was created using the ideas in the equation above.
+
+<table>
+<tr>
+<td>
+
+**Using Base R**
+
+```{r}
+plot(Temp ~ Month, data=airquality, col="skyblue", pch=21, bg="gray83", main="Quadratic Model using airquality data set", cex.main=1)
+
+#get the "Estimates" automatically:
+b <- coef(lm.quad)
+# Then b will have 3 estimates:
+# b[1] is the estimate of beta_0: 35.38
+# b[2] is the estimate of beta_1: -7.099
+# b[3] is the estimate of beta_2: 0.4759
+curve(b[1] + b[2]*x + b[3]*x^2, col="skyblue", lwd=2, add=TRUE)
+```
+  
+</td>
+<td>
+
+**Using ggplot2**
+
+```{r}
+#get the "Estimates" automatically:
+b <- coef(lm.quad)
+# Then b will have 3 estimates:
+# b[1] is the estimate of beta_0: 35.38
+# b[2] is the estimate of beta_1: -7.099
+# b[3] is the estimate of beta_2: 0.4759
+
+ggplot(airquality, aes(y=Temp, x=Month)) +
+  geom_point(pch=21, bg="gray83", color="skyblue") +
+  #geom_smooth(method="lm", se=F, formula = y ~ poly(x, 2)) + #easy way, but the more involved manual way using stat_function (see below) is more dynamic.
+  stat_function(fun = function(x) b[1] + b[2]*x + b[3]*x^2, color="skyblue") +
+  labs(title="Quadratic Model using airquality data set") 
+  
+
+```
+
+</td>
+</tr>
+</table>
+
+
+</div>
+
+</p>
+</div>
+
+
+
+
+
+
+<div id="LearnMoreCubicModel" class="tabcontent" style="display:none;">
+  <p>
+
+
+<table>
+  <tr>
+  <td>
+
+```{r, fig.width=1.5, fig.height=1.5, echo=FALSE}
+par(mai=c(0.1,0.1,0.3,0.1))
+B2 <- filter(Births78, day_of_week %in% 3:6, day_of_year >50, day_of_year < 320)
+plot(births ~ day_of_year, data=B2, pch=21, bg="gray83", col="skyblue", yaxt='n', xaxt='n', axes=FALSE)
+lm.cubic <- lm(births ~ day_of_year + I(day_of_year^2) + I(day_of_year^3), data=B2)
+b <- coef(lm.cubic)
+curve(b[1] + b[2]*x + b[3]*x^2 + b[4]*x^3, col="orange", lwd=2, add=TRUE)
+```
+
+  </td><td style="text-align: center;padding-left:15px;">
+
+$$
+ Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_i + \beta_2 X_i^2 + \beta_3 X_i^3}_{E\{Y_i\}}}^\text{Cubic Model} + \epsilon_i
+$$
+
+  </td>
+  </tr>
+</table>
+
+
+<br/>
+
+The Cubic model uses the same $X$-variable thrice, once with a $\beta_1 X_i$ term, once with a $\beta_2 X_i^2$ term, and once with a $\beta_3 X_i^3$ term. The $X_i^3$ term is called the "cubic" term.
+
+| Parameter | Effect |
+|-----------|-------------------------------------------------------------------------|
+| $\beta_0$ | Y-intercept of the Model. |
+| $\beta_1$ | No clear interpretation, but could be called the "base slope coefficient" and contributes to the position of the inflection points of the cubic function. |
+| $\beta_2$ | No clear interpretation, but it also contributes to the location of the inflection points. |
+| $\beta_3$ | This is the coefficient of the cubic term. No clear interpretation, but it determines the concavity of the model by its sign. |
+
+
+
+<span style="padding-left:15px;"><a href="javascript:showhide('quadraticmodelelexample')" style="font-size:1.1em;color:skyblue;">(Show Example...)</a></span>
+
+<div id="quadraticmodelelexample" style="display:none;">
+
+**An Example**
+
+Using the `CO2` data set, we run the following "cubic" regression.
+
+$$
+  \underbrace{Y_i}_\text{uptake} \underbrace{=}_{\sim} \overbrace{\beta_0}^{\text{y-int}} + \overbrace{\beta_1}^{\stackrel{\text{slope}}{\text{term}}} \underbrace{X_{i}}_\text{conc} + \overbrace{\beta_2}^{\stackrel{\text{quadratic}}{\text{term}}}  \underbrace{X_{i}^2}_\text{I(conc^2)} +  \overbrace{\beta_3}^{\stackrel{\text{cubic}}{\text{term}}}  \underbrace{X_{i}^3}_\text{I(conc^3)} + \epsilon_i
+$$
+
+
+<a href="javascript:showhide('cubicregressionexamplecode')">
+<div class="hoverchunk">
+<span class="tooltipr">
+lm.cubic <- 
+  <span class="tooltiprtext">A name we made up for our "cubic" regression.</span>
+</span><span class="tooltipr">
+lm(
+  <span class="tooltiprtext">R function lm used to perform linear regressions in R. The lm stands for "linear model".</span>
+</span><span class="tooltipr">
+uptake
+  <span class="tooltiprtext">Y-variable, should be quantitative.</span>
+</span><span class="tooltipr">
+&nbsp;~&nbsp;
+<span class="tooltiprtext">The tilde `~` is what lm(...) uses to state the regression equation $Y_i = ...$. Notice that the `~` is not followed by $\beta_0 + \beta_1$ like $Y_i = ...$. Instead, $X_i$ is the first term following `~`. This is because the $\beta$'s are going to be estimated by the lm(...). These estimates can be found using summary(lmObject).</span>
+</span><span class="tooltipr">
+conc
+  <span class="tooltiprtext">$X_{i}$, should be quantitative.</span>
+</span><span class="tooltipr">
+&nbsp;+&nbsp;
+  <span class="tooltiprtext">The plus `+` is used between each term in the model. Note that only the x-variables are included in the lm(...) from the $Y_i = ...$ model. No beta's are included.</span>
+</span><span class="tooltipr">
+I(conc^2)
+  <span class="tooltiprtext">$X_{i}^2$, where the function I(...) protects the squaring of conc from how lm(...) would otherwise interpret that statement. The I(...) function must be used anytime you raise an x-variable to a power in the lm(...) statement.</span>
+</span><span class="tooltipr">
+&nbsp;+&nbsp;
+  <span class="tooltiprtext">The plus `+` is used between each term in the model. Note that only the x-variables are included in the lm(...) from the $Y_i = ...$ model. No beta's are included.</span>
+</span><span class="tooltipr">
+I(conc^3)
+  <span class="tooltiprtext">$X_{i}^3$, where the function I(...) protects the cubing of conc from how lm(...) would otherwise interpret that statement. The I(...) function must be used anytime you raise an x-variable to a power in the lm(...) statement.</span>
+</span><span class="tooltipr">
+, data=airquality
+  <span class="tooltiprtext">This is the data set we are using for the regression.</span>
+</span><span class="tooltipr">
+)  
+  <span class="tooltiprtext">Closing parenthsis for the lm(...) function.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="cubicregressionexamplecode" style="display:none;">
+Pay special attention to how the lm(...) code uses $Y_i \sim X_{i} + X_{i}^2$ and drops all $\beta$'s and $\epsilon$ from the model statement. This is because the estimates for the $\beta$'s and $\epsilon$ are given by the output of the lm(...) funtion in the "Estimates" column of summary(....) and in `lmObject$residuals`.
+</div>
+
+
+```{r}
+lm.cubic <- lm(uptake ~ conc + I(conc^2) + I(conc^3), data=CO2)
+pander(summary(lm.cubic)$coefficients)
+```
+
+
+
+The **estimates** shown above approximate the $\beta$'s in the regression model: $\beta_0$ is estimated by the (Intercept) value of -1.483, $\beta_1$ is estimated by the `conc` value of 0.1814, $\beta_2$ is estimated by the `I(conc^2)` value of -0.0003063, and $\beta_3$ is estimated by the `I(conc^3)` value of 1.601e-07, which translates to 0.0000001601.
+
+Because the estimate of the $\beta_3$ term is positive, this cubic model will "open up". In other words, as the function moves from left to right, it will go off to positive infinity (up). If the term would have been negative, then the function would head to negative infinity (down) instead.
+
+$$
+\hat{Y}_i = \overbrace{-1.483}^\text{y-int} + \overbrace{0.1814}^{\stackrel{\text{slope}}{\text{term}}} X_{i} + \overbrace{-0.0003063}^{\stackrel{\text{quadratic}}{\text{term}}} X_{i}^2 + \overbrace{1.601e-07}^{\stackrel{\text{cubic}}{\text{term}}} X_{i}^3
+$$
+
+The regression function is drawn as follows. Be sure to look at the "Code" to understand how this graph was created using the ideas in the equation above.
+
+<table>
+<tr>
+<td>
+
+**Using Base R**
+
+```{r}
+plot(uptake ~ conc, data=CO2, col="skyblue", pch=21, bg="gray83", main="Cubic Model using CO2 data set", cex.main=1)
+
+#get the "Estimates" automatically:
+b <- coef(lm.cubic)
+# Then b will have 4 estimates:
+# b[1] is the estimate of beta_0: -1.483
+# b[2] is the estimate of beta_1: 0.1814
+# b[3] is the estimate of beta_2: -0.0003063
+# b[4] is the estimate of beta_3: 1.601e-07
+curve(b[1] + b[2]*x + b[3]*x^2 + b[4]*x^3, col="skyblue", lwd=2, add=TRUE)
+```
+  
+</td>
+<td>
+
+**Using ggplot2**
+
+```{r}
+#get the "Estimates" automatically:
+b <- coef(lm.cubic)
+# Then b will have 4 estimates:
+# b[1] is the estimate of beta_0: -1.483
+# b[2] is the estimate of beta_1: 0.1814
+# b[3] is the estimate of beta_2: -0.0003063
+# b[4] is the estimate of beta_3: 1.601e-07
+
+ggplot(CO2, aes(y=uptake, x=conc)) +
+  geom_point(pch=21, bg="gray83", color="skyblue") +
+  #geom_smooth(method="lm", se=F, formula = y ~ poly(x, 3)) + #easy way, but the more involved manual way using stat_function (see below) is more dynamic.
+  stat_function(fun = function(x) b[1] + b[2]*x + b[3]*x^2 + b[4]*x^3, color="skyblue") +
+  labs(title="Cubic Model using CO2 data set") 
+  
+
+```
+
+It should be stated, that the cubic function is not the best fit for this data. However, it is a lot better than just a simple line, or a quadratic model, as shown below.
+
+```{r}
+plot(uptake ~ conc, data=CO2, col="skyblue", pch=21, bg="gray83", main="Cubic Model using CO2 data set", cex.main=1)
+
+#get the "Estimates" automatically:
+b <- coef(lm.cubic)
+# Then b will have 4 estimates:
+# b[1] is the estimate of beta_0: -1.483
+# b[2] is the estimate of beta_1: 0.1814
+# b[3] is the estimate of beta_2: -0.0003063
+# b[4] is the estimate of beta_3: 1.601e-07
+curve(b[1] + b[2]*x + b[3]*x^2 + b[4]*x^3, col="skyblue", lwd=2, add=TRUE)
+b <- coef(lm(uptake ~ conc + I(conc^2), data=CO2))
+curve(b[1] + b[2]*x + b[3]*x^2, col="firebrick", lwd=2, add=TRUE)
+b <- coef(lm(uptake ~ conc, data=CO2))
+curve(b[1] + b[2]*x, col="orange", lwd=2, add=TRUE)
+
+```
+
+</td>
+</tr>
+</table>
+
+
+</div>
+
+
+  </p>
+</div>
+
+
+
+
+
+
+
+<div id="LearnMoreTwoLinesModel" class="tabcontent">
+  <p>
+  
+<table>
+  <tr>
+  <td>
+
+```{r, fig.width=1.5, fig.height=1.5, echo=FALSE}
+par(mai=c(0.1,0.1,0.3,0.1))
+plot(mpg ~ qsec, data=mtcars, col=c("skyblue","orange")[as.factor(am)], pch=21, bg="gray83", xaxt='n', yaxt='n', main="", axes=FALSE)
+lm.2lines <- lm(mpg ~ qsec + am + qsec:am, data=mtcars)
+b <- coef(lm.2lines)
+curve(b[1] + b[2]*x, col="skyblue", lwd=2, add=TRUE)
+curve(b[1] + b[3] + (b[2] + b[4])*x, col="orange", lwd=2, add=TRUE)
+```
+
+  </td><td style="text-align: center;padding-left:15px;">  
+  
+$$
+ Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \beta_3 X_{1i} X_{2i}}_{E\{Y_i\}}}^\text{Two-lines Model} + \epsilon_i 
+$$
+
+$$
+ X_{2i} = \left\{\begin{array}{ll} 1, & \text{Group B} \\ 0, & \text{Group A} \end{array}\right.
+$$
+
+  </td>
+  </tr>
+</table>
+
+
+The so called "two-lines" model uses a quantitative $X_{1i}$ variable and a 0,1 indicator variable $X_{2i}$. It is a basic example of how a "dummy variable" or "indicator variable" can be used to turn qualitative variables into quantitative terms. In this case, the indicator variable $X_{2i}$, which is either 0 or 1, produces two separate lines: one line for Group A, and one line for Group B.
+
+| Parameter | Effect |
+|-----------|-------------------------------------------------------------------------|
+| $\beta_0$ | Y-intercept of the Model. |
+| $\beta_1$ | Controls the slope of the "base-line" of the model, the "Group 0" line. |
+| $\beta_2$ | Controls the **change in y-intercept** for the second line in the model as compared to the y-intercept of the "base-line" line. |
+| $\beta_3$ | Called the "interaction" term. Controls the **change in the slope** for the second line in the model as compared to the slope of the "base-line" line. |
+
+
+
+
+<span style="padding-left:15px;"><a href="javascript:showhide('twolinesmodelexample')" style="font-size:1.1em;color:skyblue;">(Show Example...)</a></span>
+
+<div id="twolinesmodelexample" style="display:none;">
+
+**An Example**
+
+Using the `mtcars` data set, we run the following "two-lines" regression. Note that `am` has only 0 or 1 values: `View(mtcars)`.
+
+$$
+  \underbrace{Y_i}_\text{mpg} \underbrace{=}_{\sim} \overbrace{\beta_0}^{\stackrel{\text{y-int}}{\text{baseline}}} + \overbrace{\beta_1}^{\stackrel{\text{slope}}{\text{baseline}}} \underbrace{X_{1i}}_\text{qsec} + \overbrace{\beta_2}^{\stackrel{\text{change in}}{\text{y-int}}}  \underbrace{X_{2i}}_\text{am} + \overbrace{\beta_3}^{\stackrel{\text{change in}}{\text{slope}}} \underbrace{X_{1i}X_{2i}}_\text{qsec:am} + \epsilon_i
+$$
+
+
+<a href="javascript:showhide('twolinesregressionexamplecode')">
+<div class="hoverchunk">
+<span class="tooltipr">
+lm.2lines <- 
+  <span class="tooltiprtext">A name we made up for our "two-lines" regression.</span>
+</span><span class="tooltipr">
+lm(
+  <span class="tooltiprtext">R function lm used to perform linear regressions in R. The lm stands for "linear model".</span>
+</span><span class="tooltipr">
+mpg
+  <span class="tooltiprtext">Y-variable, should be quantitative.</span>
+</span><span class="tooltipr">
+&nbsp;~&nbsp;
+<span class="tooltiprtext">The tilde `~` is what lm(...) uses to state the regression equation $Y_i = ...$. Notice that the `~` is not followed by $\beta_0 + \beta_1$ like $Y_i = ...$. Instead, $X_{1i}$ is the first term following `~`. This is because $\beta$'s are going to be estimated by the lm(...). These estimates can be found using summary(lmObject).</span>
+</span><span class="tooltipr">
+qsec
+  <span class="tooltiprtext">$X_{1i}$, should be quantitative.</span>
+</span><span class="tooltipr">
+&nbsp;+&nbsp;
+  <span class="tooltiprtext">The plus `+` is used between each term in the model. Note that only the x-variables are included in the lm(...) from the $Y_i = ...$ model. No beta's are included.</span>
+</span><span class="tooltipr">
+am
+  <span class="tooltiprtext">$X_{2i}$, an indicator or 0,1 variable. This term allows the y-intercept of the two lines to differ.</span>
+</span><span class="tooltipr">
+&nbsp;+&nbsp;
+  <span class="tooltiprtext">The plus `+` is used between each term in the model. Note that only the x-variables are included in the lm(...) from the $Y_i = ...$ model. No beta's are included.</span>
+</span><span class="tooltipr">
+qsec:am
+  <span class="tooltiprtext">$X_{1i}X_{2i}$ the interaction term. This allows the slopes of the two lines to differ.</span>
+</span><span class="tooltipr">
+, data=mtcars
+  <span class="tooltiprtext">This is the data set we are using for the regression.</span>
+</span><span class="tooltipr">
+)  
+  <span class="tooltiprtext">Closing parenthsis for the lm(...) function.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="twolinesregressionexamplecode" style="display:none;">
+Pay special attention to how the lm(...) code uses $Y_i \sim X_{1i} + X_{2i} + X_{1i}X_{2i}$ and drops all $\beta$'s and $\epsilon$ from the model statement. This is because the estimates for the $\beta$'s and $\epsilon$ are given by the output of the lm(...) funtion in the "Estimates" column of summary(....) and in `lm.2lines$residuals`.
+</div>
+
+
+```{r}
+lm.2lines <- lm(mpg ~ qsec + am + qsec:am, data=mtcars)
+pander(summary(lm.2lines)$coefficients)
+```
+
+The **estimates** shown above approximate the $\beta$'s in the regression model: $\beta_0$ is estimated by the (Intercept), $\beta_1$ is estimated by the `qsec` value of 1.439, $\beta_2$ is estimated by the `am` value of -14.51, and $\beta_3$ is estimated by the `qsec:am` value of 1.321.
+
+This gives two separate equations of lines.
+
+**Automatic Transmission (am==0, $X_{2i} = 0$) Line**
+
+$$
+\hat{Y}_i = \overbrace{-9.01}^{\stackrel{\text{y-int}}{\text{baseline}}} + \overbrace{1.439}^{\stackrel{\text{slope}}{\text{baseline}}} X_{1i}
+$$
+
+**Manual Transmission (am==1 , $X_{2i} = 1$) Line**
+
+$$
+\hat{Y}_i = \underbrace{(\overbrace{-9.01}^{\stackrel{\text{y-int}}{\text{baseline}}} + \overbrace{-14.51}^{\stackrel{\text{change in}}{\text{y-int}}})}_{\stackrel{\text{y-intercept}}{-23.52}} + \underbrace{(\overbrace{1.439}^{\stackrel{\text{slope}}{\text{baseline}}} +\overbrace{1.321}^{\stackrel{\text{change in}}{\text{slope}}})}_{\stackrel{\text{slope}}{2.76}} X_{1i}
+$$
+
+These lines are drawn as follows. Be sure to look at the "Code" to understand how this graph was created using the ideas in the two equations above.
+
+<table>
+<tr>
+<td>
+
+**Using Base R**
+
+```{r}
+plot(mpg ~ qsec, data=mtcars, col=c("skyblue","orange")[as.factor(am)], pch=21, bg="gray83", main="Two-lines Model using mtcars data set", cex.main=1)
+
+legend("topleft", legend=c("Baseline (am==0)", "Changed-line (am==1)"), bty="n", lty=1, col=c("skyblue","orange"), cex=0.8)
+
+#get the "Estimates" automatically:
+b <- coef(lm.2lines)
+# Then b will have 4 estimates:
+# b[1] is the estimate of beta_0: -9.0099
+# b[2] is the estimate of beta_1:  1.4385
+# b[3] is the estimate of beta_2: -14.5107
+# b[4] is the estimate of beta_3: 1.3214
+curve(b[1] + b[2]*x, col="skyblue", lwd=2, add=TRUE)  #baseline (in blue)
+curve((b[1] + b[3]) + (b[2] + b[4])*x, col="orange", lwd=2, add=TRUE) #changed line (in orange)
+```
+  
+</td>
+<td>
+
+**Using ggplot2**
+
+```{r}
+#get the "Estimates" automatically:
+b <- coef(lm.2lines)
+# Then b will have 4 estimates:
+# b[1] is the estimate of beta_0: -9.0099
+# b[2] is the estimate of beta_1:  1.4385
+# b[3] is the estimate of beta_2: -14.5107
+# b[4] is the estimate of beta_3: 1.3214
+
+ggplot(mtcars, aes(y=mpg, x=qsec, color=factor(am))) +
+  geom_point(pch=21, bg="gray83") +
+  #geom_smooth(method="lm", se=F) + #easy way, but only draws the full interaction model. The manual way using stat_function (see below) is more involved, but more dynamic.
+  stat_function(fun = function(x) b[1] + b[2]*x, color="skyblue") + #am==0 line
+  stat_function(fun = function(x) (b[1]+b[3]) + (b[2]+b[4])*x,color="orange") + #am==1 line 
+  scale_color_manual(name="Transmission (am)", values=c("skyblue","orange")) +
+  labs(title="Two-lines Model using mtcars data set") 
+  
+
+```
+
+</td>
+</tr>
+</table>
+
+</div>
+
+</p>
+</div>
+
+
+
+
+
+
+<div id="LearnMorethreeDModel" class="tabcontent">
+  <p>
+
+
+<table>
+  <tr>
+  <td>
+
+```{r volcano, fig.width=1.5, fig.height=1.5, echo=FALSE}
+par(mai=c(0.1,0.1,0.3,0.1))
+  z <- volcano
+  x = seq(0, 1, length.out = nrow(z))
+  y = seq(0, 1, length.out = ncol(z))
+  xlim = range(x, finite = TRUE) 
+  ylim = range(y, finite = TRUE) 
+  zlim = range(z, finite = TRUE)
+  nlevels = 20
+  levels <- pretty(zlim, nlevels)
+  plot.new()
+  mycolorpalette <- colorRampPalette(c("skyblue2", "orange"))
+  .filled.contour(x, y, z, levels, col=mycolorpalette(length(levels)-1))
+```
+
+  </td><td style="text-align: center;padding-left:15px;">
+  
+$$
+ Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \beta_3 X_{1i}X_{2i}}_{E\{Y_i\}}}^\text{3D Model} + \epsilon_i
+$$
+
+  </td>
+  </tr>
+</table>
+
+
+
+The so called "3D" regression model uses two different quantitative x-variables, an $X_{1i}$ and an $X_{2i}$. Unlike the two-lines model where $X_{2i}$ could only be a 0 or a 1, this $X_{2i}$ variable is quantitative, and can take on any quantitative value.
+
+| Parameter | Effect |
+|-----------|--------------------------------------------------------------------------|
+| $\beta_0$ | Y-intercept of the Model |
+| $\beta_1$ | Slope of the line in the $X_1$ direction. |
+| $\beta_2$ | Slope of the line in the $X_2$ direction. |
+| $\beta_3$ | Interaction term that allows the model, which is a plane in three-dimensional space, to "bend". If this term is zero, then the regression surface is just a flat plane. |
+
+
+<span style="padding-left:15px;"><a href="javascript:showhide('threedmodelexample')" style="font-size:1.1em;color:skyblue;">(Show Example...)</a></span>
+
+<div id="threedmodelexample" style="display:none;">
+
+**An Example**
+
+Here is what a 3D regression looks like when there is no interaction term. The two x-variables of `Month` and `Temp` are being used to predict the y-variable of `Ozone`.
+
+$$
+  \underbrace{Y_i}_\text{Ozone} \underbrace{=}_{\sim} \overbrace{\beta_0}^{\stackrel{\text{y-int}}{\text{baseline}}} + \overbrace{\beta_1}^{\stackrel{\text{slope}}{\text{baseline}}} \underbrace{X_{1i}}_\text{Temp} + \overbrace{\beta_2}^{\stackrel{\text{change in}}{\text{y-int}}}  \underbrace{X_{2i}}_\text{Month} + \epsilon_i
+$$
+
+```{r}
+air_lm <- lm(Ozone ~ Temp + Month, data= airquality)
+pander(air_lm$coefficients)
+```
+
+Notice how the slope, $\beta_1$, in the "Temp" direction is estimated to be 2.659 and the slope in the "Month" direction, $\beta_2$, is estimated to be -3.522. Also, the y-intercept, $\beta_0$, is estimated to be -139.6.
+
+
+```{r, message=FALSE, warning=FALSE}
+## Hint: library(car) has a scatterplot 3d function which is simple to use
+#  but the code should only be run in your console, not knit.
+
+## library(car)
+## scatter3d(Y ~ X1 + X2, data=yourdata)
+
+
+
+## To embed the 3d-scatterplot inside of your html document is harder.
+#library(plotly)
+#library(reshape2)
+
+#Perform the multiple regression
+air_lm <- lm(Ozone ~ Temp + Month, data= airquality)
+
+#Graph Resolution (more important for more complex shapes)
+graph_reso <- 0.5
+
+#Setup Axis
+axis_x <- seq(min(airquality$Temp), max(airquality$Temp), by = graph_reso)
+axis_y <- seq(min(airquality$Month), max(airquality$Month), by = graph_reso)
+
+#Sample points
+air_surface <- expand.grid(Temp = axis_x, Month = axis_y, KEEP.OUT.ATTRS=F)
+air_surface$Z <- predict.lm(air_lm, newdata = air_surface)
+air_surface <- acast(air_surface, Month ~ Temp, value.var = "Z") #y ~ x
+
+#Create scatterplot
+plot_ly(airquality, 
+        x = ~Temp, 
+        y = ~Month, 
+        z = ~Ozone,
+        text = rownames(airquality), 
+        type = "scatter3d", 
+        mode = "markers") %>%
+  add_trace(z = air_surface,
+            x = axis_x,
+            y = axis_y,
+            type = "surface")
+
+```
+
+
+Here is a second view of this same regression with what is called a contour plot, contour map, or density plot.
+
+```{r, eval=FALSE}
+mycolorpalette <- colorRampPalette(c("skyblue2", "orange"))
+filled.contour(x=axis_x, y=axis_y, z=matrix(air_surface$Z, length(axis_x), length(axis_y)), col=mycolorpalette(26))
+```
+
+
+**Including the Interaction Term**
+
+Here is what a 3D regression looks like when the interaction term is present. The two x-variables of `Month` and `Temp` are being used to predict the y-variable of `Ozone`.
+
+$$
+  \underbrace{Y_i}_\text{Ozone} \underbrace{=}_{\sim} \overbrace{\beta_0}^{\stackrel{\text{y-int}}{\text{baseline}}} + \overbrace{\beta_1}^{\stackrel{\text{slope}}{\text{baseline}}} \underbrace{X_{1i}}_\text{Temp} + \overbrace{\beta_2}^{\stackrel{\text{change in}}{\text{y-int}}}  \underbrace{X_{2i}}_\text{Month} + \overbrace{\beta_3}^{\stackrel{\text{change in}}{\text{slope}}} \underbrace{X_{1i}X_{2i}}_\text{Temp:Month} + \epsilon_i
+$$
+
+```{r}
+air_lm <- lm(Ozone ~ Temp + Month + Temp:Month, data= airquality)
+pander(air_lm$coefficients)
+```
+
+Notice how all coefficient estimates have changed. The y-intercept, $\beta_0$ is now estimated to be $-3.915$. The slope term, $\beta_1$, in the Temp-direction is estimated as $0.77$, while the slope term, $\beta_2$, in the Month-direction is estimated to be $-23.01$. This change in estimated coefficiets is due to the presence of the interaction term's coefficient, $\beta_3$, which is estimated to be $0.2678$. As you should notice in the graphic, the interaction model allows the "slopes" in each direction to change, creating a "curved" surface for the regression surface instead of a flat surface.
+
+
+```{r, message=FALSE, warning=FALSE}
+#Perform the multiple regression
+air_lm <- lm(Ozone ~ Temp + Month + Temp:Month, data= airquality)
+
+#Graph Resolution (more important for more complex shapes)
+graph_reso <- 0.5
+
+#Setup Axis
+axis_x <- seq(min(airquality$Temp), max(airquality$Temp), by = graph_reso)
+axis_y <- seq(min(airquality$Month), max(airquality$Month), by = graph_reso)
+
+#Sample points
+air_surface <- expand.grid(Temp = axis_x, Month = axis_y, KEEP.OUT.ATTRS=F)
+air_surface <- air_surface %>% mutate(Z=predict.lm(air_lm, newdata = air_surface))
+air_surface <- acast(air_surface, Month ~ Temp, value.var = "Z") #y ~ x
+
+#Create scatterplot
+plot_ly(airquality, 
+        x = ~Temp, 
+        y = ~Month, 
+        z = ~Ozone,
+        text = rownames(airquality), 
+        type = "scatter3d", 
+        mode = "markers") %>%
+  add_trace(z = air_surface,
+            x = axis_x,
+            y = axis_y,
+            type = "surface")
+```
+
+And here is that same plot as a contour plot.
+
+```{r, eval=FALSE}
+air_surface <- expand.grid(Temp = axis_x, Month = axis_y, KEEP.OUT.ATTRS=F)
+air_surface$Z <- predict.lm(air_lm, newdata = air_surface)
+mycolorpalette <- colorRampPalette(c("skyblue2", "orange"))
+filled.contour(x=axis_x, y=axis_y, z=matrix(air_surface$Z, length(axis_x), length(axis_y)), col=mycolorpalette(27))
+```
+
+</div>
+
+</p>
+</div>
+
+
+
+
+
+<div id="LearnMoreHDModel" class="tabcontent" style="display:none;">
+  <p>
+
+
+<table>
+  <tr>
+  <td>
+
+```{r, fig.width=1.5, fig.height=1.5, echo=FALSE}
+par(mai=c(0.1,0.1,0.3,0.1))
+mycolorpalette <- colorRampPalette(c("skyblue2", "orange"))
+palette(rev(mycolorpalette(10)))
+plot(Ozone ~ Solar.R, data=airquality, pch=21, col="gray83", bg=as.factor(pretty(Temp, 10)), yaxt='n', xaxt='n', axes=FALSE, cex=Month/18 *5)
+lm.hd <- lm(Ozone ~ Solar.R + Month + Temp + Temp:Month:Solar.R, data=airquality)
+b <- coef(lm.hd)
+curve(b[1] + b[2]*x + b[3]*1 + b[4]*55 + b[5]*55*1*x, add=TRUE, col=palette()[1], lwd=1)
+curve(b[1] + b[2]*x + b[3]*5 + b[4]*60 + b[5]*60*5*x, add=TRUE, col=palette()[2], lwd=2)
+curve(b[1] + b[2]*x + b[3]*7 + b[4]*65 + b[5]*65*7*x, add=TRUE, col=palette()[3], lwd=3)
+curve(b[1] + b[2]*x + b[3]*7 + b[4]*75 + b[5]*75*7*x, add=TRUE, col=palette()[5], lwd=3)
+curve(b[1] + b[2]*x + b[3]*12 + b[4]*80 + b[5]*80*12*x, add=TRUE, col=palette()[8], lwd=4)
+curve(b[1] + b[2]*x + b[3]*5 + b[4]*85 + b[5]*85*5*x, add=TRUE, col=palette()[9], lwd=2)
+curve(b[1] + b[2]*x + b[3]*2 + b[4]*95 + b[5]*100*2*x, add=TRUE, col=palette()[10], lwd=3)
+```
+
+  </td><td style="text-align: center;padding-left:15px;">
+  
+$$
+  Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \ldots + \beta_{p-1}X_{p-1,i}}_{E\{Y_i\}}}^\text{"High Dimensional Models"} + \epsilon_i
+$$
+
+  </td>
+  </tr>
+</table>
+
+
+
+The so called "HD", or "High Dimensional", regression model uses three or more different quantitative x-variables, an $X_{1i}$, an $X_{2i}$, and at least an $X_{3i}$, but could use many, many other variables as well. Unlike the 3D model where the final regression could be shown as either a contour plot or a 3D-graphic, the high dimensional model exists in 4 or more dimensions. Thus, it is impossible to graph this model in its full form. Further, it isn't really even possible to "mentally connect" with this type of model is it exists beyond what our 3D minds can really comprehend.
+
+| Parameter | Effect |
+|-----------|--------------------------------------------------------------------------|
+| $\beta_0$ | Y-intercept of the Model |
+| $\beta_1$ | Slope of the line in the $X_1$ direction. |
+| $\beta_2$ | Slope of the line in the $X_2$ direction. |
+| $...$     | Slopes in other directions depending on how many other variables are included in the model. |
+| $\beta_{p-1}$ | Final term in the model where there are $p$ total $\beta$'s. The reason for the $p-1$ on the last term is because we started with $\beta_0$ for the first term, leaving $\beta_{p-1}$ as the last term. |
+
+
+<span style="padding-left:15px;"><a href="javascript:showhide('hdmodelexample')" style="font-size:1.1em;color:skyblue;">(Show Example...)</a></span>
+
+<div id="hdmodelexample" style="display:none;">
+
+**An Example**
+
+Suppose we used three x-variables of `Wind`, `Temp`, and `Solar.R` to predict the y-variable of `Ozone`.
+
+$$
+  \underbrace{Y_i}_\text{Ozone} \underbrace{=}_{\sim} \overbrace{\beta_0}^{\stackrel{\text{y-int}}{\text{baseline}}} + \overbrace{\beta_1}^{\stackrel{\text{slope in}}{\text{Wind Direction}}} \underbrace{X_{1i}}_\text{Wind} + \overbrace{\beta_2}^{\stackrel{\text{slope in}}{\text{Temp Direction}}}  \underbrace{X_{2i}}_\text{Temp} + \overbrace{\beta_3}^{\stackrel{\text{slope in}}{\text{Solar.R Direction}}}  \underbrace{X_{3i}}_\text{Solar.R} + \epsilon_i
+$$
+
+```{r}
+air_lm <- lm(Ozone ~ Wind + Temp + Solar.R, data= airquality)
+pander(air_lm$coefficients)
+```
+
+Notice how the slope, $\beta_1$, in the "Wind" direction is estimated to be -3.334. The slope in the "Temp" direction, $\beta_2$, is estimated to be 1.652. The slope in the "Solar.R" direction, $\beta_3$, is estimated to be 0.05982. Also, the y-intercept, $\beta_0$, is estimated to be -64.34.
+
+Visualizing this model is not really possible in its full form. However, we can draw the regression from three different angles or vantage points. This is a limited view of the full regression model, but at least provides some visual understanding. To do this, we draw $Y$ against each $X$-variable in separate scatterplots, one for each $X$-variable used in our model.
+
+```{r message=FALSE, warning=FALSE}
+b <- coef(air_lm)
+
+par(mfrow=c(1,3))
+
+  plot(Ozone ~ Wind, data=airquality)
+  curve(b[1] + b[2]*x + b[3]*79 + b[4]*205, add=TRUE, col="skyblue")
+  # The x-variable of this plot is "Wind"
+  # The values of Temp=79 and Solar.R=205 are fixed at some interesting value,
+  # in this case, their respective medians.
+
+  plot(Ozone ~ Temp, data=airquality)
+  curve(b[1] + b[2]*9.7 + b[3]*x + b[4]*205, add=TRUE, col="orange")
+  # The x-variable of this plot is "Temp"
+  # The values of Wind=9.7 and Solar.R=205 are fixed at some interesting value,
+  # in this case, their respective medians.
+  
+  plot(Ozone ~ Solar.R, data=airquality)
+  curve(b[1] + b[2]*9.7 + b[3]*79 + b[4]*x, add=TRUE, col="firebrick")
+  # The x-variable of this plot is "Solar.R"
+  # The values of Wind = 9.7 and Temp=79 are fixed at some interesting value,
+  # in this case, their respective medians.
+
+```
+
+
+</div>
+
+</p>
+</div>
+
+
+----
+
+
 
 The coefficient $\beta_j$ is interpreted as the change in the expected value of $Y$ for a unit increase in $X_{j}$, holding all other variables constant, for $j=1,\ldots,p-1$.
 
@@ -4465,529 +5365,6 @@ In this case, cars with a speed of 12 mph are predicted to have an average stopp
 ### Explanation
 
 <div style="padding-left:125px;">
-
-
-The extension of linear regression to multiple regression is fairly direct: include more than one explanatory variable in the regression model for the average y-value. 
-
-#### Extending The Mathematical Model <a href="javascript:showhide('mathmodel2')" style="font-size:.6em;color:skyblue;">(Expand)</a>
-
-<span class="expand-caption">Options for $E\{Y_i\}$ beyond $\beta_0 + \beta_1 X_i$...</span>
-
-<div id="mathmodel2" style="display:none;">
-
-The multiple linear regression model is given by combining (1) "a model" for the mean y-value, denoted by $E\{Y_i\}$, and (2) a normally distributed error term, $\epsilon_i$. In short $Y_i = E\{Y_i\} + \epsilon_i$. To be more exact,
-
-$$
-  Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \cdots + \beta_{p-1} X_{p-1,i}}_{E\{Y_i\}}}^\text{"The Model"} + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2)
-$$
-
-Notice the `...` in the model above. This implies that the model can be many things. Here are some "basic" examples.
-
-```{r, fig.height=2.7}
-
-par(mfrow=c(1,3), mai=c(0.1,0.1,0.3,0.1), cex.main=1.5)
-
-plot(Wind ~ Temp, data=airquality, pch=21, bg="gray83", col="skyblue", yaxt='n', xaxt='n', main="Simple Linear Model", cex.main=1)
-lm.slr <- lm(Wind ~ Temp, data=airquality)
-abline(lm.slr, col="orange", lwd=2)
-
-
-plot(Temp ~ Month, data=airquality, pch=21, bg="gray83", col="skyblue", yaxt='n', xaxt='n', main="Quadratic Model", cex.main=1)
-lm.quad <- lm(Temp ~ Month + I(Month^2), data=airquality)
-b <- coef(lm.quad)
-curve(b[1] + b[2]*x + b[3]*x^2, col="orange", lwd=2, add=TRUE)
-
-
-plot(mpg ~ qsec, data=mtcars, col=c("skyblue","orange")[as.factor(am)], pch=21, bg="gray83", xaxt='n', yaxt='n', main="Two-lines Model", cex.main=1)
-lm.2lines <- lm(mpg ~ qsec + am + qsec:am, data=mtcars)
-b <- coef(lm.2lines)
-curve(b[1] + b[2]*x, col="skyblue", lwd=2, add=TRUE)
-curve(b[1] + b[3] + (b[2] + b[4])*x, col="orange", lwd=2, add=TRUE)
-
-
-  
-```
-
-To learn more about the models depicted above, click on the name of the model below.
-
-<div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'LearnMoresimpleLinearModel')">Simple Linear Model</button>
-  <button class="tablinks" onclick="openTab(event, 'LearnMoreQuadraticModel')">Quadratic Model</button>
-  <button class="tablinks" onclick="openTab(event, 'LearnMoreTwoLinesModel')">Two-lines Model</button>
-  <button class="tablinks" onclick="openTab(event, 'LearnMorethreeDModel')">3D Model</button>
-</div>
-
-<div id="LearnMoresimpleLinearModel" class="tabcontent" style="display:block;">
-  <p>
-
-$$
- Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_i}_{E\{Y_i\}}}^\text{Simple Linear Model} + \epsilon_i
-$$
-
-
-<span style="padding-left:15px;"><a href="javascript:showhide('simplemodeldetails')" style="font-size:1.1em;color:skyblue;">(Expand details...)</a></span>
-
-<div id="simplemodeldetails" style="display:none;">
-
-The Simple Linear Regression model uses a single x-variable once: $X_i$.
-
-| Parameter | Effect |
-|-----------|--------|
-| $\beta_0$ | Y-intercept of the Model |
-| $\beta_1$ | Slope of the line |
-
-</div>
-
-</p>
-</div>
-
-<div id="LearnMoreQuadraticModel" class="tabcontent">
-  <p>
-  
-$$
- Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_i + \beta_2 X_i^2}_{E\{Y_i\}}}^\text{Quadratic Model} + \epsilon_i
-$$
-
-<span style="padding-left:15px;"><a href="javascript:showhide('quadraticmodeldetails')" style="font-size:1.1em;color:skyblue;">(Expand details...)</a></span>
-
-<div id="quadraticmodeldetails" style="display:none;">
-
-The Quadratic model uses the same $X$-variable twice, once with a $\beta_1 X_i$ term and once with a $\beta_2 X_i^2$ term. The $X_i^2$ term is called the "quadratic" term.
-
-| Parameter | Effect |
-|-----------|-------------------------------------------------------------------------|
-| $\beta_0$ | Y-intercept of the Model. |
-| $\beta_1$ | Controls the x-position of the vertex of the parabola by $\frac{-\beta_1}{2\cdot\beta_2}$. |
-| $\beta_2$ | Controls the concavity and "steepness" of the Model: negative values face down, positive values face up; large values imply "steeper" parabolas and low values imply "flatter" parabolas. Also involved in the position of the vertex, see $\beta_1$'s explanation. |
-
-
-
-
-<span style="padding-left:15px;"><a href="javascript:showhide('quadraticmodelelexample')" style="font-size:1.1em;color:skyblue;">(Show Example...)</a></span>
-
-<div id="quadraticmodelelexample" style="display:none;">
-
-**An Example**
-
-Using the `airquality` data set, we run the following "quadratic" regression.
-
-$$
-  \underbrace{Y_i}_\text{Temp} \underbrace{=}_{\sim} \overbrace{\beta_0}^{\text{y-int}} + \overbrace{\beta_1}^{\stackrel{\text{slope}}{\text{term}}} \underbrace{X_{i}}_\text{Month} + \overbrace{\beta_2}^{\stackrel{\text{quadratic}}{\text{term}}}  \underbrace{X_{i}^2}_\text{I(Month^2)} + \epsilon_i
-$$
-
-
-<a href="javascript:showhide('quadraticregressionexamplecode')">
-<div class="hoverchunk">
-<span class="tooltipr">
-lm.quad <- 
-  <span class="tooltiprtext">A name we made up for our "quadratic" regression.</span>
-</span><span class="tooltipr">
-lm(
-  <span class="tooltiprtext">R function lm used to perform linear regressions in R. The lm stands for "linear model".</span>
-</span><span class="tooltipr">
-Temp
-  <span class="tooltiprtext">Y-variable, should be quantitative.</span>
-</span><span class="tooltipr">
-&nbsp;~&nbsp;
-<span class="tooltiprtext">The tilde `~` is what lm(...) uses to state the regression equation $Y_i = ...$. Notice that the `~` is not followed by $\beta_0 + \beta_1$ like $Y_i = ...$. Instead, $X_{1i}$ is the first term following `~`. This is because the $\beta$'s are going to be estimated by the lm(...). These estimates can be found using summary(lmObject).</span>
-</span><span class="tooltipr">
-Month
-  <span class="tooltiprtext">$X_{i}$, should be quantitative.</span>
-</span><span class="tooltipr">
-&nbsp;+&nbsp;
-  <span class="tooltiprtext">The plus `+` is used between each term in the model. Note that only the x-variables are included in the lm(...) from the $Y_i = ...$ model. No beta's are included.</span>
-</span><span class="tooltipr">
-I(Month^2)
-  <span class="tooltiprtext">$X_{i}^2$, where the function I(...) protects the squaring of Month from how lm(...) would otherwise interpret that statement. The I(...) function must be used anytime you raise an x-variable to a power in the lm(...) statement.</span>
-</span><span class="tooltipr">
-, data=airquality
-  <span class="tooltiprtext">This is the data set we are using for the regression.</span>
-</span><span class="tooltipr">
-)  
-  <span class="tooltiprtext">Closing parenthsis for the lm(...) function.</span>
-</span><span class="tooltipr">
-&nbsp;&nbsp;&nbsp;&nbsp;  
-  <span class="tooltiprtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
-  <span class="tooltiprtext">Click to View Output.</span>
-</span>
-</div>
-</a>
-<div id="quadraticregressionexamplecode" style="display:none;">
-Pay special attention to how the lm(...) code uses $Y_i \sim X_{i} + X_{i}^2$ and drops all $\beta$'s and $\epsilon$ from the model statement. This is because the estimates for the $\beta$'s and $\epsilon$ are given by the output of the lm(...) funtion in the "Estimates" column of summary(....) and in `lmObject$residuals`.
-</div>
-
-
-```{r}
-lm.quad <- lm(Temp ~ Month + I(Month^2), data=airquality)
-pander(summary(lm.quad)$coefficients)
-```
-
-
-
-The **estimates** shown above approximate the $\beta$'s in the regression model: $\beta_0$ is estimated by the (Intercept) value of -95.73, $\beta_1$ is estimated by the `Month` value of 48.72, and $\beta_2$ is estimated by the `I(Month^2)` value of -3.283.
-
-Because the estimate of the $\beta_2$ term is negative, this parabola will "open down". The vertex of this parabola will be at $-(48.72)/(2\cdot (-95.73)) = 0.2544657$, and the y-intercept is -95.73.
-
-$$
-\hat{Y}_i = \overbrace{-95.73}^\text{y-int} + \overbrace{48.72}^{\stackrel{\text{slope}}{\text{term}}} X_{i} + \overbrace{-3.283}^{\stackrel{\text{quadratic}}{\text{term}}} X_{i}^2
-$$
-
-The regression function is drawn as follows. Be sure to look at the "Code" to understand how this graph was created using the ideas in the equation above.
-
-<table>
-<tr>
-<td>
-
-**Using Base R**
-
-```{r}
-plot(Temp ~ Month, data=airquality, col="skyblue", pch=21, bg="gray83", main="Quadratic Model using airquality data set", cex.main=1)
-
-#get the "Estimates" automatically:
-b <- coef(lm.quad)
-# Then b will have 3 estimates:
-# b[1] is the estimate of beta_0: 35.38
-# b[2] is the estimate of beta_1: -7.099
-# b[3] is the estimate of beta_2: 0.4759
-curve(b[1] + b[2]*x + b[3]*x^2, col="skyblue", lwd=2, add=TRUE)
-```
-  
-</td>
-<td>
-
-**Using ggplot2**
-
-```{r}
-#get the "Estimates" automatically:
-b <- coef(lm.quad)
-# Then b will have 3 estimates:
-# b[1] is the estimate of beta_0: 35.38
-# b[2] is the estimate of beta_1: -7.099
-# b[3] is the estimate of beta_2: 0.4759
-
-ggplot(airquality, aes(y=Temp, x=Month)) +
-  geom_point(pch=21, bg="gray83", color="skyblue") +
-  #geom_smooth(method="lm", se=F, formula = y ~ poly(x, 2)) + #easy way, but the more involved manual way using stat_function (see below) is more dynamic.
-  stat_function(fun = function(x) b[1] + b[2]*x + b[3]*x^2, color="skyblue") +
-  labs(title="Quadratic Model using airquality data set") 
-  
-
-```
-
-</td>
-</tr>
-</table>
-
-
-</div>
-
-</div>
-
-</p>
-</div>
-
-<div id="LearnMoreTwoLinesModel" class="tabcontent">
-  <p>
-$$
- Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \beta_3 X_{1i} X_{2i}}_{E\{Y_i\}}}^\text{Two-lines Model} + \epsilon_i 
-$$
-
-$$
- X_{2i} = \left\{\begin{array}{ll} 1, & \text{Group B} \\ 0, & \text{Group A} \end{array}\right.
-$$
-
-
-<span style="padding-left:15px;"><a href="javascript:showhide('twolinesmodeldetails')" style="font-size:1.1em;color:skyblue;">(Expand details...)</a></span>
-
-<div id="twolinesmodeldetails" style="display:none;">
-
-The so called "two-lines" model uses a quantitative $X_{1i}$ variable and a 0,1 indicator variable $X_{2i}$. It is a basic example of how a "dummy variable" or "indicator variable" can be used to turn qualitative variables into quantitative terms. In this case, the indicator variable $X_{2i}$, which is either 0 or 1, produces two separate lines: one line for Group A, and one line for Group B.
-
-| Parameter | Effect |
-|-----------|-------------------------------------------------------------------------|
-| $\beta_0$ | Y-intercept of the Model. |
-| $\beta_1$ | Controls the slope of the "base-line" of the model, the "Group 0" line. |
-| $\beta_2$ | Controls the **change in y-intercept** for the second line in the model as compared to the y-intercept of the "base-line" line. |
-| $\beta_3$ | Called the "interaction" term. Controls the **change in the slope** for the second line in the model as compared to the slope of the "base-line" line. |
-
-
-
-
-<span style="padding-left:15px;"><a href="javascript:showhide('twolinesmodelexample')" style="font-size:1.1em;color:skyblue;">(Show Example...)</a></span>
-
-<div id="twolinesmodelexample" style="display:none;">
-
-**An Example**
-
-Using the `mtcars` data set, we run the following "two-lines" regression. Note that `am` has only 0 or 1 values: `View(mtcars)`.
-
-$$
-  \underbrace{Y_i}_\text{mpg} \underbrace{=}_{\sim} \overbrace{\beta_0}^{\stackrel{\text{y-int}}{\text{baseline}}} + \overbrace{\beta_1}^{\stackrel{\text{slope}}{\text{baseline}}} \underbrace{X_{1i}}_\text{qsec} + \overbrace{\beta_2}^{\stackrel{\text{change in}}{\text{y-int}}}  \underbrace{X_{2i}}_\text{am} + \overbrace{\beta_3}^{\stackrel{\text{change in}}{\text{slope}}} \underbrace{X_{1i}X_{2i}}_\text{qsec:am} + \epsilon_i
-$$
-
-
-<a href="javascript:showhide('twolinesregressionexamplecode')">
-<div class="hoverchunk">
-<span class="tooltipr">
-lm.2lines <- 
-  <span class="tooltiprtext">A name we made up for our "two-lines" regression.</span>
-</span><span class="tooltipr">
-lm(
-  <span class="tooltiprtext">R function lm used to perform linear regressions in R. The lm stands for "linear model".</span>
-</span><span class="tooltipr">
-mpg
-  <span class="tooltiprtext">Y-variable, should be quantitative.</span>
-</span><span class="tooltipr">
-&nbsp;~&nbsp;
-<span class="tooltiprtext">The tilde `~` is what lm(...) uses to state the regression equation $Y_i = ...$. Notice that the `~` is not followed by $\beta_0 + \beta_1$ like $Y_i = ...$. Instead, $X_{1i}$ is the first term following `~`. This is because $\beta$'s are going to be estimated by the lm(...). These estimates can be found using summary(lmObject).</span>
-</span><span class="tooltipr">
-qsec
-  <span class="tooltiprtext">$X_{1i}$, should be quantitative.</span>
-</span><span class="tooltipr">
-&nbsp;+&nbsp;
-  <span class="tooltiprtext">The plus `+` is used between each term in the model. Note that only the x-variables are included in the lm(...) from the $Y_i = ...$ model. No beta's are included.</span>
-</span><span class="tooltipr">
-am
-  <span class="tooltiprtext">$X_{2i}$, an indicator or 0,1 variable. This term allows the y-intercept of the two lines to differ.</span>
-</span><span class="tooltipr">
-&nbsp;+&nbsp;
-  <span class="tooltiprtext">The plus `+` is used between each term in the model. Note that only the x-variables are included in the lm(...) from the $Y_i = ...$ model. No beta's are included.</span>
-</span><span class="tooltipr">
-qsec:am
-  <span class="tooltiprtext">$X_{1i}X_{2i}$ the interaction term. This allows the slopes of the two lines to differ.</span>
-</span><span class="tooltipr">
-, data=mtcars
-  <span class="tooltiprtext">This is the data set we are using for the regression.</span>
-</span><span class="tooltipr">
-)  
-  <span class="tooltiprtext">Closing parenthsis for the lm(...) function.</span>
-</span><span class="tooltipr">
-&nbsp;&nbsp;&nbsp;&nbsp;  
-  <span class="tooltiprtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;">
-&nbsp;...&nbsp; 
-  <span class="tooltiprtext">Click to View Output.</span>
-</span>
-</div>
-</a>
-<div id="twolinesregressionexamplecode" style="display:none;">
-Pay special attention to how the lm(...) code uses $Y_i \sim X_{1i} + X_{2i} + X_{1i}X_{2i}$ and drops all $\beta$'s and $\epsilon$ from the model statement. This is because the estimates for the $\beta$'s and $\epsilon$ are given by the output of the lm(...) funtion in the "Estimates" column of summary(....) and in `lm.2lines$residuals`.
-</div>
-
-
-```{r}
-lm.2lines <- lm(mpg ~ qsec + am + qsec:am, data=mtcars)
-pander(summary(lm.2lines)$coefficients)
-```
-
-The **estimates** shown above approximate the $\beta$'s in the regression model: $\beta_0$ is estimated by the (Intercept), $\beta_1$ is estimated by the `qsec` value of 1.439, $\beta_2$ is estimated by the `am` value of -14.51, and $\beta_3$ is estimated by the `qsec:am` value of 1.321.
-
-This gives two separate equations of lines.
-
-**Automatic Transmission (am==0, $X_{2i} = 0$) Line**
-
-$$
-\hat{Y}_i = \overbrace{-9.01}^{\stackrel{\text{y-int}}{\text{baseline}}} + \overbrace{1.439}^{\stackrel{\text{slope}}{\text{baseline}}} X_{1i}
-$$
-
-**Manual Transmission (am==1 , $X_{2i} = 1$) Line**
-
-$$
-\hat{Y}_i = \underbrace{(\overbrace{-9.01}^{\stackrel{\text{y-int}}{\text{baseline}}} + \overbrace{-14.51}^{\stackrel{\text{change in}}{\text{y-int}}})}_{\stackrel{\text{y-intercept}}{-23.52}} + \underbrace{(\overbrace{1.439}^{\stackrel{\text{slope}}{\text{baseline}}} +\overbrace{1.321}^{\stackrel{\text{change in}}{\text{slope}}})}_{\stackrel{\text{slope}}{2.76}} X_{1i}
-$$
-
-These lines are drawn as follows. Be sure to look at the "Code" to understand how this graph was created using the ideas in the two equations above.
-
-<table>
-<tr>
-<td>
-
-**Using Base R**
-
-```{r}
-plot(mpg ~ qsec, data=mtcars, col=c("skyblue","orange")[as.factor(am)], pch=21, bg="gray83", main="Two-lines Model using mtcars data set", cex.main=1)
-
-legend("topleft", legend=c("Baseline (am==0)", "Changed-line (am==1)"), bty="n", lty=1, col=c("skyblue","orange"), cex=0.8)
-
-#get the "Estimates" automatically:
-b <- coef(lm.2lines)
-# Then b will have 4 estimates:
-# b[1] is the estimate of beta_0: -9.0099
-# b[2] is the estimate of beta_1:  1.4385
-# b[3] is the estimate of beta_2: -14.5107
-# b[4] is the estimate of beta_3: 1.3214
-curve(b[1] + b[2]*x, col="skyblue", lwd=2, add=TRUE)  #baseline (in blue)
-curve((b[1] + b[3]) + (b[2] + b[4])*x, col="orange", lwd=2, add=TRUE) #changed line (in orange)
-```
-  
-</td>
-<td>
-
-**Using ggplot2**
-
-```{r}
-#get the "Estimates" automatically:
-b <- coef(lm.2lines)
-# Then b will have 4 estimates:
-# b[1] is the estimate of beta_0: -9.0099
-# b[2] is the estimate of beta_1:  1.4385
-# b[3] is the estimate of beta_2: -14.5107
-# b[4] is the estimate of beta_3: 1.3214
-
-ggplot(mtcars, aes(y=mpg, x=qsec, color=factor(am))) +
-  geom_point(pch=21, bg="gray83") +
-  #geom_smooth(method="lm", se=F) + #easy way, but only draws the full interaction model. The manual way using stat_function (see below) is more involved, but more dynamic.
-  stat_function(fun = function(x) b[1] + b[2]*x, color="skyblue") + #am==0 line
-  stat_function(fun = function(x) (b[1]+b[3]) + (b[2]+b[4])*x,color="orange") + #am==1 line 
-  scale_color_manual(name="Transmission (am)", values=c("skyblue","orange")) +
-  labs(title="Two-lines Model using mtcars data set") 
-  
-
-```
-
-</td>
-</tr>
-</table>
-
-</div>
-
-</div>
-
-</p>
-</div>
-
-
-<div id="LearnMorethreeDModel" class="tabcontent">
-  <p>
-
-$$
- Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \beta_3 X_{1i}X_{2i}}_{E\{Y_i\}}}^\text{3D Model} + \epsilon_i
-$$
-
-
-<span style="padding-left:15px;"><a href="javascript:showhide('threedmodeldetails')" style="font-size:1.1em;color:skyblue;">(Expand details...)</a></span>
-
-<div id="threedmodeldetails" style="display:none;">
-
-The so called "3D" regression model uses two different quantitative x-variables, an $X_{1i}$ and an $X_{2i}$. Unlike the two-lines model where $X_{2i}$ could only be a 0 or a 1, this $X_{2i}$ variable is quantitative, and can take on any quantitative value.
-
-| Parameter | Effect |
-|-----------|--------------------------------------------------------------------------|
-| $\beta_0$ | Y-intercept of the Model |
-| $\beta_1$ | Slope of the line in the $X_1$ direction. |
-| $\beta_2$ | Slope of the line in the $X_2$ direction. |
-| $\beta_3$ | Interaction term that allows the model, which is a plane in three-dimensional space, to "bend". If this term is zero, then the regression surface is just a flat plane. |
-
-**An Example**
-
-Here is what a 3D regression looks like when there is no interaction term. The two x-variables of `Month` and `Temp` are being used to predict the y-variable of `Ozone`.
-
-`air_lm <- lm(Ozone ~ Temp + Month, data= airquality)`
-
-```{r message=FALSE, warning=FALSE}
-## Hint: library(car) has a scatterplot 3d function which is simple to use
-#  but the code should only be run in your console, not knit.
-
-## library(car)
-## scatter3d(Y ~ X1 + X2, data=yourdata)
-
-
-
-## To embed the 3d-scatterplot inside of your html document is harder.
-#library(plotly)
-#library(reshape2)
-
-#Perform the multiple regression
-air_lm <- lm(Ozone ~ Temp + Month, data= airquality)
-
-#Graph Resolution (more important for more complex shapes)
-graph_reso <- 0.5
-
-#Setup Axis
-axis_x <- seq(min(airquality$Temp), max(airquality$Temp), by = graph_reso)
-axis_y <- seq(min(airquality$Month), max(airquality$Month), by = graph_reso)
-
-#Sample points
-air_surface <- expand.grid(Temp = axis_x, Month = axis_y, KEEP.OUT.ATTRS=F)
-air_surface$Z <- predict.lm(air_lm, newdata = air_surface)
-air_surface <- acast(air_surface, Month ~ Temp, value.var = "Z") #y ~ x
-
-#Create scatterplot
-plot_ly(airquality, 
-        x = ~Temp, 
-        y = ~Month, 
-        z = ~Ozone,
-        text = rownames(airquality), 
-        type = "scatter3d", 
-        mode = "markers") %>%
-  add_trace(z = air_surface,
-            x = axis_x,
-            y = axis_y,
-            type = "surface")
-```
-
-
-Here is what a 3D regression looks like when the interaction term is present. The two x-variables of `Month` and `Temp` are being used to predict the y-variable of `Ozone`.
-
-`air_lmi <- lm(Ozone ~ Temp + Month + Temp:Month, data= airquality)`
-
-```{r message=FALSE, warning=FALSE}
-#Perform the multiple regression
-air_lm <- lm(Ozone ~ Temp + Month + Temp:Month, data= airquality)
-
-#Graph Resolution (more important for more complex shapes)
-graph_reso <- 0.5
-
-#Setup Axis
-axis_x <- seq(min(airquality$Temp), max(airquality$Temp), by = graph_reso)
-axis_y <- seq(min(airquality$Month), max(airquality$Month), by = graph_reso)
-
-#Sample points
-air_surface <- expand.grid(Temp = axis_x, Month = axis_y, KEEP.OUT.ATTRS=F)
-air_surface$Z <- predict.lm(air_lm, newdata = air_surface)
-air_surface <- acast(air_surface, Month ~ Temp, value.var = "Z") #y ~ x
-
-#Create scatterplot
-plot_ly(airquality, 
-        x = ~Temp, 
-        y = ~Month, 
-        z = ~Ozone,
-        text = rownames(airquality), 
-        type = "scatter3d", 
-        mode = "markers") %>%
-  add_trace(z = air_surface,
-            x = axis_x,
-            y = axis_y,
-            type = "surface")
-```
-
-
-</div>
-
-</p>
-</div>
-
-<br/>
-<br/>
-
-In fact, the model for $E\{Y_i\}$ can be any "linear combination" of $\beta$'s, which means $\beta$ times some X-variable plus $\beta$ times some X-variable plus... plus the error term $\epsilon_i$. So you could have $\beta_1 \sin(X_i)$, $\beta_2 e^{X_2i}$, and anything else you can dream up. But $e^{\beta_1 X_i}$ is not allowed. Of course, you could fit the model $Y_i = e^{\beta_0 + \beta_1 X_i + \epsilon_i}$ using a $\log(Y_i)$ transformation, but then, the regression would actually be $\log(Y_i) = \beta_0 + \beta_1 X_i + \epsilon_i$ which is again a "linear regression".
-
-
-
-<div style="padding-left:15px; color:#a8a8a8;">
-
-**Note**: Interactions, transformations of other variables, and qualitative variables can all be included in the model. For example, if a model included three explanatory variables, $X_1,X_2,X_3$, then $X_{3i}$ could be defined to be the interaction between $X_1$ and $X_3$, i.e., $X_{3i} = X_{1i}\cdot X_{2i}$. If $X_3$ was instead to represent a qualitative variable with two levels, then we could use a 0 to represent one level of the variable and a 1 to represent the other level. If we had good reason to do so, we could even let $X_{3i} = X_{1i}^2$ or $\log(X_{1i})$ or some other transformation of another $X$ variable.
-
-</div>
-
-Say we are interested in the price of a vehicle, particularly the price of a Cadillac. Simple linear regression would just use the mileage of the vehicle to predict the price. This will probably not be very successful as different makes of Cadillacs vary widely in their prices. However, if we include other explanatory variables in our model, like model of the vehicle, we should be able to do very well at predicting the price of a particular vehicle. (Certainly other variables like the number of doors, engine size, automatic or manual transmission and so on could also be valuable explanatory variables.) 
-
-</div>
-
-<br />
-
 
 
 
