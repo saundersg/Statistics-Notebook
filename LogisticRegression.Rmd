@@ -11,8 +11,25 @@ output:
     var e = document.getElementById(id);
     e.style.display = (e.style.display == 'block') ? 'none' : 'block';
  }
+  
+ function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+ }
 </script>
 
+```{r, include=FALSE}
+library(plotly)
+```
 ----
 
 Regression for a qualitative binary response variable $(Y_i = 0$ or $1)$. The explanatory variables can be either quantitative or qualitative.
@@ -365,7 +382,7 @@ Example output from a regression. Hover each piece to learn more.
 
 To check the **goodness of fit** of a logistic regression model when there are **many replicated $x$-values** use the command
 
-<a href="javascript:showhide('logistic2')">
+<a href="javascript:showhide('goodnessoffit1')">
 <div class="hoverchunk">
 <span class="tooltipr">
 pchisq(
@@ -384,9 +401,17 @@ lower.tail=FALSE)
 </a>
 
 
+<div id="goodnessoffit1" style="display:none;">
+```{r, echo=FALSE}
+myglm <- glm(am ~ disp, data = mtcars, family = binomial)
+pchisq(29.732, 30, lower.tail = FALSE)
+```
+</div>
+
+
 To check the **goodness of fit** of a logistic regression model where there are **few or no any replicated $x$-values**
 
-<a href="javascript:showhide('logistic2')">
+<a href="javascript:showhide('goodnessoffit2')">
 <div class="hoverchunk">
 <span class="tooltipr">
 library(ResourceSelection)
@@ -404,9 +429,18 @@ YourObjectName\$fitted)
 </div>
 </a>
 
+<div id="goodnessoffit2" style="display:none;">
+```{r, echo=FALSE}
+myglm <- glm(am ~ disp, data = mtcars, family = binomial)
+library(ResourceSelection)
+hoslem.test(myglm$y, myglm$fitted)
+```
+</div>
+
+
 To predict the probability that $Y_i=1$ for a given $x$-value, use the code
 
-<a href="javascript:showhide('logistic2')">
+<a href="javascript:showhide('LogisticPredict')">
 <div class="hoverchunk">
 <span class="tooltipr">
 predict(
@@ -426,6 +460,192 @@ type = "response")
 </span>
 </div>
 </a>
+
+<div id="LogisticPredict" style="display:none;">
+```{r, echo=FALSE}
+myglm <- glm(am ~ disp, data = mtcars, family = binomial)
+predict(myglm, newdata = data.frame(disp = 200), type = "response")
+```
+</div>
+
+**Plot the Regression**
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'LogisticBaseplot')">Base R</button>
+  <button class="tablinks" onclick="openTab(event, 'Logisticggplot')">ggplot2</button>
+</div>
+
+<div id="LogisticBaseplot" class="tabcontent">
+  <p>
+<a href="javascript:showhide('LogisticBaseplot2')">
+<div class="hoverchunk"><span class="tooltipr">
+plot(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+Y
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;~&nbsp;
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+X,
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;data=
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+YourDataSet
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">Closing parenthesis for plot(...) function.</span>
+</span><br/><span class="tooltipr">
+curve(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+exp(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+$b_0$ -
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;$b_1$
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+\*x
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">Closing parenthesis.</span>
+</span><span class="tooltipr">
+/
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+(1 +
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;exp(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+$b_0$ -
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;$b_1$
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+\*x
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">Closing parenthesis.</span>
+</span><span class="tooltipr">
+),
+  <span class="tooltiprtext">Closing parenthesis.</span>
+</span><span class="tooltipr">
+&nbsp;add = TRUE)
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span>
+</div>
+</a>
+
+<div id="LogisticBaseplot2" style="display:none;">
+```{r, echo=FALSE}
+myglm <- glm(am ~ disp, data = mtcars, family = binomial)
+plot(am ~ disp, data = mtcars, pch=16)
+curve(exp(2.631-0.015*x)/(1+exp(2.631-0.015*x)), add=TRUE)
+```
+</div>
+
+  </p>
+</div>
+
+<div id="Logisticggplot" class="tabcontent">
+  <p>
+<a href="javascript:showhide('Logisticggplot2')">
+<div class="hoverchunk"><span class="tooltipr">
+ggplot(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+data,
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;aes(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+X,
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+Y
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">Closing parenthesis for aes(...) function.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">Closing parenthesis for ggplot(...) function.</span>
+</span><span class="tooltipr">
+&nbsp;+
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><br/><span class="tooltipr">
+&nbsp; geom_point(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;+
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><br/><span class="tooltipr">
+&nbsp; geom_smooth(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+method=
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+"glm",
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+method.args =
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+list(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+family =
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+"binomial"),
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;se =
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+FALSE
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;+
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><br/><span class="tooltipr">
+&nbsp; theme_bw()
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span>
+</div>
+</a>
+
+<div id="Logisticggplot2" style="display:none;">
+```{r, echo=FALSE}
+ggplot(mtcars, aes(disp, am)) +
+  geom_point() +
+  geom_smooth(method = "glm", method.args = list(family = "binomial"), se = FALSE) +
+  theme_bw()
+```
+</div>
+
+  </p>
+</div>
 
 
 ----
@@ -554,7 +774,7 @@ The coefficents $\beta_0,\beta_1,\ldots,\beta_p$ are difficult to interpret dire
 
 To perform a logistic regression in R use the commands
 
-<a href="javascript:showhide('logistic1')">
+<a href="javascript:showhide('logistic2')">
 <div class="hoverchunk">
 <span class="tooltipr">
 YourObjectName
