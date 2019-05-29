@@ -3633,7 +3633,7 @@ pander(summary(lm.quad)$coefficients)
 
 The **estimates** shown above approximate the $\beta$'s in the regression model: $\beta_0$ is estimated by the (Intercept) value of -95.73, $\beta_1$ is estimated by the `Month` value of 48.72, and $\beta_2$ is estimated by the `I(Month^2)` value of -3.283.
 
-Because the estimate of the $\beta_2$ term is negative, this parabola will "open down". The vertex of this parabola will be at $-(48.72)/(2\cdot (-95.73)) = 0.2544657$, and the y-intercept is -95.73.
+Because the estimate of the $\beta_2$ term is negative, this parabola will "open down". The vertex of this parabola will be at $-(48.72)/(2\cdot (-3.283)) = 7.420043$, and the y-intercept is -95.73.
 
 $$
 \hat{Y}_i = \overbrace{-95.73}^\text{y-int} + \overbrace{48.72}^{\stackrel{\text{slope}}{\text{term}}} X_{i} + \overbrace{-3.283}^{\stackrel{\text{quadratic}}{\text{term}}} X_{i}^2
