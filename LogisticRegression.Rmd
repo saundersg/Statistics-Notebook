@@ -29,6 +29,7 @@ output:
 
 ```{r, include=FALSE}
 library(plotly)
+library(ResourceSelection)
 ```
 ----
 
@@ -792,10 +793,13 @@ Y&nbsp;
 ~&nbsp;
   <span class="tooltiprtext">The tilde symbol ~ is used to tell R that Y should be treated as a function of the explanatory variable X.</span>
 </span><span class="tooltipr">
-X1&nbsp;
+X1
   <span class="tooltiprtext">X1 is the first explanatory variable (typically quantitative) that will be used to explain the probability that the response variable Y is a 1.</span>
 </span><span class="tooltipr">
-+ X2&nbsp;
+\*
+  <span class="tooltiprtext">EXPLANATION</span>
+</span><span class="tooltipr">
+X2&nbsp;
   <span class="tooltiprtext">X2 is second the explanatory variable either quantitative or qualitative that will be used to explain the probability that the response variable Y is a 1.</span>
 </span><span class="tooltipr">
 ..., 
@@ -813,10 +817,464 @@ summary(YourObjectName)
 </div>
 </a>
 
+<div id="logistic2" style="display:none;">
+
+Example output from a regression. Hover each piece to learn more.
+
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout">
+  Call:<br/>
+ glm(formula = weight > 100 ~ Time*Diet, family = binomial, 
+    data = ChickWeight)
+    <span class="tooltiprouttext">This is simply a statement of your original glm(...) "call" that you made when performing your regression. It allows you to verify that you ran what you thought you ran in the glm(...).</span>
+</span>
+</td>
+</tr>
+</table>
+      
+
+<br/>
+
+<table class="rconsole">
+<tr>
+<td colspan="2">
+  <span class="tooltiprout">
+    Deviance Residuals:
+      <span class="tooltiprouttext">EXPLANATION.
+  </span>
+</td>
+</tr>
+<tr>
+<td align="right">
+  <span class="tooltiprout">
+    Min<br/>
+    &nbsp; -2.9446
+      <span class="tooltiprouttext">"min" gives the value of the residual that is furthest below the regression line. Ideally, the magnitude of this value would be about equal to the magnitude of the largest positive residual (the max) because the hope is that the residuals are normally distributed around the line.</span>
+  </span>
+</td><td align="right">   
+  <span class="tooltiprout">
+    1Q<br/>
+    &nbsp; -0.2364
+      <span class="tooltiprouttext">"1Q" gives the first quartile of the residuals, which will always be negative, and ideally would be about equal in magnitude to the third quartile.</span>
+  </span>
+</td><td align="right"> 
+  <span class="tooltiprout">
+    Median<br/>
+    &nbsp; 0.0000
+      <span class="tooltiprouttext">"Median" gives the median of the residuals, which would ideally would be about equal to zero. Note that because the regression line is the least squares line, the mean of the residuals will ALWAYS be zero, so it is never included in the output summary.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    3Q<br/>
+    &nbsp; 0.2776
+      <span class="tooltiprouttext">"3Q" gives the third quartile of the residuals, which would ideally would be about equal in magnitude to the first quartile. In this case, it is pretty close, which helps us see that the first quartile of residuals on either side of the line is behaving fairly normally.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    Max</br>
+    &nbsp; 1.9968
+      <span class="tooltiprouttext">"Max" gives the maximum positive residuals, which would ideally would be about equal in magnitude to the minimum residual. In this case, it is much larger than the minimum, which helps us see that the residuals are likely right skewed.</span>
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+
+
+<table class="rconsole">
+<tr>
+<td colspan="2">
+  <span class="tooltiprout">
+    Coefficients:
+      <span class="tooltiprouttext">Notice that in your glm(...) you used only $Y$ and $X$. You did type out any coefficients, i.e., the $\beta_0$ or $\beta_1$ of the regression model. These coefficients are estimated by the glm(...) function and displayed in this part of the output along with standard errors, t-values, and p-values.</span>
+  </span>
+</td>
+</tr><tr>
+<td align="left"></td>
+<td align="right">
+  <span class="tooltiprout">
+    &nbsp; Estimate
+      <span class="tooltiprouttext">To learn more about the "Estimates" of the "Coefficients" see the "Explanation" tab, "Estimating the Model Parameters" section for details.</span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; Std. Error
+      <span class="tooltiprouttext">To learn more about the "Standard Errors" of the "Coefficients" see the "Explanation" tab, "Inference for the Model Parameters" section.</span>
+  </span>    
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; z value 
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; Pr(>|z|)
+      <span class="tooltiprouttext">EXPLANATION </span>
+  </span>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    (Intercept)
+      <span class="tooltiprouttext">This always says "Intercept" for any glm(...) you run in R. That is because R always assumes there is a y-intercept for your regression function.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; -4.97603
+      <span class="tooltiprouttext">This is the estimate of the y-intercept, $\beta_0$. It is called $b_0$. It is the average y-value when X is zero.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 0.65316
+      <span class="tooltiprouttext">This is the standard error of $b_0$. It tells you how much $b_0$ varies from sample to sample. The closer to zero, the better.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    -7.618
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    2.57e-14
+      <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that $\beta_0 = 0$. It measures the probability of observing a t-value as extreme as the one observed. To compute it yourself in R, use `pt(-abs(your t-value), df of your regression)*2`.</span>
+  </span>
+</td><td align="left">
+<span class="tooltiprout">
+    \*\*\*
+      <span class="tooltiprouttext">This is called a "star". Three stars means significant at the 0.01 level of $\alpha$.</span>
+  </span>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    Time
+      <span class="tooltiprouttext">This is always the name of your X-variable in your glm(Y ~ X, ...).</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 0.39111 
+      <span class="tooltiprouttext">This is the estimate of the slope, $\beta_1$. It is called $b_1$. It is the change in the average y-value as X is increased by 1 unit.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 0.04979
+      <span class="tooltiprouttext">This is the standard error of $b_1$. It tells you how much $b_1$ varies from sample to sample. The closer to zero, the better.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    7.854
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    4.02e-15
+      <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that $\beta_1 = 0$. To compute it yourself in R, use `pt(-abs(your t-value), df of your regression)*2`</span>
+  </span>
+</td><td align="left">
+<span class="tooltiprout">
+    \*\*\*
+      <span class="tooltiprouttext">This is called a "star". Three stars means significant at the 0.01 level of $\alpha$.</span>
+  </span>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    Diet2
+      <span class="tooltiprouttext">This is always the name of your X-variable in your glm(Y ~ X, ...).</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 0.58283
+      <span class="tooltiprouttext">This is the estimate of the change in the intercept, $\beta_2$. It is called $b_2$.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 1.04061
+      <span class="tooltiprouttext">This is the standard error of $b_2$. It tells you how much $b_2$ varies from sample to sample. The closer to zero, the better.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    0.560
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    0.5754
+      <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that $\beta_2 = 0$. To compute it yourself in R, use `pt(-abs(your t-value), df of your regression)*2`</span>
+  </span>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    Diet3
+      <span class="tooltiprouttext">This is always the name of your X-variable in your glm(Y ~ X, ...).</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; -8.44476
+      <span class="tooltiprouttext">This is the estimate of the change in the intercept, $\beta_3$. It is called $b_3$.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 4.32324
+      <span class="tooltiprouttext">This is the standard error of $b_3$. It tells you how much $b_3$ varies from sample to sample. The closer to zero, the better.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    -1.953
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    0.0508
+      <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that $\beta_3 = 0$. To compute it yourself in R, use `pt(-abs(your t-value), df of your regression)*2`</span>
+  </span>
+</td><td align="left">
+<span class="tooltiprout">
+    .
+      <span class="tooltiprouttext">This is called a period. It means significant at the 0.1 level of $\alpha$.</span>
+  </span>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    Diet4
+      <span class="tooltiprouttext">This is always the name of your X-variable in your glm(Y ~ X, ...).</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; -67.41995
+      <span class="tooltiprouttext">This is the estimate of the change in the intercept, $\beta_4$. It is called $b_4$.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 3768.10023
+      <span class="tooltiprouttext">This is the standard error of $b_4$. It tells you how much $b_4$ varies from sample to sample. The closer to zero, the better.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    -0.018
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    0.9857
+      <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that $\beta_2 = 0$. To compute it yourself in R, use `pt(-abs(your t-value), df of your regression)*2`</span>
+  </span>
+</td>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    Time:Diet2
+      <span class="tooltiprouttext">This is always the name of your X-variable in your glm(Y ~ X, ...).</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 0.02391
+      <span class="tooltiprouttext">This is the estimate of the change in the slope, $\beta_5$. It is called $b_5$.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 0.08679
+      <span class="tooltiprouttext">This is the standard error of $b_5$. It tells you how much $b_5$ varies from sample to sample. The closer to zero, the better.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    0.275
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    0.7830
+      <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that $\beta_2 = 0$. To compute it yourself in R, use `pt(-abs(your t-value), df of your regression)*2`</span>
+  </span>
+</td>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    Time:Diet3
+      <span class="tooltiprouttext">This is always the name of your X-variable in your glm(Y ~ X, ...).</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 1.20955
+      <span class="tooltiprouttext">This is the estimate of the change in the slope, $\beta_6$. It is called $b_6$.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 0.51249
+      <span class="tooltiprouttext">This is the standard error of $b_6$. It tells you how much $b_6$ varies from sample to sample. The closer to zero, the better.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    2.360
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    0.0183
+      <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that $\beta_2 = 0$. To compute it yourself in R, use `pt(-abs(your t-value), df of your regression)*2`</span>
+  </span>
+</td><td align="left">
+<span class="tooltiprout">
+    \*
+      <span class="tooltiprouttext">This is called a "star". One star means significant at the 0.05 level of $\alpha$.</span>
+  </span>
+</td>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    Time:Diet4
+      <span class="tooltiprouttext">This is always the name of your X-variable in your glm(Y ~ X, ...).</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 8.83168
+      <span class="tooltiprouttext">This is the estimate of the change in the slope, $\beta_7$. It is called $b_7$.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 471.01259
+      <span class="tooltiprouttext">This is the standard error of $b_7$. It tells you how much $b_7$ varies from sample to sample. The closer to zero, the better.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    0.019
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    0.9850
+      <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that $\beta_2 = 0$. To compute it yourself in R, use `pt(-abs(your t-value), df of your regression)*2`</span>
+  </span>
+</td>
+</td>
+</tr>
+</table>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span>
+  \-\-\-
+  </span>
+</td>
+</tr>
+</table>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+    Signif. codes:  0 ‘\*\*\*’ 0.001 ‘\*\*’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+      <span class="tooltiprouttext">These "codes" explain what significance level the p-value is smaller than based on how many "stars" * the p-value is labeled with in the Coefficients table above.</span>
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+    (Dispersion parameter for binomial family taken to be 1)
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+    &nbsp; Null Deviance:
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp;800.44
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>    
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp;on 577 degrees of freedom 
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span> 
+</td> 
+</tr>
+</table>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+   Residual deviance:
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp;256.30
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>    
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp;on 570 degrees of freedom 
+      <span class="tooltiprouttext">This is $n-p$ where $n$ is the sample size and $p$ is the number of parameters in the regression model. In this case, there is a sample size of 578 and five parameters, $\beta_0$, $\beta_1$, $\beta_2$, $\beta_3$, $\beta_4$, $\beta_5$,$\beta_6$, and $\beta_7$ so 578-8 = 570.</span>
+  </span> 
+</td> 
+</tr>
+</table>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+   AIC:
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp;272.3
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>    
+</td> 
+</tr>
+</table>
+
+<br/>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+   Number of Fisher Scoring iterations:
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp;20
+      <span class="tooltiprouttext">EXPLANATION</span>
+  </span>    
+</td> 
+</tr>
+</table>
+
+
+</div>
 
 To check the **goodness of fit** of a logistic regression model when there are **many replicated $x$-values** use the command
 
-<a href="javascript:showhide('logistic2')">
+<a href="javascript:showhide('multipleGOF')">
 <div class="hoverchunk">
 <span class="tooltipr">
 pchisq(
@@ -834,10 +1292,15 @@ lower.tail=FALSE)
 </div>
 </a>
 
+<div id="multipleGOF" style="display:none;">
+```{r, echo=FALSE}
+pchisq(256.30, 570, lower.tail = FALSE)
+```
+</div>
 
 To check the **goodness of fit** of a logistic regression model where there are **few or no any replicated $x$-values**
 
-<a href="javascript:showhide('logistic2')">
+<a href="javascript:showhide('multipleGOF2')">
 <div class="hoverchunk">
 <span class="tooltipr">
 library(ResourceSelection)
@@ -855,9 +1318,16 @@ YourObjectName\$fitted)
 </div>
 </a>
 
+<div id="multipleGOF2" style="display:none;">
+```{r, echo=FALSE, warning=FALSE}
+myglm <- glm(weight>100 ~ Time*Diet, data = ChickWeight, family = binomial)
+hoslem.test(myglm$y, myglm$fitted)
+```
+</div>
+
 To predict the probability that $Y_i=1$ for a given $x$-value, use the code
 
-<a href="javascript:showhide('logistic2')">
+<a href="javascript:showhide('MultipleLogisticPredict')">
 <div class="hoverchunk">
 <span class="tooltipr">
 predict(
@@ -878,6 +1348,298 @@ type = "response")
 </div>
 </a>
 
+<div id="MultipleLogisticPredict" style="display:none;">
+```{r, echo=FALSE, warning=FALSE}
+myglm <- glm(weight>100 ~ Time*Diet, data = ChickWeight, family = binomial)
+predict(myglm, newdata = data.frame(Time = 13, Diet = "2"), type = "response")
+```
+</div>
+
+
+**Plot the Regression**
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'MultipleLogisticBaseplot')">Base R</button>
+  <button class="tablinks" onclick="openTab(event, 'MultipleLogisticggplot')">ggplot2</button>
+</div>
+
+<div id="MultipleLogisticBaseplot" class="tabcontent">
+  <p>
+<a href="javascript:showhide('MultipleLogisticBaseplot2')">
+<div class="hoverchunk"><span class="tooltipr">
+b
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;<-&nbsp;
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+mylm
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+\$
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+coefficients
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><br/><span class="tooltipr">
+palette(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+c(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+"SomeColor",
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+"DifferentColor"))
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><br/><span class="tooltipr">
+plot(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+Y
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;~&nbsp;
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+$X_1$,
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;data = YourDataSet,
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;pch = 16)
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><br/><span class="tooltipr">
+curve(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+exp(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+(b[1]+
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+b[2])
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+\*x)
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+/
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+(1+
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+exp(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+b[1]+
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+b[2]
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+\*x)),
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;col = palette()[1],
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;add = TRUE)
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><br/><span class="tooltipr">
+curve(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+exp(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+(b[1]+
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+b[3])
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
++(b[2]+
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+b[4])
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+\*x)
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+/
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+(1+
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+exp(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+(b[1]+
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+b[3])
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
++(b[2]+
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+b[4])
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+\*x)),
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;col = palette()[2],
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;add = TRUE)
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><br/><span class="tooltipr">
+legend(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+"position",
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;legend =
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+c("Level 1", "Level 2"),
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;col = palette(),
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;lty = 1,
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;bty =
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+'n')
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span>
+</div>
+</a>
+
+<div id="MultipleLogisticBaseplot2" style="display:none;">
+```{r, echo=FALSE, warning=FALSE}
+myglm <- glm(weight>100 ~ Time*Diet, data = ChickWeight, family = binomial)
+palette(c("firebrick", "green", "skyblue", "darkorchid4"))
+b <- myglm$coefficients
+plot(weight>100 ~ Time, data = ChickWeight, pch=16)
+curve(exp(b[1]+b[2]*x)/(1+exp(b[1]+b[2]*x)), add=TRUE, col = palette()[1])
+curve(exp((b[1]+b[3])+(b[2]+b[6])*x)/(1+exp((b[1]+b[3])+(b[2]+b[6])*x)), add=TRUE, col = palette()[2])
+curve(exp((b[1]+b[4])+(b[2]+b[7])*x)/(1+exp((b[1]+b[4])+(b[2]+b[7])*x)), add=TRUE, col = palette()[3])
+curve(exp((b[1]+b[5])+(b[2]+b[8])*x)/(1+exp((b[1]+b[5])+(b[2]+b[8])*x)), add=TRUE, col = palette()[4])
+legend("topleft", legend = c("Diet 1", "Diet 2", "Diet 3", "Diet 4"), col = palette(), lty = 1, bty = 'n')
+```
+</div>
+
+  </p>
+</div>
+
+<div id="MultipleLogisticggplot" class="tabcontent">
+  <p>
+<a href="javascript:showhide('MultipleLogisticggplot2')">
+<div class="hoverchunk"><span class="tooltipr">
+ggplot(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+data,
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;aes(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+$X_1$,
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+Y
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">Closing parenthesis for aes(...) function.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">Closing parenthesis for ggplot(...) function.</span>
+</span><span class="tooltipr">
+&nbsp;+
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><br/><span class="tooltipr">
+&nbsp; geom_point(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;+
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><br/><span class="tooltipr">
+&nbsp; geom_smooth(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+method=
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+"glm",
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+method.args =
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+list(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+family =
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+"binomial"),
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;aes(
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;color = $X_2$)
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;se =
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+FALSE
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><span class="tooltipr">
+&nbsp;+
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span><br/><span class="tooltipr">
+&nbsp; theme_bw()
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span>
+</div>
+</a>
+
+<div id="MultipleLogisticggplot2" style="display:none;">
+```{r, echo=FALSE, warning = FALSE}
+ggplot(ChickWeight, aes(Time, as.numeric(weight>100))) +
+  geom_point() +
+  stat_smooth(aes(color = Diet), method = "glm", method.args = list(family = "binomial"), se = FALSE) +
+  theme_bw() +
+  labs(y = "weight>100")
+```
+</div>
+
+  </p>
+</div>
 
 ----
 
