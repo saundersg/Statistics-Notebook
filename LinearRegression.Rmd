@@ -3737,9 +3737,9 @@ The Cubic model uses the same $X$-variable thrice, once with a $\beta_1 X_i$ ter
 
 
 
-<span style="padding-left:15px;"><a href="javascript:showhide('quadraticmodelelexample')" style="font-size:1.1em;color:skyblue;">(Show Example...)</a></span>
+<span style="padding-left:15px;"><a href="javascript:showhide('cubicmodelelexample')" style="font-size:1.1em;color:skyblue;">(Show Example...)</a></span>
 
-<div id="quadraticmodelelexample" style="display:none;">
+<div id="cubicmodelelexample" style="display:none;">
 
 **An Example**
 
