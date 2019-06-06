@@ -3,28 +3,70 @@ title: "Statistics Notebook"
 output: 
   html_document:
     theme: cerulean
+    css: styles.css
 ---
+
+<!-- You can delete the following copyright statement if you wish: -->
+
+<div style="color:gray;"><!-- Code to change the following paragraphs to gray text -->
 
 This page, and all pages of this notebook, are meant to be customized to become a useful *Guide to Statistical Analysis* in R for your *current* and *future* self. 
 
-<span style="font-size:.8em;color:gray;">
-To begin customizing, [download](https://github.com/saundersg/Statistics-Notebook) your own copy of the book <span style="font-size:.8em;">(if you haven't already)</span>. Please note the [GNU General Public License](https://choosealicense.com/licenses/gpl-3.0/) when downloading.
-</span>
+<div style="font-size:.8em;"><!-- Code to shrink font-size of following paragraph -->
+
+To begin customizing, [download](https://github.com/saundersg/Statistics-Notebook) your own copy of the book <span style="font-size:.8em;">(if you haven't already)</span>. Please note the [GNU General Public License](https://choosealicense.com/licenses/gpl-3.0/) when downloading. You are free to delete this commentary in your own copy of the notebook.
+
+</div><!-- Ends smaller font-size section -->
+
+</div><!-- End gray text section -->
+
+<!-- End of download and copyright instructions. -->
+
 
 ## Table of Contents
 
-----
-
 <!-- This is how to comment text out. You can comment out the above instructions if you wish. Comments allow the text to remain in the Rmd file, but not be displayed in the html file. -->
+
+
+## {.tabset .tabset-fade}
+
+### Hide 
+
+### Show Notes
+
+<!-- This is a great place to add general notes --------------- -->
 
 [Customization Help](RMarkdownHints.html)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- End your notes before here. ------------------------------------- -->
+##
+
 ----
 
-<div style="float:left;width:125px;" align=center>
+<div style="float:left;width:125px;" align=center class="tooltipimage">
 <img src="./Images/QuantY.png" width=35px;>
+  <span class="tooltipimagetext">Y is a single quantitative variable of interest. This would be like "heights" of BYU-Idaho students.</span>
 </div>
-
 
 ### One Quantitative Response Variable Y {.tabset .tabset-pills}
 
@@ -32,24 +74,28 @@ To begin customizing, [download](https://github.com/saundersg/Statistics-Noteboo
 <div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 
+
+
 Add your own notes about graphics to use for this type of data here.
 
 
 
-<!--- End of Add content area.  ------------------>
+
+
+<a href="GraphicalSummaries.html#histogram">
+  <img class="myhover" src="./Images/histogram.png" alt="Histogram" title="Histogram">
+</a>
+<a href="GraphicalSummaries.html#dot-plots">
+  <img class="myhover" src="./Images/dotplotsingle.png" alt="Dot Plot" title="Dot Plot">
+</a>
+<a href="GraphicalSummaries.html#boxplots">
+  <img class="myhover" src="./Images/boxplotsingle.png" alt="Boxplot" title="Boxplot">
+</a>
+
+
+
+<!--- End your notes before here.  ------------------>
 </div>
-
-#### Summaries
-<div style="padding-left:125px;color:lightgray;">
-<!-- Add your customizations in the area below: -->
-
-Add your own notes about numerical summaries for this type of data here.
-
-
-
-<!--- End of Add content area.  ------------------>
-</div>
-
 
 #### Tests
 <div style="padding-left:125px;color:lightgray;">
@@ -59,29 +105,32 @@ Add your own notes about appropriate inferential procedures for this type of dat
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- End of Add content area.  ------------------>
 </div>
-
-
-#### Notes
-<div style="padding-left:125px;color:steelblue;">
-<!-- Add your customizations in the area below: -->
-
-Add general notes here.
-
-
-
-<!--- End of Add content area.  ------------------>
-</div>
-
 
 ##
 <div style="clear:both;"></div>
 
 ----
 
-<div style="float:left;width:125px;" align=center>
+<div style="float:left;width:125px;" align=center class="tooltipimage">
 <img src="./Images/QuantYQualXg2.png" width=59px;>
+  <span class="tooltipimagetext">Y is a single quantitative variable of interest. This would be like "heights" of BYU-Idaho students. X is a qualitative (categorical) variable of interest like "gender" that has just two groups "A" and "B". So this logo represents situtations where we would want to compare heights of male (group A) and female (group B) students.</span>
 </div>
 
 ### Quantitative Y | Categorical X (2 Groups) {.tabset .tabset-pills}
@@ -94,20 +143,27 @@ Add your own notes about graphics to use for this type of data here.
 
 
 
+
+
+
+
+
+
+
+
+
+
+<a href="GraphicalSummaries.html#boxplots">
+  <img class="myhover" src="./Images/boxplot.png" alt="Side-by-side Boxplots" title="Side-by-side Boxplots">
+</a>
+<a href="GraphicalSummaries.html#dot-plots">
+  <img class="myhover" src="./Images/dotplotdouble.png" alt="Dot Plot" title="Side-by-side Dot Plots">
+</a>
+
+
+
 <!--- End of Add content area.  ------------------>
 </div>
-
-#### Summaries
-<div style="padding-left:125px;color:lightgray;">
-<!-- Add your customizations in the area below: -->
-
-Add your own notes about numerical summaries for this type of data here.
-
-
-
-<!--- End of Add content area.  ------------------>
-</div>
-
 
 #### Tests
 <div style="padding-left:125px;color:lightgray;">
@@ -117,29 +173,32 @@ Add your own notes about appropriate inferential procedures for this type of dat
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- End of Add content area.  ------------------>
 </div>
-
-
-#### Notes
-<div style="padding-left:125px;color:steelblue;">
-<!-- Add your customizations in the area below: -->
-
-Add general notes here.
-
-
-
-<!--- End of Add content area.  ------------------>
-</div>
-
 
 ##
 <div style="clear:both;"></div>
 
 ----
 
-<div style="float:left;width:125px;" align=center>
+<div style="float:left;width:125px;" align=center class="tooltipimage">
 <img src="./Images/QuantYQualXg3plus.png" width=59px;>
+  <span class="tooltipimagetext">Y is a single quantitative variable of interest, like "heights" of BYU-Idaho students. X is a categorical (qualitative) variable like which Math 221 you took, 221A, 221B, or 221C. In other words, X has three or more groups. So "Classrank" could be X, with groups "Freshman", "Sophomore", "Junior", and "Senior".</span>
 </div>
 
 ### Quantitative Y | Categorical X (3+ Groups) {.tabset .tabset-pills}
@@ -152,20 +211,24 @@ Add your own notes about graphics to use for this type of data here.
 
 
 
+
+
+
+
+
+
+
+
+
+<a href="GraphicalSummaries.html#boxplots">
+  <img class="myhover" src="./Images/boxplotthree.png" alt="Side-by-side Boxplots" title="Side-by-side Boxplots 3+ Groups">
+</a>
+<a href="GraphicalSummaries.html#dot-plots">
+  <img class="myhover" src="./Images/dotplottriple.png" alt="Side-by-side Dot Plots" title="Side-by-side Dot Plots 3+ Groups">
+</a>
+
 <!--- End of Add content area.  ------------------>
 </div>
-
-#### Summaries
-<div style="padding-left:125px;color:lightgray;">
-<!-- Add your customizations in the area below: -->
-
-Add your own notes about numerical summaries for this type of data here.
-
-
-
-<!--- End of Add content area.  ------------------>
-</div>
-
 
 #### Tests
 <div style="padding-left:125px;color:lightgray;">
@@ -175,30 +238,20 @@ Add your own notes about appropriate inferential procedures for this type of dat
 
 
 
-<!--- End of Add content area.  ------------------>
-</div>
-
-
-#### Notes
-<div style="padding-left:125px;color:steelblue;">
-<!-- Add your customizations in the area below: -->
-
-Add general notes here.
 
 
 
 <!--- End of Add content area.  ------------------>
 </div>
-
 
 ##
 <div style="clear:both;"></div>
 
-
 ----
 
-<div style="float:left;width:125px;" align=center>
+<div style="float:left;width:125px;" align=center class="tooltipimage">
 <img src="./Images/QuantYQuantX.png" width=59px;>
+  <span class="tooltipimagetext">Y is a single quantitative variable of interest, like "height". X is another single quantitative variable of interest, like "shoe-size". This would imply we are using "shoe-size" (X) to explain "height" (Y).</span>
 </div>
 
 ### Quantitative Y | Quantitative X {.tabset .tabset-pills}
@@ -211,20 +264,18 @@ Add your own notes about graphics to use for this type of data here.
 
 
 
+
+
+
+
+
+
+<a href="GraphicalSummaries.html#scatterplots">
+  <img class="myhover" src="./Images/scatterplot.png" alt="Scatterplot" title="Scatterplot">
+</a>
+
 <!--- End of Add content area.  ------------------>
 </div>
-
-#### Summaries
-<div style="padding-left:125px;color:lightgray;">
-<!-- Add your customizations in the area below: -->
-
-Add your own notes about numerical summaries for this type of data here.
-
-
-
-<!--- End of Add content area.  ------------------>
-</div>
-
 
 #### Tests
 <div style="padding-left:125px;color:lightgray;">
@@ -234,30 +285,20 @@ Add your own notes about appropriate inferential procedures for this type of dat
 
 
 
-<!--- End of Add content area.  ------------------>
-</div>
-
-
-#### Notes
-<div style="padding-left:125px;color:steelblue;">
-<!-- Add your customizations in the area below: -->
-
-Add general notes here.
 
 
 
 <!--- End of Add content area.  ------------------>
 </div>
-
 
 ##
 <div style="clear:both;"></div>
 
-
 ----
 
-<div style="float:left;width:125px;" align=center>
+<div style="float:left;width:125px;" align=center class="tooltipimage">
 <img src="./Images/QuantYMultX.png" width=100px;>
+  <span class="tooltipimagetext">Y is a single quantitative variable of interest, like height. While we could use an X1 of "shoe-size" to explain height, we might also want to use a second x-variable, X2, like "gender" to help explain height. Further x-variables could also be used.</span>
 </div>
 
 ### Quantitative Y | Multiple X {.tabset .tabset-pills}
@@ -270,20 +311,18 @@ Add your own notes about graphics to use for this type of data here.
 
 
 
+
+
+
+
+
+
+<a href="GraphicalSummaries.html#scatterplots">
+  <img class="myhover" src="./Images/scatterplotmany.png" alt="Scatterplot" title="Scatterplot with Color and Sizing">
+</a>
+
 <!--- End of Add content area.  ------------------>
 </div>
-
-#### Summaries
-<div style="padding-left:125px;color:lightgray;">
-<!-- Add your customizations in the area below: -->
-
-Add your own notes about numerical summaries for this type of data here.
-
-
-
-<!--- End of Add content area.  ------------------>
-</div>
-
 
 #### Tests
 <div style="padding-left:125px;color:lightgray;">
@@ -293,34 +332,21 @@ Add your own notes about appropriate inferential procedures for this type of dat
 
 
 
-<!--- End of Add content area.  ------------------>
-</div>
-
-
-#### Notes
-<div style="padding-left:125px;color:steelblue;">
-<!-- Add your customizations in the area below: -->
-
-Add general notes here.
 
 
 
 <!--- End of Add content area.  ------------------>
 </div>
-
-
 
 ##
 <div style="clear:both;"></div>
 
 ----
 
-<div style="float:left;width:125px;" align=center>
+<div style="float:left;width:125px;" align=center class="tooltipimage">
 <img src="./Images/BinomYQuantX.png" width=59px;>
+  <span class="tooltipimagetext">Y is a single categorical (qualitative) variable of interest where 1 (success) or 0 (failure) are the only possible values for Y. This would be like "getting an A in Math 325" where 1 means you got an A and 0 means you didn't. We might use an explanatory variable X of "height" to see if taller students are more likely to get an A in Math 325 than shorter students. (They aren't, if you were wondering.)</span>
 </div>
-
-
-
 
 ### Binomial Y | Quantitative X {.tabset .tabset-pills}
 
@@ -332,20 +358,16 @@ Add your own notes about graphics to use for this type of data here.
 
 
 
-<!--- End of Add content area.  ------------------>
-</div>
-
-#### Summaries
-<div style="padding-left:125px;color:lightgray;">
-<!-- Add your customizations in the area below: -->
-
-Add your own notes about numerical summaries for this type of data here.
 
 
+
+
+<a href="GraphicalSummaries.html#scatterplots">
+  <img class="myhover" src="./Images/scatterplotbinomY.png" alt="Scatterplot with Binomial Y" title="Scatterplot with Binomial Y">
+</a>
 
 <!--- End of Add content area.  ------------------>
 </div>
-
 
 #### Tests
 <div style="padding-left:125px;color:lightgray;">
@@ -355,34 +377,21 @@ Add your own notes about appropriate inferential procedures for this type of dat
 
 
 
-<!--- End of Add content area.  ------------------>
-</div>
-
-
-#### Notes
-<div style="padding-left:125px;color:steelblue;">
-<!-- Add your customizations in the area below: -->
-
-Add general notes here.
 
 
 
 <!--- End of Add content area.  ------------------>
 </div>
-
-
 
 ##
 <div style="clear:both;"></div>
 
-
 ----
 
-<div style="float:left;width:125px;" align=center>
+<div style="float:left;width:125px;" align=center class="tooltipimage">
 <img src="./Images/BinomYMultX.png" width=100px;>
+  <span class="tooltipimagetext">Y is a single categorical (qualitative) variable of interest where 1 (success) or 0 (failure) are the only possible values for Y. This would be like "getting an A in Math 325" where 1 means you got an A and 0 means you didn't. We might use an explanatory variable X1 of "height" and a second explanatory variable X2 of "gender" to try to predict whether or not a student will get an A in Math 325.</span>
 </div>
-
-
 
 ### Binomial Y | Multiple X {.tabset .tabset-pills}
 
@@ -394,20 +403,16 @@ Add your own notes about graphics to use for this type of data here.
 
 
 
-<!--- End of Add content area.  ------------------>
-</div>
-
-#### Summaries
-<div style="padding-left:125px;color:lightgray;">
-<!-- Add your customizations in the area below: -->
-
-Add your own notes about numerical summaries for this type of data here.
 
 
+
+
+<a href="GraphicalSummaries.html#scatterplots">
+  <img class="myhover" src="./Images/scatterplotbinomYmult.png" alt="Scatterplot with Binomial Y" title="Scatterplot with Binomial Y, including coloring and shading">
+</a>
 
 <!--- End of Add content area.  ------------------>
 </div>
-
 
 #### Tests
 <div style="padding-left:125px;color:lightgray;">
@@ -417,34 +422,21 @@ Add your own notes about appropriate inferential procedures for this type of dat
 
 
 
-<!--- End of Add content area.  ------------------>
-</div>
-
-
-#### Notes
-<div style="padding-left:125px;color:steelblue;">
-<!-- Add your customizations in the area below: -->
-
-Add general notes here.
 
 
 
 <!--- End of Add content area.  ------------------>
 </div>
-
-
 
 ##
 <div style="clear:both;"></div>
 
-
 ----
 
-<div style="float:left;width:125px;" align=center>
+<div style="float:left;width:125px;" align=center class="tooltipimage">
 <img src="./Images/QualYQualX.png" width=59px;>
+  <span class="tooltipimagetext">Y is a single categorical variable of interest, like gender. X is another categorical variable of interest, like "hair color". This type of data would help us understand if men or women are more likely to have certain hair colors than the other gender.</span>
 </div>
-
-
 
 ### Caterogical Y | Categorical X {.tabset .tabset-pills}
 
@@ -456,20 +448,15 @@ Add your own notes about graphics to use for this type of data here.
 
 
 
-<!--- End of Add content area.  ------------------>
-</div>
-
-#### Summaries
-<div style="padding-left:125px;color:lightgray;">
-<!-- Add your customizations in the area below: -->
-
-Add your own notes about numerical summaries for this type of data here.
 
 
+
+<a href="GraphicalSummaries.html#bar-charts">
+  <img class="myhover" src="./Images/barplot.png" alt="Bar Chart" title="Bar Chart">
+</a>
 
 <!--- End of Add content area.  ------------------>
 </div>
-
 
 #### Tests
 <div style="padding-left:125px;color:lightgray;">
@@ -479,25 +466,14 @@ Add your own notes about appropriate inferential procedures for this type of dat
 
 
 
-<!--- End of Add content area.  ------------------>
-</div>
-
-
-#### Notes
-<div style="padding-left:125px;color:steelblue;">
-<!-- Add your customizations in the area below: -->
-
-Add general notes here.
 
 
 
 <!--- End of Add content area.  ------------------>
 </div>
-
 
 ##
 <div style="clear:both;"></div>
-
 
 ----
 
