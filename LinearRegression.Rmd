@@ -62,6 +62,18 @@ Simple linear regression is a good analysis technique when the data consists of 
 
 The true regression model assumed by a regression analysis is given by
 
+
+<div style="float:right;font-size:.8em;background-color:lightgray;padding:5px;border-radius:4px;"><a style="color:darkgray;" href="javascript:showhide('simplelinearlatexrcode')">Math Code</a></div>
+
+
+<div id="simplelinearlatexrcode" style="display:none;">
+```{}
+$$
+  \underbrace{Y_i}_\text{Some Label} = \overbrace{\beta_0}^\text{y-int} + \overbrace{\beta_1}^\text{slope} \underbrace{X_i}_\text{Some Label} + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2)
+$$
+```
+</div>
+
 <center>
 <span class="tooltipr">
 $Y_i$
@@ -91,6 +103,18 @@ $\ \overbrace{\epsilon_i \sim N(0, \sigma^2)}^\text{error term normally distribu
 
 The estimated regression line obtained from a regression analysis, pronounced "y-hat", is written as 
 
+
+<div style="float:right;font-size:.8em;background-color:lightgray;padding:5px;border-radius:4px;"><a style="color:darkgray;" href="javascript:showhide('simplelinearlatexrcodeyhat')">Math Code</a></div>
+
+
+<div id="simplelinearlatexrcodeyhat" style="display:none;">
+```{}
+$$
+  \underbrace{\hat{Y}_i}_\text{Some Label} = \overbrace{b_0}^\text{est. y-int} + \overbrace{b_1}^\text{est. slope} \underbrace{X_i}_\text{Some Label}
+$$
+```
+</div>
+
 <center>
 <span class="tooltipr">
 $\hat{Y}_i$
@@ -113,6 +137,34 @@ Note: see the **Explanation** tab **The Mathematical Model** for details about t
 
 **Hypotheses**
 
+<div style="float:right;font-size:.8em;background-color:lightgray;padding:5px;border-radius:4px;"><a style="color:darkgray;" href="javascript:showhide('simplelinearhypecodeslope')">Math Code</a></div>
+
+
+<div id="simplelinearhypecodeslope" style="display:none;">
+
+```{}
+$$
+\left.\begin{array}{ll}
+H_0: \beta_1 = 0 \\  
+H_a: \beta_1 \neq 0
+\end{array}
+\right\} \ \text{Slope Hypotheses}
+$$
+
+$$
+\left.\begin{array}{ll}
+H_0: \beta_0 = 0 \\  
+H_a: \beta_0 \neq 0
+\end{array}
+\right\} \ \text{Intercept Hypotheses}
+$$
+```
+
+</div>
+
+<div style="clear:right;"></div>
+
+
 $$
 \left.\begin{array}{ll}
 H_0: \beta_1 = 0 \\  
@@ -120,6 +172,7 @@ H_a: \beta_1 \neq 0
 \end{array}
 \right\} \ \text{Slope Hypotheses}^{\quad \text{(most common)}}\quad\quad
 $$
+
 
 $$
 \left.\begin{array}{ll}
@@ -129,6 +182,7 @@ H_a: \beta_0 \neq 0
 \right\} \ \text{Intercept Hypotheses}^{\quad\text{(sometimes useful)}}
 $$
 
+<br/>
 
 If $\beta_1 = 0$, then the model reduces to $Y_i = \beta_0 + \epsilon_i$, which is a flat line. This means $X$ does not improve our understanding of the mean of $Y$ if the null hypothesis is true.
 
@@ -814,7 +868,7 @@ There are a number of ways to customize the appearance of the regression line:
 ggplot(
   <span class="tooltiprtext">Every ggplot2 graphic begins with the ggplot() command, which creates a framework, or coordinate system, that you can add layers to. Without adding any layers, ggplot() produces a blank graphic.</span>
 </span><span class="tooltipr">
-YourDataSet,&nbsp;
+cars,&nbsp;
   <span class="tooltiprtext">This is simply the name of your data set, like KidsFeet or starwars.</span>
 </span><span class="tooltipr">
 aes(
@@ -823,13 +877,13 @@ aes(
 x =&nbsp;
   <span class="tooltiprtext">"x =&nbsp;" declares which variable will become the x-axis of the graphic, your explanatory variable. Both "x=&nbsp;" and "y=&nbsp;" are optional phrasesin the ggplot2 syntax.</span>
 </span><span class="tooltipr">
-X,&nbsp;
+speed,&nbsp;
   <span class="tooltiprtext">This is the explanatory variable of the regression: the variable used to *explain* the mean of y. It is the name of the "numeric" column of YourDataSet.</span>
 </span><span class="tooltipr">
 y =&nbsp;
   <span class="tooltiprtext">"y=&nbsp;" declares which variable will become the y-axis of the grpahic.</span>
 </span><span class="tooltipr">
-Y
+dist
   <span class="tooltiprtext">This is the response variable of the regression: the variable that you are interested in predicting. It is the name of a "numeric" column of YourDataSet.</span>
 </span><span class="tooltipr">
 )
@@ -856,14 +910,14 @@ method =&nbsp;
 "lm",
   <span class="tooltiprtext">lm stands for linear model. Using method = "lm" tells geom_smooth() to fit a least-squares regression line onto the graphic. The regression line is modeled using y ~ x, which variables were declared in the initial ggplot() aesthetic.</span>
 </span><span class="tooltipr">
-&nbsp;size = some_number,
-  <span class="tooltiprtext">Use *size = some_number* to adjust the thickness of the line.</span>
+&nbsp;size = 2,
+  <span class="tooltiprtext">Use *size = 2* to adjust the thickness of the line to size 2.</span>
 </span><span class="tooltipr">
-&nbsp;color = "some_color",
-  <span class="tooltiprtext">Use *color = "some_color"* to change the color of the line.</span>
+&nbsp;color = "orange",
+  <span class="tooltiprtext">Use *color = "orange"* to change the color of the line to orange.</span>
 </span><br><span class="tooltipr">
-&nbsp;&nbsp;linetype = "some_linetype",
-  <span class="tooltiprtext">Use *linetype = "some_linetype"* to change the solid line to something else. Some linetype options include "dashed", "dotted", "longdash", "dotdash", etc.</span>
+&nbsp;&nbsp;linetype = "dashed",
+  <span class="tooltiprtext">Use *linetype = "dashed"* to change the solid line to a dashed line. Some linetype options include "dashed", "dotted", "longdash", "dotdash", etc.</span>
 </span><span class="tooltipr">
 &nbsp;se = FALSE
   <span class="tooltiprtext">se stands for "standard error". Specifying FALSE turns this feature off. When TRUE, a gray band showing the "confidence band" for the regression is shown. Unless you know how to interpret this confidence band, leave it turned off.</span>
@@ -878,12 +932,7 @@ method =&nbsp;
 </a>
 
 <div id="ggplotline" style="display:none;">
-```{}
-ggplot(cars, aes(x = speed, y = dist)) +
-  geom_point() +
-  geom_smooth(method = lm, size = 2, color = "orange",
-  linetype = "dahed", se = FALSE)
-```
+
 ```{r, echo=FALSE}
 ggplot(cars, aes(x = speed, y = dist)) +
   geom_point() +
@@ -899,7 +948,7 @@ In addition to customizing the regression line, you can customize the points, ad
 ggplot(
   <span class="tooltiprtext">Every ggplot2 graphic begins with the ggplot() command, which creates a framework, or coordinate system, that you can add layers to. Without adding any layers, ggplot() produces a blank graphic.</span>
 </span><span class="tooltipr">
-YourDataSet,&nbsp;
+cars,&nbsp;
   <span class="tooltiprtext">This is simply the name of your data set, like KidsFeet or starwars.</span>
 </span><span class="tooltipr">
 aes(
@@ -908,13 +957,13 @@ aes(
 x =&nbsp;
   <span class="tooltiprtext">"x =&nbsp;" declares which variable will become the x-axis of the graphic, your explanatory variable. Both "x=&nbsp;" and "y=&nbsp;" are optional phrasesin the ggplot2 syntax.</span>
 </span><span class="tooltipr">
-X,&nbsp;
+speed,&nbsp;
   <span class="tooltiprtext">This is the explanatory variable of the regression: the variable used to *explain* the mean of y. It is the name of the "numeric" column of YourDataSet.</span>
 </span><span class="tooltipr">
 y =&nbsp;
   <span class="tooltiprtext">"y=&nbsp;" declares which variable will become the y-axis of the grpahic.</span>
 </span><span class="tooltipr">
-Y
+dist
   <span class="tooltiprtext">This is the response variable of the regression: the variable that you are interested in predicting. It is the name of a "numeric" column of YourDataSet.</span>
 </span><span class="tooltipr">
 )
@@ -929,14 +978,14 @@ Y
 &nbsp;&nbsp;geom_point(
   <span class="tooltiprtext">geom_point() allows you to add a layer of points, a scatterplot, over the ggplot() framework. The x and y coordinates are received from the previously specified x and y variables declared in the ggplot() aesthetic.</span>
 </span><span class="tooltipr">
-size = some_number,
-  <span class="tooltiprtext">Use *size = some_number* to change the size of the points.</span>
+size = 1.5,
+  <span class="tooltiprtext">Use *size = 1.5* to change the size of the points.</span>
 </span><span class="tooltipr">
-&nbsp;color = "some_color" 
-  <span class="tooltiprtext">Use *color = "some_color"* to change the color of the points.</span>
+&nbsp;color = "skyblue" 
+  <span class="tooltiprtext">Use *color = "skyblue"* to change the color of the points to Brother Saunders' favorite color.</span>
 </span><span class="tooltipr">
-&nbsp;alpha = some_number
-  <span class="tooltiprtext">Use *alpha = some_number* to change the transparency of the points.</span>
+&nbsp;alpha = 0.5
+  <span class="tooltiprtext">Use *alpha = 0.5* to change the transparency of the points to 0.5.</span>
 </span><span class="tooltipr">
 )
   <span class="tooltiprtext">Closing parenthesis of geom_point() function. </span>
@@ -953,11 +1002,11 @@ method =&nbsp;
 "lm",
   <span class="tooltiprtext">lm stands for linear model. Using method = "lm" tells geom_smooth() to fit a least-squares regression line onto the graphic. The regression line is modeled using y ~ x, which variables were declared in the initial ggplot() aesthetic.</span>
 </span><span class="tooltipr">
-&nbsp;color = "some_color",
-  <span class="tooltiprtext">Use *color = "some_color"* to change the color of the line.</span>
+&nbsp;color = "navy",
+  <span class="tooltiprtext">Use *color = "navy"* to change the color of the line to navy blue.</span>
 </span><span class="tooltipr">
-&nbsp;size = some_number,
-  <span class="tooltiprtext">Use *size = some_number* to adjust the thickness of the line.</span>
+&nbsp;size = 1.5,
+  <span class="tooltiprtext">Use *size = 1.5* to adjust the thickness of the line to 1.5.</span>
 </span><span class="tooltipr">
 &nbsp;se = FALSE
   <span class="tooltiprtext">se stands for "standard error". Specifying FALSE turns this feature off. When TRUE, a gray band showing the "confidence band" for the regression is shown. Unless you know how to interpret this confidence band, leave it turned off.</span>
@@ -967,15 +1016,27 @@ method =&nbsp;
 </span><span class="tooltipr">
 &nbsp;+
   <span class="tooltiprtext">The + allows you to add more layers to the framework provided by ggplot().</span>
-</span><span class="tooltipr">
+</span><br><span class="tooltipr">
 &nbsp;&nbsp;geom_hline(
   <span class="tooltiprtext">Use geom_hline() to add a horizontal line at a specified y-intercept. You can also use geom_vline(xintercept = some_number) to add a vertical line to the graph.</span>
 </span><span class="tooltipr">
 yintercept =
   <span class="tooltiprtext">Use "yintercept =" to tell geom_hline() that you are going to declare a y intercept for the horizontal line.</span>
 </span><span class="tooltipr">
-&nbsp;some_number
-  <span class="tooltiprtext">*some_number* is simply the number for the y-intercept. </span>
+&nbsp;75
+  <span class="tooltiprtext">75 is the value of the y-intercept.</span>
+</span><span class="tooltipr">
+, color = "firebrick"
+  <span class="tooltiprtext">Use *color = "firebrick"* to change the color of the horizontal line to firebrick red.</span>
+</span><span class="tooltipr">
+, size = 1,
+  <span class="tooltiprtext">Use *size = 1* to adjust the thickness of the horizontal line to size 1.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;linetype = "longdash"
+  <span class="tooltiprtext">Use *linetype = "longdash"* to change the solid line to a dashed line with longer dashes. Some linetype options include "dashed", "dotted", "longdash", "dotdash", etc.</span>
+</span><span class="tooltipr">
+, alpha = 0.5
+  <span class="tooltiprtext">Use *alpha = 0.5* to change the transparency of the horizontal line to 0.5.</span>
 </span><span class="tooltipr">
 )
   <span class="tooltiprtext">Closing parenthesis of geom_hline function.</span>
@@ -989,26 +1050,35 @@ yintercept =
 x =
   <span class="tooltiprtext">"x =" tells geom_segment() that you are going to declare the x-coordinate for the starting point of the line segment.</span>
 </span><span class="tooltipr">
-&nbsp;some_x,
-  <span class="tooltiprtext">*some_x* is a number on the x-axis of your graph. It is the x-coordinate of the starting point of the line segment.</span>
+&nbsp;14,
+  <span class="tooltiprtext">14 is a number on the x-axis of your graph. It is the x-coordinate of the starting point of the line segment.</span>
 </span><span class="tooltipr">
 &nbsp;y =  
 <span class="tooltiprtext">"y =" tells geom_segment() that you are going to declare the y-coordinate for the starting point of the line segment.</span>
 </span><span class="tooltipr">
-&nbsp;some_y, 
-  <span class="tooltiprtext">*some_y* is a number on the y-axis of your graph. It is the y-coordinate of the starting point of the line segment.</span>
+&nbsp;75, 
+  <span class="tooltiprtext">75 is a number on the y-axis of your graph. It is the y-coordinate of the starting point of the line segment.</span>
 </span><span class="tooltipr">
 &nbsp;xend =
   <span class="tooltiprtext">"xend =" tells geom_segment() that you are going to declare the x-coordinate for the end point of the line segment.</span>
 </span><span class="tooltipr">
-&nbsp;some_x,
-  <span class="tooltiprtext">*some_x* is a number on the x-axis of your graph. It is the x-coordinate of the end point of the line segment.</span>
+&nbsp;14,
+  <span class="tooltiprtext">14 is a number on the x-axis of your graph. It is the x-coordinate of the end point of the line segment.</span>
 </span><span class="tooltipr">
 &nbsp;yend =
   <span class="tooltiprtext">"yend =" tells geom_segment() that you are going to declare the y-coordinate for the end point of the line segment.</span>
 </span><span class="tooltipr">
-&nbsp;some_y
-  <span class="tooltiprtext">*some_y* is a number on the y-axis of your graph. It is the y-coordinate of the end point of the line segment.</span>
+&nbsp;38,
+  <span class="tooltiprtext">38 is a number on the y-axis of your graph. It is the y-coordinate of the end point of the line segment.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size = 1
+  <span class="tooltiprtext">Use *size = 1* to adjust the thickness of the line segment.</span>
+</span><span class="tooltipr">
+, color = "lightgray"
+  <span class="tooltiprtext">Use *color = "lightgray"* to change the color of the line segment to light gray.</span>
+</span><span class="tooltipr">
+, linetype = "longdash"
+  <span class="tooltiprtext">Use *linetype = "longdash* to change the solid line segment to a dashed one. Some linetype options include "dashed", "dotted", "longdash", "dotdash", etc.</span>
 </span><span class="tooltipr">
 )
   <span class="tooltiprtext">Closing parenthesis for geom_segment() function.</span>
@@ -1022,14 +1092,20 @@ x =
 x =
   <span class="tooltiprtext">"x =" tells geom_point() that you are going to declare the x-coordinate for the point.</span>
 </span><span class="tooltipr">
-&nbsp;some_x,
-  <span class="tooltiprtext">*some_x* is a number on the x-axis of your graph. It is the x-coordinate of the point.</span>
+&nbsp;14,
+  <span class="tooltiprtext">14 is a number on the x-axis of your graph. It is the x-coordinate of the point.</span>
 </span><span class="tooltipr">
 &nbsp;y =
   <span class="tooltiprtext">"y =" tells geom_point() that you are going to declare the y-coordinate for the point.</span>
 </span><span class="tooltipr">
-&nbsp;some_y
-  <span class="tooltiprtext">*some_y* is a number on the y-axis of your graph. It is the y-coordinate of the point.</span>
+&nbsp;75
+  <span class="tooltiprtext">75 is a number on the y-axis of your graph. It is the y-coordinate of the point.</span>
+</span><span class="tooltipr">
+, size = 3
+  <span class="tooltiprtext">Use *size = 3* to make the point stand out more.</span>
+</span><span class="tooltipr">
+, color = "firebrick"
+  <span class="tooltiprtext">Use *color = "firebrick"* to change the color of the point to firebrick red.</span>
 </span><span class="tooltipr">
 )
   <span class="tooltiprtext">Closing parenthesis of the geom_point() function.</span>
@@ -1043,23 +1119,35 @@ x =
 x = 
   <span class="tooltiprtext">"x =" tells geom_text() that you are going to declare the x-coordinate for the text.</span>
 </span><span class="tooltipr">
-&nbsp;some_x, 
-<span class="tooltiprtext">*some_x* is a number on the x-axis of your graph. It is the x-coordinate of the text.</span>
+&nbsp;14, 
+<span class="tooltiprtext">14 is a number on the x-axis of your graph. It is the x-coordinate of the text.</span>
 </span><span class="tooltipr">
  &nbsp;y =
   <span class="tooltiprtext">"y =" tells geom_text() that you are going to declare the y-coordinate for the text.</span>
 </span><span class="tooltipr">
-&nbsp;some_y,
-  <span class="tooltiprtext">*some_y* is a number on the y-axis of your graph. It is the y-coordinate of the text.</span>
+&nbsp;84,
+  <span class="tooltiprtext">84 is a number on the y-axis of your graph. It is the y-coordinate of the text.</span>
 </span><span class="tooltipr">
 &nbsp;label =
   <span class="tooltiprtext">"label =" tells geom_text() that you are going to give it the label.</span>
 </span><span class="tooltipr">
-&nbsp;"my_awesome_label"
-  <span class="tooltiprtext">*my_awesome_label* is whatever you want your label to be, in quotes. For example, label = "Bro Saunders is a stats master".</span>
+&nbsp;"My Point (14, 75)",
+  <span class="tooltiprtext">*"My Point (14, 75)"* is the text that will appear on the graph.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color = "navy"
+  <span class="tooltiprtext">Use *color = "navy"* to change the color of the text to navy blue.</span>
+</span><span class="tooltipr">
+, size = 3
+  <span class="tooltiprtext">Use *size = 3* to change the size of the text.</span>
 </span><span class="tooltipr">
 )
   <span class="tooltiprtext">Closing parenthesis of the geom_text() function.</span>
+</span><span class="tooltipr">
+&nbsp;+
+  <span class="tooltiprtext">The + allows you to add more layers to the framework provided by ggplot().</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;theme_minimal()
+  <span class="tooltiprtext">Add a minimalistic theme to the graph. There are many other themes that you can try out.</span>
 </span><span class="tooltipr" style="float:right;font-size:.8em;">
 &nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
@@ -1068,19 +1156,7 @@ x =
 </a>
 
 <div id="ggplotpoints" style="display:none;">
-```{}
-ggplot(cars, aes(x = speed, y = dist)) +
-  geom_point(size = 1.5, color = "skyblue", alpha = 0.5) +
-  geom_smooth(method = lm, color = "navy", size = 1.5, se = FALSE) +
-  geom_hline(yintercept = 75, color = "firebrick", size = 1,
-             linetype = "longdash", alpha = 0.5) +
-  geom_segment(x = 14, y = 75, xend = 14, yend = 38,
-               size = 1, color = "lightgray", linetype = "longdash") +
-  geom_point(x = 14, y = 75, size = 3, color = "firebrick") +
-  geom_text(x = 14, y = 84, label = "My Point (14, 75)", 
-            color = "navy", size = 3) +
-  theme_minimal()
-```
+
 ```{r, echo=FALSE}
 ggplot(cars, aes(x = speed, y = dist)) +
   geom_point(size = 1.5, color = "skyblue", alpha = 0.5) +
@@ -1100,7 +1176,6 @@ ggplot(cars, aes(x = speed, y = dist)) +
 </div>
 
 <br/>
-
 
 
 **Accessing Parts of the Regression**
@@ -1305,6 +1380,45 @@ In this case, cars with a speed of 12 mph are predicted to have an average stopp
 
 </div>
 
+<br/>
+
+**Finding Confidence Intervals for Model Parameters**
+
+<a href="javascript:showhide('confint')">
+<div class="hoverchunk"><span class="tooltipr">
+confint(
+  <span class="tooltiprtext">The R function confint(...) allows you to use an lm(...) object to compute confidence intervals for one or more parameters (like $\beta_0$ or $\beta_1$) in your model.</span>
+</span><span class="tooltipr">
+mylm,
+  <span class="tooltiprtext">This is the name of a previously performed lm(...) that was saved into the name `mylm <- lm(...)`.</span>
+</span><span class="tooltipr">
+&nbsp;level = 
+  <span class="tooltiprtext">"level =" tells the confint(...) function that you are going to declare at what level of confidence you want the interval. The default is "level = 0.95." If you want to find 95% confidence intervals for your parameters, then just run `confint(mylm)`.</span>
+</span><span class="tooltipr">
+&nbsp;someConfidenceLevel
+  <span class="tooltiprtext">someConfidenceLevel is simply a confidence level you choose when you want something other than a 95% confidence interval. Some examples of appropriate levels include 0.90 and 0.99.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">Closing parenthesis for confint(..) function.</span>
+</span>
+</div>
+</a>
+
+<div id="confint" style="display:none;">
+
+`mylm <- lm(dist ~ speed, data = cars)`
+
+`confint(mylm, level = 0.90)`
+
+```{r, echo=FALSE}
+mylm <- lm(dist ~ speed, data = cars)
+confint(mylm, level = 0.90)
+```
+
+The output above shows the lower and upper bounds of 90% confidence intervals for the parameters $\beta_0$ and $\beta_1$. The 90% confidence interval starts at the 5th percentile and ends at the 95th, hence the 5% and 95% as the column names. In this example, the confidence interval for the y-intercept does not make sense because you cannot have negative distance. However, you can be 90% confident that the slope lies between 3.235501 and 4.629317.
+
+</div>
+
 ----
 
 </div>
@@ -1343,6 +1457,7 @@ Expand each element below to learn more.
 | <span class="tooltipr">$R^2$<span class="tooltiprtext"> `$R^2$`</span> </span><span class="tooltipr"> | "R-squared" | Proportion of variation in Y explained by the regression | <span class="tooltipr">$R^2 = \frac{SSR}{SSTO} = 1 - \frac{SSE}{SSTO}$<span class="tooltiprtext">`$R^2 = \frac{SSR}{SSTO} = 1` `- \frac{SSE}{SSTO}$`</span> | `SSR/SSTO` |
 | <span class="tooltipr">$\hat{Y}_h$<span class="tooltiprtext"> `$\hat{Y}_h$`</span> </span><span class="tooltipr"> | "why-hat-aitch" | Estimated mean y-value for some x-value called $X_h$ | <span class="tooltipr">$\hat{Y}_h = b_0 + b_1 X_h$<span class="tooltiprtext">`$\hat{Y}_h = b_0 + b_1 X_h$`</span> | `predict(lmObject, data.frame(XvarName=#))` |
 | <span class="tooltipr">$X_h$<span class="tooltiprtext"> `$X_h$`</span> </span><span class="tooltipr"> | "ex-aitch" | Some x-value, not necessarily one of the $X_i$ values used in the regression | <span class="tooltipr">$X_h =$ some number<span class="tooltiprtext">`$X_h = $`</span> | `Xh = #` |
+| Confidence Interval | "confidence interval" | Estimated bounds at a certain level of confidence for a parameter | $b_0 \pm t^* \cdot s_{b_0}$ or $b_1 \pm t^* \cdot s_{b_1}$ | `confint(mylm, level = someConfidenceLevel)` |
 
 
 | Parameter | Estimate |
@@ -3858,6 +3973,10 @@ ggplot(CO2, aes(y=uptake, x=conc)) +
 
 ```
 
+</td>
+</tr>
+</table>
+
 It should be stated, that the cubic function is not the best fit for this data. However, it is a lot better than just a simple line, or a quadratic model, as shown below.
 
 ```{r}
@@ -3878,9 +3997,7 @@ curve(b[1] + b[2]*x, col="orange", lwd=2, add=TRUE)
 
 ```
 
-</td>
-</tr>
-</table>
+
 
 
 </div>
@@ -5015,201 +5132,248 @@ abline((b[1]+b[3]), (b[2]+b[4]), col = palette()[2], lty=2, lwd=2)
 <a href="javascript:showhide('ggplotMultipleRegression')">
 <div class="hoverchunk"><span class="tooltipr">
 ggplot(
-  <span class="tooltiprtext">EXPLANATION.</span>
+  <span class="tooltiprtext">ggplot() provides a framework which you add layers to. Layers usually take the form of different *geoms*, like geom_point() or geom_boxplot(). Running ggplot() without any layers produces simply a blank graph.</span>
 </span><span class="tooltipr">
-data,&nbsp;
-  <span class="tooltiprtext">EXPLANATION.</span>
+data =&nbsp;
+  <span class="tooltiprtext">"Data = " tells ggplot() that you are going to declare the data set that you will use in the graph.</span>
 </span><span class="tooltipr">
-aes(
-  <span class="tooltiprtext">EXPLANATION.</span>
+YourDataSet, 
+  <span class="tooltiprtext">*YourDataSet* is literally the name of the data set that you want to use to make the graph, like mtcars or KidsFeet.</span>
 </span><span class="tooltipr">
-$X_1$,
-  <span class="tooltiprtext">EXPLANATION.</span>
+&nbsp;aes(
+  <span class="tooltiprtext">aes stands for aesthetic. Inside of aes(), you place elements that you want to map to the framework, like x and y variables.</span>
 </span><span class="tooltipr">
-Y))
-  <span class="tooltiprtext">EXPLANATION.</span>
+x =&nbsp;
+  <span class="tooltiprtext">"x = " declares which variable will become the x-axis of the graphic, your explanatory variable. Both "x = " and "y = " are optional phrases in the ggplot2 syntax.</span>
+</span><span class="tooltipr">
+$X_{1}$,
+  <span class="tooltiprtext">$X_{1}$ is an explanatory variable of the regression, and is typically quantitative or numeric. It is the name of a "numeric" column of YourDataSet.</span>
+</span><span class="tooltipr">
+&nbsp;y =&nbsp;
+  <span class="tooltiprtext">"y = " declares which variable will become the y-axis of the graphic.</span>
+</span><span class="tooltipr">
+$Y$,
+  <span class="tooltiprtext">$Y$ is the response variable of the regression: the variable that you are interested in predicting. It is the name of a "numeric" column of YourDataSet.</span>
+</span><span class="tooltipr"> 
+&nbsp;color =
+  <span class="tooltiprtext">"color = " tells ggplot() that you are about to declare the way in which you will color the elements in the graph. Notice that, in this case, the color argument goes inside of the aesthetic. This is because you are coloring by a variable.</span>
+</span><span class="tooltipr">
+&nbsp;factor(
+  <span class="tooltiprtext">Using factor() tells R to treat qualitative variables as factors, where each unique value or category of the variable is a level.</span>
+</span><span class="tooltipr">
+$X_{2}$
+  <span class="tooltiprtext">$X_{2}$ is a qualitative explanatory variable of the regression. It is the name of a column of YourDataSet. Casting $X_{2}$ as a factor() </span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">Closing parenthesis of factor().</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">Closing parenthesis of aes().</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">Closing parenthesis of ggplot().</span>
 </span><span class="tooltipr">
 &nbsp;+
-  <span class="tooltiprtext">EXPLANATION.</span>
+  <span class="tooltiprtext">The + allows you to add more layers to the framework provided by ggplot(). In this case, you use + to add a geom_point() layer on the next line.</span>
 </span><br/><span class="tooltipr">
-&nbsp; geom_point(
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-aes(
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-$X_1$,
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-Y,
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-color =&nbsp;
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-factor(
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-$X_2$)))
-  <span class="tooltiprtext">EXPLANATION.</span>
+&nbsp; geom_point()
+  <span class="tooltiprtext">geom_point() allows you to add a layer of points, a scatterplot, over the ggplot() framework. The x and y coordinates are received from the previously specified x and y variables declared in the ggplot() aesthetic.</span>
 </span><span class="tooltipr">
 &nbsp;+
-  <span class="tooltiprtext">EXPLANATION.</span>
+  <span class="tooltiprtext">Here the + is used to add yet another layer to ggplot().</span>
 </span><br/><span class="tooltipr">
 &nbsp; geom_smooth(
-  <span class="tooltiprtext">EXPLANATION.</span>
+  <span class="tooltiprtext">geom_smooth() is a smoothing function that you can use to add lines or curves to ggplot(). In this case, you will use it to add the least-squares regression line to the scatterplot.</span>
 </span><span class="tooltipr">
-method =&nbsp;
-  <span class="tooltiprtext">EXPLANATION.</span>
+method =
+  <span class="tooltiprtext">Use "method = " to tell geom_smooth() that you are going to declare a specific smoothing function, or method, to alter the line(s) or curve(s).</span>
 </span><span class="tooltipr">
-lm,&nbsp;
-  <span class="tooltiprtext">EXPLANATION.</span>
+&nbsp;"lm,"
+  <span class="tooltiprtext">lm stands for linear model. Using method = "lm" tells geom_smooth() to fit a least-squares regression line (or multiple lines) to the data. In this case, the regression lines are modeled using $Y$ ~ $X_1$ + $X_2$, which variables were declared in the initial ggplot() aesthetic. There are several other methods that could be used here.</span>
 </span><span class="tooltipr">
-aes(
-  <span class="tooltiprtext">EXPLANATION.</span>
+&nbsp;se = FALSE
+  <span class="tooltiprtext">se stands for "standard error." Specifying FALSE turns this feature off. When TRUE, a gray band showing the "confidence band" for the regression is shown. Unless you know how to interpret this confidence band, leave it turned off.</span>
 </span><span class="tooltipr">
-color =&nbsp;
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-factor(
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-$X_2$)),
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-se =&nbsp;
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-FALSE,
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-fullrange =&nbsp;
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-TRUE)
-  <span class="tooltiprtext">EXPLANATION.</span>
+)
+  <span class="tooltiprtext">Closing parenthesis for geom_smooth().</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
 </a>
 
-Customize the look:
-
 <div id="ggplotMultipleRegression" style="display:none;">
+```{}
+ggplot(data = mtcars, aes(x = hp, y = mpg, color = factor(am))) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
 ```{r, echo=FALSE}
-ggplot(mtcars, aes(hp, mpg)) +
-  geom_point(aes(hp, mpg, color = factor(am))) +
-  geom_smooth(method = lm, aes(color = factor(am)), se = FALSE, fullrange = TRUE)
+ggplot(data = mtcars, aes(x = hp, y = mpg, color = factor(am))) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
 ```
 </div>
+
+Customize the look:
 
 <a href="javascript:showhide('ggplotMultipleCustom')">
 <div class="hoverchunk"><span class="tooltipr">
 ggplot(
-  <span class="tooltiprtext">EXPLANATION.</span>
+  <span class="tooltiprtext">ggplot() provides a framework which you add layers to. Layers usually take the form of different *geoms*, like geom_point() or geom_boxplot(). Running ggplot() without any layers produces simply a blank graph.</span>
 </span><span class="tooltipr">
-data,
-  <span class="tooltiprtext">EXPLANATION.</span>
+data =&nbsp;
+  <span class="tooltiprtext">"Data = " tells ggplot() that you are going to declare the data set that you will use in the graph.</span>
 </span><span class="tooltipr">
-aes(
-  <span class="tooltiprtext">EXPLANATION.</span>
+YourDataSet, 
+  <span class="tooltiprtext">*YourDataSet* is literally the name of the data set that you want to use to make the graph, like mtcars or KidsFeet.</span>
 </span><span class="tooltipr">
-X,
-  <span class="tooltiprtext">EXPLANATION.</span>
+&nbsp;aes(
+  <span class="tooltiprtext">aes stands for aesthetic. Inside of aes(), you place elements that you want to map to the framework, like x and y variables.</span>
 </span><span class="tooltipr">
-Y
-  <span class="tooltiprtext">EXPLANATION.</span>
+x =&nbsp;
+  <span class="tooltiprtext">"x = " declares which variable will become the x-axis of the graphic, your explanatory variable. Both "x = " and "y = " are optional phrases in the ggplot2 syntax.</span>
 </span><span class="tooltipr">
-YourDataSet
-  <span class="tooltiprtext">EXPLANATION.</span>
+$X_{1}$,
+  <span class="tooltiprtext">$X_{1}$ is an explanatory variable of the regression, and is typically quantitative or numeric. It is the name of a "numeric" column of YourDataSet.</span>
+</span><span class="tooltipr">
+&nbsp;y =&nbsp;
+  <span class="tooltiprtext">"y = " declares which variable will become the y-axis of the graphic.</span>
+</span><span class="tooltipr">
+$Y$,
+  <span class="tooltiprtext">$Y$ is the response variable of the regression: the variable that you are interested in predicting. It is the name of a "numeric" column of YourDataSet.</span>
+</span><span class="tooltipr"> 
+&nbsp;color =
+  <span class="tooltiprtext">"color = " tells ggplot() that you are about to declare the way in which you will color the elements in the graph. Notice that, in this case, the color argument goes inside of the aesthetic. This is because you are coloring by a variable.</span>
+</span><span class="tooltipr">
+&nbsp;factor(
+  <span class="tooltiprtext">Using factor() tells R to treat qualitative variables as factors, where each unique value or category of the variable is a level.</span>
+</span><span class="tooltipr">
+$X_{2}$
+  <span class="tooltiprtext">$X_{2}$ is a qualitative explanatory variable of the regression. It is the name of a column of YourDataSet. Casting $X_{2}$ as a factor() </span>
 </span><span class="tooltipr">
 )
-  <span class="tooltiprtext">Closing parenthesis for aes(...) function.</span>
+  <span class="tooltiprtext">Closing parenthesis of factor().</span>
 </span><span class="tooltipr">
 )
-  <span class="tooltiprtext">Closing parenthesis for ggplot(...) function.</span>
+  <span class="tooltiprtext">Closing parenthesis of aes().</span>
 </span><span class="tooltipr">
-+
-  <span class="tooltiprtext">EXPLANATION.</span>
+)
+  <span class="tooltiprtext">Closing parenthesis of ggplot().</span>
+</span><span class="tooltipr">
+&nbsp;+
+  <span class="tooltiprtext">The + allows you to add more layers to the framework provided by ggplot(). In this case, you use + to add a geom_point() layer on the next line.</span>
 </span><br/><span class="tooltipr">
-&nbsp; geom_point(
-  <span class="tooltiprtext">EXPLANATION.</span>
+&nbsp; geom_point()
+  <span class="tooltiprtext">geom_point() allows you to add a layer of points, a scatterplot, over the ggplot() framework. The x and y coordinates are received from the previously specified x and y variables declared in the ggplot() aesthetic.</span>
 </span><span class="tooltipr">
-aes(
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-$X_1$,
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-Y
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-color = factor($X_2$)
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-),
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-size = 2,
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-shape = 1
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-)
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-+
-  <span class="tooltiprtext">EXPLANATION.</span>
+&nbsp;+
+  <span class="tooltiprtext">Here the + is used to add yet another layer to ggplot().</span>
 </span><br/><span class="tooltipr">
 &nbsp; geom_smooth(
-  <span class="tooltiprtext">EXPLANATION.</span>
+  <span class="tooltiprtext">geom_smooth() is a smoothing function that you can use to add lines or curves to ggplot(). In this case, you will use it to add the least-squares regression line to the scatterplot.</span>
 </span><span class="tooltipr">
-method=
-  <span class="tooltiprtext">EXPLANATION.</span>
+method =
+  <span class="tooltiprtext">Use "method = " to tell geom_smooth() that you are going to declare a specific smoothing function, or method, to alter the line(s) or curve(s).</span>
 </span><span class="tooltipr">
-lm,
-  <span class="tooltiprtext">EXPLANATION.</span>
+&nbsp;"lm,"
+  <span class="tooltiprtext">lm stands for linear model. Using method = "lm" tells geom_smooth() to fit a least-squares regression line (or multiple lines) to the data. In this case, the regression lines are modeled using $Y$ ~ $X_1$ + $X_2$, which variables were declared in the initial ggplot() aesthetic. There are several other methods that could be used here.</span>
 </span><span class="tooltipr">
-se =
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-FALSE,
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-linetype = 1,
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><span class="tooltipr">
-aes(color = factor($X_2$))
-  <span class="tooltiprtext">EXPLANATION.</span>
+&nbsp;se = FALSE
+  <span class="tooltiprtext">se stands for "standard error." Specifying FALSE turns this feature off. When TRUE, a gray band showing the "confidence band" for the regression is shown. Unless you know how to interpret this confidence band, leave it turned off.</span>
 </span><span class="tooltipr">
 )
-  <span class="tooltiprtext">EXPLANATION.</span>
+  <span class="tooltiprtext">Closing parenthesis for geom_smooth().</span>
 </span><span class="tooltipr">
-+
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><br/><span class="tooltipr">
-&nbsp; theme_bw()
-  <span class="tooltiprtext">EXPLANATION.</span>
+&nbsp;+
+  <span class="tooltiprtext">Here the + is used to add yet another layer to ggplot().</span>
+</span><br><span class="tooltipr">
+&nbsp; scale_color_manual(
+  <span class="tooltiprtext">This function allows you to override the default ggplot colors and specify your own colors.</span>
 </span><span class="tooltipr">
-+
-  <span class="tooltiprtext">EXPLANATION.</span>
-</span><br/><span class="tooltipr">
+values = 
+  <span class="tooltiprtext">This tells scale_color_manual() that you are about to declare the values for the custom colors.</span>
+</span><span class="tooltipr">
+&nbsp;c(
+  <span class="tooltiprtext">This is the combine, or "backpack" function, that combines values into a vector or list. Put the necessary number of color values in c().</span>
+</span><span class="tooltipr">
+"color1", "color2"
+  <span class="tooltiprtext">These are literally the colors that you want to show up in your plot, like "skyblue" or "orange."</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">Closing parenthesis of the c() function.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">Closing parenthesis of the scale_color_manual() function.</span>
+</span><span class="tooltipr">
+&nbsp;+
+  <span class="tooltiprtext">Here the + is used to add yet another layer to ggplot().</span>
+</span><br><span class="tooltipr">
 &nbsp; labs(
-  <span class="tooltiprtext">EXPLANATION.</span>
+  <span class="tooltiprtext">labs stands for labels. Modify the labels on your graph with the labs() function.</span>
 </span><span class="tooltipr">
-color = "am")
-  <span class="tooltiprtext">EXPLANATION.</span>
+title = "YourTitle",
+  <span class="tooltiprtext">Declare the title with *title =* and then write the title in quotes.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;subtitle = "YourSubtitle",
+  <span class="tooltiprtext">Declare a subtitle with *subtitle =* and then write the subtitle in quotes.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;caption = "Caption",
+  <span class="tooltiprtext">Declare a caption with *caption =* and then write the caption in quotes. By default, captions appear at the bottom right of the graphic.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;x = "X",
+  <span class="tooltiprtext">Use *x =* to declare the label for the x-axis of your graph. "X" is the actual label that you want to appear on the x-axis.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;y = "Y",
+  <span class="tooltiprtext">Use *y =* to declare the label for the y-axis of your graph. "Y" is the actual label that you want to appear on the y-axis.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;color = "Legend Title"
+  <span class="tooltiprtext">Use *color =* to tell labs() that you are going modify the color legend title.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltiprtext">Closing parenthesis for labs().</span>
+</span><span class="tooltipr">
+&nbsp;+
+  <span class="tooltiprtext">Here the + is used to add yet another layer to ggplot().</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;theme_bw()
+  <span class="tooltiprtext">Add a theme to ggplot().</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
 </span>
 </div>
 </a>
 
 <div id="ggplotMultipleCustom" style="display:none;">
+```{}
+ggplot(data = mtcars, aes(x = hp, y = mpg, color = factor(am))) +
+  geom_point(size = 2) +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_color_manual(values = c("skyblue", "orange")) +
+  labs(title = "Title",
+       subtitle = "Subtitle",
+       caption = "Caption",
+       x = "X",
+       y = "Y",
+       color = "Legend Title"
+       ) +
+  theme_bw()
+```
 ```{r, echo=FALSE}
-ggplot(mtcars, aes(hp, mpg)) +
-  geom_point(aes(hp, mpg, color = factor(am)), size = 2, shape = 1) +
-  geom_smooth(method = lm, se = FALSE, linetype = 1, aes(color = factor(am))) +
-  theme_bw() +
-  labs(color = "am")
+ggplot(data = mtcars, aes(x = hp, y = mpg, color = factor(am))) +
+  geom_point(size = 2) +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_color_manual(values = c("skyblue", "orange")) +
+  labs(title = "Title",
+       subtitle = "Subtitle",
+       caption = "Caption",
+       x = "X",
+       y = "Y",
+       color = "Legend Title"
+       ) +
+  theme_bw()
 ```
 </div>
 
@@ -5386,6 +5550,69 @@ $$
   R^2_{adj} = 1 - \frac{(n-1)}{(n-p)}\frac{\text{SSE}}{\text{SSTO}}
 $$
 The interpretation of $R^2_{adj}$ is essentially the same as the interpretation of $R^2$, with the understanding that a correction has been made for the number of parameters included in the model, $(n-p)$.
+
+Consider the models below. The value of $R^2$ always gets higher as the model adds more parameters. However, the value of $R^2_{adj}$ sometimes goes down, emphasizing the idea that the model is becoming more complex than needed to capture the pattern in Y. 
+
+```{r, fig.height=2.5}
+par(mfrow=c(1,5), mai=c(0,.1,.4,.1))
+plot(dist ~ speed, data=cars, pch=16, col="skyblue", yaxt='n', xaxt='n', cex=2, xlim=c(0,27), main="Simple Linear")
+lm1 <- lm(dist ~ speed, data=cars)
+b <- coef(lm1)
+curve(b[1] + b[2]*x, add=TRUE, col="orange", lwd=2)
+text(1,110,bquote(R^2 ==  .(round(summary(lm1)$r.squared,3))),pos=4)
+text(1,100,bquote(R[adj]^2 == .(round(summary(lm1)$adj.r.squared,3))),pos=4)
+
+
+plot(dist ~ speed, data=cars, pch=16, col="skyblue", yaxt='n', xaxt='n', cex=2, xlim=c(0,27), main="Quadratic")
+lm1 <- lm(dist ~ speed + I(speed^2), data=cars)
+b <- coef(lm1)
+curve(b[1] + b[2]*x + b[3]*x^2, add=TRUE, col="orange", lwd=2)
+text(1,110,bquote(R^2 ==  .(round(summary(lm1)$r.squared,3))),pos=4)
+text(1,100,bquote(R[adj]^2 == .(round(summary(lm1)$adj.r.squared,3))),pos=4)
+
+
+plot(dist ~ speed, data=cars, pch=16, col="skyblue", yaxt='n', xaxt='n', cex=2, xlim=c(0,27), main="Cubic")
+lm1 <- lm(dist ~ speed + I(speed^2) + I(speed^3), data=cars)
+b <- coef(lm1)
+curve(b[1] + b[2]*x + b[3]*x^2 + b[4]*x^3, add=TRUE, col="orange", lwd=2)
+text(1,110,bquote(R^2 ==  .(round(summary(lm1)$r.squared,3))),pos=4)
+text(1,100,bquote(R[adj]^2 == .(round(summary(lm1)$adj.r.squared,3))),pos=4)
+
+
+plot(dist ~ speed, data=cars, pch=16, col="skyblue", yaxt='n', xaxt='n', cex=2, xlim=c(0,27), main="Quartic")
+lm1 <- lm(dist ~ speed + I(speed^2) + I(speed^3) + I(speed^4), data=cars)
+b <- coef(lm1)
+curve(b[1] + b[2]*x + b[3]*x^2 + b[4]*x^3 + b[5]*x^4, add=TRUE, col="orange", lwd=2)
+text(1,110,bquote(R^2 ==  .(round(summary(lm1)$r.squared,3))),pos=4)
+text(1,100,bquote(R[adj]^2 == .(round(summary(lm1)$adj.r.squared,3))),pos=4)
+
+
+plot(dist ~ speed, data=cars, pch=16, col="skyblue", yaxt='n', xaxt='n', cex=2, xlim=c(0,27), main="Quintic")
+lm1 <- lm(dist ~ speed + I(speed^2) + I(speed^3) + I(speed^4) + I(speed^5), data=cars)
+b <- coef(lm1)
+curve(b[1] + b[2]*x + b[3]*x^2 + b[4]*x^3 + b[5]*x^4 + b[6]*x^5, add=TRUE, col="orange", lwd=2)
+text(1,110,bquote(R^2 ==  .(round(summary(lm1)$r.squared,3))),pos=4)
+text(1,100,bquote(R[adj]^2 == .(round(summary(lm1)$adj.r.squared,3))),pos=4)
+
+```
+
+<br/>
+
+The "simplest" but "best" model of those shown above would be the Quadratic. This is because it has the best $R^2_{adj}$ (0.653) other than the far more complicated Quartic model (0.655). But the $R^2_{adj}$ for the Quadratic model is a good improvement over that of the $R^2_{adj}$ for the Simple Linear model, with a value of 0.653 compared to 0.644, respectively. So moving to the complexity of the Quadratic model is justified over the Simple Linear Model. But there is not enough of an improvement in the $R^2_{adj}$ to warrant moving to the complexity of the Quartic Model. Further, the pattern in the Quadratic seems to generalize better to data outside the range of the current data than does the Quartic model.
+
+$$
+  \text{\emph{Quadratic Model}:}\quad Y_i = \beta_0 + \beta_1 X_i + \beta_2 X_i^2 + \epsilon_i
+$$
+
+$$
+  \text{\emph{Quartic Model}:}\quad Y_i = \beta_0 + \beta_1 X_i + \beta_2 X_i^2 + \underbrace{\beta_3 X_i^3 + \beta_4 X_i^4}_\text{Cubic and Quartic Terms} + \epsilon_i
+$$
+
+**AIC and BIC**
+
+Two other measurements, or information criterion, are popular for use in the model selection process. These are the Akaike Information Criterion (AIC) and the Bayesian Information Criterion (BIC). These are easily computed in R using `AIC(yourlm)` and `BIC(yourlm)`.
+
+
 
 </div>
 

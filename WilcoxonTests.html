@@ -421,6 +421,18 @@ $(document).ready(function () {
 <p><strong>Hypotheses</strong></p>
 <p>Originally created to test hypotheses about the value of the median, but works as well for the mean when the distribution of the data is symmetrical.</p>
 <div style="padding-left:15px;">
+<div style="float:right;font-size:.8em;background-color:lightgray;padding:5px;border-radius:4px;">
+<a style="color:darkgray;" href="javascript:showhide('wilcoxonsignedranklatex')">Math Code</a>
+</div>
+<div id="wilcoxonsignedranklatex" style="display:none;">
+<pre><code>$$
+  H_0: \text{median of differences} = 0
+$$
+
+$$
+  H_a: \text{median of differences} \neq 0
+$$</code></pre>
+</div>
 <p><span class="math inline">\(H_0: \text{median of differences} = 0\)</span></p>
 <p><span class="math inline">\(H_a: \text{median of differences} \ \left\{\underset{&lt;}{\stackrel{&gt;}{\neq}}\right\} \ 0\)</span></p>
 </div>
@@ -433,7 +445,6 @@ $(document).ready(function () {
 <div style="padding-left:125px;">
 <p><strong>Console</strong> Help Command: <code>?wilcox.test()</code></p>
 <h5 id="paired-data">Paired Data</h5>
-<p>Option 1:</p>
 <p><code>wilcox.test(object1, object2, mu = YourNull, alternative = YourAlternative, paired = TRUE, conf.level = 0.95)</code></p>
 <ul>
 <li><code>object1</code> must be a “numeric” vector. One set of measurements from the pair.</li>
@@ -442,12 +453,11 @@ $(document).ready(function () {
 <li><code>YourAlternative</code> is one of the three options: <code>&quot;two.sided&quot;</code>, <code>&quot;greater&quot;</code>, <code>&quot;less&quot;</code> and should correspond to your alternative hypothesis.</li>
 <li>The value for <code>conf.level = 0.95</code> can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to <span class="math inline">\(1-\alpha\)</span>.</li>
 </ul>
-<p><br></p>
 <p><strong>Example Code</strong></p>
 <p>Hover your mouse over the example codes to learn more.</p>
 <a href="javascript:showhide('wilcoxonSignedRank')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> wilcox.test( <span class="tooltiprtext">‘wilcox.test’ is a function for non-parametric one and two sample tests.</span> </span><span class="tooltipr"> sleep$extra[sleep$group==1],  <span class="tooltiprtext">The hours of extra sleep that the group had with drug 2.</span> </span><span class="tooltipr"> sleep$extra[sleep$group==2],  <span class="tooltiprtext">The hours of extra sleep that the same group had with drug 1.</span> </span><span class="tooltipr"> mu = 0,  <span class="tooltiprtext">For the median of differences from the paired data the numeric value from the null hypothesis is 0 meaning the null hypothesis is <span class="math inline">\(\text{median of differences} = 0\)</span>.</span> </span><span class="tooltipr"> alternative = “two.sided”,  <span class="tooltiprtext">The alternative hypothesis is “two.sided” meaning the alternative hypothesis is <span class="math inline">\(\text{median of differences} \neq0\)</span>.</span> </span><span class="tooltipr"> conf.level = 0.95) <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to 1 - <span class="math inline">\(\alpha\)</span>.</span> </span><span class="tooltipr">     <br />
+<p><span class="tooltipr"> wilcox.test( <span class="tooltiprtext">‘wilcox.test’ is a function for non-parametric one and two sample tests.</span> </span><span class="tooltipr"> sleep$extra[sleep$group==1],  <span class="tooltiprtext">The hours of extra sleep that the group had with drug 2.</span> </span><span class="tooltipr"> sleep$extra[sleep$group==2],  <span class="tooltiprtext">The hours of extra sleep that the same group had with drug 1.</span> </span><span class="tooltipr"> mu = 0,  <span class="tooltiprtext">The numeric value from the null hypothesis for the median of differences from the paired data is 0 meaning the null hypothesis is <span class="math inline">\(\text{median of differences} = 0\)</span>.</span> </span><span class="tooltipr"> alternative = “two.sided”,  <span class="tooltiprtext">The alternative hypothesis is “two.sided” meaning the alternative hypothesis is <span class="math inline">\(\text{median of differences} \neq0\)</span>.</span> </span><span class="tooltipr"> conf.level = 0.95) <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to 1 - <span class="math inline">\(\alpha\)</span>.</span> </span><span class="tooltipr">     <br />
 <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
@@ -468,7 +478,6 @@ $(document).ready(function () {
 <li><code>YourAlternative</code> is one of the three options: <code>&quot;two.sided&quot;</code>, <code>&quot;greater&quot;</code>, <code>&quot;less&quot;</code> and should correspond to your alternative hypothesis.</li>
 <li>The value for <code>conf.level = 0.95</code> can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to <span class="math inline">\(1-\alpha\)</span>.</li>
 </ul>
-<p><br></p>
 <p><strong>Example Code</strong></p>
 <p>Hover your mouse over the example codes to learn more.</p>
 <a href="javascript:showhide('wilcoxOneSample')">
@@ -730,6 +739,18 @@ $(document).ready(function () {
 <p><strong>Hypotheses</strong></p>
 <p>Originally designed to test for the equality of medians from two identically shaped distributions.</p>
 <div style="padding-left:15px;">
+<div style="float:right;font-size:.8em;background-color:lightgray;padding:5px;border-radius:4px;">
+<a style="color:darkgray;" href="javascript:showhide('wilcoxonranksumlatex')">Math Code</a>
+</div>
+<div id="wilcoxonranksumlatex" style="display:none;">
+<pre><code>$$
+  H_0: \text{difference in medians} = 0
+$$
+
+$$
+  H_a: \text{difference in medians} \neq 0
+$$</code></pre>
+</div>
 <p><span class="math inline">\(H_0: \text{difference in medians} = 0\)</span></p>
 <p><span class="math inline">\(H_a: \text{difference in medians} \neq 0\)</span></p>
 </div>
@@ -744,12 +765,12 @@ $(document).ready(function () {
 </div>
 <hr />
 </div>
-<div id="r-instructions-1" class="section level4">
-<h4>R Instructions</h4>
+<div id="r-intstructions" class="section level4">
+<h4>R Intstructions</h4>
 <div style="padding-left:125px;">
 <p><strong>Console</strong> Help Command: <code>?wilcox.test()</code></p>
 <p>There are two ways to perform the test.</p>
-<p>Option 1:</p>
+<p><strong>Option 1:</strong></p>
 <p><code>wilcox.test(Y ~ X, data = YourData, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)</code></p>
 <ul>
 <li><code>Y</code> must be a “numeric” vector from <code>YourData</code> that represents the data for both samples.</li>
@@ -758,21 +779,11 @@ $(document).ready(function () {
 <li><code>YourAlternative</code> is one of the three options: <code>&quot;two.sided&quot;</code>, <code>&quot;greater&quot;</code>, <code>&quot;less&quot;</code> and should correspond to your alternative hypothesis.</li>
 <li>The value for <code>conf.level = 0.95</code> can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to <span class="math inline">\(1-\alpha\)</span>.</li>
 </ul>
-<p>Option 2:</p>
-<p><code>wilcox.test(object1, object2, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)</code></p>
-<ul>
-<li><code>object1</code> must be a “numeric” vector that represents the first sample of data.</li>
-<li><code>obejct2</code> must be a “numeric” vector that represents the second sample of data.</li>
-<li><code>YourNull</code> is the numeric value from your null hypothesis for the difference in medians from the two groups.</li>
-<li><code>YourAlternative</code> is one of the three options: <code>&quot;two.sided&quot;</code>, <code>&quot;greater&quot;</code>, <code>&quot;less&quot;</code> and should correspond to your alternative hypothesis.</li>
-<li>The value for <code>conf.level = 0.95</code> can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to <span class="math inline">\(1-\alpha\)</span>.</li>
-</ul>
-<p><br></p>
 <p><strong>Example Code</strong></p>
 <p>Hover your mouse over the example codes to learn more.</p>
 <a href="javascript:showhide('wilcoxonRankSum')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> wilcox.test( <span class="tooltiprtext">‘wilcox.test’ is a function for non-parametric one and two sample tests.</span> </span><span class="tooltipr"> length  <span class="tooltiprtext">‘length’ is a quantitative variable (numeric vector).</span> </span><span class="tooltipr"> ~  <span class="tooltiprtext">‘~’ is the tilde symbol.</span> </span><span class="tooltipr"> sex,  <span class="tooltiprtext">‘sex’ is a ‘factor’ or ‘character’ vector that represents the group assignment for each observation. There are two groups.</span> </span><span class="tooltipr"> data=KidsFeet,  <span class="tooltiprtext">‘KidsFeet’ is a dataset in library(mosaic). Type View(KidsFeet) to view it.</span> </span><span class="tooltipr"> mu = 0,  <span class="tooltiprtext">The numeric value from the null hypothesis for μ1-μ2 is 0 meaning the null hypothesis is <span class="math inline">\(\mu1-\mu2 = 0\)</span></span> </span><span class="tooltipr"> alternative = “two.sided”,  <span class="tooltiprtext"> The alternative is “two-sided” meaning the alternative hypothesis is <span class="math inline">\(\mu1-\mu2 \neq 0\)</span>.</span> </span><span class="tooltipr"> conf.level = 0.95) <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to <span class="math inline">\(1-\alpha\)</span></span> </span><span class="tooltipr">     <br />
+<p><span class="tooltipr"> wilcox.test( <span class="tooltiprtext">‘wilcox.test’ is a function for non-parametric one and two sample tests.</span> </span><span class="tooltipr"> length  <span class="tooltiprtext">‘length’ is a quantitative variable (numeric vector).</span> </span><span class="tooltipr"> ~  <span class="tooltiprtext">‘~’ is the tilde symbol.</span> </span><span class="tooltipr"> sex,  <span class="tooltiprtext">‘sex’ is a ‘factor’ or ‘character’ vector that represents the group assignment for each observation. There are two groups.</span> </span><span class="tooltipr"> data=KidsFeet,  <span class="tooltiprtext">‘KidsFeet’ is a dataset in library(mosaic). Type View(KidsFeet) to view it.</span> </span><span class="tooltipr"> mu = 0,  <span class="tooltiprtext">The numeric value from the null hypothesis for the difference in medians from the two groups is 0 meaning the null hypothesis is <span class="math inline">\(\text{difference in medians} = 0\)</span></span> </span><span class="tooltipr"> alternative = “two.sided”,  <span class="tooltiprtext"> The alternative is “two-sided” meaning the alternative hypothesis is <span class="math inline">\(\text{difference in medians} \neq 0\)</span>.</span> </span><span class="tooltipr"> conf.level = 0.95) <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to <span class="math inline">\(1-\alpha\)</span></span> </span><span class="tooltipr">     <br />
 <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
@@ -781,6 +792,31 @@ $(document).ready(function () {
 ##  Wilcoxon rank sum test with continuity correction
 ## 
 ## data:  length by sex
+## W = 252, p-value = 0.0836
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+<p><br></p>
+<p><strong>Option 2:</strong></p>
+<p><code>wilcox.test(object1, object2, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)</code></p>
+<ul>
+<li><code>object1</code> must be a “numeric” vector that represents the first sample of data.</li>
+<li><code>obejct2</code> must be a “numeric” vector that represents the second sample of data.</li>
+<li><code>YourNull</code> is the numeric value from your null hypothesis for the difference in medians from the two groups.</li>
+<li><code>YourAlternative</code> is one of the three options: <code>&quot;two.sided&quot;</code>, <code>&quot;greater&quot;</code>, <code>&quot;less&quot;</code> and should correspond to your alternative hypothesis.</li>
+<li>The value for <code>conf.level = 0.95</code> can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to <span class="math inline">\(1-\alpha\)</span>.</li>
+</ul>
+<p><strong>Example Code</strong></p>
+<a href="javascript:showhide('wilcoxonRankSum2')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> wilcox.test( <span class="tooltiprtext">‘wilcox.test’ is a function for non-parametric one and two sample tests.</span> </span><span class="tooltipr"> KidsFeet$length[KidsFeet$sex == “B”],  <span class="tooltiprtext">A numeric vector of foot length for the first sample of data or for the group of boys.</span> </span><span class="tooltipr"> KidsFeet$length[KidsFeet$sex == “G”],  <span class="tooltiprtext">A numeric vector of foot length for the second sample of data or for the group of girls.</span> </span><span class="tooltipr"> mu = 0,  <span class="tooltiprtext">The numeric value from the null hypothesis for the difference in medians from the two groups is 0 meaning the null hypothesis is <span class="math inline">\(\text{difference in medians} = 0\)</span></span> </span><span class="tooltipr"> alternative = “two.sided”,  <span class="tooltiprtext"> The alternative is “two-sided” meaning the alternative hypothesis is <span class="math inline">\(\text{difference in medians} \neq 0\)</span>.</span> </span><span class="tooltipr"> conf.level = 0.95) <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to <span class="math inline">\(1-\alpha\)</span></span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+</div>
+</a>
+<div id="wilcoxonRankSum2" style="display:none;">
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  KidsFeet$length[KidsFeet$sex == &quot;B&quot;] and KidsFeet$length[KidsFeet$sex == &quot;G&quot;]
 ## W = 252, p-value = 0.0836
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
@@ -1105,7 +1141,7 @@ $(document).ready(function () {
 <p>Note that the smallest sum would be obtained if the ranks 1-8 were in the group. The largest sum would be obtained if the ranks 9-16 were in the group.</p>
 <p>The probability of each possible sum occurring is computed by counting all of the ways a certain sum can occur (combinations) and dividing by the total number of sums possible. (There are 12,870 total different sets of ranks possible when there are <span class="math inline">\(n=16\)</span> ranks and <span class="math inline">\(8\)</span> are assigned to one group.)</p>
 <p>The distribution of possible sums looks like what is shown in the following plot, where the red bars show those sums that are as extreme or more extreme than a sum of <span class="math inline">\(91\)</span> (or its opposite of <span class="math inline">\(136-91=45\)</span>).</p>
-<p><img src="WilcoxonTests_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="WilcoxonTests_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Computing the probabilities of all possible sums creates a distribution of the test statistic (shown in the plot above). Note that the test statistic is obtained in Step 4 (above) by taking the sum of the ranks. Once the distribution of the test statistic is established, the <span class="math inline">\(p\)</span>-value of the test can be calculated as the combined probability of possible sums that are as extreme or more extreme than the one observed.</p>
 <hr />
 </div>

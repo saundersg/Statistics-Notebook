@@ -48,6 +48,23 @@ While the test will work in most scenarios it suffers slightly when ties (repeat
 Originally created to test hypotheses about the value of the median, but works as well for the mean when the distribution of the data is symmetrical.
 
 <div style="padding-left:15px;">
+
+<div style="float:right;font-size:.8em;background-color:lightgray;padding:5px;border-radius:4px;"><a style="color:darkgray;" href="javascript:showhide('wilcoxonsignedranklatex')">Math Code</a></div>
+
+
+<div id="wilcoxonsignedranklatex" style="display:none;">
+```{}
+$$
+  H_0: \text{median of differences} = 0
+$$
+
+$$
+  H_a: \text{median of differences} \neq 0
+$$
+```
+</div>
+
+
 $H_0: \text{median of differences} = 0$
 
 $H_a: \text{median of differences} \ \left\{\underset{<}{\stackrel{>}{\neq}}\right\} \ 0$
@@ -68,7 +85,6 @@ $H_a: \text{median of differences} \ \left\{\underset{<}{\stackrel{>}{\neq}}\rig
 
 ##### Paired Data
 
-Option 1:
 
 `wilcox.test(object1, object2, mu = YourNull, alternative = YourAlternative, paired = TRUE, conf.level = 0.95)`
 
@@ -78,7 +94,6 @@ Option 1:
 * `YourAlternative` is one of the three options: `"two.sided"`, `"greater"`, `"less"` and should correspond to your alternative hypothesis.
 * The value for `conf.level = 0.95` can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to $1-\alpha$.
 
-<br>
 
 **Example Code** 
 
@@ -97,7 +112,7 @@ sleep\$extra[sleep\$group==1],&nbsp;
   <span class="tooltiprtext">The hours of extra sleep that the same group had with drug 1.</span>
   </span><span class="tooltipr">
 mu = 0,&nbsp; 
-  <span class="tooltiprtext">For the median of differences from the paired data the numeric value from the null hypothesis is 0 meaning the null hypothesis is $\text{median of differences} = 0$.</span>
+  <span class="tooltiprtext">The numeric value from the null hypothesis for the median of differences from the paired data is 0 meaning the null hypothesis is $\text{median of differences} = 0$.</span>
 </span><span class="tooltipr">
 alternative = "two.sided",&nbsp; 
   <span class="tooltiprtext">The alternative hypothesis is "two.sided" meaning the alternative hypothesis is $\text{median of differences} \neq0$.</span>
@@ -133,7 +148,7 @@ wilcox.test(sleep$extra[sleep$group==1], sleep$extra[sleep$group==2], mu = 0, al
 * `YourAlternative` is one of the three options: `"two.sided"`, `"greater"`, `"less"` and should correspond to your alternative hypothesis.
 * The value for `conf.level = 0.95` can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to $1-\alpha$.
 
-<br>
+
 
 **Example Code** 
 
@@ -548,6 +563,22 @@ Originally designed to test for the equality of medians from two identically sha
 
 <div style="padding-left:15px;">
 
+
+<div style="float:right;font-size:.8em;background-color:lightgray;padding:5px;border-radius:4px;"><a style="color:darkgray;" href="javascript:showhide('wilcoxonranksumlatex')">Math Code</a></div>
+
+
+<div id="wilcoxonranksumlatex" style="display:none;">
+```{}
+$$
+  H_0: \text{difference in medians} = 0
+$$
+
+$$
+  H_a: \text{difference in medians} \neq 0
+$$
+```
+</div>
+
 $H_0: \text{difference in medians} = 0$
 
 $H_a: \text{difference in medians} \neq 0$
@@ -577,14 +608,14 @@ If these hypotheses are used, then the distributions do not have to be identical
 
 
 
-#### R Instructions
+#### R Intstructions
 
 <div style="padding-left:125px;">
 **Console** Help Command: `?wilcox.test()`
 
 There are two ways to perform the test.
 
-Option 1:
+**Option 1:**
 
 `wilcox.test(Y ~ X, data = YourData, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)`
 
@@ -595,18 +626,6 @@ Option 1:
 * The value for `conf.level = 0.95` can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to $1-\alpha$.
 
 
-Option 2:
-
-`wilcox.test(object1, object2, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)`
-
-* `object1` must be a "numeric" vector that represents the first sample of data.
-* `obejct2` must be a "numeric" vector that represents the second sample of data.
-* `YourNull` is the numeric value from your null hypothesis for the difference in medians from the two groups.
-* `YourAlternative` is one of the three options: `"two.sided"`, `"greater"`, `"less"` and should correspond to your alternative hypothesis.
-* The value for `conf.level = 0.95` can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to $1-\alpha$.
-
-
-<br>
 
 **Example Code** 
 
@@ -631,10 +650,10 @@ data=KidsFeet,&nbsp;
   <span class="tooltiprtext">'KidsFeet' is a dataset in library(mosaic). Type View(KidsFeet) to view it.</span>
 </span><span class="tooltipr">
 mu = 0,&nbsp; 
-  <span class="tooltiprtext">The numeric value from the null hypothesis for μ1-μ2 is 0 meaning the null hypothesis is $\mu1-\mu2 = 0$</span>
+  <span class="tooltiprtext">The numeric value from the null hypothesis for the difference in medians from the two groups is 0 meaning the null hypothesis is $\text{difference in medians} = 0$</span>
 </span><span class="tooltipr">
 alternative = "two.sided",&nbsp; 
-  <span class="tooltiprtext"> The alternative is "two-sided" meaning the alternative hypothesis is $\mu1-\mu2 \neq 0$.</span>
+  <span class="tooltiprtext"> The alternative is "two-sided" meaning the alternative hypothesis is $\text{difference in medians} \neq 0$.</span>
   </span><span class="tooltipr">
 conf.level = 0.95)
   <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to $1-\alpha$</span>
@@ -653,6 +672,62 @@ wilcox.test(length ~ sex, data=KidsFeet, mu=0, alternative="two.sided", conf.lev
 ```
 
 </div>
+
+<br>
+
+**Option 2:**
+
+`wilcox.test(object1, object2, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)`
+
+* `object1` must be a "numeric" vector that represents the first sample of data.
+* `obejct2` must be a "numeric" vector that represents the second sample of data.
+* `YourNull` is the numeric value from your null hypothesis for the difference in medians from the two groups.
+* `YourAlternative` is one of the three options: `"two.sided"`, `"greater"`, `"less"` and should correspond to your alternative hypothesis.
+* The value for `conf.level = 0.95` can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to $1-\alpha$.
+
+
+
+
+**Example Code**
+
+<a href="javascript:showhide('wilcoxonRankSum2')">
+<div class="hoverchunk">
+<span class="tooltipr">
+wilcox.test(
+  <span class="tooltiprtext">'wilcox.test' is a function for non-parametric one and two sample tests.</span>
+</span><span class="tooltipr">
+KidsFeet\$length[KidsFeet\$sex&nbsp;==&nbsp;"B"],&nbsp;
+  <span class="tooltiprtext">A numeric vector of foot length for the first sample of data or for the group of boys.</span>
+</span><span class="tooltipr">
+KidsFeet\$length[KidsFeet$sex&nbsp;==&nbsp;"G"],&nbsp;
+  <span class="tooltiprtext">A numeric vector of foot length for the second sample of data or for the group of girls.</span>
+</span><span class="tooltipr">
+mu = 0,&nbsp; 
+  <span class="tooltiprtext">The numeric value from the null hypothesis for the difference in medians from the two groups is 0 meaning the null hypothesis is $\text{difference in medians} = 0$</span>
+</span><span class="tooltipr">
+alternative = "two.sided",&nbsp; 
+  <span class="tooltiprtext"> The alternative is "two-sided" meaning the alternative hypothesis is $\text{difference in medians} \neq 0$.</span>
+  </span><span class="tooltipr">
+conf.level = 0.95)
+  <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to $1-\alpha$</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="wilcoxonRankSum2" style="display:none;">
+```{r, echo=FALSE, warning=FALSE}
+wilcox.test(KidsFeet$length[KidsFeet$sex=="B"], KidsFeet$length[KidsFeet$sex=="G"], mu=0, alternative="two.sided", conf.level=0.95)
+```
+
+</div>
+
+
+
 
 </div>
 
