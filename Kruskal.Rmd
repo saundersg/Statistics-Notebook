@@ -3,7 +3,20 @@ title: "Kruskal-Wallis Test"
 output: 
   html_document: 
     theme: cerulean
+    css: styles.css
 ---
+
+
+<script type="text/javascript">
+ function showhide(id) {
+    var e = document.getElementById(id);
+    e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+ }
+</script>
+
+```{r, include=FALSE}
+library(tidyverse)
+```
 
 ----
 
@@ -68,6 +81,44 @@ $$
 * `g` is a qualitative grouping variable defining which groups each value in `x` belongs to. It must either be a character vector or a factor vector.
 * `YourDataSet` is the name of your data set.
 
+**Example Code** 
+
+Hover your mouse over the example codes to learn more.
+
+<a href="javascript:showhide('kruskal')">
+<div class="hoverchunk">
+<span class="tooltipr">
+kruskal.test(
+  <span class="tooltiprtext">The function that performs a Kruskal-Wallis rank sum test.</span>
+</span><span class="tooltipr">
+weight
+  <span class="tooltiprtext">'weight' is a numeric variable from the chickwts dataset that represents the quantatitive response variable.</span>
+</span><span class="tooltipr">
+&nbsp;~&nbsp;
+  <span class="tooltiprtext">'~' is the tilde symbol used to separate the left- and right-hand side in a model formula.</span>
+</span><span class="tooltipr">
+feed, 
+  <span class="tooltiprtext"> 'feed' is a qualitative grouping variable in the chickwts dataset. </span>
+</span><span class="tooltipr">
+&nbsp;data&nbsp;=&nbsp;chickwts)
+  <span class="tooltiprtext"> 'chickwts' is a dataset in R.</span>
+  </span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to View Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="kruskal" style="display:none;">
+```{r, echo=FALSE}
+kruskal.test(weight ~ feed, data=chickwts)
+```
+
+</div>
+<br>
+
 Alternatively, you could use the following approach as well.
 
 `kruskal.test(list(x, y, z))` 
@@ -76,6 +127,56 @@ Alternatively, you could use the following approach as well.
 * `y` is a numeric vector of data values that represents the quantatitive response variable for the second group.
 * `z` is a numeric vector of data values that represents the quantatitive response variable for the third group.
 * Note that more than three vectors of data could be included inside of `list()`.
+
+**Example Code** 
+
+Hover your mouse over the example codes to learn more.
+
+<a href="javascript:showhide('kruskal2')">
+<div class="hoverchunk">
+<span class="tooltipr">
+feed1 <- filter(chickwts, feed == "horsebean")
+  <span class="tooltiprtext"> This splits out the first group of feed (horsebean) from the chickwts dataset. </span>
+</span><br><span class="tooltipr">
+feed2 <- filter(chickwts, feed == "linseed")
+<span class="tooltiprtext"> This splits out the second group of feed (linseed) from the chickwts dataset. </span>
+</span><br><span class="tooltipr">
+feed3 <- filter(chickwts, feed == "soybean")
+  <span class="tooltiprtext"> This splits out the third group of feed (soybean) from the chickwts dataset. </span>
+</span><br><span class="tooltipr">
+feed4 <- filter(chickwts, feed == "sunflower")
+  <span class="tooltiprtext"> This splits out the fourth group of feed (sunflower) from the chickwts dataset. </span>
+</span><br><span class="tooltipr">
+feed5 <- filter(chickwts, feed == "meatmeal")
+  <span class="tooltiprtext"> This splits out the fifth group of feed (meatmeal) from the chickwts dataset. </span>
+</span><br><span class="tooltipr">
+feed6 <- filter(chickwts, feed == "casein")
+  <span class="tooltiprtext"> This splits out the sixth group of feed (casein) from the chickwts dataset. </span>
+</span><br><span class="tooltipr">
+kruskal.test(
+  <span class="tooltiprtext">The function that performs a Kruskal-Wallis rank sum test.</span>
+</span><span class="tooltipr">
+list(feed1\$weight,feed2\$weight,feed3\$weight,feed4\$weight,feed5\$weight,feed6\$weight))
+  <span class="tooltiprtext">A list of numeric vecotrs that represent the quantitative response variable for each group.</span>
+</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to View Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output. Load library(tidyverse) to run this code in R.</span>
+</span>
+</div>
+</a>
+<div id="kruskal2" style="display:none;">
+```{r, echo=FALSE}
+feed1 <- filter(chickwts, feed=="horsebean")
+feed2 <- filter(chickwts, feed=="linseed")
+feed3 <- filter(chickwts, feed=="soybean")
+feed4 <- filter(chickwts, feed=="sunflower")
+feed5 <- filter(chickwts, feed=="meatmeal")
+feed6 <- filter(chickwts, feed=="casein")
+kruskal.test(list(feed1$weight, feed2$weight, feed3$weight, feed4$weight, feed5$weight, feed6$weight))
+```
+
+</div>
 
 ----
 
