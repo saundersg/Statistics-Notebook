@@ -306,3 +306,59 @@
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
 
+
+
+
+
+.gallerygraphs {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 200px;
+  height: 150px;
+}
+
+.gallerygraphs:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+
+
+
+
+
+
+.tooltipgallery {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltipgallery .tooltipgallerytext {
+    display: none;
+    width: 700px;
+    background-color: gray;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 2px 10px 15px 10px;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 20%;
+    margin-left: 0px;
+}
+
+.tooltipgallery:hover .tooltipgallerytext {
+    display: block;
+}
+
+.tooltipgallery:hover {
+    background-color: #f8f8f8;
+    border-radius: 6px;
+}
+
+
+
+

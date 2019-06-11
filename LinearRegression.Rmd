@@ -1248,7 +1248,7 @@ predict(
 mylm,
   <span class="tooltiprtext">This is the name of a previously performed lm(...) that was saved into the name `mylm <- lm(...)`.</span>
 </span><span class="tooltipr">
-data.frame(
+&nbsp;data.frame(
   <span class="tooltiprtext">To specify the values of $x$ that you want to use in the prediction, you have to put those x-values into a data set, or more specifally, a data.frame(...).</span>
 </span><span class="tooltipr">
 X=
@@ -1272,12 +1272,17 @@ Xh
 
 `predict(mylm, data.frame(speed = 12))`
 
-```{r, echo=FALSE}
-mylm <- lm(dist ~ speed, data = cars)
-predict(mylm, data.frame(speed = 12))
-```
-
-The value given is the "fitted-value" or "predicted-value" for the specified x-value. In this case, a car with a speed of 12 is predicted to have a stopping distance of 29.60981 feet. 
+<table class="rconsole">
+<tr>
+<td align="right">
+  <span class="tooltiprout">
+    1<br/>
+    &nbsp; 29.60981
+      <span class="tooltiprouttext">The value given is the "fitted-value" or "predicted-value" for the specified x-value. In this case, a car with a speed of 12 is predicted to have a stopping distance of 29.60981 feet.</span>
+  </span>
+</td>
+</tr>
+</table>
 </div>
 
 
@@ -1289,7 +1294,7 @@ predict(
 mylm,
   <span class="tooltiprtext">This is the name of a previously performed lm(...) that was saved into the name `mylm <- lm(...)`.</span>
 </span><span class="tooltipr">
-data.frame(
+&nbsp;data.frame(
   <span class="tooltiprtext">To specify the values of $x$ that you want to use in the prediction, you have to put those x-values into a data set, or more specifally, a data.frame(...).</span>
 </span><span class="tooltipr">
 X=
@@ -1301,7 +1306,7 @@ Xh
 ),
   <span class="tooltiprtext">Closing parenthesis for the data.frame(...) function.</span>
 </span><span class="tooltipr">
-interval=
+&nbsp;interval=
   <span class="tooltiprtext">This optional command allows you to specify if the predicted value should be accompanied by either a confidence interval or a prediction interval.</span>
 </span><span class="tooltipr">
 "prediction"
@@ -1319,15 +1324,42 @@ interval=
 
 `predict(mylm, data.frame(speed = 12), interval = "prediction")`
 
-```{r}
-mylm <- lm(dist ~ speed, data = cars)
-predict(mylm, data.frame(speed = 12), interval = "prediction")
-```
-
-The "fit" is the predicted value. The "lwr" is the lower bound. The "upr" is the upper bound.
-
-In this case, a car with a speed of 12 mph is predicted to have a stopping distance of 29.60981 feet. However, we are wise enough to recognize that the stopping distance for individual cars will vary anywhere from -1.749529 (or 0 because distance can't go negative) feet to 60.96915 feet. 
-
+<table class="rconsole">
+<tr>
+<td align="right">
+  <span class="tooltiprout">
+    &nbsp; fit
+      <span class="tooltiprouttext">The "fit" is the predicted value.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; lwr
+      <span class="tooltiprouttext">The "lwr" is the lower bound.</span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; upr
+      <span class="tooltiprouttext">The "upr" is the upper bound.</span>
+  </span>    
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    1 29.60981
+      <span class="tooltiprouttext">In this case, a car with a speed of 12 mph is predicted to have a stopping distance of 29.60981 feet. However, we are wise enough to recognize that the stopping distance for individual cars will vary anywhere from -1.749529 (or 0 because distance can't go negative) feet to 60.96915 feet.</span>
+  </span>
+</td><td align="left">
+  <span class="tooltiprout">
+    -1.749529
+      <span class="tooltiprouttext">This is the lower bound of the prediction interval. While we predict a stopping distance of 29.60981 feet, this prediction interval reminds us the stopping distance could be as quick as -1.749529 feet (or 0 because distance can't go negative).</span>
+  </span>
+</td><td align="left">
+  <span class="tooltiprout">
+    60.96915
+      <span class="tooltiprouttext">This is the upper bound of the prediction interval. While we predict a stopping distance of 29.60981 feet, this prediction interval reminds us that the actual stopping distance could be as high as 60.96915 feet.</span>
+  </span>
+</td>
+</tr>
+</table>
 </div>
 
 
@@ -1339,7 +1371,7 @@ predict(
 mylm,
   <span class="tooltiprtext">This is the name of a previously performed lm(...) that was saved into the name `mylm <- lm(...)`.</span>
 </span><span class="tooltipr">
-data.frame(
+&nbsp;data.frame(
   <span class="tooltiprtext">To specify the values of $x$ that you want to use in the prediction, you have to put those x-values into a data set, or more specifally, a data.frame(...).</span>
 </span><span class="tooltipr">
 X=
@@ -1351,7 +1383,7 @@ Xh
 ),
   <span class="tooltiprtext">Closing parenthesis for the data.frame(...) function.</span>
 </span><span class="tooltipr">
-interval=
+&nbsp;interval=
   <span class="tooltiprtext">This optional command allows you to specify if the predicted value should be accompanied by either a confidence interval or a prediction interval.</span>
 </span><span class="tooltipr">
 "confidence"
@@ -1369,16 +1401,44 @@ interval=
 
 `predict(mylm, data.frame(speed = 12), interval = "confidence")`
 
-```{r}
-mylm <- lm(dist ~ speed, data = cars)
-predict(mylm, data.frame(speed = 12), interval = "confidence")
-```
-
-The "fit" is the predicted value. The "lwr" is the lower bound. The "upr" is the upper bound.
-
-In this case, cars with a speed of 12 mph are predicted to have an average stopping distance of 29.60981 feet, where the average could be anywhere from 24.39514 feet to 34.82448 feet.
-
+<table class="rconsole">
+<tr>
+<td align="right">
+  <span class="tooltiprout">
+    &nbsp; fit
+      <span class="tooltiprouttext">The "fit" is the predicted value.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; lwr
+      <span class="tooltiprouttext">The "lwr" is the lower bound.</span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; upr
+      <span class="tooltiprouttext">The "upr" is the upper bound.</span>
+  </span>    
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    1 29.60981
+      <span class="tooltiprouttext">In this case, cars with a speed of 12 mph are predicted to have an average stopping distance of 29.60981 feet, where the average could be anywhere from 24.39514 feet to 34.82448 feet.</span>
+  </span>
+</td><td align="left">
+  <span class="tooltiprout">
+    24.39514
+      <span class="tooltiprouttext">This is the lower bound of the confidence interval. We are 95% confident that the average stopping distance of cars going 12 mph is greater than this value.</span>
+  </span>
+</td><td align="left">
+  <span class="tooltiprout">
+    34.82448
+      <span class="tooltiprouttext">This is the upper bound of the confidence interval. We are 95% confident that the average stopping distance of cars going 12 mph is less than this value.</span>
+  </span>
+</td>
+</tr>
+</table>
 </div>
+
 
 <br/>
 
@@ -1410,12 +1470,123 @@ mylm,
 
 `confint(mylm, level = 0.90)`
 
-```{r, echo=FALSE}
-mylm <- lm(dist ~ speed, data = cars)
-confint(mylm, level = 0.90)
-```
 
-The output above shows the lower and upper bounds of 90% confidence intervals for the parameters $\beta_0$ and $\beta_1$. The 90% confidence interval starts at the 5th percentile and ends at the 95th, hence the 5% and 95% as the column names. In this example, the confidence interval for the y-intercept does not make sense because you cannot have negative distance. However, you can be 90% confident that the slope lies between 3.235501 and 4.629317.
+<table class="rconsole">
+<tr>
+<td align="left">
+&nbsp;
+</td>
+<td align="right">
+  <span class="tooltiprout">
+    &nbsp; 5 %
+      <span class="tooltiprouttext">The lower bound of a 90% confidence interval occurs at the 5th percentile. This is because at 90% confidence, 10% is left in the tails, with 5% on each end. The upper bound will thus end at the 95th percentile, hence the 5% and 95% as the column names.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 95 %
+      <span class="tooltiprouttext">The upper bound of a 90% confidence interval ends at the 95th percentile.</span>
+  </span>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    (Intercept)
+      <span class="tooltiprouttext">This row of output specifies a confidence interval for $\beta_0$, the true y-intercept.</span>
+  </span>
+</td><td align="left">
+  <span class="tooltiprout">
+    -28.914514
+      <span class="tooltiprouttext">This is the lower bound for the confidence interval of the y-intercept, $\beta_0$. In this example, the confidence interval for the y-intercept does not make sense because you cannot have negative distance.</span>
+  </span>
+</td><td align="left">
+  <span class="tooltiprout">
+    -6.243676
+      <span class="tooltiprouttext">This is the upper bound for the confidence interval for $\beta_0$, the y-intercpet. In this example, the confidence interval for the y-intercept does not make sense because you cannot have negative distance.</span>
+  </span>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    speed 
+      <span class="tooltiprouttext">This row of the output provides the upper and lower bound for the confidence interval for $\beta_1$, the true slope. In this case, you can be 90% confident that the true slope lies between 3.235501 and 4.629317.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+   3.235501
+      <span class="tooltiprouttext">This is the lower bound of the confidence interval. In this case, you can be 90% confident that the slope lies between 3.235501 and 4.629317.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    4.629317
+      <span class="tooltiprouttext">This is the upper bound of the confidence interval. In this case, you can be 90% confident that the slope lies between 3.235501 and 4.629317.</span>
+  </span>
+</td>
+</td>
+</tr>
+</table>
+
+
+<br/>
+<br/>
+
+`mylm <- lm(dist ~ speed, data = cars)`
+
+`confint(mylm, level = 0.95)`
+
+
+<table class="rconsole">
+<tr>
+<td align="left">
+&nbsp;
+</td>
+<td align="right">
+  <span class="tooltiprout">
+    &nbsp; 2.5 %
+      <span class="tooltiprouttext">The lower bound of a 95% confidence interval occurs at the 2.5th percentile. This is because at 95% confidence, 5% is left in the tails, with 2.5% on each end. The upper bound will thus end at the 97.5th percentile, hence the 2.5% and 97.5% as the column names for the lower and upper bounds, respectively.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 97.5 %
+      <span class="tooltiprouttext">The upper bound of a 95% confidence interval ends at the 97.5th percentile.</span>
+  </span>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    (Intercept)
+      <span class="tooltiprouttext">This row of output specifies a confidence interval for $\beta_0$, the true y-intercept.</span>
+  </span>
+</td><td align="left">
+  <span class="tooltiprout">
+    -31.167850
+      <span class="tooltiprouttext">This is the lower bound for the confidence interval of the y-intercept, $\beta_0$. In this example, the confidence interval for the y-intercept does not make sense because you cannot have negative distance.</span>
+  </span>
+</td><td align="left">
+  <span class="tooltiprout">
+    -3.990340
+      <span class="tooltiprouttext">This is the upper bound for the confidence interval for $\beta_0$, the y-intercpet. In this example, the confidence interval for the y-intercept does not make sense because you cannot have negative distance.</span>
+  </span>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    speed 
+      <span class="tooltiprouttext">This row of the output provides the upper and lower bound for the confidence interval for $\beta_1$, the true slope. In this case, you can be 90% confident that the true slope lies between 3.096964 and 4.767853.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+   3.096964
+      <span class="tooltiprouttext">This is the lower bound of the confidence interval. In this case, you can be 90% confident that the slope lies between 3.096964 and 4.767853</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    4.767853
+      <span class="tooltiprouttext">This is the upper bound of the confidence interval. In this case, you can be 95% confident that the slope lies between 3.096964 and 4.767853</span>
+  </span>
+</td>
+</td>
+</tr>
+</table>
 
 </div>
 
