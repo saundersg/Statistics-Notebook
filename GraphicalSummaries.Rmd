@@ -414,6 +414,94 @@ ggplot(airquality, aes(x=Temp)) +
 </div>
   
   
+<br/>
+
+**Gallery**
+
+<a href="javascript:showhide('histogramgalleryggplot')">Click to view.</a>
+
+<div id="histogramgalleryggplot" style="display:none;">
+
+Hover to see code. 
+
+<span class="tooltipgallery">
+<img class="gallerygraphs" src="./Images/histogramggplotgallery1.png">  
+  <span class="tooltipgallerytext">
+`ggplot(airquality, aes(x = Temp)) +` <br/>
+`  geom_histogram(binwidth=5, fill = "skyblue", color = "black") + ` <br/>
+`  labs(title = "La Guardia Airport Daily Mean Temperature", ` <br/>
+&nbsp;&nbsp; ` x = "Temperature", y = "Number of Days") + ` <br/>
+`  theme_bw() + ` <br/>
+`  theme(plot.title = element_text(size = 14, face = "bold", hjust = .5), ` <br/>
+&nbsp;&nbsp; ` panel.grid.major = element_line(color = "grey80")) ` <br/>
+  </span>
+</span>
+
+
+
+<span class="tooltipgallery">
+<img class="gallerygraphs" src="./Images/histogramggplotgallery2.png">  
+  <span class="tooltipgallerytext">
+`ggplot(airquality) + ` <br/>
+`  geom_histogram(aes(x = Temp, fill = Temp > median(Temp)), color = "black", binwidth = 2) + ` <br/>
+`  labs(title = "La Guardia Airport Daily Mean Temperature", ` <br/>
+&nbsp;&nbsp; ` x = "Temperature", y = "Number of Days") + ` <br/>
+`  theme_bw() + ` <br/>
+`  theme(plot.title = element_text(size = 14, face = "bold", hjust = .5),` <br/>
+&nbsp;&nbsp; ` panel.grid.major = element_line(color = "grey80"), ` <br/>
+&nbsp;&nbsp; ` legend.position = "none") + ` <br/>
+`  geom_vline(xintercept = 72, linetype = "dashed", size = 1.5, color = "black") +   ` <br/>
+`  geom_vline(xintercept = 85, linetype = "dashed", size = 1.5, color = "black") +   ` <br/>
+`  geom_text(x = 71, y = 10, label = "Q1") +   ` <br/>
+`  geom_text(x = 86, y = 10, label = "Q3")   ` <br/>
+  </span>
+</span>
+  
+
+
+<span class="tooltipgallery">
+<img class="gallerygraphs" src="./Images/histogramggplotgallery3.png">  
+  <span class="tooltipgallerytext">
+` ggplot(airquality, aes(x = Temp)) + ` <br/>
+`  geom_histogram(aes(fill = Temp > median(Temp)), color = "black", binwidth = 2) + ` <br/>
+`  labs(title = "La Guardia Airport Daily Mean Temperature", ` <br/>
+&nbsp;&nbsp; ` x = "Temperature", y = "Number of Days", fill = "Temperature") + ` <br/>
+`  theme_bw() + ` <br/>
+`  theme(plot.title = element_text(size = 10, face = "bold", hjust = .5),` <br/>
+&nbsp;&nbsp; ` panel.grid.major = element_line(color = "grey80")) + ` <br/>
+`  scale_fill_manual(values = c("steelblue2","brown1"),labels=c("< 79 Degrees","> 79 Degrees")) + ` <br/>
+`  geom_vline(xintercept = 72, linetype = "dashed", size = 1.5, color = "black") + ` <br/>
+`  geom_vline(xintercept = 85, linetype = "dashed", size = 1.5, color = "black") +   ` <br/>
+`  geom_text(x = 71, y = 10, label = "Q1") +   ` <br/>
+`  geom_text(x = 86, y = 10, label = "Q3")   ` <br/>
+  </span>
+</span>
+
+
+
+
+
+
+<span class="tooltipgallery">
+<img class="gallerygraphs" src="./Images/histogramggplotgallery4.png">  
+  <span class="tooltipgallerytext">
+` ggplot(airquality, aes(x = Temp)) + ` <br/>
+`  geom_histogram(aes(fill = Temp > median(Temp)), color = "black", binwidth = 3) + ` <br/>
+`  labs(title = "Temperature of La Guardia Airport by Month", ` <br/>
+&nbsp;&nbsp; ` x = "Temperature", y = "Number of Days", fill = "Temperature") + ` <br/>
+`  theme_bw() + ` <br/>
+`  theme(plot.title = element_text(size = 16, face = "bold", hjust = .5),` <br/>
+&nbsp;&nbsp; ` panel.grid.major = element_line(color = "grey80")) + ` <br/>
+`  scale_fill_manual(values = c("steelblue2","brown1"),labels=c("< 79 Degrees","> 79 Degrees")) + ` <br/>
+`  facet_grid(~Month) + ` <br/>
+`  geom_vline(xintercept = 77.88, linetype = "dashed", size = 1.5, color = "black") + ` <br/>
+`  geom_text(x = 69, y = 10, label = "Mean = \n 77.88")   ` <br/>
+  </span>
+</span>
+
+
+</div>  
+  
   </p> 
 </div>
 
@@ -926,7 +1014,60 @@ ggplot(airquality, aes(x=factor(Month), y=Temp)) +
   labs(title="La Guardia Airport Daily Mean Temperature", x="Month of Year", y="Daily Mean Temperature")
 ```
 </div>
+
+<br/>
+
+**Gallery**
+
+<a href="javascript:showhide('boxplotgalleryggplot')">Click to view more examples.</a>
+
+<div id="boxplotgalleryggplot" style="display:none;">
+
+Hover to see code. 
+
+<span class="tooltipgallery">
+<img class="gallerygraphs" src="./Images/boxplotggplotgallery1.png">  
+  <span class="tooltipgallerytext">
+`ggplot(data = mtcars, aes(x = as.factor(cyl), y = mpg, fill=as.factor(cyl))) +` <br/>
+`  geom_boxplot()  + ` <br/>
+`  stat_summary(fun.y = mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..),` <br/>
+&nbsp;&nbsp; ` width = .75, linetype = "dashed", color="firebrick") +` <br/>
+`  theme_light() + ` <br/>
+`  theme(panel.grid.major=element_blank()) + ` <br/>
+`  scale_fill_brewer(palette="Dark2") + ` <br/>
+`  geom_jitter(width=0.1, height=0) + ` <br/>
+`  labs(title = "Miles Per Gallon Based on Cylinders", ` <br/>
+&nbsp;&nbsp; ` x="Number of Cylinders", ` <br/>
+&nbsp;&nbsp; ` fill="Cylinders", `  <br/>
+&nbsp;&nbsp; ` y="Miles Per Gallon") ` <br/>
+  </span>
+</span>
+
+
+
+<span class="tooltipgallery">
+<img class="gallerygraphs" src="./Images/boxplotggplotgallery2.png">  
+  <span class="tooltipgallerytext">
+`ggplot(data = ToothGrowth, aes(x = as.factor(dose), y = len, fill=as.factor(dose))) +` <br/>
+`  geom_boxplot( )  + ` <br/>
+`  facet_wrap(~supp) + ` <br/>
+`  theme_bw() + ` <br/>
+`  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) + ` <br/>
+`  geom_jitter(width=0.1, height=0) + ` <br/>
+`  labs(title = "Tooth Length Based on Doses  ` <br/>
+&nbsp;&nbsp; ` According to Supplement Type", ` <br/>
+&nbsp;&nbsp; ` fill="Doses", `  <br/>
+&nbsp;&nbsp; ` x="Dosage Amount(mg)", ` <br/>
+&nbsp;&nbsp; ` y="Tooth Length" ) ` <br/>
+  </span>
+</span>
   
+
+
+
+
+
+</div>
   
   </p> 
 </div>

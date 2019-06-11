@@ -30,7 +30,7 @@
 
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
+<style type="text/css" data-origin="pandoc">
 div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
@@ -66,7 +66,29 @@ code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Doc
 code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
 code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+
 </style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
@@ -103,9 +125,7 @@ h6 {
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -130,6 +150,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -144,7 +167,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -164,6 +186,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -185,19 +244,85 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
 });
 </script>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -229,6 +354,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="RCheatSheetsAndNotes.html">R Cheatsheets &amp; Notes</a>
+    </li>
+    <li>
+      <a href="DataSources.html">Data Sources</a>
     </li>
   </ul>
 </li>
@@ -469,6 +597,20 @@ plotly
 </a>
 <div id="hist3ggplot" style="display:none;">
 <p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<p><br/></p>
+<p><strong>Gallery</strong></p>
+<p><a href="javascript:showhide('histogramgalleryggplot')">Click to view.</a></p>
+<div id="histogramgalleryggplot" style="display:none;">
+<p>Hover to see code.</p>
+<p><span class="tooltipgallery"> <img class="gallerygraphs" src="./Images/histogramggplotgallery1.png"><br />
+<span class="tooltipgallerytext"> <code>ggplot(airquality, aes(x = Temp)) +</code> <br/> <code>geom_histogram(binwidth=5, fill = &quot;skyblue&quot;, color = &quot;black&quot;) +</code> <br/> <code>labs(title = &quot;La Guardia Airport Daily Mean Temperature&quot;,</code> <br/>    <code>x = &quot;Temperature&quot;, y = &quot;Number of Days&quot;) +</code> <br/> <code>theme_bw() +</code> <br/> <code>theme(plot.title = element_text(size = 14, face = &quot;bold&quot;, hjust = .5),</code> <br/>    <code>panel.grid.major = element_line(color = &quot;grey80&quot;))</code> <br/> </span> </span></p>
+<p><span class="tooltipgallery"> <img class="gallerygraphs" src="./Images/histogramggplotgallery2.png"><br />
+<span class="tooltipgallerytext"> <code>ggplot(airquality) +</code> <br/> <code>geom_histogram(aes(x = Temp, fill = Temp &gt; median(Temp)), color = &quot;black&quot;, binwidth = 2) +</code> <br/> <code>labs(title = &quot;La Guardia Airport Daily Mean Temperature&quot;,</code> <br/>    <code>x = &quot;Temperature&quot;, y = &quot;Number of Days&quot;) +</code> <br/> <code>theme_bw() +</code> <br/> <code>theme(plot.title = element_text(size = 14, face = &quot;bold&quot;, hjust = .5),</code> <br/>    <code>panel.grid.major = element_line(color = &quot;grey80&quot;),</code> <br/>    <code>legend.position = &quot;none&quot;) +</code> <br/> <code>geom_vline(xintercept = 72, linetype = &quot;dashed&quot;, size = 1.5, color = &quot;black&quot;) +</code> <br/> <code>geom_vline(xintercept = 85, linetype = &quot;dashed&quot;, size = 1.5, color = &quot;black&quot;) +</code> <br/> <code>geom_text(x = 71, y = 10, label = &quot;Q1&quot;) +</code> <br/> <code>geom_text(x = 86, y = 10, label = &quot;Q3&quot;)</code> <br/> </span> </span></p>
+<p><span class="tooltipgallery"> <img class="gallerygraphs" src="./Images/histogramggplotgallery3.png"><br />
+<span class="tooltipgallerytext"> <code>ggplot(airquality, aes(x = Temp)) +</code> <br/> <code>geom_histogram(aes(fill = Temp &gt; median(Temp)), color = &quot;black&quot;, binwidth = 2) +</code> <br/> <code>labs(title = &quot;La Guardia Airport Daily Mean Temperature&quot;,</code> <br/>    <code>x = &quot;Temperature&quot;, y = &quot;Number of Days&quot;, fill = &quot;Temperature&quot;) +</code> <br/> <code>theme_bw() +</code> <br/> <code>theme(plot.title = element_text(size = 10, face = &quot;bold&quot;, hjust = .5),</code> <br/>    <code>panel.grid.major = element_line(color = &quot;grey80&quot;)) +</code> <br/> <code>scale_fill_manual(values = c(&quot;steelblue2&quot;,&quot;brown1&quot;),labels=c(&quot;&lt; 79 Degrees&quot;,&quot;&gt; 79 Degrees&quot;)) +</code> <br/> <code>geom_vline(xintercept = 72, linetype = &quot;dashed&quot;, size = 1.5, color = &quot;black&quot;) +</code> <br/> <code>geom_vline(xintercept = 85, linetype = &quot;dashed&quot;, size = 1.5, color = &quot;black&quot;) +</code> <br/> <code>geom_text(x = 71, y = 10, label = &quot;Q1&quot;) +</code> <br/> <code>geom_text(x = 86, y = 10, label = &quot;Q3&quot;)</code> <br/> </span> </span></p>
+<p><span class="tooltipgallery"> <img class="gallerygraphs" src="./Images/histogramggplotgallery4.png"><br />
+<span class="tooltipgallerytext"> <code>ggplot(airquality, aes(x = Temp)) +</code> <br/> <code>geom_histogram(aes(fill = Temp &gt; median(Temp)), color = &quot;black&quot;, binwidth = 3) +</code> <br/> <code>labs(title = &quot;Temperature of La Guardia Airport by Month&quot;,</code> <br/>    <code>x = &quot;Temperature&quot;, y = &quot;Number of Days&quot;, fill = &quot;Temperature&quot;) +</code> <br/> <code>theme_bw() +</code> <br/> <code>theme(plot.title = element_text(size = 16, face = &quot;bold&quot;, hjust = .5),</code> <br/>    <code>panel.grid.major = element_line(color = &quot;grey80&quot;)) +</code> <br/> <code>scale_fill_manual(values = c(&quot;steelblue2&quot;,&quot;brown1&quot;),labels=c(&quot;&lt; 79 Degrees&quot;,&quot;&gt; 79 Degrees&quot;)) +</code> <br/> <code>facet_grid(~Month) +</code> <br/> <code>geom_vline(xintercept = 77.88, linetype = &quot;dashed&quot;, size = 1.5, color = &quot;black&quot;) +</code> <br/> <code>geom_text(x = 69, y = 10, label = &quot;Mean = \n 77.88&quot;)</code> <br/> </span> </span></p>
 </div>
 </p>
 </div>
@@ -737,6 +879,16 @@ plotly
 </a>
 <div id="box3ggplot" style="display:none;">
 <p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+</div>
+<p><br/></p>
+<p><strong>Gallery</strong></p>
+<p><a href="javascript:showhide('boxplotgalleryggplot')">Click to view more examples.</a></p>
+<div id="boxplotgalleryggplot" style="display:none;">
+<p>Hover to see code.</p>
+<p><span class="tooltipgallery"> <img class="gallerygraphs" src="./Images/boxplotggplotgallery1.png"><br />
+<span class="tooltipgallerytext"> <code>ggplot(data = mtcars, aes(x = as.factor(cyl), y = mpg, fill=as.factor(cyl))) +</code> <br/> <code>geom_boxplot()  +</code> <br/> <code>stat_summary(fun.y = mean, geom = &quot;errorbar&quot;, aes(ymax = ..y.., ymin = ..y..),</code> <br/>    <code>width = .75, linetype = &quot;dashed&quot;, color=&quot;firebrick&quot;) +</code> <br/> <code>theme_light() +</code> <br/> <code>theme(panel.grid.major=element_blank()) +</code> <br/> <code>scale_fill_brewer(palette=&quot;Dark2&quot;) +</code> <br/> <code>geom_jitter(width=0.1, height=0) +</code> <br/> <code>labs(title = &quot;Miles Per Gallon Based on Cylinders&quot;,</code> <br/>    <code>x=&quot;Number of Cylinders&quot;,</code> <br/>    <code>fill=&quot;Cylinders&quot;,</code> <br/>    <code>y=&quot;Miles Per Gallon&quot;)</code> <br/> </span> </span></p>
+<p><span class="tooltipgallery"> <img class="gallerygraphs" src="./Images/boxplotggplotgallery2.png"><br />
+<span class="tooltipgallerytext"> <code>ggplot(data = ToothGrowth, aes(x = as.factor(dose), y = len, fill=as.factor(dose))) +</code> <br/> <code>geom_boxplot( )  +</code> <br/> <code>facet_wrap(~supp) +</code> <br/> <code>theme_bw() +</code> <br/> <code>scale_fill_manual(values=c(&quot;#999999&quot;, &quot;#E69F00&quot;, &quot;#56B4E9&quot;)) +</code> <br/> <code>geom_jitter(width=0.1, height=0) +</code> <br/> <code>labs(title = &quot;Tooth Length Based on Doses</code> <br/>    <code>According to Supplement Type&quot;,</code> <br/>    <code>fill=&quot;Doses&quot;,</code> <br/>    <code>x=&quot;Dosage Amount(mg)&quot;,</code> <br/>    <code>y=&quot;Tooth Length&quot; )</code> <br/> </span> </span></p>
 </div>
 </p>
 </div>
@@ -1045,8 +1197,8 @@ plotly
 </ul>
 <p><strong>Example Code</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_ly</span>(airquality, <span class="dt">x=</span> <span class="op">~</span>Wind, <span class="dt">y=</span> <span class="op">~</span>Temp)</code></pre></div>
-<div id="htmlwidget-554645226593ea9902a3" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-554645226593ea9902a3">{"x":{"visdat":{"5a687090786c":["function () ","plotlyVisDat"]},"cur_data":"5a687090786c","attrs":{"5a687090786c":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Wind"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"x":[7.4,8,12.6,11.5,14.3,14.9,8.6,13.8,20.1,8.6,6.9,9.7,9.2,10.9,13.2,11.5,12,18.4,11.5,9.7,9.7,16.6,9.7,12,16.6,14.9,8,12,14.9,5.7,7.4,8.6,9.7,16.1,9.2,8.6,14.3,9.7,6.9,13.8,11.5,10.9,9.2,8,13.8,11.5,14.9,20.7,9.2,11.5,10.3,6.3,1.7,4.6,6.3,8,8,10.3,11.5,14.9,8,4.1,9.2,9.2,10.9,4.6,10.9,5.1,6.3,5.7,7.4,8.6,14.3,14.9,14.9,14.3,6.9,10.3,6.3,5.1,11.5,6.9,9.7,11.5,8.6,8,8.6,12,7.4,7.4,7.4,9.2,6.9,13.8,7.4,6.9,7.4,4.6,4,10.3,8,8.6,11.5,11.5,11.5,9.7,11.5,10.3,6.3,7.4,10.9,10.3,15.5,14.3,12.6,9.7,3.4,8,5.7,9.7,2.3,6.3,6.3,6.9,5.1,2.8,4.6,7.4,15.5,10.9,10.3,10.9,9.7,14.9,15.5,6.3,10.9,11.5,6.9,13.8,10.3,10.3,8,12.6,9.2,10.3,10.3,16.6,6.9,13.2,14.3,8,11.5],"y":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"type":"scatter","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
+<div id="htmlwidget-4c3bea80902014a27850" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4c3bea80902014a27850">{"x":{"visdat":{"143c070f2f798":["function () ","plotlyVisDat"]},"cur_data":"143c070f2f798","attrs":{"143c070f2f798":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Wind"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"x":[7.4,8,12.6,11.5,14.3,14.9,8.6,13.8,20.1,8.6,6.9,9.7,9.2,10.9,13.2,11.5,12,18.4,11.5,9.7,9.7,16.6,9.7,12,16.6,14.9,8,12,14.9,5.7,7.4,8.6,9.7,16.1,9.2,8.6,14.3,9.7,6.9,13.8,11.5,10.9,9.2,8,13.8,11.5,14.9,20.7,9.2,11.5,10.3,6.3,1.7,4.6,6.3,8,8,10.3,11.5,14.9,8,4.1,9.2,9.2,10.9,4.6,10.9,5.1,6.3,5.7,7.4,8.6,14.3,14.9,14.9,14.3,6.9,10.3,6.3,5.1,11.5,6.9,9.7,11.5,8.6,8,8.6,12,7.4,7.4,7.4,9.2,6.9,13.8,7.4,6.9,7.4,4.6,4,10.3,8,8.6,11.5,11.5,11.5,9.7,11.5,10.3,6.3,7.4,10.9,10.3,15.5,14.3,12.6,9.7,3.4,8,5.7,9.7,2.3,6.3,6.3,6.9,5.1,2.8,4.6,7.4,15.5,10.9,10.3,10.9,9.7,14.9,15.5,6.3,10.9,11.5,6.9,13.8,10.3,10.3,8,12.6,9.2,10.3,10.3,16.6,6.9,13.2,14.3,8,11.5],"y":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"type":"scatter","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_ly</span>(KidsFeet, 
         <span class="dt">x=</span> <span class="op">~</span>length, 
         <span class="dt">y=</span> <span class="op">~</span>width, 
@@ -1057,8 +1209,8 @@ plotly
 <span class="st">  </span><span class="kw">layout</span>(<span class="dt">title=</span><span class="st">&quot;KidsFeet dataset&quot;</span>, 
          <span class="dt">xaxis=</span><span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;Length of the longer foot in cm&quot;</span>),
          <span class="dt">yaxis=</span><span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;Width of the longer foot in cm&quot;</span>))</code></pre></div>
-<div id="htmlwidget-386eefde0409a9b07673" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-386eefde0409a9b07673">{"x":{"visdat":{"5a686816d380":["function () ","plotlyVisDat"]},"cur_data":"5a686816d380","attrs":{"5a686816d380":{"x":{},"y":{},"text":{},"color":{},"size":{},"colors":["skyblue","hotpink"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"KidsFeet dataset","xaxis":{"domain":[0,1],"automargin":true,"title":"Length of the longer foot in cm"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Width of the longer foot in cm"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"x":[24.4,25.4,24.5,25.2,25.1,25.7,26.1,22.9,27.5,24.8,26.1,27,24,24.4,27.1,25.5,24.2,23.9,23.6,24.7],"y":[8.4,8.8,9.7,9.8,8.9,9.7,9.6,8.8,9.8,8.9,9.1,9.8,9.2,8.6,9.4,9.5,8.9,9.3,9,8.6],"text":["Name: David <br /> Birth-Month: 5","Name: Lars <br /> Birth-Month: 10","Name: Zach <br /> Birth-Month: 12","Name: Josh <br /> Birth-Month: 1","Name: Lang <br /> Birth-Month: 2","Name: Scotty <br /> Birth-Month: 3","Name: Edward <br /> Birth-Month: 2","Name: Damon <br /> Birth-Month: 9","Name: Mark <br /> Birth-Month: 9","Name: Ray <br /> Birth-Month: 3","Name: Cal <br /> Birth-Month: 8","Name: Cam <br /> Birth-Month: 3","Name: Andy <br /> Birth-Month: 6","Name: Josh <br /> Birth-Month: 7","Name: Glen <br /> Birth-Month: 7","Name: David <br /> Birth-Month: 12","Name: Mike <br /> Birth-Month: 11","Name: Dwayne <br /> Birth-Month: 8","Name: Dylan <br /> Birth-Month: 4","Name: Peter <br /> Birth-Month: 4"],"type":"scatter","mode":"markers","name":"B","marker":{"color":"rgba(135,206,235,1)","size":[42.7272727272727,83.6363636363636,100,10,18.1818181818182,26.3636363636364,18.1818181818182,75.4545454545455,75.4545454545455,26.3636363636364,67.2727272727273,26.3636363636364,50.9090909090909,59.0909090909091,59.0909090909091,100,91.8181818181818,67.2727272727273,34.5454545454545,34.5454545454545],"sizemode":"area","line":{"color":"rgba(135,206,235,1)"}},"textfont":{"color":"rgba(135,206,235,1)","size":[42.7272727272727,83.6363636363636,100,10,18.1818181818182,26.3636363636364,18.1818181818182,75.4545454545455,75.4545454545455,26.3636363636364,67.2727272727273,26.3636363636364,50.9090909090909,59.0909090909091,59.0909090909091,100,91.8181818181818,67.2727272727273,34.5454545454545,34.5454545454545]},"error_y":{"color":"rgba(135,206,235,1)","width":[]},"error_x":{"color":"rgba(135,206,235,1)","width":[]},"line":{"color":"rgba(135,206,235,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[23,23.6,26,23.7,24,24.7,26.7,25.5,24,24.5,24.2,26.1,24,22.5,24.5,22.9,26,21.6,24.6],"y":[8.8,9.3,9.3,7.9,8.7,8.8,9,9.5,8.3,9,8.1,9.5,9.3,8.6,8.6,8.5,9,7.9,8.8],"text":["Name: Caitlin <br /> Birth-Month: 6","Name: Eleanor <br /> Birth-Month: 5","Name: Julie <br /> Birth-Month: 11","Name: Kate <br /> Birth-Month: 4","Name: Caroline <br /> Birth-Month: 12","Name: Maggie <br /> Birth-Month: 3","Name: Lee <br /> Birth-Month: 6","Name: Heather <br /> Birth-Month: 3","Name: Laura <br /> Birth-Month: 9","Name: Erica <br /> Birth-Month: 9","Name: Peggy <br /> Birth-Month: 10","Name: Abby <br /> Birth-Month: 2","Name: Danielle <br /> Birth-Month: 6","Name: Caitlin <br /> Birth-Month: 7","Name: Leigh <br /> Birth-Month: 3","Name: Hannah <br /> Birth-Month: 3","Name: Teshanna <br /> Birth-Month: 3","Name: Hayley <br /> Birth-Month: 1","Name: Alisha <br /> Birth-Month: 9"],"type":"scatter","mode":"markers","name":"G","marker":{"color":"rgba(255,105,180,1)","size":[50.9090909090909,42.7272727272727,91.8181818181818,34.5454545454545,100,26.3636363636364,50.9090909090909,26.3636363636364,75.4545454545455,75.4545454545455,83.6363636363636,18.1818181818182,50.9090909090909,59.0909090909091,26.3636363636364,26.3636363636364,26.3636363636364,10,75.4545454545455],"sizemode":"area","line":{"color":"rgba(255,105,180,1)"}},"textfont":{"color":"rgba(255,105,180,1)","size":[50.9090909090909,42.7272727272727,91.8181818181818,34.5454545454545,100,26.3636363636364,50.9090909090909,26.3636363636364,75.4545454545455,75.4545454545455,83.6363636363636,18.1818181818182,50.9090909090909,59.0909090909091,26.3636363636364,26.3636363636364,26.3636363636364,10,75.4545454545455]},"error_y":{"color":"rgba(255,105,180,1)","width":[]},"error_x":{"color":"rgba(255,105,180,1)","width":[]},"line":{"color":"rgba(255,105,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
+<div id="htmlwidget-a845be55327514330bbf" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a845be55327514330bbf">{"x":{"visdat":{"143c0aa455aa":["function () ","plotlyVisDat"]},"cur_data":"143c0aa455aa","attrs":{"143c0aa455aa":{"x":{},"y":{},"text":{},"color":{},"size":{},"colors":["skyblue","hotpink"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"KidsFeet dataset","xaxis":{"domain":[0,1],"automargin":true,"title":"Length of the longer foot in cm"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Width of the longer foot in cm"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"x":[24.4,25.4,24.5,25.2,25.1,25.7,26.1,22.9,27.5,24.8,26.1,27,24,24.4,27.1,25.5,24.2,23.9,23.6,24.7],"y":[8.4,8.8,9.7,9.8,8.9,9.7,9.6,8.8,9.8,8.9,9.1,9.8,9.2,8.6,9.4,9.5,8.9,9.3,9,8.6],"text":["Name: David <br /> Birth-Month: 5","Name: Lars <br /> Birth-Month: 10","Name: Zach <br /> Birth-Month: 12","Name: Josh <br /> Birth-Month: 1","Name: Lang <br /> Birth-Month: 2","Name: Scotty <br /> Birth-Month: 3","Name: Edward <br /> Birth-Month: 2","Name: Damon <br /> Birth-Month: 9","Name: Mark <br /> Birth-Month: 9","Name: Ray <br /> Birth-Month: 3","Name: Cal <br /> Birth-Month: 8","Name: Cam <br /> Birth-Month: 3","Name: Andy <br /> Birth-Month: 6","Name: Josh <br /> Birth-Month: 7","Name: Glen <br /> Birth-Month: 7","Name: David <br /> Birth-Month: 12","Name: Mike <br /> Birth-Month: 11","Name: Dwayne <br /> Birth-Month: 8","Name: Dylan <br /> Birth-Month: 4","Name: Peter <br /> Birth-Month: 4"],"type":"scatter","mode":"markers","name":"B","marker":{"color":"rgba(135,206,235,1)","size":[42.7272727272727,83.6363636363636,100,10,18.1818181818182,26.3636363636364,18.1818181818182,75.4545454545455,75.4545454545455,26.3636363636364,67.2727272727273,26.3636363636364,50.9090909090909,59.0909090909091,59.0909090909091,100,91.8181818181818,67.2727272727273,34.5454545454545,34.5454545454545],"sizemode":"area","line":{"color":"rgba(135,206,235,1)"}},"textfont":{"color":"rgba(135,206,235,1)","size":[42.7272727272727,83.6363636363636,100,10,18.1818181818182,26.3636363636364,18.1818181818182,75.4545454545455,75.4545454545455,26.3636363636364,67.2727272727273,26.3636363636364,50.9090909090909,59.0909090909091,59.0909090909091,100,91.8181818181818,67.2727272727273,34.5454545454545,34.5454545454545]},"error_y":{"color":"rgba(135,206,235,1)","width":[]},"error_x":{"color":"rgba(135,206,235,1)","width":[]},"line":{"color":"rgba(135,206,235,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[23,23.6,26,23.7,24,24.7,26.7,25.5,24,24.5,24.2,26.1,24,22.5,24.5,22.9,26,21.6,24.6],"y":[8.8,9.3,9.3,7.9,8.7,8.8,9,9.5,8.3,9,8.1,9.5,9.3,8.6,8.6,8.5,9,7.9,8.8],"text":["Name: Caitlin <br /> Birth-Month: 6","Name: Eleanor <br /> Birth-Month: 5","Name: Julie <br /> Birth-Month: 11","Name: Kate <br /> Birth-Month: 4","Name: Caroline <br /> Birth-Month: 12","Name: Maggie <br /> Birth-Month: 3","Name: Lee <br /> Birth-Month: 6","Name: Heather <br /> Birth-Month: 3","Name: Laura <br /> Birth-Month: 9","Name: Erica <br /> Birth-Month: 9","Name: Peggy <br /> Birth-Month: 10","Name: Abby <br /> Birth-Month: 2","Name: Danielle <br /> Birth-Month: 6","Name: Caitlin <br /> Birth-Month: 7","Name: Leigh <br /> Birth-Month: 3","Name: Hannah <br /> Birth-Month: 3","Name: Teshanna <br /> Birth-Month: 3","Name: Hayley <br /> Birth-Month: 1","Name: Alisha <br /> Birth-Month: 9"],"type":"scatter","mode":"markers","name":"G","marker":{"color":"rgba(255,105,180,1)","size":[50.9090909090909,42.7272727272727,91.8181818181818,34.5454545454545,100,26.3636363636364,50.9090909090909,26.3636363636364,75.4545454545455,75.4545454545455,83.6363636363636,18.1818181818182,50.9090909090909,59.0909090909091,26.3636363636364,26.3636363636364,26.3636363636364,10,75.4545454545455],"sizemode":"area","line":{"color":"rgba(255,105,180,1)"}},"textfont":{"color":"rgba(255,105,180,1)","size":[50.9090909090909,42.7272727272727,91.8181818181818,34.5454545454545,100,26.3636363636364,50.9090909090909,26.3636363636364,75.4545454545455,75.4545454545455,83.6363636363636,18.1818181818182,50.9090909090909,59.0909090909091,26.3636363636364,26.3636363636364,26.3636363636364,10,75.4545454545455]},"error_y":{"color":"rgba(255,105,180,1)","width":[]},"error_x":{"color":"rgba(255,105,180,1)","width":[]},"line":{"color":"rgba(255,105,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
 </p>
 </div>
 </div>
