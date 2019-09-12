@@ -20,9 +20,13 @@ output:
 
 ----
 
-The best way to learn R is to open RStudio and try all the **Example** codes yourself that are listed on this page.
+*“For the things we have to learn before we can do them, we learn by doing them.”*
 
-Click on a code to see what it does. Hover to learn more.
+― Aristotle, The Nicomachean Ethics
+
+Most people that are new to using the "R Software" ask the question, "How do I learn R?" The answer is simple: "start using it." Really. Seriously. Just start using it, even when you have no idea what you are doing, and suddenly you will start to learn R. So, here we go. The more you use it, the more you will know.
+
+<br>
 
 ----
 
@@ -30,9 +34,256 @@ Click on a code to see what it does. Hover to learn more.
 
 <div style="padding-left:15px;">
 
-R allows you to work with data. So, the first step to understanding R is to open a dataset.
+<span class="tooltipr">
+<a href="javascript:showhide('hovertobegin')">Hover your mouse here to begin.</a>
+  <span class="tooltipRtext">Good work! <br/> Now "click" to get started. </span>
+</span>
+<div id="hovertobegin" style="display:none;padding-left:20px;">
 
-Here is a command you can run to see the "built in" data sets in R.
+<br/>
+
+This page follows a simple learning model: Hover. Click. Try.
+
+![](./Images/HoverClickTry.png)
+
+<br/>
+
+Hover over <span class="tooltipr">`code`<span class="tooltipRtext">Yes, just like that. By hovering over "Codes" you will get instructions on what that code does.</span></span> to read about it. Click on a line of code to see what it does. Try typing the code into RStudio yourself to actually start learning R.
+
+**Example** 
+
+<a href="javascript:showhide('CarsOutput')">
+<div class="hoverchunk">
+<span class="tooltipr">
+View(
+  <span class="tooltipRtext">The "View" R function (with a CAPTIAL 'V' in View) allows us to view a datset. When run, this function will open up a new tab in RStudio showing the dataset.  </span>
+</span><span class="tooltipr">
+cars
+  <span class="tooltipRtext">`cars` is a data set that is in R. R has datasets that are available for anyone to use. You can see them using the `data()` command. It would be good to explore `View()` a few different datasets. </span>
+</span><span class="tooltipr">
+)
+  <span class="tooltipRtext">Always be sure to end your function with closing parantheses. </span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="CarsOutput" style="display:none;padding-left:20px;">
+
+R allows you to work with data. So, the first step to understanding R is to open a dataset and begin exploring some data. The `View` command will help you get started with this.
+
+
+
+![](./Images/ViewCars.png)
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+----
+
+## View( ) 
+
+<div style="padding-left:15px;">
+
+Once you select a dataset like `cars` or `airquality` that you want to learn more about, this is how you look at it.
+
+**Usage**
+
+`View(datasetName)`
+
+* `datasetName` is the name of a dataset in R.
+
+**Example Code**
+
+Hover to read. Click to view. Try to learn.
+
+<a href="javascript:showhide('CarsOutput')">
+<div class="hoverchunk">
+<span class="tooltipr">
+View(
+  <span class="tooltipRtext">An R function "View" allows us to view the datset that we select. This will open up a new tab in RStudio showing the dataset. Be sure to include the opening parentheses. </span>
+</span><span class="tooltipr">
+cars
+  <span class="tooltipRtext">`cars` is a data set that is in R. R has datasets that are available for anyone to use. You can see them using the `data()` command. It would be good to explore `View()` a few different datasets. </span>
+</span><span class="tooltipr">
+)
+  <span class="tooltipRtext">Always be sure to end your function with closing parantheses. </span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="CarsOutput" style="display:none;padding-left:20px;">
+![](./Images/ViewCars.png)
+
+</div>
+
+
+<a href="javascript:showhide('airqualityOutput1')">
+<div class="hoverchunk">
+<span class="tooltipr">
+View(
+  <span class="tooltipRtext"> Function can work with datasets but also combinations and matrices that you create. </span>
+</span><span class="tooltipr">
+airquality)
+  <span class="tooltipRtext"> Gives us data concerning air quality measurements around New York City, NY. For more details on this dataset type: `?airquality`</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="airqualityOutput1" style="display:none;padding-left:20px;">
+![](./Images/airqualityOutput.png)
+
+Let's see how you are doing. Can you answer these questions about the airquality dataset?
+
+What is the sample size of this dataset? (Answer: 153)
+
+How many columns of data are there? (Answer: 6)
+
+</div>
+
+</div>
+
+<br />
+
+In addition to the `View` command, there are other nifty commands that allow you a quick glance at your data.
+
+<span style="color:steelblue;font-size:.8em;padding-left:160px;">Additional Commands</span> <a href="javascript:showhide('head_tail_glimpse')" style="font-size:.6em;color:skyblue;">(Click here to see more commands.)</a>
+
+<div id="head_tail_glimpse" style="display:none;font-size:.9em;">
+
+#### head() & tail()
+
+The `head` command shows the first few rows of a dataset, while the `tail` command shows the last few rows.
+
+**Usage**
+
+`head(datasetName)`
+
+`tail(datasetName)`
+
+* `datasetName` is the name of a dataset in R.
+
+<a href="javascript:showhide('head')">
+<div class="hoverchunk">
+<span class="tooltipr">
+head(
+  <span class="tooltipRtext">The `head` command allows us to see the first few rows of a datset that we select. The output will appear in the console. This command can be useful when working in an R script or R Markdown file, or when you simply need a quick glance at the data.</span>
+</span><span class="tooltipr">
+cars
+  <span class="tooltipRtext">`cars` is a data set that is in R.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltipRtext">Always be sure to end your function with closing parentheses. </span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="head" style="display:none;padding-left:20px;">
+
+Insert Image Here
+
+</div>
+
+<a href="javascript:showhide('tail')">
+<div class="hoverchunk">
+<span class="tooltipr">
+tail(
+  <span class="tooltipRtext">The `tail` command allows us to see the last few rows of a datset that we select. The output will appear in the console. This can be useful when working in an R script or R Markdown file, or when you simply need a quick glance at the data.</span>
+</span><span class="tooltipr">
+airquality)
+  <span class="tooltipRtext"> Gives us data concerning air quality measurements around New York City, NY. For more details on this dataset type: `?airquality`</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="tail" style="display:none;padding-left:20px;">
+
+Insert Image Here
+
+</div>
+
+<br>
+
+#### glimpse()
+
+The `glimpse` command gives you a glimpse of a dataset. To use the `glimpse` command, first ensure either `library(dplyr)` or `library(tidyverse)` is loaded. 
+
+**Usage**
+
+`glimpse(datasetName)`
+
+* `datasetName` is the name of a dataset in R.
+
+<a href="javascript:showhide('glimpseOutput')">
+<div class="hoverchunk">
+<span class="tooltipr">
+glimpse(
+  <span class="tooltipRtext">The `glimpse` command allows us to see the number of observations (rows) and variables (columns) in a dataset. It shows the column names and a few of the values in those columns. The output will appear in the console. This can be useful when working in an R script or R Markdown file, or when you simply need a quick *glimpse* of the data.</span>
+</span><span class="tooltipr">
+cars
+  <span class="tooltipRtext">`cars` is a data set that is in R.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltipRtext">Always be sure to end your function with closing parentheses. </span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="glimpseOutput" style="display:none;padding-left:20px;">
+
+Insert Image Here
+
+</div>
+
+</div>
+
+----
+
+<div style="padding-left:30px;color:darkgray;">
+R has many "built-in" datasets to choose from, which you can see by running the `data` commmand.
+</div>
+
+<span style="color:steelblue;font-size:.8em;padding-left:160px;">data()</span> <a href="javascript:showhide('data')" style="font-size:.6em;color:skyblue;">(Click here to learn about the data() command.)</a>
+
+<div id="data" style="display:none;font-size:.9em;">
+
+Here is a command you can run to see the "built in" datasets in R. Type `data()` in the console, leaving the parentheses empty, and press *Enter* to run the code.
 
 <a href="javascript:showhide('DataOutput')">
 <div class="hoverchunk">
@@ -41,7 +292,7 @@ data
   <span class="tooltipRtext">An R function "data" used to bring up a list of available datasets in R.</span>
 </span><span class="tooltipr">
 ()
-  <span class="tooltipRtext">Functions always have parantheses following the function name. For this function we do not put anything inside the parantheses.</span>
+  <span class="tooltipRtext">Functions always have parentheses following the function name. For this function we do not put anything inside the parentheses.</span>
 </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
@@ -56,6 +307,7 @@ data
 
 
 </div>
+
 
 
 </div>
@@ -123,41 +375,16 @@ data
 <div id="HelpOutput2" style="display:none;padding-left:20px;">
 ![](./Images/HelpOutputData.png)
 
-
 </div>
 
-
-</div>
-<br />
-<hr />
-
-
-## View( ) {#view}
-
-<div style="padding-left:15px;">
-Once you have selected a dataset, this is how you look at it.
-
-**Usage**
-
-`View(datasetName)`
-
-* `datasetName` is the name of a dataset in R.
-
-**Example Code**
-
-Click to view. Hover to learn.
-
-<a href="javascript:showhide('CarsOutput')">
+<a href="javascript:showhide('HelpOutput3')">
 <div class="hoverchunk">
 <span class="tooltipr">
-View(
-  <span class="tooltipRtext">An R function "View" allows us to view the datset that we select. This will open up a new tab in RStudio showing the dataset. Be sure to include the opening parantheses. </span>
+?
+  <span class="tooltipRtext">The quick way to access the help function in R.</span>
 </span><span class="tooltipr">
-cars
-  <span class="tooltipRtext">`cars` is data set that is in R. R has datasets that are available for anyone to use. You can see them using the `data()` command. It would be good to explore `View()` a few different datasets. </span>
-</span><span class="tooltipr">
-)
-  <span class="tooltipRtext">Always be sure to end your function with closing parantheses. </span>
+mean
+  <span class="tooltipRtext">The `mean` function computes the mean of a column of quantitative data. Typing the name of an R function, like `mean` can also be used to open the help file for that function.</span>
 </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
@@ -167,44 +394,19 @@ cars
 </span>
 </div>
 </a>
-<div id="CarsOutput" style="display:none;padding-left:20px;">
-![](./Images/ViewCars.png)
+
+<div id="HelpOutput3" style="display:none;padding-left:20px;">
+
+Insert Image Here
 
 </div>
 
 
-<a href="javascript:showhide('airqualityOutput1')">
-<div class="hoverchunk">
-<span class="tooltipr">
-View(
-  <span class="tooltipRtext"> Function can work with datasets but also combinations and matrices that you create. </span>
-</span><span class="tooltipr">
-airquality)
-  <span class="tooltipRtext"> Gives us data concerning air quality measurements around New York City, NY. For more details on this dataset type: `?airquality`</span>
-</span><span class="tooltipr">
-&nbsp;&nbsp;&nbsp;&nbsp;  
-  <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;font-size:.8em;">
-&nbsp;Click to Show Output&nbsp; 
-  <span class="tooltiprtext">Click to View Output.</span>
-</span>
-</div>
-</a>
-<div id="airqualityOutput1" style="display:none;padding-left:20px;">
-![](./Images/airqualityOutput.png)
-
-Let's see how you are doing. Can you answer these questions about the airquality dataset?
-
-What is the sample size of this dataset? (Answer: 153)
-
-How many columns of data are there? (Answer: 6)
 
 </div>
-
-</div>
-
 <br />
 <hr />
+
 
 
 
@@ -333,7 +535,7 @@ See [Numerical Summaries](NumericalSummaries.html) for more stats functions like
 <div style="padding-left:15px;">
 Being able to save your work is important!
 
-**Usage**
+**Usage** &nbsp;&nbsp; Keyboard Shortcut: `Alt` `-`
 
 `NameYouCreate <- some R commands`
 
@@ -561,6 +763,9 @@ $
  </span><span class="tooltipr">
 sex
   <span class="tooltipRtext">This is the name of the column we are interested in becoming the rows of our final table.</span>
+ </span><span class="tooltipr">
+,&nbsp;
+  <span class="tooltipRtext">Comma separating the two columns of the data set you want to table.</span>
  </span><span class="tooltipr">
 KidsFeet
   <span class="tooltipRtext"> This is the name of the data set.</span>
@@ -1061,7 +1266,7 @@ c(name, length)
 <div style="padding-left:15px;">
 Just like the pipes in your kitchen sink, the pipe operator takes "water from the sink" and "sends it down to somewhere else."
 
-**Usage** 
+**Usage** &nbsp;&nbsp; Keyboard Shortcut: `Ctrl` `Shift` `M`
 
 `NameOfDataset %>% `
 
@@ -1349,8 +1554,6 @@ Transform a column of data.
 
 &nbsp;&nbsp; `mutate(nameYouLike = some_transformation)`
 
-
-
 * `NameOfDataset` is the name of a dataset, like `cars` or `airquality` or `KidsFeet`.
 * `%>%` is the pipe operator that "pipes data" down into R commands on the next line.
 * `nameYouLike` is just that. Some name you come up with that will be the name of a new column in the dataset.
@@ -1359,6 +1562,53 @@ Transform a column of data.
 **Example Code**
 
 <a href="javascript:showhide('mutate1')">
+<div class="hoverchunk">
+<span class="tooltipr">
+mtcars2 <-&nbsp;
+  <span class="tooltipRtext">`mtcars2` is a new dataset we are creating that will contain all of `mtcars` data set along with a couple new columns we are creating.</span>
+</span><span class="tooltipr">
+mtcars
+  <span class="tooltipRtext">`mtcars` is a dataset found in base R. Typing `View(mtcars)` and `?mtcars` in the console will help you learn more about the dataset.</span>
+</span><span class="tooltipr">
+&nbsp;%>%&nbsp;
+  <span class="tooltipRtext">The pipe operator that will send the `mtcars` dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">
+&nbsp;&nbsp; mutate(
+  <span class="tooltipRtext">"mutate" is a function from library(tidyverse) that allows us to transform columns of data.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cyl_factor = as.factor(cyl), 
+  <span class="tooltipRtext">"cyl_factor" is a name we came up with that will store the results of the transformation of the "cyl" column. Here we are simply converting the "cyl" column from type numeric to a factor. Treating the "cyl" column as a factor could be useful in certain situations.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;weight = wt * 1000
+  <span class="tooltipRtext">"weight" is a name we came up with that will store the results of the transformation of the "wt" column. Taking a closer look with `?mtcars` shows us that wt is in 1000 lbs. Here we are just multiplying each row in the column by 1000.</span>
+ </span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;) 
+  <span class="tooltipRtext">Closing parenthesis for the mutate(...) function.</span>
+ </span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a> 
+
+<div id="mutate1" style="display:none;padding-left:20px;">
+```{r, echo=FALSE, eval=FALSE}
+mtcars2 <- mtcars %>% 
+  mutate(
+    cyl_factor = as.factor(cyl),
+    weight = wt * 1000
+  )
+```
+
+Insert Image Here
+
+</div>
+
+
+<a href="javascript:showhide('mutate2')">
 <div class="hoverchunk">
 <span class="tooltipr">
 Kids3 <-&nbsp;
@@ -1372,21 +1622,27 @@ KidsFeet
 </span><br/><span class="tooltipr">
 &nbsp;&nbsp; mutate(
   <span class="tooltipRtext">"mutate" is a function from library(tidyverse) that allows us to transform columns of data.</span>
-</span><span class="tooltipr">
-lengthIN = length / 2.54,
-  <span class="tooltipRtext">"lengthIN" is a name we came up with that will store the results of the transformation of the "length" column. This is just converting the length data from cm to inches.</span>
 </span><br/><span class="tooltipr">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;widthIN = width / 2.54,
-  <span class="tooltipRtext">"widthIN" is a name we came up with that will store the results of the transformation of the "width" column. This is just converting the width data from cm to inches.</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;season = case_when(
+  <span class="tooltipRtext">"season" is a name we came up with that will store the results of the transformation of the "birthmonth" column. The case_when(...) function from library(tidyverse) allows us to perform more complicated transformations with columns.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;birthmonth %in% c(12,1,2) ~ "Winter",
+  <span class="tooltipRtext">The body of case_when(...) is of the form `logical expression ~ "newValueName"`. This statement says that we want the values in the column "birthmonth" that are equal to 12, 1, and 2 to be assigned to the value "Winter" in the new "season" column.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;birthmonth %in% c(3,4,5) ~ "Spring",
+  <span class="tooltipRtext">The body of case_when(...) is of the form `logical expression ~ "newValueName"`. This statement says that we want the values in the column "birthmonth" that are equal to 3, 4, and 5 to be assigned to the value "Spring" in the new "season" column.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;birthmonth %in% c(6,7,8) ~ "Summer",
+  <span class="tooltipRtext">The body of case_when(...) is of the form `logical expression ~ "newValueName"`. This statement says that we want the values in the column "birthmonth" that are equal to 6, 7, and 8 to be assigned to the value "Summer" in the new "season" column.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;birthmonth %in% c(9,10,11) ~ "Fall"
+  <span class="tooltipRtext">The body of case_when(...) is of the form `logical expression ~ "newValueName"`. This statement says that we want the values in the column "birthmonth" that are equal to 9, 10, and 11 to be assigned to the value "Fall" in the new "season" column.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
+  <span class="tooltipRtext">Closing parenthesis of the case_when(...) function.</span>
 </span><br/><span class="tooltipr">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gender = case_when(sex == "B" ~ "Boy", sex == "G" ~ "Girl"),
-  <span class="tooltipRtext">"gender" is a name we came up with that will store the results of the transformation of the "sex" column. The case_when(...) function is being used to change the values of "B" to "Boy" and the values of "G" to "Girl".</span>
-</span><br/><span class="tooltipr">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lengthSplit = ifelse(length < median(length), "Under 50th Percentile", "50th Percentile or Greater")
-  <span class="tooltipRtext">"lengthSplit" is a name we came up with that will store the results of the ifelse(...) function. The ifelse(...) function in this case is being used to split the length column by the median of that column. The ifelse(...) function is of the form ifelse( Logical Condition , valueIfConditionTrue, valueIfConditionFalse).</span>
-</span><span class="tooltipr">
-) 
-  <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 
+  <span class="tooltipRtext">Closing parenthesis for the mutate(...) function.</span>
  </span><span class="tooltipr">
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
@@ -1397,7 +1653,74 @@ lengthIN = length / 2.54,
 </div>
 </a> 
   
-<div id="mutate1" style="display:none;padding-left:20px;">
+<div id="mutate2" style="display:none;padding-left:20px;">
+```{r, echo=FALSE, eval=FALSE}
+
+Kids3 <- KidsFeet %>% 
+  mutate(
+    season = case_when(
+      birthmonth %in% c(12,1,2) ~ "Winter",
+      birthmonth %in% c(3,4,5) ~ "Spring",
+      birthmonth %in% c(6,7,8) ~ "Summer",
+      birthmonth %in% c(9,10,11) ~ "Fall"
+    )
+  )
+```
+Insert Image Here
+
+</div>
+
+<a href="javascript:showhide('mutate3')">
+<div class="hoverchunk">
+<span class="tooltipr">
+Kids4 <-&nbsp;
+  <span class="tooltipRtext">`Kids4` is a new dataset we are creating that will contain all of `KidsFeet` data set along with a couple new columns we are creating.</span>
+</span><span class="tooltipr">
+KidsFeet
+  <span class="tooltipRtext">`KidsFeet` is a dataset found in  `library(mosaic)`.</span>
+</span><span class="tooltipr">
+&nbsp;%>%&nbsp;
+  <span class="tooltipRtext">The pipe operator that will send the `KidsFeet` dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">
+&nbsp;&nbsp; mutate(
+  <span class="tooltipRtext">"mutate" is a function from library(tidyverse) that allows us to transform columns of data.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lengthIN = length / 2.54,
+  <span class="tooltipRtext">"lengthIN" is a name we came up with that will store the results of the transformation of the "length" column. This is just converting the length data from cm to inches.</span>
+</span><br/><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;widthIN = width / 2.54,
+  <span class="tooltipRtext">"widthIN" is a name we came up with that will store the results of the transformation of the "width" column. This is just converting the width data from cm to inches.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lengthSplit = ifelse(length < median(length),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Under 50th Percentile",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"50th Percentile or Greater"),
+  <span class="tooltipRtext">"lengthSplit" is a name we came up with that will store the results of the ifelse(...) function. The ifelse(...) function in this case is being used to split the length column by the median of that column. The ifelse(...) function is of the form ifelse( Logical Condition , valueIfConditionTrue, valueIfConditionFalse).</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gender = case_when(
+  <span class="tooltipRtext">"gender" is a name we came up with that will store the results of the transformation of the "sex" column. The case_when(...) function from library(tidyverse) allows us to perform more complicated transformations with columns.</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sex == "B" ~ "Boy",
+  <span class="tooltipRtext">The body of case_when(...) is of the form `logical expression ~ "newValueName"`. This part of the case_when(...) function is being used to change the value of "B" to "Boy".</span>
+</span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sex == "G" ~ "Girl"
+  <span class="tooltipRtext">The body of case_when(...) is of the form `logical expression ~ "newValueName"`. This part of the case_when(...) function is being used to change the value of "G" to "Girl".</span>
+</span><br/><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 
+  <span class="tooltipRtext">Closing parenthesis for the case_when(...) function.</span>
+ </span><br><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 
+  <span class="tooltipRtext">Closing parenthesis for the mutate(...) function.</span>
+ </span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a> 
+  
+<div id="mutate3" style="display:none;padding-left:20px;">
 ```{r, echo=FALSE, eval=FALSE}
 Kids3 <- KidsFeet %>%
   mutate(lengthIN = length / 2.54,
@@ -1409,21 +1732,65 @@ Kids3 <- KidsFeet %>%
 ![](./Images/Kids3.png)
 </div>
 
+<a href="javascript:showhide('mutate4')">
+<div class="hoverchunk">
+<span class="tooltipr">
+airquality2 <-&nbsp;
+  <span class="tooltipRtext">`airquality` is a new dataset we are creating that will contain all of the `airquality` data set along with a new column we are creating.</span>
+</span><span class="tooltipr">
+airquality
+  <span class="tooltipRtext">`airquality` is a dataset found in base R. Typing `View(airquality)` and `?airquality` in the console will help you learn more about the dataset.</span>
+</span><span class="tooltipr">
+&nbsp;%>%&nbsp;
+  <span class="tooltipRtext">The pipe operator that will send the `KidsFeet` dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">
+&nbsp;&nbsp; mutate(
+  <span class="tooltipRtext">"mutate" is a function from library(tidyverse) that allows us to transform columns of data.</span>
+</span><span class="tooltipr">
+Month_Full = 
+  <span class="tooltipRtext">"Month_Full" is a name we came up with that will store the results of the transformation of the "Month" column.</span>
+</span><span class="tooltipr">
+&nbsp;month(
+  <span class="tooltipRtext">month(...) is from library(lubridate) and changes the "Month" column from type integer to type datetime.</span>
+ </span><span class="tooltipr">
+Month,
+  <span class="tooltipRtext">"Month" is the "Month" column from airquality.</span>
+ </span><span class="tooltipr">
+&nbsp;label = TRUE,
+  <span class="tooltipRtext"> "label = TRUE" tells month(...) to change the month numbers to abbreviated month names.</span>
+ </span><span class="tooltipr">
+&nbsp;abbr = FALSE
+  <span class="tooltipRtext"> "abbr = FALSE" changes the abbreviated month names to the full month names.</span>
+ </span><span class="tooltipr">
+) 
+  <span class="tooltipRtext">Closing parenthesis for the month(...) function.</span>
+ </span><span class="tooltipr">
+) 
+  <span class="tooltipRtext">Closing parenthesis for the mutate(...) function.</span>
+ </span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a> 
+
+<div id="mutate4" style="display:none;padding-left:20px;">
+```{r, echo=FALSE, eval=FALSE}
+
+library(lubridate)
+
+airquality2 <- airquality %>% 
+  mutate(Month_Full = month(Month, label = TRUE, abbr = FALSE))
+```
+
+Insert Image Here
+
+</div>
+
 **Other case_when( ) Uses**
-
-```{}
-case_when(birthmonth == 1 ~ "January",
-          birthmonth == 2 ~ "February",
-          birthmonth == 3 ~ "March",
-          ...and so on...)
-```
-
-```{}
-case_when(birthmonth %in% c(12,1,2) ~ "Winter",
-          birthmonth %in% c(3,4,5) ~ "Spring",
-          birthmonth %in% c(6,7,8) ~ "Summer",
-          birthmonth %in% c(9,10,11) ~ "Fall")
-```
 
 ```{}
 case_when(length > 25 & width > 9 ~ "Long and Wide",
@@ -1431,6 +1798,7 @@ case_when(length > 25 & width > 9 ~ "Long and Wide",
           length > 25 & width < 9 ~ "Long and Thin",
           length < 25 & width < 9 ~ "Short and Thin")
 ```
+
 
 **replace_na( ) Function**
 
@@ -1527,9 +1895,6 @@ KidsFeet %>%
   pander( ) 
 ```
 </div>
-
-
-
 
 <a href="javascript:showhide('arrange2')">
 <div class="hoverchunk">

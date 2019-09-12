@@ -133,11 +133,83 @@ conf.level = 0.95)
 </span>
 </div>
 </a>
-<div id="tTest" style="display:none;">
-```{r, echo=FALSE}
-t.test(mtcars$mpg, mu=20, alternative = "two.sided", conf.level = 0.95)
-```
 
+<div id="tTest" style="display:none;">
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout">
+ One Sample t-test
+    <span class="tooltiprouttext">EXPLANATION.</span>
+</span>
+</td>
+</tr>
+</table>
+<br/>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+    data:  mtcars$mpg
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    t = 0.08506,
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td>
+  <span class="tooltiprout">
+    &nbsp;df = 31,
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td>
+  <span class="tooltiprout">
+    &nbsp;p-value = 0.9328
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    alternative hypothesis: true mean is not equal to 20
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    95 percent confidence interval:
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    &nbsp;17.91768
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td align="left">
+  <span class="tooltiprout">
+    &nbsp;22.26357
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    sample estimates:
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    mean of x
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    &nbsp;20.09062
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
 
 </div>
 
@@ -352,9 +424,83 @@ conf.level = 0.95)
 ```{r, echo=FALSE}
 sleep1 <- filter(sleep, group==1)
 sleep2 <- filter(sleep, group==2)
-t.test(sleep2$extra, sleep1$extra, paired=TRUE, mu = 0, alternative = "two.sided", conf.level = 0.95)
 ```
 
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout">
+ Paired t-test
+    <span class="tooltiprouttext">EXPLANATION.</span>
+</span>
+</td>
+</tr>
+</table>
+<br/>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+    data:  sleep2\$extra and sleep1\$extra
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    t = 4.0621,
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td>
+  <span class="tooltiprout">
+    &nbsp;df = 9,
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td>
+  <span class="tooltiprout">
+    &nbsp;p-value = 0.002833
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    alternative hypothesis: true mean is not equal to 0
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    95 percent confidence interval:
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    &nbsp;0.7001142
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td align="left">
+  <span class="tooltiprout">
+    &nbsp;2.4598858
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    sample estimates:
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    mean of the differences
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td align="right">
+  <span class="tooltiprout">
+    &nbsp; 1.58
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
 
 </div>
 
@@ -470,9 +616,83 @@ conf.level = 0.95)
 <div id="tTestPaired2" style="display:none;">
 ```{r, echo=FALSE}
 differences <- sleep$extra[sleep$group==2] - sleep$extra[sleep$group==1]
-t.test(differences, mu = 0, alternative = "two.sided", conf.level = 0.95)
 ```
 
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout">
+ One Sample t-test
+    <span class="tooltiprouttext">EXPLANATION.</span>
+</span>
+</td>
+</tr>
+</table>
+<br/>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+    data:  differences
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    t = 4.0621,
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td>
+  <span class="tooltiprout">
+    &nbsp;df = 9,
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td>
+  <span class="tooltiprout">
+    &nbsp;p-value = 0.002833
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    alternative hypothesis: true mean is not equal to 0
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    95 percent confidence interval:
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    &nbsp;0.7001142
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td align="left">
+  <span class="tooltiprout">
+    &nbsp;2.4598858
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    sample estimates:
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    mean of x
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td align="right">
+  <span class="tooltiprout">
+    &nbsp; 1.58
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
 
 </div>
 
@@ -519,14 +739,14 @@ sig <- .8
 mu1 <- 13
 mu2 <- 14.25
 y1 <- dnorm(x, mu1, sig)
-#plot(x, y1, type='l', lty=2, lwd=1, col='darkgray', yaxt='n', xaxt='n',
-#     ylab=' ', xlab='', ylim=c(-.05,max(y1)+.03))
-#abline(h=0, col='gray')
-#lines(c(mu1,mu1),c(-0.015,dnorm(mu1,mu1,sig)), lty=2, col='darkgray')
+plot(x, y1, type='l', lty=2, lwd=1, col='darkgray', yaxt='n', xaxt='n',
+     ylab=' ', xlab='', ylim=c(-.05,max(y1)+.03))
+abline(h=0, col='gray')
+lines(c(mu1,mu1),c(-0.015,dnorm(mu1,mu1,sig)), lty=2, col='darkgray')
 y2 <- dnorm(x, mu2, sig) 
-#lines(x, y2, lty=2, lwd=1, col='darkgray', yaxt='n', xaxt='n',
-#     ylab=' ', xlab='')
-#lines(c(mu2,mu2),c(-0.015,dnorm(mu2,mu2,sig)), lty=2, col='darkgray')
+lines(x, y2, lty=2, lwd=1, col='darkgray', yaxt='n', xaxt='n',
+     ylab=' ', xlab='')
+lines(c(mu2,mu2),c(-0.015,dnorm(mu2,mu2,sig)), lty=2, col='darkgray')
 
 set.seed(123)
 s1 <- rnorm(5, mu1, sig)
@@ -667,11 +887,87 @@ conf.level = 0.95)
 </span>
 </div>
 </a>
-<div id="indptTest1" style="display:none;">
-```{r, echo=FALSE}
-t.test(length ~ sex, data=KidsFeet, mu=0, alternative="two.sided", conf.level=0.95)
-```
 
+<div id="indptTest1" style="display:none;">
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout">
+ Welch Two Sample t-test
+    <span class="tooltiprouttext">EXPLANATION.</span>
+</span>
+</td>
+</tr>
+</table>
+<br/>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+    data:  length by sex
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    t = 1.9174,
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td>
+  <span class="tooltiprout">
+    &nbsp;df = 36.275,
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td>
+  <span class="tooltiprout">
+    &nbsp;p-value = 0.06308
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    alternative hypothesis: true difference in means is not equal to 0
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    95 percent confidence interval:
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    &nbsp;-0.04502067
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td align="left">
+  <span class="tooltiprout">
+    &nbsp;1.61291541
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    sample estimates:
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    mean in group B mean in group G
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    &nbsp; 25.10500
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td align="left">
+  <span class="tooltiprout">
+    &nbsp;  24.32105
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
 
 </div>
 
@@ -764,11 +1060,87 @@ conf.level = 0.95)
 </span>
 </div>
 </a>
-<div id="indptTest2" style="display:none;">
-```{r, echo=FALSE}
-t.test(KidsFeet$length[KidsFeet$sex=="B"], KidsFeet$length[KidsFeet$sex=="G"], mu=0, alternative="two.sided", conf.level=0.95)
-```
 
+<div id="indptTest2" style="display:none;">
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout">
+ Welch Two Sample t-test
+    <span class="tooltiprouttext">EXPLANATION.</span>
+</span>
+</td>
+</tr>
+</table>
+<br/>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+    data:  KidsFeet\$length[KidsFeet\$sex == "B"] and KidsFeet\$length[KidsFeet\$sex == "G"]
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    t = 1.9174,
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td>
+  <span class="tooltiprout">
+    &nbsp;df = 36.275,
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td>
+  <span class="tooltiprout">
+    &nbsp;p-value = 0.06308
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    alternative hypothesis: true difference in means is not equal to 0
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    95 percent confidence interval:
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    &nbsp;-0.04502067
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td align="left">
+  <span class="tooltiprout">
+    &nbsp;1.61291541
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    sample estimates:
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td>
+  <span class="tooltiprout">
+    mean of x mean of y
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    &nbsp; 25.10500
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td align="left">
+  <span class="tooltiprout">
+    &nbsp; 24.32105
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
 
 </div>
 

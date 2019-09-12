@@ -464,19 +464,67 @@ $$</code></pre>
 <p><span class="tooltipr"> t.test( <span class="tooltiprtext">‘t.test’ is an R function that performs one and two sample t-tests.</span> </span><span class="tooltipr"> mtcars <span class="tooltiprtext">‘mtcars’ is a dataset. Type ‘View(mtcars)’ in R to view the dataset.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the mtcars dataset.</span> </span><span class="tooltipr"> mpg,  <span class="tooltiprtext">‘mpg’ is Y, a quantitative variable (numeric vector) from the mtcars dataset.</span> </span><span class="tooltipr"> mu = 20,  <span class="tooltiprtext"> The numeric value from the null hypothesis is 20 meaning <span class="math inline">\(\mu=20\)</span>. </span> </span><span class="tooltipr"> alternative = “two.sided”,  <span class="tooltiprtext"> The alternative hypothesis is “two.sided” meaning the alternative hypothesis is <span class="math inline">\(\mu\neq20\)</span>.</span> </span><span class="tooltipr"> conf.level = 0.95) <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to 1−α. </span> </span><span class="tooltipr">     <br />
 <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
-</a>
+<p></a></p>
 <div id="tTest" style="display:none;">
-<pre><code>## 
-##  One Sample t-test
-## 
-## data:  mtcars$mpg
-## t = 0.08506, df = 31, p-value = 0.9328
-## alternative hypothesis: true mean is not equal to 20
-## 95 percent confidence interval:
-##  17.91768 22.26357
-## sample estimates:
-## mean of x 
-##  20.09062</code></pre>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> One Sample t-test <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> data: mtcars$mpg <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> t = 0.08506, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  df = 31, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  p-value = 0.9328 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> alternative hypothesis: true mean is not equal to 20 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> 95 percent confidence interval: <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout">  17.91768 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td align="left">
+<span class="tooltiprout">  22.26357 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> sample estimates: <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> mean of x <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout">  20.09062 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
 </div>
 <a href="javascript:showhide('onesampleQQplot')">
 <div class="hoverchunk">
@@ -484,7 +532,7 @@ $$</code></pre>
 </div>
 </a>
 <div id="onesampleQQplot" style="display:none;">
-<p><img src="tTests_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="tTests_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <pre><code>## [1] 20 18</code></pre>
 </div>
 </div>
@@ -495,7 +543,7 @@ $$</code></pre>
 <div style="padding-left:125px;">
 <p>In many cases where it is of interest to test a claim about a single population mean <span class="math inline">\(\mu\)</span>, the one sample t test is used. This is an appropriate decision whenever the sampling distribution of the sample mean can be assumed to be normal and the data represents a simple random sample from the population.</p>
 <p>In the figure below, the null hypothesis <span class="math inline">\(H_0: \mu = \mu_0\)</span> is represented by the normal distribution (gray) centered at <span class="math inline">\(\mu_0\)</span>. Note that <span class="math inline">\(\mu_0\)</span> is just some specified number. This shows how the null hypothesis represents the assumption about the center of the distribution of the data.</p>
-<p><img src="tTests_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="tTests_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>After a hypothesis (null) is established and an alternative hypothesis similarly declared, a simple random sample of data of size <span class="math inline">\(n\)</span> is obtained from the population of interest. In the plot above, this is depicted by the points (blue dots) which are centered around their sample mean <span class="math inline">\(\bar{x}\)</span>.</p>
 <p>Above the points (blue dots) is shown a second normal distribution (blue dashed line) which represents the idea that the alternative hypothesis allows for a normal distribution which is potentially more consistent with the data than the one specified under the null hypothesis.</p>
 <p>The role of the one sample t test is to measure the probability of a sample mean being as extreme or more extreme from the hypothesized value of <span class="math inline">\(\mu_0\)</span> than the one observed assuming the null hypothesis is true. This probability is of course the p-value of the test. This works because the sampling distribution of the sample mean has been assumed to be normal. In this case, the distribution of the test statistic t, <span class="math display">\[
@@ -571,17 +619,65 @@ $$</code></pre>
 </div>
 </a>
 <div id="tTestPaired" style="display:none;">
-<pre><code>## 
-##  Paired t-test
-## 
-## data:  sleep2$extra and sleep1$extra
-## t = 4.0621, df = 9, p-value = 0.002833
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  0.7001142 2.4598858
-## sample estimates:
-## mean of the differences 
-##                    1.58</code></pre>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> Paired t-test <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> data: sleep2$extra and sleep1$extra <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> t = 4.0621, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  df = 9, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  p-value = 0.002833 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> alternative hypothesis: true mean is not equal to 0 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> 95 percent confidence interval: <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout">  0.7001142 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td align="left">
+<span class="tooltiprout">  2.4598858 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> sample estimates: <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> mean of the differences <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td align="right">
+<span class="tooltiprout">   1.58 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
 </div>
 <a href="javascript:showhide('pairedQQplot')">
 <div class="hoverchunk">
@@ -589,7 +685,7 @@ $$</code></pre>
 </div>
 </a>
 <div id="pairedQQplot" style="display:none;">
-<p><img src="tTests_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="tTests_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <pre><code>## [1] 9 5</code></pre>
 </div>
 <p><br /></p>
@@ -619,17 +715,65 @@ $$</code></pre>
 </div>
 </a>
 <div id="tTestPaired2" style="display:none;">
-<pre><code>## 
-##  One Sample t-test
-## 
-## data:  differences
-## t = 4.0621, df = 9, p-value = 0.002833
-## alternative hypothesis: true mean is not equal to 0
-## 95 percent confidence interval:
-##  0.7001142 2.4598858
-## sample estimates:
-## mean of x 
-##      1.58</code></pre>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> One Sample t-test <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> data: differences <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> t = 4.0621, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  df = 9, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  p-value = 0.002833 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> alternative hypothesis: true mean is not equal to 0 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> 95 percent confidence interval: <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout">  0.7001142 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td align="left">
+<span class="tooltiprout">  2.4598858 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> sample estimates: <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> mean of x <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td align="right">
+<span class="tooltiprout">   1.58 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
 </div>
 <a href="javascript:showhide('pairedQQplot2')">
 <div class="hoverchunk">
@@ -637,7 +781,7 @@ $$</code></pre>
 </div>
 </a>
 <div id="pairedQQplot2" style="display:none;">
-<p><img src="tTests_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="tTests_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <pre><code>## [1] 9 5</code></pre>
 </div>
 </div>
@@ -649,7 +793,7 @@ $$</code></pre>
 <p>The paired samples t test considers the single mean of all the differences from the paired values. Thus, the paired samples t test essentially becomes a one sample t test on the differences between paired observations. Hence the requirement is that the sampling distribution of the sample mean of the differences, <span class="math inline">\(\bar{d}\)</span>, can be assumed to be normally distributed. (It is also required that the obtained differences represent a simple random sample of the full population of possible differences.)</p>
 <p>The paired samples t test is similar to the independent samples t test scenario, except that there is extra information that allows values from one sample to be paired with a value from the other sample. This pairing of values allows for a more direct analysis of the change or difference individuals experience between the two samples.</p>
 <p>The points in the plot below demonstrate how points are paired together, and the only thing of interest are the differences between the paired points.</p>
-<p><img src="tTests_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="tTests_files/figure-html/unnamed-chunk-8-1.png" width="672" /><img src="tTests_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
 </div>
 <hr />
 </div>
@@ -712,19 +856,70 @@ $$</code></pre>
 <p><span class="tooltipr"> t.test( <span class="tooltiprtext">‘t.test’ is an R function that performs one and two sample t-tests.</span> </span><span class="tooltipr"> length  <span class="tooltiprtext">‘length’ is a quantitative variable (numeric vector).</span> </span><span class="tooltipr"> ~  <span class="tooltiprtext">‘~’ is the tilde symbol.</span> </span><span class="tooltipr"> sex,  <span class="tooltiprtext">‘sex’ is a ‘factor’ or ‘character’ vector that represents the group assignment for each observation. There are two groups.</span> </span><span class="tooltipr"> data=KidsFeet,  <span class="tooltiprtext">‘KidsFeet’ is a dataset in library(mosaic). Type View(KidsFeet) to view it.</span> </span><span class="tooltipr"> mu = 0,  <span class="tooltiprtext">The numeric value from the null hypothesis for μ1-μ2 is 0 meaning the null hypothesis is <span class="math inline">\(\mu1-\mu2 = 0\)</span></span> </span><span class="tooltipr"> alternative = “two.sided”,  <span class="tooltiprtext"> The alternative is “two-sided” meaning the alternative hypothesis is <span class="math inline">\(\mu1-\mu2 \neq 0\)</span>.</span> </span><span class="tooltipr"> conf.level = 0.95) <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to <span class="math inline">\(1-\alpha\)</span></span> </span><span class="tooltipr">     <br />
 <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
-</a>
+<p></a></p>
 <div id="indptTest1" style="display:none;">
-<pre><code>## 
-##  Welch Two Sample t-test
-## 
-## data:  length by sex
-## t = 1.9174, df = 36.275, p-value = 0.06308
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  -0.04502067  1.61291541
-## sample estimates:
-## mean in group B mean in group G 
-##        25.10500        24.32105</code></pre>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> Welch Two Sample t-test <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> data: length by sex <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> t = 1.9174, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  df = 36.275, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  p-value = 0.06308 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> alternative hypothesis: true difference in means is not equal to 0 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> 95 percent confidence interval: <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout">  -0.04502067 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td align="left">
+<span class="tooltiprout">  1.61291541 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> sample estimates: <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> mean in group B mean in group G <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td align="left">
+<span class="tooltiprout">   25.10500 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td align="left">
+<span class="tooltiprout">   24.32105 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
 </div>
 <a href="javascript:showhide('indptTest1qqPlot')">
 <div class="hoverchunk">
@@ -732,7 +927,7 @@ $$</code></pre>
 </div>
 </a>
 <div id="indptTest1qqPlot" style="display:none;">
-<p><img src="tTests_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="tTests_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 <p><br /></p>
 <p><strong>Option 2:</strong></p>
@@ -757,19 +952,70 @@ $$</code></pre>
 <p><span class="tooltipr"> t.test( <span class="tooltiprtext">‘t.test’ is an R function that performs one and two sample t-tests.</span> </span><span class="tooltipr"> KidsFeet$length[KidsFeet$sex == “B”],  <span class="tooltiprtext">A numeric vector that represents the quantitative data or the foot length for the first sample of data which in this case is the boys.</span> </span><span class="tooltipr"> KidsFeet$length[KidsFeet$sex == “G”],  <span class="tooltiprtext">A numeric vector that represents the quantitative data or the foot length for the second sample of data which in this case is the girls.</span> </span><span class="tooltipr"> mu = 0,  <span class="tooltiprtext">The numeric value from the null hypothesis for μ1-μ2 is 0 meaning the null hypothesis is <span class="math inline">\(\mu1-\mu2 = 0\)</span></span> </span><span class="tooltipr"> alternative = “two.sided”,  <span class="tooltiprtext"> The alternative is “two-sided” meaning the alternative hypothesis is <span class="math inline">\(\mu1-\mu2 \neq 0\)</span>.</span> </span><span class="tooltipr"> conf.level = 0.95) <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to <span class="math inline">\(1-\alpha\)</span></span> </span><span class="tooltipr">     <br />
 <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
-</a>
+<p></a></p>
 <div id="indptTest2" style="display:none;">
-<pre><code>## 
-##  Welch Two Sample t-test
-## 
-## data:  KidsFeet$length[KidsFeet$sex == &quot;B&quot;] and KidsFeet$length[KidsFeet$sex == &quot;G&quot;]
-## t = 1.9174, df = 36.275, p-value = 0.06308
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  -0.04502067  1.61291541
-## sample estimates:
-## mean of x mean of y 
-##  25.10500  24.32105</code></pre>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> Welch Two Sample t-test <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> data: KidsFeet$length[KidsFeet$sex == “B”] and KidsFeet$length[KidsFeet$sex == “G”] <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> t = 1.9174, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  df = 36.275, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  p-value = 0.06308 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> alternative hypothesis: true difference in means is not equal to 0 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> 95 percent confidence interval: <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout">  -0.04502067 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td align="left">
+<span class="tooltiprout">  1.61291541 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> sample estimates: <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> mean of x mean of y <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td align="left">
+<span class="tooltiprout">   25.10500 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td align="left">
+<span class="tooltiprout">   24.32105 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
 </div>
 <a href="javascript:showhide('indptTest2qqPlot')">
 <div class="hoverchunk">
@@ -778,7 +1024,7 @@ $$</code></pre>
 </a>
 <div id="indptTest2qqPlot" style="display:none;">
 <pre><code>## [1] 9 8</code></pre>
-<p><img src="tTests_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="tTests_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <pre><code>## [1] 18  7</code></pre>
 </div>
 </div>
@@ -788,12 +1034,12 @@ $$</code></pre>
 <h4>Explanation</h4>
 <div style="padding-left:125px;">
 <p>The first figure below depicts the scenario where the difference in means of two separate normal distributions is non-zero. In other words, the two distributions have different means, <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span>, respectively. It is worth emphasizing that the values of <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span> are unknown to the researcher. The only thing observed are two separate samples of data (blue dots) of sizes <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>, respectively. For the scenario depicted, the null hypothesis that <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span> (i.e., that <span class="math inline">\(\mu_1=\mu_2\)</span>) is rejected in favor of the alternative that <span class="math inline">\(H_a: \mu_1 - \mu_2 \neq 0\)</span> based on the sample data observed. This dicision would be correct as the true difference in means, <span class="math inline">\(\mu_1-\mu_2\)</span> is non-zero in this case.</p>
-<p><img src="tTests_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="tTests_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>When the null hypothesis is true, that <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span>, then it follows that the test statistic <span class="math inline">\(t\)</span> that is obtained by measuring the distance between the two sample means, <span class="math inline">\(\bar{x}_1-\bar{x}_2\)</span>, and appropriately standardizing the result follows a <span class="math inline">\(t\)</span> distribution with degrees of freedom less than or equal to <span class="math inline">\(n_1+n_2-2\)</span>. Thus, the <span class="math inline">\(p\)</span>-value of the independent samples <span class="math inline">\(t\)</span> test is obtained by using this <span class="math inline">\(t\)</span> distribution to calculate the probability of a test statistic <span class="math inline">\(t\)</span> being as extreme or more extreme than the one observed assuming the null hypothesis is true. <span class="math display">\[
   t = \frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{\sqrt{s_1/n_1+s_2/n_2 }}
 \]</span></p>
 <p>The plot below demonstrates what data might look like when the null hypothesis is actually true. In other words, when both samples come from the same distribution.</p>
-<p><img src="tTests_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="tTests_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 <hr />
 <footer>
