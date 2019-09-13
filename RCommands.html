@@ -488,7 +488,6 @@ div.tocify {
 <hr />
 <p><em>“For the things we have to learn before we can do them, we learn by doing them.”</em></p>
 <p>― Aristotle, The Nicomachean Ethics</p>
-<p>Most people that are new to using the “R Software” ask the question, “How do I learn R?” The answer is simple: “start using it.” Really. Seriously. Just start using it, even when you have no idea what you are doing, and suddenly you will start to learn R. So, here we go. The more you use it, the more you will know.</p>
 <p><br></p>
 <hr />
 <div id="getting-started" class="section level2">
@@ -497,6 +496,11 @@ div.tocify {
 <span class="tooltipr"> <a href="javascript:showhide('hovertobegin')">Hover your mouse here to begin.</a> <span class="tooltipRtext">Good work! <br/> Now “click” to get started. </span> </span>
 <div id="hovertobegin" style="display:none;padding-left:20px;">
 <p><br/></p>
+<p>Student: “How do I learn R?”</p>
+<p>Teacher: “By using it.”</p>
+<p>Student: “But I don’t know how to use it.”</p>
+<p>Teacher: “Just try it anyway. Suddenly you’ll understand.”</p>
+<p>Most people that are new to using the “R Software” ask the question, “How do I learn R?” The answer is simple: “start using it.” Really. Seriously. Just start using it, even when you have no idea what you are doing, and suddenly you will start to learn R. So, here we go. The more you use it, the more you will know.</p>
 <p>This page follows a simple learning model: Hover. Click. Try.</p>
 <div class="figure">
 <img src="Images/HoverClickTry.png" />
@@ -504,42 +508,19 @@ div.tocify {
 </div>
 <p><br/></p>
 <p>Hover over <span class="tooltipr"><code>code</code><span class="tooltipRtext">Yes, just like that. By hovering over “Codes” you will get instructions on what that code does.</span></span> to read about it. Click on a line of code to see what it does. Try typing the code into RStudio yourself to actually start learning R.</p>
-<p><strong>Example</strong></p>
+<p><strong>Examples</strong></p>
+<p>For each of the following examples, hover, click, and try.</p>
 <a href="javascript:showhide('CarsOutput')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> View( <span class="tooltipRtext">The “View” R function (with a CAPTIAL ‘V’ in View) allows us to view a datset. When run, this function will open up a new tab in RStudio showing the dataset. </span> </span><span class="tooltipr"> cars <span class="tooltipRtext"><code>cars</code> is a data set that is in R. R has datasets that are available for anyone to use. You can see them using the <code>data()</code> command. It would be good to explore <code>View()</code> a few different datasets. </span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always be sure to end your function with closing parantheses. </span> </span><span class="tooltipr">     <br />
+<p><span class="tooltipr"> View( <span class="tooltipRtext">The “View” R function (with a CAPTIAL ‘V’ in View) allows us to view a datset. When run, this function will open up a new tab in RStudio showing the dataset. </span> </span><span class="tooltipr"> cars <span class="tooltipRtext"><code>cars</code> is a data set that is in R. R has datasets that are available for anyone to use. You can see them using the <code>data()</code> command. It would be good to explore <code>View()</code> for a few different datasets. </span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always be sure to end your function with closing parantheses. </span> </span><span class="tooltipr">     <br />
 <span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="CarsOutput" style="display:none;padding-left:20px;">
 <p>R allows you to work with data. So, the first step to understanding R is to open a dataset and begin exploring some data. The <code>View</code> command will help you get started with this.</p>
-<div class="figure">
-<img src="Images/ViewCars.png" />
-
-</div>
-</div>
-</div>
-</div>
-<hr />
-</div>
-<div id="view" class="section level2">
-<h2>View( )</h2>
-<div style="padding-left:15px;">
-<p>Once you select a dataset like <code>cars</code> or <code>airquality</code> that you want to learn more about, this is how you look at it.</p>
-<p><strong>Usage</strong></p>
-<p><code>View(datasetName)</code></p>
-<ul>
-<li><code>datasetName</code> is the name of a dataset in R.</li>
-</ul>
-<p><strong>Example Code</strong></p>
-<p>Hover to read. Click to view. Try to learn.</p>
-<a href="javascript:showhide('CarsOutput')">
-<div class="hoverchunk">
-<p><span class="tooltipr"> View( <span class="tooltipRtext">An R function “View” allows us to view the datset that we select. This will open up a new tab in RStudio showing the dataset. Be sure to include the opening parentheses. </span> </span><span class="tooltipr"> cars <span class="tooltipRtext"><code>cars</code> is a data set that is in R. R has datasets that are available for anyone to use. You can see them using the <code>data()</code> command. It would be good to explore <code>View()</code> a few different datasets. </span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always be sure to end your function with closing parantheses. </span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
-</div>
-</a>
-<div id="CarsOutput" style="display:none;padding-left:20px;">
+<p><strong>Step 1.</strong> Open RStudio.</p>
+<p><strong>Step 2.</strong> Type the command <code>View(cars)</code> into your <strong>Console</strong>.</p>
+<p><strong>Step 3.</strong> Press <code>Enter</code> or <code>Return</code> and the following output should appear within RStudio.</p>
 <div class="figure">
 <img src="Images/ViewCars.png" />
 
@@ -547,11 +528,12 @@ div.tocify {
 </div>
 <a href="javascript:showhide('airqualityOutput1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> View( <span class="tooltipRtext"> Function can work with datasets but also combinations and matrices that you create. </span> </span><span class="tooltipr"> airquality) <span class="tooltipRtext"> Gives us data concerning air quality measurements around New York City, NY. For more details on this dataset type: <code>?airquality</code></span> </span><span class="tooltipr">     <br />
+<p><span class="tooltipr"> View( <span class="tooltipRtext">The “View” R function (with a CAPTIAL ‘V’ in View) allows us to view a datset. When run, this function will open up a new tab in RStudio showing the dataset.</span> </span><span class="tooltipr"> airquality) <span class="tooltipRtext"> Gives us data concerning air quality measurements around New York City, NY. For more details on this dataset type: <code>?airquality</code></span> </span><span class="tooltipr">     <br />
 <span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="airqualityOutput1" style="display:none;padding-left:20px;">
+<p>Here is what the output of the command <code>View(airquality)</code> looks like.</p>
 <div class="figure">
 <img src="Images/airqualityOutput.png" />
 
@@ -560,73 +542,21 @@ div.tocify {
 <p>What is the sample size of this dataset? (Answer: 153)</p>
 <p>How many columns of data are there? (Answer: 6)</p>
 </div>
-</div>
-<p><br /></p>
-<p>In addition to the <code>View</code> command, there are other nifty commands that allow you a quick glance at your data.</p>
-<p><span style="color:steelblue;font-size:.8em;padding-left:160px;">Additional Commands</span> <a href="javascript:showhide('head_tail_glimpse')" style="font-size:.6em;color:skyblue;">(Click here to see more commands.)</a></p>
-<div id="head_tail_glimpse" style="display:none;font-size:.9em;">
-<h4 id="head-tail">head() &amp; tail()</h4>
-<p>The <code>head</code> command shows the first few rows of a dataset, while the <code>tail</code> command shows the last few rows.</p>
-<p><strong>Usage</strong></p>
-<p><code>head(datasetName)</code></p>
-<p><code>tail(datasetName)</code></p>
-<ul>
-<li><code>datasetName</code> is the name of a dataset in R.</li>
-</ul>
-<a href="javascript:showhide('head')">
-<div class="hoverchunk">
-<p><span class="tooltipr"> head( <span class="tooltipRtext">The <code>head</code> command allows us to see the first few rows of a datset that we select. The output will appear in the console. This command can be useful when working in an R script or R Markdown file, or when you simply need a quick glance at the data.</span> </span><span class="tooltipr"> cars <span class="tooltipRtext"><code>cars</code> is a data set that is in R.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always be sure to end your function with closing parentheses. </span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
-</div>
-</a>
-<div id="head" style="display:none;padding-left:20px;">
-<p>Insert Image Here</p>
-</div>
-<a href="javascript:showhide('tail')">
-<div class="hoverchunk">
-<p><span class="tooltipr"> tail( <span class="tooltipRtext">The <code>tail</code> command allows us to see the last few rows of a datset that we select. The output will appear in the console. This can be useful when working in an R script or R Markdown file, or when you simply need a quick glance at the data.</span> </span><span class="tooltipr"> airquality) <span class="tooltipRtext"> Gives us data concerning air quality measurements around New York City, NY. For more details on this dataset type: <code>?airquality</code></span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
-</div>
-</a>
-<div id="tail" style="display:none;padding-left:20px;">
-<p>Insert Image Here</p>
-</div>
-<p><br></p>
-<h4 id="glimpse">glimpse()</h4>
-<p>The <code>glimpse</code> command gives you a glimpse of a dataset. To use the <code>glimpse</code> command, first ensure either <code>library(dplyr)</code> or <code>library(tidyverse)</code> is loaded.</p>
-<p><strong>Usage</strong></p>
-<p><code>glimpse(datasetName)</code></p>
-<ul>
-<li><code>datasetName</code> is the name of a dataset in R.</li>
-</ul>
-<a href="javascript:showhide('glimpseOutput')">
-<div class="hoverchunk">
-<p><span class="tooltipr"> glimpse( <span class="tooltipRtext">The <code>glimpse</code> command allows us to see the number of observations (rows) and variables (columns) in a dataset. It shows the column names and a few of the values in those columns. The output will appear in the console. This can be useful when working in an R script or R Markdown file, or when you simply need a quick <em>glimpse</em> of the data.</span> </span><span class="tooltipr"> cars <span class="tooltipRtext"><code>cars</code> is a data set that is in R.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always be sure to end your function with closing parentheses. </span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
-</div>
-</a>
-<div id="glimpseOutput" style="display:none;padding-left:20px;">
-<p>Insert Image Here</p>
-</div>
-</div>
-<hr />
-<div style="padding-left:30px;color:darkgray;">
-<p>R has many “built-in” datasets to choose from, which you can see by running the <code>data</code> commmand.</p>
-</div>
-<p><span style="color:steelblue;font-size:.8em;padding-left:160px;">data()</span> <a href="javascript:showhide('data')" style="font-size:.6em;color:skyblue;">(Click here to learn about the data() command.)</a></p>
-<div id="data" style="display:none;font-size:.9em;">
-<p>Here is a command you can run to see the “built in” datasets in R. Type <code>data()</code> in the console, leaving the parentheses empty, and press <em>Enter</em> to run the code.</p>
 <a href="javascript:showhide('DataOutput')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> data <span class="tooltipRtext">An R function “data” used to bring up a list of available datasets in R.</span> </span><span class="tooltipr"> () <span class="tooltipRtext">Functions always have parentheses following the function name. For this function we do not put anything inside the parentheses.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Double-Click to Hide Output  <span class="tooltiprtext">Click to see output.</span> </span></p>
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to see output.</span> </span></p>
 </div>
 </a>
-<div id="DataOutput" style="display:show;padding-left:20px;">
+<div id="DataOutput" style="display:none;padding-left:20px;">
+<p>Notice that the list of available data sets in R includes the “airquality” and “cars” data sets that we “Viewed” previously.</p>
+<p>There are many, many other data sets you can View and use as well. You can also bring your own data sets into R, as you will learn later this week.</p>
 <div class="figure">
 <img src="Images/DataOutput.png" />
 
 </div>
+</div>
+<p>Once you finish working through the three above example codes, move on to studying the codes below.</p>
 </div>
 </div>
 <br />
@@ -689,6 +619,7 @@ div.tocify {
 <ul>
 <li>The <code>$</code> operator allows you to access the individual columns of a dataset.</li>
 </ul>
+<p><span style="font-size:.8em;">Tip: think of the data set as a “store” from which you “purchase” a column using “money”: <code>$</code>.</span></p>
 <p><strong>Example Code</strong></p>
 <a href="javascript:showhide('airqualityDollar')">
 <div class="hoverchunk">
@@ -1226,7 +1157,523 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="mutate1" style="display:none;padding-left:20px;">
-<p>Insert Image Here</p>
+<p>Notice the last two columns of <code>cyl_factor</code> and <code>weight</code> are what we added to the data set <code>mtcars2</code>. As seen by <code>View(mtcars)</code>, the original <code>mtcars</code> data set did not have these two columns. We used the <code>mutate</code> function to create them and saved our work in a new data set called <code>mtcars2</code>.</p>
+<table>
+<colgroup>
+<col width="7%" />
+<col width="6%" />
+<col width="8%" />
+<col width="6%" />
+<col width="7%" />
+<col width="8%" />
+<col width="8%" />
+<col width="5%" />
+<col width="5%" />
+<col width="7%" />
+<col width="7%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">mpg</th>
+<th align="center">cyl</th>
+<th align="center">disp</th>
+<th align="center">hp</th>
+<th align="center">drat</th>
+<th align="center">wt</th>
+<th align="center">qsec</th>
+<th align="center">vs</th>
+<th align="center">am</th>
+<th align="center">gear</th>
+<th align="center">carb</th>
+<th align="center">cyl_factor</th>
+<th align="center">weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">21</td>
+<td align="center">6</td>
+<td align="center">160</td>
+<td align="center">110</td>
+<td align="center">3.9</td>
+<td align="center">2.62</td>
+<td align="center">16.46</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">6</td>
+<td align="center">2620</td>
+</tr>
+<tr class="even">
+<td align="center">21</td>
+<td align="center">6</td>
+<td align="center">160</td>
+<td align="center">110</td>
+<td align="center">3.9</td>
+<td align="center">2.875</td>
+<td align="center">17.02</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">6</td>
+<td align="center">2875</td>
+</tr>
+<tr class="odd">
+<td align="center">22.8</td>
+<td align="center">4</td>
+<td align="center">108</td>
+<td align="center">93</td>
+<td align="center">3.85</td>
+<td align="center">2.32</td>
+<td align="center">18.61</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">2320</td>
+</tr>
+<tr class="even">
+<td align="center">21.4</td>
+<td align="center">6</td>
+<td align="center">258</td>
+<td align="center">110</td>
+<td align="center">3.08</td>
+<td align="center">3.215</td>
+<td align="center">19.44</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">3215</td>
+</tr>
+<tr class="odd">
+<td align="center">18.7</td>
+<td align="center">8</td>
+<td align="center">360</td>
+<td align="center">175</td>
+<td align="center">3.15</td>
+<td align="center">3.44</td>
+<td align="center">17.02</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">8</td>
+<td align="center">3440</td>
+</tr>
+<tr class="even">
+<td align="center">18.1</td>
+<td align="center">6</td>
+<td align="center">225</td>
+<td align="center">105</td>
+<td align="center">2.76</td>
+<td align="center">3.46</td>
+<td align="center">20.22</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">3460</td>
+</tr>
+<tr class="odd">
+<td align="center">14.3</td>
+<td align="center">8</td>
+<td align="center">360</td>
+<td align="center">245</td>
+<td align="center">3.21</td>
+<td align="center">3.57</td>
+<td align="center">15.84</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">8</td>
+<td align="center">3570</td>
+</tr>
+<tr class="even">
+<td align="center">24.4</td>
+<td align="center">4</td>
+<td align="center">146.7</td>
+<td align="center">62</td>
+<td align="center">3.69</td>
+<td align="center">3.19</td>
+<td align="center">20</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">3190</td>
+</tr>
+<tr class="odd">
+<td align="center">22.8</td>
+<td align="center">4</td>
+<td align="center">140.8</td>
+<td align="center">95</td>
+<td align="center">3.92</td>
+<td align="center">3.15</td>
+<td align="center">22.9</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">3150</td>
+</tr>
+<tr class="even">
+<td align="center">19.2</td>
+<td align="center">6</td>
+<td align="center">167.6</td>
+<td align="center">123</td>
+<td align="center">3.92</td>
+<td align="center">3.44</td>
+<td align="center">18.3</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">6</td>
+<td align="center">3440</td>
+</tr>
+<tr class="odd">
+<td align="center">17.8</td>
+<td align="center">6</td>
+<td align="center">167.6</td>
+<td align="center">123</td>
+<td align="center">3.92</td>
+<td align="center">3.44</td>
+<td align="center">18.9</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">6</td>
+<td align="center">3440</td>
+</tr>
+<tr class="even">
+<td align="center">16.4</td>
+<td align="center">8</td>
+<td align="center">275.8</td>
+<td align="center">180</td>
+<td align="center">3.07</td>
+<td align="center">4.07</td>
+<td align="center">17.4</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">8</td>
+<td align="center">4070</td>
+</tr>
+<tr class="odd">
+<td align="center">17.3</td>
+<td align="center">8</td>
+<td align="center">275.8</td>
+<td align="center">180</td>
+<td align="center">3.07</td>
+<td align="center">3.73</td>
+<td align="center">17.6</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">8</td>
+<td align="center">3730</td>
+</tr>
+<tr class="even">
+<td align="center">15.2</td>
+<td align="center">8</td>
+<td align="center">275.8</td>
+<td align="center">180</td>
+<td align="center">3.07</td>
+<td align="center">3.78</td>
+<td align="center">18</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">8</td>
+<td align="center">3780</td>
+</tr>
+<tr class="odd">
+<td align="center">10.4</td>
+<td align="center">8</td>
+<td align="center">472</td>
+<td align="center">205</td>
+<td align="center">2.93</td>
+<td align="center">5.25</td>
+<td align="center">17.98</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">8</td>
+<td align="center">5250</td>
+</tr>
+<tr class="even">
+<td align="center">10.4</td>
+<td align="center">8</td>
+<td align="center">460</td>
+<td align="center">215</td>
+<td align="center">3</td>
+<td align="center">5.424</td>
+<td align="center">17.82</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">8</td>
+<td align="center">5424</td>
+</tr>
+<tr class="odd">
+<td align="center">14.7</td>
+<td align="center">8</td>
+<td align="center">440</td>
+<td align="center">230</td>
+<td align="center">3.23</td>
+<td align="center">5.345</td>
+<td align="center">17.42</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">8</td>
+<td align="center">5345</td>
+</tr>
+<tr class="even">
+<td align="center">32.4</td>
+<td align="center">4</td>
+<td align="center">78.7</td>
+<td align="center">66</td>
+<td align="center">4.08</td>
+<td align="center">2.2</td>
+<td align="center">19.47</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">2200</td>
+</tr>
+<tr class="odd">
+<td align="center">30.4</td>
+<td align="center">4</td>
+<td align="center">75.7</td>
+<td align="center">52</td>
+<td align="center">4.93</td>
+<td align="center">1.615</td>
+<td align="center">18.52</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">1615</td>
+</tr>
+<tr class="even">
+<td align="center">33.9</td>
+<td align="center">4</td>
+<td align="center">71.1</td>
+<td align="center">65</td>
+<td align="center">4.22</td>
+<td align="center">1.835</td>
+<td align="center">19.9</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">1835</td>
+</tr>
+<tr class="odd">
+<td align="center">21.5</td>
+<td align="center">4</td>
+<td align="center">120.1</td>
+<td align="center">97</td>
+<td align="center">3.7</td>
+<td align="center">2.465</td>
+<td align="center">20.01</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">2465</td>
+</tr>
+<tr class="even">
+<td align="center">15.5</td>
+<td align="center">8</td>
+<td align="center">318</td>
+<td align="center">150</td>
+<td align="center">2.76</td>
+<td align="center">3.52</td>
+<td align="center">16.87</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">8</td>
+<td align="center">3520</td>
+</tr>
+<tr class="odd">
+<td align="center">15.2</td>
+<td align="center">8</td>
+<td align="center">304</td>
+<td align="center">150</td>
+<td align="center">3.15</td>
+<td align="center">3.435</td>
+<td align="center">17.3</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">8</td>
+<td align="center">3435</td>
+</tr>
+<tr class="even">
+<td align="center">13.3</td>
+<td align="center">8</td>
+<td align="center">350</td>
+<td align="center">245</td>
+<td align="center">3.73</td>
+<td align="center">3.84</td>
+<td align="center">15.41</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">8</td>
+<td align="center">3840</td>
+</tr>
+<tr class="odd">
+<td align="center">19.2</td>
+<td align="center">8</td>
+<td align="center">400</td>
+<td align="center">175</td>
+<td align="center">3.08</td>
+<td align="center">3.845</td>
+<td align="center">17.05</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">8</td>
+<td align="center">3845</td>
+</tr>
+<tr class="even">
+<td align="center">27.3</td>
+<td align="center">4</td>
+<td align="center">79</td>
+<td align="center">66</td>
+<td align="center">4.08</td>
+<td align="center">1.935</td>
+<td align="center">18.9</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">1935</td>
+</tr>
+<tr class="odd">
+<td align="center">26</td>
+<td align="center">4</td>
+<td align="center">120.3</td>
+<td align="center">91</td>
+<td align="center">4.43</td>
+<td align="center">2.14</td>
+<td align="center">16.7</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">2140</td>
+</tr>
+<tr class="even">
+<td align="center">30.4</td>
+<td align="center">4</td>
+<td align="center">95.1</td>
+<td align="center">113</td>
+<td align="center">3.77</td>
+<td align="center">1.513</td>
+<td align="center">16.9</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">1513</td>
+</tr>
+<tr class="odd">
+<td align="center">15.8</td>
+<td align="center">8</td>
+<td align="center">351</td>
+<td align="center">264</td>
+<td align="center">4.22</td>
+<td align="center">3.17</td>
+<td align="center">14.5</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">8</td>
+<td align="center">3170</td>
+</tr>
+<tr class="even">
+<td align="center">19.7</td>
+<td align="center">6</td>
+<td align="center">145</td>
+<td align="center">175</td>
+<td align="center">3.62</td>
+<td align="center">2.77</td>
+<td align="center">15.5</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">2770</td>
+</tr>
+<tr class="odd">
+<td align="center">15</td>
+<td align="center">8</td>
+<td align="center">301</td>
+<td align="center">335</td>
+<td align="center">3.54</td>
+<td align="center">3.57</td>
+<td align="center">14.6</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">8</td>
+<td align="center">8</td>
+<td align="center">3570</td>
+</tr>
+<tr class="even">
+<td align="center">21.4</td>
+<td align="center">4</td>
+<td align="center">121</td>
+<td align="center">109</td>
+<td align="center">4.11</td>
+<td align="center">2.78</td>
+<td align="center">18.6</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">2780</td>
+</tr>
+</tbody>
+</table>
 </div>
 <a href="javascript:showhide('mutate2')">
 <div class="hoverchunk">
@@ -1235,7 +1682,464 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="mutate2" style="display:none;padding-left:20px;">
-<p>Insert Image Here</p>
+<p>Here is what the <code>Kids3</code> data set looks like. It would be good if you compared this to the original <code>KidsFeet</code> data set by running <code>View(KidsFeet)</code> to see how things have changed. Notice that on the far right we have added the <code>season</code> column.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="11%" />
+<col width="14%" />
+<col width="13%" />
+<col width="9%" />
+<col width="8%" />
+<col width="6%" />
+<col width="14%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">name</th>
+<th align="center">birthmonth</th>
+<th align="center">birthyear</th>
+<th align="center">length</th>
+<th align="center">width</th>
+<th align="center">sex</th>
+<th align="center">biggerfoot</th>
+<th align="center">domhand</th>
+<th align="center">season</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">David</td>
+<td align="center">5</td>
+<td align="center">88</td>
+<td align="center">24.4</td>
+<td align="center">8.4</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Spring</td>
+</tr>
+<tr class="even">
+<td align="center">Lars</td>
+<td align="center">10</td>
+<td align="center">87</td>
+<td align="center">25.4</td>
+<td align="center">8.8</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">L</td>
+<td align="center">Fall</td>
+</tr>
+<tr class="odd">
+<td align="center">Zach</td>
+<td align="center">12</td>
+<td align="center">87</td>
+<td align="center">24.5</td>
+<td align="center">9.7</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">Winter</td>
+</tr>
+<tr class="even">
+<td align="center">Josh</td>
+<td align="center">1</td>
+<td align="center">88</td>
+<td align="center">25.2</td>
+<td align="center">9.8</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Winter</td>
+</tr>
+<tr class="odd">
+<td align="center">Lang</td>
+<td align="center">2</td>
+<td align="center">88</td>
+<td align="center">25.1</td>
+<td align="center">8.9</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Winter</td>
+</tr>
+<tr class="even">
+<td align="center">Scotty</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">25.7</td>
+<td align="center">9.7</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">Spring</td>
+</tr>
+<tr class="odd">
+<td align="center">Edward</td>
+<td align="center">2</td>
+<td align="center">88</td>
+<td align="center">26.1</td>
+<td align="center">9.6</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Winter</td>
+</tr>
+<tr class="even">
+<td align="center">Caitlin</td>
+<td align="center">6</td>
+<td align="center">88</td>
+<td align="center">23</td>
+<td align="center">8.8</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Summer</td>
+</tr>
+<tr class="odd">
+<td align="center">Eleanor</td>
+<td align="center">5</td>
+<td align="center">88</td>
+<td align="center">23.6</td>
+<td align="center">9.3</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">Spring</td>
+</tr>
+<tr class="even">
+<td align="center">Damon</td>
+<td align="center">9</td>
+<td align="center">88</td>
+<td align="center">22.9</td>
+<td align="center">8.8</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">L</td>
+<td align="center">Fall</td>
+</tr>
+<tr class="odd">
+<td align="center">Mark</td>
+<td align="center">9</td>
+<td align="center">87</td>
+<td align="center">27.5</td>
+<td align="center">9.8</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">Fall</td>
+</tr>
+<tr class="even">
+<td align="center">Ray</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">24.8</td>
+<td align="center">8.9</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Spring</td>
+</tr>
+<tr class="odd">
+<td align="center">Cal</td>
+<td align="center">8</td>
+<td align="center">87</td>
+<td align="center">26.1</td>
+<td align="center">9.1</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Summer</td>
+</tr>
+<tr class="even">
+<td align="center">Cam</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">27</td>
+<td align="center">9.8</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Spring</td>
+</tr>
+<tr class="odd">
+<td align="center">Julie</td>
+<td align="center">11</td>
+<td align="center">87</td>
+<td align="center">26</td>
+<td align="center">9.3</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Fall</td>
+</tr>
+<tr class="even">
+<td align="center">Kate</td>
+<td align="center">4</td>
+<td align="center">88</td>
+<td align="center">23.7</td>
+<td align="center">7.9</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">Spring</td>
+</tr>
+<tr class="odd">
+<td align="center">Caroline</td>
+<td align="center">12</td>
+<td align="center">87</td>
+<td align="center">24</td>
+<td align="center">8.7</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">L</td>
+<td align="center">Winter</td>
+</tr>
+<tr class="even">
+<td align="center">Maggie</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">24.7</td>
+<td align="center">8.8</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">Spring</td>
+</tr>
+<tr class="odd">
+<td align="center">Lee</td>
+<td align="center">6</td>
+<td align="center">88</td>
+<td align="center">26.7</td>
+<td align="center">9</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">L</td>
+<td align="center">Summer</td>
+</tr>
+<tr class="even">
+<td align="center">Heather</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">25.5</td>
+<td align="center">9.5</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">Spring</td>
+</tr>
+<tr class="odd">
+<td align="center">Andy</td>
+<td align="center">6</td>
+<td align="center">88</td>
+<td align="center">24</td>
+<td align="center">9.2</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">Summer</td>
+</tr>
+<tr class="even">
+<td align="center">Josh</td>
+<td align="center">7</td>
+<td align="center">88</td>
+<td align="center">24.4</td>
+<td align="center">8.6</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Summer</td>
+</tr>
+<tr class="odd">
+<td align="center">Laura</td>
+<td align="center">9</td>
+<td align="center">88</td>
+<td align="center">24</td>
+<td align="center">8.3</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">L</td>
+<td align="center">Fall</td>
+</tr>
+<tr class="even">
+<td align="center">Erica</td>
+<td align="center">9</td>
+<td align="center">88</td>
+<td align="center">24.5</td>
+<td align="center">9</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Fall</td>
+</tr>
+<tr class="odd">
+<td align="center">Peggy</td>
+<td align="center">10</td>
+<td align="center">88</td>
+<td align="center">24.2</td>
+<td align="center">8.1</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Fall</td>
+</tr>
+<tr class="even">
+<td align="center">Glen</td>
+<td align="center">7</td>
+<td align="center">88</td>
+<td align="center">27.1</td>
+<td align="center">9.4</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Summer</td>
+</tr>
+<tr class="odd">
+<td align="center">Abby</td>
+<td align="center">2</td>
+<td align="center">88</td>
+<td align="center">26.1</td>
+<td align="center">9.5</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Winter</td>
+</tr>
+<tr class="even">
+<td align="center">David</td>
+<td align="center">12</td>
+<td align="center">87</td>
+<td align="center">25.5</td>
+<td align="center">9.5</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">Winter</td>
+</tr>
+<tr class="odd">
+<td align="center">Mike</td>
+<td align="center">11</td>
+<td align="center">88</td>
+<td align="center">24.2</td>
+<td align="center">8.9</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Fall</td>
+</tr>
+<tr class="even">
+<td align="center">Dwayne</td>
+<td align="center">8</td>
+<td align="center">88</td>
+<td align="center">23.9</td>
+<td align="center">9.3</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">L</td>
+<td align="center">Summer</td>
+</tr>
+<tr class="odd">
+<td align="center">Danielle</td>
+<td align="center">6</td>
+<td align="center">88</td>
+<td align="center">24</td>
+<td align="center">9.3</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Summer</td>
+</tr>
+<tr class="even">
+<td align="center">Caitlin</td>
+<td align="center">7</td>
+<td align="center">88</td>
+<td align="center">22.5</td>
+<td align="center">8.6</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">Summer</td>
+</tr>
+<tr class="odd">
+<td align="center">Leigh</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">24.5</td>
+<td align="center">8.6</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Spring</td>
+</tr>
+<tr class="even">
+<td align="center">Dylan</td>
+<td align="center">4</td>
+<td align="center">88</td>
+<td align="center">23.6</td>
+<td align="center">9</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">L</td>
+<td align="center">Spring</td>
+</tr>
+<tr class="odd">
+<td align="center">Peter</td>
+<td align="center">4</td>
+<td align="center">88</td>
+<td align="center">24.7</td>
+<td align="center">8.6</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">L</td>
+<td align="center">Spring</td>
+</tr>
+<tr class="even">
+<td align="center">Hannah</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">22.9</td>
+<td align="center">8.5</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Spring</td>
+</tr>
+<tr class="odd">
+<td align="center">Teshanna</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">26</td>
+<td align="center">9</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Spring</td>
+</tr>
+<tr class="even">
+<td align="center">Hayley</td>
+<td align="center">1</td>
+<td align="center">88</td>
+<td align="center">21.6</td>
+<td align="center">7.9</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">Winter</td>
+</tr>
+<tr class="odd">
+<td align="center">Alisha</td>
+<td align="center">9</td>
+<td align="center">88</td>
+<td align="center">24.6</td>
+<td align="center">8.8</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">Fall</td>
+</tr>
+</tbody>
+</table>
 </div>
 <a href="javascript:showhide('mutate3')">
 <div class="hoverchunk">
@@ -1244,10 +2148,587 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="mutate3" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/Kids3.png" />
-
-</div>
+<p>Notice the addition (on the right) of three new columns: <code>lengthIN</code>, <code>widthIN</code>, and <code>gender</code>.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="7%" />
+<col width="9%" />
+<col width="8%" />
+<col width="6%" />
+<col width="5%" />
+<col width="4%" />
+<col width="9%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="20%" />
+<col width="5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">name</th>
+<th align="center">birthmonth</th>
+<th align="center">birthyear</th>
+<th align="center">length</th>
+<th align="center">width</th>
+<th align="center">sex</th>
+<th align="center">biggerfoot</th>
+<th align="center">domhand</th>
+<th align="center">lengthIN</th>
+<th align="center">widthIN</th>
+<th align="center">lengthSplit</th>
+<th align="center">gender</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">David</td>
+<td align="center">5</td>
+<td align="center">88</td>
+<td align="center">24.4</td>
+<td align="center">8.4</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">9.606</td>
+<td align="center">3.307</td>
+<td align="center">Under 50th Percentile</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="even">
+<td align="center">Lars</td>
+<td align="center">10</td>
+<td align="center">87</td>
+<td align="center">25.4</td>
+<td align="center">8.8</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">L</td>
+<td align="center">10</td>
+<td align="center">3.465</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="odd">
+<td align="center">Zach</td>
+<td align="center">12</td>
+<td align="center">87</td>
+<td align="center">24.5</td>
+<td align="center">9.7</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">9.646</td>
+<td align="center">3.819</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="even">
+<td align="center">Josh</td>
+<td align="center">1</td>
+<td align="center">88</td>
+<td align="center">25.2</td>
+<td align="center">9.8</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">9.921</td>
+<td align="center">3.858</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="odd">
+<td align="center">Lang</td>
+<td align="center">2</td>
+<td align="center">88</td>
+<td align="center">25.1</td>
+<td align="center">8.9</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">9.882</td>
+<td align="center">3.504</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="even">
+<td align="center">Scotty</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">25.7</td>
+<td align="center">9.7</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">10.12</td>
+<td align="center">3.819</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="odd">
+<td align="center">Edward</td>
+<td align="center">2</td>
+<td align="center">88</td>
+<td align="center">26.1</td>
+<td align="center">9.6</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">10.28</td>
+<td align="center">3.78</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="even">
+<td align="center">Caitlin</td>
+<td align="center">6</td>
+<td align="center">88</td>
+<td align="center">23</td>
+<td align="center">8.8</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">9.055</td>
+<td align="center">3.465</td>
+<td align="center">Under 50th Percentile</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="odd">
+<td align="center">Eleanor</td>
+<td align="center">5</td>
+<td align="center">88</td>
+<td align="center">23.6</td>
+<td align="center">9.3</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">9.291</td>
+<td align="center">3.661</td>
+<td align="center">Under 50th Percentile</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="even">
+<td align="center">Damon</td>
+<td align="center">9</td>
+<td align="center">88</td>
+<td align="center">22.9</td>
+<td align="center">8.8</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">L</td>
+<td align="center">9.016</td>
+<td align="center">3.465</td>
+<td align="center">Under 50th Percentile</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="odd">
+<td align="center">Mark</td>
+<td align="center">9</td>
+<td align="center">87</td>
+<td align="center">27.5</td>
+<td align="center">9.8</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">10.83</td>
+<td align="center">3.858</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="even">
+<td align="center">Ray</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">24.8</td>
+<td align="center">8.9</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">9.764</td>
+<td align="center">3.504</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="odd">
+<td align="center">Cal</td>
+<td align="center">8</td>
+<td align="center">87</td>
+<td align="center">26.1</td>
+<td align="center">9.1</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">10.28</td>
+<td align="center">3.583</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="even">
+<td align="center">Cam</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">27</td>
+<td align="center">9.8</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">10.63</td>
+<td align="center">3.858</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="odd">
+<td align="center">Julie</td>
+<td align="center">11</td>
+<td align="center">87</td>
+<td align="center">26</td>
+<td align="center">9.3</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">10.24</td>
+<td align="center">3.661</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="even">
+<td align="center">Kate</td>
+<td align="center">4</td>
+<td align="center">88</td>
+<td align="center">23.7</td>
+<td align="center">7.9</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">9.331</td>
+<td align="center">3.11</td>
+<td align="center">Under 50th Percentile</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="odd">
+<td align="center">Caroline</td>
+<td align="center">12</td>
+<td align="center">87</td>
+<td align="center">24</td>
+<td align="center">8.7</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">L</td>
+<td align="center">9.449</td>
+<td align="center">3.425</td>
+<td align="center">Under 50th Percentile</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="even">
+<td align="center">Maggie</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">24.7</td>
+<td align="center">8.8</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">9.724</td>
+<td align="center">3.465</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="odd">
+<td align="center">Lee</td>
+<td align="center">6</td>
+<td align="center">88</td>
+<td align="center">26.7</td>
+<td align="center">9</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">L</td>
+<td align="center">10.51</td>
+<td align="center">3.543</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="even">
+<td align="center">Heather</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">25.5</td>
+<td align="center">9.5</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">10.04</td>
+<td align="center">3.74</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="odd">
+<td align="center">Andy</td>
+<td align="center">6</td>
+<td align="center">88</td>
+<td align="center">24</td>
+<td align="center">9.2</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">9.449</td>
+<td align="center">3.622</td>
+<td align="center">Under 50th Percentile</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="even">
+<td align="center">Josh</td>
+<td align="center">7</td>
+<td align="center">88</td>
+<td align="center">24.4</td>
+<td align="center">8.6</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">9.606</td>
+<td align="center">3.386</td>
+<td align="center">Under 50th Percentile</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="odd">
+<td align="center">Laura</td>
+<td align="center">9</td>
+<td align="center">88</td>
+<td align="center">24</td>
+<td align="center">8.3</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">L</td>
+<td align="center">9.449</td>
+<td align="center">3.268</td>
+<td align="center">Under 50th Percentile</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="even">
+<td align="center">Erica</td>
+<td align="center">9</td>
+<td align="center">88</td>
+<td align="center">24.5</td>
+<td align="center">9</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">9.646</td>
+<td align="center">3.543</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="odd">
+<td align="center">Peggy</td>
+<td align="center">10</td>
+<td align="center">88</td>
+<td align="center">24.2</td>
+<td align="center">8.1</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">9.528</td>
+<td align="center">3.189</td>
+<td align="center">Under 50th Percentile</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="even">
+<td align="center">Glen</td>
+<td align="center">7</td>
+<td align="center">88</td>
+<td align="center">27.1</td>
+<td align="center">9.4</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">10.67</td>
+<td align="center">3.701</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="odd">
+<td align="center">Abby</td>
+<td align="center">2</td>
+<td align="center">88</td>
+<td align="center">26.1</td>
+<td align="center">9.5</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">10.28</td>
+<td align="center">3.74</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="even">
+<td align="center">David</td>
+<td align="center">12</td>
+<td align="center">87</td>
+<td align="center">25.5</td>
+<td align="center">9.5</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">10.04</td>
+<td align="center">3.74</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="odd">
+<td align="center">Mike</td>
+<td align="center">11</td>
+<td align="center">88</td>
+<td align="center">24.2</td>
+<td align="center">8.9</td>
+<td align="center">B</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">9.528</td>
+<td align="center">3.504</td>
+<td align="center">Under 50th Percentile</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="even">
+<td align="center">Dwayne</td>
+<td align="center">8</td>
+<td align="center">88</td>
+<td align="center">23.9</td>
+<td align="center">9.3</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">L</td>
+<td align="center">9.409</td>
+<td align="center">3.661</td>
+<td align="center">Under 50th Percentile</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="odd">
+<td align="center">Danielle</td>
+<td align="center">6</td>
+<td align="center">88</td>
+<td align="center">24</td>
+<td align="center">9.3</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">9.449</td>
+<td align="center">3.661</td>
+<td align="center">Under 50th Percentile</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="even">
+<td align="center">Caitlin</td>
+<td align="center">7</td>
+<td align="center">88</td>
+<td align="center">22.5</td>
+<td align="center">8.6</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">8.858</td>
+<td align="center">3.386</td>
+<td align="center">Under 50th Percentile</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="odd">
+<td align="center">Leigh</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">24.5</td>
+<td align="center">8.6</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">9.646</td>
+<td align="center">3.386</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="even">
+<td align="center">Dylan</td>
+<td align="center">4</td>
+<td align="center">88</td>
+<td align="center">23.6</td>
+<td align="center">9</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">L</td>
+<td align="center">9.291</td>
+<td align="center">3.543</td>
+<td align="center">Under 50th Percentile</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="odd">
+<td align="center">Peter</td>
+<td align="center">4</td>
+<td align="center">88</td>
+<td align="center">24.7</td>
+<td align="center">8.6</td>
+<td align="center">B</td>
+<td align="center">R</td>
+<td align="center">L</td>
+<td align="center">9.724</td>
+<td align="center">3.386</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Boy</td>
+</tr>
+<tr class="even">
+<td align="center">Hannah</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">22.9</td>
+<td align="center">8.5</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">9.016</td>
+<td align="center">3.346</td>
+<td align="center">Under 50th Percentile</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="odd">
+<td align="center">Teshanna</td>
+<td align="center">3</td>
+<td align="center">88</td>
+<td align="center">26</td>
+<td align="center">9</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">10.24</td>
+<td align="center">3.543</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="even">
+<td align="center">Hayley</td>
+<td align="center">1</td>
+<td align="center">88</td>
+<td align="center">21.6</td>
+<td align="center">7.9</td>
+<td align="center">G</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">8.504</td>
+<td align="center">3.11</td>
+<td align="center">Under 50th Percentile</td>
+<td align="center">Girl</td>
+</tr>
+<tr class="odd">
+<td align="center">Alisha</td>
+<td align="center">9</td>
+<td align="center">88</td>
+<td align="center">24.6</td>
+<td align="center">8.8</td>
+<td align="center">G</td>
+<td align="center">L</td>
+<td align="center">R</td>
+<td align="center">9.685</td>
+<td align="center">3.465</td>
+<td align="center">50th Percentile or Greater</td>
+<td align="center">Girl</td>
+</tr>
+</tbody>
+</table>
 </div>
 <a href="javascript:showhide('mutate4')">
 <div class="hoverchunk">

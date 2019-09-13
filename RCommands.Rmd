@@ -24,7 +24,6 @@ output:
 
 ― Aristotle, The Nicomachean Ethics
 
-Most people that are new to using the "R Software" ask the question, "How do I learn R?" The answer is simple: "start using it." Really. Seriously. Just start using it, even when you have no idea what you are doing, and suddenly you will start to learn R. So, here we go. The more you use it, the more you will know.
 
 <br>
 
@@ -42,6 +41,17 @@ Most people that are new to using the "R Software" ask the question, "How do I l
 
 <br/>
 
+Student: "How do I learn R?"
+
+Teacher: "By using it."
+
+Student: "But I don't know how to use it."
+
+Teacher: "Just try it anyway. Suddenly you'll understand."
+
+Most people that are new to using the "R Software" ask the question, "How do I learn R?" The answer is simple: "start using it." Really. Seriously. Just start using it, even when you have no idea what you are doing, and suddenly you will start to learn R. So, here we go. The more you use it, the more you will know.
+
+
 This page follows a simple learning model: Hover. Click. Try.
 
 ![](./Images/HoverClickTry.png)
@@ -50,7 +60,9 @@ This page follows a simple learning model: Hover. Click. Try.
 
 Hover over <span class="tooltipr">`code`<span class="tooltipRtext">Yes, just like that. By hovering over "Codes" you will get instructions on what that code does.</span></span> to read about it. Click on a line of code to see what it does. Try typing the code into RStudio yourself to actually start learning R.
 
-**Example** 
+**Examples** 
+
+For each of the following examples, hover, click, and try.
 
 <a href="javascript:showhide('CarsOutput')">
 <div class="hoverchunk">
@@ -59,7 +71,7 @@ View(
   <span class="tooltipRtext">The "View" R function (with a CAPTIAL 'V' in View) allows us to view a datset. When run, this function will open up a new tab in RStudio showing the dataset.  </span>
 </span><span class="tooltipr">
 cars
-  <span class="tooltipRtext">`cars` is a data set that is in R. R has datasets that are available for anyone to use. You can see them using the `data()` command. It would be good to explore `View()` a few different datasets. </span>
+  <span class="tooltipRtext">`cars` is a data set that is in R. R has datasets that are available for anyone to use. You can see them using the `data()` command. It would be good to explore `View()` for a few different datasets. </span>
 </span><span class="tooltipr">
 )
   <span class="tooltipRtext">Always be sure to end your function with closing parantheses. </span>
@@ -76,69 +88,24 @@ cars
 
 R allows you to work with data. So, the first step to understanding R is to open a dataset and begin exploring some data. The `View` command will help you get started with this.
 
+**Step 1.** Open RStudio.
 
+**Step 2.** Type the command `View(cars)` into your **Console**.
+
+**Step 3.** Press `Enter` or `Return` and the following output should appear within RStudio.
 
 ![](./Images/ViewCars.png)
 
 </div>
 
 
-
-
-</div>
-
-
-</div>
-
-----
-
-## View( ) 
-
-<div style="padding-left:15px;">
-
-Once you select a dataset like `cars` or `airquality` that you want to learn more about, this is how you look at it.
-
-**Usage**
-
-`View(datasetName)`
-
-* `datasetName` is the name of a dataset in R.
-
-**Example Code**
-
-Hover to read. Click to view. Try to learn.
-
-<a href="javascript:showhide('CarsOutput')">
-<div class="hoverchunk">
-<span class="tooltipr">
-View(
-  <span class="tooltipRtext">An R function "View" allows us to view the datset that we select. This will open up a new tab in RStudio showing the dataset. Be sure to include the opening parentheses. </span>
-</span><span class="tooltipr">
-cars
-  <span class="tooltipRtext">`cars` is a data set that is in R. R has datasets that are available for anyone to use. You can see them using the `data()` command. It would be good to explore `View()` a few different datasets. </span>
-</span><span class="tooltipr">
-)
-  <span class="tooltipRtext">Always be sure to end your function with closing parantheses. </span>
-</span><span class="tooltipr">
-&nbsp;&nbsp;&nbsp;&nbsp;  
-  <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;font-size:.8em;">
-&nbsp;Click to Show Output&nbsp; 
-  <span class="tooltiprtext">Click to View Output.</span>
-</span>
-</div>
-</a>
-<div id="CarsOutput" style="display:none;padding-left:20px;">
-![](./Images/ViewCars.png)
-
-</div>
 
 
 <a href="javascript:showhide('airqualityOutput1')">
 <div class="hoverchunk">
 <span class="tooltipr">
 View(
-  <span class="tooltipRtext"> Function can work with datasets but also combinations and matrices that you create. </span>
+  <span class="tooltipRtext">The "View" R function (with a CAPTIAL 'V' in View) allows us to view a datset. When run, this function will open up a new tab in RStudio showing the dataset.</span>
 </span><span class="tooltipr">
 airquality)
   <span class="tooltipRtext"> Gives us data concerning air quality measurements around New York City, NY. For more details on this dataset type: `?airquality`</span>
@@ -152,6 +119,9 @@ airquality)
 </div>
 </a>
 <div id="airqualityOutput1" style="display:none;padding-left:20px;">
+
+Here is what the output of the command `View(airquality)` looks like.
+
 ![](./Images/airqualityOutput.png)
 
 Let's see how you are doing. Can you answer these questions about the airquality dataset?
@@ -162,128 +132,6 @@ How many columns of data are there? (Answer: 6)
 
 </div>
 
-</div>
-
-<br />
-
-In addition to the `View` command, there are other nifty commands that allow you a quick glance at your data.
-
-<span style="color:steelblue;font-size:.8em;padding-left:160px;">Additional Commands</span> <a href="javascript:showhide('head_tail_glimpse')" style="font-size:.6em;color:skyblue;">(Click here to see more commands.)</a>
-
-<div id="head_tail_glimpse" style="display:none;font-size:.9em;">
-
-#### head() & tail()
-
-The `head` command shows the first few rows of a dataset, while the `tail` command shows the last few rows.
-
-**Usage**
-
-`head(datasetName)`
-
-`tail(datasetName)`
-
-* `datasetName` is the name of a dataset in R.
-
-<a href="javascript:showhide('head')">
-<div class="hoverchunk">
-<span class="tooltipr">
-head(
-  <span class="tooltipRtext">The `head` command allows us to see the first few rows of a datset that we select. The output will appear in the console. This command can be useful when working in an R script or R Markdown file, or when you simply need a quick glance at the data.</span>
-</span><span class="tooltipr">
-cars
-  <span class="tooltipRtext">`cars` is a data set that is in R.</span>
-</span><span class="tooltipr">
-)
-  <span class="tooltipRtext">Always be sure to end your function with closing parentheses. </span>
-</span><span class="tooltipr">
-&nbsp;&nbsp;&nbsp;&nbsp;  
-  <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;font-size:.8em;">
-&nbsp;Click to Show Output&nbsp; 
-  <span class="tooltiprtext">Click to View Output.</span>
-</span>
-</div>
-</a>
-<div id="head" style="display:none;padding-left:20px;">
-
-Insert Image Here
-
-</div>
-
-<a href="javascript:showhide('tail')">
-<div class="hoverchunk">
-<span class="tooltipr">
-tail(
-  <span class="tooltipRtext">The `tail` command allows us to see the last few rows of a datset that we select. The output will appear in the console. This can be useful when working in an R script or R Markdown file, or when you simply need a quick glance at the data.</span>
-</span><span class="tooltipr">
-airquality)
-  <span class="tooltipRtext"> Gives us data concerning air quality measurements around New York City, NY. For more details on this dataset type: `?airquality`</span>
-</span><span class="tooltipr">
-&nbsp;&nbsp;&nbsp;&nbsp;  
-  <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;font-size:.8em;">
-&nbsp;Click to Show Output&nbsp; 
-  <span class="tooltiprtext">Click to View Output.</span>
-</span>
-</div>
-</a>
-<div id="tail" style="display:none;padding-left:20px;">
-
-Insert Image Here
-
-</div>
-
-<br>
-
-#### glimpse()
-
-The `glimpse` command gives you a glimpse of a dataset. To use the `glimpse` command, first ensure either `library(dplyr)` or `library(tidyverse)` is loaded. 
-
-**Usage**
-
-`glimpse(datasetName)`
-
-* `datasetName` is the name of a dataset in R.
-
-<a href="javascript:showhide('glimpseOutput')">
-<div class="hoverchunk">
-<span class="tooltipr">
-glimpse(
-  <span class="tooltipRtext">The `glimpse` command allows us to see the number of observations (rows) and variables (columns) in a dataset. It shows the column names and a few of the values in those columns. The output will appear in the console. This can be useful when working in an R script or R Markdown file, or when you simply need a quick *glimpse* of the data.</span>
-</span><span class="tooltipr">
-cars
-  <span class="tooltipRtext">`cars` is a data set that is in R.</span>
-</span><span class="tooltipr">
-)
-  <span class="tooltipRtext">Always be sure to end your function with closing parentheses. </span>
-</span><span class="tooltipr">
-&nbsp;&nbsp;&nbsp;&nbsp;  
-  <span class="tooltipRtext">Press Enter to run the code.</span>
-</span><span class="tooltipr" style="float:right;font-size:.8em;">
-&nbsp;Click to Show Output&nbsp; 
-  <span class="tooltiprtext">Click to View Output.</span>
-</span>
-</div>
-</a>
-<div id="glimpseOutput" style="display:none;padding-left:20px;">
-
-Insert Image Here
-
-</div>
-
-</div>
-
-----
-
-<div style="padding-left:30px;color:darkgray;">
-R has many "built-in" datasets to choose from, which you can see by running the `data` commmand.
-</div>
-
-<span style="color:steelblue;font-size:.8em;padding-left:160px;">data()</span> <a href="javascript:showhide('data')" style="font-size:.6em;color:skyblue;">(Click here to learn about the data() command.)</a>
-
-<div id="data" style="display:none;font-size:.9em;">
-
-Here is a command you can run to see the "built in" datasets in R. Type `data()` in the console, leaving the parentheses empty, and press *Enter* to run the code.
 
 <a href="javascript:showhide('DataOutput')">
 <div class="hoverchunk">
@@ -297,20 +145,34 @@ data
 &nbsp;&nbsp;&nbsp;&nbsp;  
   <span class="tooltipRtext">Press Enter to run the code.</span>
 </span><span class="tooltipr" style="float:right;font-size:.8em;">
-&nbsp;Double-Click to Hide Output&nbsp; 
+&nbsp;Click to Show Output&nbsp; 
   <span class="tooltiprtext">Click to see output.</span>
 </span>
 </div>
 </a>
-<div id="DataOutput" style="display:show;padding-left:20px;">
+<div id="DataOutput" style="display:none;padding-left:20px;">
+
+Notice that the list of available data sets in R includes the "airquality" and "cars" data sets that we "Viewed" previously. 
+
+There are many, many other data sets you can View and use as well. You can also bring your own data sets into R, as you will learn later this week.
+
 ![](./Images/DataOutput.png)
 
 
 </div>
 
+Once you finish working through the three above example codes, move on to studying the codes below.
 
 
 </div>
+
+
+</div>
+
+
+
+
+
 <br />
 <hr />
 
@@ -420,7 +282,9 @@ Once you have a dataset, you need to be able to access columns from it.
 
 `DataSetName$ColumnName`
 
-* The `$` operator allows you to access the individual columns of a dataset.
+* The `$` operator allows you to access the individual columns of a dataset. 
+
+<span style="font-size:.8em;">Tip: think of the data set as a "store" from which you "purchase" a column using "money": `$`.</span>
 
 **Example Code**
 
@@ -1595,15 +1459,19 @@ mtcars
 </a> 
 
 <div id="mutate1" style="display:none;padding-left:20px;">
-```{r, echo=FALSE, eval=FALSE}
+
+Notice the last two columns of `cyl_factor` and `weight` are what we added to the data set `mtcars2`. As seen by `View(mtcars)`, the original `mtcars` data set did not have these two columns. We used the `mutate` function to create them and saved our work in a new data set called `mtcars2`.
+
+```{r, echo=FALSE}
 mtcars2 <- mtcars %>% 
   mutate(
     cyl_factor = as.factor(cyl),
     weight = wt * 1000
   )
+pander(mtcars2, split.table=Inf)
 ```
 
-Insert Image Here
+
 
 </div>
 
@@ -1654,7 +1522,10 @@ KidsFeet
 </a> 
   
 <div id="mutate2" style="display:none;padding-left:20px;">
-```{r, echo=FALSE, eval=FALSE}
+
+Here is what the `Kids3` data set looks like. It would be good if you compared this to the original `KidsFeet` data set by running `View(KidsFeet)` to see how things have changed. Notice that on the far right we have added the `season` column.
+
+```{r, echo=FALSE}
 
 Kids3 <- KidsFeet %>% 
   mutate(
@@ -1665,8 +1536,10 @@ Kids3 <- KidsFeet %>%
       birthmonth %in% c(9,10,11) ~ "Fall"
     )
   )
+
+pander(Kids3, split.table=Inf)
+
 ```
-Insert Image Here
 
 </div>
 
@@ -1721,15 +1594,22 @@ KidsFeet
 </a> 
   
 <div id="mutate3" style="display:none;padding-left:20px;">
-```{r, echo=FALSE, eval=FALSE}
+
+Notice the addition (on the right) of three new columns: `lengthIN`, `widthIN`, and `gender`.
+
+```{r, echo=FALSE}
 Kids3 <- KidsFeet %>%
   mutate(lengthIN = length / 2.54,
          widthIN = width / 2.54,
-         gender = case_when(sex == B ~ "Boy", 
-                            sex == G ~ "Girl"),
-         lengthSplit = ifelse(length < median(length), "Under 50th Percentile", "50th Percentile or Greater"))
+         lengthSplit = ifelse(length < median(length), "Under 50th Percentile", "50th Percentile or Greater"),
+         gender = case_when(sex == 'B' ~ "Boy", 
+                            sex == 'G' ~ "Girl"))
+         
+
+pander(Kids3, split.table=Inf)
 ```
-![](./Images/Kids3.png)
+
+
 </div>
 
 <a href="javascript:showhide('mutate4')">
