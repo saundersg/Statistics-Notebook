@@ -13,6 +13,11 @@ output:
  }
 </script>
 
+```{r, include=FALSE}
+library(MASS)
+```
+
+
 ----
 
 Association testing for two qualitative variables with at least two levels to each variable. 
@@ -45,39 +50,372 @@ Typically, all expected counts are required to be 5 or greater for the test to b
 
 `chisq.test(x)`
 
-* `x` is either a matrix or a table.
+`x` must be a matrix or a table
+
 
 * To make a matrix:
+      
+<a href="javascript:showhide('matrix1')">
+<div class="hoverchunk">
+<span class="tooltipr">
+x
+  <span class="tooltiprtext">The name of your created matrix to go in the `chisq.test()` code.</span>
+</span><span class="tooltipr">
+&nbsp;<-&nbsp;
+  <span class="tooltiprtext">This is the "left arrow" assignment operator that stores the results of your `cbind()` code into `x`.</span>
+</span><span class="tooltipr">
+cbind(
+  <span class="tooltiprtext">cbind stands for"column bind" and is a function that joins together different c() vectors to make them become columns of a table.</span>
+</span><span class="tooltipr">
+column1,
+  <span class="tooltiprtext">The first column you  want in the matrix. It can be either a vector c() or a variable called from a dataset using \$.</span>
+</span><span class="tooltipr">
+&nbsp;column2,
+  <span class="tooltiprtext">The sescond column you  want in the matrix. It can be either a vector c() or a variable called from a dataset using \$</span>
+</span><span class="tooltipr">
+&nbsp;... column n)
+  <span class="tooltiprtext">You can use any number of columns.</span>
+</span>
+</div>
+</a>
 
-    * `cbind(column1, column2, ... column n)`
-    * `rbind(row1, row2, ..., row m)`
+<div id="matrix1" style="display:none;">
+
+```{r, echo=FALSE}
+x <- cbind('Farm 1' = c(Pigs = 10, Cats = 5, Dogs = 28, Roosters = 3), 'Farm 2' = c(Pigs = 15, Cats = 3, Dogs = 8, Roosters = 1))
+x
+```
+
+</div>
+      
+<a href="javascript:showhide('matrix2')">
+<div class="hoverchunk">
+<span class="tooltipr">
+x
+  <span class="tooltiprtext">The name of your created matrix to go in the `chisq.test()` code.</span>
+</span><span class="tooltipr">
+&nbsp;<-&nbsp;
+  <span class="tooltiprtext">This is the "left arrow" assignment operator that stores the results of your `rbind()` code into `x`.</span>
+</span><span class="tooltipr">
+rbind(
+  <span class="tooltiprtext">rbind stands for"row bind" and is a function that joins together different c() vectors to make them become rows of a table.</span>
+</span><span class="tooltipr">
+row1,
+  <span class="tooltiprtext">The first row you  want in the matrix. It can be either a vector c() or a variable called from a dataset using \$.</span>
+</span><span class="tooltipr">
+&nbsp;row2,
+  <span class="tooltiprtext">The second row you  want in the matrix. It can be either a vector c() or a variable called from a dataset using \$.</span>
+</span><span class="tooltipr">
+&nbsp;... row n)
+  <span class="tooltiprtext">You can use any number of rows.</span>
+</span>
+</div>
+</a>    
+    
+<div id="matrix2" style="display:none;">
+
+```{r, echo=FALSE}
+x <- rbind('Farm 1' = c(Pigs = 10, Cats = 5, Dogs = 28, Roosters = 3), 'Farm 2' = c(Pigs = 15, Cats = 3, Dogs = 8, Roosters = 1))
+x
+```
+
+</div>    
+    
     
 * To make a table:
+      
+<a href="javascript:showhide('table')">
+<div class="hoverchunk">
+<span class="tooltipr">
+x
+  <span class="tooltiprtext">The name of your created table to go in the `chisq.test()` code.</span>
+</span><span class="tooltipr">
+&nbsp;<-&nbsp;
+  <span class="tooltiprtext">This is the "left arrow" assignment operator that stores the results of your `table()` code into `x`.</span>
+</span><span class="tooltipr">
+table(
+  <span class="tooltiprtext">table is an R function used to tabulate how many times each value occrus in a given dataset.</span>
+</span><span class="tooltipr">
+Dataset\$Variable,
+  <span class="tooltiprtext">Use your dataset to call in a row variable.</span>
+</span><span class="tooltipr">
+&nbsp;Dataset\$variable)
+  <span class="tooltiprtext">Use your dataset to call in a column variable.</span>
+</span>
+</div>
+</a>    
+    
+<div id="table" style="display:none;">
 
-    * `table(rowVariable, columnVariable)`
+```{r, echo=FALSE}
+table(mtcars$am, mtcars$cyl)
+```
 
-
-
-`chisq.test(rowVariable,columnVariable)`
-
-* `rowVariable` and `columVariable` are columns of data from a data set.
-
+</div>
 
 
 
 ##### Diagnostics 
 
-`yourNamedTestResults <- chisq.test(x)`
 
-`yourNamedTestResults$expected`
+<a href="javascript:showhide('chisq')">
+<div class="hoverchunk">
+<span class="tooltipr">
+yourNamedTestResults
+  <span class="tooltiprtext">This is some name you come up with that will become the R object that stores the results of your Chi-squated test `chisq.test()` command.</span>
+</span><span class="tooltipr">
+&nbsp;<-&nbsp;
+  <span class="tooltiprtext">This is the "left arrow" assignment operator that stores the results of your `chisq.test()` code into `yourNamedTestResults`.</span>
+</span><span class="tooltipr">
+chisq.test(
+  <span class="tooltiprtext">`chisq.test()` is an R function that stands for "Chi-Squared Test". It performs the Chi-squared test for `x`.</span>
+</span><span class="tooltipr">
+x)
+  <span class="tooltiprtext">`x` is either a matrix or a table.</span>
+</span>
+</div>
+</a>  
 
+<div id="chisq" style="display:none;">
+
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout">
+ Pearson's Chi-squared test
+    <span class="tooltiprouttext">EXPLANATION.</span>
+</span>
+</td>
+</tr>
+</table>
+<br/>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+    data:  x
+      <span class="tooltiprouttext">The data you are using for the Chi-Squared test. `x` is either a table or matrix that you created.</span>
+</td><td>
+  <span class="tooltiprout">
+    X-squared = 9.2956,
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td>
+  <span class="tooltiprout">
+    &nbsp;df = 3,
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td>
+  <span class="tooltiprout">
+    &nbsp;p-value = 0.02561
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
+
+</div>
+
+<a href="javascript:showhide('expected')">
+<div class="hoverchunk">
+<span class="tooltipr">
+yourNamedTestResults
+  <span class="tooltiprtext">This is some name you come up with that will become the R object that stores the results of your Chi-squared test `chisq.test()` command.</span>
+</span><span class="tooltipr">
+\$
+  <span class="tooltiprtext">This allows you to access various elements from the test that was performed.</span>
+</span><span class="tooltipr">
+expected
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span>
+</div>
+</a> 
+
+<div id="expected" style="display:none;">
+
+<table class="rconsole">
+<tr>
+<td align="left"></td>
+<td align="right">
+  <span class="tooltiprout">
+    Pigs
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; Cats
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>    
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; Dogs 
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; Roosters
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><tr>
+<td align="left">
+  <span class="tooltiprout">
+    Farm 1
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 15.753425
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 5.041096
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    22.68493
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    2.520548
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    Farm 2
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 9.246575
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 2.958904
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    13.31507
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    1.479452
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td>
+</td>
+</tr>
+</table>
+
+</div>
 
 
 ##### Interpretation: Pearson Residuals
 
-`yourNamedTestResults$residuals`
+<a href="javascript:showhide('residuals')">
+<div class="hoverchunk">
+<span class="tooltipr">
+yourNamedTestResults
+  <span class="tooltiprtext">This is some name you come up with that will become the R object that stores the results of your Chi-squated test `chisq.test()` command.</span>
+</span><span class="tooltipr">
+\$
+  <span class="tooltiprtext">This allows you to access various elements from the test that was performed.</span>
+</span><span class="tooltipr">
+residuals
+  <span class="tooltiprtext">This grabs the residuals for each observation in the Chi-squared test.</span>
+</span>
+</div>
+</a> 
 
+<div id="residuals" style="display:none;">
 
+<table class="rconsole">
+<tr>
+<td align="left"></td>
+<td align="right">
+  <span class="tooltiprout">
+    Pigs
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; Cats
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>    
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; Dogs 
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; Roosters
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><tr>
+<td align="left">
+  <span class="tooltiprout">
+    Farm 1
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; -1.449569
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; -0.01830357
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    1.115938
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    0.3019936
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td>
+</td>
+</tr><tr>
+<td align="left">
+  <span class="tooltiprout">
+    Farm 2
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 1.892065
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    &nbsp; 0.02389092
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    -1.456589
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td><td align="right">
+  <span class="tooltiprout">
+    -0.3941801
+      <span class="tooltiprouttext">EXPLANATION.</span>
+  </span>
+</td>
+</td>
+</tr>
+</table>
+
+</div>
 
 ----
 
@@ -231,7 +569,7 @@ knitr::kable(tmp$residuals)
 </table>
 
 <div style="padding-left:125px;">
-**Examples**: [StudentRatings](./Analyses/Chi Squared Tests/Examples/Math325StudentRatings.html) | [HairEyeColor](./Analyses/Chi Squared Tests/Examples/HairEyeColor.html)
+**Examples**: [StudentRatings](./Analyses/Chi Squared Tests/Examples/Math325StudentRatings.html) | [HairEyeColor](./Analyses/Chi Squared Tests/Examples/HairEyeColorChiSquaredTest.html)
 </div>
 
 ----
@@ -261,7 +599,58 @@ The test to perform when all observed counts are at least 1. The hypotheses and 
 
 **Console** Help Command: `?chisq.test()`
 
-`chisq.test(x, simulate.p.value=TRUE)`
+<a href="javascript:showhide('chisq.test2')">
+<div class="hoverchunk">
+<span class="tooltipr">
+chisq.test(
+  <span class="tooltiprtext">`chisq.test()` is an R function that stands for "Chi-Squared Test". It performs the Chi-squared test for `x`.</span>
+</span><span class="tooltipr">
+x,
+  <span class="tooltiprtext">`x` is either a matrix or a table.</span><span class="tooltipr"></span>
+</span><span class="tooltipr">
+simulate.p.value=TRUE)
+  <span class="tooltiprtext">EXPLANATION.</span>
+</span>
+</div>
+</a> 
+
+<div id="chisq.test2" style="display:none;">
+
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout">
+Pearson's Chi-squared test with simulated p-value (based on 2000 replicates)
+    <span class="tooltiprouttext">EXPLANATION.</span>
+</span>
+</td>
+</tr>
+</table>
+<br/>
+
+<table class="rconsole">
+<tr>
+<td>
+  <span class="tooltiprout">
+    data:  x
+      <span class="tooltiprouttext">The data you are using for the Chi-Squared test. `x` is either a table or matrix that you created.</span>
+</td><td>
+  <span class="tooltiprout">
+    X-squared = 9.2956,
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td>
+  <span class="tooltiprout">
+    &nbsp;df = NA,
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td><td>
+  <span class="tooltiprout">
+    &nbsp;p-value = 0.02799
+      <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
+
+</div>
 
 ----
 

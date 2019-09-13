@@ -8,11 +8,12 @@ output:
     toc_float: true
 ---
 
-**Week 1 Analysis**
+**Week 2 Analysis**
 
 ```{r, include=FALSE}
 library(mosaic)
 library(tidyverse)
+library(pander)
 library(DT) # If you get an error stating: 
             # Error in library(DT): there is no package called 'DT'
             # You will need to run: install.packages("DT") 

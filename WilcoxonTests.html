@@ -373,10 +373,10 @@ $(document).ready(function () {
       <a href="./Analyses/StudentHousingPOOR.html">Poor Example Analysis</a>
     </li>
     <li>
-      <a href="./Analyses/Stephanie.html">Stephanie Analysis</a>
+      <a href="./Analyses/Rent.html">Rent Analysis</a>
     </li>
     <li>
-      <a href="./Analyses/Olympics.html">Olympics Analysis</a>
+      <a href="./Analyses/Stephanie.html">Stephanie Analysis</a>
     </li>
   </ul>
 </li>
@@ -460,14 +460,34 @@ $$</code></pre>
 <p><span class="tooltipr"> wilcox.test( <span class="tooltiprtext">‘wilcox.test’ is a function for non-parametric one and two sample tests.</span> </span><span class="tooltipr"> sleep$extra[sleep$group==1],  <span class="tooltiprtext">The hours of extra sleep that the group had with drug 2.</span> </span><span class="tooltipr"> sleep$extra[sleep$group==2],  <span class="tooltiprtext">The hours of extra sleep that the same group had with drug 1.</span> </span><span class="tooltipr"> mu = 0,  <span class="tooltiprtext">The numeric value from the null hypothesis for the median of differences from the paired data is 0 meaning the null hypothesis is <span class="math inline">\(\text{median of differences} = 0\)</span>.</span> </span><span class="tooltipr"> alternative = “two.sided”,  <span class="tooltiprtext">The alternative hypothesis is “two.sided” meaning the alternative hypothesis is <span class="math inline">\(\text{median of differences} \neq0\)</span>.</span> </span><span class="tooltipr"> conf.level = 0.95) <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to 1 - <span class="math inline">\(\alpha\)</span>.</span> </span><span class="tooltipr">     <br />
 <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
-</a>
+<p></a></p>
 <div id="wilcoxonSignedRank" style="display:none;">
-<pre><code>## 
-##  Wilcoxon signed rank test with continuity correction
-## 
-## data:  sleep$extra[sleep$group == 1] and sleep$extra[sleep$group == 2]
-## V = 0, p-value = 0.009091
-## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> Wilcoxon signed rank test with continuity correction <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> data: sleep$extra[sleep$group == 1] and sleep$extra[sleep$group == 2] <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout"> V = 0, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  p-value = 0.009091 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> alternative hypothesis: true location shift is not equal to 0 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
 </div>
 <p><br></p>
 <h5 id="one-sample">One Sample</h5>
@@ -485,14 +505,34 @@ $$</code></pre>
 <p><span class="tooltipr"> wilcox.test( <span class="tooltiprtext">‘wilcox.test’ is a function for non-parametric one and two sample tests.</span> </span><span class="tooltipr"> mtcars <span class="tooltiprtext">‘mtcars’ is a dataset. Type ‘View(mtcars)’ in R to view the dataset.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the mtcars dataset.</span> </span><span class="tooltipr"> mpg,  <span class="tooltiprtext">‘mpg’ is a quantitative variable (numeric vector) from the mtcars dataset.</span> </span><span class="tooltipr"> mu = 20,  <span class="tooltiprtext"> The numeric value from the null hypothesis is 20 meaning <span class="math inline">\(\mu = 20\)</span>. </span> </span><span class="tooltipr"> alternative = “two.sided”,  <span class="tooltiprtext"> The alternative is “two.sided” meaning the alternative hypothesis is <span class="math inline">\(\mu\neq20\)</span>.</span> </span><span class="tooltipr"> conf.level = 0.95) <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to 1−α. </span> </span><span class="tooltipr">     <br />
 <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
-</a>
+<p></a></p>
 <div id="wilcoxOneSample" style="display:none;">
-<pre><code>## 
-##  Wilcoxon signed rank test with continuity correction
-## 
-## data:  mtcars$mpg
-## V = 249, p-value = 0.7863
-## alternative hypothesis: true location is not equal to 20</code></pre>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> Wilcoxon signed rank test with continuity correction <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> data: mtcars$mpg <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout"> V = 249, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  p-value = 0.7863 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> alternative hypothesis: true location is not equal to 20 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <hr />
@@ -633,10 +673,10 @@ $$</code></pre>
 <p>For example, a sum of 1 can happen only one way, only the rank of 1 is in the group. A sum of 2 can also only happen 1 way. The sum of 3 however, can happen two ways: we could have the ranks of 1 and 2 in the group, or just the rank of 3 in the group. A similar counting technique is then implemented for each possible sum. After all the calculations are performed, the distribution of possible sums looks like what is shown in the following plot, where the red bars show those sums that are as extreme or more extreme than a sum of <span class="math inline">\(24\)</span> (or its opposite of <span class="math inline">\(120-24=96\)</span>).</p>
 </div>
 </div>
-<p><img src="WilcoxonTests_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="WilcoxonTests_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Computing the probabilities of all possible sums creates a distribution of the test statistic (shown in the plot above). Note that the test statistic is obtained in Step 4 (above) by taking the sum of the ranks. Once the distribution of the test statistic is established, the <span class="math inline">\(p\)</span>-value of the test can be calculated as the combined probability of possible sums that are as extreme or more extreme than the one observed.</p>
 <p>For this example, it turns out that the probability of getting a sum of (the absolute value of) negative ranks as extreme or more extreme than <span class="math inline">\(24\)</span> is <span class="math inline">\(p=0.04126\)</span> (the sum of the probabilities of the red bars in the plot above). Thus, at the <span class="math inline">\(\alpha=0.05\)</span> level we would reject the null hypothesis that the center of the distribution of differences is zero. We conclude that the center of the distribution is greater than zero because the sum of negative ranks is much smaller than we expected under the zero center hypothesis (the null). Thus, there is sufficient evidence to conclude that the centers of the distributions of “cross- and self-fertilized corn plants” heights are not equal. One is greater than the other. Notice how the following dot plot shows that the differences are in favor of the cross-fertilized plants (the first group in the subtraction) being taller. This is true even though two self-fertilized plants were much taller than their cross-fertilized counterpart (the two negative differences).</p>
-<p><img src="WilcoxonTests_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="WilcoxonTests_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <h6 id="comment">Comment</h6>
 <p>If the distribution of differences is symmetric, then the hypotheses can be written as <span class="math display">\[
   H_0: \mu = 0
@@ -713,7 +753,7 @@ $$</code></pre>
 \]</span></p>
 <p>The probability of each sum occurring is computed by counting all of the ways a certain sum can occur (combinations) and dividing by the total number of sums possible. (There are 32 total different groups of ranks possible when there are <span class="math inline">\(n=5\)</span> ranks.)</p>
 <p>For example, a sum of 1 can happen only one way, only the rank of 1 is in the group. A sum of 2 can also only happen 1 way. The sum of 3 however, can happen two ways: we could have the ranks of 1 and 2 in the group, or just the rank of 3 in the group. A similar counting technique is then implemented for each possible sum. After all the calculations are performed, the distribution of possible sums looks like what is shown in the following plot, where the red bars show those sums that are as extreme or more extreme than a sum of <span class="math inline">\(2\)</span> (or its opposite of <span class="math inline">\(15-2=13\)</span>).</p>
-<p><img src="WilcoxonTests_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="WilcoxonTests_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Computing the probabilities of all possible sums creates a distribution of the test statistic (shown in the plot above). Note that the test statistic is obtained in Step 4 (above) by taking the sum of the ranks. Once the distribution of the test statistic is established, the <span class="math inline">\(p\)</span>-value of the test can be calculated as the combined probability of possible sums that are as extreme or more extreme than the one observed.</p>
 </div>
 <p>For this example, it turns out that the probability of getting a sum of negative ranks as extreme or more extreme than <span class="math inline">\(-2\)</span> is <span class="math inline">\(p=0.1875\)</span> (the sum of the probabilities of the red bars in the plot above). Thus, at the <span class="math inline">\(\alpha=0.05\)</span> level we would fail to reject the null hypothesis that the center of the distribution of differences is zero. We will continue to assume the null hypothesis was true, that the median off-track hourly wage of BYU-Idaho students is the same as the Idaho minimum wage.</p>
@@ -786,14 +826,34 @@ $$</code></pre>
 <p><span class="tooltipr"> wilcox.test( <span class="tooltiprtext">‘wilcox.test’ is a function for non-parametric one and two sample tests.</span> </span><span class="tooltipr"> length  <span class="tooltiprtext">‘length’ is a quantitative variable (numeric vector).</span> </span><span class="tooltipr"> ~  <span class="tooltiprtext">‘~’ is the tilde symbol.</span> </span><span class="tooltipr"> sex,  <span class="tooltiprtext">‘sex’ is a ‘factor’ or ‘character’ vector that represents the group assignment for each observation. There are two groups.</span> </span><span class="tooltipr"> data=KidsFeet,  <span class="tooltiprtext">‘KidsFeet’ is a dataset in library(mosaic). Type View(KidsFeet) to view it.</span> </span><span class="tooltipr"> mu = 0,  <span class="tooltiprtext">The numeric value from the null hypothesis for the difference in medians from the two groups is 0 meaning the null hypothesis is <span class="math inline">\(\text{difference in medians} = 0\)</span></span> </span><span class="tooltipr"> alternative = “two.sided”,  <span class="tooltiprtext"> The alternative is “two-sided” meaning the alternative hypothesis is <span class="math inline">\(\text{difference in medians} \neq 0\)</span>.</span> </span><span class="tooltipr"> conf.level = 0.95) <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to <span class="math inline">\(1-\alpha\)</span></span> </span><span class="tooltipr">     <br />
 <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
-</a>
+<p></a></p>
 <div id="wilcoxonRankSum" style="display:none;">
-<pre><code>## 
-##  Wilcoxon rank sum test with continuity correction
-## 
-## data:  length by sex
-## W = 252, p-value = 0.0836
-## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> Wilcoxon rank sum test with continuity correction <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> data: length by sex <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout"> V = 252, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  p-value = 0.0836 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> alternative hypothesis: true location shift is not equal to 0 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
 </div>
 <p><br></p>
 <p><strong>Option 2:</strong></p>
@@ -811,14 +871,34 @@ $$</code></pre>
 <p><span class="tooltipr"> wilcox.test( <span class="tooltiprtext">‘wilcox.test’ is a function for non-parametric one and two sample tests.</span> </span><span class="tooltipr"> KidsFeet$length[KidsFeet$sex == “B”],  <span class="tooltiprtext">A numeric vector of foot length for the first sample of data or for the group of boys.</span> </span><span class="tooltipr"> KidsFeet$length[KidsFeet$sex == “G”],  <span class="tooltiprtext">A numeric vector of foot length for the second sample of data or for the group of girls.</span> </span><span class="tooltipr"> mu = 0,  <span class="tooltiprtext">The numeric value from the null hypothesis for the difference in medians from the two groups is 0 meaning the null hypothesis is <span class="math inline">\(\text{difference in medians} = 0\)</span></span> </span><span class="tooltipr"> alternative = “two.sided”,  <span class="tooltiprtext"> The alternative is “two-sided” meaning the alternative hypothesis is <span class="math inline">\(\text{difference in medians} \neq 0\)</span>.</span> </span><span class="tooltipr"> conf.level = 0.95) <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to <span class="math inline">\(1-\alpha\)</span></span> </span><span class="tooltipr">     <br />
 <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
-</a>
+<p></a></p>
 <div id="wilcoxonRankSum2" style="display:none;">
-<pre><code>## 
-##  Wilcoxon rank sum test with continuity correction
-## 
-## data:  KidsFeet$length[KidsFeet$sex == &quot;B&quot;] and KidsFeet$length[KidsFeet$sex == &quot;G&quot;]
-## W = 252, p-value = 0.0836
-## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> Wilcoxon rank sum test with continuity correction <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> data: KidsFeet$length[KidsFeet$sex == “B”] and KidsFeet$length[KidsFeet$sex == “G”] <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout"> V = 252, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  p-value = 0.0836 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="tooltiprout"> alternative hypothesis: true location shift is not equal to 0 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <hr />
@@ -1141,7 +1221,7 @@ $$</code></pre>
 <p>Note that the smallest sum would be obtained if the ranks 1-8 were in the group. The largest sum would be obtained if the ranks 9-16 were in the group.</p>
 <p>The probability of each possible sum occurring is computed by counting all of the ways a certain sum can occur (combinations) and dividing by the total number of sums possible. (There are 12,870 total different sets of ranks possible when there are <span class="math inline">\(n=16\)</span> ranks and <span class="math inline">\(8\)</span> are assigned to one group.)</p>
 <p>The distribution of possible sums looks like what is shown in the following plot, where the red bars show those sums that are as extreme or more extreme than a sum of <span class="math inline">\(91\)</span> (or its opposite of <span class="math inline">\(136-91=45\)</span>).</p>
-<p><img src="WilcoxonTests_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="WilcoxonTests_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Computing the probabilities of all possible sums creates a distribution of the test statistic (shown in the plot above). Note that the test statistic is obtained in Step 4 (above) by taking the sum of the ranks. Once the distribution of the test statistic is established, the <span class="math inline">\(p\)</span>-value of the test can be calculated as the combined probability of possible sums that are as extreme or more extreme than the one observed.</p>
 <hr />
 </div>

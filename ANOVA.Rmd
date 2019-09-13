@@ -3,6 +3,7 @@ title: "Analysis Of Variance (ANOVA)"
 output: 
   html_document:
     theme: cerulean
+    css: styles.css
 header-includes: 
   - \usepackage{amsmath}
 ---
@@ -14,6 +15,7 @@ header-includes:
  }
 </script>
 
+
 ----
 
 An ANOVA is for testing the equality of several means simultaneously. A single *quantitative* response variable is required with one or more *qualitative* explanatory variables, i.e., factors. 
@@ -23,7 +25,7 @@ An ANOVA is for testing the equality of several means simultaneously. A single *
 ----
 
 
-### Completely Randomized Design {.tabset .tabset-fade .tabset-pills}
+### One-way ANOVA {.tabset .tabset-fade .tabset-pills}
 
 <div style="float:left;width:125px;" align=center>
 <img src="./Images/QuantYQualXg3plus.png" width=58px;>
@@ -53,36 +55,7 @@ $$
   H_a: \alpha_i \neq 0 \ \text{for at least one} \ i
 $$
 
-<a href="javascript:showhide('twowayhyp')">For a Two-way ANOVA <span style="font-size:8pt;">(click to view)</span></a>
 
-<div id="twowayhyp" style="display:none;">
-With a two-way ANOVA there are three sets of hypotheses.
-
-One for the first factor:
-$$
-  H_0: \alpha_1 = \alpha_2 = \ldots = 0
-$$
-$$
-  H_a: \alpha_i \neq 0 \ \text{for at least one} \ i
-$$
-
-One for the second factor:
-$$
-  H_0: \beta_1 = \beta_2 = \ldots = 0
-$$
-$$
-  H_a: \beta_j \neq 0 \ \text{for at least one} \ j
-$$
-
-One for the interaction of the two factors:
-$$
-  H_0: \text{The effect of} \ \alpha \ \text{is the same for all levels of} \ \beta
-$$
-$$
-  H_a: \text{The effect of} \ \alpha \ \text{is different for at least one level of} \ \beta
-$$
-
-</div>
 
 **Mathematical Model**
 
@@ -93,16 +66,7 @@ $$
 where $\mu$ is the grand mean, $\alpha_i$ is a factor with at least two levels, and $\epsilon_{ijk} \sim N(0,\sigma^2)$ is the error term. 
 
 
-<a href="javascript:showhide('twowaymod')">For a Two-way ANOVA <span style="font-size:8pt;">(click to view)</span></a>
 
-<div id="twowaymod" style="display:none;">
-$$
-  Y_{ijk} = \mu + \alpha_i + \beta_j + \alpha\beta_{ij} + \epsilon_{ijk}
-$$
-where $\mu$ is the grand mean, $\alpha_i$ is one factor with at least two levels, $\beta_j$ is another factor with at least two levels, $\alpha\beta_{ij}$ is the interaction of the two factors, and $\epsilon_{ijk} \sim N(0,\sigma^2)$ is the error term. 
-
-Note that more than two factors are allowed, i.e., more than $\alpha_i$ and $\beta_j$, and is sometimes called three-way ANOVA, four-way ANOVA, and so on. It is not required to include interaction terms, like $\alpha\beta_{ij}$. The error term $\epsilon$ is always required.
-</div>
 
 ----
 
@@ -116,9 +80,7 @@ Note that more than two factors are allowed, i.e., more than $\alpha_i$ and $\be
 
 **Console** Help Command: `?aov()`
 
-##### One-way ANOVA
 
-<div style="padding-left:15px;">
 
 `myaov <- aov(y ~ A, data=YourDataSet)` **Perform the ANOVA**
 
@@ -126,7 +88,6 @@ Note that more than two factors are allowed, i.e., more than $\alpha_i$ and $\be
 
 `plot(myaov, which=1:2)` **Check ANOVA Assumptions**  
 
-</div>
 
 * `myaov` is some name you come up with to store the results of the `aov()` test.
 * `y` must be a "numeric" vector of the quantitative response variable.
@@ -134,29 +95,88 @@ Note that more than two factors are allowed, i.e., more than $\alpha_i$ and $\be
 * `YourDataSet` is the name of your data set.
 
 
-##### <a href="javascript:showhide('twoway')">Two- or more-way ANOVA <span style="font-size:8pt;">(click to view)</span></a>
 
-<div id="twoway" style="display:none;">
 
-<div style="padding-left:15px;">
+**Example Code** 
 
-`myaov <- aov(y ~ A+B+A:B, data=YourDataSet)` **Perform the ANOVA**
+Hover your mouse over the example codes to learn more.
 
-`summary(myaov)` **View the ANOVA Results**
-
-`plot(myaov, which=1:2)` **Check ANOVA assumptions**
+<a href="javascript:showhide('oneWayAnova')">
+<div class="hoverchunk">
+<span class="tooltipr">
+chick.aov&nbsp;<-&nbsp; 
+  <span class="tooltiprtext"> Saves the results of the ANOVA test as an object named 'chick.aov'.</span>
+</span><span class="tooltipr">
+aov(
+  <span class="tooltiprtext">'aov()' is a function in R used to perform the ANOVA.</span>
+</span><span class="tooltipr">
+weight
+  <span class="tooltiprtext">'weight' is a numeric variable from the chickwts dataset.</span>
+</span><span class="tooltipr">
+&nbsp;~&nbsp;
+  <span class="tooltiprtext">'~' is the tilde symbol used to separate the left- and right-hand side in a model formula.</span>
+</span><span class="tooltipr">
+feed, 
+  <span class="tooltiprtext"> 'feed' is a qualitative variable in the chickwts dataset. </span>
+</span><span class="tooltipr">
+&nbsp;data&nbsp;=&nbsp;chickwts)
+  <span class="tooltiprtext"> 'chickwts' is a dataset in R.</span>
+  </span><br><span class="tooltipr">
+summary(
+  <span class="tooltiprtext"> 'summary()' shows the results of the ANOVA.</span>
+  </span><span class="tooltipr">
+chick.aov)
+  <span class="tooltiprtext"> 'chick.aov' is the name of the ANOVA.</span>
+  </span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to View Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="oneWayAnova" style="display:none;">
+```{r, echo=FALSE}
+chick.aov <- aov(weight ~ feed, data=chickwts)
+summary(chick.aov)
+```
 
 </div>
 
-* `myaov` is some name you come up with to store the results of the `aov()` test.
-* `y` must be a "numeric" vector of the quantitative response variable.
-* `A` is a qualitative variable (should have `class(A)` equal to `factor` or `character`. If it does not, use `as.factor(A)` inside the `aov()` command.
-* `B` is a second qualitative variable that should also be either a `factor` or a `character` vector.
-* Note that factors `C`, `D`, and so on could also be added `+` to the model if desired.
-* `A:B` denotes the interaction of the factors `A` and `B`. It is not required and should only be included if the interaction term is of interest.
-* `YourDataSet` is the name of your data set.
+
+<a href="javascript:showhide('oneWayAnovaCheck')">
+<div class="hoverchunk">
+<span class="tooltipr">
+par(
+<span class="tooltiprtext">'par' is a R function that can be used to set or query graphical parameters.</span>
+</span><span class="tooltipr">
+mfrow&nbsp;=&nbsp;c(1,2))
+<span class="tooltiprtext">Parameter is being set. The first item inside the combine function c() is the number of rows and the second is the number of columns. </span>
+</span><br><span class="tooltipr">
+plot(
+<span class="tooltiprtext">'plot' is a R function for the plotting of R objects.</span>
+</span><span class="tooltipr">
+chick.aov,
+  <span class="tooltiprtext">'chick.aov' is the name of the ANOVA.</span>
+</span><span class="tooltipr">
+&nbsp;which&nbsp;=&nbsp;1:2)
+  <span class="tooltiprtext">Will show the Residuals vs Fitted and the Normal QQ-plot to check the ANOVA assumptions.</span>
+  </span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to View Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="oneWayAnovaCheck" style="display:none;">
+```{r, echo=FALSE}
+par(mfrow=c(1,2))
+plot(chick.aov, which=1:2)
+```
 
 </div>
+
+
 
 ----
 
@@ -578,13 +598,192 @@ plot(tmp, which=1:2, pch=16)
 
 <br />
 
-##### Expanding the ANOVA Model{#expanding}
 
-It turns out that more can be done with ANOVA than simply checking to see if the means of several groups differ. Reconsider the mathematical model of two-way ANOVA.
+
+
+----
+
+</div>
+
+
+### 
+
+<div style="padding-left:125px;">
+
+**Examples:** [chickwts](./Analyses/ANOVA/Examples/chickwtsOneWayANOVA.html) (One-way)
+</div>
+
+
+----
+
+### Two-way ANOVA {.tabset .tabset-fade .tabset-pills}
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QuantYQualXg3plus.png" width=58px;>
+</div>
+
+
+#### Overview
+
+<div style="padding-left:125px;">
+
+**Hypotheses**
+
+With a two-way ANOVA there are three sets of hypotheses.
+
+One for the first factor:
+$$
+  H_0: \alpha_1 = \alpha_2 = \ldots = 0
+$$
+$$
+  H_a: \alpha_i \neq 0 \ \text{for at least one} \ i
+$$
+
+One for the second factor:
+$$
+  H_0: \beta_1 = \beta_2 = \ldots = 0
+$$
+$$
+  H_a: \beta_j \neq 0 \ \text{for at least one} \ j
+$$
+
+One for the interaction of the two factors:
+$$
+  H_0: \text{The effect of} \ \alpha \ \text{is the same for all levels of} \ \beta
+$$
+$$
+  H_a: \text{The effect of} \ \alpha \ \text{is different for at least one level of} \ \beta
+$$
+
+
+**Mathematical Model**
+
+
 $$
   Y_{ijk} = \mu + \alpha_i + \beta_j + \alpha\beta_{ij} + \epsilon_{ijk}
 $$
-This model could be expanded to include any number of new terms in the model. The power of this approach is in the several questions (hypotheses) that can be posed to data simultaneously.
+where $\mu$ is the grand mean, $\alpha_i$ is one factor with at least two levels, $\beta_j$ is another factor with at least two levels, $\alpha\beta_{ij}$ is the interaction of the two factors, and $\epsilon_{ijk} \sim N(0,\sigma^2)$ is the error term. 
+
+Note that more than two factors are allowed, i.e., more than $\alpha_i$ and $\beta_j$, and is sometimes called three-way ANOVA, four-way ANOVA, and so on. It is not required to include interaction terms, like $\alpha\beta_{ij}$. The error term $\epsilon$ is always required.
+
+----
+
+</div>
+
+#### R Instructions
+<div style="padding-left:125px;">
+
+**Console** Help Command: `?aov()`
+
+
+`myaov <- aov(y ~ A+B+A:B, data=YourDataSet)` **Perform the ANOVA**
+
+`summary(myaov)` **View the ANOVA Results**
+
+`plot(myaov, which=1:2)` **Check ANOVA assumptions**
+
+
+* `myaov` is some name you come up with to store the results of the `aov()` test.
+* `y` must be a "numeric" vector of the quantitative response variable.
+* `A` is a qualitative variable (should have `class(A)` equal to `factor` or `character`. If it does not, use `as.factor(A)` inside the `aov()` command.
+* `B` is a second qualitative variable that should also be either a `factor` or a `character` vector.
+* Note that factors `C`, `D`, and so on could also be added `+` to the model if desired.
+* `A:B` denotes the interaction of the factors `A` and `B`. It is not required and should only be included if the interaction term is of interest.
+* `YourDataSet` is the name of your data set.
+
+
+**Example Code** 
+
+Hover your mouse over the example codes to learn more.
+
+<a href="javascript:showhide('twoWayAnova')">
+<div class="hoverchunk">
+<span class="tooltipr">
+warp.aov&nbsp;<-&nbsp; 
+  <span class="tooltiprtext"> Saves the results of the ANOVA test as an object named 'warp.aov'.</span>
+</span><span class="tooltipr">
+aov(
+  <span class="tooltiprtext">'aov()' is a function in R used to perform the ANOVA.</span>
+</span><span class="tooltipr">
+breaks
+  <span class="tooltiprtext">'breaks' is a numeric variable from the warpbreaks dataset.</span>
+</span><span class="tooltipr">
+&nbsp;~&nbsp;
+  <span class="tooltiprtext">'~' is the tilde symbol used to separate the left- and right-hand side in a model formula.</span>
+</span><span class="tooltipr">
+wool&nbsp; 
+  <span class="tooltiprtext"> 'wool' is a qualitative variable in the warpbreaks dataset. </span>
+</span><span class="tooltipr">
++&nbsp;tension&nbsp; 
+  <span class="tooltiprtext"> 'tension' is another qualitative variable in the warpbreaks dataset. </span>
+</span><span class="tooltipr">
++&nbsp;wool:tension, 
+  <span class="tooltiprtext"> The interaction of wool and tension. </span>
+</span><span class="tooltipr">
+&nbsp;data&nbsp;=&nbsp;warpbreaks)
+  <span class="tooltiprtext"> 'warpbreaks' is a dataset in R.</span>
+  </span><br><span class="tooltipr">
+summary(
+  <span class="tooltiprtext"> 'summary()' shows the results of the ANOVA.</span>
+  </span><span class="tooltipr">
+warp.aov)
+  <span class="tooltiprtext"> 'warp.aov' is the name of the ANOVA.</span>
+  </span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to View Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="twoWayAnova" style="display:none;">
+```{r, echo=FALSE}
+warp.aov <- aov(breaks ~ wool + tension + wool:tension, data=warpbreaks)
+summary(warp.aov)
+```
+
+</div>
+
+
+<a href="javascript:showhide('twoWayAnovaCheck')">
+<div class="hoverchunk">
+<span class="tooltipr">
+par(
+<span class="tooltiprtext">'par' is a R function that can be used to set or query graphical parameters.</span>
+</span><span class="tooltipr">
+mfrow&nbsp;=&nbsp;c(1,2))
+<span class="tooltiprtext">Parameter is being set. The first item inside the combine function c() is the number of rows and the second is the number of columns. </span>
+</span><br><span class="tooltipr">
+plot(
+<span class="tooltiprtext">'plot' is a R function for the plotting of R objects.</span>
+</span><span class="tooltipr">
+warp.aov,
+  <span class="tooltiprtext">'warp.aov' is the name of the ANOVA.</span>
+</span><span class="tooltipr">
+&nbsp;which&nbsp;=&nbsp;1:2)
+  <span class="tooltiprtext">Will show the Residuals vs Fitted and the Normal QQ-plot to check the ANOVA assumptions.</span>
+  </span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to View Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="twoWayAnovaCheck" style="display:none;">
+```{r, echo=FALSE}
+par(mfrow=c(1,2))
+plot(warp.aov, which=1:2)
+```
+
+</div>
+
+----
+
+</div>
+
+#### Explanation
+
+<div style="padding-left:125px;">
 
 ##### Hypotheses in Two-way ANOVA
 
@@ -614,22 +813,28 @@ $$
   H_a: \text{the effect of one factor differs for at least one level of the other factor}
 $$
 
+##### Expanding the ANOVA Model{#expanding}
+
+It turns out that more can be done with ANOVA than simply checking to see if the means of several groups differ. Reconsider the mathematical model of two-way ANOVA.
+$$
+  Y_{ijk} = \mu + \alpha_i + \beta_j + \alpha\beta_{ij} + \epsilon_{ijk}
+$$
+This model could be expanded to include any number of new terms in the model. The power of this approach is in the several questions (hypotheses) that can be posed to data simultaneously.
+
 
 ----
 
+
 </div>
 
-
-### 
+###
 
 <div style="padding-left:125px;">
 
-**Examples:** [chickwts](./Analyses/ANOVA/Examples/chickwtsOneWayANOVA.html) (One-way), [warpbreaks](./Analyses/ANOVA/Examples/warpbreaksTwoWayANOVA.html) (Two-way), [CO2](./Analyses/ANOVA/Examples/CO2ThreeWayANOVA.html)  (three-way)
+**Examples:** [warpbreaks](./Analyses/ANOVA/Examples/warpbreaksTwoWayANOVA.html) (Two-way), [CO2](./Analyses/ANOVA/Examples/CO2ThreeWayANOVA.html)  (three-way)
 </div>
 
-
 ----
-
 
 ### Block Design {.tabset .tabset-fade .tabset-pills}
 

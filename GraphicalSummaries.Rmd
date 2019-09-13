@@ -1019,7 +1019,7 @@ ggplot(airquality, aes(x=factor(Month), y=Temp)) +
 
 **Gallery**
 
-<a href="javascript:showhide('boxplotgalleryggplot')">Click to view more examples.</a>
+<a href="javascript:showhide('boxplotgalleryggplot')">Click to view.</a>
 
 <div id="boxplotgalleryggplot" style="display:none;">
 

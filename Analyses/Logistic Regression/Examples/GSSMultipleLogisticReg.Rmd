@@ -13,7 +13,7 @@ output:
 "The General Social Survey (GSS) conducts basic scientific research on the structure and development of American society with a data-collection program designed to both monitor societal change within the United States and to compare the United States to other nations."[$^1$](http://www3.norc.org/GSS+Website/) It is a cooperative effort to survey the American people every couple years asking a wide variety of questions and has been going on since 1972. The 2012 data file is contained in the file `GSS2012.csv`.
 
 ```{r}
-GSS <- read.table("../Add Contents To - Data/GSS2012.csv", sep="\t", header=TRUE)
+GSS <- read.table("../../../Data/GSS2012.csv", sep="\t", header=TRUE)
 ```
 
 Each column name in the `GSS` dataset corresponds to a variable name in the General Social Survey. All variable names can be browsed in the [2012 General Social Survey Browser](http://sda.berkeley.edu/sdaweb/analysis/?dataset=gss12).

@@ -46,10 +46,11 @@ navbar:
           href: ./Analyses/StudentHousing.html
         - text: "Poor Example Analysis"
           href: ./Analyses/StudentHousingPOOR.html
+        - text: "Rent Analysis"
+          href: ./Analyses/Rent.html
         - text: "Stephanie Analysis"
           href: ./Analyses/Stephanie.html
-        - text: "Olympics Analysis"
-          href: ./Analyses/Olympics.html
+
           
 output_dir: '.'
 

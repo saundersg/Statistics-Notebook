@@ -1,0 +1,77 @@
+---
+title: "Rent"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+    toc: true
+    toc_float: true
+---
+
+**Week 1 Analysis**
+
+```{r, include=FALSE}
+library(mosaic)
+library(pander)
+library(tidyverse)
+library(DT) 
+Rent <- read_csv("../Data/Rent.csv")
+```
+
+<br />
+
+## Background
+
+Here is a data table showing the available approved housing apartment options at BYU-Idaho for single students. There are 122 entries comprising 57 female and 65 male apartment options.
+
+```{r, warning=FALSE}
+# Code to get you started. 
+# Only the first 100 observations are shown here because the dataset is really too big to show all of it in a markdown file.
+datatable(Rent, options=list(lengthMenu = c(3,10,30)), extensions="Responsive")
+```
+
+
+<!-- Write a few statements here that introduce the data table showing apartments for only your gender. -->
+
+...delete this and type here...
+
+
+```{r}
+# Use this R-chunk to...
+# ...filter this data set down to show only your gender's apartment options. Use the R-chunk below to do this. Call your new data set `Rentf` if you are a female or `Rentm` if you are a male. Then show the new data table using the `datatable(...)` function. -->
+
+
+```
+
+
+<!-- Write a few statements here that introduce your graphic and what it shows. -->
+
+...delete this and type here...
+
+
+```{r}
+# Use this R-chunk to...
+# ...create a graphic that shows how your apartment (or a friend's) compares to all of the options available.
+
+
+```
+
+<!-- Write a few statements here that introduce your table of numerical summaries and what they show. -->
+
+...delete this and type here...
+
+
+```{r}
+# Use this R-chunk to...
+# ...compute and display a meaningful table of numerical summaries supporting your above graphic.
+
+
+```
+
+
+## Conclusion
+
+...delete this and type an interesting final conclusion here...
+
+
+

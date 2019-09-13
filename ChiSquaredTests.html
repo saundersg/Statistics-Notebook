@@ -70,9 +70,7 @@ h6 {
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -97,6 +95,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -111,7 +112,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -131,6 +131,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -152,19 +189,85 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
 });
 </script>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -196,6 +299,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="RCheatSheetsAndNotes.html">R Cheatsheets &amp; Notes</a>
+    </li>
+    <li>
+      <a href="DataSources.html">Data Sources</a>
     </li>
   </ul>
 </li>
@@ -267,10 +373,10 @@ $(document).ready(function () {
       <a href="./Analyses/StudentHousingPOOR.html">Poor Example Analysis</a>
     </li>
     <li>
-      <a href="./Analyses/Stephanie.html">Stephanie Analysis</a>
+      <a href="./Analyses/Rent.html">Rent Analysis</a>
     </li>
     <li>
-      <a href="./Analyses/Olympics.html">Olympics Analysis</a>
+      <a href="./Analyses/Stephanie.html">Stephanie Analysis</a>
     </li>
   </ul>
 </li>
@@ -320,30 +426,204 @@ $(document).ready(function () {
 <h4>R Instructions</h4>
 <p><strong>Console</strong> Help Command: <code>?chisq.test()</code></p>
 <p><code>chisq.test(x)</code></p>
+<p><code>x</code> must be a matrix or a table</p>
 <ul>
-<li><p><code>x</code> is either a matrix or a table.</p></li>
-<li><p>To make a matrix:</p>
-<ul>
-<li><code>cbind(column1, column2, ... column n)</code></li>
-<li><code>rbind(row1, row2, ..., row m)</code></li>
-</ul></li>
-<li><p>To make a table:</p>
-<ul>
-<li><code>table(rowVariable, columnVariable)</code></li>
-</ul></li>
+<li>To make a matrix:</li>
 </ul>
-<p><code>chisq.test(rowVariable,columnVariable)</code></p>
+<a href="javascript:showhide('matrix1')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> x <span class="tooltiprtext">The name of your created matrix to go in the <code>chisq.test()</code> code.</span> </span><span class="tooltipr">  &lt;-  <span class="tooltiprtext">This is the “left arrow” assignment operator that stores the results of your <code>cbind()</code> code into <code>x</code>.</span> </span><span class="tooltipr"> cbind( <span class="tooltiprtext">cbind stands for“column bind” and is a function that joins together different c() vectors to make them become columns of a table.</span> </span><span class="tooltipr"> column1, <span class="tooltiprtext">The first column you want in the matrix. It can be either a vector c() or a variable called from a dataset using $.</span> </span><span class="tooltipr">  column2, <span class="tooltiprtext">The sescond column you want in the matrix. It can be either a vector c() or a variable called from a dataset using $</span> </span><span class="tooltipr">  … column n) <span class="tooltiprtext">You can use any number of columns.</span> </span></p>
+</div>
+<p></a></p>
+<div id="matrix1" style="display:none;">
+<pre><code>##          Farm 1 Farm 2
+## Pigs         10     15
+## Cats          5      3
+## Dogs         28      8
+## Roosters      3      1</code></pre>
+</div>
+<a href="javascript:showhide('matrix2')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> x <span class="tooltiprtext">The name of your created matrix to go in the <code>chisq.test()</code> code.</span> </span><span class="tooltipr">  &lt;-  <span class="tooltiprtext">This is the “left arrow” assignment operator that stores the results of your <code>rbind()</code> code into <code>x</code>.</span> </span><span class="tooltipr"> rbind( <span class="tooltiprtext">rbind stands for“row bind” and is a function that joins together different c() vectors to make them become rows of a table.</span> </span><span class="tooltipr"> row1, <span class="tooltiprtext">The first row you want in the matrix. It can be either a vector c() or a variable called from a dataset using $.</span> </span><span class="tooltipr">  row2, <span class="tooltiprtext">The second row you want in the matrix. It can be either a vector c() or a variable called from a dataset using $.</span> </span><span class="tooltipr">  … row n) <span class="tooltiprtext">You can use any number of rows.</span> </span></p>
+</div>
+<p></a></p>
+<div id="matrix2" style="display:none;">
+<pre><code>##        Pigs Cats Dogs Roosters
+## Farm 1   10    5   28        3
+## Farm 2   15    3    8        1</code></pre>
+</div>
 <ul>
-<li><code>rowVariable</code> and <code>columVariable</code> are columns of data from a data set.</li>
+<li>To make a table:</li>
 </ul>
+<a href="javascript:showhide('table')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> x <span class="tooltiprtext">The name of your created table to go in the <code>chisq.test()</code> code.</span> </span><span class="tooltipr">  &lt;-  <span class="tooltiprtext">This is the “left arrow” assignment operator that stores the results of your <code>table()</code> code into <code>x</code>.</span> </span><span class="tooltipr"> table( <span class="tooltiprtext">table is an R function used to tabulate how many times each value occrus in a given dataset.</span> </span><span class="tooltipr"> Dataset$Variable, <span class="tooltiprtext">Use your dataset to call in a row variable.</span> </span><span class="tooltipr">  Dataset$variable) <span class="tooltiprtext">Use your dataset to call in a column variable.</span> </span></p>
+</div>
+<p></a></p>
+<div id="table" style="display:none;">
+<pre><code>##    
+##      4  6  8
+##   0  3  4 12
+##   1  8  3  2</code></pre>
+</div>
 <div id="diagnostics" class="section level5">
 <h5>Diagnostics</h5>
-<p><code>yourNamedTestResults &lt;- chisq.test(x)</code></p>
-<p><code>yourNamedTestResults$expected</code></p>
+<a href="javascript:showhide('chisq')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> yourNamedTestResults <span class="tooltiprtext">This is some name you come up with that will become the R object that stores the results of your Chi-squated test <code>chisq.test()</code> command.</span> </span><span class="tooltipr">  &lt;-  <span class="tooltiprtext">This is the “left arrow” assignment operator that stores the results of your <code>chisq.test()</code> code into <code>yourNamedTestResults</code>.</span> </span><span class="tooltipr"> chisq.test( <span class="tooltiprtext"><code>chisq.test()</code> is an R function that stands for “Chi-Squared Test”. It performs the Chi-squared test for <code>x</code>.</span> </span><span class="tooltipr"> x) <span class="tooltiprtext"><code>x</code> is either a matrix or a table.</span> </span></p>
+</div>
+<p></a></p>
+<div id="chisq" style="display:none;">
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> Pearson’s Chi-squared test <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> data: x <span class="tooltiprouttext">The data you are using for the Chi-Squared test. <code>x</code> is either a table or matrix that you created.</span>
+</td>
+<td>
+<span class="tooltiprout"> X-squared = 9.2956, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  df = 3, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  p-value = 0.02561 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
+</div>
+<a href="javascript:showhide('expected')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> yourNamedTestResults <span class="tooltiprtext">This is some name you come up with that will become the R object that stores the results of your Chi-squared test <code>chisq.test()</code> command.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">This allows you to access various elements from the test that was performed.</span> </span><span class="tooltipr"> expected <span class="tooltiprtext">EXPLANATION.</span> </span></p>
+</div>
+<p></a></p>
+<div id="expected" style="display:none;">
+
+<table class="rconsole">
+<tr>
+<td align="left">
+</td>
+<td align="right">
+<span class="tooltiprout"> Pigs <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td align="right">
+<span class="tooltiprout">   Cats <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   Dogs <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   Roosters <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<tr>
+<td align="left">
+<span class="tooltiprout"> Farm 1 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   15.753425 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   5.041096 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> 22.68493 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> 2.520548 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+</td>
+</tr>
+<tr>
+<td align="left">
+<span class="tooltiprout"> Farm 2 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   9.246575 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   2.958904 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> 13.31507 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> 1.479452 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div id="interpretation-pearson-residuals" class="section level5">
 <h5>Interpretation: Pearson Residuals</h5>
-<p><code>yourNamedTestResults$residuals</code></p>
+<a href="javascript:showhide('residuals')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> yourNamedTestResults <span class="tooltiprtext">This is some name you come up with that will become the R object that stores the results of your Chi-squated test <code>chisq.test()</code> command.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">This allows you to access various elements from the test that was performed.</span> </span><span class="tooltipr"> residuals <span class="tooltiprtext">This grabs the residuals for each observation in the Chi-squared test.</span> </span></p>
+</div>
+<p></a></p>
+<div id="residuals" style="display:none;">
+
+<table class="rconsole">
+<tr>
+<td align="left">
+</td>
+<td align="right">
+<span class="tooltiprout"> Pigs <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td align="right">
+<span class="tooltiprout">   Cats <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   Dogs <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   Roosters <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<tr>
+<td align="left">
+<span class="tooltiprout"> Farm 1 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   -1.449569 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   -0.01830357 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> 1.115938 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> 0.3019936 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+</td>
+</tr>
+<tr>
+<td align="left">
+<span class="tooltiprout"> Farm 2 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   1.892065 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   0.02389092 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> -1.456589 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> -0.3941801 <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+</td>
+</tr>
+</table>
+</div>
 <hr />
 </div>
 </div>
@@ -414,9 +694,9 @@ $(document).ready(function () {
 <h6>Where the <span class="math inline">\(\chi^2\)</span> statistic Comes From</h6>
 <div style="padding-left:15px;">
 <p>Consider the following graphic of the Titanic data. The data suggests that <strong>Survival</strong> of passengers appears to be associated with the <strong>Class</strong> of the passenger (the alternative hypothesis). This is due to the fact that more 1st class passengers survived than perished but far more 3rd class and Crew members perished than survived. It seems that the chances of survival were much greater for the 1st and 2nd class passengers than the 3rd class and Crew. Thus, survival appears to be associated with class.</p>
-<p><img src="ChiSquaredTests_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="ChiSquaredTests_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>If the null hypothesis were true for the Titanic data, then we would expect to see roughly the same percentage of survival across all classes. In other words, if <strong>Class</strong> and <strong>Survival</strong> were independent, we would expect to see plots more like the theoretical ones depicted below.</p>
-<p><img src="ChiSquaredTests_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="ChiSquaredTests_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>The theoretical plot above depicts the expected counts for each <strong>Class</strong> and <strong>Survival</strong> combination. To see where these expected counts come from, note that there are a total of 2,201 passengers recorded for the Titanic data (the sum of all values in the table). Further, there are a total of <span class="math inline">\(122+203 = 325\)</span> passengers that were 1st class, <span class="math inline">\(167 + 118 = 285\)</span> passengers in 2nd class, <span class="math inline">\(528 + 178 = 706\)</span> passengers in 3rd class, and <span class="math inline">\(673 + 212 = 885\)</span> Crew members. Thus, we have the following percentage of each class of passenger. Note that these percentages were obtained by taking the row totals and dividing them by the “total total”.</p>
 <div style="padding-left:25%; padding-right:35%;">
 <table>
@@ -546,7 +826,7 @@ $(document).ready(function () {
 </tr>
 </table>
 <div style="padding-left:125px;">
-<p><strong>Examples</strong>: <a href="./Analyses/Chi%20Squared%20Tests/Examples/Math325StudentRatings.html">StudentRatings</a> | <a href="./Analyses/Chi%20Squared%20Tests/Examples/HairEyeColor.html">HairEyeColor</a></p>
+<p><strong>Examples</strong>: <a href="./Analyses/Chi%20Squared%20Tests/Examples/Math325StudentRatings.html">StudentRatings</a> | <a href="./Analyses/Chi%20Squared%20Tests/Examples/HairEyeColorChiSquaredTest.html">HairEyeColor</a></p>
 </div>
 <hr />
 </div>
@@ -568,7 +848,37 @@ $(document).ready(function () {
 <div id="r-instructions-1" class="section level4">
 <h4>R Instructions</h4>
 <p><strong>Console</strong> Help Command: <code>?chisq.test()</code></p>
-<p><code>chisq.test(x, simulate.p.value=TRUE)</code></p>
+<a href="javascript:showhide('chisq.test2')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> chisq.test( <span class="tooltiprtext"><code>chisq.test()</code> is an R function that stands for “Chi-Squared Test”. It performs the Chi-squared test for <code>x</code>.</span> </span><span class="tooltipr"> x, <span class="tooltiprtext"><code>x</code> is either a matrix or a table.</span><span class="tooltipr"></span> </span><span class="tooltipr"> simulate.p.value=TRUE) <span class="tooltiprtext">EXPLANATION.</span> </span></p>
+</div>
+<p></a></p>
+<div id="chisq.test2" style="display:none;">
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> Pearson’s Chi-squared test with simulated p-value (based on 2000 replicates) <span class="tooltiprouttext">EXPLANATION.</span> </span>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<table class="rconsole">
+<tr>
+<td>
+<span class="tooltiprout"> data: x <span class="tooltiprouttext">The data you are using for the Chi-Squared test. <code>x</code> is either a table or matrix that you created.</span>
+</td>
+<td>
+<span class="tooltiprout"> X-squared = 9.2956, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  df = NA, <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+<td>
+<span class="tooltiprout">  p-value = 0.02799 <span class="tooltiprouttext">EXPLANATION.</span>
+</td>
+</tr>
+</table>
+</div>
 <hr />
 </div>
 <div id="explanation-1" class="section level4">
@@ -641,7 +951,7 @@ $(document).ready(function () {
 <p><strong>Step 3</strong>: Repeat the process thousands of times, always keeping track of the <span class="math inline">\(\chi^2\)</span> value from each test.</p>
 <div style="padding-left:15px;">
 <p>For 2,000 made up versions of the Titanic data (each similar to the orange table in <strong>Step 1</strong>), the 2,000 corresponding test statistics are summarized in the histogram below.</p>
-<p><img src="ChiSquaredTests_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="ChiSquaredTests_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 <p><strong>Step 4</strong>: Calculate the number of <span class="math inline">\(\chi^2\)</span> statistics (from the thousands of simulated data sets) that are as extreme or more extreme than the original test statistic observed for the real data. Add 1 to this value (to avoid the possibility of getting a p-value of 0) and then divide by the number of test statistics that were simulated to get the p-value of the Nonparametric Chi-squared Test.</p>
 <div style="padding-left:15px;">
