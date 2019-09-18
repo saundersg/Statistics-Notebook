@@ -259,7 +259,7 @@ mean
 
 <div id="HelpOutput3" style="display:none;padding-left:20px;">
 
-Insert Image Here
+![](./Images/helpmean.png)
 
 </div>
 
