@@ -696,11 +696,11 @@ Used to reduce a dataset to a smaller set of rows than the original dataset cont
 <div style="padding-left:30px;">
 
 | **Filtering Rule** | **Logical Expression** | 
-|--------------------|--------|
-| Equals (one value) | `columnName` `==` `value` |
-| Equals Any Of (several values) | `columnName` `%in%` `c(value1,value2,...)` |
-| Not Equal (one value)| `columnName` `!=` `value` |
-| Not Equals Any of (several values) | `!columnName` `%in%` `c(value1,value2,...)` |
+|--------------------------------------------|------------|
+| Equals one "thing" | `columnName` `==` `something` |
+| Equals Any Of Several "things" | `columnName` `%in%` `c(something1,something2,...)` |
+| Not Equal (one thing)| `columnName` `!=` `something` |
+| Not Equals Any of (several things) | `!columnName` `%in%` `c(something1,something2,...)` |
 | Less Than | `columnName` `<` `value` |
 | Less Then or Equal to | `columnName` `<=` `value` |
 | Greater Than | `columnName` `>` `value` |
@@ -710,13 +710,14 @@ Used to reduce a dataset to a smaller set of rows than the original dataset cont
 | Equals `NA` | `is.na(columnName)` | 
 | Not `NA` | `!is.na(columnName)` | 
 
+
 </div>
 
 
 
 **Example Code**
 
-<a href="javascript:showhide('filterEqual')">
+<a href="">
 <div class="hoverchunk">
 <span class="tooltipr">
 library(tidyverse)
@@ -724,7 +725,17 @@ library(tidyverse)
 </span><br/><span class="tooltipr">
 library(mosaic)
   <span class="tooltipRtext">The mosaic library is needed to access the KidsFeet data set used in the following example codes.</span>
-</span><br/><span class="tooltipr">
+</span>
+</div>
+</a>
+
+<br/>
+
+*Equals one "thing"*...
+
+<a href="javascript:showhide('filterEqual')">
+<div class="hoverchunk">
+<span class="tooltipr">
 Kids87 <-&nbsp;
   <span class="tooltipRtext">Kids87 is a name we made up. The assignment operator `<-` will save the reduced version of the `KidsFeet` dataset created by the `filter(...)` function into this name.</span>
 </span><span class="tooltipr">
@@ -732,10 +743,10 @@ filter(KidsFeet, &nbsp;
   <span class="tooltipRtext">"filter" is a function from library(tidyverse) that reduces the number of rows in the KidsFeet dataset by filtering according to certain criteria. Click on this code to see the original and filtered datasets.</span>
 </span><span class="tooltipr">
 birthyear
-  <span class="tooltipRtext">The column of the KidsFeet dataset that we want to use to reduce the dataset.</span>
+  <span class="tooltipRtext">A quantitative column of the KidsFeet dataset that we want to use to reduce the dataset.</span>
 </span><span class="tooltipr">
 &nbsp;== 87
-  <span class="tooltipRtext">This is the "filtering rule". It will filter the data down to just those children who had a birthyear equal to 87.</span>
+  <span class="tooltipRtext">This "filtering rule" filters the data down to just those children who had a birthyear equal to 87.</span>
   </span><span class="tooltipr">
 ) 
   <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span>
@@ -751,6 +762,41 @@ birthyear
 <div id="filterEqual" style="display:none;padding-left:20px;">
 ![](./Images/Kids87.png)
 </div>
+
+<a href="javascript:showhide('filterEqualCategorical')">
+<div class="hoverchunk">
+<span class="tooltipr">
+KidsBoys <-&nbsp;
+  <span class="tooltipRtext">KidsBoys is a name we made up. The assignment operator `<-` will save the reduced version of the `KidsFeet` dataset created by the `filter(...)` function into this name.</span>
+</span><span class="tooltipr">
+filter(KidsFeet, &nbsp;
+  <span class="tooltipRtext">"filter" is a function from library(tidyverse) that reduces the number of rows in the KidsFeet dataset by filtering according to certain criteria. Click on this code to see the original and filtered datasets.</span>
+</span><span class="tooltipr">
+sex
+  <span class="tooltipRtext">A categorical column of the KidsFeet dataset that we want to use to reduce the dataset.</span>
+</span><span class="tooltipr">
+&nbsp;== "B"
+  <span class="tooltipRtext">This "filtering rule" filters the data down to just those children who are boys. Words must be quoted "B" but values are just typed directly.</span>
+  </span><span class="tooltipr">
+) 
+  <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span>
+ </span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="filterEqualCategorical" style="display:none;padding-left:20px;">
+![](./Images/Kids87.png)
+</div>
+
+
+<br/>
+
+*Equals Any of Several "things"*...
 
 <a href="javascript:showhide('filterIN')">
 <div class="hoverchunk">
