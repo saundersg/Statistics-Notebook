@@ -420,25 +420,34 @@ $(document).ready(function () {
 <hr />
 <p>Regression for a qualitative binary response variable <span class="math inline">\((Y_i = 0\)</span> or <span class="math inline">\(1)\)</span>. The explanatory variables can be either quantitative or qualitative.</p>
 <hr />
-<div id="simple-logistic-regression-model" class="section level3 tabset tabset-pills tabset-fade">
-<h3>Simple Logistic Regression Model</h3>
+<div id="simple-logistic-regression-model" class="section level2 tabset tabset-pills tabset-fade">
+<h2>Simple Logistic Regression Model</h2>
 <div style="float:left;width:125px;" align="center">
 <p><img src="Images/BinomYQuantX.png" width=58px;></p>
 </div>
 <p>Regression for a qualitative binary response variable <span class="math inline">\((Y_i = 0\)</span> or <span class="math inline">\(1)\)</span> using a single (typically quantitative) explanatory variable.</p>
-<div id="overview" class="section level4">
-<h4>Overview</h4>
+<div id="overview" class="section level3">
+<h3>Overview</h3>
 <div style="padding-left:125px;">
 <p>The probability that <span class="math inline">\(Y_i = 1\)</span> given the observed value of <span class="math inline">\(x_i\)</span> is called <span class="math inline">\(\pi_i\)</span> and is modeled by the equation</p>
-<p><span class="math display">\[
+<div style="float:right;font-size:.8em;background-color:lightgray;padding:5px;border-radius:4px;">
+<a style="color:darkgray;" href="javascript:showhide('simplelogisticlatexrcode')">Math Code</a>
+</div>
+<div id="simplelogisticlatexrcode" style="display:none;">
+<pre><code>$$
   P(Y_i = 1|\, x_i) = \frac{e^{\beta_0 + \beta_1 x_i}}{1+e^{\beta_0 + \beta_1 x_i}} = \pi_i
-\]</span></p>
+$$</code></pre>
+</div>
+<center>
+<span class="tooltipr"> <span class="math inline">\(P(\)</span> <span class="tooltiprtext">The “P” stands for “Probability that…”</span> </span><span class="tooltipr"> <span class="math inline">\(Y_i\)</span> <span class="tooltiprtext">The response variable. The “i” denotes that this is the y-value for individual “i”, where “i” is 1, 2, 3,… and so on up to <span class="math inline">\(n\)</span>, the sample size.</span> </span><span class="tooltipr"> <span class="math inline">\(= 1\)</span> <span class="tooltiprtext">Equals 1… This states that we are assuming that the probability that the response variable <span class="math inline">\(Y_i\)</span> is a 1 for the current individual.</span> </span><span class="tooltipr"> <span class="math inline">\(| x_i)\)</span> <span class="tooltiprtext">Given <span class="math inline">\(x_i\)</span>… in other words, the “|” says “given” and <span class="math inline">\(x_i\)</span> means the x-value of the current individual.</span> </span><span class="tooltipr"> <span class="math inline">\(=\)</span> <span class="tooltiprtext">Equals sign.</span> </span><span class="tooltipr"> <span class="math inline">\(\displaystyle\frac{e^{\beta_0 + \beta_1 x_i}}{1 + e^{\beta_0 + \beta_1 x_i}}\)</span> <span class="tooltiprtext">The logistic regression equation where <span class="math inline">\(e=2.71828...\)</span> is the “natural constant” number and <span class="math inline">\(\beta_0\)</span> is the y-intercept and <span class="math inline">\(\beta_1\)</span> is teh slope.</span> </span><span class="tooltipr"> <span class="math inline">\(= \pi_i\)</span> <span class="tooltiprtext">The <span class="math inline">\(\pi_i\)</span> stands for the probability of individual <span class="math inline">\(i\)</span> having a y-value equal to 1 given their <span class="math inline">\(x_i\)</span> value. It is the short hand notation for <span class="math inline">\(P(Y_i = 1 |x_i)\)</span>. (It is NOT the number 3.14…)</span> </span>
+</center>
+<p><br/></p>
 <p>The coefficents <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are difficult to interpret directly. Typicall <span class="math inline">\(e^{\beta_0}\)</span> and <span class="math inline">\(e^{\beta_1}\)</span> are interpreted instead. The value of <span class="math inline">\(e^{\beta_0}\)</span> or <span class="math inline">\(e^{\beta_1}\)</span> denotes the relative change in the odds that <span class="math inline">\(Y_i=1\)</span>. The odds that <span class="math inline">\(Y_i=1\)</span> are <span class="math inline">\(\frac{\pi_i}{1-\pi_i}\)</span>.</p>
 <hr />
 </div>
 </div>
-<div id="r-instructions" class="section level4">
-<h4>R Instructions</h4>
+<div id="r-instructions" class="section level3">
+<h3>R Instructions</h3>
 <div style="padding-left:125px;">
 <p><strong>Console</strong> Help Command: <code>?glm()</code></p>
 <p>To perform a logistic regression in R use the commands</p>
@@ -685,8 +694,8 @@ ggplot2
 <hr />
 </div>
 </div>
-<div id="explanation" class="section level4">
-<h4>Explanation</h4>
+<div id="explanation" class="section level3">
+<h3>Explanation</h3>
 <div style="padding-left:125px;">
 <p>Simple Logistic Regression is used when</p>
 <ul>
@@ -728,7 +737,6 @@ ggplot2
 </div>
 <hr />
 </div>
-</div>
 <div id="section" class="section level3">
 <h3></h3>
 <div style="padding-left:125px;">
@@ -736,14 +744,15 @@ ggplot2
 </div>
 <hr />
 </div>
-<div id="multiple-logistic-regression-model" class="section level3 tabset tabset-pills tabset-fade">
-<h3>Multiple Logistic Regression Model</h3>
+</div>
+<div id="multiple-logistic-regression-model" class="section level2 tabset tabset-pills tabset-fade">
+<h2>Multiple Logistic Regression Model</h2>
 <div style="float:left;width:125px;" align="center">
 <p><img src="Images/BinomYMultX.png" width=98px;></p>
 </div>
 <p>Logistic regression for multiple explanatory variables that can either be quantitative or qualitative or a mixture of the two.</p>
-<div id="overview-1" class="section level4">
-<h4>Overview</h4>
+<div id="overview-1" class="section level3">
+<h3>Overview</h3>
 <div style="padding-left:125px;">
 <p>The probability that <span class="math inline">\(Y_i = 1\)</span> given the observed data <span class="math inline">\((x_{i1},\ldots,x_{ip})\)</span> is called <span class="math inline">\(\pi_i\)</span> and is modeled by the equation</p>
 <p><span class="math display">\[
@@ -753,8 +762,8 @@ ggplot2
 <hr />
 </div>
 </div>
-<div id="r-instructions-1" class="section level4">
-<h4>R Instructions</h4>
+<div id="r-instructions-1" class="section level3">
+<h3>R Instructions</h3>
 <div style="padding-left:125px;">
 <p><strong>Console</strong> Help Command: <code>?glm()</code></p>
 <p>To perform a logistic regression in R use the commands</p>
@@ -1113,8 +1122,8 @@ ggplot2
 <hr />
 </div>
 </div>
-<div id="explanation-1" class="section level4">
-<h4>Explanation</h4>
+<div id="explanation-1" class="section level3">
+<h3>Explanation</h3>
 <div style="padding-left:125px;">
 <p>Multiple Logistic Regression is used when</p>
 <ul>
@@ -1140,7 +1149,6 @@ ggplot2
 <hr />
 </div>
 </div>
-</div>
 <div id="section-1" class="section level3">
 <h3></h3>
 <div style="padding-left:125px;">
@@ -1149,6 +1157,7 @@ ggplot2
 <hr />
 <footer>
 </footer>
+</div>
 </div>
 
 

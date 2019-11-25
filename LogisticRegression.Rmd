@@ -31,13 +31,15 @@ output:
 library(plotly)
 library(ResourceSelection)
 ```
+
+
 ----
 
 Regression for a qualitative binary response variable $(Y_i = 0$ or $1)$. The explanatory variables can be either quantitative or qualitative.
 
 ----
 
-### Simple Logistic Regression Model {.tabset .tabset-pills .tabset-fade}
+## Simple Logistic Regression Model {.tabset .tabset-pills .tabset-fade}
 
 <div style="float:left;width:125px;" align=center>
 <img src="./Images/BinomYQuantX.png" width=58px;>
@@ -45,15 +47,55 @@ Regression for a qualitative binary response variable $(Y_i = 0$ or $1)$. The ex
 
 Regression for a qualitative binary response variable $(Y_i = 0$ or $1)$ using a single (typically quantitative) explanatory variable.
 
-#### Overview
+### Overview
 
 <div style="padding-left:125px;">
 
 The probability that $Y_i = 1$ given the observed value of $x_i$ is called $\pi_i$ and is modeled by the equation
 
+<div style="float:right;font-size:.8em;background-color:lightgray;padding:5px;border-radius:4px;"><a style="color:darkgray;" href="javascript:showhide('simplelogisticlatexrcode')">Math Code</a></div>
+
+
+<div id="simplelogisticlatexrcode" style="display:none;">
+```{}
 $$
   P(Y_i = 1|\, x_i) = \frac{e^{\beta_0 + \beta_1 x_i}}{1+e^{\beta_0 + \beta_1 x_i}} = \pi_i
 $$
+```
+</div>
+
+<center>
+<span class="tooltipr">
+$P($
+  <span class="tooltiprtext">The "P" stands for "Probability that..."</span>
+</span><span class="tooltipr">
+$Y_i$
+  <span class="tooltiprtext">The response variable. The "i" denotes that this is the y-value for individual "i", where "i" is 1, 2, 3,... and so on up to $n$, the sample size.</span>
+</span><span class="tooltipr">
+$= 1$
+  <span class="tooltiprtext">Equals 1... This states that we are assuming that the probability that the response variable $Y_i$ is a 1 for the current individual.</span>
+</span><span class="tooltipr">
+$| x_i)$
+  <span class="tooltiprtext">Given $x_i$... in other words, the "|" says "given" and $x_i$ means the x-value of the current individual.</span>
+</span><span class="tooltipr">
+$=$
+  <span class="tooltiprtext">Equals sign.</span>
+</span><span class="tooltipr">
+$\displaystyle\frac{e^{\beta_0 + \beta_1 x_i}}{1 + e^{\beta_0 + \beta_1 x_i}}$
+  <span class="tooltiprtext">The logistic regression equation where $e=2.71828...$ is the "natural constant" number and $\beta_0$ is the y-intercept and $\beta_1$ is teh slope.</span>
+</span><span class="tooltipr">
+$= \pi_i$
+  <span class="tooltiprtext">The $\pi_i$ stands for the probability of individual $i$ having a y-value equal to 1 given their $x_i$ value. It is the short hand notation for $P(Y_i = 1 |x_i)$. (It is NOT the number 3.14...)</span>
+</span>
+</center>
+
+<br/>
+
+
+
+
+
+
 
 The coefficents $\beta_0$ and $\beta_1$ are difficult to interpret directly. Typicall $e^{\beta_0}$ and $e^{\beta_1}$ are interpreted instead. The value of $e^{\beta_0}$ or $e^{\beta_1}$ denotes the relative change in the odds that $Y_i=1$. The odds that $Y_i=1$ are $\frac{\pi_i}{1-\pi_i}$.
 
@@ -61,7 +103,7 @@ The coefficents $\beta_0$ and $\beta_1$ are difficult to interpret directly. Typ
 
 </div>
 
-#### R Instructions
+### R Instructions
 
 <div style="padding-left:125px;">
 
@@ -641,7 +683,7 @@ ggplot(mtcars, aes(disp, am)) +
 
 </div>
 
-#### Explanation
+### Explanation
 
 <div style="padding-left:125px;">
 
@@ -728,7 +770,7 @@ One of the great uses of Logistic Regression is that it provides an estimate of 
 ----
 
 
-### Multiple Logistic Regression Model {.tabset .tabset-pills .tabset-fade}
+## Multiple Logistic Regression Model {.tabset .tabset-pills .tabset-fade}
 
 
 <div style="float:left;width:125px;" align=center>
@@ -738,7 +780,7 @@ One of the great uses of Logistic Regression is that it provides an estimate of 
 Logistic regression for multiple explanatory variables that can either be quantitative or qualitative or a mixture of the two.
 
 
-#### Overview
+### Overview
 
 <div style="padding-left:125px;">
 
@@ -754,7 +796,7 @@ The coefficents $\beta_0,\beta_1,\ldots,\beta_p$ are difficult to interpret dire
 
 </div>
 
-#### R Instructions
+### R Instructions
 
 <div style="padding-left:125px;">
 
@@ -1633,7 +1675,7 @@ ggplot(ChickWeight, aes(Time, as.numeric(weight>100))) +
 
 </div>
 
-#### Explanation
+### Explanation
 
 <div style="padding-left:125px;">
 
