@@ -493,7 +493,7 @@ div.tocify {
 <div id="getting-started" class="section level2">
 <h2>Getting Started</h2>
 <div style="padding-left:15px;">
-<span class="tooltipr"> <a href="javascript:showhide('hovertobegin')">Hover your mouse here to begin.</a> <span class="tooltipRtext">Good work! <br/> Now “click” to get started. </span> </span>
+<span class="tooltipr"> <a href="javascript:showhide('hovertobegin')">Hover your mouse here to begin.</a> <span class="tooltipRtext">Good work! <br/> You followed instructions well. <br/> Now “click” to get started. </span> </span>
 <div id="hovertobegin" style="display:none;padding-left:20px;">
 <p><br/></p>
 <p>Student: “How do I learn R?”</p>
@@ -507,17 +507,28 @@ div.tocify {
 
 </div>
 <p><br/></p>
-<p>Hover over <span class="tooltipr"><code>code</code><span class="tooltipRtext">Yes, just like that. By hovering over “Codes” you will get instructions on what that code does.</span></span> to read about it. Click on a line of code to see what it does. Try typing the code into RStudio yourself to actually start learning R.</p>
+<p>Hover over <span class="tooltipr"><code>code</code><span class="tooltipRtext">Yes, just like that. By hovering over “Codes” you will get instructions on what that code does.</span></span> to read about it. Click on a <span class="tooltipr"><a href="javascript:showhide('smileyface')"><code>line of code</code></a><span class="tooltipRtext">Hovering is a good start, try clicking on this one.</span></span> to see what it does. Try typing the code into RStudio yourself to actually start learning R.</p>
+<div id="smileyface" style="display:none;padding-left:20px;">
+<p><img src="Images/smileyfacecongratulations.jpg"></p>
+</div>
 <p><strong>Examples</strong></p>
-<p>For each of the following examples, hover, click, and try.</p>
+<p>For each of the following examples: (1) hover, (2) click, and (3) try.</p>
 <a href="javascript:showhide('CarsOutput')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> View( <span class="tooltipRtext">The “View” R function (with a CAPTIAL ‘V’ in View) allows us to view a datset. When run, this function will open up a new tab in RStudio showing the dataset. </span> </span><span class="tooltipr"> cars <span class="tooltipRtext"><code>cars</code> is a data set that is in R. R has datasets that are available for anyone to use. You can see them using the <code>data()</code> command. It would be good to explore <code>View()</code> for a few different datasets. </span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always be sure to end your function with closing parantheses. </span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> View( <span class="tooltipRtext">The “View” R function (with a CAPTIAL ‘V’ in View) allows us to view a data set. When run, this function will open up a new tab in RStudio showing the data set. </span> </span><span class="tooltipr"> cars <span class="tooltipRtext"><code>cars</code> is a data set that is in R. R has datasets that are available for anyone to use. You can see them using the <code>data()</code> command. It would be good to explore <code>View()</code> for a few different datasets. </span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always be sure to end your function with closing parantheses. </span> </span><span class="tooltipr">     <br />
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Tutorial  <span class="tooltiprtext">Click to see a full tutorial on the “View()” command.</span> </span></p>
 </div>
 </a>
 <div id="CarsOutput" style="display:none;padding-left:20px;">
-<p>R allows you to work with data. So, the first step to understanding R is to open a dataset and begin exploring some data. The <code>View</code> command will help you get started with this.</p>
+<p>R allows you to work with data. So, the first step to understanding R is to open a dataset and begin exploring some data.</p>
+<p>If you type the <code>data()</code> command into your Console of RStudio you will see a list of “built in” data sets that come with R.</p>
+<div class="figure">
+<img src="Images/DataOutput.png" />
+
+</div>
+<p><br/></p>
+<p>The <code>cars</code> data set is one of the options that is available. This is a fun “historic” data set from the 1920’s. It shows the <code>speed</code> and stopping <code>dist</code>ance of cars from the 1920’s.</p>
+<p>To see the <code>cars</code> data set in RStudio, use the <code>View</code> command as follows.</p>
 <p><strong>Step 1.</strong> Open RStudio.</p>
 <p><strong>Step 2.</strong> Type the command <code>View(cars)</code> into your <strong>Console</strong>.</p>
 <p><strong>Step 3.</strong> Press <code>Enter</code> or <code>Return</code> and the following output should appear within RStudio.</p>
@@ -525,38 +536,51 @@ div.tocify {
 <img src="Images/ViewCars.png" />
 
 </div>
+<p><br/></p>
+<p>Be sure to <strong>TRY IT</strong> yourself, if you haven’t already. Good work if you did. It’s the only way to learn R.</p>
+<p>Ask someone for help if you aren’t sure how to get started.</p>
+<p><br/> <br/></p>
 </div>
-<a href="javascript:showhide('airqualityOutput1')">
+<a href="javascript:showhide('meancarsdist')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> View( <span class="tooltipRtext">The “View” R function (with a CAPTIAL ‘V’ in View) allows us to view a datset. When run, this function will open up a new tab in RStudio showing the dataset.</span> </span><span class="tooltipr"> airquality) <span class="tooltipRtext"> Gives us data concerning air quality measurements around New York City, NY. For more details on this dataset type: <code>?airquality</code></span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
-</div>
-</a>
-<div id="airqualityOutput1" style="display:none;padding-left:20px;">
-<p>Here is what the output of the command <code>View(airquality)</code> looks like.</p>
-<div class="figure">
-<img src="Images/airqualityOutput.png" />
-
-</div>
-<p>Let’s see how you are doing. Can you answer these questions about the airquality dataset?</p>
-<p>What is the sample size of this dataset? (Answer: 153)</p>
-<p>How many columns of data are there? (Answer: 6)</p>
-</div>
-<a href="javascript:showhide('DataOutput')">
-<div class="hoverchunk">
-<p><span class="tooltipr"> data <span class="tooltipRtext">An R function “data” used to bring up a list of available datasets in R.</span> </span><span class="tooltipr"> () <span class="tooltipRtext">Functions always have parentheses following the function name. For this function we do not put anything inside the parentheses.</span> </span><span class="tooltipr">     <br />
+<p><span class="tooltipr"> mean( <span class="tooltipRtext">An R function “mean()” that will compute the mean of a quantitative column of data from a data set.</span> </span><span class="tooltipr"> cars <span class="tooltipRtext"><code>cars</code> is the name of a data set in R. Any data set can be used instead by simply typing the name of that data set instead of <code>cars</code>.</span> </span><span class="tooltipr"> $ <span class="tooltipRtext">The <code>$</code> sign is a powerful operator in R. The <code>$</code> sign allows you to access, or “purchase,” any column from a data set. Try typing <code>cars$</code> into R and notice how a selection menu appears with options <code>dist</code> and <code>speed</code>.</span> </span><span class="tooltipr"> dist <span class="tooltipRtext"><code>dist</code> is one of the two columns from the <code>cars</code> data set. By typing <code>cars$dist</code> we are essentially pulling that column of data out of the data set, and then computing the mean of that column with <code>mean(cars$dist)</code>.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Closing parenthesis for the <code>mean()</code> function.</span> </span><span class="tooltipr">     <br />
 <span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to see output.</span> </span></p>
 </div>
 </a>
-<div id="DataOutput" style="display:none;padding-left:20px;">
-<p>Notice that the list of available data sets in R includes the “airquality” and “cars” data sets that we “Viewed” previously.</p>
-<p>There are many, many other data sets you can View and use as well. You can also bring your own data sets into R, as you will learn later this week.</p>
+<div id="meancarsdist" style="display:none;padding-left:20px;">
 <div class="figure">
-<img src="Images/DataOutput.png" />
+<img src="Images/meancarsdist.png" />
 
 </div>
+<p>You may also be interested in trying any of the following:</p>
+<ul>
+<li><code>sd(cars$dist)</code></li>
+<li><code>var(cars$dist)</code></li>
+<li><code>median(cars$dist)</code></li>
+<li><code>min(cars$dist)</code></li>
+<li><code>max(cars$dist)</code></li>
+<li><code>length(cars$dist)</code></li>
+<li><code>sum(cars$dist)</code></li>
+</ul>
+<p><br/> <br/></p>
 </div>
-<p>Once you finish working through the three above example codes, move on to studying the codes below.</p>
+<a href="javascript:showhide('plotcarsdist')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> plot( <span class="tooltipRtext">The <code>plot(...)</code> function allows us to create a plot (usually a scatterplot) in R.</span> </span><span class="tooltipr"> dist <span class="tooltipRtext"> <code>dist</code> is the name of a column. This is going to be the Y-variable of the plot. The Y-variable always comes first in the plot(Y ~ X) command.</span> </span><span class="tooltipr">  ~  <span class="tooltipRtext"> <code>~</code> is found on the upper-left key of your keyboard. It is called the “tilde” or “tilda” symbol. It is used to state a relationship between Y and X: <code>Y ~ X</code>.</span> </span><span class="tooltipr"> speed,  <span class="tooltipRtext"> <code>speed</code> is the name of a column. This is going to be the X-variable of the plot. The X-variable always comes after the <code>~</code> in the <code>plot(Y ~ X)</code> command.</span> </span><span class="tooltipr"> data=cars <span class="tooltipRtext"> The <code>data=</code> statement is used to tell R which data set the columns of “dist” and “speed” come from. In this case, the <code>cars</code> data set.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Closing parenthesis for the plot(…) function.</span> </span><span class="tooltipr">     <br />
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+</div>
+</a>
+<div id="plotcarsdist" style="display:none;padding-left:20px;">
+<div class="figure">
+<img src="Images/plotcarsblue.png" />
+
+</div>
+<p>Try changing the <code>col=&quot;skyblue&quot;</code> statement to <code>col=&quot;firebrick&quot;</code> instead. What do you notice?</p>
+<p>Try changing the <code>pch=16</code> statement to <code>pch=4</code> or any other number from 1 to 25. What do you notice?</p>
+<p>Hint: pressing the “up” arrow on your keyboard brings up the last command you typed into the Console.</p>
+<p><br/></p>
+<p><strong>Completion Code:</strong> abc123R</p>
+</div>
 </div>
 </div>
 <br />

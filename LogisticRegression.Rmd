@@ -114,11 +114,11 @@ To perform a logistic regression in R use the commands
 <a href="javascript:showhide('logistic1')">
 <div class="hoverchunk">
 <span class="tooltipr">
-YourObjectName
+YourGlmName
   <span class="tooltiprtext">This is some name you come up with that will become the R object that stores the results of your logistic regression `glm()` command.</span>
 </span><span class="tooltipr">
 &nbsp;<-&nbsp;
-  <span class="tooltiprtext">This is the "left arrow" assignment operator that stores the results of your `glm()` code into `YourObjectName`.</span>
+  <span class="tooltiprtext">This is the "left arrow" assignment operator that stores the results of your `glm()` code into `YourGlmName`.</span>
 </span><span class="tooltipr">
 glm(
   <span class="tooltiprtext">glm( is an R function that stands for "General Linear Model". It works in a similar way that the `lm(` function works except that it requires a `family=` option to be specified at the end of the command.</span>
@@ -138,8 +138,8 @@ X,
 &nbsp;family=binomial)
   <span class="tooltiprtext">The family=binomial command tells the `glm(` function to perform a logistic regression. It turns out that `glm` can perform many different types of regressions, but we only study it as a tool to perform a logistic regression in this course.</span>
 </span><br/><span class="tooltipr">
-summary(YourObjectName)
-  <span class="tooltiprtext">The `summary` command allows you to print the results of your logistic regression that were previously saved in `YourObjectName`.</span>
+summary(YourGlmName)
+  <span class="tooltiprtext">The `summary` command allows you to print the results of your logistic regression that were previously saved in `YourGlmName`.</span>
 </span>
 </div>
 </a>
@@ -432,10 +432,10 @@ pchisq(
   <span class="tooltiprtext">The `pchisq` command allows you to compute p-values from the chi-squared distribution.</span>
 </span><span class="tooltipr">
 residual deviance,&nbsp;
-  <span class="tooltiprtext">The residual deviance is shown at the bottom of the output of your `summary(YourObjectName)` and should be typed in here as a number like 25.3.</span>
+  <span class="tooltiprtext">The residual deviance is shown at the bottom of the output of your `summary(YourGlmName)` and should be typed in here as a number like 25.3.</span>
 </span><span class="tooltipr">
 df for residual deviance,&nbsp;
-  <span class="tooltiprtext">The df for the residual deviance is also shown at the bottom of the output of your `summary(YourObjectName)`.</span>
+  <span class="tooltiprtext">The df for the residual deviance is also shown at the bottom of the output of your `summary(YourGlmName)`.</span>
 </span><span class="tooltipr">
 lower.tail=FALSE)
 <span class="tooltiprtext">This command ensures you find the probability of the chi-squared distribution being as extreme or more extreme than the observed value of residual deviance.</span>
@@ -463,11 +463,20 @@ library(ResourceSelection)
 hoslem.test(
   <span class="tooltiprtext">This R function performs the Hosmer-Lemeshow Goodness of Fit Test. See the "Explanation" file to learn about this test.</span>
 </span><span class="tooltipr">
-YourObjectName\$y,&nbsp;
-  <span class="tooltiprtext">`YourObjectName$y` is the binary response variable of your logistic regression.</span>
+YourGlmName
+  <span class="tooltiprtext">`YourGlmName` is the name of your glm(...) code that you created previously.</span>
 </span><span class="tooltipr">
-YourObjectName\$fitted)
-  <span class="tooltiprtext">`YourObjectName$fitted` is the fitted probabilities $\pi_i$ of your logistic regression.</span>
+\$y,&nbsp;
+  <span class="tooltiprtext">ALWAYS type a "y" here. This gives you the actual binary (0,1) y-values of your logistic regression. The goodness of fit test will compare these actual values to your predicted probabilities for each value in order to see if the model is a "good fit."</span>
+</span><span class="tooltipr">
+YourGlmName
+  <span class="tooltiprtext">`YourGlmName` is the name you used to save the results of your glm(...) code.</span>
+</span><span class="tooltipr">
+\$fitted,&nbsp;
+  <span class="tooltiprtext">ALWAYS type "fitted" here. This gives you the fitted probabilities $\pi_i$ of your logistic regression.</span>
+</span><span class="tooltipr">
+g=10)
+  <span class="tooltiprtext">The "g=10" is the default option for the value of g. The g is the number of groups to run the goodness of fit test on. Just leave it at 10 unless you are told to do otherwise. Ask your teacher for more information if you are interested.</span>
 </span>
 </div>
 </a>
@@ -489,8 +498,8 @@ To predict the probability that $Y_i=1$ for a given $x$-value, use the code
 predict(
   <span class="tooltiprtext">The predict() function allows us to use the regression model that was obtained from glm() to predict the probability that $Y_i = 1$ for a given $X_i$.</span>
 </span><span class="tooltipr">
-YourObjectName,&nbsp;
-  <span class="tooltiprtext">`YourObjectName` is the name of the object you created when you performed your logistic regression using glm().</span>
+YourGlmName,&nbsp;
+  <span class="tooltiprtext">`YourGlmName` is the name of the object you created when you performed your logistic regression using glm().</span>
 </span><span class="tooltipr">
 newdata =&nbsp;
 <span class="tooltiprtext">The `newdata = ` command allows you to specify the x-values for which you want to obtain predicted probabilities that $Y_i=1$.</span>
@@ -808,11 +817,11 @@ To perform a logistic regression in R use the commands
 <a href="javascript:showhide('logistic2')">
 <div class="hoverchunk">
 <span class="tooltipr">
-YourObjectName
+YourGlmName
   <span class="tooltiprtext">This is some name you come up with that will become the R object that stores the results of your logistic regression `glm()` command.</span>
 </span><span class="tooltipr">
 &nbsp;<-&nbsp;
-  <span class="tooltiprtext">This is the "left arrow" assignment operator that stores the results of your `glm()` code into `YourObjectName`.</span>
+  <span class="tooltiprtext">This is the "left arrow" assignment operator that stores the results of your `glm()` code into `YourGlmName`.</span>
 </span><span class="tooltipr">
 glm(
   <span class="tooltiprtext">glm( is an R function that stands for "General Linear Model". It works in a similar way that the `lm(` function works except that it requires a `family=` option to be specified at the end of the command.</span>
@@ -841,8 +850,8 @@ X2&nbsp;
 &nbsp;family=binomial)
   <span class="tooltiprtext">The family=binomial command tells the `glm(` function to perform a logistic regression. It turns out that `glm` can perform many different types of regressions, but we only study it as a tool to perform a logistic regression in this course.</span>
 </span><br/><span class="tooltipr">
-summary(YourObjectName)
-  <span class="tooltiprtext">The `summary` command allows you to print the results of your logistic regression that were previously saved in `YourObjectName`.</span>
+summary(YourGlmName)
+  <span class="tooltiprtext">The `summary` command allows you to print the results of your logistic regression that were previously saved in `YourGlmName`.</span>
 </span>
 </div>
 </a>
@@ -1311,10 +1320,10 @@ pchisq(
   <span class="tooltiprtext">The `pchisq` command allows you to compute p-values from the chi-squared distribution.</span>
 </span><span class="tooltipr">
 residual deviance,&nbsp;
-  <span class="tooltiprtext">The residual deviance is shown at the bottom of the output of your `summary(YourObjectName)` and should be typed in here as a number like 25.3.</span>
+  <span class="tooltiprtext">The residual deviance is shown at the bottom of the output of your `summary(YourGlmName)` and should be typed in here as a number like 25.3.</span>
 </span><span class="tooltipr">
 df for residual deviance,&nbsp;
-  <span class="tooltiprtext">The df for the residual deviance is also shown at the bottom of the output of your `summary(YourObjectName)`.</span>
+  <span class="tooltiprtext">The df for the residual deviance is also shown at the bottom of the output of your `summary(YourGlmName)`.</span>
 </span><span class="tooltipr">
 lower.tail=FALSE)
 <span class="tooltiprtext">This command ensures you find the probability of the chi-squared distribution being as extreme or more extreme than the observed value of residual deviance.</span>
@@ -1339,11 +1348,11 @@ library(ResourceSelection)
 hoslem.test(
   <span class="tooltiprtext">This R function performs the Hosmer-Lemeshow Goodness of Fit Test. See the "Explanation" file to learn about this test.</span>
 </span><span class="tooltipr">
-YourObjectName\$y,&nbsp;
-  <span class="tooltiprtext">`YourObjectName$y` is the binary response variable of your logistic regression.</span>
+YourGlmName\$y,&nbsp;
+  <span class="tooltiprtext">`YourGlmName$y` is the binary response variable of your logistic regression.</span>
 </span><span class="tooltipr">
-YourObjectName\$fitted)
-  <span class="tooltiprtext">`YourObjectName$fitted` is the fitted probabilities $\pi_i$ of your logistic regression.</span>
+YourGlmName\$fitted)
+  <span class="tooltiprtext">`YourGlmName$fitted` is the fitted probabilities $\pi_i$ of your logistic regression.</span>
 </span>
 </div>
 </a>
@@ -1363,8 +1372,8 @@ To predict the probability that $Y_i=1$ for a given $x$-value, use the code
 predict(
   <span class="tooltiprtext">The predict() function allows us to use the regression model that was obtained from glm() to predict the probability that $Y_i = 1$ for a given $X_i$.</span>
 </span><span class="tooltipr">
-YourObjectName,&nbsp;
-  <span class="tooltiprtext">`YourObjectName` is the name of the object you created when you performed your logistic regression using glm().</span>
+YourGlmName,&nbsp;
+  <span class="tooltiprtext">`YourGlmName` is the name of the object you created when you performed your logistic regression using glm().</span>
 </span><span class="tooltipr">
 newdata =&nbsp;
 <span class="tooltiprtext">The `newdata = ` command allows you to specify the x-values for which you want to obtain predicted probabilities that $Y_i=1$.</span>
