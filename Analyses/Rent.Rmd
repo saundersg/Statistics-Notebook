@@ -22,50 +22,34 @@ Rent <- read_csv("../Data/Rent.csv")
 
 ## Background
 
-Here is a data table showing the available approved housing apartment options at BYU-Idaho for single students. There are 122 entries comprising [insert how many] female and [insert how many] male apartment options.
+Here is a data table showing the available approved housing apartment options at BYU-Idaho for single students. There are 122 entries comprising 57 female and 65 male apartment options.
 
 ```{r, warning=FALSE}
 # Code to get you started. 
-# Only the first 100 observations are shown here because the dataset is really too big to show all of it in a markdown file.
+# View(...) works great in the Console, but datatable(...) must be
+# used instead within an R-chunk.
 datatable(Rent, options=list(lengthMenu = c(3,10,30)), extensions="Responsive")
 ```
 
 
-<!-- Write a few statements here that introduce the data table showing apartments for only your gender. -->
+## Graphic
 
-...delete this and type here...
-
-[link name](www.linkaddress.com)
-
-[Analysis Rubric](./Analyses/AnalysisRubric.html)
-[Graphical Summaries](GraphicalSummaries.html)
-[Stephanie](./Analyses/Stephanie.html)
-[Boxplots](GraphicalSummaries.html#boxplots)
+<!-- Present an interesting graphic using the Rent data set. Do not create the same graphics that are shown in the [Good Example Analysis](./Analyses/StudentHousing.html), but you can certainly use those graphics as a guide to inspire you on what to do yourself. -->
 
 
 ```{r}
 # Use this R-chunk to...
-# ...filter this data set down to show only your gender's apartment options. Use the R-chunk below to do this. Call your new data set `Rentf` if you are a female or `Rentm` if you are a male. Then show the new data table using the `datatable(...)` function. -->
+# ...Create an interesting graphic using the Rent data set.
 
 
 ```
 
 
-<!-- Write a few statements here that introduce your graphic and what it shows. -->
+<!-- Write a few statements here that explain your graphic and what it shows. -->
 
 ...delete this and type here...
 
 
-```{r}
-# Use this R-chunk to...
-# ...create a graphic that shows how your apartment (or a friend's) compares to all of the options available.
-
-
-```
-
-<!-- Write a few statements here that introduce your table of numerical summaries and what they show. -->
-
-...delete this and type here...
 
 
 ```{r}
@@ -75,10 +59,14 @@ datatable(Rent, options=list(lengthMenu = c(3,10,30)), extensions="Responsive")
 
 ```
 
+<!-- Write a few statements here that introduce your table of numerical summaries and what they show. -->
+
+...delete this and type here...
+
 
 ## Conclusion
 
-...delete this and type an interesting final conclusion here...
+...delete this and type an interesting final conclusion about what your graphic and numerical summaries show...
 
 
 
