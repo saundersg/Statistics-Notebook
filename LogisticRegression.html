@@ -420,32 +420,41 @@ $(document).ready(function () {
 <hr />
 <p>Regression for a qualitative binary response variable <span class="math inline">\((Y_i = 0\)</span> or <span class="math inline">\(1)\)</span>. The explanatory variables can be either quantitative or qualitative.</p>
 <hr />
-<div id="simple-logistic-regression-model" class="section level3 tabset tabset-pills tabset-fade">
-<h3>Simple Logistic Regression Model</h3>
+<div id="simple-logistic-regression-model" class="section level2 tabset tabset-pills tabset-fade">
+<h2>Simple Logistic Regression Model</h2>
 <div style="float:left;width:125px;" align="center">
 <p><img src="Images/BinomYQuantX.png" width=58px;></p>
 </div>
 <p>Regression for a qualitative binary response variable <span class="math inline">\((Y_i = 0\)</span> or <span class="math inline">\(1)\)</span> using a single (typically quantitative) explanatory variable.</p>
-<div id="overview" class="section level4">
-<h4>Overview</h4>
+<div id="overview" class="section level3">
+<h3>Overview</h3>
 <div style="padding-left:125px;">
 <p>The probability that <span class="math inline">\(Y_i = 1\)</span> given the observed value of <span class="math inline">\(x_i\)</span> is called <span class="math inline">\(\pi_i\)</span> and is modeled by the equation</p>
-<p><span class="math display">\[
+<div style="float:right;font-size:.8em;background-color:lightgray;padding:5px;border-radius:4px;">
+<a style="color:darkgray;" href="javascript:showhide('simplelogisticlatexrcode')">Math Code</a>
+</div>
+<div id="simplelogisticlatexrcode" style="display:none;">
+<pre><code>$$
   P(Y_i = 1|\, x_i) = \frac{e^{\beta_0 + \beta_1 x_i}}{1+e^{\beta_0 + \beta_1 x_i}} = \pi_i
-\]</span></p>
+$$</code></pre>
+</div>
+<center>
+<span class="tooltipr"> <span class="math inline">\(P(\)</span> <span class="tooltiprtext">The “P” stands for “Probability that…”</span> </span><span class="tooltipr"> <span class="math inline">\(Y_i\)</span> <span class="tooltiprtext">The response variable. The “i” denotes that this is the y-value for individual “i”, where “i” is 1, 2, 3,… and so on up to <span class="math inline">\(n\)</span>, the sample size.</span> </span><span class="tooltipr"> <span class="math inline">\(= 1\)</span> <span class="tooltiprtext">Equals 1… This states that we are assuming that the probability that the response variable <span class="math inline">\(Y_i\)</span> is a 1 for the current individual.</span> </span><span class="tooltipr"> <span class="math inline">\(| x_i)\)</span> <span class="tooltiprtext">Given <span class="math inline">\(x_i\)</span>… in other words, the “|” says “given” and <span class="math inline">\(x_i\)</span> means the x-value of the current individual.</span> </span><span class="tooltipr"> <span class="math inline">\(=\)</span> <span class="tooltiprtext">Equals sign.</span> </span><span class="tooltipr"> <span class="math inline">\(\displaystyle\frac{e^{\beta_0 + \beta_1 x_i}}{1 + e^{\beta_0 + \beta_1 x_i}}\)</span> <span class="tooltiprtext">The logistic regression equation where <span class="math inline">\(e=2.71828...\)</span> is the “natural constant” number and <span class="math inline">\(\beta_0\)</span> is the y-intercept and <span class="math inline">\(\beta_1\)</span> is teh slope.</span> </span><span class="tooltipr"> <span class="math inline">\(= \pi_i\)</span> <span class="tooltiprtext">The <span class="math inline">\(\pi_i\)</span> stands for the probability of individual <span class="math inline">\(i\)</span> having a y-value equal to 1 given their <span class="math inline">\(x_i\)</span> value. It is the short hand notation for <span class="math inline">\(P(Y_i = 1 |x_i)\)</span>. (It is NOT the number 3.14…)</span> </span>
+</center>
+<p><br/></p>
 <p>The coefficents <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are difficult to interpret directly. Typicall <span class="math inline">\(e^{\beta_0}\)</span> and <span class="math inline">\(e^{\beta_1}\)</span> are interpreted instead. The value of <span class="math inline">\(e^{\beta_0}\)</span> or <span class="math inline">\(e^{\beta_1}\)</span> denotes the relative change in the odds that <span class="math inline">\(Y_i=1\)</span>. The odds that <span class="math inline">\(Y_i=1\)</span> are <span class="math inline">\(\frac{\pi_i}{1-\pi_i}\)</span>.</p>
 <hr />
 </div>
 </div>
-<div id="r-instructions" class="section level4">
-<h4>R Instructions</h4>
+<div id="r-instructions" class="section level3">
+<h3>R Instructions</h3>
 <div style="padding-left:125px;">
 <p><strong>Console</strong> Help Command: <code>?glm()</code></p>
 <p>To perform a logistic regression in R use the commands</p>
 <a href="javascript:showhide('logistic1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> YourObjectName <span class="tooltiprtext">This is some name you come up with that will become the R object that stores the results of your logistic regression <code>glm()</code> command.</span> </span><span class="tooltipr">  &lt;-  <span class="tooltiprtext">This is the “left arrow” assignment operator that stores the results of your <code>glm()</code> code into <code>YourObjectName</code>.</span> </span><span class="tooltipr"> glm( <span class="tooltiprtext">glm( is an R function that stands for “General Linear Model”. It works in a similar way that the <code>lm(</code> function works except that it requires a <code>family=</code> option to be specified at the end of the command.</span> </span><span class="tooltipr"> Y  <span class="tooltiprtext">Y is your binary response variable. It must consist of only 0’s and 1’s. Since TRUE’s = 1’s and FALSE’s = 0’s in R, Y could be a logical statement like (Price &gt; 100) or (Animal == “Cat”) if your Y-variable wasn’t currently coded as 0’s and 1’s.</span> </span><span class="tooltipr"> ~  <span class="tooltiprtext">The tilde symbol ~ is used to tell R that Y should be treated as a function of the explanatory variable X.</span> </span><span class="tooltipr"> X, <span class="tooltiprtext">X is the explanatory variable (typically quantitative) that will be used to explain the probability that the response variable Y is a 1.</span> </span><span class="tooltipr">  data = NameOfYourDataset,<br />
-<span class="tooltiprtext">NameOfYourDataset is the name of the dataset that contains Y and X. In other words, one column of your dataset would be called Y and another column would be called X.</span> </span><span class="tooltipr">  family=binomial) <span class="tooltiprtext">The family=binomial command tells the <code>glm(</code> function to perform a logistic regression. It turns out that <code>glm</code> can perform many different types of regressions, but we only study it as a tool to perform a logistic regression in this course.</span> </span><br/><span class="tooltipr"> summary(YourObjectName) <span class="tooltiprtext">The <code>summary</code> command allows you to print the results of your logistic regression that were previously saved in <code>YourObjectName</code>.</span> </span></p>
+<p><span class="tooltipr"> YourGlmName <span class="tooltiprtext">This is some name you come up with that will become the R object that stores the results of your logistic regression <code>glm()</code> command.</span> </span><span class="tooltipr">  &lt;-  <span class="tooltiprtext">This is the “left arrow” assignment operator that stores the results of your <code>glm()</code> code into <code>YourGlmName</code>.</span> </span><span class="tooltipr"> glm( <span class="tooltiprtext">glm( is an R function that stands for “General Linear Model”. It works in a similar way that the <code>lm(</code> function works except that it requires a <code>family=</code> option to be specified at the end of the command.</span> </span><span class="tooltipr"> Y  <span class="tooltiprtext">Y is your binary response variable. It must consist of only 0’s and 1’s. Since TRUE’s = 1’s and FALSE’s = 0’s in R, Y could be a logical statement like (Price &gt; 100) or (Animal == “Cat”) if your Y-variable wasn’t currently coded as 0’s and 1’s.</span> </span><span class="tooltipr"> ~  <span class="tooltiprtext">The tilde symbol ~ is used to tell R that Y should be treated as a function of the explanatory variable X.</span> </span><span class="tooltipr"> X, <span class="tooltiprtext">X is the explanatory variable (typically quantitative) that will be used to explain the probability that the response variable Y is a 1.</span> </span><span class="tooltipr">  data = NameOfYourDataset,<br />
+<span class="tooltiprtext">NameOfYourDataset is the name of the dataset that contains Y and X. In other words, one column of your dataset would be called Y and another column would be called X.</span> </span><span class="tooltipr">  family=binomial) <span class="tooltiprtext">The family=binomial command tells the <code>glm(</code> function to perform a logistic regression. It turns out that <code>glm</code> can perform many different types of regressions, but we only study it as a tool to perform a logistic regression in this course.</span> </span><br/><span class="tooltipr"> summary(YourGlmName) <span class="tooltiprtext">The <code>summary</code> command allows you to print the results of your logistic regression that were previously saved in <code>YourGlmName</code>.</span> </span></p>
 </div>
 <p></a></p>
 <div id="logistic1" style="display:none;">
@@ -620,7 +629,7 @@ $(document).ready(function () {
 <p>To check the <strong>goodness of fit</strong> of a logistic regression model when there are <strong>many replicated <span class="math inline">\(x\)</span>-values</strong> use the command</p>
 <a href="javascript:showhide('goodnessoffit1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> pchisq( <span class="tooltiprtext">The <code>pchisq</code> command allows you to compute p-values from the chi-squared distribution.</span> </span><span class="tooltipr"> residual deviance,  <span class="tooltiprtext">The residual deviance is shown at the bottom of the output of your <code>summary(YourObjectName)</code> and should be typed in here as a number like 25.3.</span> </span><span class="tooltipr"> df for residual deviance,  <span class="tooltiprtext">The df for the residual deviance is also shown at the bottom of the output of your <code>summary(YourObjectName)</code>.</span> </span><span class="tooltipr"> lower.tail=FALSE) <span class="tooltiprtext">This command ensures you find the probability of the chi-squared distribution being as extreme or more extreme than the observed value of residual deviance.</span> </span></p>
+<p><span class="tooltipr"> pchisq( <span class="tooltiprtext">The <code>pchisq</code> command allows you to compute p-values from the chi-squared distribution.</span> </span><span class="tooltipr"> residual deviance,  <span class="tooltiprtext">The residual deviance is shown at the bottom of the output of your <code>summary(YourGlmName)</code> and should be typed in here as a number like 25.3.</span> </span><span class="tooltipr"> df for residual deviance,  <span class="tooltiprtext">The df for the residual deviance is also shown at the bottom of the output of your <code>summary(YourGlmName)</code>.</span> </span><span class="tooltipr"> lower.tail=FALSE) <span class="tooltiprtext">This command ensures you find the probability of the chi-squared distribution being as extreme or more extreme than the observed value of residual deviance.</span> </span></p>
 </div>
 <p></a></p>
 <div id="goodnessoffit1" style="display:none;">
@@ -629,7 +638,7 @@ $(document).ready(function () {
 <p>To check the <strong>goodness of fit</strong> of a logistic regression model where there are <strong>few or no any replicated <span class="math inline">\(x\)</span>-values</strong></p>
 <a href="javascript:showhide('goodnessoffit2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(ResourceSelection) <span class="tooltiprtext">This loads the ResourceSelection R package so that you can access the hoslem.test() function. You may need to run the code: install.packages(“ResourceSelection”) first.</span> </span><br/><span class="tooltipr"> hoslem.test( <span class="tooltiprtext">This R function performs the Hosmer-Lemeshow Goodness of Fit Test. See the “Explanation” file to learn about this test.</span> </span><span class="tooltipr"> YourObjectName$y,  <span class="tooltiprtext"><code>YourObjectName$y</code> is the binary response variable of your logistic regression.</span> </span><span class="tooltipr"> YourObjectName$fitted) <span class="tooltiprtext"><code>YourObjectName$fitted</code> is the fitted probabilities <span class="math inline">\(\pi_i\)</span> of your logistic regression.</span> </span></p>
+<p><span class="tooltipr"> library(ResourceSelection) <span class="tooltiprtext">This loads the ResourceSelection R package so that you can access the hoslem.test() function. You may need to run the code: install.packages(“ResourceSelection”) first.</span> </span><br/><span class="tooltipr"> hoslem.test( <span class="tooltiprtext">This R function performs the Hosmer-Lemeshow Goodness of Fit Test. See the “Explanation” file to learn about this test.</span> </span><span class="tooltipr"> YourGlmName <span class="tooltiprtext"><code>YourGlmName</code> is the name of your glm(…) code that you created previously.</span> </span><span class="tooltipr"> $y,  <span class="tooltiprtext">ALWAYS type a “y” here. This gives you the actual binary (0,1) y-values of your logistic regression. The goodness of fit test will compare these actual values to your predicted probabilities for each value in order to see if the model is a “good fit.”</span> </span><span class="tooltipr"> YourGlmName <span class="tooltiprtext"><code>YourGlmName</code> is the name you used to save the results of your glm(…) code.</span> </span><span class="tooltipr"> $fitted,  <span class="tooltiprtext">ALWAYS type “fitted” here. This gives you the fitted probabilities <span class="math inline">\(\pi_i\)</span> of your logistic regression.</span> </span><span class="tooltipr"> g=10) <span class="tooltiprtext">The “g=10” is the default option for the value of g. The g is the number of groups to run the goodness of fit test on. Just leave it at 10 unless you are told to do otherwise. Ask your teacher for more information if you are interested.</span> </span></p>
 </div>
 <p></a></p>
 <div id="goodnessoffit2" style="display:none;">
@@ -642,7 +651,7 @@ $(document).ready(function () {
 <p>To predict the probability that <span class="math inline">\(Y_i=1\)</span> for a given <span class="math inline">\(x\)</span>-value, use the code</p>
 <a href="javascript:showhide('LogisticPredict')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> predict( <span class="tooltiprtext">The predict() function allows us to use the regression model that was obtained from glm() to predict the probability that <span class="math inline">\(Y_i = 1\)</span> for a given <span class="math inline">\(X_i\)</span>.</span> </span><span class="tooltipr"> YourObjectName,  <span class="tooltiprtext"><code>YourObjectName</code> is the name of the object you created when you performed your logistic regression using glm().</span> </span><span class="tooltipr"> newdata =  <span class="tooltiprtext">The <code>newdata =</code> command allows you to specify the x-values for which you want to obtain predicted probabilities that <span class="math inline">\(Y_i=1\)</span>.</span> </span><span class="tooltipr"> NewDataFrame,  <span class="tooltiprtext">Typically, NewDataFrame is created in real time using the data.frame( XVariableName = c(Value 1, Value 2, …)) command. You should see the challenger example file for an example of how to use this function.</span> </span><span class="tooltipr"> type = “response”) <span class="tooltiprtext">The type = “response” options specifies that you want predicted probabilities. There are other options available. See ?predict.glm for details.</span> </span></p>
+<p><span class="tooltipr"> predict( <span class="tooltiprtext">The predict() function allows us to use the regression model that was obtained from glm() to predict the probability that <span class="math inline">\(Y_i = 1\)</span> for a given <span class="math inline">\(X_i\)</span>.</span> </span><span class="tooltipr"> YourGlmName,  <span class="tooltiprtext"><code>YourGlmName</code> is the name of the object you created when you performed your logistic regression using glm().</span> </span><span class="tooltipr"> newdata =  <span class="tooltiprtext">The <code>newdata =</code> command allows you to specify the x-values for which you want to obtain predicted probabilities that <span class="math inline">\(Y_i=1\)</span>.</span> </span><span class="tooltipr"> NewDataFrame,  <span class="tooltiprtext">Typically, NewDataFrame is created in real time using the data.frame( XVariableName = c(Value 1, Value 2, …)) command. You should see the challenger example file for an example of how to use this function.</span> </span><span class="tooltipr"> type = “response”) <span class="tooltiprtext">The type = “response” options specifies that you want predicted probabilities. There are other options available. See ?predict.glm for details.</span> </span></p>
 </div>
 <p></a></p>
 <div id="LogisticPredict" style="display:none;">
@@ -662,7 +671,7 @@ ggplot2
 <p>
 <a href="javascript:showhide('LogisticBaseplot2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> plot( <span class="tooltiprtext">EXPLANATION.</span> </span><span class="tooltipr"> Y <span class="tooltiprtext">EXPLANATION.</span> </span><span class="tooltipr">  ~  <span class="tooltiprtext">EXPLANATION.</span> </span><span class="tooltipr"> X, <span class="tooltiprtext">EXPLANATION.</span> </span><span class="tooltipr">  data= <span class="tooltiprtext">EXPLANATION.</span> </span><span class="tooltipr"> YourDataSet <span class="tooltiprtext">EXPLANATION.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis for plot(…) function.</span> </span><br/><span class="tooltipr"> curve( <span class="tooltiprtext">EXPLANATION.</span> </span><span class="tooltipr"> exp( <span class="tooltiprtext">EXPLANATION.</span> </span><span class="tooltipr"> <span class="math inline">\(b_0\)</span> - <span class="tooltiprtext">EXPLANATION.</span> </span><span class="tooltipr">  <span class="math inline">\(b_1\)</span> <span class="tooltiprtext">EXPLANATION.</span> </span><span class="tooltipr"> *x <span class="tooltiprtext">EXPLANATION.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis.</span> </span><span class="tooltipr"> / <span class="tooltiprtext">EXPLANATION.</span> </span><span class="tooltipr"> (1 + <span class="tooltiprtext">EXPLANATION.</span> </span><span class="tooltipr">  exp( <span class="tooltiprtext">EXPLANATION.</span> </span><span class="tooltipr"> <span class="math inline">\(b_0\)</span> - <span class="tooltiprtext">EXPLANATION.</span> </span><span class="tooltipr">  <span class="math inline">\(b_1\)</span> <span class="tooltiprtext">EXPLANATION.</span> </span><span class="tooltipr"> *x <span class="tooltiprtext">EXPLANATION.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis.</span> </span><span class="tooltipr"> ), <span class="tooltiprtext">Closing parenthesis.</span> </span><span class="tooltipr">  add = TRUE) <span class="tooltiprtext">EXPLANATION.</span> </span></p>
+<p><span class="tooltipr"> plot( <span class="tooltiprtext">The plot function allows us to draw a scatterplot where the y-axis is only 0’s or 1’s and the x-axis is quantitative.</span> </span><span class="tooltipr"> Y <span class="tooltiprtext">Y should be some logical statement like Fail &gt; 0 or sex == “B” or height &lt; 68. In other words, Y needs to be a collection of 0’s and 1’s.</span> </span><span class="tooltipr">  ~  <span class="tooltiprtext">The tilde is read “Y on X.”</span> </span><span class="tooltipr"> X, <span class="tooltiprtext">X is some quantitative variable.</span> </span><span class="tooltipr">  data= <span class="tooltiprtext">Tell the plot which data set to use. X and Y are columns of that data set.</span> </span><span class="tooltipr"> YourDataSet <span class="tooltiprtext">The name of your data set.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis for plot(…) function.</span> </span><br/><span class="tooltipr"> curve( <span class="tooltiprtext">A function in R that draws a “curve” on a plot. Using add=TRUE puts the curve onto the current plot.</span> </span><span class="tooltipr"> exp( <span class="tooltiprtext">This allows you to compute e to the power of something. So exp(1) = e, exp(2) = e^2 and so on.</span> </span><span class="tooltipr"> <span class="math inline">\(b_0\)</span> + <span class="tooltiprtext">This is the “Intercept” estimate from your logistic regression summary output.</span> </span><span class="tooltipr">  <span class="math inline">\(b_1\)</span> <span class="tooltiprtext">This is the slope estimate from your logistic regression summary output.</span> </span><span class="tooltipr"> *x <span class="tooltiprtext">The curve function demands you ALWAYS use a lower-case “x” in this function.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis.</span> </span><span class="tooltipr"> / <span class="tooltiprtext">The division symbol.</span> </span><span class="tooltipr"> (1 + <span class="tooltiprtext">Required for the formula.</span> </span><span class="tooltipr">  exp(<span class="math inline">\(b_0\)</span> + <span class="math inline">\(b_1\)</span>*x) <span class="tooltiprtext">This needs to match exactly the first version of this statement.</span> </span><span class="tooltipr"> ), <span class="tooltiprtext">Closing parenthesis for the denominator.</span> </span><span class="tooltipr">  add = TRUE) <span class="tooltiprtext">This makes the curve be added to the current plot. If it is left out, the curve will be drawn in a new plot.</span> </span></p>
 </div>
 <p></a></p>
 <div id="LogisticBaseplot2" style="display:none;">
@@ -685,8 +694,8 @@ ggplot2
 <hr />
 </div>
 </div>
-<div id="explanation" class="section level4">
-<h4>Explanation</h4>
+<div id="explanation" class="section level3">
+<h3>Explanation</h3>
 <div style="padding-left:125px;">
 <p>Simple Logistic Regression is used when</p>
 <ul>
@@ -728,7 +737,6 @@ ggplot2
 </div>
 <hr />
 </div>
-</div>
 <div id="section" class="section level3">
 <h3></h3>
 <div style="padding-left:125px;">
@@ -736,14 +744,15 @@ ggplot2
 </div>
 <hr />
 </div>
-<div id="multiple-logistic-regression-model" class="section level3 tabset tabset-pills tabset-fade">
-<h3>Multiple Logistic Regression Model</h3>
+</div>
+<div id="multiple-logistic-regression-model" class="section level2 tabset tabset-pills tabset-fade">
+<h2>Multiple Logistic Regression Model</h2>
 <div style="float:left;width:125px;" align="center">
 <p><img src="Images/BinomYMultX.png" width=98px;></p>
 </div>
 <p>Logistic regression for multiple explanatory variables that can either be quantitative or qualitative or a mixture of the two.</p>
-<div id="overview-1" class="section level4">
-<h4>Overview</h4>
+<div id="overview-1" class="section level3">
+<h3>Overview</h3>
 <div style="padding-left:125px;">
 <p>The probability that <span class="math inline">\(Y_i = 1\)</span> given the observed data <span class="math inline">\((x_{i1},\ldots,x_{ip})\)</span> is called <span class="math inline">\(\pi_i\)</span> and is modeled by the equation</p>
 <p><span class="math display">\[
@@ -753,15 +762,15 @@ ggplot2
 <hr />
 </div>
 </div>
-<div id="r-instructions-1" class="section level4">
-<h4>R Instructions</h4>
+<div id="r-instructions-1" class="section level3">
+<h3>R Instructions</h3>
 <div style="padding-left:125px;">
 <p><strong>Console</strong> Help Command: <code>?glm()</code></p>
 <p>To perform a logistic regression in R use the commands</p>
 <a href="javascript:showhide('logistic2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> YourObjectName <span class="tooltiprtext">This is some name you come up with that will become the R object that stores the results of your logistic regression <code>glm()</code> command.</span> </span><span class="tooltipr">  &lt;-  <span class="tooltiprtext">This is the “left arrow” assignment operator that stores the results of your <code>glm()</code> code into <code>YourObjectName</code>.</span> </span><span class="tooltipr"> glm( <span class="tooltiprtext">glm( is an R function that stands for “General Linear Model”. It works in a similar way that the <code>lm(</code> function works except that it requires a <code>family=</code> option to be specified at the end of the command.</span> </span><span class="tooltipr"> Y  <span class="tooltiprtext">Y is your binary response variable. It must consist of only 0’s and 1’s. Since TRUE’s = 1’s and FALSE’s = 0’s in R, Y could be a logical statement like (Price &gt; 100) or (Animal == “Cat”) if your Y-variable wasn’t currently coded as 0’s and 1’s.</span> </span><span class="tooltipr"> ~  <span class="tooltiprtext">The tilde symbol ~ is used to tell R that Y should be treated as a function of the explanatory variable X.</span> </span><span class="tooltipr"> X1 <span class="tooltiprtext">X1 is the first explanatory variable (typically quantitative) that will be used to explain the probability that the response variable Y is a 1.</span> </span><span class="tooltipr"> * <span class="tooltiprtext">EXPLANATION</span> </span><span class="tooltipr"> X2  <span class="tooltiprtext">X2 is second the explanatory variable either quantitative or qualitative that will be used to explain the probability that the response variable Y is a 1.</span> </span><span class="tooltipr"> …, <span class="tooltiprtext">In theory, you could have many other explanatory variables, interaction terms, or even squared, cubed, or other transformations of terms added to this model.</span> </span><span class="tooltipr">  data = NameOfYourDataset,<br />
-<span class="tooltiprtext">NameOfYourDataset is the name of the dataset that contains Y and X. In other words, one column of your dataset would be called Y and another column would be called X.</span> </span><span class="tooltipr">  family=binomial) <span class="tooltiprtext">The family=binomial command tells the <code>glm(</code> function to perform a logistic regression. It turns out that <code>glm</code> can perform many different types of regressions, but we only study it as a tool to perform a logistic regression in this course.</span> </span><br/><span class="tooltipr"> summary(YourObjectName) <span class="tooltiprtext">The <code>summary</code> command allows you to print the results of your logistic regression that were previously saved in <code>YourObjectName</code>.</span> </span></p>
+<p><span class="tooltipr"> YourGlmName <span class="tooltiprtext">This is some name you come up with that will become the R object that stores the results of your logistic regression <code>glm()</code> command.</span> </span><span class="tooltipr">  &lt;-  <span class="tooltiprtext">This is the “left arrow” assignment operator that stores the results of your <code>glm()</code> code into <code>YourGlmName</code>.</span> </span><span class="tooltipr"> glm( <span class="tooltiprtext">glm( is an R function that stands for “General Linear Model”. It works in a similar way that the <code>lm(</code> function works except that it requires a <code>family=</code> option to be specified at the end of the command.</span> </span><span class="tooltipr"> Y  <span class="tooltiprtext">Y is your binary response variable. It must consist of only 0’s and 1’s. Since TRUE’s = 1’s and FALSE’s = 0’s in R, Y could be a logical statement like (Price &gt; 100) or (Animal == “Cat”) if your Y-variable wasn’t currently coded as 0’s and 1’s.</span> </span><span class="tooltipr"> ~  <span class="tooltiprtext">The tilde symbol ~ is used to tell R that Y should be treated as a function of the explanatory variable X.</span> </span><span class="tooltipr"> X1 <span class="tooltiprtext">X1 is the first explanatory variable (typically quantitative) that will be used to explain the probability that the response variable Y is a 1.</span> </span><span class="tooltipr"> * <span class="tooltiprtext">EXPLANATION</span> </span><span class="tooltipr"> X2  <span class="tooltiprtext">X2 is second the explanatory variable either quantitative or qualitative that will be used to explain the probability that the response variable Y is a 1.</span> </span><span class="tooltipr"> …, <span class="tooltiprtext">In theory, you could have many other explanatory variables, interaction terms, or even squared, cubed, or other transformations of terms added to this model.</span> </span><span class="tooltipr">  data = NameOfYourDataset,<br />
+<span class="tooltiprtext">NameOfYourDataset is the name of the dataset that contains Y and X. In other words, one column of your dataset would be called Y and another column would be called X.</span> </span><span class="tooltipr">  family=binomial) <span class="tooltiprtext">The family=binomial command tells the <code>glm(</code> function to perform a logistic regression. It turns out that <code>glm</code> can perform many different types of regressions, but we only study it as a tool to perform a logistic regression in this course.</span> </span><br/><span class="tooltipr"> summary(YourGlmName) <span class="tooltiprtext">The <code>summary</code> command allows you to print the results of your logistic regression that were previously saved in <code>YourGlmName</code>.</span> </span></p>
 </div>
 <p></a></p>
 <div id="logistic2" style="display:none;">
@@ -1048,7 +1057,7 @@ ggplot2
 <p>To check the <strong>goodness of fit</strong> of a logistic regression model when there are <strong>many replicated <span class="math inline">\(x\)</span>-values</strong> use the command</p>
 <a href="javascript:showhide('multipleGOF')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> pchisq( <span class="tooltiprtext">The <code>pchisq</code> command allows you to compute p-values from the chi-squared distribution.</span> </span><span class="tooltipr"> residual deviance,  <span class="tooltiprtext">The residual deviance is shown at the bottom of the output of your <code>summary(YourObjectName)</code> and should be typed in here as a number like 25.3.</span> </span><span class="tooltipr"> df for residual deviance,  <span class="tooltiprtext">The df for the residual deviance is also shown at the bottom of the output of your <code>summary(YourObjectName)</code>.</span> </span><span class="tooltipr"> lower.tail=FALSE) <span class="tooltiprtext">This command ensures you find the probability of the chi-squared distribution being as extreme or more extreme than the observed value of residual deviance.</span> </span></p>
+<p><span class="tooltipr"> pchisq( <span class="tooltiprtext">The <code>pchisq</code> command allows you to compute p-values from the chi-squared distribution.</span> </span><span class="tooltipr"> residual deviance,  <span class="tooltiprtext">The residual deviance is shown at the bottom of the output of your <code>summary(YourGlmName)</code> and should be typed in here as a number like 25.3.</span> </span><span class="tooltipr"> df for residual deviance,  <span class="tooltiprtext">The df for the residual deviance is also shown at the bottom of the output of your <code>summary(YourGlmName)</code>.</span> </span><span class="tooltipr"> lower.tail=FALSE) <span class="tooltiprtext">This command ensures you find the probability of the chi-squared distribution being as extreme or more extreme than the observed value of residual deviance.</span> </span></p>
 </div>
 <p></a></p>
 <div id="multipleGOF" style="display:none;">
@@ -1057,7 +1066,7 @@ ggplot2
 <p>To check the <strong>goodness of fit</strong> of a logistic regression model where there are <strong>few or no any replicated <span class="math inline">\(x\)</span>-values</strong></p>
 <a href="javascript:showhide('multipleGOF2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(ResourceSelection) <span class="tooltiprtext">This loads the ResourceSelection R package so that you can access the hoslem.test() function. You may need to run the code: install.packages(“ResourceSelection”) first.</span> </span><br/><span class="tooltipr"> hoslem.test( <span class="tooltiprtext">This R function performs the Hosmer-Lemeshow Goodness of Fit Test. See the “Explanation” file to learn about this test.</span> </span><span class="tooltipr"> YourObjectName$y,  <span class="tooltiprtext"><code>YourObjectName$y</code> is the binary response variable of your logistic regression.</span> </span><span class="tooltipr"> YourObjectName$fitted) <span class="tooltiprtext"><code>YourObjectName$fitted</code> is the fitted probabilities <span class="math inline">\(\pi_i\)</span> of your logistic regression.</span> </span></p>
+<p><span class="tooltipr"> library(ResourceSelection) <span class="tooltiprtext">This loads the ResourceSelection R package so that you can access the hoslem.test() function. You may need to run the code: install.packages(“ResourceSelection”) first.</span> </span><br/><span class="tooltipr"> hoslem.test( <span class="tooltiprtext">This R function performs the Hosmer-Lemeshow Goodness of Fit Test. See the “Explanation” file to learn about this test.</span> </span><span class="tooltipr"> YourGlmName$y,  <span class="tooltiprtext"><code>YourGlmName$y</code> is the binary response variable of your logistic regression.</span> </span><span class="tooltipr"> YourGlmName$fitted) <span class="tooltiprtext"><code>YourGlmName$fitted</code> is the fitted probabilities <span class="math inline">\(\pi_i\)</span> of your logistic regression.</span> </span></p>
 </div>
 <p></a></p>
 <div id="multipleGOF2" style="display:none;">
@@ -1070,7 +1079,7 @@ ggplot2
 <p>To predict the probability that <span class="math inline">\(Y_i=1\)</span> for a given <span class="math inline">\(x\)</span>-value, use the code</p>
 <a href="javascript:showhide('MultipleLogisticPredict')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> predict( <span class="tooltiprtext">The predict() function allows us to use the regression model that was obtained from glm() to predict the probability that <span class="math inline">\(Y_i = 1\)</span> for a given <span class="math inline">\(X_i\)</span>.</span> </span><span class="tooltipr"> YourObjectName,  <span class="tooltiprtext"><code>YourObjectName</code> is the name of the object you created when you performed your logistic regression using glm().</span> </span><span class="tooltipr"> newdata =  <span class="tooltiprtext">The <code>newdata =</code> command allows you to specify the x-values for which you want to obtain predicted probabilities that <span class="math inline">\(Y_i=1\)</span>.</span> </span><span class="tooltipr"> NewDataFrame,  <span class="tooltiprtext">Typically, NewDataFrame is created in real time using the data.frame( X1 = c(Value 1, Value 2, …), X2 = c(Value 1, Value 2, …), …) command. You should see the GSS example file for an example of how to use this function.</span> </span><span class="tooltipr"> type = “response”) <span class="tooltiprtext">The type = “response” options specifies that you want predicted probabilities. There are other options available. See ?predict.glm for details.</span> </span></p>
+<p><span class="tooltipr"> predict( <span class="tooltiprtext">The predict() function allows us to use the regression model that was obtained from glm() to predict the probability that <span class="math inline">\(Y_i = 1\)</span> for a given <span class="math inline">\(X_i\)</span>.</span> </span><span class="tooltipr"> YourGlmName,  <span class="tooltiprtext"><code>YourGlmName</code> is the name of the object you created when you performed your logistic regression using glm().</span> </span><span class="tooltipr"> newdata =  <span class="tooltiprtext">The <code>newdata =</code> command allows you to specify the x-values for which you want to obtain predicted probabilities that <span class="math inline">\(Y_i=1\)</span>.</span> </span><span class="tooltipr"> NewDataFrame,  <span class="tooltiprtext">Typically, NewDataFrame is created in real time using the data.frame( X1 = c(Value 1, Value 2, …), X2 = c(Value 1, Value 2, …), …) command. You should see the GSS example file for an example of how to use this function.</span> </span><span class="tooltipr"> type = “response”) <span class="tooltiprtext">The type = “response” options specifies that you want predicted probabilities. There are other options available. See ?predict.glm for details.</span> </span></p>
 </div>
 <p></a></p>
 <div id="MultipleLogisticPredict" style="display:none;">
@@ -1113,8 +1122,8 @@ ggplot2
 <hr />
 </div>
 </div>
-<div id="explanation-1" class="section level4">
-<h4>Explanation</h4>
+<div id="explanation-1" class="section level3">
+<h3>Explanation</h3>
 <div style="padding-left:125px;">
 <p>Multiple Logistic Regression is used when</p>
 <ul>
@@ -1140,7 +1149,6 @@ ggplot2
 <hr />
 </div>
 </div>
-</div>
 <div id="section-1" class="section level3">
 <h3></h3>
 <div style="padding-left:125px;">
@@ -1149,6 +1157,7 @@ ggplot2
 <hr />
 <footer>
 </footer>
+</div>
 </div>
 
 

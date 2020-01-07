@@ -5567,19 +5567,19 @@ data.frame(
   <span class="tooltiprtext">To specify the values of $x$ that you want to use in the prediction, you have to put those x-values into a data set, or more specifally, a data.frame(...).</span>
 </span><span class="tooltipr">
 $X_1$=
-  <span class="tooltiprtext">The value for `X=` should be whatever x-variable name was used in the original regression. For example, if `mylm <- lm(dist ~ speed, data=cars)` was the original regression, then this code would read `speed = ` instead of `X=`... Further, the value of $Xh$ should be some specific number, like `speed=12` for example.</span>
+  <span class="tooltiprtext">The value for `X=` should be whatever x-variable name was used in the original regression. For example, if `mylm <- lm(mpg ~ hp + am + hp:am, data=mtcars)` was the original regression, then this code would read `hp = ` instead of `X1 =`... Further, the value of $X_{1h}$ should be some specific number, like `hp=123` for example.</span>
 </span><span class="tooltipr">
-$X_1$h,
-  <span class="tooltiprtext">The value of $Xh$ should be some specific number, like `12`, as in `speed=12` for example.</span>
+$X_{1h}$,
+  <span class="tooltiprtext">The value of $X_{1h}$ should be some specific number, like `123`, as in `hp=123` for example.</span>
 </span><span class="tooltipr">
 $X_2$=
-  <span class="tooltiprtext">EXPLANATION.</span>
+  <span class="tooltiprtext">This is the value of the second x-variable, say `am`.</span>
 </span><span class="tooltipr">
-$X_2$h),
-  <span class="tooltiprtext">EXPLANATION.</span>
+$X_{2h}$),
+  <span class="tooltiprtext">Since the `am` column can only be a 1 or 0, we would try `am=1` for example, or `am=0`.</span>
 </span><span class="tooltipr">
 type = "response")
-  <span class="tooltiprtext">EXPLANATION.</span>
+  <span class="tooltiprtext">Closing parenthesis.</span>
 </span>
 </div>
 </a>

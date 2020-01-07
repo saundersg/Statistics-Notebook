@@ -114,6 +114,9 @@ sleep\$extra[sleep\$group==1],&nbsp;
 mu = 0,&nbsp; 
   <span class="tooltiprtext">The numeric value from the null hypothesis for the median of differences from the paired data is 0 meaning the null hypothesis is $\text{median of differences} = 0$.</span>
 </span><span class="tooltipr">
+paired=TRUE,&nbsp; 
+  <span class="tooltiprtext">This command forces a "paired" samples test to be performed.</span>
+</span><span class="tooltipr">
 alternative = "two.sided",&nbsp; 
   <span class="tooltiprtext">The alternative hypothesis is "two.sided" meaning the alternative hypothesis is $\text{median of differences} \neq0$.</span>
   </span><span class="tooltipr">
@@ -206,7 +209,10 @@ mu = 20,&nbsp;
 </span><span class="tooltipr">
 alternative = "two.sided",&nbsp; 
   <span class="tooltiprtext"> The alternative is "two.sided" meaning the alternative hypothesis is $\mu\neq20$.</span>
-  </span><span class="tooltipr">
+</span><span class="tooltipr">
+paired=TRUE,&nbsp; 
+  <span class="tooltiprtext">This command forces a "paired" samples test to be performed.</span>
+</span><span class="tooltipr">
 conf.level = 0.95)
   <span class="tooltiprtext">This test has a 0.95 confidence level which corresponds to 1−α. </span>
 </span><span class="tooltipr">

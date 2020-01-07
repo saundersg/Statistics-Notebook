@@ -22,7 +22,7 @@ Rent <- read_csv("../Data/Rent.csv")
 
 ## Background
 
-Here is a data table showing the available approved housing apartment options at BYU-Idaho for single students. There are 122 entries comprising 57 female and 65 male apartment options.
+Here is a data table showing the available approved housing apartment options at BYU-Idaho for single students. There are 122 entries comprising [insert how many] female and [insert how many] male apartment options.
 
 ```{r, warning=FALSE}
 # Code to get you started. 
@@ -34,6 +34,13 @@ datatable(Rent, options=list(lengthMenu = c(3,10,30)), extensions="Responsive")
 <!-- Write a few statements here that introduce the data table showing apartments for only your gender. -->
 
 ...delete this and type here...
+
+[link name](www.linkaddress.com)
+
+[Analysis Rubric](./Analyses/AnalysisRubric.html)
+[Graphical Summaries](GraphicalSummaries.html)
+[Stephanie](./Analyses/Stephanie.html)
+[Boxplots](GraphicalSummaries.html#boxplots)
 
 
 ```{r}
