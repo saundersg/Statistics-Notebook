@@ -3,6 +3,7 @@ title: "Chick Weights -- One-way ANOVA"
 output: 
   html_document:
     theme: cerulean
+    code_folding: hide
 ---
 
 <br />
@@ -13,46 +14,60 @@ This experiment comes from the R help file `?chickwts` and the data is correspon
 
 "An experiment was conducted to measure and compare the effectiveness of various feed supplements on the growth rate of chickens. Newly hatched chicks were randomly allocated into six groups, and each group was given a different feed supplement. Their weights in grams after six weeks are given along with feed types."
 
-```{r, include=FALSE}
+```{r, warning=FALSE, message=FALSE}
+library(car)
 library(mosaic)
+library(pander)
+library(tidyverse)
 ```
 
+The six feed types were casein, horsebean, linseed, meatmeal, soybean, and sunflower.
 
 #### Analysis
 
-Applying a one-way ANOVA to this study, we have the hypotheses
+Applying a one-way ANOVA to this study, we have the null hypothesis that the average weight of grown chickens, represented by $\mu$, is equal for each feed type. This is formally written as follows.
+
 $$
-  H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4 = \mu_5 = \mu_6 = \mu
+  H_0: \mu_\text{casein} = \mu_\text{horsebean} = \mu_\text{linseed} = \mu_\text{meatmeal} = \mu_\text{soybean} = \mu_\text{sunflower} = \mu
 $$
+
+The alternative hypotheses claims that at least one of the feed types produces a significantly different average weight in the grown chickens.
+
 $$
-  H_a: \mu_i \neq \mu \ \text{for at least one}\ i\in\{1,\ldots,m\}
+  H_a: \text{at least one mean differs}
 $$
+
 These hypotheses will allow us the ability to answer the question, is the average chick weight the same for each feed type? Or is at least one feed type different on average than the others?
 
-To perform the analysis we compute the following ANOVA. (R Code is shown for teaching purposes.)
+We will use a signifance level of $\alpha = 0.05$ for this study.
 
-```{r, comment=NA}
+To perform the analysis we compute the following ANOVA.
+
+```{r}
 chick.aov <- aov(weight ~ feed, data=chickwts)
-summary(chick.aov)
+summary(chick.aov) %>% pander()
 ```
 
-The $p$-value of the test is highly significant $(p = 5.9\times10^{-10})$, therefore we conclude the alternative, that at least one feed type has a different average weight. The following plots demonstrate that the assumptions of ANOVA were satisfied as the residuals versus fitted values plot shows roughly constant variance, and the QQ-Plot shows normality of the residuals.
+The $p$-value of the test is highly significant $(p = 5.9\times10^{-10})$, therefore we conclude the alternative, that at least one feed type results in a different average weight of the grown chickens. 
+
+The following plots demonstrate that the assumptions of the ANOVA were satisfied. This can be seen as the residuals versus fitted values plot shows roughly constant variance within each vertical group of dots, and the Q-Q Plot shows normality of the residuals as all dots stay within the boundary lines.
 
 ```{r}
 par(mfrow=c(1,2))
-plot(chick.aov, which=1:2, pch=16)
+plot(chick.aov, which=1, pch=16)
+qqPlot(chick.aov$residuals, id=FALSE)
 ```
 
 The following graphic provides an explanation of which feed types are producing the highest average weights. (Note, this plot was created using `mPlot(chickwts)` and then editing the code slightly.)
 
 ```{r}
-xyplot(weight ~ feed, data=chickwts, main="", type=c("p","a")) 
+xyplot(weight ~ feed, data=chickwts, main="Experiment on how Feed Type impacts Chicken Growth", ylab="Adult Weight of Chickens (in grams)", xlab="Type of Feed Chickens were Fed \n (Blue line shows average weights per feed type.)", type=c("p","a"))
 ```
 
-The detailed values depicted in the plot above are summarized in the table below.
+The averages depicted by the blue line in the plot above are summarized in the table below as well as the standard deviation and sample size for the final chicken weights within each feed type.
 
 ```{r, results='asis'}
-knitr::kable(favstats(weight ~ feed, data=chickwts)[,c(".group","mean","sd","n")])
+pander(favstats(weight ~ feed, data=chickwts)[,c("feed","mean","sd","n")])
 ```
 
 #### Interpretation

@@ -4078,7 +4078,7 @@ I(conc^2)
 I(conc^3)
   <span class="tooltiprtext">$X_{i}^3$, where the function I(...) protects the cubing of conc from how lm(...) would otherwise interpret that statement. The I(...) function must be used anytime you raise an x-variable to a power in the lm(...) statement.</span>
 </span><span class="tooltipr">
-, data=airquality
+, data=CO2
   <span class="tooltiprtext">This is the data set we are using for the regression.</span>
 </span><span class="tooltipr">
 )  
