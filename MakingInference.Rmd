@@ -1,8 +1,5 @@
 ---
 title: "Making Inference"
-output: 
-  html_document: 
-    theme: cerulean
 ---
 
 <script type="text/javascript">

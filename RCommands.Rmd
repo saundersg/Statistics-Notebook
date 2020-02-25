@@ -2,9 +2,6 @@
 title: "R Commands"
 output: 
   html_document: 
-    theme: cerulean
-    highlight: tango
-    css: styles.css
     toc: true
     toc_float: true
 ---

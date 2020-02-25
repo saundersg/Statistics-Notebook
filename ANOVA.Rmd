@@ -1,9 +1,5 @@
 ---
 title: "Analysis Of Variance (ANOVA)"
-output: 
-  html_document:
-    theme: cerulean
-    css: styles.css
 header-includes: 
   - \usepackage{amsmath}
 ---

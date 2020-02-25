@@ -2,9 +2,7 @@
 title: "Linear Regression"
 output: 
   html_document:
-    theme: cerulean
     code_folding: hide
-    css: styles.css
 header-includes: 
   - \usepackage{amsmath}
 ---
