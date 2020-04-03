@@ -2896,9 +2896,43 @@ mtext(side=3, text=expression(paste("Use ", lambda == 2)), line=.5)
 
 ###### An Example
 
-Suppose $\lambda = 0.5$, so that $Y' = \sqrt{Y}$. 
+Suppose we were running a simple linear regression on the `cars` dataset.
 
-A regression is performed using `sqrt(Y)`:
+This would be done with the code
+
+`cars.lm <- lm(dist ~ speed, data=cars)`
+
+`summary(cars.lm)`
+
+Notice the line doesn't quite fit the data as well as we would hope. Instead, the data looks a little curved.
+
+```{r}
+cars.lm <-lm(dist ~ speed,data=cars)
+plot(dist ~ speed, data=cars, pch=20, col="firebrick", cex=1.2, las=1,
+     xlab="Speed of the Vehicle (mph) \n the Moment the Brakes were Applied", ylab="Distance (ft) it took the Vehicle to Stop",
+     main="Don't Step in front of a Moving 1920's Vehicle...")
+mtext(side=3, text="...they take a few feet to stop.", cex=0.7, line=.5)
+legend("topleft", legend="Stopping Distance Experiment", bty="n")
+
+abline(cars.lm, col="gray")
+```
+
+Using the `boxCox(...)` function from `library(car)` we would compute the following to determine which Y-transformation would be most meaningful.
+
+`library(car)`
+
+`boxCox(cars.lm)`
+
+The output from the `boxCox(...)` function looks as follows.
+
+```{r, echo=FALSE}
+cars.lm <-lm(dist ~ speed,data=cars)
+boxCox(cars.lm)
+```
+
+This plot tells use to use the $\lambda = 0.5$ transformation, so that $Y' = Y^0.5 = \sqrt{Y}$. (To see this yourself, click on the "Box-Cox Suggestion" tab above, as well as on the "Scatterplot Recognition" tab.)
+
+Now, a transformation regression is performed using `sqrt(Y)` in place of `Y` as follows:
 
 `cars.lm.t <- lm(sqrt(dist) ~ speed, data=cars)`
 
@@ -2912,19 +2946,19 @@ A regression is performed using `sqrt(Y)`:
 Then,
 
 $$
-  \hat{Y}_i' = 1.277 + 0.3224 X_i
+  \widehat{Y}_i' = 1.277 + 0.3224 X_i
 $$
 
 And replacing $\hat{Y}_i' = \sqrt{\hat{Y}_i}$ we have
 
 $$
-  \sqrt{\hat{Y}_i} = 1.277 + 0.3224 X_i
+  \sqrt{\widehat{Y}_i} = 1.277 + 0.3224 X_i
 $$
 
 Solving for $\hat{Y}_i$ gives
 
 $$
-  \hat{Y}_i = (1.277 + 0.3224 X_i)^2
+  \widehat{Y}_i = (1.277 + 0.3224 X_i)^2
 $$
 
 Which, using `curve((1.277 + 0.3224*x)^2, add=TRUE)` (see code for details) looks like this:
@@ -3754,24 +3788,14 @@ Note that the default of the `loess` function in R is to use quadratic regressio
 <img src="./Images/QuantYMultX.png" width=108px;>
 </div>
 
-Multiple regression allows for more than one explanatory variable to be included in the modeling of the expected value of the quantitative response variable $Y_i$. 
+Multiple regression allows for more than one explanatory variable to be included in the modeling of the expected value of the quantitative response variable $Y_i$. There are infinitely many possible multiple regression models to choose from. Here are a few "basic" models that work as building blocks to more complicated models.
 
 
 ### Overview
 
 <div style="padding-left:125px;">
 
-The multiple linear regression model is given by combining (1) a linear model for the mean y-value, denoted by $E\{Y_i\}$, and (2) a normally distributed error term, $\epsilon_i$. 
-
-$$
-  Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \cdots + \beta_{p-1} X_{p-1,i}}_{E\{Y_i\}}}^\text{"The Model"} + \epsilon_i 
-$$
-
-where $\epsilon_i \sim N(0, \sigma^2)$.
-
-----
-
-
+Select a model to see interpretation details, an example, and R Code help.
 
 <div class="tab">
   <button class="tablinks" onclick="openTab(event, 'LearnMoresimpleLinearModel')">Simple</button>
@@ -4681,6 +4705,9 @@ See the **Explanation** tab for details about possible hypotheses here.
 
 
 <div style="padding-left:125px;">
+
+**NOTE**: These are general R Commands for *all* types of multiple linear regressions. See the "Overview" section for R Commands details about a specific multiple linear regression model.
+
 **Console** Help Command: `?lm()`
 
 **Finding Variables**
@@ -5573,7 +5600,7 @@ predict(
 mylm,
   <span class="tooltiprtext">This is the name of a previously performed lm(...) that was saved into the name `mylm <- lm(...)`.</span>
 </span><span class="tooltipr">
-data.frame(
+newdata = data.frame(
   <span class="tooltiprtext">To specify the values of $x$ that you want to use in the prediction, you have to put those x-values into a data set, or more specifally, a data.frame(...).</span>
 </span><span class="tooltipr">
 $X_1$=
@@ -5585,10 +5612,10 @@ $X_{1h}$,
 $X_2$=
   <span class="tooltiprtext">This is the value of the second x-variable, say `am`.</span>
 </span><span class="tooltipr">
-$X_{2h}$),
+$X_{2h}$)
   <span class="tooltiprtext">Since the `am` column can only be a 1 or 0, we would try `am=1` for example, or `am=0`.</span>
 </span><span class="tooltipr">
-type = "response")
+)
   <span class="tooltiprtext">Closing parenthesis.</span>
 </span>
 </div>
