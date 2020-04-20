@@ -20,25 +20,73 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -476,179 +524,179 @@ $(document).ready(function () {
   H_a: \mu_d \neq 0
 \]</span> where <span class="math inline">\(\mu_d\)</span> denotes the true mean of the differences between the observations for each drug obtained from each individual. Differences would be obtained by <span class="math inline">\(d_i = \text{extra}_{1i} - \text{extra}_{2i}\)</span>.</p>
 <p>To perform a permutation test of the hypothesis that the drugs are equally effective, we use the following code.</p>
-<pre class="r"><code># Perform the initial test:
-myTest &lt;- with(sleep, t.test(extra[group==1], extra[group==2], paired = TRUE, mu = 0))
-# Get the test statistic from the test:
-observedTestStat &lt;- myTest$statistic
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Perform the initial test:</span>
+myTest &lt;-<span class="st"> </span><span class="kw">with</span>(sleep, <span class="kw">t.test</span>(extra[group<span class="op">==</span><span class="dv">1</span>], extra[group<span class="op">==</span><span class="dv">2</span>], <span class="dt">paired =</span> <span class="ot">TRUE</span>, <span class="dt">mu =</span> <span class="dv">0</span>))
+<span class="co"># Get the test statistic from the test:</span>
+observedTestStat &lt;-<span class="st"> </span>myTest<span class="op">$</span>statistic
 
 
-# Obtain the permutation sampling distribution 
-N &lt;- 2000
-permutedTestStats &lt;- rep(NA, N)
-for (i in 1:N){
-  permuteData &lt;- sample(x=c(-1,1), size=10, replace=TRUE) 
-  permutedTest &lt;- with(sleep, t.test(permuteData*(extra[group==1] - extra[group==2]), mu = 0))
-  #Note, t.test(group1 - group2) is the same as t.test(group1, group2, paired=TRUE).
-  permutedTestStats[i] &lt;- permutedTest$statistic
+<span class="co"># Obtain the permutation sampling distribution </span>
+N &lt;-<span class="st"> </span><span class="dv">2000</span>
+permutedTestStats &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, N)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>N){
+  permuteData &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">size=</span><span class="dv">10</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>) 
+  permutedTest &lt;-<span class="st"> </span><span class="kw">with</span>(sleep, <span class="kw">t.test</span>(permuteData<span class="op">*</span>(extra[group<span class="op">==</span><span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>extra[group<span class="op">==</span><span class="dv">2</span>]), <span class="dt">mu =</span> <span class="dv">0</span>))
+  <span class="co">#Note, t.test(group1 - group2) is the same as t.test(group1, group2, paired=TRUE).</span>
+  permutedTestStats[i] &lt;-<span class="st"> </span>permutedTest<span class="op">$</span>statistic
 }
-hist(permutedTestStats)
-abline(v=observedTestStat, col=&#39;skyblue&#39;, lwd=3)</code></pre>
+<span class="kw">hist</span>(permutedTestStats)
+<span class="kw">abline</span>(<span class="dt">v=</span>observedTestStat, <span class="dt">col=</span><span class="st">&#39;skyblue&#39;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)</code></pre></div>
 <p><img src="PermutationTests_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<pre class="r"><code># Greater than p-value: (not what we want here)
-sum(permutedTestStats &gt;= observedTestStat)/N</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Greater than p-value: (not what we want here)</span>
+<span class="kw">sum</span>(permutedTestStats <span class="op">&gt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N</code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<pre class="r"><code># Less than p-value:
-sum(permutedTestStats &lt;= observedTestStat)/N</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Less than p-value:</span>
+<span class="kw">sum</span>(permutedTestStats <span class="op">&lt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N</code></pre></div>
 <pre><code>## [1] 0.0035</code></pre>
-<pre class="r"><code># Correct two sided p-value for this study:
-2*sum(permutedTestStats &lt;= observedTestStat)/N</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Correct two sided p-value for this study:</span>
+<span class="dv">2</span><span class="op">*</span><span class="kw">sum</span>(permutedTestStats <span class="op">&lt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N</code></pre></div>
 <pre><code>## [1] 0.007</code></pre>
 <h5 id="other-examples-from-students">Other Examples from Students</h5>
 <p><a href="javascript:showhide('ItTest')">Independent Samples t Test (and Wilcoxon) <span style="font-size:8pt;">(click to show/hide)</span></a></p>
 <div id="ItTest" style="display:none;">
 <p>For the independent sample t Test, we will use the data from the <a href="Analyses/SleepIndependentt.html">independent sleep</a> analysis.</p>
-<pre class="r"><code># First run the initial test and gain the test statistic:
-myTest &lt;- t.test(extra ~ group, data = sleep, mu = 0)
-observedTestStat &lt;- myTest$statistic
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># First run the initial test and gain the test statistic:</span>
+myTest &lt;-<span class="st"> </span><span class="kw">t.test</span>(extra <span class="op">~</span><span class="st"> </span>group, <span class="dt">data =</span> sleep, <span class="dt">mu =</span> <span class="dv">0</span>)
+observedTestStat &lt;-<span class="st"> </span>myTest<span class="op">$</span>statistic
 
-# Now we run the permutation for a distribution of test statistics
-N &lt;- 2000
-permutedTestStats &lt;- rep(NA, N)
-for (i in 1:N){
-  permutedData &lt;- sample(sleep$group)
-  permutedTest &lt;- t.test(extra ~ permutedData, data = sleep, mu = 0)
-  permutedTestStats[i] &lt;- permutedTest$statistic
+<span class="co"># Now we run the permutation for a distribution of test statistics</span>
+N &lt;-<span class="st"> </span><span class="dv">2000</span>
+permutedTestStats &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, N)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>N){
+  permutedData &lt;-<span class="st"> </span><span class="kw">sample</span>(sleep<span class="op">$</span>group)
+  permutedTest &lt;-<span class="st"> </span><span class="kw">t.test</span>(extra <span class="op">~</span><span class="st"> </span>permutedData, <span class="dt">data =</span> sleep, <span class="dt">mu =</span> <span class="dv">0</span>)
+  permutedTestStats[i] &lt;-<span class="st"> </span>permutedTest<span class="op">$</span>statistic
 }
 
-# Now we create a histogram of that distribution
-hist(permutedTestStats, col = &quot;skyblue&quot;)
-abline(v = observedTestStat, col = &quot;red&quot;, lwd = 3)
+<span class="co"># Now we create a histogram of that distribution</span>
+<span class="kw">hist</span>(permutedTestStats, <span class="dt">col =</span> <span class="st">&quot;skyblue&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v =</span> observedTestStat, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)
 
-#Greater-Than p-value: Not the correct one in this case
-sum(permutedTestStats &gt;= observedTestStat)/N
+<span class="co">#Greater-Than p-value: Not the correct one in this case</span>
+<span class="kw">sum</span>(permutedTestStats <span class="op">&gt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N
 
-# Less-Than p-value: This is the corret one
-sum(permutedTestStats &lt;= observedTestStat)/N
+<span class="co"># Less-Than p-value: This is the corret one</span>
+<span class="kw">sum</span>(permutedTestStats <span class="op">&lt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N
 
-# Two-Sided p-value
-2*sum(permutedTestStats &lt;= observedTestStat)/N</code></pre>
+<span class="co"># Two-Sided p-value</span>
+<span class="dv">2</span><span class="op">*</span><span class="kw">sum</span>(permutedTestStats <span class="op">&lt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N</code></pre></div>
 <p><strong>Note</strong> The Kruskal-Wallis Rank Sum test is ran using the same code except with <code>myTest &lt;- kruskal.test(y ~ X, data)</code> instead.</p>
 </div>
 <p><a href="javascript:showhide('ANOVA')">ANOVA <span style="font-size:8pt;">(click to show/hide)</span></a></p>
 <div id="ANOVA" style="display:none;">
 <h5 id="one-way-anova">One-Way ANOVA</h5>
 <p>For this example, we will use the data from the <a href="Analyses/chickwtsOneWayANOVA.html">chick weights</a> analysis.</p>
-<pre class="r"><code># Again, we run the initial test and find the test statistic
-myTest &lt;- aov(weight ~ feed, data = chickwts)
-observedTestStat &lt;- summary(myTest)[[1]]$`F value`[1]
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Again, we run the initial test and find the test statistic</span>
+myTest &lt;-<span class="st"> </span><span class="kw">aov</span>(weight <span class="op">~</span><span class="st"> </span>feed, <span class="dt">data =</span> chickwts)
+observedTestStat &lt;-<span class="st"> </span><span class="kw">summary</span>(myTest)[[<span class="dv">1</span>]]<span class="op">$</span><span class="st">`</span><span class="dt">F value</span><span class="st">`</span>[<span class="dv">1</span>]
 
-# For this permutation, we need to shake up the groups similar to the Independent Sample example
-N &lt;- 2000
-permutedTestStats &lt;- rep(NA, N)
-for (i in 1:N){
-  permutedData &lt;- sample(chickwts$weight)
-  permutedTest &lt;- aov(permutedData ~ feed, data = chickwts)
-  permutedTestStats[i] &lt;- summary(permutedTest)[[1]]$`F value`[1]
+<span class="co"># For this permutation, we need to shake up the groups similar to the Independent Sample example</span>
+N &lt;-<span class="st"> </span><span class="dv">2000</span>
+permutedTestStats &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, N)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>N){
+  permutedData &lt;-<span class="st"> </span><span class="kw">sample</span>(chickwts<span class="op">$</span>weight)
+  permutedTest &lt;-<span class="st"> </span><span class="kw">aov</span>(permutedData <span class="op">~</span><span class="st"> </span>feed, <span class="dt">data =</span> chickwts)
+  permutedTestStats[i] &lt;-<span class="st"> </span><span class="kw">summary</span>(permutedTest)[[<span class="dv">1</span>]]<span class="op">$</span><span class="st">`</span><span class="dt">F value</span><span class="st">`</span>[<span class="dv">1</span>]
 }
 
-# The histogram of this distribution gives an interesting insight into the results
-hist(permutedTestStats, col = &quot;skyblue&quot;, xlim = c(0,16))
-abline(v = observedTestStat, col = &quot;red&quot;, lwd = 3)
+<span class="co"># The histogram of this distribution gives an interesting insight into the results</span>
+<span class="kw">hist</span>(permutedTestStats, <span class="dt">col =</span> <span class="st">&quot;skyblue&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">16</span>))
+<span class="kw">abline</span>(<span class="dt">v =</span> observedTestStat, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)
 
-# Here is the greater-than p-value:
-sum(permutedTestStats &gt;= observedTestStat)/N
+<span class="co"># Here is the greater-than p-value:</span>
+<span class="kw">sum</span>(permutedTestStats <span class="op">&gt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N
 
-# Here is the less-than p-value: not the one that we want
-sum(permutedTestStats &lt;= observedTestStat)/N
+<span class="co"># Here is the less-than p-value: not the one that we want</span>
+<span class="kw">sum</span>(permutedTestStats <span class="op">&lt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N
 
-# And here is the two-sided p-value: the same used in the original analysis
-2*sum(permutedTestStats &gt;= observedTestStat)/N</code></pre>
+<span class="co"># And here is the two-sided p-value: the same used in the original analysis</span>
+<span class="dv">2</span><span class="op">*</span><span class="kw">sum</span>(permutedTestStats <span class="op">&gt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N</code></pre></div>
 <h5 id="two-way-anova">Two-Way ANOVA</h5>
 <p>For the two-way ANOVA, I will use the data from the <a href="Analyses/warpbreaksTwoWayANOVA.html">warpbreaks</a> analysis.</p>
-<pre class="r"><code># The initial test is done in the same way as one-way ANOVA but there is a little more to find the test statistic
-myTest &lt;- aov(breaks ~ wool + tension + wool:tension, data=warpbreaks)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The initial test is done in the same way as one-way ANOVA but there is a little more to find the test statistic</span>
+myTest &lt;-<span class="st"> </span><span class="kw">aov</span>(breaks <span class="op">~</span><span class="st"> </span>wool <span class="op">+</span><span class="st"> </span>tension <span class="op">+</span><span class="st"> </span>wool<span class="op">:</span>tension, <span class="dt">data=</span>warpbreaks)
 
-# This first test statistic is the comparison between the two types of wool
-observedTestStatW &lt;- summary(myTest)[[1]]$`F value`[1]
+<span class="co"># This first test statistic is the comparison between the two types of wool</span>
+observedTestStatW &lt;-<span class="st"> </span><span class="kw">summary</span>(myTest)[[<span class="dv">1</span>]]<span class="op">$</span><span class="st">`</span><span class="dt">F value</span><span class="st">`</span>[<span class="dv">1</span>]
 
-# This second test statistic is the comparison between the three types of tension
-observedTestStatT &lt;- summary(myTest)[[1]]$`F value`[2]
+<span class="co"># This second test statistic is the comparison between the three types of tension</span>
+observedTestStatT &lt;-<span class="st"> </span><span class="kw">summary</span>(myTest)[[<span class="dv">1</span>]]<span class="op">$</span><span class="st">`</span><span class="dt">F value</span><span class="st">`</span>[<span class="dv">2</span>]
 
-# The third test statistic is the comparison of the interaction of wool types and tension
-observedTestStatWT &lt;- summary(myTest)[[1]]$`F value`[3]
+<span class="co"># The third test statistic is the comparison of the interaction of wool types and tension</span>
+observedTestStatWT &lt;-<span class="st"> </span><span class="kw">summary</span>(myTest)[[<span class="dv">1</span>]]<span class="op">$</span><span class="st">`</span><span class="dt">F value</span><span class="st">`</span>[<span class="dv">3</span>]
 
-# Now comes three different permutations for the test. First is for wool, second is for tension, and third is the interaction
-N &lt;- 2000
-permutedTestStatsW &lt;- rep(NA, N)
-permutedTestStatsT &lt;- rep(NA, N)
-permutedTestStatsWT &lt;- rep(NA, N)
-for (i in 1:N){
-  permuteData &lt;- sample(warpbreaks$breaks)
-  permutedTest &lt;- aov(permuteData ~ wool + tension + wool:tension, data=warpbreaks)
-  permutedTestStatsW[i] &lt;- summary(permutedTest)[[1]]$`F value`[1]
-  permutedTestStatsT[i] &lt;- summary(permutedTest)[[1]]$`F value`[2]
-  permutedTestStatsWT[i] &lt;- summary(permutedTest)[[1]]$`F value`[3]
+<span class="co"># Now comes three different permutations for the test. First is for wool, second is for tension, and third is the interaction</span>
+N &lt;-<span class="st"> </span><span class="dv">2000</span>
+permutedTestStatsW &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, N)
+permutedTestStatsT &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, N)
+permutedTestStatsWT &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, N)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>N){
+  permuteData &lt;-<span class="st"> </span><span class="kw">sample</span>(warpbreaks<span class="op">$</span>breaks)
+  permutedTest &lt;-<span class="st"> </span><span class="kw">aov</span>(permuteData <span class="op">~</span><span class="st"> </span>wool <span class="op">+</span><span class="st"> </span>tension <span class="op">+</span><span class="st"> </span>wool<span class="op">:</span>tension, <span class="dt">data=</span>warpbreaks)
+  permutedTestStatsW[i] &lt;-<span class="st"> </span><span class="kw">summary</span>(permutedTest)[[<span class="dv">1</span>]]<span class="op">$</span><span class="st">`</span><span class="dt">F value</span><span class="st">`</span>[<span class="dv">1</span>]
+  permutedTestStatsT[i] &lt;-<span class="st"> </span><span class="kw">summary</span>(permutedTest)[[<span class="dv">1</span>]]<span class="op">$</span><span class="st">`</span><span class="dt">F value</span><span class="st">`</span>[<span class="dv">2</span>]
+  permutedTestStatsWT[i] &lt;-<span class="st"> </span><span class="kw">summary</span>(permutedTest)[[<span class="dv">1</span>]]<span class="op">$</span><span class="st">`</span><span class="dt">F value</span><span class="st">`</span>[<span class="dv">3</span>]
 }
 
-# We likewise need three differenct plots to show the distribution. First is wool, second is tension, and third is the interaction
-hist(permutedTestStatsW, col = &quot;skyblue&quot;, xlim = c(3,14))
-abline(v = observedTestStatW, col = &quot;red&quot;, lwd = 3)
+<span class="co"># We likewise need three differenct plots to show the distribution. First is wool, second is tension, and third is the interaction</span>
+<span class="kw">hist</span>(permutedTestStatsW, <span class="dt">col =</span> <span class="st">&quot;skyblue&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">14</span>))
+<span class="kw">abline</span>(<span class="dt">v =</span> observedTestStatW, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)
 
-hist(permutedTestStatsT, col = &quot;skyblue&quot;)
-abline(v = observedTestStatT, col = &quot;red&quot;, lwd = 3)
+<span class="kw">hist</span>(permutedTestStatsT, <span class="dt">col =</span> <span class="st">&quot;skyblue&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v =</span> observedTestStatT, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)
 
-hist(permutedTestStatsWT, col = &quot;skyblue&quot;)
-abline(v = observedTestStatWT, col = &quot;red&quot;, lwd = 3)
+<span class="kw">hist</span>(permutedTestStatsWT, <span class="dt">col =</span> <span class="st">&quot;skyblue&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v =</span> observedTestStatWT, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)
 
-# Greater-than p-value: the three situations are in order
-sum(permutedTestStatsW &gt;= observedTestStatW)/N
+<span class="co"># Greater-than p-value: the three situations are in order</span>
+<span class="kw">sum</span>(permutedTestStatsW <span class="op">&gt;=</span><span class="st"> </span>observedTestStatW)<span class="op">/</span>N
 
-sum(permutedTestStatsT &gt;= observedTestStatT)/N
+<span class="kw">sum</span>(permutedTestStatsT <span class="op">&gt;=</span><span class="st"> </span>observedTestStatT)<span class="op">/</span>N
 
-sum(permutedTestStatsWT &gt;= observedTestStatWT)/N
+<span class="kw">sum</span>(permutedTestStatsWT <span class="op">&gt;=</span><span class="st"> </span>observedTestStatWT)<span class="op">/</span>N
 
-# Less-than p-value: again, they are in order
-sum(permutedTestStatsW &lt;= observedTestStatW)/N
+<span class="co"># Less-than p-value: again, they are in order</span>
+<span class="kw">sum</span>(permutedTestStatsW <span class="op">&lt;=</span><span class="st"> </span>observedTestStatW)<span class="op">/</span>N
 
-sum(permutedTestStatsT &lt;= observedTestStatT)/N
+<span class="kw">sum</span>(permutedTestStatsT <span class="op">&lt;=</span><span class="st"> </span>observedTestStatT)<span class="op">/</span>N
 
-sum(permutedTestStatsWT &lt;= observedTestStatWT)/N
+<span class="kw">sum</span>(permutedTestStatsWT <span class="op">&lt;=</span><span class="st"> </span>observedTestStatWT)<span class="op">/</span>N
 
-# Two-sided p-values:
-2*sum(permutedTestStatsW &gt;= observedTestStatW)/N
+<span class="co"># Two-sided p-values:</span>
+<span class="dv">2</span><span class="op">*</span><span class="kw">sum</span>(permutedTestStatsW <span class="op">&gt;=</span><span class="st"> </span>observedTestStatW)<span class="op">/</span>N
 
-2*sum(permutedTestStatsT &gt;= observedTestStatT)/N
+<span class="dv">2</span><span class="op">*</span><span class="kw">sum</span>(permutedTestStatsT <span class="op">&gt;=</span><span class="st"> </span>observedTestStatT)<span class="op">/</span>N
 
-2*sum(permutedTestStatsWT &gt;= observedTestStatWT)/N</code></pre>
+<span class="dv">2</span><span class="op">*</span><span class="kw">sum</span>(permutedTestStatsWT <span class="op">&gt;=</span><span class="st"> </span>observedTestStatWT)<span class="op">/</span>N</code></pre></div>
 </div>
 <p><a href="javascript:showhide('LinR')">Simple Linear Regression <span style="font-size:8pt;">(click to show/hide)</span></a></p>
 <div id="LinR" style="display:none;">
 <p>For this example, I will use the <code>trees</code> dataset to compare the <code>Girth</code> and <code>Height</code> of black cherry trees.</p>
-<pre class="r"><code># The test and then the test statistic is found in a similar way to that of an ANOVA (this is the t statistic)
-myTest &lt;- lm(Height ~ Girth, data = trees)
-observedTestStat &lt;- summary(myTest)[[4]][2,3]
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The test and then the test statistic is found in a similar way to that of an ANOVA (this is the t statistic)</span>
+myTest &lt;-<span class="st"> </span><span class="kw">lm</span>(Height <span class="op">~</span><span class="st"> </span>Girth, <span class="dt">data =</span> trees)
+observedTestStat &lt;-<span class="st"> </span><span class="kw">summary</span>(myTest)[[<span class="dv">4</span>]][<span class="dv">2</span>,<span class="dv">3</span>]
 
-# The permutation part is set up in this way
-N &lt;- 2000
-permutedTestStats &lt;- rep(NA, N)
-for (i in 1:N){
-  permutedData &lt;- sample(trees$Height)
-  permutedTest &lt;- lm(permutedData ~ Girth, data = trees)
-  permutedTestStats[i] &lt;- summary(permutedTest)[[4]][2,3]
+<span class="co"># The permutation part is set up in this way</span>
+N &lt;-<span class="st"> </span><span class="dv">2000</span>
+permutedTestStats &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, N)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>N){
+  permutedData &lt;-<span class="st"> </span><span class="kw">sample</span>(trees<span class="op">$</span>Height)
+  permutedTest &lt;-<span class="st"> </span><span class="kw">lm</span>(permutedData <span class="op">~</span><span class="st"> </span>Girth, <span class="dt">data =</span> trees)
+  permutedTestStats[i] &lt;-<span class="st"> </span><span class="kw">summary</span>(permutedTest)[[<span class="dv">4</span>]][<span class="dv">2</span>,<span class="dv">3</span>]
 }
 
-# Here, as before, is the histogram of the distribution of the test statistics
-hist(permutedTestStats, col = &quot;skyblue&quot;)
-abline(v = observedTestStat, col = &quot;red&quot;, lwd = 3)
+<span class="co"># Here, as before, is the histogram of the distribution of the test statistics</span>
+<span class="kw">hist</span>(permutedTestStats, <span class="dt">col =</span> <span class="st">&quot;skyblue&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v =</span> observedTestStat, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)
 
-# Less-than p-value:
-sum(permutedTestStats &lt;= observedTestStat)/N
+<span class="co"># Less-than p-value:</span>
+<span class="kw">sum</span>(permutedTestStats <span class="op">&lt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N
 
-# Greater-than p-value:
-sum(permutedTestStats &gt;= observedTestStat)/N
+<span class="co"># Greater-than p-value:</span>
+<span class="kw">sum</span>(permutedTestStats <span class="op">&gt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N
 
-# Two-Sided p-value:
-2*sum(permutedTestStats &gt;= observedTestStat)/N</code></pre>
+<span class="co"># Two-Sided p-value:</span>
+<span class="dv">2</span><span class="op">*</span><span class="kw">sum</span>(permutedTestStats <span class="op">&gt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N</code></pre></div>
 </div>
 </div>
 <hr />

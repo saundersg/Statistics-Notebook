@@ -2,9 +2,6 @@
 title: "R Commands"
 output: 
   html_document: 
-    theme: cerulean
-    highlight: tango
-    css: styles.css
     toc: true
     toc_float: true
 ---
@@ -220,19 +217,22 @@ Hint: pressing the "up" arrow on your keyboard brings up the last command you ty
 <br/>
 
 
+<div style="background-color:skyblue;padding:10px;">
 **Completion Code:** abc123R
-
+</div>
 
 
 </div>
 
 
 
+<br/>
 
-
+<span style="color:orange;">This is "the end" of the *Getting Started* tutorial.</span> <span style="color:gray;">To find the "completion code" you will need to study, and "click open" each of the example codes above.</span>
 
 
 </div>
+
 
 
 </div>
@@ -897,6 +897,10 @@ birthmonth
 </div>
 
 
+<br/>
+
+*Does not equal one thing*...
+
 <a href="javascript:showhide('filterNotEqual')">
 <div class="hoverchunk">
 <span class="tooltipr">
@@ -928,6 +932,9 @@ name
 </div>
 
 
+<br/>
+
+*Less than*...
 
 <a href="javascript:showhide('LessThan')">
 <div class="hoverchunk">
@@ -960,6 +967,9 @@ length
 ![](./Images/KidsLength24.png)
 </div>
 
+<br/>
+
+*Less than or equal to*...
 
 <a href="javascript:showhide('LessThanorEqualTo')">
 <div class="hoverchunk">
@@ -993,6 +1003,10 @@ length
 </div>
 
 
+<br/>
+
+*Greater than*...
+
 <a href="javascript:showhide('GreaterThan')">
 <div class="hoverchunk">
 <span class="tooltipr">
@@ -1025,6 +1039,9 @@ width
 </div>
 
 
+<br/>
+
+*Greater than or equal to*...
 
 <a href="javascript:showhide('GreaterThanorEqualTo')">
 <div class="hoverchunk">
@@ -1057,7 +1074,9 @@ width
 ![](./Images/KidsWiderEq9.png)
 </div>
 
+<br/>
 
+*The "and" statement*...
 
 <a href="javascript:showhide('And')">
 <div class="hoverchunk">
@@ -1099,6 +1118,9 @@ width
 ![](./Images/GirlsWide9.png)
 </div>
 
+<br/>
+
+*The "or" statement*...
 
 
 <a href="javascript:showhide('Or')">

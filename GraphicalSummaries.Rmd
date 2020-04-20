@@ -1,10 +1,5 @@
 ---
 title: "Graphical Summaries"
-output: 
-  html_document: 
-    theme: cerulean
-    highlight: tango
-    css: styles.css
 ---
 
 ```{r, include=FALSE}

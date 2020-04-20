@@ -1,10 +1,5 @@
 ---
 title: "R Markdown Hints"
-output: 
-  html_document: 
-    theme: cerulean
-    highlight: tango
-    css: styles.css
 ---
 
 Think of an `R Markdown File`, or `Rmd` for short, as a command center. You write commands, then Knit the file, and an html output file is created according to your commands. 

@@ -2,9 +2,7 @@
 title: "Linear Regression"
 output: 
   html_document:
-    theme: cerulean
     code_folding: hide
-    css: styles.css
 header-includes: 
   - \usepackage{amsmath}
 ---
@@ -2742,20 +2740,32 @@ Instead of taking partial derivatives of $L$ directly (with respect to all param
 
 <div id="estimatingvariance" style="display:none;">
 
-As shown previously, we can obtain estimates for the model parameters $\beta_0$ and $\beta_1$ with either least squares estimation or maximum likelihood estimation. It turns out that these estimates for $\beta_0$ and $\beta_1$ are nice in the sense that on average they provide the correct estimate of the true parameter, i.e., they are unbiased estimators. On the other hand, the maximum likelihood estimate $\hat{\sigma}^2$ of the model variance $\sigma^2$ is a biased estimator. It is consistently wrong in its estimates of $\sigma^2$. Without going into all the details, $\hat{\sigma}^2$ is a biased estimator of $\sigma^2$ because its denominator needs to represent the degrees of freedom associated with the numerator. Since $\hat{Y}_i$ in the numerator of $\hat{\sigma}^2$ is defined by
+As shown previously in the "Estimating Model Parameters" section of this page, we can obtain estimates for the model parameters $\beta_0$ and $\beta_1$ by using either least squares estimation or maximum likelihood estimation. Those estimates were given by the formulas
+
+$$
+b_1 = \frac{\sum X_i(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2} \quad \text{(Unbiased Estimate of $\beta_1$)}
+$$
+
+$$
+b_0 = \bar{Y} - b_1\bar{X} \quad \text{(Unbiased Estimate of $\beta_0$)}
+$$
+
+It turns out that these estimates for $\beta_0$ and $\beta_1$ are nice in the sense that on average they provide the correct estimate of the true parameter, i.e., they are unbiased estimators. Unfortunately, this is not the case for the maximum likelihood estimate $\widehat{\sigma}^2$ of the model variance $\sigma^2$. This estimate turns out to be a biased estimator. This means that it is consistently wrong in its estimates of $\sigma^2$. If we left the estimator alone, our estimates for $\sigma^2$ would always be wrong. This is bad. Fortunately, there is a way to fix it, and this corrected version of the estimator is what we will actually use in practice to estimate $\sigma^2$.
+
+Without going into all the details, to "fix" the biased estimator of $\sigma^2$ that is given to us through maximum likelihood estimation, we need to correct its denominator so that it properly represent the degrees of freedom associated with the numerator, which it does not currently. To find the correct degrees of freedom, we have to notice that the $\hat{Y}_i$ in the numerator of $\widehat{\sigma}^2$ is defined by
 \begin{equation}
-  \hat{Y}_i = b_0 + b_1X_i
+  \widehat{Y}_i = b_0 + b_1X_i
   \label{hatY}
 \end{equation}
-it follows that two means, $\bar{X}$ and $\bar{Y}$, must be estimated from the data to obtain $\hat{Y}_i$, see formulas (\ref{bO}) and (\ref{bI}) for details. Anytime a mean is estimated from the data we lose a degree of freedom. Hence, the denominator for $\hat{\sigma}^2$ should be $n-2$ instead of $n$. Some incredibly long calculations will show that the estimator
+From this equation, we notice that two means, $\bar{X}$ and $\bar{Y}$, were estimated from the data in order to obtain $\hat{Y}_i$. (See the formulas for $b_0$ and $b_1$ above, and note how they use both $\bar{X}$ and $\bar{Y}$ in their calculation.) Anytime a mean is estimated from the data we lose a degree of freedom. Hence, the denominator for $\hat{\sigma}^2$ should be $n-2$ instead of $n$. Some incredibly long calculations will show that the "fixed" estimator
 \begin{equation}
-  s^2 = MSE = \frac{\sum(Y_i-\hat{Y}_i)^2}{n-2}
+  s^2 = MSE = \frac{\sum(Y_i-\hat{Y}_i)^2}{n-2} \quad \text{(Unbiased Estimator of $\sigma^2$)}
 \end{equation}
-is an unbiased estimator of $\sigma^2$. Here $MSE$ stands for mean squared error, which is the most obvious name for a formula that squares the errors $Y_i-\hat{Y}_i$ then adds them up and divides by their degrees of freedom. Similarly, we call the numerator $\sum(Y_i-\hat{Y}_i)^2$ the sum of the squared errors, denoted by $SSE$. It is also important to note that the errors are often denoted by $e_i = Y_i-\hat{Y}_i$. Putting this all together we get the following equivalent statements for $MSE$.
+is an unbiased estimator of $\sigma^2$. Here $MSE$ stands for **m**ean **s**quared **e**rror, which is the most obvious name for a formula that squares the errors $Y_i-\hat{Y}_i$ then adds them up and divides by their degrees of freedom. Similarly, we call the numerator $\sum(Y_i-\hat{Y}_i)^2$ the sum of the squared errors, denoted by $SSE$. It is also important to note that the errors are often denoted by $r_i = Y_i-\hat{Y}_i$, the residuals. Putting this all together we get the following equivalent statements for $MSE$.
 \begin{equation}
-  s^2 = MSE = \frac{SSE}{n-2} = \frac{\sum(Y_i-\hat{Y}_i)^2}{n-2} = \frac{\sum e_i^2}{n-2}
+  s^2 = MSE = \frac{SSE}{n-2} = \frac{\sum(Y_i-\widehat{Y}_i)^2}{n-2} = \frac{\sum r_i^2}{n-2}
 \end{equation}
-As a final note, even though the $E\{MSE\} = \sigma^2$, $MSE$ is an unbiased estimator of $\sigma^2$, it unfortunately isn't true that $\sqrt{MSE}$ is an unbiased estimator of $\sigma$. This presents a few problems later on.
+As a final note, even though the expected value $E\{MSE\} = \sigma^2$, which shows $MSE$ is an unbiased estimator of $\sigma^2$, it unfortunately isn't true that $\sqrt{MSE}$ is an unbiased estimator of $\sigma$. This presents a few problems later on, but these are minimal enough that we can overlook the issue and move forward.
 
 </div>
 
@@ -2886,9 +2896,43 @@ mtext(side=3, text=expression(paste("Use ", lambda == 2)), line=.5)
 
 ###### An Example
 
-Suppose $\lambda = 0.5$, so that $Y' = \sqrt{Y}$. 
+Suppose we were running a simple linear regression on the `cars` dataset.
 
-A regression is performed using `sqrt(Y)`:
+This would be done with the code
+
+`cars.lm <- lm(dist ~ speed, data=cars)`
+
+`summary(cars.lm)`
+
+Notice the line doesn't quite fit the data as well as we would hope. Instead, the data looks a little curved.
+
+```{r}
+cars.lm <-lm(dist ~ speed,data=cars)
+plot(dist ~ speed, data=cars, pch=20, col="firebrick", cex=1.2, las=1,
+     xlab="Speed of the Vehicle (mph) \n the Moment the Brakes were Applied", ylab="Distance (ft) it took the Vehicle to Stop",
+     main="Don't Step in front of a Moving 1920's Vehicle...")
+mtext(side=3, text="...they take a few feet to stop.", cex=0.7, line=.5)
+legend("topleft", legend="Stopping Distance Experiment", bty="n")
+
+abline(cars.lm, col="gray")
+```
+
+Using the `boxCox(...)` function from `library(car)` we would compute the following to determine which Y-transformation would be most meaningful.
+
+`library(car)`
+
+`boxCox(cars.lm)`
+
+The output from the `boxCox(...)` function looks as follows.
+
+```{r, echo=FALSE}
+cars.lm <-lm(dist ~ speed,data=cars)
+boxCox(cars.lm)
+```
+
+This plot tells use to use the $\lambda = 0.5$ transformation, so that $Y' = Y^0.5 = \sqrt{Y}$. (To see this yourself, click on the "Box-Cox Suggestion" tab above, as well as on the "Scatterplot Recognition" tab.)
+
+Now, a transformation regression is performed using `sqrt(Y)` in place of `Y` as follows:
 
 `cars.lm.t <- lm(sqrt(dist) ~ speed, data=cars)`
 
@@ -2902,19 +2946,19 @@ A regression is performed using `sqrt(Y)`:
 Then,
 
 $$
-  \hat{Y}_i' = 1.277 + 0.3224 X_i
+  \widehat{Y}_i' = 1.277 + 0.3224 X_i
 $$
 
 And replacing $\hat{Y}_i' = \sqrt{\hat{Y}_i}$ we have
 
 $$
-  \sqrt{\hat{Y}_i} = 1.277 + 0.3224 X_i
+  \sqrt{\widehat{Y}_i} = 1.277 + 0.3224 X_i
 $$
 
 Solving for $\hat{Y}_i$ gives
 
 $$
-  \hat{Y}_i = (1.277 + 0.3224 X_i)^2
+  \widehat{Y}_i = (1.277 + 0.3224 X_i)^2
 $$
 
 Which, using `curve((1.277 + 0.3224*x)^2, add=TRUE)` (see code for details) looks like this:
@@ -3744,24 +3788,14 @@ Note that the default of the `loess` function in R is to use quadratic regressio
 <img src="./Images/QuantYMultX.png" width=108px;>
 </div>
 
-Multiple regression allows for more than one explanatory variable to be included in the modeling of the expected value of the quantitative response variable $Y_i$. 
+Multiple regression allows for more than one explanatory variable to be included in the modeling of the expected value of the quantitative response variable $Y_i$. There are infinitely many possible multiple regression models to choose from. Here are a few "basic" models that work as building blocks to more complicated models.
 
 
 ### Overview
 
 <div style="padding-left:125px;">
 
-The multiple linear regression model is given by combining (1) a linear model for the mean y-value, denoted by $E\{Y_i\}$, and (2) a normally distributed error term, $\epsilon_i$. 
-
-$$
-  Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \cdots + \beta_{p-1} X_{p-1,i}}_{E\{Y_i\}}}^\text{"The Model"} + \epsilon_i 
-$$
-
-where $\epsilon_i \sim N(0, \sigma^2)$.
-
-----
-
-
+Select a model to see interpretation details, an example, and R Code help.
 
 <div class="tab">
   <button class="tablinks" onclick="openTab(event, 'LearnMoresimpleLinearModel')">Simple</button>
@@ -4066,7 +4100,7 @@ I(conc^2)
 I(conc^3)
   <span class="tooltiprtext">$X_{i}^3$, where the function I(...) protects the cubing of conc from how lm(...) would otherwise interpret that statement. The I(...) function must be used anytime you raise an x-variable to a power in the lm(...) statement.</span>
 </span><span class="tooltipr">
-, data=airquality
+, data=CO2
   <span class="tooltiprtext">This is the data set we are using for the regression.</span>
 </span><span class="tooltipr">
 )  
@@ -4671,6 +4705,9 @@ See the **Explanation** tab for details about possible hypotheses here.
 
 
 <div style="padding-left:125px;">
+
+**NOTE**: These are general R Commands for *all* types of multiple linear regressions. See the "Overview" section for R Commands details about a specific multiple linear regression model.
+
 **Console** Help Command: `?lm()`
 
 **Finding Variables**
@@ -5563,7 +5600,7 @@ predict(
 mylm,
   <span class="tooltiprtext">This is the name of a previously performed lm(...) that was saved into the name `mylm <- lm(...)`.</span>
 </span><span class="tooltipr">
-data.frame(
+newdata = data.frame(
   <span class="tooltiprtext">To specify the values of $x$ that you want to use in the prediction, you have to put those x-values into a data set, or more specifally, a data.frame(...).</span>
 </span><span class="tooltipr">
 $X_1$=
@@ -5575,10 +5612,10 @@ $X_{1h}$,
 $X_2$=
   <span class="tooltiprtext">This is the value of the second x-variable, say `am`.</span>
 </span><span class="tooltipr">
-$X_{2h}$),
+$X_{2h}$)
   <span class="tooltiprtext">Since the `am` column can only be a 1 or 0, we would try `am=1` for example, or `am=0`.</span>
 </span><span class="tooltipr">
-type = "response")
+)
   <span class="tooltiprtext">Closing parenthesis.</span>
 </span>
 </div>

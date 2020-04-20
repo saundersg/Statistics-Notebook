@@ -1,9 +1,5 @@
 ---
 title: "Logistic Regression"
-output: 
-  html_document: 
-    theme: cerulean
-    css: styles.css
 ---
 
 <script type="text/javascript">
@@ -98,6 +94,11 @@ $= \pi_i$
 
 
 The coefficents $\beta_0$ and $\beta_1$ are difficult to interpret directly. Typicall $e^{\beta_0}$ and $e^{\beta_1}$ are interpreted instead. The value of $e^{\beta_0}$ or $e^{\beta_1}$ denotes the relative change in the odds that $Y_i=1$. The odds that $Y_i=1$ are $\frac{\pi_i}{1-\pi_i}$.
+
+
+----
+
+**Examples:** [challenger](./Analyses/Logistic Regression/Examples/challengerLogisticReg.html) [mouse](./Analyses/Logistic Regression/Examples/mouse.html) 
 
 ----
 
@@ -770,11 +771,11 @@ One of the great uses of Logistic Regression is that it provides an estimate of 
 
 ----
 
+
+
 ###
 
-<div style="padding-left:125px;">
-**Examples:** [challenger](./Analyses/Logistic Regression/Examples/challengerLogisticReg.html) 
-</div>
+
 
 ----
 
@@ -800,6 +801,11 @@ $$
 $$
 
 The coefficents $\beta_0,\beta_1,\ldots,\beta_p$ are difficult to interpret directly. Typically $e^{\beta_k}$ for $k=0,1,\ldots,p$ is interpreted instead. The value of $e^{\beta_k}$ denotes the relative change in the odds that $Y_i=1$. The odds that $Y_i=1$ are $\frac{\pi_i}{1-\pi_i}$.
+
+----
+
+
+**Examples:** [GSS](./Analyses/Logistic Regression/Examples/GSSMultipleLogisticReg.html) 
 
 ----
 
@@ -1733,9 +1739,7 @@ The idea behind prediction in multiple logistic regression is the same as in sim
 
 ### 
 
-<div style="padding-left:125px;">
-**Examples:** [GSS](./Analyses/Logistic Regression/Examples/GSSMultipleLogisticReg.html) 
-</div>
+
 
 ----
 

@@ -11,7 +11,7 @@ output:
 
 Come up with a chi squared test analysis of your own creation. 
 
-* Write the Background and clearly state your question. Then collect data and perform the linear regression analysis in order to answer your question. Use the proper order of first, ask the question, then second, figure out the answer.
+* Write the Background and clearly state your question. Then collect data and perform the chi-squared test analysis in order to answer your question. Use the proper order of first, ask the question, then second, figure out the answer.
 
 * You can use data from 
     - An R data set

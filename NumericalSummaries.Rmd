@@ -1,10 +1,5 @@
 ---
 title: "Numerical Summaries"
-output: 
-  html_document: 
-    theme: cerulean
-    highlight: tango
-    css: styles.css
 ---
 
 <script type="text/javascript">

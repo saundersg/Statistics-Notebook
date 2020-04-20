@@ -1,10 +1,5 @@
 ---
 title: "Data Sources"
-output: 
-  html_document: 
-    theme: cerulean
-    highlight: tango
-    css: styles.css
 ---
 
 * [Kaggle](http://www.kaggle.com)

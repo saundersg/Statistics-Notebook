@@ -18,16 +18,23 @@ library(mosaic)
 library(DT)
 library(pander)
 library(car)
+library(tidyverse)
 
 # To get the "late" dataset into your R Console, 
 # you need to go to your file menu of R-Studio and select
 # "Session, Set working directory, To source file location"
 # Then click the green "play" arrow in 
 # the top right corner of this gray R-Chunk. 
-late <- read.csv("../Data/late.csv", header=TRUE)
-# Then type:
-# > View(late)
-# in your R Console
+
+## Wide data from original article:
+late <- read.csv("../Data/late.csv", header=TRUE) 
+
+## Change to "long" data for use in R:
+Late <- gather(late, #Start with wide data set late
+               "Week", #Name of groups column in long data
+               "No.ofLateChildren", #Name of data column in long data
+               Week1:Week20)
+
 ```
 
 
@@ -102,21 +109,6 @@ pander(late, split.tables = Inf)
 The `Late` Day Care Center data is shown here in the "long data format".
 
 ```{r}
-# This code reshapes the data into "long" format called Late.
-# To get the "Late" dataset into your R Console, 
-# you need to click the green "play" arrow in 
-# the top right corner of this gray R-Chunk. 
-# Then type:
-#   > View(Late)
-# in your R Console
-Late <- reshape(late,
-                varying = paste("Week",1:20, sep=""), 
-                v.names = "No.ofLateChildren",
-                timevar = "Week", 
-                times = 1:20, 
-                idvar = "Center",
-                new.row.names = 1:200,
-                direction = "long")
 pander(Late)
 ```
 

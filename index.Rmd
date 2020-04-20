@@ -1,9 +1,5 @@
 ---
 title: "Statistics Notebook"
-output: 
-  html_document:
-    theme: cerulean
-    css: styles.css
 ---
 
 <!-- You can delete the following copyright statement if you wish: -->

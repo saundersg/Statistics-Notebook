@@ -1,9 +1,5 @@
 ---
 title: "Permutation Tests"
-output: 
-  html_document: 
-    theme: cerulean
-    css: styles.css
 ---
 
 <script type="text/javascript">
