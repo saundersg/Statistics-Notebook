@@ -547,10 +547,10 @@ permutedTestStats &lt;-<span class="st"> </span><span class="kw">rep</span>(<spa
 <pre><code>## [1] 1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Less than p-value:</span>
 <span class="kw">sum</span>(permutedTestStats <span class="op">&lt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N</code></pre></div>
-<pre><code>## [1] 0.0035</code></pre>
+<pre><code>## [1] 0.0015</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Correct two sided p-value for this study:</span>
 <span class="dv">2</span><span class="op">*</span><span class="kw">sum</span>(permutedTestStats <span class="op">&lt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N</code></pre></div>
-<pre><code>## [1] 0.007</code></pre>
+<pre><code>## [1] 0.003</code></pre>
 <h5 id="other-examples-from-students">Other Examples from Students</h5>
 <p><a href="javascript:showhide('ItTest')">Independent Samples t Test (and Wilcoxon) <span style="font-size:8pt;">(click to show/hide)</span></a></p>
 <div id="ItTest" style="display:none;">
@@ -603,14 +603,9 @@ permutedTestStats &lt;-<span class="st"> </span><span class="kw">rep</span>(<spa
 <span class="kw">hist</span>(permutedTestStats, <span class="dt">col =</span> <span class="st">&quot;skyblue&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">16</span>))
 <span class="kw">abline</span>(<span class="dt">v =</span> observedTestStat, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)
 
-<span class="co"># Here is the greater-than p-value:</span>
-<span class="kw">sum</span>(permutedTestStats <span class="op">&gt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N
-
-<span class="co"># Here is the less-than p-value: not the one that we want</span>
-<span class="kw">sum</span>(permutedTestStats <span class="op">&lt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N
-
-<span class="co"># And here is the two-sided p-value: the same used in the original analysis</span>
-<span class="dv">2</span><span class="op">*</span><span class="kw">sum</span>(permutedTestStats <span class="op">&gt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N</code></pre></div>
+<span class="co"># Here is the greater-than p-value (since the F-distribution is right skewed</span>
+<span class="co"># this is the only p-value of interest.)</span>
+<span class="kw">sum</span>(permutedTestStats <span class="op">&gt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N</code></pre></div>
 <h5 id="two-way-anova">Two-Way ANOVA</h5>
 <p>For the two-way ANOVA, I will use the data from the <a href="Analyses/warpbreaksTwoWayANOVA.html">warpbreaks</a> analysis.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The initial test is done in the same way as one-way ANOVA but there is a little more to find the test statistic</span>
