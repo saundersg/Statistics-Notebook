@@ -30,10 +30,11 @@ library(tidyverse)
 late <- read.csv("../Data/late.csv", header=TRUE) 
 
 ## Change to "long" data for use in R:
-Late <- gather(late, #Start with wide data set late
-               "Week", #Name of groups column in long data
-               "No.ofLateChildren", #Name of data column in long data
-               Week1:Week20)
+Late <- pivot_longer(late, #Start with wide data set late
+               cols = starts_with("Week"), #Find columns to gather from long data
+               names_to = "Week", #New column name of Weeks in long data
+               names_prefix = "Week", #Remove prefix of Week from Week1, Week2, ...
+               values_to = "NumberofLateChildren") #Name of data column in long data
 
 ```
 
