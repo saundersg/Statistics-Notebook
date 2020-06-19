@@ -6,6 +6,13 @@ output:
     code_folding: hide
 ---
 
+```{r, warning=FALSE, message=FALSE}
+library(mosaic)
+library(tidyverse)
+library(ResourceSelection)
+library(pander)
+```
+
 <hr />
 
 #### Background
@@ -13,6 +20,7 @@ output:
 "The General Social Survey (GSS) conducts basic scientific research on the structure and development of American society with a data-collection program designed to both monitor societal change within the United States and to compare the United States to other nations."[$^1$](http://www3.norc.org/GSS+Website/) It is a cooperative effort to survey the American people every couple years asking a wide variety of questions and has been going on since 1972. The 2012 data file is contained in the file `GSS2012.csv`.
 
 ```{r}
+#The GSS2012.csv file is actually a "tab" instead of "comma" separated file, so we have to use fancy code to read it in:
 GSS <- read.table("../../../Data/GSS2012.csv", sep="\t", header=TRUE)
 ```
 
@@ -36,51 +44,16 @@ Does a person's frequency of prayer predict whether they believe divorce should 
 
 <br />
 
-Age could be a confounding factor, as older people may tend to feel a certain way, so it will be included in the model as a covariate. The variables `divlaw`, `pray`, and `age` will be used to analyze this question. We will use a multiple logistic regression of the form
-$$
-  P(Y_i = 1|\, x_{i1},x_{i2},x_{i3},x_{i4},x_{i5},x_{i6}) = \frac{e^{\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \beta_3 x_{i3} + \beta_4 x_{i4} + \beta_5 x_{i5} + \beta_6 x_{i6}}}{1+e^{\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \beta_3 x_{i3} + \beta_4 x_{i4} + \beta_5 x_{i5} + \beta_6 x_{i6}}} = \pi_i
-$$
-where 
 
-| Variable | Value | Explanation |
-|----------|-------|-------------|
-| $x_{i1}$ | 18 to 88 | the age of the individual |
-| $x_{i2}$ | `pray == 2` | individual prays once a day |
-| $x_{i3}$ | `pray == 3` | individual prays several times a week |
-| $x_{i4}$ | `pray == 4` | individual prays once a week |
-| $x_{i5}$ | `pray == 5` | individual prays less than once a week |
-| $x_{i6}$ | `pray == 6` | individual never prays |
+Age could be a confounding factor, as older people may tend to feel differently about divorce laws than younger people, so it will be included in the model as a covariate. The variables `divlaw`, `pray`, and `age` will be used to analyze this question. 
 
-$Y_i=1$ will denote a person feels it should be more difficult to get a divorce than it is now. $Y_i=0$ will denote a person that feels it should be easier than it is now to get a divorce.
 
-As we are not interested in `age`, the hypotheses for this study will concern the coefficients of the various responses for `pray`.
-$$
-  H_0: \beta_0 = 0 \\
-  H_a: \beta_0 \neq 0
-$$
-$$
-  H_0: \beta_2 = 0 \\
-  H_a: \beta_2 \neq 0
-$$
-$$
-  H_0: \beta_3 = 0 \\
-  H_a: \beta_3 \neq 0
-$$
-$$
-  H_0: \beta_4 = 0 \\
-  H_a: \beta_4 \neq 0
-$$
-$$
-  H_0: \beta_5 = 0 \\
-  H_a: \beta_5 \neq 0
-$$
-$$
-  H_0: \beta_6 = 0 \\
-  H_a: \beta_6 \neq 0
-$$
 
+## Summary of Variables Used {.tabset .tabset-pills}
 
 Looking the variables of `divlaw`, `pray`, and `age` up in the online GSS variable browser we gather the following information.
+
+### divlaw
 
 `divlaw`: Should divorce in this country be easier or more difficult to obtain than it is now?
 
@@ -108,6 +81,8 @@ This barchart shows that of the people that responded to the question (answers 1
 
 <br />
 
+### pray
+
 `pray`: How often does respondant pray?
 
 | Response | Meaning |
@@ -133,6 +108,7 @@ This barchart shows that most people that responded to this question claim they 
 
 <br />
 
+### age
 
 `age`: Age of respondent.
 
@@ -157,64 +133,133 @@ This histogram shows the distribution of ages of those that answered all survey 
 
 
 
-<br />
+## Multiple Logistic Regression Model
 
-#### Data Analysis
+To answer our question, we will use a multiple logistic regression of the form
+
+$$
+  P(Y_i = 1|\, x_{i1},x_{i2},x_{i3},x_{i4},x_{i5},x_{i6}) = \frac{e^{\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \beta_3 x_{i3} + \beta_4 x_{i4} + \beta_5 x_{i5} + \beta_6 x_{i6}}}{1+e^{\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \beta_3 x_{i3} + \beta_4 x_{i4} + \beta_5 x_{i5} + \beta_6 x_{i6}}} = \pi_i
+$$
+
+where 
+
+| Variable | Value | Explanation |
+|----------|-------|-------------|
+| $x_{i1}$ | 18 to 88 | the age of the individual |
+| $x_{i2}$ | 1 if `pray == 2`, 0 otherwise | individual prays once a day |
+| $x_{i3}$ | 1 if `pray == 3`, 0 o.w. | individual prays several times a week |
+| $x_{i4}$ | 1 if `pray == 4`, 0 o.w. | individual prays once a week |
+| $x_{i5}$ | 1 if`pray == 5`, 0 o.w. | individual prays less than once a week |
+| $x_{i6}$ | 1 if`pray == 6`, 0 o.w. | individual never prays |
+
+$Y_i=1$ will denote a person feels it should be more difficult to get a divorce than it is now. $Y_i=0$ will denote a person that feels it should be easier than it is now to get a divorce.
+
+The hypotheses for this study will concern the coefficients of the various responses for `pray` as well as the `age` covariate. Each will be tested at the $\alpha = 0.05$ level.
+
+----
+
+$$
+  H_0: \beta_1 = 0 \text{ (age has no effect)} \\
+  H_a: \beta_1 \neq 0 \text{ (age has an effect)}
+$$
+
+----
+
+$$
+  H_0: \beta_2 = 0 \text{ (praying once a day has no effect)}\\
+  H_a: \beta_2 \neq 0 \text{ (praying once a day has an effect)}
+$$
+
+----
+
+$$
+  H_0: \beta_3 = 0 \text{ (praying several times a week has no effect)}\\
+  H_a: \beta_3 \neq 0 \text{ (praying several times a week has an effect)}
+$$
+
+----
+
+$$
+  H_0: \beta_4 = 0 \text{ (praying once a week has no effect)}\\
+  H_a: \beta_4 \neq 0 \text{ (praying once a week has an effect)}
+$$
+
+----
+
+$$
+  H_0: \beta_5 = 0 \text{ (praying less than once a week has no effect)}\\
+  H_a: \beta_5 \neq 0 \text{ (praying less than once a week has an effect)}
+$$
+
+----
+
+$$
+  H_0: \beta_6 = 0 \text{ (never praying has no effect)}\\
+  H_a: \beta_6 \neq 0 \text{ (never praying has an effect)}
+$$
+
+----
+
+## Data Analysis
 
 Because there are some missing values (NA, DK, Can't choose, and IAP) in the data, we need to filter the data before analyzing it. (This is sometimes called data cleaning.)
 
-##### Subsetting the Data
+### Filter the Data
+
+Click open the code button at the right to see how the data was cleaned for this study.
 
 ```{r}
-# Cleaned version of GSS, reduced to the 3 variables of interest.
-GSSc <- GSS[,c("divlaw","age","pray")]
-dim(GSSc) # dim() gives the output: ## [1] rows  colums   
-GSSc <- subset(GSSc, pray %in% 1:6)
-dim(GSSc)
-GSSc <- subset(GSSc, divlaw %in% c(1,2))
-dim(GSSc)
-GSSc <- subset(GSSc, age <= 89)
-dim(GSSc)
-# Make pray factors instead of numeric
-GSSc$pray <- as.factor(GSSc$pray)
+# Cleaned version of GSS
+GSSc <- GSS %>%
+  select(divlaw,age,pray) %>% #choose only 3 variables of interest
+  filter(pray %in% 1:6,#keep only good values
+         divlaw %in% c(1,2),
+         age <= 89) %>%
+  mutate(pray = as.factor(pray))
 ```
 
-Now for the multiple logistic regression analysis using `GSSc`.
+### Logistic Regression Test
+
+Now for the multiple logistic regression using `GSSc`.
 
 ```{r}
 GSSc.glm <- glm( (divlaw == 2) ~ age + pray, data=GSSc, family=binomial)
-summary(GSSc.glm)
+summary(GSSc.glm) %>% pander(caption="Multiple Logistic Regression Summary")
 ```
 
 See the end of this document for the interpretation on the results of this logistic regression.
 
+### Goodness-of-Fit Test
+
 The Hosmer-Lemeshow test will be used to test the goodness of fit of this logistic regression model. The null assumes the logistic regression is a good fit. As shown below, there is insufficient evidence to reject the null $(p = 0.7823)$ so we will conclude a good logistic fit on these data.
 
 ```{r, message=FALSE}
-library(ResourceSelection)
-hoslem.test(GSSc.glm$y, GSSc.glm$fitted)
+hoslem.test(GSSc.glm$y, GSSc.glm$fitted) %>% pander(caption="Hosmer-Lemeshow Goodness-of-Fit Test")
 ```
 
 <br />
 
-#### Graphics
+## Visualization of Results
 
 ```{r}
-plot(divlaw == 2 ~ age, data=GSSc, pch=16, cex=0.5, xlim=c(18,110), ylab="Favor Stricter Divorce Laws")
+par(mai=c(1,1.3,.8,.1))
 
-curve(exp(-0.30321 + 0.01713*x)/(1+exp(-0.30321 + 0.01713*x)), from=18, to=88, add=TRUE, col='firebrick')
+palette(rev(c("firebrick3","firebrick2","orange","wheat","skyblue","skyblue4")))
+plot((divlaw == 2) + as.numeric(as.character(pray))*.01-.03 ~ age, data=GSSc, pch=16, cex=0.5, xlim=c(18,120), col=as.factor(pray), ylab="Probability of Favoring Stricter \n Divorce Laws", main="Age and Faith Lead to Greater Opposition of Divorce")
 
-curve(exp(-0.30321-0.34240 + 0.01713*x)/(1+exp(-0.30321-0.34240 + 0.01713*x)), from=18, to=88, add=TRUE, col='skyblue')
+curve(exp(-0.30321 + 0.01713*x)/(1+exp(-0.30321 + 0.01713*x)), from=18, to=88, add=TRUE, col=palette()[1])
 
-curve(exp(-0.30321-0.71595 + 0.01713*x)/(1+exp(-0.30321-0.71595 + 0.01713*x)), from=18, to=88, add=TRUE, col='skyblue3')
+curve(exp(-0.30321-0.34240 + 0.01713*x)/(1+exp(-0.30321-0.34240 + 0.01713*x)), from=18, to=88, add=TRUE, col=palette()[2])
 
-curve(exp(-0.30321-0.42372 + 0.01713*x)/(1+exp(-0.30321-0.42372 + 0.01713*x)), from=18, to=88, add=TRUE, col='orchid')
+curve(exp(-0.30321-0.71595 + 0.01713*x)/(1+exp(-0.30321-0.71595 + 0.01713*x)), from=18, to=88, add=TRUE, col=palette()[3])
 
-curve(exp(-0.30321-0.39636 + 0.01713*x)/(1+exp(-0.30321-0.39636 + 0.01713*x)), from=18, to=88, add=TRUE, col='wheat3')
+curve(exp(-0.30321-0.42372 + 0.01713*x)/(1+exp(-0.30321-0.42372 + 0.01713*x)), from=18, to=88, add=TRUE, col=palette()[4])
 
-curve(exp(-0.30321-0.95067 + 0.01713*x)/(1+exp(-0.30321-0.95067 + 0.01713*x)), from=18, to=88, add=TRUE, col='skyblue4')
+curve(exp(-0.30321-0.39636 + 0.01713*x)/(1+exp(-0.30321-0.39636 + 0.01713*x)), from=18, to=88, add=TRUE, col=palette()[5])
 
-legend("bottomright", legend=paste("Pray ==", 1:6), col=c("firebrick","skyblue","skyblue3","orchid","wheat3","skyblue4"), lty=1)
+curve(exp(-0.30321-0.95067 + 0.01713*x)/(1+exp(-0.30321-0.95067 + 0.01713*x)), from=18, to=88, add=TRUE, col=palette()[6])
+
+legend("right", legend=c("Many times a Day", "Once a Day", "Sev. Times a Week", "Once a Week", "Rarely", "Never"), title="Prays", col=palette(), lty=1, bty="n", cex=0.8)
 ```
 
 <br />
@@ -232,6 +277,21 @@ The interpretation of the other variables is similar. For example, the coefficie
 The most substantial drop in the odds is for those that never pray, `pray6`. Which comes out to be $e^{-0.95067} = `r exp(-0.95067)`$, or roughly a 62% drop in the odds. 
 
 The final conclusion is that there is sufficient evidence to conclude that those that pray several times a day have higher odds of supporting stricter divorce laws than those that never pray. (The answer is not as clear for the various levels of frequency of prayer, but is very clear for these two categories.)
+
+
+Here are a few interesting situations to consider.
+
+```{r}
+probs <- predict(GSSc.glm, data.frame(age=c(20,50,80), pray=as.factor(c(6,1,1))), type="response")
+```
+
+| Age | Frequency of Prayer | Probability of Favoring Strictor Divorce Laws |
+|-----|---------------------|----------------------------------|
+| 20  | Never | `r probs[1]`   |
+| 50  | Several Times a Day | `r probs[2]` |
+| 80  | Several Times a Day | `r probs[3]` |
+
+This shows that roughly 3 out of 4 of those 80 years old that pray frequently (several times a day) will favor stricter divorce laws while those who are in their twenties and never pray sit closer to 1 in 4 who favor the stricter divorce laws.
 
 <br />
 

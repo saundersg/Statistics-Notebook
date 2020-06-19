@@ -32,7 +32,7 @@ output:
 
 <span class="tooltipr">
 <a href="javascript:showhide('hovertobegin')">Hover your mouse here to begin.</a>
-  <span class="tooltipRtext">Good work! <br/> You followed instructions well. <br/> Now "click" to get started. </span>
+  <span class="tooltipRtext">Good work! <br/> This book requires that you interact with it to learn. Hovering is the first step. <br/> Now "click" to get started. </span>
 </span>
 <div id="hovertobegin" style="display:none;padding-left:20px;">
 
@@ -64,6 +64,10 @@ Hover over <span class="tooltipr">`code`<span class="tooltipRtext">Yes, just lik
 **Examples** 
 
 For each of the following examples: (1) hover, (2) click, and (3) try.
+
+Before you begin, ensure you have RStudio open. It should look like this:
+
+
 
 <a href="javascript:showhide('CarsOutput')">
 <div class="hoverchunk">

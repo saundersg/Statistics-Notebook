@@ -313,14 +313,10 @@ for (i in 1:N){
 hist(permutedTestStats, col = "skyblue", xlim = c(0,16))
 abline(v = observedTestStat, col = "red", lwd = 3)
 
-# Here is the greater-than p-value:
+# Here is the greater-than p-value (since the F-distribution is right skewed
+# this is the only p-value of interest.)
 sum(permutedTestStats >= observedTestStat)/N
 
-# Here is the less-than p-value: not the one that we want
-sum(permutedTestStats <= observedTestStat)/N
-
-# And here is the two-sided p-value: the same used in the original analysis
-2*sum(permutedTestStats >= observedTestStat)/N
 ```
 
 ##### Two-Way ANOVA
