@@ -250,7 +250,7 @@ Example output from a regression. Hover each piece to learn more.
 </td><td align="right">
   <span class="tooltiprout">
     &nbsp; 2.630849
-      <span class="tooltiprouttext">This is the estimate of the y-intercept, $\beta_0$. It is called $b_0$. It is the average y-value when X is zero.</span>
+      <span class="tooltiprouttext">This is the estimate of the y-intercept, $\beta_0$. It is called $b_0$. It is the value of the log of the odds that $Y_i=1$ when $x_i$ is zero. Remember to use $e^{b_0}$ to interpret this values actual effect on the odds.</span>
   </span>
 </td><td align="right">
   <span class="tooltiprout">
@@ -282,7 +282,7 @@ Example output from a regression. Hover each piece to learn more.
 </td><td align="right">
   <span class="tooltiprout">
     &nbsp; -0.014604
-      <span class="tooltiprouttext">This is the estimate of the slope, $\beta_1$. It is called $b_1$. It is the change in the average y-value as X is increased by 1 unit.</span>
+      <span class="tooltiprouttext">This is the estimate of the slope, $\beta_1$. It is called $b_1$. It is the change in the log of the odds that $Y_i = 1$ as X is increased by 1 unit. Remember to use $e^{b_1}$ to compute the actual effect on the odds.</span>
   </span>
 </td><td align="right">
   <span class="tooltiprout">
@@ -491,35 +491,6 @@ hoslem.test(myglm$y, myglm$fitted)
 </div>
 
 
-To predict the probability that $Y_i=1$ for a given $x$-value, use the code
-
-<a href="javascript:showhide('LogisticPredict')">
-<div class="hoverchunk">
-<span class="tooltipr">
-predict(
-  <span class="tooltiprtext">The predict() function allows us to use the regression model that was obtained from glm() to predict the probability that $Y_i = 1$ for a given $X_i$.</span>
-</span><span class="tooltipr">
-YourGlmName,&nbsp;
-  <span class="tooltiprtext">`YourGlmName` is the name of the object you created when you performed your logistic regression using glm().</span>
-</span><span class="tooltipr">
-newdata =&nbsp;
-<span class="tooltiprtext">The `newdata = ` command allows you to specify the x-values for which you want to obtain predicted probabilities that $Y_i=1$.</span>
-</span><span class="tooltipr">
-NewDataFrame,&nbsp;
-<span class="tooltiprtext">Typically, NewDataFrame is created in real time using the data.frame( XVariableName = c(Value 1, Value 2, ...)) command. You should see the challenger example file for an example of how to use this function.</span>
-</span><span class="tooltipr">
-type = "response")
-  <span class="tooltiprtext">The type = "response" options specifies that you want predicted probabilities. There are other options available. See ?predict.glm for details.</span>
-</span>
-</div>
-</a>
-
-<div id="LogisticPredict" style="display:none;">
-```{r, echo=FALSE}
-myglm <- glm(am ~ disp, data = mtcars, family = binomial)
-predict(myglm, newdata = data.frame(disp = 200), type = "response")
-```
-</div>
 
 **Plot the Regression**
 
@@ -687,6 +658,39 @@ ggplot(mtcars, aes(disp, am)) +
 
   </p>
 </div>
+
+To predict the probability that $Y_i=1$ for a given $x$-value, use the code
+
+<a href="javascript:showhide('LogisticPredict')">
+<div class="hoverchunk">
+<span class="tooltipr">
+predict(
+  <span class="tooltiprtext">The predict() function allows us to use the regression model that was obtained from glm() to predict the probability that $Y_i = 1$ for a given $X_i$.</span>
+</span><span class="tooltipr">
+YourGlmName,&nbsp;
+  <span class="tooltiprtext">`YourGlmName` is the name of the object you created when you performed your logistic regression using glm().</span>
+</span><span class="tooltipr">
+newdata =&nbsp;
+<span class="tooltiprtext">The `newdata = ` command allows you to specify the x-values for which you want to obtain predicted probabilities that $Y_i=1$.</span>
+</span><span class="tooltipr">
+data.frame(xVariableName = someNumericValue),&nbsp;
+<span class="tooltiprtext">The xVariableName is the same one you used in your glm(y ~ x, ...) statement for "x". Input any desired value for the "someNumericValue" spot. Then, the predict code uses the logistic regression model equation to calculate a predicted probability that $Y_i = 1$ for the given $x_i$ value that you specify.</span>
+</span><span class="tooltipr">
+type = "response")
+  <span class="tooltiprtext">The type = "response" options specifies that you want predicted probabilities. There are other options available. See ?predict.glm for details.</span>
+</span>
+</div>
+</a>
+
+<div id="LogisticPredict" style="display:none;">
+```{r}
+myglm <- glm(am ~ disp, data = mtcars, family = binomial)
+predict(myglm, newdata = data.frame(disp = 200), type = "response")
+```
+</div>
+
+
+
 
 
 ----
