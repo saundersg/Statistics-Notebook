@@ -5849,43 +5849,36 @@ beta4 <- -0.8
 # Get y-value using a true model
 Y <- beta0 + beta1*X + beta2*X^2 + beta3*X^3 + beta4*X^4 + rnorm(n, 0, 0.5) #normal errors
 
+thedata <- data.frame(Y, X)
+
 # Plot it
 par(mai=c(.1,.5,.2,.1))
-plot(Y ~ X, pch=21, col="lightgray", bg="steelblue", cex=1.3, ylim=c(-5,22), yaxt='n', xaxt='n', ylab="", xlab="")
+plot(Y ~ X, data=thedata, pch=21, col="lightgray", bg="steelblue", cex=1.3, ylim=c(-5,22), yaxt='n', xaxt='n', ylab="", xlab="")
 mtext(side=3, text="Original Data (Training Data)", cex=0.7, at=-.8, line=.1)
 
 # Draw true model
 curve(beta0 + beta1*x + beta2*x^2 + beta3*x^3 + beta4*x^4, add=TRUE, col=rgb(0.2745098, 0.5098039, 0.7058824, .5), lwd=4)
-lmt <- lm(Y ~ X + I(X^2) + I(X^3) + I(X^4)) #for later
+lmt <- lm(Y ~ X + I(X^2) + I(X^3) + I(X^4), data=thedata) #for later
 
 # Draw simple linear model
-lms <- lm(Y ~ X)
+lms <- lm(Y ~ X, data=thedata)
 b <- coef(lms)
 curve(b[1] + b[2]*x, add=TRUE, col=rgb(1,0.6470588,0, .3), lwd=2)
 
 # Draw overly complicated model
-lmo <- lm(Y ~ X + I(X^2) + I(X^3) + I(X^4) + I(X^5) + I(X^6) + I(X^7) + I(X^8) + I(X^9) + I(X^10) + I(X^11) + I(X^12) + I(X^13) + I(X^14))
+lmo <- lm(Y ~ X + I(X^2) + I(X^3) + I(X^4) + I(X^5) + I(X^6) + I(X^7) + I(X^8) + I(X^9) + I(X^10) + I(X^11) + I(X^12) + I(X^13) + I(X^14), data=thedata)
 b <- coef(lmo)
 curve(b[1] + b[2]*x + b[3]*x^2 + b[4]*x^3 + b[5]*x^4 + b[6]*x^5 + b[7]*x^6 + b[8]*x^7 + b[9]*x^8 + b[10]*x^9 + b[11]*x^10 + b[12]*x^11 + b[13]*x^12 + b[14]*x^13 + b[15]*x^14, add=TRUE, col=rgb(0.6980392, 0.133333, 0.133333, .2), lwd=2)
 
 # Add legend
 legend("topleft", legend=c("True Model", "Simple Model", "Complicated Model"), lwd=c(4,2,2), col=c(rgb(0.2745098, 0.5098039, 0.7058824, .5), rgb(1,0.6470588,0, .3), rgb(0.6980392, 0.133333, 0.133333, .2)), bty='n')
 
-## Table is printed using the Rmd code:
-#| Model   | $R^2$ | Adjusted $R^2$ |
-#|---------|-------|----------------| 
-#| True    | `r summary(lmt)$r.squared`  | `r summary(lmt)$adj.r.squared` |
-#| Simple  | `r summary(lms)$r.squared`  | `r summary(lms)$adj.r.squared` |
-#| Complicated | `r summary(lmo)$r.squared`  | `r summary(lmo)$adj.r.squared` |
+my_output_table <- data.frame(Model = c("True", "Simple", "Complicated"), `R^2` = c(summary(lmt)$r.squared, summary(lms)$r.squared, summary(lmo)$r.squared), `Adjusted R^2` = c(summary(lmt)$adj.r.squared, summary(lms)$adj.r.squared, summary(lmo)$adj.r.squared))
+
+colnames(my_output_table) <- c("Model", "$R^2$", "Adjusted $R^2$")
+
+knitr::kable(my_output_table)
 ```
-
-
-| Model   | $R^2$ | Adjusted $R^2$ |
-|---------|-------|----------------|
-| True    | `r summary(lmt)$r.squared`  | `r summary(lmt)$adj.r.squared` |
-| Simple  | `r summary(lms)$r.squared`  | `r summary(lms)$adj.r.squared` |
-| Complicated | `r summary(lmo)$r.squared`  | `r summary(lmo)$adj.r.squared` |
-
 
 Now, let's remind ourselves why we use regression models in the first place. The main goal is to capture the "essence" of the data. In other words, the general pattern is what we are after. We want a model that tells us how "all such" data is created, not just the specific data we have sampled. So, the great test of a model is to see how well it works on a new sample of data. 
 
@@ -5898,27 +5891,29 @@ set.seed(14551) #get same random sample
 Xnew <- runif(n, -1.4, 3.7) #uniform X from -1.5 to 3.8
 Ynew <- beta0 + beta1*Xnew + beta2*Xnew^2 + beta3*Xnew^3 + beta4*Xnew^4 + rnorm(n, 0, 0.5) #normal errors
 
+thedata2 <- data.frame(Y=Ynew, X=Xnew)
+
 # Plot it
 par(mai=c(.1,.5,.2,.1))
-plot(Y ~ X, pch=21, col=rgb(.827451,.827451,.827451, .1), bg=rgb(.2745098,.5098039,.7058824, .2), cex=1.3, ylim=c(-5,22), yaxt='n', xaxt='n', ylab="", xlab="")
+plot(Y ~ X, data=thedata, pch=21, col=rgb(.827451,.827451,.827451, .1), bg=rgb(.2745098,.5098039,.7058824, .2), cex=1.3, ylim=c(-5,22), yaxt='n', xaxt='n', ylab="", xlab="")
 mtext(side=3, text="New Data (Testing Data)", cex=0.7, at=-.8, line=.1)
 
 # Draw true model
 curve(beta0 + beta1*x + beta2*x^2 + beta3*x^3 + beta4*x^4, add=TRUE, col=rgb(0.2745098, 0.5098039, 0.7058824, .5), lwd=4)
-lmt <- lm(Y ~ X + I(X^2) + I(X^3) + I(X^4)) #for later
+lmt <- lm(Y ~ X + I(X^2) + I(X^3) + I(X^4), data=thedata) #for later
 
 # Draw simple linear model
-lms <- lm(Y ~ X)
+lms <- lm(Y ~ X, data=thedata)
 b <- coef(lms)
 curve(b[1] + b[2]*x, add=TRUE, col=rgb(1,0.6470588,0, .3), lwd=2)
 
 # Draw overly complicated model
-lmc <- lm(Y ~ X + I(X^2) + I(X^3) + I(X^4) + I(X^5) + I(X^6) + I(X^7) + I(X^8) + I(X^9) + I(X^10) + I(X^11) + I(X^12) + I(X^13) + I(X^14))
+lmc <- lm(Y ~ X + I(X^2) + I(X^3) + I(X^4) + I(X^5) + I(X^6) + I(X^7) + I(X^8) + I(X^9) + I(X^10) + I(X^11) + I(X^12) + I(X^13) + I(X^14), data=thedata)
 b <- coef(lmc)
 curve(b[1] + b[2]*x + b[3]*x^2 + b[4]*x^3 + b[5]*x^4 + b[6]*x^5 + b[7]*x^6 + b[8]*x^7 + b[9]*x^8 + b[10]*x^9 + b[11]*x^10 + b[12]*x^11 + b[13]*x^12 + b[14]*x^13 + b[15]*x^14, add=TRUE, col=rgb(0.6980392, 0.133333, 0.133333, .2), lwd=2)
 
 # Add new data to plot
-points(Ynew ~ Xnew, pch=21, col=rgb(.827451,.827451,.827451, .5), bg="orange", cex=1.3)
+points(Y ~ X, data=thedata2, pch=21, col=rgb(.827451,.827451,.827451, .5), bg="orange", cex=1.3)
 
 # Add legend
 legend("topleft", legend=c("True Model", "Simple Model", "Complicated Model"), lwd=c(4,2,2), col=c(rgb(0.2745098, 0.5098039, 0.7058824, .5), rgb(1,0.6470588,0, .3), rgb(0.6980392, 0.133333, 0.133333, .2)), bty='n')
@@ -5929,20 +5924,20 @@ legend("bottomright", legend=c("Original Sample", "New Sample"), pch=16, col=c(r
 # Compute R-squared for each validation
 
   # Get y-hat for each model on new data.
-  yht <- predict(lmt, newdata=data.frame(X=Xnew))
-  yhs <- predict(lms, newdata=data.frame(X=Xnew))
-  yhc <- predict(lmc, newdata=data.frame(X=Xnew))
+  yht <- predict(lmt, newdata=thedata2)
+  yhs <- predict(lms, newdata=thedata2)
+  yhc <- predict(lmc, newdata=thedata2)
   
   # Compute y-bar
-  ybar <- mean(Ynew) #Yi is given by Ynew
+  ybar <- mean(thedata2$Y) #Yi is given by Ynew from the new sample of data
   
   # Compute SSTO
-  SSTO <- sum( (Ynew - ybar)^2 )
+  SSTO <- sum( (thedata2$Y - ybar)^2 )
   
-  # Compute SSE for each model
-  SSEt <- sum( (Ynew - yht)^2 )
-  SSEs <- sum( (Ynew - yhs)^2 )
-  SSEc <- sum( (Ynew - yhc)^2 )
+  # Compute SSE for each model using y - yhat
+  SSEt <- sum( (thedata2$Y - yht)^2 )
+  SSEs <- sum( (thedata2$Y - yhs)^2 )
+  SSEc <- sum( (thedata2$Y - yhc)^2 )
   
   # Compute R-squared for each
   rst <- 1 - SSEt/SSTO
@@ -5950,28 +5945,23 @@ legend("bottomright", legend=c("Original Sample", "New Sample"), pch=16, col=c(r
   rsc <- 1 - SSEc/SSTO
   
   # Compute adjusted R-squared for each
-  n <- length(Ynew)
-  pt <- length(coef(lmt))
-  ps <- length(coef(lms))
-  pc <- length(coef(lmc))
+  n <- length(thedata2$Y) #sample size
+  pt <- length(coef(lmt)) #num. parameters in model
+  ps <- length(coef(lms)) #num. parameters in model
+  pc <- length(coef(lmc)) #num. parameters in model
   rsta <- 1 - (n-1)/(n-pt)*SSEt/SSTO
   rssa <- 1 - (n-1)/(n-ps)*SSEs/SSTO
   rsca <- 1 - (n-1)/(n-pc)*SSEc/SSTO
   
-## Table is printed using the Rmd code:
-#| Model   | $R^2$ | Adjusted $R^2$ |
-#|---------|-------|----------------|
-#| True    | `r rst`  | `r rsta` |
-#| Simple  | `r rss`  | `r rssa` |
-#| Complicated | <span style="background-color:yellow;">`r rsc`</span>  | <span style="background-color:yellow;">`r rsca`</span> |
+
+my_output_table2 <- data.frame(Model = c("True", "Simple", "Complicated"), `Original R2` = c(summary(lmt)$r.squared, summary(lms)$r.squared, summary(lmo)$r.squared), `Orig. Adj. R-squared` = c(summary(lmt)$adj.r.squared, summary(lms)$adj.r.squared, summary(lmo)$adj.r.squared), `Validation R-squared` = c(rst, rss, rsc), `Validation Adj. R^2` = c(rsta, rssa, rsca))
+
+colnames(my_output_table2) <- c("Model", "Original $R^2$", "Original Adj. $R^2$", "Validation $R^2$", "Validation Adj. $R^2$")
+
+knitr::kable(my_output_table2, escape=TRUE, digits=4)
+
 ```
 
-
-| Model   | $R^2$ | Adjusted $R^2$ |
-|---------|-------|----------------|
-| True    | `r rst`  | `r rsta` |
-| Simple  | `r rss`  | `r rssa` |
-| Complicated | <span style="background-color:yellow;">`r rsc`</span>  | <span style="background-color:yellow;">`r rsca`</span> |
 
 Notice how the $R^2$ for the complicated model dropped fairly dramatically from its original value of 0.9985 to 0.8686, and the adjusted $R^2$ dropped from 0.994 to 0.501! On the other hand, the $R^2$ and adjusted $R^2$ values for the True and Simple model were relatively unchanged. This is clear evidence that the "complicated model" is overfitting the original data. It does not capture the "essence" of the data, so it is not a generalizable model. It does not fit new data very well, even though it fit the original sample of data quite well. This is what we mean by **over fitting** a model to a particular sample of data.
 
