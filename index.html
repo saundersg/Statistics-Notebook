@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -20,6 +20,7 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 
@@ -67,7 +68,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -216,6 +216,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -227,18 +228,6 @@ $(document).ready(function () {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -422,7 +411,7 @@ $(document).ready(function () {
 <div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 <p>Add your own notes about graphics to use for this type of data here.</p>
-<p><a href="GraphicalSummaries.html#histogram"> <img class="myhover" src="./Images/histogram.png" alt="Histogram" title="Histogram"> </a> <a href="GraphicalSummaries.html#dot-plots"> <img class="myhover" src="./Images/dotplotsingle.png" alt="Dot Plot" title="Dot Plot"> </a> <a href="GraphicalSummaries.html#boxplots"> <img class="myhover" src="./Images/boxplotsingle.png" alt="Boxplot" title="Boxplot"> </a></p>
+<p><a href="GraphicalSummaries.html#histogram"> <img class="myhover" src="Images/histogram.png" alt="Histogram" title="Histogram"> </a> <a href="GraphicalSummaries.html#dot-plots"> <img class="myhover" src="Images/dotplotsingle.png" alt="Dot Plot" title="Dot Plot"> </a> <a href="GraphicalSummaries.html#boxplots"> <img class="myhover" src="Images/boxplotsingle.png" alt="Boxplot" title="Boxplot"> </a></p>
 <!--- End your notes before here.  ------------------>
 </div>
 </div>
@@ -451,7 +440,7 @@ $(document).ready(function () {
 <div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 <p>Add your own notes about graphics to use for this type of data here.</p>
-<p><a href="GraphicalSummaries.html#boxplots"> <img class="myhover" src="./Images/boxplot.png" alt="Side-by-side Boxplots" title="Side-by-side Boxplots"> </a> <a href="GraphicalSummaries.html#dot-plots"> <img class="myhover" src="./Images/dotplotdouble.png" alt="Dot Plot" title="Side-by-side Dot Plots"> </a></p>
+<p><a href="GraphicalSummaries.html#boxplots"> <img class="myhover" src="Images/boxplot.png" alt="Side-by-side Boxplots" title="Side-by-side Boxplots"> </a> <a href="GraphicalSummaries.html#dot-plots"> <img class="myhover" src="Images/dotplotdouble.png" alt="Dot Plot" title="Side-by-side Dot Plots"> </a></p>
 <!--- End of Add content area.  ------------------>
 </div>
 </div>
@@ -481,7 +470,7 @@ $(document).ready(function () {
 <div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 <p>Add your own notes about graphics to use for this type of data here.</p>
-<p><a href="GraphicalSummaries.html#boxplots"> <img class="myhover" src="./Images/boxplotthree.png" alt="Side-by-side Boxplots" title="Side-by-side Boxplots 3+ Groups"> </a> <a href="GraphicalSummaries.html#dot-plots"> <img class="myhover" src="./Images/dotplottriple.png" alt="Side-by-side Dot Plots" title="Side-by-side Dot Plots 3+ Groups"> </a></p>
+<p><a href="GraphicalSummaries.html#boxplots"> <img class="myhover" src="Images/boxplotthree.png" alt="Side-by-side Boxplots" title="Side-by-side Boxplots 3+ Groups"> </a> <a href="GraphicalSummaries.html#dot-plots"> <img class="myhover" src="Images/dotplottriple.png" alt="Side-by-side Dot Plots" title="Side-by-side Dot Plots 3+ Groups"> </a></p>
 <!--- End of Add content area.  ------------------>
 </div>
 </div>
@@ -511,7 +500,7 @@ $(document).ready(function () {
 <div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 <p>Add your own notes about graphics to use for this type of data here.</p>
-<p><a href="GraphicalSummaries.html#scatterplots"> <img class="myhover" src="./Images/scatterplot.png" alt="Scatterplot" title="Scatterplot"> </a></p>
+<p><a href="GraphicalSummaries.html#scatterplots"> <img class="myhover" src="Images/scatterplot.png" alt="Scatterplot" title="Scatterplot"> </a></p>
 <!--- End of Add content area.  ------------------>
 </div>
 </div>
@@ -541,7 +530,7 @@ $(document).ready(function () {
 <div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 <p>Add your own notes about graphics to use for this type of data here.</p>
-<p><a href="GraphicalSummaries.html#scatterplots"> <img class="myhover" src="./Images/scatterplotmany.png" alt="Scatterplot" title="Scatterplot with Color and Sizing"> </a></p>
+<p><a href="GraphicalSummaries.html#scatterplots"> <img class="myhover" src="Images/scatterplotmany.png" alt="Scatterplot" title="Scatterplot with Color and Sizing"> </a></p>
 <!--- End of Add content area.  ------------------>
 </div>
 </div>
@@ -571,7 +560,7 @@ $(document).ready(function () {
 <div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 <p>Add your own notes about graphics to use for this type of data here.</p>
-<p><a href="GraphicalSummaries.html#scatterplots"> <img class="myhover" src="./Images/scatterplotbinomY.png" alt="Scatterplot with Binomial Y" title="Scatterplot with Binomial Y"> </a></p>
+<p><a href="GraphicalSummaries.html#scatterplots"> <img class="myhover" src="Images/scatterplotbinomY.png" alt="Scatterplot with Binomial Y" title="Scatterplot with Binomial Y"> </a></p>
 <!--- End of Add content area.  ------------------>
 </div>
 </div>
@@ -601,7 +590,7 @@ $(document).ready(function () {
 <div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 <p>Add your own notes about graphics to use for this type of data here.</p>
-<p><a href="GraphicalSummaries.html#scatterplots"> <img class="myhover" src="./Images/scatterplotbinomYmult.png" alt="Scatterplot with Binomial Y" title="Scatterplot with Binomial Y, including coloring and shading"> </a></p>
+<p><a href="GraphicalSummaries.html#scatterplots"> <img class="myhover" src="Images/scatterplotbinomYmult.png" alt="Scatterplot with Binomial Y" title="Scatterplot with Binomial Y, including coloring and shading"> </a></p>
 <!--- End of Add content area.  ------------------>
 </div>
 </div>
@@ -631,7 +620,7 @@ $(document).ready(function () {
 <div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 <p>Add your own notes about graphics to use for this type of data here.</p>
-<p><a href="GraphicalSummaries.html#bar-charts"> <img class="myhover" src="./Images/barplot.png" alt="Bar Chart" title="Bar Chart"> </a></p>
+<p><a href="GraphicalSummaries.html#bar-charts"> <img class="myhover" src="Images/barplot.png" alt="Bar Chart" title="Bar Chart"> </a></p>
 <!--- End of Add content area.  ------------------>
 </div>
 </div>
@@ -672,6 +661,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

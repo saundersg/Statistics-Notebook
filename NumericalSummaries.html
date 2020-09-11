@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -20,6 +20,7 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 
@@ -67,7 +68,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -216,6 +216,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -227,18 +228,6 @@ $(document).ready(function () {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -433,10 +422,11 @@ $(document).ready(function () {
 </div>
 </a>
 <div id="mean3" style="display:none;">
-<table style="width:24%;">
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<table style="width:25%;">
 <colgroup>
 <col width="11%" />
-<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -575,10 +565,11 @@ airquality %&gt;%
 </div>
 </a>
 <div id="median2" style="display:none;">
-<table style="width:24%;">
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<table style="width:25%;">
 <colgroup>
 <col width="11%" />
-<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -730,12 +721,13 @@ airquality %&gt;%
 </div>
 </a>
 <div id="mode2" style="display:none;">
-<table style="width:54%;">
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<table style="width:56%;">
 <colgroup>
 <col width="11%" />
 <col width="13%" />
 <col width="13%" />
-<col width="15%" />
+<col width="16%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -835,10 +827,11 @@ airquality %&gt;%
 </div>
 </a>
 <div id="min2" style="display:none;">
-<table style="width:24%;">
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<table style="width:25%;">
 <colgroup>
 <col width="11%" />
-<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -926,10 +919,11 @@ airquality %&gt;%
 </div>
 </a>
 <div id="max2" style="display:none;">
-<table style="width:24%;">
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<table style="width:25%;">
 <colgroup>
 <col width="11%" />
-<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1010,14 +1004,14 @@ airquality %&gt;%
 </div>
 </a>
 <div id="summary1" style="display:none;">
-<table style="width:69%;">
+<table style="width:71%;">
 <colgroup>
 <col width="9%" />
 <col width="13%" />
 <col width="12%" />
 <col width="11%" />
 <col width="13%" />
-<col width="8%" />
+<col width="9%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1050,14 +1044,15 @@ airquality %&gt;%
 </div>
 </a>
 <div id="summary2" style="display:none;">
-<table style="width:56%;">
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<table style="width:60%;">
 <colgroup>
 <col width="11%" />
 <col width="8%" />
 <col width="9%" />
 <col width="8%" />
 <col width="11%" />
-<col width="6%" />
+<col width="11%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1171,10 +1166,11 @@ airquality %&gt;%
 </div>
 </a>
 <div id="sd2" style="display:none;">
-<table style="width:22%;">
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<table style="width:24%;">
 <colgroup>
 <col width="11%" />
-<col width="11%" />
+<col width="12%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1331,10 +1327,11 @@ airquality %&gt;%
 </div>
 </a>
 <div id="var2" style="display:none;">
-<table style="width:24%;">
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<table style="width:25%;">
 <colgroup>
 <col width="11%" />
-<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1416,10 +1413,11 @@ airquality %&gt;%
 </div>
 </a>
 <div id="range2" style="display:none;">
-<table style="width:26%;">
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<table style="width:28%;">
 <colgroup>
 <col width="11%" />
-<col width="15%" />
+<col width="16%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1553,10 +1551,11 @@ airquality %&gt;%
 </div>
 </a>
 <div id="cor2" style="display:none;">
-<table style="width:29%;">
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<table style="width:31%;">
 <colgroup>
 <col width="11%" />
-<col width="18%" />
+<col width="19%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1613,6 +1612,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

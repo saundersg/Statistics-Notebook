@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -20,52 +20,80 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/htmlwidgets-1.2/htmlwidgets.js"></script>
-<script src="site_libs/plotly-binding-4.8.0/plotly.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.9.2.1/plotly.js"></script>
 <script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="site_libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="site_libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="site_libs/plotly-htmlwidgets-css-1.39.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="site_libs/plotly-main-1.39.2/plotly-latest.min.js"></script>
+<link href="site_libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
-code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code > span.dt { color: #204a87; } /* DataType */
-code > span.dv { color: #0000cf; } /* DecVal */
-code > span.bn { color: #0000cf; } /* BaseN */
-code > span.fl { color: #0000cf; } /* Float */
-code > span.ch { color: #4e9a06; } /* Char */
-code > span.st { color: #4e9a06; } /* String */
-code > span.co { color: #8f5902; font-style: italic; } /* Comment */
-code > span.ot { color: #8f5902; } /* Other */
-code > span.al { color: #ef2929; } /* Alert */
-code > span.fu { color: #000000; } /* Function */
-code > span.er { color: #a40000; font-weight: bold; } /* Error */
-code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #000000; } /* SpecialChar */
-code > span.vs { color: #4e9a06; } /* VerbatimString */
-code > span.ss { color: #4e9a06; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #000000; } /* Variable */
-code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code > span.ex { } /* Extension */
-code > span.at { color: #c4a000; } /* Attribute */
-code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 
 </style>
 <script>
@@ -81,7 +109,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
       if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -139,7 +167,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -288,6 +315,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -299,18 +327,6 @@ $(document).ready(function () {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -492,29 +508,23 @@ $(document).ready(function () {
 <div id="r-instructions" class="section level4">
 <h4>R Instructions</h4>
 <div style="padding-left:125px;">
+
+
 <div class="tab">
-<button class="tablinks" onclick="openTab(event, 'BaseHistogram')">
-Base R
-</button>
-<button class="tablinks" onclick="openTab(event, 'ggplot2Histogram')">
-ggplot2
-</button>
-<button class="tablinks" onclick="openTab(event, 'plotlyHistogram')">
-plotly
-</button>
+<p><button class="tablinks" onclick="openTab(event, 'BaseHistogram')">Base R</button> <button class="tablinks" onclick="openTab(event, 'ggplot2Histogram')">ggplot2</button> <button class="tablinks" onclick="openTab(event, 'plotlyHistogram')">plotly</button></p>
 </div>
 <div id="BaseHistogram" class="tabcontent">
 <p>
 <p>To make a histogram in R use the function:</p>
 <p><code>hist(object)</code></p>
 <ul>
-<li><code>object</code> must be quantitative data. R refers to this as a “numeric vector.”</li>
+<li><code>object</code> must be quantitative data. R refers to this as a “numeric vector.” Usually this will be the column of a dataset accessed with the <code>$</code> sign by <code>hist(dataSetName$columnName)</code>.</li>
 </ul>
 <p>Type <code>?hist</code> in your <strong>R Console</strong> to open the help file in R.</p>
-<p><br></p>
+<p><br/></p>
 <p><strong>Example Code</strong></p>
-<p>Hover your mouse over the example codes to learn more.</p>
-<p>Click to see what they do.</p>
+<p>Hover your mouse over the example codes to learn more. Click on them to see what they create.</p>
+<p><em>Basic histogram</em></p>
 <a href="javascript:showhide('hist1')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> hist <span class="tooltiprtext">An R function “hist” used to create a histogram.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the airquality dataset.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">“Temp” is a quantitative variable (numeric vector) from the “airquality” dataset.</span> </span><span class="tooltipr"> )<br />
@@ -525,6 +535,8 @@ plotly
 <div id="hist1" style="display:none;">
 <p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
+<p><br/></p>
+<p><em>Change Color</em></p>
 <a href="javascript:showhide('hist3')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> hist(airquality$Temp,  <span class="tooltiprtext">This code was explained in the first example code.</span> </span><span class="tooltipr"> col=“skyblue” <span class="tooltiprtext">col= allows us to specify the color of the plot using a named color. The name of the color must be placed in quotations. Type “colors()” in R to see color options.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
@@ -534,6 +546,8 @@ plotly
 <div id="hist3" style="display:none;">
 <p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
+<p><br/></p>
+<p><em>Add Titles</em></p>
 <a href="javascript:showhide('hist2')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> hist(airquality$Temp <span class="tooltiprtext">This part was explained in the first example code.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">The comma allows us to specify optional commands to the function. The space after the comma is not required. It just looks nice.</span> </span><span class="tooltipr"> col=“skyblue”<span class="tooltiprtext">col= allows us to specify the color of the plot using a named color. The name of the color must be placed in quotations. Type “colors()” in R to see color options.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">A comma must always be used to separate additional commands.</span> </span><span class="tooltipr"> xlab=“Temperature” <span class="tooltiprtext">xlab= stands for “x label.” Use it to specify the text to print on the plot under the x-axis. The desired text must always be in quotations.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">A comma must always be used to separate additional commands.</span> </span><span class="tooltipr"> main=“La Guardia Airport Daily Mean Temperatures” <span class="tooltiprtext">main= lets us specify the “main” title to be placed above the plot. The desired text must always be placed in quotations.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
@@ -560,8 +574,8 @@ plotly
 </ul>
 <p><br></p>
 <p><strong>Example Code</strong></p>
-<p>Hover your mouse over the example codes to learn more.</p>
-<p>Click to see what they do.</p>
+<p>Hover your mouse over the example codes to learn more. Click on them to see what they create.</p>
+<p><em>Basic Histogram</em></p>
 <a href="javascript:showhide('hist1ggplot')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> ggplot <span class="tooltiprtext">An R function “ggplot” used to create a framework for a graphic that will have elements added to it with the <code>+</code> sign.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">The comma allows us to specify optional commands to the function. The space after the comma is not required. It just looks nice.</span> </span><span class="tooltipr"> aes( <span class="tooltiprtext">The <code>aes</code> or “aesthetics” function allows you to tell the ggplot how it should appear. This includes things like what the x-axis or y-axis should become.</span> </span><span class="tooltipr"> x=Temp <span class="tooltiprtext">“x=” declares which variable will become the x-axis of the graphic.</span> </span><span class="tooltipr"> )<br />
@@ -573,6 +587,8 @@ plotly
 <div id="hist1ggplot" style="display:none;">
 <p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
+<p><br/></p>
+<p><em>Change Bin Width and Color</em></p>
 <a href="javascript:showhide('hist2ggplot')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> ggplot <span class="tooltiprtext">An R function “ggplot” used to create a framework for a graphic that will have elements added to it with the <code>+</code> sign.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">The comma allows us to specify optional commands to the function. The space after the comma is not required. It just looks nice.</span> </span><span class="tooltipr"> aes( <span class="tooltiprtext">The <code>aes</code> or “aesthetics” function allows you to tell the ggplot how it should appear. This includes things like what the x-axis or y-axis should become.</span> </span><span class="tooltipr"> x=Temp <span class="tooltiprtext">“x=” declares which variable will become the x-axis of the graphic.</span> </span><span class="tooltipr"> )<br />
@@ -585,6 +601,8 @@ plotly
 <div id="hist2ggplot" style="display:none;">
 <p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
+<p><br/></p>
+<p><em>Add Titles</em></p>
 <a href="javascript:showhide('hist3ggplot')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> ggplot <span class="tooltiprtext">An R function “ggplot” used to create a framework for a graphic that will have elements added to it with the <code>+</code> sign.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">The comma allows us to specify optional commands to the function. The space after the comma is not required. It just looks nice.</span> </span><span class="tooltipr"> aes( <span class="tooltiprtext">The <code>aes</code> or “aesthetics” function allows you to tell the ggplot how it should appear. This includes things like what the x-axis or y-axis should become.</span> </span><span class="tooltipr"> x=Temp <span class="tooltiprtext">“x=” declares which variable will become the x-axis of the graphic.</span> </span><span class="tooltipr"> )<br />
@@ -600,23 +618,72 @@ plotly
 </div>
 <p><br/></p>
 <p><strong>Gallery</strong></p>
-<p><a href="javascript:showhide('histogramgalleryggplot')">Click to view.</a></p>
+<p>See some ideas from past students…</p>
+<p><a href="javascript:showhide('histogramgalleryggplot')">Show/Hide Gallery</a></p>
 <div id="histogramgalleryggplot" style="display:none;">
-<p>Hover to see code.</p>
-<p><span class="tooltipgallery"> <img class="gallerygraphs" src="./Images/histogramggplotgallery1.png"><br />
-<span class="tooltipgallerytext"> <code>ggplot(airquality, aes(x = Temp)) +</code> <br/> <code>geom_histogram(binwidth=5, fill = &quot;skyblue&quot;, color = &quot;black&quot;) +</code> <br/> <code>labs(title = &quot;La Guardia Airport Daily Mean Temperature&quot;,</code> <br/>    <code>x = &quot;Temperature&quot;, y = &quot;Number of Days&quot;) +</code> <br/> <code>theme_bw() +</code> <br/> <code>theme(plot.title = element_text(size = 14, face = &quot;bold&quot;, hjust = .5),</code> <br/>    <code>panel.grid.major = element_line(color = &quot;grey80&quot;))</code> <br/> </span> </span></p>
-<p><span class="tooltipgallery"> <img class="gallerygraphs" src="./Images/histogramggplotgallery2.png"><br />
-<span class="tooltipgallerytext"> <code>ggplot(airquality) +</code> <br/> <code>geom_histogram(aes(x = Temp, fill = Temp &gt; median(Temp)), color = &quot;black&quot;, binwidth = 2) +</code> <br/> <code>labs(title = &quot;La Guardia Airport Daily Mean Temperature&quot;,</code> <br/>    <code>x = &quot;Temperature&quot;, y = &quot;Number of Days&quot;) +</code> <br/> <code>theme_bw() +</code> <br/> <code>theme(plot.title = element_text(size = 14, face = &quot;bold&quot;, hjust = .5),</code> <br/>    <code>panel.grid.major = element_line(color = &quot;grey80&quot;),</code> <br/>    <code>legend.position = &quot;none&quot;) +</code> <br/> <code>geom_vline(xintercept = 72, linetype = &quot;dashed&quot;, size = 1.5, color = &quot;black&quot;) +</code> <br/> <code>geom_vline(xintercept = 85, linetype = &quot;dashed&quot;, size = 1.5, color = &quot;black&quot;) +</code> <br/> <code>geom_text(x = 71, y = 10, label = &quot;Q1&quot;) +</code> <br/> <code>geom_text(x = 86, y = 10, label = &quot;Q3&quot;)</code> <br/> </span> </span></p>
-<p><span class="tooltipgallery"> <img class="gallerygraphs" src="./Images/histogramggplotgallery3.png"><br />
-<span class="tooltipgallerytext"> <code>ggplot(airquality, aes(x = Temp)) +</code> <br/> <code>geom_histogram(aes(fill = Temp &gt; median(Temp)), color = &quot;black&quot;, binwidth = 2) +</code> <br/> <code>labs(title = &quot;La Guardia Airport Daily Mean Temperature&quot;,</code> <br/>    <code>x = &quot;Temperature&quot;, y = &quot;Number of Days&quot;, fill = &quot;Temperature&quot;) +</code> <br/> <code>theme_bw() +</code> <br/> <code>theme(plot.title = element_text(size = 10, face = &quot;bold&quot;, hjust = .5),</code> <br/>    <code>panel.grid.major = element_line(color = &quot;grey80&quot;)) +</code> <br/> <code>scale_fill_manual(values = c(&quot;steelblue2&quot;,&quot;brown1&quot;),labels=c(&quot;&lt; 79 Degrees&quot;,&quot;&gt; 79 Degrees&quot;)) +</code> <br/> <code>geom_vline(xintercept = 72, linetype = &quot;dashed&quot;, size = 1.5, color = &quot;black&quot;) +</code> <br/> <code>geom_vline(xintercept = 85, linetype = &quot;dashed&quot;, size = 1.5, color = &quot;black&quot;) +</code> <br/> <code>geom_text(x = 71, y = 10, label = &quot;Q1&quot;) +</code> <br/> <code>geom_text(x = 86, y = 10, label = &quot;Q3&quot;)</code> <br/> </span> </span></p>
-<p><span class="tooltipgallery"> <img class="gallerygraphs" src="./Images/histogramggplotgallery4.png"><br />
-<span class="tooltipgallerytext"> <code>ggplot(airquality, aes(x = Temp)) +</code> <br/> <code>geom_histogram(aes(fill = Temp &gt; median(Temp)), color = &quot;black&quot;, binwidth = 3) +</code> <br/> <code>labs(title = &quot;Temperature of La Guardia Airport by Month&quot;,</code> <br/>    <code>x = &quot;Temperature&quot;, y = &quot;Number of Days&quot;, fill = &quot;Temperature&quot;) +</code> <br/> <code>theme_bw() +</code> <br/> <code>theme(plot.title = element_text(size = 16, face = &quot;bold&quot;, hjust = .5),</code> <br/>    <code>panel.grid.major = element_line(color = &quot;grey80&quot;)) +</code> <br/> <code>scale_fill_manual(values = c(&quot;steelblue2&quot;,&quot;brown1&quot;),labels=c(&quot;&lt; 79 Degrees&quot;,&quot;&gt; 79 Degrees&quot;)) +</code> <br/> <code>facet_grid(~Month) +</code> <br/> <code>geom_vline(xintercept = 77.88, linetype = &quot;dashed&quot;, size = 1.5, color = &quot;black&quot;) +</code> <br/> <code>geom_text(x = 69, y = 10, label = &quot;Mean = \n 77.88&quot;)</code> <br/> </span> </span></p>
+<p>Hover to see code. Copy the code into R. Play with it. Modify it to create your own graph.</p>
+<p><span class="tooltipgallery"> <img class="gallerygraphs" src="Images/histogramggplotgallery1.png"><br />
+<span class="tooltipgallerytext"> <code>ggplot(airquality, aes(x = Temp)) +</code> <br/> <code>geom_histogram(binwidth=5, fill = "skyblue", color = "black") +</code> <br/> <code>labs(title = "La Guardia Airport Daily Mean Temperature",</code> <br/>    <code>x = "Temperature", y = "Number of Days") +</code> <br/> <code>theme_bw() +</code> <br/> <code>theme(plot.title = element_text(size = 14, face = "bold", hjust = .5),</code> <br/>    <code>panel.grid.major = element_line(color = "grey80"))</code> <br/> </span> </span></p>
+<p><span class="tooltipgallery"> <img class="gallerygraphs" src="Images/histogramggplotgallery2.png"><br />
+<span class="tooltipgallerytext"> <code>ggplot(airquality) +</code> <br/> <code>geom_histogram(aes(x = Temp, fill = Temp &gt; median(Temp)), color = "black", binwidth = 2) +</code> <br/> <code>labs(title = "La Guardia Airport Daily Mean Temperature",</code> <br/>    <code>x = "Temperature", y = "Number of Days") +</code> <br/> <code>theme_bw() +</code> <br/> <code>theme(plot.title = element_text(size = 14, face = "bold", hjust = .5),</code> <br/>    <code>panel.grid.major = element_line(color = "grey80"),</code> <br/>    <code>legend.position = "none") +</code> <br/> <code>geom_vline(xintercept = 72, linetype = "dashed", size = 1.5, color = "black") +</code> <br/> <code>geom_vline(xintercept = 85, linetype = "dashed", size = 1.5, color = "black") +</code> <br/> <code>geom_text(x = 71, y = 10, label = "Q1") +</code> <br/> <code>geom_text(x = 86, y = 10, label = "Q3")</code> <br/> </span> </span></p>
+<p><span class="tooltipgallery"> <img class="gallerygraphs" src="Images/histogramggplotgallery3.png"><br />
+<span class="tooltipgallerytext"> <code>ggplot(airquality, aes(x = Temp)) +</code> <br/> <code>geom_histogram(aes(fill = Temp &gt; median(Temp)), color = "black", binwidth = 2) +</code> <br/> <code>labs(title = "La Guardia Airport Daily Mean Temperature",</code> <br/>    <code>x = "Temperature", y = "Number of Days", fill = "Temperature") +</code> <br/> <code>theme_bw() +</code> <br/> <code>theme(plot.title = element_text(size = 10, face = "bold", hjust = .5),</code> <br/>    <code>panel.grid.major = element_line(color = "grey80")) +</code> <br/> <code>scale_fill_manual(values = c("steelblue2","brown1"),labels=c("&lt; 79 Degrees","&gt; 79 Degrees")) +</code> <br/> <code>geom_vline(xintercept = 72, linetype = "dashed", size = 1.5, color = "black") +</code> <br/> <code>geom_vline(xintercept = 85, linetype = "dashed", size = 1.5, color = "black") +</code> <br/> <code>geom_text(x = 71, y = 10, label = "Q1") +</code> <br/> <code>geom_text(x = 86, y = 10, label = "Q3")</code> <br/> </span> </span></p>
+<p><span class="tooltipgallery"> <img class="gallerygraphs" src="Images/histogramggplotgallery4.png"><br />
+<span class="tooltipgallerytext"> <code>ggplot(airquality, aes(x = Temp)) +</code> <br/> <code>geom_histogram(aes(fill = Temp &gt; median(Temp)), color = "black", binwidth = 3) +</code> <br/> <code>labs(title = "Temperature of La Guardia Airport by Month",</code> <br/>    <code>x = "Temperature", y = "Number of Days", fill = "Temperature") +</code> <br/> <code>theme_bw() +</code> <br/> <code>theme(plot.title = element_text(size = 16, face = "bold", hjust = .5),</code> <br/>    <code>panel.grid.major = element_line(color = "grey80")) +</code> <br/> <code>scale_fill_manual(values = c("steelblue2","brown1"),labels=c("&lt; 79 Degrees","&gt; 79 Degrees")) +</code> <br/> <code>facet_grid(~Month) +</code> <br/> <code>geom_vline(xintercept = 77.88, linetype = "dashed", size = 1.5, color = "black") +</code> <br/> <code>geom_text(x = 69, y = 10, label = "Mean = \n 77.88")</code> <br/> </span> </span></p>
 </div>
 </p>
 </div>
 <div id="plotlyHistogram" class="tabcontent">
 <p>
-Not yet available.
+<p>To make a histogram in plotly first load</p>
+<p><code>library(plotly)</code></p>
+<p>Then, use the function:</p>
+<p><code>plot_ly(dataName, x=~columnName, type="histogram")</code></p>
+<ul>
+<li><code>dataName</code> is the name of a data set</li>
+<li><code>columnName</code> must be the name of a column of quantitative data. R refers to this as a “numeric vector.”</li>
+<li><code>type="histogram"</code> tells the plot_ly(…) function to create a histogram.</li>
+</ul>
+<p>Visit <a href="https://plotly.com/r/histograms/">plotly.com/r/histograms</a> for more details.</p>
+<p><br/></p>
+<p><strong>Example Code</strong></p>
+<p>Hover your mouse over the example codes to learn more. Click on them to see what they create.</p>
+<p><em>Basic histogram</em></p>
+<a href="javascript:showhide('plotlyhist1')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> plot_ly <span class="tooltiprtext">An R function “plot_ly” from library(plotly) used to create any plotly plot.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality,  <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> x= <span class="tooltiprtext">The x= allows us to declare which column of the data set will become the x-axis of the histogram.</span> </span><span class="tooltipr"> ~Temp,   <span class="tooltiprtext">“Temp” is a quantitative variable (numeric vector) from the “airquality” dataset. The <code>~</code> is required before column names inside all plot_ly(…) commands.</span> </span><span class="tooltipr"> type=“histogram” <span class="tooltiprtext">This option tells the plot_ly(…) function what “type” of graph to make. In this case, a histogram.</span> </span><span class="tooltipr"> )<br />
+<span class="tooltiprtext">Closing parenthsis for the plot_ly function.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+</div>
+</a>
+<div id="plotlyhist1" style="display:none;">
+<div id="htmlwidget-822d225021c76c4060de" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-822d225021c76c4060de">{"x":{"visdat":{"964a189ee0f2":["function () ","plotlyVisDat"]},"cur_data":"964a189ee0f2","attrs":{"964a189ee0f2":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"yaxis":{"domain":[0,1],"automargin":true},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"type":"histogram","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<p><br/></p>
+<p><em>Change Color</em></p>
+<a href="javascript:showhide('plotlyhist3')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> plot_ly(airquality, x=~Temp, type=“histogram”,  <span class="tooltiprtext">This code was explained in the first example code.</span> </span><span class="tooltipr"> marker=list( <span class="tooltiprtext">this “list(…)” of options that will be specified will effect the bars of the histogram.</span> </span><span class="tooltipr"> color = “skyblue”,  <span class="tooltiprtext">this will change the color of the bars to skyblue.</span> </span><span class="tooltipr"> line = list(,  <span class="tooltiprtext">this opens a list of options to specify for the “lines” around the “markers.”</span> </span><span class="tooltipr"> color = “darkgray”,  <span class="tooltiprtext">this will change the color of the lines around the bars to darkgray.</span> </span><span class="tooltipr"> width = 2 <span class="tooltiprtext">this will change the width of the lines around the bars to 2 pixels. Too really see what this does, change it to something crazy like 10.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+</div>
+</a>
+<div id="plotlyhist3" style="display:none;">
+<div id="htmlwidget-2baf94c6b09c7e90e610" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2baf94c6b09c7e90e610">{"x":{"visdat":{"964a5a11a8e6":["function () ","plotlyVisDat"]},"cur_data":"964a5a11a8e6","attrs":{"964a5a11a8e6":{"x":{},"marker":{"color":"skyblue","line":{"color":"darkgray","width":2}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"yaxis":{"domain":[0,1],"automargin":true},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"marker":{"color":"skyblue","line":{"color":"darkgray","width":2}},"type":"histogram","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<p><br/></p>
+<p><em>Add Titles</em></p>
+<a href="javascript:showhide('plotlyhist2')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> plot_ly(airquality$Temp, type=“histogram”,  <span class="tooltiprtext">This code was explained in the first example code.</span> </span><span class="tooltipr"> marker=list( <span class="tooltiprtext">this “list(” of options that will be specified will effect the bars of the histogram.</span> </span><span class="tooltipr"> color = “skyblue”,  <span class="tooltiprtext">this will change the color of the bars to skyblue.</span> </span><span class="tooltipr"> line = list(,  <span class="tooltiprtext">this opens a list of options to specify for the “lines” around the “markers.”</span> </span><span class="tooltipr"> color = “darkgray”,  <span class="tooltiprtext">this will change the color of the lines around the bars to darkgray.</span> </span><span class="tooltipr"> width = 10 <span class="tooltiprtext">this will change the width of the lines around the bars to 10 pixels, which is rather large really. Using a width=2 is probably better.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span> </span><span class="tooltipr">  %&gt;% <span class="tooltiprtext">The pipe operator passes the completed plot_ly(…) code into the layout(…) function.</span> </span><br/><span class="tooltipr"> layout( <span class="tooltiprtext">The layout(…) function is used for specifying details about the axes and their labels.</span> </span><span class="tooltipr"> title=“La Guardia Airport Daily Mean Temperatures” <span class="tooltiprtext">This declares a main title for the top of the graph.</span> </span><span class="tooltipr"> xaxis=list( <span class="tooltiprtext">This declares a list of options to be specified for the xaxis. The same can be done for the yaxis(…).</span> </span><span class="tooltipr"> title=“Temperature in Degrees F” <span class="tooltiprtext">This declares a title underneath the x-axis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+</div>
+</a>
+<div id="plotlyhist2" style="display:none;">
+<div id="htmlwidget-3b8a414114908b3466bf" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3b8a414114908b3466bf">{"x":{"visdat":{"964a670110a2":["function () ","plotlyVisDat"]},"cur_data":"964a670110a2","attrs":{"964a670110a2":{"x":{},"marker":{"color":"skyblue","line":{"color":"darkgray","width":10}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"La Guardia Airport Daily Mean Temperatures","xaxis":{"domain":[0,1],"automargin":true,"title":"Temperature in Degrees F"},"yaxis":{"domain":[0,1],"automargin":true},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"marker":{"color":"skyblue","line":{"color":"darkgray","width":10}},"type":"histogram","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
 </p>
 </div>
 </div>
@@ -625,7 +692,7 @@ Not yet available.
 <div id="explanation" class="section level4">
 <h4>Explanation</h4>
 <div style="padding-left:125px;">
-<p>Histograms group data that are close to each other into “bins” (the vertical bars in the plot). The height of a bin is determined by the number of data points that are contained within the bin. For example, if we group together all the sections of the book of scripture known as the <a href="https://www.lds.org/scriptures/dc-testament/chron-order?lang=eng">Doctrine and Covenants</a> that occurred in a given year (Jan. 1st - Dec. 31st) then we get the following counts.</p>
+<p>Histograms group data that are close to each other into “bins” (the vertical bars in the plot). The height of a bin is determined by the number of data points that are contained within the bin. For example, if we group together all the sections of the book of scripture known as the <a href="https://www.lds.org/scriptures/dc-testament/chron-order?lang=eng">Doctrine and Covenants</a> that occurred in a given year (Jan. 1st - Dec. 31st) then we get the following counts.</p>
 <table>
 <thead>
 <tr class="header">
@@ -737,8 +804,8 @@ Not yet available.
 </tbody>
 </table>
 <p><span style="padding-left:30px; color:#a8a8a8; font-size:.8em;"> *Note that Section 138 occurred in 1918 and is removed from this example. </span></p>
-<p>In this example, each “bin” spans 365 days (Jan. 1 - Dec. 31 of each year). Since “dates” can be used as quantitative data, it makes sense to make a histogram of these data. (Remember, histograms are only for quantitative data.)</p>
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>In this example, each “bin” spans 365 days (Jan. 1 - Dec. 31 of each year). Since “dates” can be used as quantitative data, it makes sense to make a histogram of these data. (Remember, histograms are only for quantitative data.)</p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Notice in the bins above that the left edge of the bin is on the year the data corresponds with. The right edge of the bin lands on the following year. For example, the first bin has left edge on 1823 and right edge on 1824. Since there was one revelation in 1823, this bin has a height of 1. The bin that has 1831 on the left and 1832 on the right shows that 37 revelations occurred in 1831. It is powerful to notice the amount of revelations occurring around 1830, the year the <a href="https://www.lds.org/?lang=eng">Church of Jesus Christ of Latter-day Saints</a> was organized.</p>
 </div>
 <hr />
@@ -747,7 +814,7 @@ Not yet available.
 <div id="boxplots" class="section level3 tabset tabset-fade tabset-pills">
 <h3>Boxplots</h3>
 <div style="float:left;width:125px;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-10-1.png" width="96" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-13-1.png" width="96" /></p>
 </div>
 <p><strong>1 Quantitative Variable | 2+ Groups</strong></p>
 <div id="overview-1" class="section level4">
@@ -760,16 +827,9 @@ Not yet available.
 <div id="r-instructions-1" class="section level4">
 <h4>R Instructions</h4>
 <div style="padding-left:125px;">
+
 <div class="tab">
-<button class="tablinks" onclick="openTab(event, 'BaseBoxplot')">
-Base R
-</button>
-<button class="tablinks" onclick="openTab(event, 'ggplot2Boxplot')">
-ggplot2
-</button>
-<button class="tablinks" onclick="openTab(event, 'plotlyBoxplot')">
-plotly
-</button>
+<p><button class="tablinks" onclick="openTab(event, 'BaseBoxplot')">Base R</button> <button class="tablinks" onclick="openTab(event, 'ggplot2Boxplot')">ggplot2</button> <button class="tablinks" onclick="openTab(event, 'plotlyBoxplot')">plotly</button></p>
 </div>
 <div id="BaseBoxplot" class="tabcontent">
 <p>
@@ -784,6 +844,7 @@ plotly
 <li><code>...</code> implies there are many other options that can be given to the <code>boxplot()</code> function. Type <code>?boxplot</code> in your <strong>R Console</strong> for more details.</li>
 </ul>
 <p><strong>Example Code</strong></p>
+<p><em>Basic Single Boxplot</em></p>
 <a href="javascript:showhide('boxplot0')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> boxplot <span class="tooltiprtext">An R function “boxplot” used to create boxplots.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the airquality dataset.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">“Temp” is a quantitative variable (numeric vector) from the “airquality” dataset.</span> </span><span class="tooltipr"> )<br />
@@ -792,8 +853,10 @@ plotly
 </div>
 </a>
 <div id="boxplot0" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 </div>
+<p><br/></p>
+<p><em>More Useful… Basic Side-by-Side Boxplot</em></p>
 <a href="javascript:showhide('boxplot1')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> boxplot <span class="tooltiprtext">An R function “boxplot” used to create boxplots.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">“Temp” is a quantitative variable (numeric vector) from the “airquality” dataset.</span> </span><span class="tooltipr">  ~  <span class="tooltiprtext">The ~ is used to tell R that you want one boxplot of the quantitative variable (“Temp”) for each group found in the qualitative variable (“Month”).</span> </span><span class="tooltipr"> Month <span class="tooltiprtext">“Month” is a qualitative variable (in this case a “numeric vector” defining months by 5, 6, 7, 8, and 9) from the “airquality” dataset.</span> </span><span class="tooltipr"> , <br />
@@ -802,8 +865,10 @@ plotly
 </div>
 </a>
 <div id="boxplot1" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 </div>
+<p><br/></p>
+<p><em>Add Names under each Box</em></p>
 <a href="javascript:showhide('boxplot2a')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> boxplot <span class="tooltiprtext">An R function “boxplot” used to create boxplots.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">“Temp” is a quantitative variable (numeric vector) from the “airquality” dataset.</span> </span><span class="tooltipr">  ~  <span class="tooltiprtext">The ~ is used to tell R that you want one boxplot of the quantitative variable (“Temp”) for each group found in the qualitative variable (“Month”).</span> </span><span class="tooltipr"> Month <span class="tooltiprtext">“Month” is a qualitative variable (in this case a “numeric vector” defining months by 5, 6, 7, 8, and 9) from the “airquality” dataset.</span> </span><span class="tooltipr"> , <br />
@@ -813,8 +878,10 @@ plotly
 </div>
 </a>
 <div id="boxplot2a" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 </div>
+<p><br/></p>
+<p><em>Add Color and Labels</em></p>
 <a href="javascript:showhide('boxplot2')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> boxplot(Temp ~ Month, data=airquality <span class="tooltiprtext">This code was explained in the previous example code.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">The comma is used to separate each additional command to a function.</span> </span><span class="tooltipr"> xlab=“Month of the Year” <span class="tooltiprtext">xlab= stands for “x label.” Use it to specify the text to print on the plot under the x-axis. The desired text must always be contained in quotes.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">The comma is used to separate each additional command to a function.</span> </span><span class="tooltipr"> ylab=“Temperature” <span class="tooltiprtext">ylab= stands for “y label.” Use it to specify the text to print on the plot next to the y-axis. The desired text must always be contained in quotes.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">The comma is used to separate each additional command to a function.</span> </span><span class="tooltipr"> main=“La Guardia Airport Daily Temperatures” <span class="tooltiprtext">main= stands for the “main label” of the plot, which is placed at the top center of the plot. The desired text must always be contained in quotes.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">The comma is used to separate each additional command to a function.</span> </span><span class="tooltipr"> col=“wheat” <span class="tooltiprtext">col= stands for the “color” of the plot. The color name “wheat” is an available color in R. Type colors() in the R Console to see more options. The color name must always be placed in quotes.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
@@ -822,7 +889,7 @@ plotly
 </div>
 </a>
 <div id="boxplot2" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 </div>
 </p>
 </div>
@@ -842,8 +909,7 @@ plotly
 </ul>
 <p><br></p>
 <p><strong>Example Code</strong></p>
-<p>Hover your mouse over the example codes to learn more.</p>
-<p>Click to see what they do.</p>
+<p><em>Basic Single Boxplot</em></p>
 <a href="javascript:showhide('box1ggplot')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> ggplot <span class="tooltiprtext">An R function “ggplot” used to create a framework for a graphic that will have elements added to it with the <code>+</code> sign.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">The comma allows us to specify optional commands to the function. The space after the comma is not required. It just looks nice.</span> </span><span class="tooltipr"> aes( <span class="tooltiprtext">The <code>aes</code> or “aesthetics” function allows you to tell the ggplot how it should appear. This includes things like what the y-axis should become.</span> </span><span class="tooltipr"> y=Temp <span class="tooltiprtext">“y=” declares which variable will become the y-axis of the graphic.</span> </span><span class="tooltipr"> )<br />
@@ -853,8 +919,9 @@ plotly
 </div>
 </a>
 <div id="box1ggplot" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 </div>
+<p><br/> <em>Side-by-side Boxplot and Color Change</em></p>
 <a href="javascript:showhide('box2ggplot')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> ggplot <span class="tooltiprtext">An R function “ggplot” used to create a framework for a graphic that will have elements added to it with the <code>+</code> sign.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">The comma allows us to specify optional commands to the function. The space after the comma is not required. It just looks nice.</span> </span><span class="tooltipr"> aes( <span class="tooltiprtext">The <code>aes</code> or “aesthetics” function allows you to tell the ggplot how it should appear. This includes things like what the x-axis or y-axis should become.</span> </span><span class="tooltipr"> x=factor(Month),  <span class="tooltiprtext">“x=” declares which variable will become the x-axis of the graphic. Since Month is “numeric” we must use “factor(Month)” instead of just “Month”.</span> </span><span class="tooltipr"> y=Temp <span class="tooltiprtext">“y=” declares which variable will become the y-axis of the graphic.</span> </span><span class="tooltipr"> )<br />
@@ -865,9 +932,10 @@ plotly
 </div>
 </a>
 <div id="box2ggplot" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 </div>
-<a href="javascript:showhide('box3ggplot')">
+<p><br/></p>
+<em>Add Labels</em> <a href="javascript:showhide('box3ggplot')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> ggplot <span class="tooltiprtext">An R function “ggplot” used to create a framework for a graphic that will have elements added to it with the <code>+</code> sign.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">The comma allows us to specify optional commands to the function. The space after the comma is not required. It just looks nice.</span> </span><span class="tooltipr"> aes( <span class="tooltiprtext">The <code>aes</code> or “aesthetics” function allows you to tell the ggplot how it should appear. This includes things like what the x-axis or y-axis should become.</span> </span><span class="tooltipr"> x=factor(Month),  <span class="tooltiprtext">“x=” declares which variable will become the x-axis of the graphic. Since Month is “numeric” we must use “factor(Month)” instead of just “Month”.</span> </span><span class="tooltipr"> y=Temp <span class="tooltiprtext">“y=” declares which variable will become the y-axis of the graphic.</span> </span><span class="tooltipr"> )<br />
 <span class="tooltiprtext">Closing parenthsis for the aes function.</span> </span><span class="tooltipr"> )<br />
@@ -878,23 +946,73 @@ plotly
 </div>
 </a>
 <div id="box3ggplot" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 </div>
 <p><br/></p>
 <p><strong>Gallery</strong></p>
+<p>See what past students have done…</p>
 <p><a href="javascript:showhide('boxplotgalleryggplot')">Click to view.</a></p>
 <div id="boxplotgalleryggplot" style="display:none;">
 <p>Hover to see code.</p>
-<p><span class="tooltipgallery"> <img class="gallerygraphs" src="./Images/boxplotggplotgallery1.png"><br />
-<span class="tooltipgallerytext"> <code>ggplot(data = mtcars, aes(x = as.factor(cyl), y = mpg, fill=as.factor(cyl))) +</code> <br/> <code>geom_boxplot()  +</code> <br/> <code>stat_summary(fun.y = mean, geom = &quot;errorbar&quot;, aes(ymax = ..y.., ymin = ..y..),</code> <br/>    <code>width = .75, linetype = &quot;dashed&quot;, color=&quot;firebrick&quot;) +</code> <br/> <code>theme_light() +</code> <br/> <code>theme(panel.grid.major=element_blank()) +</code> <br/> <code>scale_fill_brewer(palette=&quot;Dark2&quot;) +</code> <br/> <code>geom_jitter(width=0.1, height=0) +</code> <br/> <code>labs(title = &quot;Miles Per Gallon Based on Cylinders&quot;,</code> <br/>    <code>x=&quot;Number of Cylinders&quot;,</code> <br/>    <code>fill=&quot;Cylinders&quot;,</code> <br/>    <code>y=&quot;Miles Per Gallon&quot;)</code> <br/> </span> </span></p>
-<p><span class="tooltipgallery"> <img class="gallerygraphs" src="./Images/boxplotggplotgallery2.png"><br />
-<span class="tooltipgallerytext"> <code>ggplot(data = ToothGrowth, aes(x = as.factor(dose), y = len, fill=as.factor(dose))) +</code> <br/> <code>geom_boxplot( )  +</code> <br/> <code>facet_wrap(~supp) +</code> <br/> <code>theme_bw() +</code> <br/> <code>scale_fill_manual(values=c(&quot;#999999&quot;, &quot;#E69F00&quot;, &quot;#56B4E9&quot;)) +</code> <br/> <code>geom_jitter(width=0.1, height=0) +</code> <br/> <code>labs(title = &quot;Tooth Length Based on Doses</code> <br/>    <code>According to Supplement Type&quot;,</code> <br/>    <code>fill=&quot;Doses&quot;,</code> <br/>    <code>x=&quot;Dosage Amount(mg)&quot;,</code> <br/>    <code>y=&quot;Tooth Length&quot; )</code> <br/> </span> </span></p>
+<p><span class="tooltipgallery"> <img class="gallerygraphs" src="Images/boxplotggplotgallery1.png"><br />
+<span class="tooltipgallerytext"> <code>ggplot(data = mtcars, aes(x = as.factor(cyl), y = mpg, fill=as.factor(cyl))) +</code> <br/> <code>geom_boxplot()  +</code> <br/> <code>stat_summary(fun.y = mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..),</code> <br/>    <code>width = .75, linetype = "dashed", color="firebrick") +</code> <br/> <code>theme_light() +</code> <br/> <code>theme(panel.grid.major=element_blank()) +</code> <br/> <code>scale_fill_brewer(palette="Dark2") +</code> <br/> <code>geom_jitter(width=0.1, height=0) +</code> <br/> <code>labs(title = "Miles Per Gallon Based on Cylinders",</code> <br/>    <code>x="Number of Cylinders",</code> <br/>    <code>fill="Cylinders",</code> <br/>    <code>y="Miles Per Gallon")</code> <br/> </span> </span></p>
+<p><span class="tooltipgallery"> <img class="gallerygraphs" src="Images/boxplotggplotgallery2.png"><br />
+<span class="tooltipgallerytext"> <code>ggplot(data = ToothGrowth, aes(x = as.factor(dose), y = len, fill=as.factor(dose))) +</code> <br/> <code>geom_boxplot( )  +</code> <br/> <code>facet_wrap(~supp) +</code> <br/> <code>theme_bw() +</code> <br/> <code>scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +</code> <br/> <code>geom_jitter(width=0.1, height=0) +</code> <br/> <code>labs(title = "Tooth Length Based on Doses</code> <br/>    <code>According to Supplement Type",</code> <br/>    <code>fill="Doses",</code> <br/>    <code>x="Dosage Amount(mg)",</code> <br/>    <code>y="Tooth Length" )</code> <br/> </span> </span></p>
 </div>
 </p>
 </div>
 <div id="plotlyBoxplot" class="tabcontent">
 <p>
-Not yet available.
+<p>To make a histogram in plotly first load</p>
+<p><code>library(plotly)</code></p>
+<p>Then, use the function:</p>
+<p><code>plot_ly(dataName, y=~columnNameY, x=~columnNameX, type="box")</code></p>
+<ul>
+<li><code>dataName</code> is the name of a data set</li>
+<li><code>columnNameY</code> must be the name of a column of quantitative data. R refers to this as a “numeric vector.” This will become the y-axis of the plot.</li>
+<li><code>columnNameX</code> must be the name of a column of qualitative data. This will provide the “groups” forming each individual box in the boxplot.</li>
+<li><code>type="box"</code> tells the plot_ly(…) function to create a boxplot.</li>
+</ul>
+<p>Visit <a href="https://plotly.com/r/box-plots/">plotly.com/r/box-plots</a> for more details.</p>
+<p><br/></p>
+<p><strong>Example Code</strong></p>
+<p>Hover your mouse over the example codes to learn more. Click on them to see what they create.</p>
+<p><em>Basic Boxplot</em></p>
+<a href="javascript:showhide('plotlybox1')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> plot_ly <span class="tooltiprtext">An R function “plot_ly” from library(plotly) used to create any plotly plot.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality,  <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> y= <span class="tooltiprtext">The y= allows us to declare which column of the data set will become the y-axis of the boxplot. In other words, the quantitative data we are interested in studying for each group.</span> </span><span class="tooltipr"> ~Temp,   <span class="tooltiprtext">“Temp” is a quantitative variable (numeric vector) from the “airquality” dataset. The <code>~</code> is required before column names inside all plot_ly(…) commands.</span> </span><span class="tooltipr"> x= <span class="tooltiprtext">The x= allows us to declare which column of the data set will become the x-axis of the boxplot. In other words, the “groups” forming each separate box in the boxplot.</span> </span><span class="tooltipr"> ~as.factor(Month),   <span class="tooltiprtext">since “Month” is a quantitative variable (numeric vector) from the “airquality” dataset we have to change it to a “factor” which forces R to treat it as a qualitative (groups) variable. The <code>~</code> is required before column names inside all plot_ly(…) commands.</span> </span><span class="tooltipr"> type=“box” <span class="tooltiprtext">This option tells the plot_ly(…) function what “type” of graph to make. In this case, a boxplot.</span> </span><span class="tooltipr"> )<br />
+<span class="tooltiprtext">Closing parenthsis for the plot_ly function.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+</div>
+</a>
+<div id="plotlybox1" style="display:none;">
+<div id="htmlwidget-e5d0ca47a6e8790c854c" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e5d0ca47a6e8790c854c">{"x":{"visdat":{"964a61eea788":["function () ","plotlyVisDat"]},"cur_data":"964a61eea788","attrs":{"964a61eea788":{"y":{},"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"as.factor(Month)","type":"category","categoryorder":"array","categoryarray":["5","6","7","8","9"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(31,119,180,0.5)","y":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"x":["5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9"],"type":"box","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<p><br/></p>
+<p><em>Change Color</em></p>
+<a href="javascript:showhide('plotlybox3')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> plot_ly(airquality, y=~Temp, x=~as.factor(Month), type=“box”,  <span class="tooltiprtext">This code was explained in the first example code.</span> </span><span class="tooltipr"> fillcolor=“skyblue”,  <span class="tooltiprtext">this changes the fill color of the boxes in the boxplot to the color specified, in this case “skyblue.”</span> </span><span class="tooltipr"> line=list(color=“darkgray”, width=3),  <span class="tooltiprtext">this “list(…)” of options that will be specified will effect the edges of the boxes in the boxplot. We are changing their color to “darkgray” and their width to 3 pixels wide.</span> </span><span class="tooltipr"> marker=list( <span class="tooltiprtext">this “list(…)” of options that will be specified will effect the outlying dots shown in the boxplots beyond the “fences” of each box.</span> </span><span class="tooltipr"> color = “orange”,  <span class="tooltiprtext">this will change the color of the dots to orange.</span> </span><span class="tooltipr"> line = list(,  <span class="tooltiprtext">this opens a list of options to specify for the “lines” around the “markers.”</span> </span><span class="tooltipr"> color = “red”,  <span class="tooltiprtext">this will change the color of the lines around the outlier dots to red.</span> </span><span class="tooltipr"> width = 1 <span class="tooltiprtext">this will change the width of the lines around the outlier dots to 1 pixel.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+</div>
+</a>
+<div id="plotlybox3" style="display:none;">
+<div id="htmlwidget-c55514fb029a029a9be6" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c55514fb029a029a9be6">{"x":{"visdat":{"964a5c324411":["function () ","plotlyVisDat"]},"cur_data":"964a5c324411","attrs":{"964a5c324411":{"y":{},"x":{},"fillcolor":"skyblue","line":{"color":"darkgray","width":3},"marker":{"color":"orange","line":{"color":"red","width":1}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"as.factor(Month)","type":"category","categoryorder":"array","categoryarray":["5","6","7","8","9"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"skyblue","y":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"x":["5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9"],"line":{"color":"darkgray","width":3},"marker":{"color":"orange","line":{"color":"red","width":1}},"type":"box","name":"skyblue","xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<p><br/></p>
+<p><em>Add Titles</em></p>
+<a href="javascript:showhide('plotlybox2')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> plot_ly(airquality, y=~Temp, x=~as.factor(Month), type=“box”, fillcolor=“skyblue”, line=list(color=“darkgray”, width=3), marker = list(color=“orange”, line = list(color=“red”, width=1)))  <span class="tooltiprtext">This code was explained in the above example code.</span> </span><span class="tooltipr"> %&gt;% <span class="tooltiprtext">the pipe operator sends the completed plot_ly(…) code into the layout function.</span> </span><br/><span class="tooltipr"> layout( <span class="tooltiprtext">The layout(…) function is used for specifying details about the axes and their labels.</span> </span><span class="tooltipr"> title=“La Guardia Airport Daily Mean Temperatures” <span class="tooltiprtext">This declares a main title for the top of the graph.</span> </span><span class="tooltipr"> xaxis=list( <span class="tooltiprtext">This declares a list of options to be specified for the xaxis. The same can be done for the yaxis(…).</span> </span><span class="tooltipr"> title=“Month of the Year” <span class="tooltiprtext">This declares a title underneath the x-axis.</span> </span><span class="tooltipr"> ),  <span class="tooltiprtext">Functions always end with a closing parenthesis.</span> </span><span class="tooltipr"> yaxis=list( <span class="tooltiprtext">This declares a list of options to be specified for the y-axis.</span> </span><span class="tooltipr"> title=“Temperature in Degrees F” <span class="tooltiprtext">This declares a title beside the y-axis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+</div>
+</a>
+<div id="plotlybox2" style="display:none;">
+<div id="htmlwidget-8a4afea9a903ca2bdba1" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8a4afea9a903ca2bdba1">{"x":{"visdat":{"964a31148501":["function () ","plotlyVisDat"]},"cur_data":"964a31148501","attrs":{"964a31148501":{"y":{},"x":{},"fillcolor":"skyblue","line":{"color":"darkgray","width":3},"marker":{"color":"orange","line":{"color":"red","width":1}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"La Guardia Airport Daily Mean Temperatures","yaxis":{"domain":[0,1],"automargin":true,"title":"Temperature in Degrees F"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Month of the Year","type":"category","categoryorder":"array","categoryarray":["5","6","7","8","9"]},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"skyblue","y":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"x":["5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9"],"line":{"color":"darkgray","width":3},"marker":{"color":"orange","line":{"color":"red","width":1}},"type":"box","name":"skyblue","xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
 </p>
 </div>
 </div>
@@ -921,7 +1039,7 @@ Not yet available.
 <div id="dot-plots" class="section level3 tabset tabset-fade tabset-pills">
 <h3>Dot Plots</h3>
 <div style="float:left;width:125px;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-18-1.png" width="96" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-24-1.png" width="96" /></p>
 </div>
 <p><strong>1 Quantitative Variable | 2+ Groups</strong></p>
 <div id="overview-2" class="section level4">
@@ -934,16 +1052,9 @@ Not yet available.
 <div id="r-instructions-2" class="section level4">
 <h4>R Instructions</h4>
 <div style="padding-left:125px;">
+
 <div class="tab">
-<button class="tablinks" onclick="openTab(event, 'BaseDotplot')">
-Base R
-</button>
-<button class="tablinks" onclick="openTab(event, 'ggplot2Dotplot')">
-ggplot2
-</button>
-<button class="tablinks" onclick="openTab(event, 'plotlyDotplot')">
-plotly
-</button>
+<p><button class="tablinks" onclick="openTab(event, 'BaseDotplot')">Base R</button> <button class="tablinks" onclick="openTab(event, 'ggplot2Dotplot')">ggplot2</button> <button class="tablinks" onclick="openTab(event, 'plotlyDotplot')">plotly</button></p>
 </div>
 <div id="BaseDotplot" class="tabcontent">
 <p>
@@ -968,7 +1079,7 @@ plotly
 </div>
 </a>
 <div id="dotplot0" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 </div>
 <!-- Example Code 2 -->
 <a href="javascript:showhide('dotplot1')">
@@ -981,7 +1092,7 @@ plotly
 </div>
 </a>
 <div id="dotplot1" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 </div>
 <a href="javascript:showhide('dotplot2')">
 <div class="hoverchunk">
@@ -993,7 +1104,7 @@ plotly
 </div>
 </a>
 <div id="dotplot2" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 </div>
 </p>
 </div>
@@ -1023,7 +1134,7 @@ plotly
 </div>
 </a>
 <div id="dot1ggplot" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 </div>
 <a href="javascript:showhide('dot2ggplot')">
 <div class="hoverchunk">
@@ -1035,7 +1146,7 @@ plotly
 </div>
 </a>
 <div id="dot2ggplot" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 </div>
 <a href="javascript:showhide('dot3ggplot')">
 <div class="hoverchunk">
@@ -1048,7 +1159,7 @@ plotly
 </div>
 </a>
 <div id="dot3ggplot" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 </div>
 </p>
 </div>
@@ -1064,7 +1175,7 @@ Not yet available.
 <div id="scatterplots" class="section level3 tabset tabset-fade tabset-pills">
 <h3>Scatterplots</h3>
 <div style="float:left;width:125px;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-25-1.png" width="96" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-31-1.png" width="96" /></p>
 </div>
 <p><strong>2 Quantitative Variables</strong></p>
 <div id="overview-3" class="section level4">
@@ -1077,16 +1188,9 @@ Not yet available.
 <div id="r-instructions-3" class="section level4">
 <h4>R Instructions</h4>
 <div style="padding-left:125px;">
+
 <div class="tab">
-<button class="tablinks" onclick="openTab(event, 'BaseScatterplot')">
-Base R
-</button>
-<button class="tablinks" onclick="openTab(event, 'ggplotScatterplot')">
-ggplot2
-</button>
-<button class="tablinks" onclick="openTab(event, 'plotlyScatterplot')">
-plotly
-</button>
+<p><button class="tablinks" onclick="openTab(event, 'BaseScatterplot')">Base R</button> <button class="tablinks" onclick="openTab(event, 'ggplotScatterplot')">ggplot2</button> <button class="tablinks" onclick="openTab(event, 'plotlyScatterplot')">plotly</button></p>
 </div>
 <div id="BaseScatterplot" class="tabcontent">
 <p>
@@ -1110,7 +1214,7 @@ plotly
 </div>
 </a>
 <div id="scatterplot1" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 </div>
 <!-- Example Code 2 -->
 <a href="javascript:showhide('scatterplot2')">
@@ -1122,7 +1226,7 @@ plotly
 </div>
 </a>
 <div id="scatterplot2" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 </div>
 <a href="javascript:showhide('scatterplot3')">
 <div class="hoverchunk">
@@ -1133,10 +1237,10 @@ plotly
 </div>
 </a>
 <div id="scatterplot3" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 </div>
 <p><strong>pch Options</strong></p>
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 </p>
 </div>
 <div id="ggplotScatterplot" class="tabcontent">
@@ -1166,7 +1270,7 @@ plotly
 </div>
 </a>
 <div id="scatter1ggplot" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
 </div>
 <a href="javascript:showhide('scatter2ggplot')">
 <div class="hoverchunk">
@@ -1180,7 +1284,7 @@ plotly
 </div>
 </a>
 <div id="scatter2ggplot" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 </div>
 </p>
 </div>
@@ -1196,21 +1300,21 @@ plotly
 <li><code>dataColumn2</code> is a column of data from your dataset that is quantitative and will be used as the response variable.</li>
 </ul>
 <p><strong>Example Code</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_ly</span>(airquality, <span class="dt">x=</span> <span class="op">~</span>Wind, <span class="dt">y=</span> <span class="op">~</span>Temp)</code></pre></div>
-<div id="htmlwidget-5a9b65e46f3e1baf03ea" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5a9b65e46f3e1baf03ea">{"x":{"visdat":{"1cd04daf9753":["function () ","plotlyVisDat"]},"cur_data":"1cd04daf9753","attrs":{"1cd04daf9753":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Wind"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"x":[7.4,8,12.6,11.5,14.3,14.9,8.6,13.8,20.1,8.6,6.9,9.7,9.2,10.9,13.2,11.5,12,18.4,11.5,9.7,9.7,16.6,9.7,12,16.6,14.9,8,12,14.9,5.7,7.4,8.6,9.7,16.1,9.2,8.6,14.3,9.7,6.9,13.8,11.5,10.9,9.2,8,13.8,11.5,14.9,20.7,9.2,11.5,10.3,6.3,1.7,4.6,6.3,8,8,10.3,11.5,14.9,8,4.1,9.2,9.2,10.9,4.6,10.9,5.1,6.3,5.7,7.4,8.6,14.3,14.9,14.9,14.3,6.9,10.3,6.3,5.1,11.5,6.9,9.7,11.5,8.6,8,8.6,12,7.4,7.4,7.4,9.2,6.9,13.8,7.4,6.9,7.4,4.6,4,10.3,8,8.6,11.5,11.5,11.5,9.7,11.5,10.3,6.3,7.4,10.9,10.3,15.5,14.3,12.6,9.7,3.4,8,5.7,9.7,2.3,6.3,6.3,6.9,5.1,2.8,4.6,7.4,15.5,10.9,10.3,10.9,9.7,14.9,15.5,6.3,10.9,11.5,6.9,13.8,10.3,10.3,8,12.6,9.2,10.3,10.3,16.6,6.9,13.2,14.3,8,11.5],"y":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"type":"scatter","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_ly</span>(KidsFeet, 
-        <span class="dt">x=</span> <span class="op">~</span>length, 
-        <span class="dt">y=</span> <span class="op">~</span>width, 
-        <span class="dt">color=</span> <span class="op">~</span>sex, 
-        <span class="dt">size=</span> <span class="op">~</span>birthmonth, 
-        <span class="dt">text=</span> <span class="op">~</span><span class="kw">paste</span>(<span class="st">&quot;Name:&quot;</span>, name, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="st">&quot;Birth-Month:&quot;</span>, birthmonth),
-        <span class="dt">colors=</span><span class="kw">c</span>(<span class="st">&quot;skyblue&quot;</span>,<span class="st">&quot;hotpink&quot;</span>)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">layout</span>(<span class="dt">title=</span><span class="st">&quot;KidsFeet dataset&quot;</span>, 
-         <span class="dt">xaxis=</span><span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;Length of the longer foot in cm&quot;</span>),
-         <span class="dt">yaxis=</span><span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;Width of the longer foot in cm&quot;</span>))</code></pre></div>
-<div id="htmlwidget-476d5b6b56fb110dfbaf" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-476d5b6b56fb110dfbaf">{"x":{"visdat":{"1cd0249da222":["function () ","plotlyVisDat"]},"cur_data":"1cd0249da222","attrs":{"1cd0249da222":{"x":{},"y":{},"text":{},"color":{},"size":{},"colors":["skyblue","hotpink"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"KidsFeet dataset","xaxis":{"domain":[0,1],"automargin":true,"title":"Length of the longer foot in cm"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Width of the longer foot in cm"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"x":[24.4,25.4,24.5,25.2,25.1,25.7,26.1,22.9,27.5,24.8,26.1,27,24,24.4,27.1,25.5,24.2,23.9,23.6,24.7],"y":[8.4,8.8,9.7,9.8,8.9,9.7,9.6,8.8,9.8,8.9,9.1,9.8,9.2,8.6,9.4,9.5,8.9,9.3,9,8.6],"text":["Name: David <br /> Birth-Month: 5","Name: Lars <br /> Birth-Month: 10","Name: Zach <br /> Birth-Month: 12","Name: Josh <br /> Birth-Month: 1","Name: Lang <br /> Birth-Month: 2","Name: Scotty <br /> Birth-Month: 3","Name: Edward <br /> Birth-Month: 2","Name: Damon <br /> Birth-Month: 9","Name: Mark <br /> Birth-Month: 9","Name: Ray <br /> Birth-Month: 3","Name: Cal <br /> Birth-Month: 8","Name: Cam <br /> Birth-Month: 3","Name: Andy <br /> Birth-Month: 6","Name: Josh <br /> Birth-Month: 7","Name: Glen <br /> Birth-Month: 7","Name: David <br /> Birth-Month: 12","Name: Mike <br /> Birth-Month: 11","Name: Dwayne <br /> Birth-Month: 8","Name: Dylan <br /> Birth-Month: 4","Name: Peter <br /> Birth-Month: 4"],"type":"scatter","mode":"markers","name":"B","marker":{"color":"rgba(135,206,235,1)","size":[42.7272727272727,83.6363636363636,100,10,18.1818181818182,26.3636363636364,18.1818181818182,75.4545454545455,75.4545454545455,26.3636363636364,67.2727272727273,26.3636363636364,50.9090909090909,59.0909090909091,59.0909090909091,100,91.8181818181818,67.2727272727273,34.5454545454545,34.5454545454545],"sizemode":"area","line":{"color":"rgba(135,206,235,1)"}},"textfont":{"color":"rgba(135,206,235,1)","size":[42.7272727272727,83.6363636363636,100,10,18.1818181818182,26.3636363636364,18.1818181818182,75.4545454545455,75.4545454545455,26.3636363636364,67.2727272727273,26.3636363636364,50.9090909090909,59.0909090909091,59.0909090909091,100,91.8181818181818,67.2727272727273,34.5454545454545,34.5454545454545]},"error_y":{"color":"rgba(135,206,235,1)","width":[]},"error_x":{"color":"rgba(135,206,235,1)","width":[]},"line":{"color":"rgba(135,206,235,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[23,23.6,26,23.7,24,24.7,26.7,25.5,24,24.5,24.2,26.1,24,22.5,24.5,22.9,26,21.6,24.6],"y":[8.8,9.3,9.3,7.9,8.7,8.8,9,9.5,8.3,9,8.1,9.5,9.3,8.6,8.6,8.5,9,7.9,8.8],"text":["Name: Caitlin <br /> Birth-Month: 6","Name: Eleanor <br /> Birth-Month: 5","Name: Julie <br /> Birth-Month: 11","Name: Kate <br /> Birth-Month: 4","Name: Caroline <br /> Birth-Month: 12","Name: Maggie <br /> Birth-Month: 3","Name: Lee <br /> Birth-Month: 6","Name: Heather <br /> Birth-Month: 3","Name: Laura <br /> Birth-Month: 9","Name: Erica <br /> Birth-Month: 9","Name: Peggy <br /> Birth-Month: 10","Name: Abby <br /> Birth-Month: 2","Name: Danielle <br /> Birth-Month: 6","Name: Caitlin <br /> Birth-Month: 7","Name: Leigh <br /> Birth-Month: 3","Name: Hannah <br /> Birth-Month: 3","Name: Teshanna <br /> Birth-Month: 3","Name: Hayley <br /> Birth-Month: 1","Name: Alisha <br /> Birth-Month: 9"],"type":"scatter","mode":"markers","name":"G","marker":{"color":"rgba(255,105,180,1)","size":[50.9090909090909,42.7272727272727,91.8181818181818,34.5454545454545,100,26.3636363636364,50.9090909090909,26.3636363636364,75.4545454545455,75.4545454545455,83.6363636363636,18.1818181818182,50.9090909090909,59.0909090909091,26.3636363636364,26.3636363636364,26.3636363636364,10,75.4545454545455],"sizemode":"area","line":{"color":"rgba(255,105,180,1)"}},"textfont":{"color":"rgba(255,105,180,1)","size":[50.9090909090909,42.7272727272727,91.8181818181818,34.5454545454545,100,26.3636363636364,50.9090909090909,26.3636363636364,75.4545454545455,75.4545454545455,83.6363636363636,18.1818181818182,50.9090909090909,59.0909090909091,26.3636363636364,26.3636363636364,26.3636363636364,10,75.4545454545455]},"error_y":{"color":"rgba(255,105,180,1)","width":[]},"error_x":{"color":"rgba(255,105,180,1)","width":[]},"line":{"color":"rgba(255,105,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">plot_ly</span>(airquality, <span class="dt">x=</span> <span class="op">~</span>Wind, <span class="dt">y=</span> <span class="op">~</span>Temp)</span></code></pre></div>
+<div id="htmlwidget-cb845c60d3b21ecaccfe" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cb845c60d3b21ecaccfe">{"x":{"visdat":{"964a641087f4":["function () ","plotlyVisDat"]},"cur_data":"964a641087f4","attrs":{"964a641087f4":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Wind"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[7.4,8,12.6,11.5,14.3,14.9,8.6,13.8,20.1,8.6,6.9,9.7,9.2,10.9,13.2,11.5,12,18.4,11.5,9.7,9.7,16.6,9.7,12,16.6,14.9,8,12,14.9,5.7,7.4,8.6,9.7,16.1,9.2,8.6,14.3,9.7,6.9,13.8,11.5,10.9,9.2,8,13.8,11.5,14.9,20.7,9.2,11.5,10.3,6.3,1.7,4.6,6.3,8,8,10.3,11.5,14.9,8,4.1,9.2,9.2,10.9,4.6,10.9,5.1,6.3,5.7,7.4,8.6,14.3,14.9,14.9,14.3,6.9,10.3,6.3,5.1,11.5,6.9,9.7,11.5,8.6,8,8.6,12,7.4,7.4,7.4,9.2,6.9,13.8,7.4,6.9,7.4,4.6,4,10.3,8,8.6,11.5,11.5,11.5,9.7,11.5,10.3,6.3,7.4,10.9,10.3,15.5,14.3,12.6,9.7,3.4,8,5.7,9.7,2.3,6.3,6.3,6.9,5.1,2.8,4.6,7.4,15.5,10.9,10.3,10.9,9.7,14.9,15.5,6.3,10.9,11.5,6.9,13.8,10.3,10.3,8,12.6,9.2,10.3,10.3,16.6,6.9,13.2,14.3,8,11.5],"y":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"type":"scatter","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">plot_ly</span>(KidsFeet, </span>
+<span id="cb2-2"><a href="#cb2-2"></a>        <span class="dt">x=</span> <span class="op">~</span>length, </span>
+<span id="cb2-3"><a href="#cb2-3"></a>        <span class="dt">y=</span> <span class="op">~</span>width, </span>
+<span id="cb2-4"><a href="#cb2-4"></a>        <span class="dt">color=</span> <span class="op">~</span>sex, </span>
+<span id="cb2-5"><a href="#cb2-5"></a>        <span class="dt">size=</span> <span class="op">~</span>birthmonth, </span>
+<span id="cb2-6"><a href="#cb2-6"></a>        <span class="dt">text=</span> <span class="op">~</span><span class="kw">paste</span>(<span class="st">&quot;Name:&quot;</span>, name, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="st">&quot;Birth-Month:&quot;</span>, birthmonth),</span>
+<span id="cb2-7"><a href="#cb2-7"></a>        <span class="dt">colors=</span><span class="kw">c</span>(<span class="st">&quot;skyblue&quot;</span>,<span class="st">&quot;hotpink&quot;</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="st">  </span><span class="kw">layout</span>(<span class="dt">title=</span><span class="st">&quot;KidsFeet dataset&quot;</span>, </span>
+<span id="cb2-9"><a href="#cb2-9"></a>         <span class="dt">xaxis=</span><span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;Length of the longer foot in cm&quot;</span>),</span>
+<span id="cb2-10"><a href="#cb2-10"></a>         <span class="dt">yaxis=</span><span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;Width of the longer foot in cm&quot;</span>))</span></code></pre></div>
+<div id="htmlwidget-6ddda4db01cb72e29b8e" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6ddda4db01cb72e29b8e">{"x":{"visdat":{"964a657ecf69":["function () ","plotlyVisDat"]},"cur_data":"964a657ecf69","attrs":{"964a657ecf69":{"x":{},"y":{},"text":{},"color":{},"size":{},"colors":["skyblue","hotpink"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"KidsFeet dataset","xaxis":{"domain":[0,1],"automargin":true,"title":"Length of the longer foot in cm"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Width of the longer foot in cm"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[24.4,25.4,24.5,25.2,25.1,25.7,26.1,22.9,27.5,24.8,26.1,27,24,24.4,27.1,25.5,24.2,23.9,23.6,24.7],"y":[8.4,8.8,9.7,9.8,8.9,9.7,9.6,8.8,9.8,8.9,9.1,9.8,9.2,8.6,9.4,9.5,8.9,9.3,9,8.6],"text":["Name: David <br /> Birth-Month: 5","Name: Lars <br /> Birth-Month: 10","Name: Zach <br /> Birth-Month: 12","Name: Josh <br /> Birth-Month: 1","Name: Lang <br /> Birth-Month: 2","Name: Scotty <br /> Birth-Month: 3","Name: Edward <br /> Birth-Month: 2","Name: Damon <br /> Birth-Month: 9","Name: Mark <br /> Birth-Month: 9","Name: Ray <br /> Birth-Month: 3","Name: Cal <br /> Birth-Month: 8","Name: Cam <br /> Birth-Month: 3","Name: Andy <br /> Birth-Month: 6","Name: Josh <br /> Birth-Month: 7","Name: Glen <br /> Birth-Month: 7","Name: David <br /> Birth-Month: 12","Name: Mike <br /> Birth-Month: 11","Name: Dwayne <br /> Birth-Month: 8","Name: Dylan <br /> Birth-Month: 4","Name: Peter <br /> Birth-Month: 4"],"type":"scatter","mode":"markers","name":"B","marker":{"color":"rgba(135,206,235,1)","size":[42.7272727272727,83.6363636363636,100,10,18.1818181818182,26.3636363636364,18.1818181818182,75.4545454545455,75.4545454545455,26.3636363636364,67.2727272727273,26.3636363636364,50.9090909090909,59.0909090909091,59.0909090909091,100,91.8181818181818,67.2727272727273,34.5454545454545,34.5454545454545],"sizemode":"area","line":{"color":"rgba(135,206,235,1)"}},"textfont":{"color":"rgba(135,206,235,1)","size":[42.7272727272727,83.6363636363636,100,10,18.1818181818182,26.3636363636364,18.1818181818182,75.4545454545455,75.4545454545455,26.3636363636364,67.2727272727273,26.3636363636364,50.9090909090909,59.0909090909091,59.0909090909091,100,91.8181818181818,67.2727272727273,34.5454545454545,34.5454545454545]},"error_y":{"color":"rgba(135,206,235,1)","width":[]},"error_x":{"color":"rgba(135,206,235,1)","width":[]},"line":{"color":"rgba(135,206,235,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[23,23.6,26,23.7,24,24.7,26.7,25.5,24,24.5,24.2,26.1,24,22.5,24.5,22.9,26,21.6,24.6],"y":[8.8,9.3,9.3,7.9,8.7,8.8,9,9.5,8.3,9,8.1,9.5,9.3,8.6,8.6,8.5,9,7.9,8.8],"text":["Name: Caitlin <br /> Birth-Month: 6","Name: Eleanor <br /> Birth-Month: 5","Name: Julie <br /> Birth-Month: 11","Name: Kate <br /> Birth-Month: 4","Name: Caroline <br /> Birth-Month: 12","Name: Maggie <br /> Birth-Month: 3","Name: Lee <br /> Birth-Month: 6","Name: Heather <br /> Birth-Month: 3","Name: Laura <br /> Birth-Month: 9","Name: Erica <br /> Birth-Month: 9","Name: Peggy <br /> Birth-Month: 10","Name: Abby <br /> Birth-Month: 2","Name: Danielle <br /> Birth-Month: 6","Name: Caitlin <br /> Birth-Month: 7","Name: Leigh <br /> Birth-Month: 3","Name: Hannah <br /> Birth-Month: 3","Name: Teshanna <br /> Birth-Month: 3","Name: Hayley <br /> Birth-Month: 1","Name: Alisha <br /> Birth-Month: 9"],"type":"scatter","mode":"markers","name":"G","marker":{"color":"rgba(255,105,180,1)","size":[50.9090909090909,42.7272727272727,91.8181818181818,34.5454545454545,100,26.3636363636364,50.9090909090909,26.3636363636364,75.4545454545455,75.4545454545455,83.6363636363636,18.1818181818182,50.9090909090909,59.0909090909091,26.3636363636364,26.3636363636364,26.3636363636364,10,75.4545454545455],"sizemode":"area","line":{"color":"rgba(255,105,180,1)"}},"textfont":{"color":"rgba(255,105,180,1)","size":[50.9090909090909,42.7272727272727,91.8181818181818,34.5454545454545,100,26.3636363636364,50.9090909090909,26.3636363636364,75.4545454545455,75.4545454545455,83.6363636363636,18.1818181818182,50.9090909090909,59.0909090909091,26.3636363636364,26.3636363636364,26.3636363636364,10,75.4545454545455]},"error_y":{"color":"rgba(255,105,180,1)","width":[]},"error_x":{"color":"rgba(255,105,180,1)","width":[]},"line":{"color":"rgba(255,105,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </p>
 </div>
 </div>
@@ -1220,7 +1324,7 @@ plotly
 <div id="bar-charts" class="section level3 tabset tabset-fade tabset-pills">
 <h3>Bar Charts</h3>
 <div style="float:left;width:125px;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-34-1.png" width="96" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-40-1.png" width="96" /></p>
 </div>
 <p><strong>1 (or 2) Qualitative Variable(s)</strong></p>
 <div id="overview-4" class="section level4">
@@ -1233,16 +1337,10 @@ plotly
 <div id="r-instructions-4" class="section level4">
 <h4>R Instructions</h4>
 <div style="padding-left:125px;">
+
+
 <div class="tab">
-<button class="tablinks" onclick="openTab(event, 'BaseBarplot')">
-Base R
-</button>
-<button class="tablinks" onclick="openTab(event, 'ggplotBarplot')">
-ggplot2
-</button>
-<button class="tablinks" onclick="openTab(event, 'plotlyBarplot')">
-plotly
-</button>
+<p><button class="tablinks" onclick="openTab(event, 'BaseBarplot')">Base R</button> <button class="tablinks" onclick="openTab(event, 'ggplotBarplot')">ggplot2</button> <button class="tablinks" onclick="openTab(event, 'plotlyBarplot')">plotly</button></p>
 </div>
 <div id="BaseBarplot" class="tabcontent">
 <p>
@@ -1263,7 +1361,7 @@ Using the <code>c()</code> function. <!-- Example Code 1 --> <a href="javascript
 </div>
 </a>
 <div id="barplot0" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 </div>
 <!-- Example Code 2 -->
 <a href="javascript:showhide('barplot01')">
@@ -1276,7 +1374,7 @@ Using the <code>c()</code> function. <!-- Example Code 1 --> <a href="javascript
 </div>
 </a>
 <div id="barplot01" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
 </div>
 <!-- Example Code 2 -->
 <a href="javascript:showhide('barplot02')">
@@ -1292,9 +1390,10 @@ Using the <code>c()</code> function. <!-- Example Code 1 --> <a href="javascript
 </div>
 </a>
 <div id="barplot02" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
 </div>
-<br />
+<p><br />
+</p>
 Using the <code>table()</code> function. <!-- Example Code 1 --> <a href="javascript:showhide('barplot1')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> barplot <span class="tooltiprtext">barplot is an R function used to create a bar chart.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> table <span class="tooltiprtext">table is an R function used to tabulate how many times each value occurs in a given dataset. It is being used here to specify the heights of the bars in the bar chart.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> mtcars <span class="tooltiprtext">“mtcars” is a dataset. Type “View(mtcars)” in R to see it.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the mtcars dataset.</span> </span><span class="tooltipr"> cyl <span class="tooltiprtext">“cyl” is a qualitative variable (in this case actually a numeric vector acting as a qualitative variable) from the “mtcars” dataset. It represents the number of cylinders the vehicle’s engine has.</span> </span><span class="tooltipr"> )<br />
@@ -1305,7 +1404,7 @@ Using the <code>table()</code> function. <!-- Example Code 1 --> <a href="javasc
 </div>
 </a>
 <div id="barplot1" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
 </div>
 <!-- Example Code 2 -->
 <a href="javascript:showhide('barplot2')">
@@ -1323,7 +1422,7 @@ Using the <code>table()</code> function. <!-- Example Code 1 --> <a href="javasc
 </div>
 </a>
 <div id="barplot2" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 </div>
 </p>
 </div>
@@ -1353,7 +1452,7 @@ Using the <code>table()</code> function. <!-- Example Code 1 --> <a href="javasc
 </div>
 </a>
 <div id="ggbarplot01" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 </div>
 <!-- Example Code 2 -->
 <a href="javascript:showhide('ggbarplot02')">
@@ -1369,9 +1468,10 @@ Using the <code>table()</code> function. <!-- Example Code 1 --> <a href="javasc
 </div>
 </a>
 <div id="ggbarplot02" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
 </div>
-<br />
+<p><br />
+</p>
 Using an existing dataset directly. <!-- Example Code 1 --> <a href="javascript:showhide('ggbarplot1')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> ggplot <span class="tooltiprtext">An R function “ggplot” used to create a framework for a graphic that will have elements added to it with the <code>+</code> sign.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> mtcars <span class="tooltiprtext">“mtcars” is a dataset in R. Type “View(mtcars)” in R to see it.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">The comma allows us to specify optional commands to the function. The space after the comma is not required. It just looks nice.</span> </span><span class="tooltipr"> aes( <span class="tooltiprtext">The <code>aes</code> or “aesthetics” function allows you to tell the ggplot how it should appear. This includes things like what the x-axis or y-axis should become.</span> </span><span class="tooltipr"> x = factor(cyl) <span class="tooltiprtext">Declares which variable will become the x-axis of the graphic. Use factor(columnName) when the column consists of numbers to turn it into groups.</span> </span><span class="tooltipr"> )<br />
@@ -1383,7 +1483,7 @@ Using an existing dataset directly. <!-- Example Code 1 --> <a href="javascript:
 </div>
 </a>
 <div id="ggbarplot1" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 </div>
 <!-- Example Code 2 -->
 <a href="javascript:showhide('ggbarplot2')">
@@ -1397,7 +1497,7 @@ Using an existing dataset directly. <!-- Example Code 1 --> <a href="javascript:
 </div>
 </a>
 <div id="ggbarplot2" style="display:none;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
 </div>
 </p>
 </div>
@@ -1413,7 +1513,7 @@ Not yet available.
 <div id="custom-plots" class="section level3 tabset tabset-fade tabset-pills">
 <h3>Custom Plots</h3>
 <div style="float:left;width:125px;">
-<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-44-1.png" width="96" /></p>
+<p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-50-1.png" width="96" /></p>
 </div>
 <p><strong>Creativity Required</strong></p>
 <div id="overview-5" class="section level4">
@@ -1428,11 +1528,11 @@ Not yet available.
 <div style="padding-left:125px;">
 <p>You should add links to examples you find of interesting plots made in R.</p>
 <p>Here is the R Code for the graphic to the left:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">density</span>(CO2<span class="op">$</span>uptake[CO2<span class="op">$</span>Type<span class="op">==</span><span class="st">&quot;Quebec&quot;</span>]), 
-     <span class="dt">main=</span><span class="st">&quot;&quot;</span>, <span class="dt">col=</span><span class="st">&#39;skyblue4&#39;</span>,
-     <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">xaxt=</span><span class="st">&#39;n&#39;</span>, <span class="dt">yaxt=</span><span class="st">&#39;n&#39;</span>)
-<span class="kw">lines</span>(<span class="kw">density</span>(CO2<span class="op">$</span>uptake[CO2<span class="op">$</span>Type<span class="op">==</span><span class="st">&quot;Mississippi&quot;</span>]), 
-      <span class="dt">col=</span><span class="st">&#39;firebrick&#39;</span>)</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">plot</span>(<span class="kw">density</span>(CO2<span class="op">$</span>uptake[CO2<span class="op">$</span>Type<span class="op">==</span><span class="st">&quot;Quebec&quot;</span>]), </span>
+<span id="cb3-2"><a href="#cb3-2"></a>     <span class="dt">main=</span><span class="st">&quot;&quot;</span>, <span class="dt">col=</span><span class="st">&#39;skyblue4&#39;</span>,</span>
+<span id="cb3-3"><a href="#cb3-3"></a>     <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">xaxt=</span><span class="st">&#39;n&#39;</span>, <span class="dt">yaxt=</span><span class="st">&#39;n&#39;</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">lines</span>(<span class="kw">density</span>(CO2<span class="op">$</span>uptake[CO2<span class="op">$</span>Type<span class="op">==</span><span class="st">&quot;Mississippi&quot;</span>]), </span>
+<span id="cb3-5"><a href="#cb3-5"></a>      <span class="dt">col=</span><span class="st">&#39;firebrick&#39;</span>)</span></code></pre></div>
 </div>
 <hr />
 <footer>
@@ -1457,6 +1557,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

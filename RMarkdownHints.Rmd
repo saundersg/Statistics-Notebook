@@ -253,7 +253,7 @@ Symbol list:
 | $\overbrace{Y_i}^\text{label}$ | `$\overbrace{Y_i}^\text{label}$`|
 | $\underbrace{Y_i}_\text{label}$ | `$\underbrace{Y_i}_\text{label}$`|
 
-
+Here is a list of [*all* supported LaTeX commands](http://docs.mathjax.org/en/latest/input/tex/macros/index.html#tex-commands).
 
 
 <br />

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -20,24 +20,8 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
 
 
 
@@ -84,7 +68,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -233,6 +216,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -244,18 +228,6 @@ $(document).ready(function () {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -637,12 +609,12 @@ Note: A factor is defined as a qualitative variable containing at least two cate
 </table>
 <h6 id="anova-table">ANOVA Table</h6>
 <p>In general, the ANOVA table is created by</p>
-<table style="width:100%;">
+<table>
 <colgroup>
 <col width="11%" />
-<col width="26%" />
-<col width="21%" />
-<col width="14%" />
+<col width="27%" />
+<col width="22%" />
+<col width="13%" />
 <col width="12%" />
 <col width="12%" />
 </colgroup>
@@ -687,7 +659,7 @@ Note: A factor is defined as a qualitative variable containing at least two cate
 <p>To check that the ANOVA assumptions are satisfied, it is required to check the data in each group for normality using QQ-Plots. Also, the sample variance of each group must be relatively constant. The fastest way to check these two assumptions is by analyzing the <em>residuals</em>.</p>
 <ul>
 <li>An ANOVA <strong>residual</strong> is defined as the difference between the observed value of <span class="math inline">\(y_{ik}\)</span> and the mean <span class="math inline">\(\bar{y}_{i\bullet}\)</span>. Mathematically, <span class="math display">\[
-  r_{ik} = y_{ik} - \bar{y}_{i\bullet}
+r_{ik} = y_{ik} - \bar{y}_{i\bullet}
 \]</span> One QQ-Plot of the residuals will provide the necessary evidence to decide if it is reasonable to assume that the error terms are normally distributed. Also, the constant variance can be checked visually by using what is known as a residuals versus fitted values plot. For the <strong>Fabricated Example</strong> above, the QQ-Plot and residuals versus fitted values plots show the two assumptions of ANOVA appear to be satisfied.</li>
 </ul>
 <p><img src="ANOVA_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
@@ -879,6 +851,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
