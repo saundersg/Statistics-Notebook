@@ -6171,6 +6171,197 @@ par(mfcol=c(3,2),  mai=c(.25,.6,.25,.6), mgp=c(1,.75,0))
 
 <br />
 
+#### Outlier Analysis <a href="javascript:showhide('outlierAnalysis')" style="font-size:.6em;color:skyblue;">(Expand)</a>
+
+<span class="expand-caption">Cook's Distances and Leverage Values...</span>
+
+<div id="outlierAnalysis" style="display:none;">
+
+The presence of outlying points in a regression can bias the regression estimates substantially. In simple linear regressions, the outlier are usually quite visible in a residuals vs. fitted-values plot. However, in higher dimensional regression models, it can become very difficult to locate points that are negatively effecting the regression. Here are two measurements that are helpful in identifying points that are negatively impacting an estimated regression model.
+
+##### Cook's Distances
+
+The idea behind Cook's Distance is to measure the impact each individual point has on the regression estimates $b_i$ for each $\beta_i$. As found in the original article ["Detection of Influential Observation in Linear Regression" (Dennis Cook, 1977)](http://www.stat.ucla.edu/~nchristo/statistics100C/1268249.pdf) the formula Cook developed for measuring this effect is given by (when adapted to fit the notation of this book)
+
+$$
+  D_i = \frac{\sum_{j=1}^n (\widehat{Y}_{j} - \widehat{Y}_{j(i)})^2}{p\cdot MSE}
+$$
+
+where $p$ is the number of parameters in the regression model, $MSE$ is the estimate of $\sigma^2$ (the mean squared error), and $\hat{Y}_{j(i)}$ represents the residual for point $j$ when the $i$th point was removed from the regression.
+
+To understand this formula, let's focus first on the numerator: $\sum_{j=1}^n \widehat{Y}_j - \widehat{Y}_{j(i)}$. Here, we are comparing the residual from the original regression for point $j$, $\widehat{Y}_j$ to the modified value of that same residual when point $i$ is removed from the regression. See the image below for a visual explanation.
+
+```{r}
+X <- c(2,3,5,6,8,13)
+Y <- c(3,5,7,9,8,12)
+
+plot(Y ~ X, pch=16, col="skyblue", ylim=c(0,14))
+points(X[4],Y[4], pch=16, cex=1.1, col="orange")
+lm1 <- lm(Y ~ X)
+lm2 <- lm(Y ~ X, w=c(1,1,1,0,1,1))
+abline(lm1, col="skyblue", lwd=2)
+abline(lm2, col="orange", lwd=2)
+legend("topleft", legend=c("All Points Included", "Orange Point Removed"), lty=1, col=c("skyblue","orange"), bty="n")
+
+for (i in 1:6){
+  lines(c(X[i]+.03,X[i]+.03), c(Y[i], lm1$fit[i]), lty=1, col="skyblue")
+  lines(c(X[i]-.03,X[i]-.03), c(Y[i], lm2$fit[i]), lty=1, col="orange")
+}
+
+pander(round(rbind(`Original Residuals` = lm1$residuals, `Orange Point Removed` = lm2$residuals, Difference = lm1$residuals - lm2$residuals),2))
+
+```
+
+Squaring the sum of the "differences" in the residuals from the original regression and the one where point $i$ (the orange dot) has been removed gives $`r round(sum( (lm1$residuals - lm2$residuals)^2), 5)`$. Then, noting that the MSE for the original regression was $1.418605$, and that $p=2$ because there were two parameters, we find the Cook's Distance for Point #4 comes out to be
+
+$$
+  D_4 = \frac{\sum_{j=1}^n (\widehat{Y}_{j} - \widehat{Y}_{j(4)})^2}{p\cdot MSE} \approx \frac{0.77186}{2\cdot 1.418605} \approx 0.272
+$$
+
+Similar calculations show the Cook's Distances for each point to be
+
+```{r}
+pander(round(cooks.distance(lm1),3), caption="Cook's Distances for each Point 1, ..., 6")
+```
+
+In R, it is simple to calculate Cook's Distances using the code `cooks.distance(lmObject)`. Also, a graph of Cook's Distances can be obtained using `plot(lmObject, which=4)` as shown here:
+
+```{r}
+plot(lm1, which=4)
+```
+
+##### Leverage Values
+
+The leverage value of a point is a measurement that lives between 0 and 1 where values close to 1 imply the point has a lot of "leverage" and is "pulling" the regression toward itself. A value near 0 implies the point is just "one of many" and that it is not unduly influencing the regression line.
+
+It is difficult to understand leverage values mathematically unless we look at regression from a linear algebra (matrix) perspective.
+
+To do this, first recall the simple linear regression model
+
+$$
+  Y_i = \beta_0 + \beta_1 X_i + \epsilon_i
+$$
+
+This could be expanded to explicity list out each value of $i$ in the model using vector notation:
+
+$$
+  \left[ \begin{array}{c} Y_1 \\ Y_2 \\ \vdots \\ Y_n\end{array}\right] = \beta_0 \left[ \begin{array}{c} 1  \\
+  1  \\
+  \vdots \\ 1  \end{array}\right] + \beta_1 \left[\begin{array}{c} X_1 \\ X_2 \\ \vdots \\ X_n  \end{array}\right] + \left[\begin{array}{c} \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_n \end{array}\right]
+$$
+
+We could then rewrite this in matrix notation using
+
+$$
+  \left[ \begin{array}{c} Y_1 \\ Y_2 \\ \vdots \\ Y_n\end{array}\right] =  \left[ \begin{array}{cc} 1 & X_1\\
+  1  & X_2 \\
+  \vdots & \vdots \\ 
+  1 & X_n \end{array}\right] \left[\begin{array}{c} \beta_0 \\ \beta_1 \end{array}\right] + \left[\begin{array}{c} \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_n \end{array}\right]
+$$
+
+Or, more concisely as
+
+$$
+  \vec{Y} = \mathbf{X}\vec{\beta} + \vec{\epsilon}
+$$
+
+The goal of regression is to choose values for $\beta_0$ and $\beta_1$ that "minimize" the sum of the squared errors. Mathematically this would be written as
+
+$$
+  \sum_{i=1}^n \epsilon_i ^2
+$$
+
+If you are familiar with vectors then you would see that this could be written with the notation
+
+$$
+  \vec{\epsilon}^t \vec{\epsilon} = \sum_{i=1}^n \epsilon_i ^2
+$$
+
+And since we can also write
+
+$$
+  \vec{\epsilon} = \vec{Y} - \mathbf{X}\vec{\beta}
+$$
+
+then we have
+
+$$
+ \sum_{i=1}^n \epsilon_i^2 = \vec{\epsilon}^t \vec{\epsilon} = (\vec{Y} - \mathbf{X}\vec{\beta})^t (\vec{Y} - \mathbf{X}\vec{\beta})
+$$
+
+To choose the values of $\vec{\beta}$ that minimize the above equation, we will take the derivative with respect to $\vec{\beta}$ which turns out to give
+
+$$
+ \frac{d}{d\vec{\beta}}(\vec{Y} - \mathbf{X}\vec{\beta})^t (\vec{Y} - \mathbf{X}\vec{\beta}) = -2\mathbf{X}^t(\vec{Y} - \mathbf{X}\vec{\beta})
+$$
+
+Setting the derivative equal to the zero vector $\vec{0}$ and solving, we obtain
+
+$$
+-2\mathbf{X}^t(\vec{Y} - \mathbf{X}\vec{\beta}) = \vec{0} \\
+-2\mathbf{X}^t\vec{Y} = -2\mathbf{X}^t\mathbf{X}\vec{\beta}) \\
+\mathbf{X}^t\vec{Y} = \mathbf{X}^t\mathbf{X}\vec{\beta}
+$$
+
+Since $\mathbf{X}^t\mathbf{X}$ is a square matrix, it is invertible. This allows us to solve for $\vec{\beta}$ by
+
+$$
+(\mathbf{X}^t\mathbf{X})^{-1}\mathbf{X}^t\vec{Y} = \vec{\beta}
+$$
+
+However, at this point istead of pretending we have found the true $\beta$'s, we change the equation to
+
+$$
+\vec{b} = (\mathbf{X}^t\mathbf{X})^{-1}\mathbf{X}^t\vec{Y}
+$$
+
+Then, if we use the equation for $\hat{Y}_i$ in vector notation, we get
+
+$$
+  \hat{\vec{Y}} = \mathbf{X}\vec{b}
+$$
+
+and substituting into $\vec{b}$ gives
+
+$$
+  \hat{\vec{Y}} = \mathbf{X}(\mathbf{X}^t\mathbf{X})^{-1}\mathbf{X}^t\vec{Y}
+$$
+
+This shows the $\hat{Y}$ values are a matrix transformation of the $Y$ values, often called a projection of $Y$ onto the $\hat{Y}$ surface. But now we have arrived at the thing we wanted to look at in order to talk about leverage, the "hat matrix" $\mathbf{H}$:
+
+$$
+  \mathbf{H} = \mathbf{X}(\mathbf{X}^t\mathbf{X})^{-1}\mathbf{X}^t
+$$
+
+This allows us to write
+
+$$
+ \hat{\vec{Y}} = \mathbf{H}\vec{Y}
+$$
+
+The diagonal elements of $\mathbf{H}$ are the "leverage values" and are notated as the $h_{ii}$ values. Essentially each of these values explain how much $\hat{Y}_i$ is being pulled towards $Y_i$ by each $Y_i$, where values of $h_{ii}$ close to 1 represent a "lot of pull," and values close to 0 represent "little pull."
+
+In R these values are obtained by the `hatvalues(...)` function:
+
+```{r}
+hatvalues(lm1) %>% pander()
+```
+
+Or, graphically depicted by `plot(lmObject, which=5)`
+
+```{r}
+plot(lm1, which=5)
+```
+
+Points with "lots of leverage" and a large "Cook's Distance" are points that should be investigated for accuracy and possibly removed (or downweighted) in the regression.
+
+
+
+
+</div>
+
+<br />
+
 
 
 #### Inference for the Model Parameters <a href="javascript:showhide('inferenceMultiple')" style="font-size:.6em;color:skyblue;">(Expand)</a>
