@@ -1,5 +1,9 @@
 ---
 title: "Numerical Summaries"
+output: 
+  html_document: 
+    toc: true
+    toc_float: true
 ---
 
 <script type="text/javascript">

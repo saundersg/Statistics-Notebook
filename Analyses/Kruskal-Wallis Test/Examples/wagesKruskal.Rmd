@@ -21,7 +21,7 @@ Note that the responses from two students were removed from the Class Survey dat
 
 
 ```{r}
-ClassSurvey <- read.csv("../Data/ClassSurvey.csv", header=TRUE)
+ClassSurvey <- read.csv("../../../Data/ClassSurvey.csv", header=TRUE)
 # Note that to get the ClassSurvey data into your Console
 # you should go to "Import Dataset" under the "Environment" tab
 # in the top right of your workspace. 
@@ -58,7 +58,7 @@ Do they earn more as they gain more education?
 Side-by-side boxplots show that in the sample, the Freshman have the highest median wage, while the Sophomores and Seniors have fairly right-skewed distributions with some very high outliers. This suggest that the shape of the distribution of wages is potentially different for the various class ranks. It may be the case that Freshman hourly wages are left skewed, Junior wages are fairly normal, and Sophomore and Senior wages are right-skewed.
 
 ```{r}
-boxplot(Wage ~ as.character(Rank), data=ClassSurvey, type=c("p","a"), col='grey', ylab="Hourly Wage", main="Math 221 Students")
+boxplot(Wage ~ as.character(Rank), data=ClassSurvey, col='grey', ylab="Hourly Wage", main="Math 221 Students")
 ```
 
 $$

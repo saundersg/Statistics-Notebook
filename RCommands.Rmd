@@ -862,7 +862,7 @@ sex
 </div>
 </a>
 <div id="filterEqualCategorical" style="display:none;padding-left:20px;">
-![](./Images/Kids87.png)
+![](./Images/KidsBoys.png)
 </div>
 
 
@@ -1550,7 +1550,7 @@ For more uses of `summarise(...)` and `group_by(...)` see the Example codes on t
 
 <div style="padding-left:15px;">
 
-Transform a column of data.
+Transform a column or add a new column of data to a data set.
 
 **Usage** 
 

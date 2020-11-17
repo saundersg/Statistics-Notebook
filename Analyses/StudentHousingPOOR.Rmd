@@ -6,7 +6,7 @@ output:
 ---
 
 
-```{r, include=FALSE}
+```{r, warning=FALSE, message=FALSE}
 library(mosaic)
 Rent <- read.csv("../Data/Rent.csv", header=TRUE)
 ```

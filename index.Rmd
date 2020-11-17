@@ -34,10 +34,52 @@ To begin customizing, [download](https://github.com/saundersg/Statistics-Noteboo
 
 [Customization Help](RMarkdownHints.html)
 
+Wow! I typed some words. : )
 
 
 
+Class Notes from Wed 9/23
 
+```{r, eval=FALSE}
+library(mosaic)
+library(tidyverse)
+library(pander)
+View(KidsFeet)
+table(KidsFeet$sex)
+table(KidsFeet$domhand)
+table(KidsFeet$domhand, KidsFeet$sex)
+table(KidsFeet$length)
+summary(KidsFeet$length)
+
+KidsFeetBoys <- KidsFeet %>%
+  filter(sex == "B")
+
+KidsFeetCrazy <- KidsFeet %>%
+  filter(sex == "G", length > 24.50, domhand == "L")
+
+
+KidsFeetBoys <- KidsFeet %>%
+  filter(sex == "B") %>%
+  select(name, birthmonth, birthyear, domhand, width, length)
+
+KidsFeetBoys <- KidsFeet %>% 
+  filter(sex == "B") %>% 
+  select(-sex)
+
+KidsFeet %>%
+  group_by(sex) %>%
+  summarise(Min = min(width), Max = max(width), `Sample Size` = n()) %>%
+  pander()
+
+
+Kids3 <- KidsFeet %>%
+  mutate(season = case_when(birthmonth %in% c(12,1,2) ~ "Winter",
+                            birthmonth %in% c(3,4,5) ~ "Spring",
+                            birthmonth %in% c(6,7,8) ~ "Summer",
+                            birthmonth %in% c(9,10,11) ~ "Fall"))
+
+
+```
 
 
 
