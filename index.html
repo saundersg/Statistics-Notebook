@@ -490,12 +490,40 @@ $(document).ready(function () {
 <p>Class Notes from Wed 9/23</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(mosaic)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">View</span>(KidsFeet)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">table</span>(KidsFeet<span class="op">$</span>sex)</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">table</span>(KidsFeet<span class="op">$</span>domhand)</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="kw">table</span>(KidsFeet<span class="op">$</span>domhand, KidsFeet<span class="op">$</span>sex)</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="kw">table</span>(KidsFeet<span class="op">$</span>length)</span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">summary</span>(KidsFeet<span class="op">$</span>length)</span></code></pre></div>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">library</span>(pander)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">View</span>(KidsFeet)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">table</span>(KidsFeet<span class="op">$</span>sex)</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="kw">table</span>(KidsFeet<span class="op">$</span>domhand)</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="kw">table</span>(KidsFeet<span class="op">$</span>domhand, KidsFeet<span class="op">$</span>sex)</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">table</span>(KidsFeet<span class="op">$</span>length)</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="kw">summary</span>(KidsFeet<span class="op">$</span>length)</span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a>KidsFeetBoys &lt;-<span class="st"> </span>KidsFeet <span class="op">%&gt;%</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="st">  </span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &quot;B&quot;</span>)</span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a>KidsFeetCrazy &lt;-<span class="st"> </span>KidsFeet <span class="op">%&gt;%</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="st">  </span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &quot;G&quot;</span>, length <span class="op">&gt;</span><span class="st"> </span><span class="fl">24.50</span>, domhand <span class="op">==</span><span class="st"> &quot;L&quot;</span>)</span>
+<span id="cb1-16"><a href="#cb1-16"></a></span>
+<span id="cb1-17"><a href="#cb1-17"></a></span>
+<span id="cb1-18"><a href="#cb1-18"></a>KidsFeetBoys &lt;-<span class="st"> </span>KidsFeet <span class="op">%&gt;%</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="st">  </span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &quot;B&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="st">  </span><span class="kw">select</span>(name, birthmonth, birthyear, domhand, width, length)</span>
+<span id="cb1-21"><a href="#cb1-21"></a></span>
+<span id="cb1-22"><a href="#cb1-22"></a>KidsFeetBoys &lt;-<span class="st"> </span>KidsFeet <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="st">  </span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &quot;B&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>sex)</span>
+<span id="cb1-25"><a href="#cb1-25"></a></span>
+<span id="cb1-26"><a href="#cb1-26"></a>KidsFeet <span class="op">%&gt;%</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="st">  </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Min =</span> <span class="kw">min</span>(width), <span class="dt">Max =</span> <span class="kw">max</span>(width), <span class="st">`</span><span class="dt">Sample Size</span><span class="st">`</span> =<span class="st"> </span><span class="kw">n</span>()) <span class="op">%&gt;%</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="st">  </span><span class="kw">pander</span>()</span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a></span>
+<span id="cb1-32"><a href="#cb1-32"></a>Kids3 &lt;-<span class="st"> </span>KidsFeet <span class="op">%&gt;%</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">season =</span> <span class="kw">case_when</span>(birthmonth <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>,<span class="dv">1</span>,<span class="dv">2</span>) <span class="op">~</span><span class="st"> &quot;Winter&quot;</span>,</span>
+<span id="cb1-34"><a href="#cb1-34"></a>                            birthmonth <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) <span class="op">~</span><span class="st"> &quot;Spring&quot;</span>,</span>
+<span id="cb1-35"><a href="#cb1-35"></a>                            birthmonth <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>) <span class="op">~</span><span class="st"> &quot;Summer&quot;</span>,</span>
+<span id="cb1-36"><a href="#cb1-36"></a>                            birthmonth <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>) <span class="op">~</span><span class="st"> &quot;Fall&quot;</span>))</span></code></pre></div>
 <!-- End your notes before here. ------------------------------------- -->
 </div>
 </div>
