@@ -1,0 +1,1011 @@
+Gender,Age,Height,Weight,Number_of_siblings,Dominant_hand,Education,Only_child,Fear_score,Religiosity_score,Smoking,Alcohol,I_live_a_healthy_lifestyle,I_like_music,Music_diversity_score,Punctuality,Lying,Happiness_score
+female,20,163,48,1,right handed,college/bachelor degree,no,38,60,never smoked,drink a lot,Agree,Strongly Agree,33,i am always on time,never,13
+female,19,163,58,2,right handed,college/bachelor degree,no,32,33,never smoked,drink a lot,Neither Agree nor Disagree,Agree,44,i am often early,sometimes,10
+female,20,176,67,2,right handed,secondary school,no,22,83,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,63,i am often running late,sometimes,11
+female,22,172,59,1,right handed,college/bachelor degree,yes,72,50,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,34,i am often early,only to avoid hurting someone,6
+female,20,170,59,1,right handed,secondary school,no,36,77,tried smoking,social drinker,Agree,Strongly Agree,51,i am always on time,everytime it suits me,11
+male,20,186,77,1,right handed,secondary school,no,38,53,never smoked,never,Disagree,Strongly Agree,58,i am often early,only to avoid hurting someone,10
+female,20,177,50,1,right handed,secondary school,no,40,73,tried smoking,social drinker,Agree,Strongly Agree,48,i am often early,never,12
+male,19,184,90,1,right handed,college/bachelor degree,no,56,60,current smoker,drink a lot,Disagree,Strongly Agree,43,i am always on time,sometimes,12
+female,18,166,55,1,right handed,secondary school,no,64,60,tried smoking,social drinker,Strongly Disagree,Strongly Agree,38,i am often early,sometimes,7
+female,19,174,60,3,right handed,secondary school,no,80,83,never smoked,drink a lot,Neither Agree nor Disagree,Strongly Agree,58,i am often running late,sometimes,11
+female,19,175,60,2,left handed,secondary school,no,34,60,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,46,i am often early,sometimes,10
+female,17,176,60,1,right handed,primary school,no,78,30,tried smoking,never,Neither Agree nor Disagree,Strongly Agree,36,i am often running late,everytime it suits me,9
+female,24,168,55,10,right handed,college/bachelor degree,no,36,40,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,45,i am often running late,only to avoid hurting someone,10
+female,19,165,55,1,right handed,secondary school,no,56,53,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,42,i am often early,only to avoid hurting someone,12
+female,22,175,57,1,right handed,college/bachelor degree,no,74,83,current smoker,social drinker,Strongly Disagree,Strongly Agree,50,i am often early,only to avoid hurting someone,13
+male,18,177,77,0,right handed,secondary school,yes,30,40,former smoker,social drinker,Strongly Agree,Strongly Disagree,54,i am always on time,only to avoid hurting someone,9
+female,19,175,65,2,right handed,college/bachelor degree,no,66,67,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,40,i am always on time,everytime it suits me,11
+female,20,168,65,1,right handed,secondary school,no,80,60,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,49,i am often running late,everytime it suits me,6
+male,18,181,78,2,right handed,secondary school,no,22,43,tried smoking,social drinker,Agree,Strongly Agree,71,i am often early,only to avoid hurting someone,9
+male,18,188,90,1,left handed,secondary school,no,52,20,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,57,i am always on time,only to avoid hurting someone,12
+male,20,186,77,1,right handed,secondary school,no,36,53,never smoked,never,Disagree,Strongly Agree,65,i am often early,only to avoid hurting someone,10
+male,24,186,85,1,left handed,secondary school,no,20,43,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,46,i am often early,sometimes,12
+female,22,167,70,1,right handed,college/bachelor degree,no,50,80,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,41,i am often early,sometimes,11
+female,20,168,54,3,right handed,secondary school,no,62,53,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,50,i am often running late,sometimes,10
+female,19,167,51,1,right handed,secondary school,no,68,63,tried smoking,never,Agree,Strongly Agree,49,i am often early,only to avoid hurting someone,9
+female,20,170,56,1,right handed,secondary school,yes,56,40,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,38,i am always on time,sometimes,10
+female,22,165,63,1,left handed,college/bachelor degree,no,30,83,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,63,i am often early,sometimes,11
+female,19,163,50,1,right handed,secondary school,no,60,57,never smoked,social drinker,Agree,Agree,54,i am often early,sometimes,9
+male,20,187,80,2,left handed,secondary school,yes,52,47,former smoker,social drinker,Strongly Agree,Strongly Agree,44,i am always on time,sometimes,15
+female,19,168,60,2,right handed,secondary school,no,86,63,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,56,i am often running late,sometimes,12
+male,25,183,87,1,right handed,secondary school,no,56,67,former smoker,drink a lot,Neither Agree nor Disagree,Agree,57,i am always on time,everytime it suits me,10
+female,22,177,80,1,right handed,secondary school,no,40,63,tried smoking,social drinker,Neither Agree nor Disagree,Agree,44,i am always on time,sometimes,11
+female,20,158,46,4,left handed,secondary school,no,82,43,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,53,i am always on time,only to avoid hurting someone,13
+female,27,170,70,1,right handed,masters degree,no,62,47,tried smoking,social drinker,Agree,Strongly Agree,52,i am often early,sometimes,13
+male,20,177,67,5,right handed,college/bachelor degree,no,36,77,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,53,i am often early,sometimes,11
+female,19,170,72,1,right handed,secondary school,no,76,67,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,50,i am always on time,sometimes,13
+female,18,173,65,1,right handed,secondary school,no,62,60,never smoked,social drinker,Disagree,Strongly Agree,37,i am often early,only to avoid hurting someone,11
+male,21,185,101,1,right handed,secondary school,no,32,63,former smoker,social drinker,Agree,Strongly Agree,37,i am often early,sometimes,12
+female,23,168,60,1,right handed,secondary school,no,52,63,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,58,i am often running late,only to avoid hurting someone,8
+female,21,155,46,1,right handed,secondary school,no,72,50,never smoked,never,Neither Agree nor Disagree,Strongly Agree,50,i am often early,sometimes,12
+female,26,172,62,1,right handed,secondary school,no,70,57,never smoked,social drinker,Agree,Agree,33,i am often early,only to avoid hurting someone,9
+male,20,188,80,3,right handed,college/bachelor degree,no,24,40,tried smoking,social drinker,Agree,Strongly Agree,72,i am often running late,never,12
+female,19,170,90,0,right handed,secondary school,yes,44,70,never smoked,never,Neither Agree nor Disagree,Strongly Agree,59,i am often early,sometimes,11
+female,20,163,55,1,right handed,college/bachelor degree,no,66,47,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,45,i am always on time,only to avoid hurting someone,12
+female,25,170,67,1,right handed,masters degree,no,76,83,current smoker,social drinker,Neither Agree nor Disagree,Agree,53,i am often early,only to avoid hurting someone,11
+male,27,181,78,1,right handed,masters degree,no,74,67,never smoked,social drinker,Strongly Agree,Strongly Agree,58,i am often early,never,8
+female,21,163,55,1,right handed,college/bachelor degree,no,24,73,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,63,i am always on time,sometimes,13
+female,19,170,60,1,right handed,secondary school,yes,54,37,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,44,i am always on time,sometimes,12
+female,20,171,70,1,right handed,secondary school,yes,50,53,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,45,i am often early,only to avoid hurting someone,13
+female,20,157,41,1,right handed,primary school,no,66,40,tried smoking,social drinker,Disagree,Strongly Agree,46,i am often early,sometimes,9
+female,19,175,60,2,right handed,college/bachelor degree,no,50,63,tried smoking,social drinker,Agree,Agree,64,i am often running late,only to avoid hurting someone,10
+female,19,,75,1,right handed,secondary school,no,40,83,never smoked,never,Neither Agree nor Disagree,Strongly Agree,58,i am always on time,sometimes,12
+female,21,160,58,2,right handed,secondary school,no,72,67,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,78,i am often early,sometimes,8
+female,18,164,51,4,right handed,secondary school,no,48,73,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,61,i am always on time,only to avoid hurting someone,12
+female,21,160,57,2,right handed,college/bachelor degree,no,70,60,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,74,i am always on time,sometimes,11
+female,23,165,45,1,right handed,college/bachelor degree,no,78,53,current smoker,drink a lot,Agree,Strongly Agree,60,i am often early,sometimes,9
+female,20,170,64,2,left handed,secondary school,,60,60,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,55,i am often running late,sometimes,10
+female,21,157,45,1,right handed,secondary school,no,64,70,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,49,i am always on time,sometimes,8
+male,19,185,71,1,right handed,secondary school,no,60,43,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,44,i am often running late,everytime it suits me,9
+male,22,178,74,1,right handed,college/bachelor degree,no,50,33,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,56,i am often early,everytime it suits me,9
+male,23,175,72,1,right handed,college/bachelor degree,no,44,60,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,50,i am always on time,sometimes,9
+male,23,165,56,1,left handed,secondary school,no,54,50,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,54,i am always on time,only to avoid hurting someone,9
+male,23,189,81,2,right handed,secondary school,no,98,47,never smoked,social drinker,Strongly Agree,Strongly Agree,81,i am always on time,only to avoid hurting someone,11
+male,22,180,78,2,right handed,college/bachelor degree,no,52,50,tried smoking,social drinker,Agree,Strongly Agree,42,i am always on time,sometimes,11
+female,18,180,52,0,right handed,primary school,yes,64,60,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,41,i am often running late,only to avoid hurting someone,11
+male,17,185,84,1,left handed,primary school,yes,40,53,tried smoking,social drinker,Neither Agree nor Disagree,Agree,42,i am often early,everytime it suits me,9
+male,20,183,83,1,right handed,secondary school,no,48,40,tried smoking,social drinker,Neither Agree nor Disagree,Agree,55,i am often early,sometimes,12
+female,24,160,58,0,right handed,college/bachelor degree,yes,46,60,never smoked,never,Agree,Neutral,50,i am often early,only to avoid hurting someone,13
+female,18,162,50,1,right handed,college/bachelor degree,no,66,83,tried smoking,drink a lot,Disagree,Strongly Agree,60,i am often early,sometimes,10
+female,20,163,47,3,left handed,secondary school,no,58,67,tried smoking,social drinker,Disagree,Strongly Agree,36,i am often running late,everytime it suits me,12
+male,17,185,82,1,right handed,secondary school,yes,56,53,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,45,i am always on time,never,13
+male,20,175,83,1,left handed,secondary school,yes,56,57,tried smoking,never,Strongly Agree,Agree,40,i am often running late,sometimes,13
+female,28,168,52,1,right handed,secondary school,no,70,67,former smoker,social drinker,Agree,Strongly Agree,53,i am always on time,everytime it suits me,10
+male,21,177,80,1,right handed,secondary school,yes,66,80,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,44,i am always on time,everytime it suits me,11
+male,22,190,80,1,right handed,masters degree,no,70,67,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,42,i am always on time,sometimes,8
+male,20,192,77,1,right handed,secondary school,no,36,73,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,60,i am always on time,sometimes,10
+male,18,188,75,1,right handed,secondary school,no,50,43,tried smoking,social drinker,Neither Agree nor Disagree,Agree,31,i am always on time,sometimes,12
+female,21,175,60,1,right handed,secondary school,no,56,40,tried smoking,social drinker,Agree,Strongly Agree,50,i am often running late,sometimes,12
+female,24,148,57,1,right handed,college/bachelor degree,no,50,53,never smoked,never,Agree,Agree,63,i am often running late,never,13
+female,21,173,63,2,right handed,secondary school,no,70,47,former smoker,social drinker,Agree,Strongly Agree,65,i am often running late,sometimes,11
+female,19,163,48,1,right handed,secondary school,no,54,60,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,57,i am often running late,sometimes,11
+male,22,177,80,1,right handed,secondary school,no,30,50,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,60,i am often early,sometimes,13
+female,18,163,47,1,right handed,secondary school,no,54,60,never smoked,social drinker,Agree,Strongly Agree,46,i am often running late,sometimes,8
+female,22,163,53,2,right handed,secondary school,no,74,70,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,59,i am always on time,sometimes,10
+female,19,168,48,0,right handed,secondary school,yes,34,70,former smoker,drink a lot,Strongly Agree,Strongly Agree,66,i am often running late,everytime it suits me,13
+male,22,159,53,2,right handed,college/bachelor degree,no,64,60,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,52,i am often running late,sometimes,9
+male,24,179,65,3,right handed,masters degree,no,64,77,current smoker,social drinker,Neither Agree nor Disagree,Agree,57,i am often running late,sometimes,10
+female,18,159,50,3,right handed,college/bachelor degree,no,50,57,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,59,i am often early,sometimes,12
+female,21,164,75,0,right handed,secondary school,yes,64,73,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,58,i am often early,never,6
+female,22,156,50,2,right handed,masters degree,no,66,73,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,51,i am often early,only to avoid hurting someone,9
+female,19,154,58,3,right handed,secondary school,no,60,73,tried smoking,social drinker,Neither Agree nor Disagree,Agree,39,i am often running late,sometimes,12
+female,18,168,50,4,right handed,secondary school,no,64,57,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,49,i am often running late,sometimes,13
+female,19,170,63,0,right handed,college/bachelor degree,yes,30,80,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,50,i am always on time,sometimes,10
+male,24,175,80,2,right handed,masters degree,no,42,37,current smoker,drink a lot,Strongly Disagree,Strongly Agree,54,i am always on time,never,15
+male,21,179,68,1,right handed,secondary school,no,32,43,tried smoking,social drinker,Disagree,Strongly Agree,46,i am often running late,sometimes,9
+male,21,180,75,1,right handed,college/bachelor degree,no,58,53,tried smoking,drink a lot,Strongly Disagree,Strongly Agree,53,i am often running late,only to avoid hurting someone,11
+male,19,182,81,1,right handed,college/bachelor degree,no,44,53,former smoker,drink a lot,Strongly Disagree,Strongly Agree,39,i am often early,sometimes,11
+male,19,200,75,1,right handed,primary school,no,36,50,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,29,i am always on time,sometimes,9
+male,22,187,70,1,right handed,secondary school,no,40,53,former smoker,drink a lot,Agree,Neutral,47,i am often running late,never,10
+female,18,162,50,1,left handed,secondary school,no,52,60,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,39,i am always on time,only to avoid hurting someone,11
+female,21,172,71,1,right handed,secondary school,no,68,77,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,59,i am always on time,only to avoid hurting someone,14
+male,18,194,90,1,right handed,secondary school,no,52,63,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,46,i am often running late,sometimes,11
+female,20,168,55,0,right handed,secondary school,yes,40,57,tried smoking,social drinker,Agree,Strongly Agree,58,i am often early,only to avoid hurting someone,9
+male,22,185,80,0,right handed,secondary school,yes,40,60,tried smoking,drink a lot,Agree,Strongly Agree,58,i am often running late,sometimes,13
+male,21,180,70,1,right handed,secondary school,no,24,47,tried smoking,drink a lot,Strongly Disagree,Agree,57,i am always on time,everytime it suits me,13
+male,24,178,74,1,right handed,college/bachelor degree,no,36,67,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,39,i am always on time,sometimes,10
+male,19,182,80,1,right handed,secondary school,no,38,70,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,68,i am often early,only to avoid hurting someone,11
+female,18,178,55,1,right handed,secondary school,no,38,70,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,38,i am always on time,only to avoid hurting someone,13
+female,17,168,61,1,right handed,primary school,no,58,43,never smoked,social drinker,Neither Agree nor Disagree,Agree,42,i am often early,sometimes,9
+male,18,176,65,0,right handed,secondary school,yes,52,53,tried smoking,drink a lot,Disagree,Strongly Agree,50,i am often running late,everytime it suits me,9
+male,21,185,70,1,right handed,college/bachelor degree,no,44,60,former smoker,drink a lot,Agree,Strongly Agree,56,i am always on time,sometimes,11
+female,22,166,56,1,right handed,college/bachelor degree,no,68,70,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,60,i am often running late,everytime it suits me,6
+female,20,163,54,1,left handed,secondary school,no,54,63,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,51,i am often early,sometimes,9
+female,21,162,60,1,right handed,college/bachelor degree,no,34,47,former smoker,social drinker,Neither Agree nor Disagree,Neutral,41,i am always on time,only to avoid hurting someone,11
+female,19,163,54,1,right handed,secondary school,no,60,30,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,44,i am often early,only to avoid hurting someone,12
+female,17,175,62,0,right handed,secondary school,yes,72,53,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,60,i am often early,sometimes,9
+female,21,169,61,1,right handed,college/bachelor degree,no,78,67,former smoker,social drinker,Disagree,Strongly Agree,40,i am often early,only to avoid hurting someone,5
+female,18,165,55,3,right handed,secondary school,no,58,57,never smoked,never,Disagree,Strongly Agree,35,i am often early,sometimes,9
+male,23,175,60,1,right handed,college/bachelor degree,no,30,43,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am often early,sometimes,11
+female,16,161,54,1,right handed,secondary school,no,44,60,tried smoking,social drinker,Neither Agree nor Disagree,Agree,39,i am often early,only to avoid hurting someone,13
+male,23,188,90,0,right handed,college/bachelor degree,yes,36,23,never smoked,drink a lot,Disagree,Strongly Agree,60,i am always on time,everytime it suits me,10
+male,21,180,85,2,right handed,secondary school,no,38,50,current smoker,social drinker,Disagree,Agree,45,i am often running late,sometimes,12
+female,23,156,56,0,right handed,masters degree,yes,48,80,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,54,i am always on time,sometimes,11
+female,20,172,80,0,left handed,secondary school,yes,36,57,tried smoking,never,Neither Agree nor Disagree,Strongly Agree,55,i am always on time,only to avoid hurting someone,8
+male,20,176,69,4,right handed,secondary school,no,24,53,current smoker,social drinker,Agree,Agree,54,i am always on time,only to avoid hurting someone,10
+female,20,157,54,1,right handed,secondary school,no,58,70,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,53,i am often running late,sometimes,12
+female,20,163,56,2,right handed,secondary school,no,74,57,tried smoking,social drinker,Neither Agree nor Disagree,Neutral,40,i am often early,only to avoid hurting someone,9
+female,19,177,64,1,right handed,primary school,no,42,63,tried smoking,social drinker,Strongly Disagree,Agree,60,i am often running late,everytime it suits me,9
+female,15,173,49,3,left handed,primary school,no,48,67,never smoked,never,Strongly Agree,Strongly Agree,70,i am always on time,only to avoid hurting someone,13
+female,20,178,75,1,right handed,secondary school,no,48,80,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,51,i am often early,sometimes,12
+female,19,168,66,1,right handed,secondary school,no,62,50,,,Neither Agree nor Disagree,Agree,42,i am often early,sometimes,12
+male,18,193,103,2,right handed,primary school,yes,48,47,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,37,i am often early,sometimes,12
+female,15,170,51,1,right handed,primary school,no,52,47,tried smoking,never,Disagree,Strongly Agree,42,i am always on time,sometimes,8
+female,20,170,50,2,right handed,college/bachelor degree,no,64,80,tried smoking,social drinker,Strongly Disagree,Strongly Agree,39,i am always on time,never,10
+female,16,170,59,1,right handed,secondary school,yes,72,47,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,57,i am always on time,only to avoid hurting someone,3
+male,18,185,62,1,right handed,secondary school,no,62,57,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,57,i am often early,sometimes,8
+male,21,185,90,1,right handed,secondary school,no,46,80,never smoked,never,Neither Agree nor Disagree,Strongly Agree,40,i am often early,never,11
+,,,,,right handed,primary school,yes,54,57,never smoked,never,Strongly Disagree,Strongly Agree,63,i am often early,sometimes,8
+female,20,168,50,4,right handed,secondary school,no,34,60,never smoked,never,Strongly Disagree,Strongly Agree,47,i am always on time,sometimes,11
+female,19,168,53,1,right handed,college/bachelor degree,no,80,63,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,56,i am often running late,sometimes,10
+female,19,175,52,3,right handed,college/bachelor degree,no,58,87,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,50,i am always on time,sometimes,11
+female,19,170,65,1,right handed,primary school,yes,52,43,current smoker,social drinker,Neither Agree nor Disagree,Neutral,52,i am often early,only to avoid hurting someone,10
+male,,,,,left handed,primary school,no,70,57,never smoked,social drinker,Disagree,Strongly Agree,41,i am often running late,sometimes,9
+female,20,168,62,1,right handed,secondary school,no,78,43,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am often early,everytime it suits me,10
+male,21,180,66,1,right handed,secondary school,no,30,33,never smoked,social drinker,Strongly Agree,Strongly Agree,45,i am often early,sometimes,5
+female,19,165,78,1,right handed,secondary school,no,68,60,current smoker,social drinker,Disagree,Strongly Disagree,37,i am often early,everytime it suits me,11
+male,21,180,72,1,right handed,secondary school,no,34,53,tried smoking,never,Neither Agree nor Disagree,Strongly Agree,44,i am always on time,sometimes,11
+male,18,185,83,2,right handed,secondary school,no,42,57,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,50,i am often early,sometimes,10
+male,20,165,55,3,right handed,secondary school,no,48,77,never smoked,social drinker,Neither Agree nor Disagree,Agree,58,i am often early,only to avoid hurting someone,10
+male,19,184,85,5,right handed,college/bachelor degree,no,40,50,,never,Disagree,Disagree,34,i am always on time,sometimes,7
+female,22,177,61,1,right handed,secondary school,no,46,50,tried smoking,never,Agree,Strongly Agree,53,i am always on time,sometimes,11
+male,20,180,100,1,right handed,secondary school,no,56,47,tried smoking,never,Strongly Disagree,Strongly Agree,52,i am often early,everytime it suits me,11
+male,25,170,72,2,right handed,college/bachelor degree,no,60,83,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,52,i am often running late,sometimes,14
+female,21,170,52,0,right handed,college/bachelor degree,yes,68,53,tried smoking,social drinker,Neither Agree nor Disagree,Disagree,49,i am often early,everytime it suits me,7
+male,24,185,81,1,right handed,college/bachelor degree,no,46,40,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,49,i am often running late,only to avoid hurting someone,11
+female,19,171,72,1,right handed,secondary school,no,46,60,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,55,i am always on time,everytime it suits me,6
+male,25,177,97,1,left handed,doctorate degree,yes,38,63,never smoked,drink a lot,Neither Agree nor Disagree,Strongly Agree,55,i am always on time,everytime it suits me,8
+male,26,175,60,2,right handed,masters degree,no,38,60,former smoker,social drinker,Disagree,Strongly Agree,50,i am always on time,sometimes,11
+female,15,160,48,2,right handed,currently a primary school pupil,no,60,60,tried smoking,never,Neither Agree nor Disagree,Strongly Agree,55,i am often running late,sometimes,11
+male,20,190,70,1,right handed,secondary school,no,50,70,tried smoking,social drinker,Disagree,Strongly Agree,64,i am always on time,sometimes,9
+male,19,194,79,1,right handed,secondary school,no,24,47,tried smoking,social drinker,Strongly Disagree,Strongly Agree,53,i am always on time,sometimes,8
+female,20,172,73,2,left handed,secondary school,yes,40,50,current smoker,social drinker,Agree,Strongly Agree,49,i am often early,everytime it suits me,7
+male,21,190,89,0,left handed,college/bachelor degree,yes,42,67,tried smoking,social drinker,Agree,Agree,54,i am often early,sometimes,10
+male,22,184,71,1,right handed,secondary school,no,60,73,current smoker,social drinker,Agree,Strongly Agree,37,i am always on time,sometimes,7
+male,20,188,,1,right handed,secondary school,no,46,47,current smoker,social drinker,Agree,Strongly Agree,48,i am always on time,everytime it suits me,10
+female,20,168,60,1,right handed,college/bachelor degree,yes,72,70,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am often running late,everytime it suits me,10
+female,21,161,65,1,right handed,secondary school,no,36,37,former smoker,drink a lot,Agree,Strongly Agree,38,i am always on time,sometimes,10
+male,21,183,98,1,right handed,primary school,no,72,40,current smoker,drink a lot,Neither Agree nor Disagree,Neutral,51,i am always on time,sometimes,4
+female,20,180,71,0,right handed,secondary school,yes,24,43,tried smoking,social drinker,Strongly Disagree,Strongly Agree,48,i am always on time,everytime it suits me,6
+female,19,157,57,2,right handed,secondary school,yes,38,40,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,46,i am often running late,sometimes,8
+male,19,176,64,1,right handed,secondary school,no,62,50,never smoked,drink a lot,Agree,Agree,49,i am often running late,sometimes,11
+male,20,180,72,0,right handed,secondary school,yes,24,47,tried smoking,social drinker,Disagree,Strongly Agree,45,i am always on time,everytime it suits me,6
+male,22,191,85,1,right handed,secondary school,no,50,43,tried smoking,social drinker,Agree,Strongly Agree,60,i am often early,sometimes,8
+male,21,187,75,1,right handed,secondary school,no,46,47,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,43,i am often early,never,11
+male,26,183,78,0,right handed,secondary school,yes,82,97,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,35,i am always on time,sometimes,9
+female,17,163,61,2,right handed,primary school,yes,52,30,never smoked,never,Strongly Disagree,Strongly Agree,53,i am often early,sometimes,8
+male,22,178,80,2,right handed,college/bachelor degree,yes,26,30,former smoker,social drinker,Agree,Strongly Agree,47,i am always on time,only to avoid hurting someone,12
+male,26,169,70,2,right handed,masters degree,no,42,53,tried smoking,never,Neither Agree nor Disagree,Strongly Agree,52,i am often early,sometimes,9
+female,20,160,50,1,right handed,masters degree,no,50,47,tried smoking,social drinker,Disagree,Agree,49,i am often running late,sometimes,8
+male,22,182,75,1,right handed,secondary school,no,54,53,tried smoking,never,Neither Agree nor Disagree,Agree,38,i am always on time,sometimes,12
+male,21,175,60,0,right handed,secondary school,yes,20,20,current smoker,social drinker,Strongly Disagree,Agree,46,i am often running late,everytime it suits me,10
+male,23,180,80,0,right handed,secondary school,yes,32,60,never smoked,social drinker,Disagree,Strongly Agree,63,i am always on time,sometimes,12
+female,19,158,47,0,right handed,secondary school,yes,50,63,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,60,i am often early,sometimes,11
+male,20,180,70,1,right handed,college/bachelor degree,no,34,50,tried smoking,drink a lot,Strongly Agree,Strongly Agree,55,i am often early,sometimes,13
+female,21,174,85,0,right handed,college/bachelor degree,yes,66,40,former smoker,drink a lot,Agree,Strongly Agree,47,i am always on time,everytime it suits me,5
+female,19,167,55,2,right handed,secondary school,no,56,73,never smoked,never,Neither Agree nor Disagree,Neutral,46,i am always on time,never,12
+female,29,169,65,2,right handed,masters degree,no,72,53,tried smoking,social drinker,Agree,Agree,42,i am always on time,sometimes,10
+female,22,183,80,1,right handed,college/bachelor degree,no,32,33,never smoked,social drinker,Strongly Disagree,Strongly Agree,39,i am often early,sometimes,3
+female,19,170,55,2,left handed,college/bachelor degree,no,64,67,never smoked,social drinker,Neither Agree nor Disagree,Neutral,46,i am often early,everytime it suits me,11
+female,17,166,54,1,right handed,primary school,no,46,47,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,45,i am often early,sometimes,10
+female,16,158,48,1,left handed,primary school,no,48,30,never smoked,social drinker,Agree,Agree,50,i am always on time,sometimes,9
+female,29,160,67,2,right handed,masters degree,no,50,43,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,53,i am often early,everytime it suits me,12
+female,18,158,65,2,right handed,secondary school,no,42,60,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am often running late,sometimes,8
+male,26,169,70,2,right handed,masters degree,no,44,63,tried smoking,never,Neither Agree nor Disagree,Strongly Agree,56,i am often early,only to avoid hurting someone,9
+male,19,183,78,1,right handed,secondary school,no,44,50,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,44,i am often early,only to avoid hurting someone,11
+male,19,185,70,1,right handed,secondary school,yes,64,50,current smoker,never,Disagree,Strongly Agree,43,i am always on time,only to avoid hurting someone,12
+female,20,169,64,0,right handed,secondary school,yes,62,47,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,54,i am often early,sometimes,12
+female,22,160,47,0,right handed,college/bachelor degree,yes,66,47,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,36,i am always on time,sometimes,10
+male,20,186,88,1,right handed,secondary school,no,86,23,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,56,i am always on time,sometimes,13
+male,21,186,89,1,right handed,secondary school,no,52,33,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,35,i am often early,only to avoid hurting someone,11
+male,21,169,55,2,right handed,secondary school,no,42,47,tried smoking,social drinker,Disagree,Agree,54,i am often early,sometimes,6
+,18,168,56,0,right handed,secondary school,yes,58,67,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,58,i am always on time,only to avoid hurting someone,11
+male,15,181,63,0,right handed,primary school,yes,46,60,never smoked,never,Disagree,Strongly Agree,36,i am often early,sometimes,12
+female,19,163,50,1,right handed,college/bachelor degree,no,52,47,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,52,i am always on time,sometimes,11
+female,24,169,51,1,right handed,college/bachelor degree,no,44,30,never smoked,drink a lot,Neither Agree nor Disagree,Strongly Agree,58,i am often early,never,9
+female,19,160,53,1,right handed,secondary school,yes,50,73,never smoked,social drinker,Agree,Strongly Agree,56,i am always on time,sometimes,9
+male,25,184,85,3,left handed,college/bachelor degree,no,44,70,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,57,i am always on time,only to avoid hurting someone,11
+female,20,170,62,1,right handed,college/bachelor degree,no,54,63,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,53,i am often early,sometimes,10
+female,19,170,60,2,right handed,secondary school,no,66,50,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,56,i am always on time,sometimes,11
+male,21,,,1,right handed,secondary school,no,66,60,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,61,i am often early,only to avoid hurting someone,9
+male,23,184,82,2,right handed,secondary school,no,92,83,tried smoking,social drinker,Agree,Strongly Agree,71,i am always on time,only to avoid hurting someone,13
+female,21,176,55,1,right handed,secondary school,no,72,47,tried smoking,social drinker,Strongly Agree,Strongly Agree,61,i am often running late,never,12
+male,20,170,62,1,right handed,secondary school,no,44,37,tried smoking,drink a lot,Agree,Strongly Agree,54,i am always on time,sometimes,9
+female,20,168,69,1,right handed,secondary school,no,48,70,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,61,i am often early,sometimes,10
+female,18,173,55,3,right handed,primary school,no,62,63,tried smoking,social drinker,Neither Agree nor Disagree,Agree,54,i am often early,sometimes,9
+male,27,180,80,2,right handed,secondary school,no,36,40,former smoker,social drinker,Strongly Disagree,Strongly Disagree,32,i am often running late,sometimes,13
+female,17,163,68,0,right handed,secondary school,yes,42,30,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,34,i am always on time,sometimes,11
+female,19,178,60,1,right handed,primary school,no,56,67,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,50,i am always on time,sometimes,11
+male,18,182,70,2,right handed,primary school,no,38,50,tried smoking,social drinker,Agree,Strongly Agree,42,i am always on time,only to avoid hurting someone,12
+male,26,192,90,1,right handed,secondary school,no,30,43,current smoker,social drinker,Strongly Disagree,Strongly Agree,39,i am always on time,only to avoid hurting someone,11
+male,18,200,90,2,right handed,secondary school,no,46,50,tried smoking,drink a lot,Agree,Strongly Agree,53,i am always on time,only to avoid hurting someone,13
+male,30,178,71,2,right handed,masters degree,no,34,50,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,70,i am often early,sometimes,11
+female,24,153,42,1,right handed,secondary school,no,54,40,never smoked,social drinker,Disagree,Strongly Agree,53,i am often running late,sometimes,8
+female,20,168,51,0,right handed,secondary school,yes,54,80,tried smoking,social drinker,Strongly Disagree,Strongly Agree,48,i am always on time,sometimes,9
+male,20,172,56,1,right handed,secondary school,no,42,57,tried smoking,social drinker,Strongly Disagree,Strongly Agree,56,i am always on time,sometimes,9
+male,20,176,64,1,right handed,secondary school,no,48,63,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,60,i am often running late,only to avoid hurting someone,11
+,25,164,54,1,right handed,secondary school,no,74,83,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,52,i am often running late,only to avoid hurting someone,8
+female,19,168,68,3,right handed,secondary school,no,30,60,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,56,i am always on time,everytime it suits me,10
+female,20,157,48,2,right handed,secondary school,no,52,57,tried smoking,social drinker,Agree,Agree,53,i am often early,sometimes,8
+male,21,173,73,5,right handed,secondary school,no,30,57,tried smoking,social drinker,Disagree,Agree,50,i am always on time,sometimes,12
+female,19,173,63,1,right handed,secondary school,no,62,60,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,61,i am often running late,only to avoid hurting someone,13
+female,19,171,55,0,right handed,secondary school,yes,48,53,tried smoking,social drinker,Agree,Strongly Agree,47,i am always on time,only to avoid hurting someone,11
+female,19,168,60,2,right handed,secondary school,no,56,63,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am often running late,only to avoid hurting someone,5
+female,18,165,48,1,right handed,primary school,no,50,67,current smoker,social drinker,Agree,Agree,61,i am always on time,sometimes,12
+female,18,168,65,1,right handed,college/bachelor degree,no,58,37,never smoked,social drinker,Disagree,Agree,56,i am always on time,sometimes,11
+female,16,174,64,0,right handed,secondary school,yes,38,73,tried smoking,never,Neither Agree nor Disagree,Strongly Agree,44,i am often running late,sometimes,11
+female,19,171,57,0,right handed,secondary school,yes,54,60,tried smoking,drink a lot,Agree,Strongly Disagree,54,i am often early,sometimes,12
+female,18,173,64,3,right handed,secondary school,no,58,43,former smoker,social drinker,Disagree,Strongly Agree,52,i am often early,only to avoid hurting someone,12
+female,19,157,48,2,right handed,primary school,no,48,40,former smoker,drink a lot,Agree,Strongly Agree,41,i am always on time,everytime it suits me,11
+female,21,173,59,1,left handed,secondary school,yes,82,57,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,53,i am often running late,sometimes,10
+male,21,180,80,1,right handed,college/bachelor degree,no,58,30,former smoker,never,Neither Agree nor Disagree,Neutral,32,i am always on time,sometimes,10
+female,18,180,60,1,right handed,secondary school,yes,78,67,tried smoking,social drinker,Agree,Strongly Agree,49,i am often early,only to avoid hurting someone,13
+female,21,175,63,0,right handed,secondary school,yes,48,63,never smoked,never,Neither Agree nor Disagree,Neutral,42,i am often early,sometimes,10
+female,17,178,70,0,right handed,secondary school,yes,50,57,never smoked,social drinker,Agree,,54,i am often early,everytime it suits me,8
+female,20,160,46,0,right handed,secondary school,yes,78,40,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,60,i am always on time,everytime it suits me,10
+female,19,172,60,1,right handed,primary school,no,56,57,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,57,i am always on time,only to avoid hurting someone,12
+male,27,180,80,0,right handed,masters degree,yes,52,60,tried smoking,never,Neither Agree nor Disagree,Strongly Agree,55,i am always on time,only to avoid hurting someone,10
+female,22,165,68,2,right handed,college/bachelor degree,yes,50,37,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,58,i am often running late,everytime it suits me,8
+female,19,160,55,2,right handed,secondary school,no,54,50,tried smoking,social drinker,Agree,Strongly Agree,52,i am often running late,sometimes,11
+female,19,165,55,3,right handed,secondary school,no,52,80,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,67,i am often running late,everytime it suits me,12
+female,20,176,63,0,right handed,secondary school,yes,52,53,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,45,i am often early,sometimes,10
+female,19,164,60,2,right handed,secondary school,no,56,70,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,65,i am always on time,sometimes,13
+female,20,155,44,0,right handed,secondary school,yes,58,67,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,50,i am often early,sometimes,9
+female,17,167,57,2,left handed,primary school,yes,40,60,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,25,i am often early,never,9
+female,23,171,59,2,right handed,secondary school,no,40,57,current smoker,social drinker,Agree,Strongly Agree,54,i am often early,only to avoid hurting someone,13
+female,20,158,50,2,right handed,secondary school,no,46,63,never smoked,social drinker,Agree,Strongly Agree,67,i am often running late,never,12
+female,20,170,60,1,right handed,secondary school,no,68,33,current smoker,social drinker,Agree,Strongly Agree,40,i am often early,only to avoid hurting someone,13
+male,19,182,65,2,right handed,secondary school,no,56,70,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,55,i am often running late,everytime it suits me,11
+female,20,182,63,1,right handed,secondary school,yes,50,47,tried smoking,social drinker,Strongly Disagree,Strongly Agree,45,i am always on time,sometimes,10
+male,19,175,72,4,right handed,secondary school,no,32,70,current smoker,social drinker,Agree,Disagree,51,i am always on time,only to avoid hurting someone,12
+male,19,197,96,0,right handed,secondary school,yes,60,60,tried smoking,never,Disagree,Neutral,54,i am often early,only to avoid hurting someone,9
+female,18,170,50,1,right handed,secondary school,no,58,60,never smoked,social drinker,Agree,Strongly Agree,37,i am often early,sometimes,9
+female,19,165,55,1,right handed,secondary school,no,58,50,former smoker,social drinker,Agree,Strongly Agree,60,i am often early,sometimes,8
+female,15,176,53,3,right handed,secondary school,no,42,23,current smoker,drink a lot,Strongly Disagree,Strongly Agree,59,i am often running late,only to avoid hurting someone,11
+female,19,167,54,1,right handed,college/bachelor degree,no,52,60,former smoker,social drinker,Neither Agree nor Disagree,Neutral,58,i am often running late,sometimes,11
+female,15,170,49,1,right handed,secondary school,no,42,50,tried smoking,social drinker,Strongly Disagree,Strongly Agree,39,i am always on time,sometimes,11
+female,19,168,72,1,right handed,secondary school,no,52,47,tried smoking,social drinker,Agree,Strongly Agree,46,i am often running late,sometimes,10
+female,21,163,49,2,left handed,masters degree,no,26,83,never smoked,never,Strongly Agree,Strongly Agree,55,i am often early,never,13
+female,19,152,47,2,right handed,college/bachelor degree,no,64,50,never smoked,never,Agree,Strongly Agree,43,i am often early,sometimes,10
+female,17,158,57,1,right handed,secondary school,no,38,67,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,50,i am often early,sometimes,10
+female,23,165,70,1,right handed,college/bachelor degree,no,86,43,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,62,i am often running late,only to avoid hurting someone,10
+male,24,177,80,0,right handed,secondary school,yes,60,67,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,59,i am often early,only to avoid hurting someone,12
+female,19,170,55,1,right handed,secondary school,no,46,70,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,64,i am often running late,sometimes,9
+female,19,178,67,2,right handed,college/bachelor degree,no,58,63,former smoker,drink a lot,Disagree,Strongly Agree,65,i am often running late,sometimes,13
+female,22,170,60,0,right handed,secondary school,yes,78,47,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am always on time,sometimes,11
+female,20,170,70,1,right handed,college/bachelor degree,no,46,60,former smoker,drink a lot,Disagree,Strongly Agree,62,i am often early,everytime it suits me,9
+female,21,,,2,right handed,college/bachelor degree,no,42,77,tried smoking,never,Neither Agree nor Disagree,Strongly Agree,53,i am often running late,only to avoid hurting someone,10
+male,19,188,76,0,right handed,secondary school,yes,36,47,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,45,i am often early,only to avoid hurting someone,11
+male,19,180,85,2,right handed,secondary school,no,28,57,tried smoking,social drinker,Agree,Strongly Agree,63,i am always on time,only to avoid hurting someone,12
+female,20,161,53,1,right handed,college/bachelor degree,no,68,80,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,39,i am always on time,only to avoid hurting someone,11
+female,18,178,69,1,right handed,secondary school,no,38,70,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,57,i am often running late,never,10
+male,19,178,74,1,right handed,secondary school,no,46,40,former smoker,drink a lot,Agree,Strongly Agree,62,i am often early,sometimes,10
+female,20,165,50,2,right handed,secondary school,no,76,60,tried smoking,never,Neither Agree nor Disagree,Strongly Agree,30,i am often early,sometimes,10
+male,22,187,91,1,right handed,secondary school,no,40,47,never smoked,social drinker,Agree,Strongly Agree,53,i am often early,never,12
+male,20,178,68,2,right handed,secondary school,no,42,33,never smoked,social drinker,Agree,Strongly Disagree,19,i am always on time,only to avoid hurting someone,14
+female,20,168,55,2,right handed,secondary school,no,54,73,tried smoking,social drinker,Agree,Strongly Agree,41,i am always on time,sometimes,12
+female,27,168,55,1,right handed,masters degree,no,76,67,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,55,i am often running late,only to avoid hurting someone,12
+female,19,180,57,1,right handed,secondary school,yes,64,57,former smoker,social drinker,Agree,Strongly Agree,50,i am always on time,only to avoid hurting someone,11
+male,22,192,80,2,left handed,secondary school,no,40,63,tried smoking,never,Agree,Strongly Agree,47,i am always on time,sometimes,13
+male,19,188,98,0,right handed,college/bachelor degree,yes,26,37,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,47,i am often early,sometimes,12
+female,20,173,58,1,right handed,secondary school,no,38,73,tried smoking,social drinker,Agree,Agree,49,i am often running late,sometimes,13
+male,20,193,85,1,right handed,secondary school,no,34,70,tried smoking,social drinker,Neither Agree nor Disagree,Agree,59,i am always on time,sometimes,13
+female,21,184,120,1,right handed,secondary school,no,54,60,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,57,i am often early,sometimes,11
+female,16,167,62,1,right handed,primary school,yes,50,37,tried smoking,never,Strongly Disagree,Strongly Agree,51,i am always on time,only to avoid hurting someone,3
+female,19,177,63,1,right handed,secondary school,no,48,33,former smoker,never,Agree,Strongly Agree,48,i am often early,sometimes,9
+female,18,167,57,1,right handed,secondary school,no,76,67,tried smoking,drink a lot,Agree,Strongly Agree,60,i am always on time,everytime it suits me,9
+male,23,190,90,1,right handed,college/bachelor degree,no,26,30,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,45,i am always on time,sometimes,13
+male,19,187,83,0,right handed,secondary school,yes,32,47,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,44,i am always on time,only to avoid hurting someone,9
+female,19,163,51,0,right handed,secondary school,no,74,63,tried smoking,drink a lot,Agree,Strongly Agree,53,i am often running late,sometimes,10
+female,22,173,52,1,right handed,college/bachelor degree,no,80,50,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,49,i am often early,sometimes,11
+female,18,165,65,1,right handed,secondary school,no,26,83,tried smoking,social drinker,Agree,Strongly Agree,51,i am often running late,everytime it suits me,12
+male,20,190,92,1,right handed,college/bachelor degree,no,30,63,never smoked,social drinker,Strongly Disagree,Agree,38,i am often running late,only to avoid hurting someone,8
+female,19,178,58,1,right handed,secondary school,no,74,90,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,57,i am often running late,sometimes,11
+female,25,167,76,1,right handed,masters degree,no,54,40,never smoked,social drinker,Agree,Agree,54,i am often early,only to avoid hurting someone,9
+female,18,160,53,2,right handed,secondary school,yes,42,43,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,43,i am always on time,everytime it suits me,12
+female,20,169,64,0,right handed,college/bachelor degree,yes,70,63,current smoker,social drinker,Disagree,Strongly Agree,45,i am often running late,never,12
+female,15,174,63,1,right handed,primary school,no,66,77,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,69,i am always on time,sometimes,7
+female,19,176,68,2,right handed,secondary school,no,56,57,never smoked,never,Neither Agree nor Disagree,Strongly Agree,52,i am often running late,only to avoid hurting someone,9
+female,19,178,68,2,right handed,secondary school,yes,70,63,tried smoking,never,Agree,Strongly Agree,44,i am always on time,sometimes,12
+female,16,158,50,0,right handed,secondary school,yes,30,47,never smoked,never,Neither Agree nor Disagree,Strongly Agree,42,i am often running late,sometimes,13
+male,19,180,78,1,right handed,college/bachelor degree,no,36,67,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,44,i am always on time,sometimes,11
+female,18,167,57,0,right handed,college/bachelor degree,yes,34,73,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,73,i am often early,everytime it suits me,13
+male,15,170,75,1,right handed,primary school,no,42,57,tried smoking,social drinker,Strongly Disagree,Disagree,42,i am often early,sometimes,12
+female,20,170,55,1,right handed,secondary school,no,58,67,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am often running late,sometimes,12
+male,20,180,75,2,right handed,secondary school,no,50,73,never smoked,never,Disagree,Strongly Agree,83,i am always on time,sometimes,14
+male,20,184,68,1,left handed,secondary school,no,60,77,tried smoking,social drinker,Strongly Disagree,Strongly Agree,33,i am often running late,sometimes,10
+female,20,170,60,1,right handed,secondary school,yes,52,53,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,39,i am often running late,sometimes,11
+male,19,180,65,2,right handed,secondary school,no,36,43,tried smoking,social drinker,#N/A,Strongly Agree,46,i am often early,sometimes,10
+female,16,169,48,0,right handed,currently a primary school pupil,yes,92,67,never smoked,social drinker,Strongly Disagree,Strongly Agree,48,i am always on time,sometimes,9
+female,18,166,65,1,left handed,secondary school,no,66,80,former smoker,social drinker,Agree,Strongly Agree,59,i am often running late,sometimes,10
+male,20,178,88,0,right handed,secondary school,no,42,73,tried smoking,social drinker,Agree,Strongly Agree,51,i am often early,sometimes,11
+female,16,162,55,0,right handed,college/bachelor degree,yes,70,70,never smoked,never,Agree,Strongly Agree,58,i am always on time,sometimes,10
+female,18,160,50,1,right handed,primary school,no,60,53,tried smoking,social drinker,Agree,Strongly Agree,55,i am always on time,everytime it suits me,12
+male,20,178,68,1,left handed,secondary school,no,54,70,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,47,i am often early,never,9
+female,18,168,65,1,right handed,primary school,no,58,70,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,49,i am often running late,sometimes,11
+male,19,185,62,1,right handed,secondary school,no,38,53,tried smoking,social drinker,Disagree,Strongly Agree,64,i am often early,sometimes,11
+female,19,175,58,0,right handed,college/bachelor degree,yes,38,53,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,50,i am often running late,only to avoid hurting someone,12
+female,20,167,55,1,right handed,secondary school,no,68,53,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,51,i am often early,sometimes,11
+male,18,193,84,0,right handed,college/bachelor degree,yes,50,53,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,55,i am often running late,sometimes,12
+female,17,160,60,1,right handed,primary school,no,56,77,never smoked,drink a lot,Neither Agree nor Disagree,Strongly Agree,47,i am always on time,everytime it suits me,9
+female,22,171,52,0,right handed,secondary school,yes,72,53,tried smoking,social drinker,Disagree,Strongly Agree,51,i am always on time,only to avoid hurting someone,7
+male,17,182,92,1,right handed,secondary school,yes,32,70,former smoker,social drinker,Strongly Agree,Strongly Agree,54,i am always on time,sometimes,13
+female,22,165,60,2,right handed,secondary school,no,74,77,tried smoking,social drinker,Neither Agree nor Disagree,Agree,41,i am often early,sometimes,9
+female,16,174,65,1,right handed,secondary school,yes,48,80,never smoked,never,Neither Agree nor Disagree,Strongly Agree,50,i am often running late,sometimes,11
+female,24,169,50,1,right handed,masters degree,no,48,57,never smoked,never,Disagree,Strongly Agree,43,i am often early,sometimes,10
+male,17,185,73,1,right handed,primary school,no,30,77,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,57,i am always on time,only to avoid hurting someone,8
+male,17,170,60,1,left handed,secondary school,no,66,33,never smoked,never,Neither Agree nor Disagree,Strongly Agree,47,i am always on time,sometimes,10
+male,17,182,76,2,right handed,secondary school,no,36,77,tried smoking,drink a lot,Agree,Strongly Agree,45,i am often running late,everytime it suits me,14
+female,15,165,48,3,left handed,secondary school,no,82,80,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,34,i am often running late,everytime it suits me,9
+female,18,160,50,2,right handed,primary school,no,62,57,tried smoking,social drinker,Agree,Strongly Agree,56,i am always on time,everytime it suits me,12
+female,18,158,53,2,right handed,primary school,no,64,80,tried smoking,social drinker,Strongly Disagree,Strongly Agree,43,i am always on time,sometimes,11
+male,16,186,63,1,right handed,primary school,no,74,33,former smoker,social drinker,Disagree,Strongly Agree,33,i am often early,everytime it suits me,5
+female,20,173,68,1,right handed,secondary school,yes,52,47,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,51,i am always on time,only to avoid hurting someone,11
+female,29,168,56,2,right handed,masters degree,no,60,40,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,54,i am always on time,sometimes,12
+female,24,172,68,3,right handed,college/bachelor degree,no,78,50,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,42,i am often early,sometimes,11
+female,18,164,60,0,right handed,secondary school,yes,58,50,tried smoking,social drinker,Neither Agree nor Disagree,Agree,45,i am often early,sometimes,12
+male,17,185,70,1,right handed,primary school,yes,38,47,current smoker,drink a lot,Strongly Disagree,Strongly Agree,39,i am always on time,everytime it suits me,9
+male,18,175,65,1,left handed,primary school,no,68,20,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,42,i am often early,everytime it suits me,10
+male,16,182,75,1,right handed,secondary school,no,44,40,never smoked,never,Agree,Strongly Agree,58,i am always on time,sometimes,14
+female,17,170,65,2,right handed,primary school,no,62,50,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,45,i am always on time,only to avoid hurting someone,13
+male,20,187,68,2,right handed,college/bachelor degree,no,34,53,tried smoking,social drinker,Disagree,Disagree,41,i am often early,sometimes,10
+female,16,169,63,1,right handed,primary school,no,60,73,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,61,i am often running late,sometimes,12
+male,19,189,76,1,right handed,secondary school,no,46,70,tried smoking,social drinker,Agree,Strongly Agree,41,i am always on time,only to avoid hurting someone,12
+female,18,166,60,1,right handed,secondary school,no,48,70,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,44,i am often running late,sometimes,9
+female,20,161,59,1,right handed,secondary school,no,60,83,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,53,i am often early,sometimes,11
+male,19,180,80,1,right handed,secondary school,no,40,50,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,39,i am always on time,only to avoid hurting someone,9
+male,18,185,74,1,left handed,secondary school,no,40,47,tried smoking,social drinker,Strongly Agree,Agree,62,i am always on time,sometimes,10
+male,21,179,96,0,right handed,secondary school,yes,42,57,never smoked,never,Strongly Agree,Strongly Agree,46,i am often early,sometimes,13
+male,19,170,68,2,right handed,college/bachelor degree,no,64,53,current smoker,social drinker,Neither Agree nor Disagree,Agree,49,i am always on time,everytime it suits me,9
+female,20,184,72,2,right handed,secondary school,no,66,30,current smoker,social drinker,Strongly Disagree,Strongly Agree,50,i am always on time,sometimes,11
+female,23,180,62,1,right handed,college/bachelor degree,no,66,33,never smoked,social drinker,Disagree,Strongly Agree,52,i am often running late,only to avoid hurting someone,7
+female,19,166,58,1,right handed,college/bachelor degree,no,50,87,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,51,i am often early,everytime it suits me,13
+female,19,167,50,2,right handed,college/bachelor degree,no,52,50,never smoked,social drinker,Agree,Strongly Agree,59,i am always on time,only to avoid hurting someone,8
+female,19,167,50,2,right handed,college/bachelor degree,no,48,50,never smoked,social drinker,Agree,Strongly Agree,59,i am always on time,only to avoid hurting someone,11
+male,20,178,75,2,right handed,college/bachelor degree,no,54,37,tried smoking,social drinker,Agree,Disagree,53,i am often early,sometimes,10
+male,24,175,70,5,right handed,college/bachelor degree,no,24,80,never smoked,social drinker,Agree,Strongly Agree,58,i am always on time,sometimes,11
+male,19,190,85,1,right handed,college/bachelor degree,no,40,33,tried smoking,social drinker,Agree,Strongly Agree,37,i am always on time,never,9
+male,20,178,67,2,right handed,secondary school,no,48,70,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,56,i am always on time,sometimes,12
+female,18,179,55,1,right handed,primary school,no,30,60,current smoker,drink a lot,Agree,Strongly Agree,51,i am often early,sometimes,12
+male,17,180,78,1,left handed,primary school,no,42,53,tried smoking,never,Agree,Strongly Agree,41,i am often early,only to avoid hurting someone,8
+female,19,168,58,2,right handed,secondary school,no,82,37,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,57,i am often running late,everytime it suits me,11
+female,19,164,53,4,right handed,secondary school,no,48,77,never smoked,social drinker,Strongly Disagree,Strongly Agree,73,i am always on time,sometimes,13
+male,20,187,56,2,right handed,secondary school,no,26,30,tried smoking,social drinker,Disagree,Agree,49,i am often early,sometimes,10
+male,20,174,72,0,left handed,college/bachelor degree,yes,42,33,never smoked,drink a lot,Neither Agree nor Disagree,Strongly Agree,29,i am often early,only to avoid hurting someone,7
+female,21,176,62,1,right handed,secondary school,no,82,57,tried smoking,social drinker,Agree,Strongly Agree,42,i am always on time,sometimes,11
+female,20,170,60,2,right handed,secondary school,no,74,23,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,42,i am often early,only to avoid hurting someone,9
+female,20,170,56,1,right handed,secondary school,no,62,47,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,29,i am often running late,sometimes,13
+female,17,158,70,0,right handed,secondary school,yes,40,50,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,54,i am often early,everytime it suits me,9
+female,20,175,53,2,right handed,secondary school,no,50,43,tried smoking,drink a lot,Strongly Disagree,Strongly Agree,50,i am often running late,sometimes,10
+male,25,174,67,2,right handed,masters degree,no,42,67,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,61,i am always on time,sometimes,12
+female,20,170,58,1,left handed,secondary school,no,44,70,tried smoking,social drinker,Disagree,Strongly Agree,53,i am often running late,only to avoid hurting someone,11
+female,21,173,58,1,right handed,secondary school,no,46,47,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,49,i am always on time,everytime it suits me,10
+female,21,158,49,0,right handed,secondary school,yes,94,60,current smoker,social drinker,Agree,Strongly Agree,47,i am often running late,sometimes,14
+male,22,185,90,1,right handed,college/bachelor degree,no,50,47,current smoker,drink a lot,Agree,Strongly Agree,54,i am always on time,only to avoid hurting someone,12
+female,19,170,58,1,right handed,secondary school,no,70,77,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,55,i am often running late,sometimes,10
+male,25,178,77,1,right handed,college/bachelor degree,no,34,30,current smoker,drink a lot,Agree,Strongly Agree,74,i am always on time,only to avoid hurting someone,12
+female,19,166,55,0,right handed,secondary school,yes,44,47,tried smoking,drink a lot,Agree,Strongly Agree,53,i am always on time,sometimes,12
+female,25,167,64,2,right handed,masters degree,no,44,70,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,53,i am often running late,only to avoid hurting someone,11
+female,25,169,60,1,right handed,masters degree,no,64,73,former smoker,social drinker,Agree,Strongly Agree,65,i am often running late,sometimes,10
+female,21,168,60,0,right handed,secondary school,yes,62,70,tried smoking,social drinker,Agree,Strongly Agree,45,i am always on time,sometimes,12
+male,20,178,65,2,right handed,secondary school,no,40,70,never smoked,social drinker,Agree,Agree,42,i am always on time,never,11
+female,24,165,49,2,right handed,masters degree,no,64,63,never smoked,social drinker,Neither Agree nor Disagree,Agree,47,i am always on time,sometimes,11
+female,30,160,47,2,right handed,masters degree,no,68,60,tried smoking,social drinker,Disagree,Strongly Agree,47,i am always on time,everytime it suits me,11
+male,21,176,75,1,right handed,secondary school,no,26,33,former smoker,never,Agree,Strongly Agree,34,i am always on time,sometimes,12
+male,27,186,77,3,right handed,masters degree,no,80,50,never smoked,social drinker,Disagree,Strongly Agree,35,i am often running late,only to avoid hurting someone,6
+male,21,172,68,1,right handed,college/bachelor degree,no,30,30,never smoked,social drinker,Agree,Strongly Agree,52,i am always on time,sometimes,11
+female,16,164,50,0,right handed,primary school,yes,40,27,never smoked,social drinker,Disagree,Strongly Agree,51,i am always on time,sometimes,9
+female,21,175,75,1,right handed,college/bachelor degree,no,72,83,current smoker,never,Agree,Strongly Agree,41,i am often early,sometimes,9
+female,20,165,60,1,right handed,college/bachelor degree,no,54,73,current smoker,social drinker,Agree,Strongly Agree,58,i am often early,sometimes,12
+female,22,160,65,1,right handed,secondary school,no,40,83,former smoker,social drinker,Agree,Strongly Agree,60,i am always on time,only to avoid hurting someone,13
+male,19,180,80,1,left handed,secondary school,no,36,50,tried smoking,social drinker,Disagree,Strongly Agree,42,i am often early,only to avoid hurting someone,8
+female,20,170,90,1,right handed,secondary school,no,34,37,tried smoking,drink a lot,Disagree,Strongly Agree,38,i am always on time,everytime it suits me,12
+male,25,180,95,1,right handed,masters degree,no,50,83,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,46,i am often running late,only to avoid hurting someone,11
+male,23,175,79,2,right handed,secondary school,no,36,60,former smoker,social drinker,Disagree,Disagree,51,i am often early,sometimes,11
+female,20,167,57,2,right handed,college/bachelor degree,no,38,73,tried smoking,social drinker,Agree,Strongly Agree,65,i am always on time,only to avoid hurting someone,10
+female,20,165,,1,left handed,secondary school,no,56,83,tried smoking,social drinker,Neither Agree nor Disagree,Agree,50,i am often running late,sometimes,11
+female,21,168,60,1,left handed,secondary school,no,74,80,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,61,i am often early,sometimes,9
+female,19,166,44,1,left handed,secondary school,no,56,70,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,50,i am always on time,only to avoid hurting someone,11
+female,21,164,58,1,right handed,college/bachelor degree,no,76,73,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,56,i am often early,sometimes,11
+female,16,165,50,0,right handed,currently a primary school pupil,yes,54,83,never smoked,never,Neither Agree nor Disagree,Strongly Agree,56,i am always on time,sometimes,15
+male,20,180,88,1,right handed,secondary school,no,20,53,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am always on time,only to avoid hurting someone,14
+female,18,173,60,0,right handed,secondary school,yes,64,60,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,52,i am often running late,sometimes,13
+female,21,168,54,1,right handed,secondary school,no,40,53,current smoker,never,Strongly Disagree,Strongly Agree,38,i am often early,sometimes,12
+male,21,177,68,2,right handed,secondary school,no,48,60,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,50,i am always on time,sometimes,11
+male,18,167,56,2,right handed,college/bachelor degree,no,56,37,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,53,i am often running late,never,13
+female,19,173,69,1,right handed,secondary school,no,82,60,current smoker,drink a lot,Disagree,Strongly Agree,45,i am often running late,everytime it suits me,9
+female,20,170,54,1,left handed,secondary school,no,50,60,tried smoking,social drinker,Neither Agree nor Disagree,Agree,44,i am always on time,only to avoid hurting someone,12
+male,18,180,60,1,right handed,secondary school,no,54,50,current smoker,drink a lot,Disagree,Strongly Agree,44,i am often early,only to avoid hurting someone,7
+female,18,172,60,1,right handed,primary school,no,76,60,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,39,i am often early,only to avoid hurting someone,11
+female,23,158,53,0,right handed,secondary school,yes,30,70,former smoker,never,Neither Agree nor Disagree,Strongly Agree,68,i am often running late,sometimes,9
+female,20,165,52,1,right handed,secondary school,no,72,43,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,39,i am always on time,never,11
+female,18,168,55,1,left handed,secondary school,no,40,67,never smoked,social drinker,Disagree,Strongly Agree,52,i am always on time,only to avoid hurting someone,11
+female,28,180,76,1,right handed,college/bachelor degree,no,70,53,current smoker,social drinker,Agree,Strongly Agree,46,i am often early,only to avoid hurting someone,9
+female,24,163,67,1,right handed,masters degree,no,70,77,tried smoking,never,Neither Agree nor Disagree,Strongly Agree,50,i am often early,everytime it suits me,11
+female,19,154,60,2,right handed,secondary school,yes,64,33,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,44,i am often early,sometimes,12
+female,21,161,57,3,right handed,secondary school,no,76,77,former smoker,social drinker,Agree,Strongly Agree,55,i am often early,sometimes,3
+female,22,160,65,1,right handed,masters degree,no,50,57,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,39,i am always on time,sometimes,11
+male,19,180,77,1,right handed,secondary school,no,50,43,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,51,i am often running late,only to avoid hurting someone,10
+female,18,164,56,2,right handed,primary school,no,74,60,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,54,i am often running late,sometimes,10
+female,21,162,62,0,right handed,secondary school,yes,60,37,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,41,i am often early,sometimes,9
+female,19,170,53,1,right handed,masters degree,no,42,63,tried smoking,never,Neither Agree nor Disagree,Strongly Agree,56,i am always on time,sometimes,11
+male,19,185,78,2,left handed,secondary school,no,64,57,tried smoking,never,Neither Agree nor Disagree,Agree,48,i am often early,sometimes,10
+male,20,184,80,1,right handed,secondary school,no,50,43,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,49,i am often running late,only to avoid hurting someone,8
+female,19,170,56,3,right handed,secondary school,no,62,40,tried smoking,drink a lot,Disagree,Strongly Agree,58,i am often running late,sometimes,10
+male,18,184,83,1,right handed,secondary school,no,46,37,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,49,i am often early,sometimes,10
+female,18,173,60,1,right handed,secondary school,no,66,43,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,40,i am often running late,sometimes,12
+male,19,176,62,1,right handed,secondary school,no,46,40,tried smoking,drink a lot,Disagree,Agree,45,i am always on time,sometimes,10
+female,18,163,55,0,right handed,secondary school,yes,74,33,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,34,i am always on time,sometimes,8
+female,18,180,74,2,right handed,secondary school,no,58,53,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,44,i am often early,sometimes,10
+male,19,175,70,1,right handed,secondary school,no,38,57,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,45,i am always on time,only to avoid hurting someone,12
+female,19,164,58,1,right handed,secondary school,no,76,47,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,51,i am always on time,sometimes,9
+female,19,155,48,1,left handed,college/bachelor degree,no,38,33,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,32,i am always on time,sometimes,11
+female,18,163,58,6,right handed,secondary school,no,48,67,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,55,i am always on time,only to avoid hurting someone,10
+female,18,162,54,3,right handed,secondary school,no,46,83,tried smoking,social drinker,Neither Agree nor Disagree,Agree,48,i am always on time,only to avoid hurting someone,10
+female,19,170,54,1,right handed,secondary school,no,42,57,tried smoking,social drinker,Strongly Agree,Strongly Agree,59,i am often running late,sometimes,11
+female,20,157,43,1,right handed,secondary school,yes,58,73,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,46,i am often running late,only to avoid hurting someone,12
+male,19,185,70,1,right handed,secondary school,no,56,23,current smoker,drink a lot,Neither Agree nor Disagree,Agree,37,i am often running late,everytime it suits me,9
+female,26,163,55,3,left handed,masters degree,no,74,100,never smoked,social drinker,Agree,Neutral,29,i am often early,never,9
+female,19,168,49,1,right handed,secondary school,no,54,57,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,46,i am often running late,sometimes,12
+female,19,169,67,1,right handed,secondary school,yes,50,63,current smoker,social drinker,Disagree,Strongly Agree,50,i am often early,everytime it suits me,9
+male,22,178,82,1,right handed,college/bachelor degree,no,46,47,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,45,i am often early,sometimes,13
+male,20,165,65,1,right handed,college/bachelor degree,no,40,60,tried smoking,social drinker,Strongly Agree,Strongly Agree,43,i am always on time,sometimes,12
+female,28,180,63,2,right handed,masters degree,no,76,73,former smoker,social drinker,Strongly Agree,Strongly Agree,45,i am often running late,only to avoid hurting someone,13
+female,19,169,,1,right handed,secondary school,yes,52,60,current smoker,social drinker,Disagree,Strongly Agree,48,i am often early,everytime it suits me,9
+female,21,156,48,0,right handed,secondary school,yes,60,33,tried smoking,social drinker,Neither Agree nor Disagree,Agree,53,i am often running late,everytime it suits me,13
+female,19,175,58,1,right handed,secondary school,no,86,53,never smoked,social drinker,Agree,Strongly Agree,53,i am always on time,sometimes,11
+male,22,188,80,2,right handed,secondary school,no,34,57,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,41,i am always on time,sometimes,12
+male,19,181,62,2,right handed,secondary school,no,40,63,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,47,i am always on time,only to avoid hurting someone,11
+female,18,168,52,1,right handed,secondary school,no,36,77,tried smoking,social drinker,Strongly Agree,Strongly Agree,65,i am often running late,only to avoid hurting someone,10
+female,19,166,62,0,right handed,secondary school,yes,44,60,tried smoking,social drinker,Disagree,Agree,49,i am always on time,sometimes,11
+male,22,189,78,2,left handed,secondary school,no,30,50,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,41,i am often running late,everytime it suits me,14
+male,29,189,96,3,right handed,masters degree,yes,38,57,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,49,i am always on time,only to avoid hurting someone,9
+female,,,60,2,right handed,college/bachelor degree,no,74,40,tried smoking,social drinker,Neither Agree nor Disagree,Agree,48,i am always on time,sometimes,10
+female,18,164,60,0,right handed,secondary school,yes,74,60,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,44,i am often running late,never,6
+female,22,172,50,1,right handed,secondary school,no,66,70,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,54,i am always on time,sometimes,10
+female,17,157,46,1,right handed,secondary school,no,34,47,never smoked,never,Agree,Strongly Agree,48,i am often running late,sometimes,11
+male,19,189,72,0,right handed,college/bachelor degree,yes,40,47,former smoker,drink a lot,Strongly Agree,Strongly Agree,46,i am always on time,sometimes,10
+female,20,161,46,1,right handed,secondary school,no,80,63,tried smoking,social drinker,Disagree,Agree,40,i am often running late,sometimes,10
+female,18,173,60,1,right handed,secondary school,yes,46,53,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,57,i am often early,sometimes,11
+male,22,195,83,2,,secondary school,yes,38,87,tried smoking,drink a lot,Strongly Agree,Strongly Agree,50,i am often early,never,11
+female,19,167,58,1,right handed,secondary school,no,58,70,never smoked,social drinker,Neither Agree nor Disagree,Agree,44,i am always on time,only to avoid hurting someone,10
+male,20,178,74,1,right handed,secondary school,no,34,47,tried smoking,social drinker,Agree,Strongly Agree,56,i am always on time,sometimes,14
+male,25,186,78,1,right handed,masters degree,no,52,53,never smoked,social drinker,Disagree,Neutral,36,i am always on time,sometimes,8
+male,29,170,64,0,left handed,masters degree,yes,32,77,current smoker,drink a lot,Strongly Agree,Strongly Agree,31,i am often early,never,4
+male,19,180,80,1,right handed,secondary school,no,70,77,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,43,i am often running late,everytime it suits me,14
+female,18,172,60,4,right handed,secondary school,no,50,63,current smoker,drink a lot,Disagree,Strongly Agree,63,i am often running late,sometimes,10
+female,20,175,60,2,right handed,secondary school,no,54,57,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,59,i am always on time,everytime it suits me,10
+female,18,169,53,3,right handed,secondary school,no,34,33,tried smoking,social drinker,Disagree,Strongly Agree,46,i am often running late,only to avoid hurting someone,9
+male,30,180,80,3,right handed,masters degree,no,58,83,former smoker,never,Agree,Strongly Agree,52,i am always on time,only to avoid hurting someone,11
+female,20,175,57,1,right handed,secondary school,no,46,53,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,52,i am always on time,only to avoid hurting someone,11
+female,21,161,55,2,right handed,secondary school,no,44,70,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,71,i am often running late,only to avoid hurting someone,12
+male,22,190,65,1,right handed,college/bachelor degree,no,30,43,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,51,i am often early,sometimes,13
+male,22,189,82,2,right handed,secondary school,no,44,47,tried smoking,drink a lot,Disagree,Neutral,41,i am often early,sometimes,10
+female,20,173,73,1,right handed,college/bachelor degree,yes,52,57,former smoker,social drinker,Disagree,Strongly Agree,55,i am often running late,sometimes,7
+female,20,172,57,1,right handed,secondary school,no,66,50,tried smoking,drink a lot,Agree,Strongly Agree,43,i am always on time,sometimes,10
+female,19,165,64,1,right handed,secondary school,no,44,67,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,47,i am often running late,everytime it suits me,8
+female,28,171,57,1,right handed,masters degree,no,74,40,tried smoking,social drinker,Agree,Neutral,42,i am often running late,sometimes,8
+female,19,186,66,3,right handed,secondary school,no,52,93,current smoker,drink a lot,Strongly Disagree,Strongly Agree,20,i am often running late,everytime it suits me,12
+male,22,177,75,1,right handed,secondary school,no,26,47,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,62,i am often early,only to avoid hurting someone,11
+female,20,160,49,2,right handed,college/bachelor degree,yes,58,47,current smoker,social drinker,Disagree,Strongly Agree,49,i am often running late,sometimes,12
+female,16,168,50,1,right handed,primary school,no,70,50,never smoked,never,Neither Agree nor Disagree,Agree,43,i am always on time,only to avoid hurting someone,12
+female,19,165,56,1,right handed,secondary school,no,54,37,former smoker,social drinker,Agree,Strongly Agree,46,i am always on time,sometimes,11
+female,20,163,68,2,right handed,secondary school,no,48,80,former smoker,social drinker,Strongly Disagree,Strongly Agree,53,i am always on time,sometimes,9
+male,21,185,78,1,right handed,college/bachelor degree,no,46,30,current smoker,drink a lot,Disagree,Strongly Agree,45,i am always on time,sometimes,12
+female,19,165,55,1,right handed,secondary school,no,38,60,tried smoking,social drinker,Agree,Strongly Agree,49,i am often early,only to avoid hurting someone,11
+female,20,,,2,right handed,secondary school,no,60,70,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,46,i am often early,sometimes,10
+female,25,170,52,1,right handed,college/bachelor degree,no,56,90,never smoked,social drinker,Neither Agree nor Disagree,Neutral,51,i am always on time,only to avoid hurting someone,10
+female,20,165,60,1,right handed,secondary school,no,38,70,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,61,i am always on time,sometimes,12
+female,19,170,50,3,right handed,secondary school,no,56,67,tried smoking,social drinker,Strongly Disagree,Strongly Agree,41,i am always on time,sometimes,9
+male,22,,76,3,right handed,secondary school,no,36,40,tried smoking,drink a lot,Disagree,Strongly Agree,48,i am always on time,sometimes,10
+female,19,172,58,2,left handed,secondary school,no,54,80,tried smoking,social drinker,Agree,Strongly Agree,54,i am always on time,sometimes,11
+female,21,179,60,1,right handed,secondary school,no,68,67,tried smoking,social drinker,Agree,Strongly Agree,56,i am often early,sometimes,8
+male,22,193,86,6,right handed,masters degree,no,40,37,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,58,i am always on time,only to avoid hurting someone,12
+female,28,176,60,1,right handed,masters degree,no,62,77,never smoked,social drinker,Agree,Strongly Agree,47,i am often running late,sometimes,10
+female,21,168,50,1,right handed,college/bachelor degree,no,38,57,former smoker,social drinker,Strongly Agree,Strongly Agree,38,i am often early,only to avoid hurting someone,11
+male,20,177,75,3,right handed,secondary school,no,54,40,current smoker,drink a lot,Disagree,Strongly Agree,52,i am often early,sometimes,12
+male,19,189,83,1,left handed,secondary school,no,26,27,former smoker,drink a lot,Agree,Strongly Agree,34,i am often running late,sometimes,13
+female,21,168,53,1,right handed,college/bachelor degree,no,54,47,tried smoking,social drinker,Agree,Strongly Agree,53,i am often early,only to avoid hurting someone,13
+male,20,179,65,0,right handed,secondary school,yes,56,67,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,47,i am often early,sometimes,12
+female,16,168,,1,right handed,secondary school,yes,50,73,tried smoking,never,Neither Agree nor Disagree,Agree,49,i am always on time,sometimes,13
+male,22,176,70,1,right handed,college/bachelor degree,yes,36,50,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,62,i am always on time,sometimes,14
+male,19,185,75,2,right handed,secondary school,no,38,47,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,44,i am often early,only to avoid hurting someone,12
+female,22,168,58,1,right handed,college/bachelor degree,yes,72,60,tried smoking,never,Agree,Strongly Agree,29,i am always on time,never,13
+male,20,178,74,0,right handed,secondary school,yes,28,37,never smoked,drink a lot,Neither Agree nor Disagree,Strongly Agree,50,i am always on time,sometimes,12
+male,22,178,66,0,right handed,college/bachelor degree,yes,64,47,never smoked,social drinker,Disagree,Strongly Agree,45,i am always on time,sometimes,9
+male,19,187,69,1,right handed,secondary school,no,34,47,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,56,i am often running late,everytime it suits me,7
+male,22,173,80,2,right handed,secondary school,no,72,90,tried smoking,never,Neither Agree nor Disagree,Strongly Agree,60,i am always on time,sometimes,12
+female,17,174,55,1,right handed,secondary school,no,60,50,former smoker,social drinker,Strongly Agree,Strongly Agree,54,i am always on time,sometimes,13
+female,18,171,62,1,right handed,secondary school,no,44,73,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,56,i am always on time,only to avoid hurting someone,11
+male,19,185,74,1,right handed,primary school,no,42,40,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,42,i am often running late,only to avoid hurting someone,10
+female,23,174,62,1,right handed,masters degree,no,70,63,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,42,i am always on time,sometimes,12
+female,20,157,57,0,right handed,secondary school,yes,58,80,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,62,i am often running late,sometimes,10
+female,18,165,57,2,right handed,secondary school,no,36,33,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,53,i am often running late,only to avoid hurting someone,11
+male,19,180,67,3,left handed,college/bachelor degree,no,36,70,current smoker,social drinker,Strongly Disagree,Strongly Agree,40,,only to avoid hurting someone,10
+female,19,171,60,4,right handed,secondary school,no,44,60,current smoker,drink a lot,Disagree,Strongly Agree,52,i am often running late,only to avoid hurting someone,8
+female,28,170,65,2,right handed,masters degree,no,44,77,,social drinker,Neither Agree nor Disagree,Neutral,53,i am always on time,sometimes,9
+male,21,183,72,1,right handed,college/bachelor degree,no,38,57,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,54,i am always on time,sometimes,14
+female,23,172,69,1,left handed,masters degree,yes,44,47,current smoker,social drinker,Neither Agree nor Disagree,Agree,51,i am always on time,sometimes,14
+male,20,185,85,2,right handed,secondary school,no,40,70,tried smoking,social drinker,Strongly Agree,Strongly Agree,51,i am always on time,only to avoid hurting someone,5
+male,20,180,68,1,right handed,secondary school,no,32,37,never smoked,social drinker,Disagree,Strongly Agree,40,i am often running late,only to avoid hurting someone,10
+female,28,172,50,2,right handed,secondary school,no,46,73,former smoker,social drinker,Strongly Disagree,Strongly Agree,41,i am often running late,only to avoid hurting someone,11
+male,22,189,68,1,right handed,secondary school,no,36,70,never smoked,social drinker,Disagree,Strongly Agree,56,i am often early,only to avoid hurting someone,11
+female,19,170,65,0,right handed,secondary school,yes,38,40,former smoker,drink a lot,Agree,Strongly Agree,54,i am always on time,sometimes,10
+male,21,184,82,3,right handed,college/bachelor degree,no,26,67,former smoker,social drinker,Agree,Strongly Agree,51,i am often running late,sometimes,12
+female,21,170,58,1,right handed,secondary school,no,76,53,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am often running late,sometimes,9
+male,17,175,60,2,right handed,secondary school,no,28,93,current smoker,drink a lot,Strongly Disagree,Strongly Agree,62,i am always on time,sometimes,15
+female,19,168,57,1,right handed,college/bachelor degree,no,54,63,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,41,i am always on time,sometimes,12
+male,25,190,82,3,right handed,masters degree,no,52,70,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,48,i am often running late,sometimes,11
+female,20,170,52,1,right handed,secondary school,no,74,67,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,52,i am always on time,sometimes,11
+male,26,194,85,2,right handed,college/bachelor degree,no,64,70,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,46,i am always on time,everytime it suits me,9
+male,21,182,78,0,right handed,secondary school,yes,60,73,former smoker,social drinker,Agree,Strongly Agree,64,i am often running late,sometimes,10
+female,20,175,53,2,right handed,secondary school,no,40,67,tried smoking,social drinker,Agree,Strongly Agree,43,i am often early,sometimes,12
+,29,182,92,1,right handed,masters degree,no,68,53,former smoker,drink a lot,Agree,Strongly Agree,61,i am often early,sometimes,12
+male,25,186,80,1,right handed,masters degree,no,62,60,tried smoking,social drinker,Agree,Strongly Agree,59,i am often early,sometimes,12
+male,21,175,75,2,right handed,masters degree,yes,46,63,former smoker,drink a lot,Agree,Strongly Agree,55,i am always on time,sometimes,9
+male,20,176,70,3,right handed,secondary school,no,64,53,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am often early,sometimes,12
+male,27,178,77,3,right handed,masters degree,no,32,73,tried smoking,social drinker,Agree,Strongly Agree,67,i am always on time,sometimes,12
+male,21,203,80,2,left handed,secondary school,no,32,47,current smoker,social drinker,Disagree,Strongly Agree,50,i am often early,sometimes,11
+female,20,170,52,1,right handed,secondary school,no,54,57,never smoked,social drinker,Neither Agree nor Disagree,Agree,39,i am often early,only to avoid hurting someone,11
+female,,166,51,1,left handed,college/bachelor degree,no,64,67,current smoker,social drinker,Agree,Strongly Agree,51,i am often running late,only to avoid hurting someone,12
+female,17,163,49,3,left handed,primary school,yes,62,70,tried smoking,social drinker,Agree,Strongly Agree,53,i am always on time,only to avoid hurting someone,11
+female,16,,,,right handed,secondary school,no,78,83,tried smoking,never,Neither Agree nor Disagree,Strongly Agree,35,i am often running late,sometimes,11
+female,19,,50,3,right handed,secondary school,no,58,80,former smoker,social drinker,Disagree,Strongly Agree,51,i am always on time,sometimes,10
+female,18,170,53,1,right handed,secondary school,yes,74,73,never smoked,social drinker,Disagree,Neutral,40,i am often early,sometimes,9
+male,19,178,65,0,right handed,college/bachelor degree,yes,50,77,tried smoking,social drinker,Agree,Agree,47,i am always on time,sometimes,12
+female,21,167,63,1,right handed,college/bachelor degree,yes,68,80,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am often early,sometimes,9
+female,16,168,50,0,right handed,secondary school,yes,68,57,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,32,i am always on time,sometimes,10
+female,20,170,55,2,right handed,college/bachelor degree,no,84,60,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,51,i am often early,sometimes,11
+female,19,,,2,right handed,primary school,no,62,70,never smoked,social drinker,Neither Agree nor Disagree,,41,i am often running late,sometimes,11
+female,20,173,55,1,right handed,secondary school,yes,60,67,current smoker,social drinker,Disagree,Strongly Agree,39,i am often running late,only to avoid hurting someone,10
+female,16,,57,2,right handed,currently a primary school pupil,yes,88,73,never smoked,social drinker,Disagree,Strongly Agree,64,i am often running late,everytime it suits me,10
+male,20,185,86,1,right handed,secondary school,no,40,83,tried smoking,never,Agree,Strongly Agree,60,i am often early,only to avoid hurting someone,11
+male,18,170,70,0,right handed,currently a primary school pupil,yes,40,60,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,46,i am often early,everytime it suits me,11
+male,20,190,85,1,left handed,secondary school,no,52,43,tried smoking,never,Strongly Agree,Strongly Agree,49,i am always on time,sometimes,15
+male,20,180,75,2,right handed,college/bachelor degree,no,46,47,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,40,i am always on time,sometimes,12
+female,16,165,49,2,right handed,primary school,no,62,43,former smoker,social drinker,Disagree,Strongly Agree,44,i am always on time,only to avoid hurting someone,5
+female,19,175,76,1,right handed,secondary school,no,54,63,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,38,i am always on time,everytime it suits me,9
+male,19,189,97,1,right handed,secondary school,no,50,27,,drink a lot,Disagree,Strongly Agree,43,i am often running late,everytime it suits me,11
+female,23,172,64,1,right handed,college/bachelor degree,no,74,43,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,41,i am often running late,sometimes,11
+female,20,165,48,1,right handed,college/bachelor degree,no,46,67,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,45,i am always on time,sometimes,12
+male,23,189,88,4,left handed,secondary school,no,54,47,former smoker,social drinker,Strongly Agree,Strongly Agree,33,i am often early,sometimes,11
+male,19,170,75,2,right handed,currently a primary school pupil,yes,56,80,current smoker,never,Agree,Neutral,44,i am always on time,only to avoid hurting someone,12
+female,22,171,56,3,right handed,college/bachelor degree,no,34,60,tried smoking,social drinker,Agree,Strongly Agree,37,i am often early,sometimes,13
+male,17,183,75,3,right handed,primary school,no,52,53,never smoked,social drinker,Neither Agree nor Disagree,Agree,40,i am often running late,everytime it suits me,11
+female,20,178,58,1,right handed,secondary school,no,22,47,never smoked,social drinker,Disagree,Strongly Agree,43,i am often early,only to avoid hurting someone,11
+female,21,169,65,1,right handed,secondary school,no,52,60,tried smoking,social drinker,Agree,Strongly Agree,56,i am always on time,only to avoid hurting someone,11
+male,21,178,78,3,right handed,secondary school,no,30,40,tried smoking,drink a lot,Strongly Disagree,Strongly Agree,52,i am often running late,only to avoid hurting someone,13
+female,19,160,43,1,right handed,secondary school,no,74,50,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,36,i am always on time,only to avoid hurting someone,9
+female,20,175,75,0,right handed,secondary school,yes,64,50,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,49,i am often early,only to avoid hurting someone,12
+male,19,195,95,0,right handed,college/bachelor degree,yes,56,30,never smoked,social drinker,Disagree,Strongly Agree,62,i am always on time,only to avoid hurting someone,8
+male,21,171,65,0,left handed,secondary school,yes,22,30,tried smoking,social drinker,Strongly Agree,Strongly Agree,31,i am always on time,only to avoid hurting someone,10
+female,22,164,55,1,right handed,secondary school,no,72,53,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,55,i am often early,sometimes,12
+male,22,172,70,3,right handed,college/bachelor degree,no,52,53,never smoked,drink a lot,Disagree,Neutral,52,i am always on time,sometimes,12
+male,22,190,80,1,right handed,college/bachelor degree,no,34,67,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,49,i am often running late,sometimes,10
+female,28,178,65,1,left handed,masters degree,no,54,50,current smoker,drink a lot,Agree,Strongly Agree,49,i am often running late,sometimes,10
+male,21,185,80,1,right handed,secondary school,no,76,60,tried smoking,social drinker,Strongly Agree,Strongly Agree,54,i am often running late,only to avoid hurting someone,10
+male,21,189,85,2,right handed,college/bachelor degree,no,50,73,never smoked,never,Strongly Disagree,Strongly Agree,56,i am often running late,everytime it suits me,11
+female,17,165,65,3,right handed,primary school,no,42,57,former smoker,drink a lot,Disagree,Strongly Agree,41,i am always on time,sometimes,10
+female,21,170,52,1,right handed,secondary school,yes,60,57,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,38,i am always on time,only to avoid hurting someone,12
+female,17,173,66,1,right handed,primary school,no,42,47,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am always on time,only to avoid hurting someone,12
+male,28,182,88,1,right handed,masters degree,no,38,47,never smoked,drink a lot,Disagree,Strongly Agree,57,i am often running late,sometimes,10
+female,20,160,55,1,right handed,college/bachelor degree,no,56,60,current smoker,social drinker,Neither Agree nor Disagree,Agree,46,i am often early,sometimes,13
+female,19,170,65,0,right handed,secondary school,yes,56,63,tried smoking,never,Neither Agree nor Disagree,Strongly Agree,45,i am always on time,sometimes,11
+female,21,172,52,1,right handed,secondary school,no,36,50,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,51,i am often early,sometimes,11
+male,23,189,87,1,right handed,college/bachelor degree,no,52,53,current smoker,never,Agree,Strongly Agree,46,i am often running late,sometimes,10
+male,17,168,67,1,right handed,primary school,yes,42,43,current smoker,drink a lot,Strongly Disagree,Strongly Agree,38,i am often early,everytime it suits me,5
+male,20,179,60,0,right handed,primary school,,30,50,current smoker,drink a lot,Disagree,Strongly Agree,43,i am always on time,only to avoid hurting someone,8
+male,19,178,68,1,right handed,secondary school,no,58,57,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,54,i am always on time,never,10
+male,19,170,80,1,left handed,secondary school,no,58,40,never smoked,never,Neither Agree nor Disagree,Agree,53,i am often early,only to avoid hurting someone,11
+male,19,184,84,1,right handed,secondary school,no,50,70,never smoked,drink a lot,Disagree,Strongly Agree,59,i am often running late,sometimes,12
+female,18,171,54,0,right handed,secondary school,yes,54,63,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,54,i am often running late,sometimes,10
+female,19,164,55,1,right handed,secondary school,no,70,80,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,50,i am often running late,sometimes,10
+male,22,182,71,1,right handed,secondary school,no,32,53,former smoker,drink a lot,Strongly Disagree,Agree,54,i am often running late,everytime it suits me,14
+female,21,168,60,1,right handed,secondary school,no,64,60,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,58,i am often early,sometimes,12
+female,21,170,53,1,right handed,secondary school,no,80,73,current smoker,social drinker,Agree,Strongly Agree,49,i am always on time,only to avoid hurting someone,11
+male,21,185,65,1,left handed,college/bachelor degree,no,48,67,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,50,i am often early,only to avoid hurting someone,14
+male,22,185,82,1,right handed,secondary school,no,38,73,never smoked,never,Disagree,Agree,40,i am always on time,only to avoid hurting someone,6
+female,19,168,55,1,right handed,secondary school,no,46,63,current smoker,drink a lot,Neither Agree nor Disagree,Neutral,48,i am always on time,sometimes,11
+male,25,195,95,1,right handed,secondary school,no,62,63,current smoker,drink a lot,Agree,Neutral,58,i am always on time,only to avoid hurting someone,9
+male,18,188,73,2,right handed,currently a primary school pupil,no,26,67,never smoked,,Strongly Agree,Agree,51,i am always on time,sometimes,14
+male,20,183,83,1,right handed,secondary school,no,58,50,current smoker,social drinker,Disagree,Strongly Agree,55,i am often running late,sometimes,8
+female,18,168,57,0,right handed,secondary school,yes,62,47,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,35,i am often early,everytime it suits me,11
+male,23,172,110,2,right handed,secondary school,no,52,40,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,57,i am always on time,only to avoid hurting someone,13
+female,18,162,58,1,right handed,secondary school,no,74,47,former smoker,drink a lot,Agree,Strongly Agree,49,i am always on time,sometimes,11
+female,22,164,64,1,right handed,secondary school,no,56,37,current smoker,social drinker,Agree,Strongly Agree,46,i am often early,sometimes,13
+male,20,175,70,0,right handed,secondary school,yes,28,53,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,58,i am often running late,sometimes,10
+male,19,178,71,1,right handed,secondary school,yes,20,30,tried smoking,drink a lot,Strongly Disagree,Neutral,54,i am often running late,everytime it suits me,13
+female,19,160,55,1,right handed,secondary school,no,40,87,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,49,i am often running late,everytime it suits me,12
+female,23,173,65,0,right handed,college/bachelor degree,yes,28,63,current smoker,social drinker,Strongly Disagree,Strongly Agree,68,i am often early,everytime it suits me,11
+male,27,175,83,4,right handed,secondary school,no,48,40,tried smoking,social drinker,Strongly Disagree,Strongly Agree,50,i am often running late,sometimes,12
+male,20,183,75,2,right handed,secondary school,no,38,33,former smoker,drink a lot,Disagree,Strongly Agree,43,i am often running late,only to avoid hurting someone,12
+,20,183,65,3,left handed,secondary school,no,62,50,tried smoking,social drinker,Agree,Agree,39,i am often early,sometimes,10
+female,18,161,74,1,right handed,primary school,no,50,60,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,70,i am often running late,only to avoid hurting someone,11
+male,21,175,70,3,right handed,secondary school,no,48,67,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,40,i am often running late,sometimes,11
+female,21,173,62,1,right handed,secondary school,no,48,43,tried smoking,social drinker,Agree,Strongly Agree,41,i am always on time,everytime it suits me,11
+female,19,163,50,1,right handed,secondary school,yes,62,67,tried smoking,social drinker,Strongly Agree,Strongly Agree,53,i am often early,sometimes,11
+female,22,162,60,0,right handed,secondary school,no,64,67,current smoker,never,Neither Agree nor Disagree,Strongly Agree,47,i am often early,sometimes,9
+female,20,170,60,1,right handed,college/bachelor degree,no,80,37,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,45,i am always on time,sometimes,7
+male,19,172,68,0,right handed,secondary school,yes,30,43,tried smoking,social drinker,Neither Agree nor Disagree,Agree,54,i am always on time,sometimes,8
+female,20,163,48,0,right handed,college/bachelor degree,yes,44,63,,,#N/A,Strongly Agree,51,i am often running late,sometimes,9
+female,19,173,60,1,right handed,secondary school,no,76,93,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,62,i am always on time,never,13
+female,18,154,67,1,right handed,secondary school,no,48,77,never smoked,never,Neither Agree nor Disagree,Strongly Agree,57,i am often early,sometimes,13
+male,17,178,80,1,right handed,primary school,no,40,50,never smoked,never,Disagree,Strongly Agree,52,i am often early,only to avoid hurting someone,12
+male,21,180,67,2,right handed,secondary school,no,34,57,never smoked,social drinker,Strongly Disagree,Strongly Agree,42,i am often early,everytime it suits me,12
+female,19,170,63,1,right handed,secondary school,no,42,70,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,57,i am always on time,sometimes,11
+female,25,173,63,1,right handed,masters degree,no,60,43,tried smoking,drink a lot,Neither Agree nor Disagree,Agree,51,i am often running late,only to avoid hurting someone,11
+male,24,171,93,2,right handed,doctorate degree,no,42,70,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,69,i am always on time,everytime it suits me,13
+male,29,172,66,1,right handed,masters degree,no,40,60,never smoked,social drinker,Agree,Strongly Agree,47,i am always on time,sometimes,12
+female,21,156,48,1,right handed,secondary school,no,58,57,current smoker,social drinker,Agree,Strongly Agree,61,i am always on time,sometimes,11
+male,18,178,70,1,right handed,primary school,no,54,37,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,45,i am often early,sometimes,8
+female,21,173,53,3,right handed,college/bachelor degree,no,66,70,current smoker,social drinker,Agree,Strongly Agree,52,i am often early,sometimes,14
+male,17,175,76,2,right handed,secondary school,no,54,43,tried smoking,social drinker,Disagree,Strongly Agree,56,i am often running late,only to avoid hurting someone,9
+male,22,180,89,0,right handed,secondary school,yes,50,47,tried smoking,social drinker,Neither Agree nor Disagree,Agree,53,i am often early,everytime it suits me,6
+female,18,169,53,2,right handed,secondary school,no,38,57,former smoker,social drinker,Agree,Strongly Agree,48,i am always on time,sometimes,7
+female,18,165,55,3,right handed,primary school,no,40,83,tried smoking,social drinker,Neither Agree nor Disagree,Agree,49,i am often running late,only to avoid hurting someone,12
+male,23,179,77,1,right handed,secondary school,yes,40,53,tried smoking,never,Neither Agree nor Disagree,Strongly Agree,53,i am always on time,sometimes,11
+male,22,189,,1,left handed,secondary school,no,28,33,tried smoking,social drinker,Neither Agree nor Disagree,Agree,44,i am always on time,sometimes,11
+female,21,167,67,0,right handed,secondary school,yes,76,57,tried smoking,social drinker,Agree,Strongly Agree,55,i am often early,everytime it suits me,9
+female,23,158,64,3,right handed,masters degree,no,76,60,never smoked,never,Neither Agree nor Disagree,Strongly Agree,53,i am often early,sometimes,12
+female,17,174,56,1,right handed,currently a primary school pupil,no,40,67,tried smoking,social drinker,Agree,Strongly Agree,54,i am often running late,sometimes,10
+male,20,188,79,1,left handed,secondary school,no,48,50,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,36,i am always on time,only to avoid hurting someone,12
+male,22,171,81,1,right handed,secondary school,no,34,57,tried smoking,social drinker,Agree,Strongly Agree,54,i am always on time,everytime it suits me,11
+male,21,193,75,0,right handed,secondary school,yes,60,40,tried smoking,social drinker,Disagree,Agree,34,i am often early,sometimes,10
+female,22,165,52,0,left handed,college/bachelor degree,yes,44,73,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,54,i am often early,only to avoid hurting someone,11
+male,24,178,80,2,right handed,secondary school,no,62,63,tried smoking,drink a lot,Disagree,Agree,48,i am always on time,sometimes,11
+female,19,174,70,1,right handed,secondary school,no,72,60,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,51,i am always on time,only to avoid hurting someone,8
+female,18,159,52,1,left handed,secondary school,no,74,80,never smoked,never,Neither Agree nor Disagree,Strongly Agree,48,i am always on time,sometimes,11
+female,24,,61,1,right handed,college/bachelor degree,yes,72,67,never smoked,never,Neither Agree nor Disagree,Strongly Agree,39,i am often running late,only to avoid hurting someone,11
+male,22,176,74,3,right handed,secondary school,no,22,67,former smoker,social drinker,Agree,Strongly Agree,46,i am always on time,only to avoid hurting someone,12
+male,20,,65,1,right handed,secondary school,no,50,50,former smoker,social drinker,Agree,Strongly Agree,48,i am often early,sometimes,11
+female,20,166,55,1,right handed,college/bachelor degree,no,84,70,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,51,i am often running late,only to avoid hurting someone,8
+female,19,165,70,1,right handed,secondary school,yes,50,33,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,30,i am always on time,only to avoid hurting someone,10
+female,21,162,52,1,right handed,secondary school,no,64,80,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,42,i am often running late,sometimes,10
+male,25,191,77,1,right handed,masters degree,no,40,60,never smoked,never,Agree,Strongly Agree,54,i am always on time,never,9
+female,28,168,55,1,right handed,masters degree,no,70,73,never smoked,never,Neither Agree nor Disagree,Strongly Agree,47,i am often early,sometimes,11
+female,20,173,50,1,left handed,secondary school,no,42,40,current smoker,social drinker,Agree,Strongly Agree,62,i am often early,sometimes,11
+female,20,164,60,2,right handed,secondary school,no,30,67,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,39,i am often running late,sometimes,7
+male,23,172,77,1,right handed,secondary school,no,34,83,former smoker,social drinker,Agree,Strongly Agree,43,i am often early,sometimes,11
+male,27,186,82,1,left handed,doctorate degree,yes,44,53,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,53,i am often early,sometimes,11
+male,21,180,77,1,right handed,college/bachelor degree,yes,48,53,tried smoking,social drinker,Disagree,Agree,59,i am always on time,sometimes,12
+female,23,170,60,1,right handed,secondary school,no,22,37,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,46,i am often running late,sometimes,10
+female,22,165,57,2,right handed,college/bachelor degree,no,72,70,tried smoking,social drinker,Strongly Agree,Strongly Agree,56,i am always on time,sometimes,11
+female,28,166,60,1,right handed,masters degree,no,68,47,former smoker,social drinker,Neither Agree nor Disagree,Neutral,50,i am always on time,everytime it suits me,8
+female,22,170,52,2,right handed,secondary school,no,48,60,tried smoking,social drinker,Agree,Agree,52,i am often running late,sometimes,7
+male,18,173,67,1,right handed,college/bachelor degree,no,40,20,tried smoking,social drinker,Disagree,Strongly Agree,44,i am often early,sometimes,12
+female,25,165,75,1,right handed,secondary school,no,70,53,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,50,i am always on time,sometimes,10
+female,20,157,55,2,right handed,college/bachelor degree,no,52,43,current smoker,drink a lot,Agree,Strongly Agree,36,i am often early,everytime it suits me,9
+female,28,164,77,1,right handed,secondary school,no,34,70,current smoker,social drinker,Disagree,Agree,45,i am often running late,sometimes,9
+female,23,162,65,1,right handed,college/bachelor degree,no,40,43,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,60,i am often early,only to avoid hurting someone,9
+female,21,185,70,0,left handed,secondary school,yes,52,60,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,53,i am always on time,everytime it suits me,11
+female,25,160,55,1,right handed,college/bachelor degree,no,42,53,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,66,i am always on time,sometimes,9
+female,28,180,70,1,right handed,masters degree,no,58,53,former smoker,drink a lot,Agree,Strongly Agree,71,i am always on time,sometimes,11
+male,19,172,75,4,right handed,secondary school,no,52,67,tried smoking,drink a lot,Disagree,Agree,60,i am often early,only to avoid hurting someone,10
+female,30,179,80,1,right handed,secondary school,yes,68,87,never smoked,never,Neither Agree nor Disagree,Strongly Agree,60,i am often early,only to avoid hurting someone,10
+female,28,165,57,1,right handed,secondary school,no,68,77,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am often early,only to avoid hurting someone,12
+female,19,163,53,0,right handed,secondary school,yes,58,67,current smoker,social drinker,Agree,Strongly Agree,55,i am often early,sometimes,12
+male,21,175,80,1,right handed,college/bachelor degree,yes,60,60,tried smoking,social drinker,Neither Agree nor Disagree,Disagree,61,i am always on time,only to avoid hurting someone,6
+male,19,170,60,1,right handed,college/bachelor degree,no,54,67,current smoker,social drinker,Agree,Strongly Agree,51,i am often running late,sometimes,12
+female,18,165,48,2,right handed,secondary school,no,62,77,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am often early,sometimes,9
+male,18,174,64,1,right handed,secondary school,no,42,67,tried smoking,social drinker,Agree,Strongly Agree,44,i am always on time,sometimes,11
+male,18,182,63,1,right handed,secondary school,no,62,40,tried smoking,social drinker,Disagree,Strongly Agree,51,i am always on time,sometimes,9
+female,17,168,70,0,right handed,college/bachelor degree,yes,62,87,current smoker,drink a lot,Disagree,Strongly Agree,57,i am often running late,only to avoid hurting someone,14
+male,21,168,62,1,right handed,college/bachelor degree,yes,44,47,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,60,i am always on time,sometimes,9
+female,18,171,69,1,right handed,secondary school,yes,62,53,tried smoking,never,Agree,Strongly Agree,50,i am always on time,sometimes,9
+male,21,187,73,4,right handed,college/bachelor degree,no,40,70,tried smoking,social drinker,Agree,Strongly Agree,63,i am often running late,sometimes,11
+female,23,167,70,0,right handed,college/bachelor degree,yes,54,40,tried smoking,social drinker,Disagree,Strongly Agree,64,i am often early,sometimes,11
+female,18,168,62,1,right handed,primary school,yes,24,57,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,45,i am often early,only to avoid hurting someone,8
+female,20,168,76,1,right handed,secondary school,no,68,60,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,46,i am always on time,everytime it suits me,9
+female,19,163,70,0,right handed,secondary school,yes,76,53,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,57,i am often running late,only to avoid hurting someone,11
+female,20,170,50,1,right handed,secondary school,no,52,53,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,46,i am often running late,only to avoid hurting someone,12
+female,26,168,65,3,right handed,college/bachelor degree,no,62,83,current smoker,never,Neither Agree nor Disagree,Strongly Agree,37,i am always on time,only to avoid hurting someone,12
+female,21,175,70,1,right handed,college/bachelor degree,no,28,73,never smoked,never,Agree,Strongly Agree,53,i am often early,sometimes,12
+male,19,185,83,2,right handed,secondary school,no,46,77,current smoker,social drinker,Agree,Strongly Agree,50,i am often early,sometimes,12
+male,23,178,,1,right handed,secondary school,no,28,53,current smoker,drink a lot,Strongly Disagree,Agree,55,i am often early,everytime it suits me,12
+female,21,171,60,2,right handed,secondary school,no,56,67,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,55,i am often running late,never,11
+female,22,172,60,1,right handed,college/bachelor degree,no,38,83,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,63,i am often running late,only to avoid hurting someone,12
+male,18,188,77,2,right handed,secondary school,yes,38,53,current smoker,drink a lot,Agree,Strongly Agree,51,i am always on time,sometimes,12
+female,21,162,51,1,right handed,secondary school,no,46,40,tried smoking,social drinker,Agree,Strongly Agree,50,i am always on time,never,9
+male,23,174,60,1,right handed,secondary school,no,40,47,,,#N/A,Strongly Agree,44,i am always on time,everytime it suits me,11
+female,17,167,70,0,right handed,college/bachelor degree,yes,40,90,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,58,i am often running late,only to avoid hurting someone,11
+female,20,163,52,1,right handed,secondary school,no,38,60,former smoker,drink a lot,Neither Agree nor Disagree,Agree,50,i am often running late,only to avoid hurting someone,11
+female,22,170,55,1,right handed,secondary school,no,66,67,tried smoking,social drinker,Neither Agree nor Disagree,Agree,49,i am often early,only to avoid hurting someone,10
+female,20,173,,1,right handed,secondary school,no,56,70,never smoked,never,Agree,Strongly Agree,41,i am often early,never,12
+female,19,168,60,2,right handed,college/bachelor degree,no,62,70,former smoker,social drinker,Disagree,Strongly Agree,65,i am often running late,sometimes,11
+female,25,164,63,0,right handed,masters degree,yes,70,60,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,51,i am often early,sometimes,13
+male,29,183,111,1,left handed,secondary school,no,32,57,never smoked,never,Disagree,Agree,54,i am often early,sometimes,11
+male,29,173,81,2,right handed,secondary school,no,38,47,former smoker,drink a lot,Agree,Strongly Agree,55,i am often early,only to avoid hurting someone,12
+female,17,173,54,1,right handed,primary school,no,40,50,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,38,i am always on time,sometimes,11
+female,17,171,57,1,right handed,secondary school,no,48,67,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,59,i am often running late,only to avoid hurting someone,9
+male,19,185,75,2,left handed,secondary school,no,42,63,former smoker,social drinker,Disagree,Agree,44,i am always on time,sometimes,9
+female,18,170,75,2,right handed,secondary school,no,42,67,former smoker,social drinker,Agree,Agree,60,i am often running late,never,12
+female,20,174,60,3,right handed,college/bachelor degree,no,24,77,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am always on time,sometimes,12
+female,21,161,48,0,right handed,college/bachelor degree,yes,66,60,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,63,i am often running late,sometimes,10
+female,18,175,58,1,right handed,secondary school,no,82,57,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,47,i am often early,sometimes,7
+female,19,180,70,1,right handed,primary school,no,42,57,tried smoking,social drinker,Neither Agree nor Disagree,Agree,58,i am often early,sometimes,8
+male,19,176,66,0,right handed,secondary school,yes,36,40,current smoker,drink a lot,Strongly Disagree,Strongly Agree,47,i am always on time,only to avoid hurting someone,11
+male,20,175,65,2,right handed,secondary school,no,44,57,current smoker,drink a lot,Strongly Disagree,Strongly Agree,45,i am often early,sometimes,10
+male,19,175,80,1,left handed,secondary school,yes,62,33,tried smoking,never,Strongly Disagree,Strongly Agree,48,i am always on time,sometimes,13
+female,18,180,75,1,right handed,primary school,no,60,33,never smoked,social drinker,Strongly Disagree,Strongly Agree,50,i am often running late,sometimes,11
+male,18,192,90,1,right handed,secondary school,no,48,47,former smoker,social drinker,Strongly Agree,Strongly Agree,63,i am often early,only to avoid hurting someone,11
+female,16,160,49,1,right handed,primary school,no,48,57,former smoker,never,Neither Agree nor Disagree,Strongly Agree,50,i am always on time,sometimes,12
+female,18,163,57,1,right handed,college/bachelor degree,no,34,63,tried smoking,social drinker,Disagree,Strongly Agree,53,i am always on time,sometimes,11
+female,19,170,63,0,right handed,secondary school,yes,50,50,tried smoking,social drinker,Agree,Strongly Agree,47,i am always on time,sometimes,13
+female,24,166,55,2,right handed,college/bachelor degree,no,60,80,never smoked,social drinker,Agree,Agree,61,i am always on time,sometimes,7
+female,19,168,56,3,right handed,secondary school,no,38,67,never smoked,social drinker,Disagree,Strongly Agree,54,i am often running late,sometimes,11
+female,,165,67,1,right handed,masters degree,no,74,90,never smoked,never,Agree,Disagree,28,i am often early,never,12
+female,20,166,60,1,right handed,college/bachelor degree,no,48,73,tried smoking,social drinker,Agree,Agree,66,i am often running late,everytime it suits me,11
+female,21,180,61,0,right handed,college/bachelor degree,yes,66,53,former smoker,drink a lot,Disagree,Strongly Agree,48,i am often running late,sometimes,8
+male,23,187,85,2,right handed,college/bachelor degree,no,42,70,current smoker,drink a lot,Disagree,Strongly Agree,42,i am always on time,sometimes,14
+male,23,165,60,0,right handed,college/bachelor degree,yes,26,77,tried smoking,drink a lot,Agree,Strongly Agree,62,i am always on time,sometimes,14
+male,17,182,84,1,right handed,secondary school,no,44,70,tried smoking,social drinker,Agree,Agree,49,i am always on time,sometimes,10
+female,18,173,65,3,right handed,secondary school,no,20,73,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,54,i am always on time,sometimes,10
+male,26,183,90,5,right handed,masters degree,no,42,77,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,56,i am often running late,only to avoid hurting someone,13
+male,22,186,65,0,right handed,college/bachelor degree,yes,24,40,tried smoking,drink a lot,Strongly Agree,Disagree,47,i am often running late,sometimes,9
+male,22,170,60,2,right handed,secondary school,no,40,77,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,54,i am often early,only to avoid hurting someone,8
+male,25,165,75,2,left handed,college/bachelor degree,no,46,63,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,46,i am often running late,,10
+female,21,177,73,1,right handed,secondary school,no,82,40,never smoked,drink a lot,Neither Agree nor Disagree,Strongly Agree,49,i am always on time,sometimes,11
+female,18,170,75,2,right handed,secondary school,no,40,67,former smoker,social drinker,Agree,Strongly Agree,65,i am always on time,never,12
+female,15,160,51,2,right handed,currently a primary school pupil,no,46,77,never smoked,never,Neither Agree nor Disagree,Strongly Agree,61,i am often running late,sometimes,11
+male,17,175,64,0,right handed,secondary school,yes,46,53,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,45,i am often early,everytime it suits me,9
+female,22,175,86,6,left handed,college/bachelor degree,no,22,80,never smoked,social drinker,Agree,Strongly Agree,61,i am always on time,everytime it suits me,11
+female,21,168,49,1,right handed,secondary school,no,30,57,tried smoking,social drinker,Disagree,Strongly Agree,60,i am often early,everytime it suits me,7
+female,21,162,51,3,right handed,college/bachelor degree,no,72,63,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,56,i am often early,sometimes,11
+female,19,171,49,3,right handed,secondary school,no,50,50,tried smoking,social drinker,Disagree,Strongly Agree,50,i am often running late,sometimes,9
+male,26,186,98,1,right handed,college/bachelor degree,yes,32,47,former smoker,drink a lot,Neither Agree nor Disagree,Agree,50,i am often running late,never,14
+female,26,172,80,1,right handed,masters degree,no,64,50,tried smoking,social drinker,Strongly Agree,Strongly Agree,54,i am always on time,only to avoid hurting someone,10
+male,25,183,84,2,right handed,secondary school,no,34,73,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,60,i am often running late,everytime it suits me,11
+female,19,159,52,3,right handed,college/bachelor degree,no,60,63,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,65,i am often running late,sometimes,13
+male,20,197,100,1,right handed,college/bachelor degree,no,48,40,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,36,i am often early,only to avoid hurting someone,11
+male,18,192,91,0,right handed,secondary school,yes,52,83,tried smoking,social drinker,Agree,Strongly Agree,70,i am often early,sometimes,12
+female,25,167,49,1,right handed,college/bachelor degree,yes,58,47,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,56,i am always on time,sometimes,12
+male,23,192,86,1,right handed,secondary school,no,20,30,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,38,i am often running late,sometimes,14
+male,24,190,84,1,right handed,college/bachelor degree,yes,20,63,tried smoking,social drinker,Strongly Agree,Strongly Agree,44,i am always on time,only to avoid hurting someone,13
+male,20,186,78,3,left handed,college/bachelor degree,no,62,73,,never,Agree,Strongly Agree,50,i am often running late,only to avoid hurting someone,11
+female,19,172,50,2,right handed,college/bachelor degree,no,72,40,never smoked,social drinker,Disagree,Strongly Agree,46,i am always on time,sometimes,10
+male,18,186,76,1,right handed,secondary school,no,28,47,never smoked,social drinker,Agree,Strongly Agree,55,i am often early,sometimes,11
+female,25,167,60,2,left handed,secondary school,no,76,83,current smoker,drink a lot,Agree,Strongly Agree,77,i am often running late,sometimes,13
+male,22,179,78,2,left handed,masters degree,no,66,53,former smoker,never,Neither Agree nor Disagree,Strongly Disagree,50,i am often running late,everytime it suits me,10
+male,26,185,92,1,right handed,masters degree,no,58,40,current smoker,social drinker,Strongly Disagree,Agree,48,i am always on time,only to avoid hurting someone,9
+female,19,167,63,0,right handed,secondary school,yes,40,63,never smoked,never,Strongly Disagree,Neutral,54,i am always on time,never,9
+female,16,170,54,2,right handed,college/bachelor degree,no,54,73,former smoker,social drinker,Strongly Disagree,Strongly Disagree,18,i am often early,only to avoid hurting someone,7
+male,18,174,64,0,right handed,secondary school,yes,52,57,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,54,i am often running late,everytime it suits me,9
+female,20,170,53,1,right handed,secondary school,no,70,60,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,44,i am often running late,sometimes,11
+female,17,168,70,0,right handed,college/bachelor degree,yes,62,87,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,60,i am often running late,only to avoid hurting someone,13
+female,20,171,62,0,left handed,secondary school,yes,48,60,tried smoking,social drinker,Agree,Neutral,40,i am always on time,sometimes,12
+female,19,165,51,3,right handed,college/bachelor degree,no,56,57,tried smoking,social drinker,Agree,Strongly Agree,52,i am often early,only to avoid hurting someone,10
+male,25,168,62,1,right handed,masters degree,no,28,93,tried smoking,social drinker,Strongly Agree,Strongly Agree,53,i am always on time,only to avoid hurting someone,14
+male,19,185,65,1,right handed,secondary school,no,30,57,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,51,i am often early,sometimes,9
+female,18,165,55,0,right handed,secondary school,yes,78,43,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,32,i am always on time,sometimes,12
+female,17,167,48,0,right handed,secondary school,yes,46,77,never smoked,social drinker,Strongly Agree,Strongly Agree,57,i am often running late,only to avoid hurting someone,14
+male,18,174,64,1,right handed,secondary school,no,50,73,tried smoking,social drinker,Agree,Strongly Agree,49,i am always on time,sometimes,11
+female,20,171,63,1,right handed,secondary school,no,44,40,never smoked,social drinker,Agree,Agree,41,i am often running late,only to avoid hurting someone,10
+female,17,170,55,3,right handed,secondary school,no,56,57,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,69,i am often early,sometimes,13
+male,21,182,70,1,right handed,secondary school,no,40,73,tried smoking,drink a lot,Agree,Strongly Agree,58,i am always on time,only to avoid hurting someone,11
+male,19,190,80,1,left handed,secondary school,no,34,63,never smoked,social drinker,Agree,Agree,53,i am often early,sometimes,12
+male,19,187,80,0,left handed,college/bachelor degree,yes,34,60,tried smoking,social drinker,Agree,Agree,55,i am always on time,only to avoid hurting someone,7
+male,19,193,83,0,right handed,secondary school,yes,28,70,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,58,i am always on time,only to avoid hurting someone,10
+male,16,177,70,1,right handed,primary school,no,34,47,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,47,i am often early,everytime it suits me,10
+female,18,158,50,2,left handed,primary school,no,46,63,tried smoking,social drinker,Agree,Strongly Agree,48,i am always on time,sometimes,11
+male,19,178,80,3,right handed,college/bachelor degree,no,80,67,tried smoking,drink a lot,Agree,Strongly Agree,56,i am often early,only to avoid hurting someone,13
+female,20,,,,right handed,secondary school,yes,52,30,former smoker,never,Agree,Strongly Agree,53,i am always on time,everytime it suits me,6
+female,19,162,52,1,right handed,secondary school,no,48,73,tried smoking,social drinker,Agree,Strongly Agree,46,i am always on time,sometimes,10
+male,21,192,93,1,right handed,masters degree,no,64,77,former smoker,social drinker,Agree,Strongly Agree,46,i am always on time,sometimes,12
+male,24,185,120,2,right handed,doctorate degree,no,62,63,former smoker,never,Disagree,Disagree,54,i am always on time,only to avoid hurting someone,7
+male,23,190,95,1,right handed,secondary school,no,32,47,tried smoking,social drinker,Agree,Agree,33,i am always on time,everytime it suits me,14
+female,30,173,69,0,right handed,secondary school,yes,52,57,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,54,i am often running late,never,13
+male,27,189,113,3,left handed,doctorate degree,no,82,60,tried smoking,social drinker,Neither Agree nor Disagree,Neutral,58,i am often early,only to avoid hurting someone,12
+male,19,185,65,1,right handed,secondary school,no,32,47,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,40,i am often early,sometimes,12
+female,18,160,55,2,right handed,secondary school,no,44,63,current smoker,social drinker,Agree,Strongly Agree,50,i am always on time,sometimes,11
+male,18,203,89,2,right handed,secondary school,yes,48,53,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,53,i am often early,only to avoid hurting someone,8
+male,17,185,70,2,right handed,secondary school,no,46,63,never smoked,never,Neither Agree nor Disagree,Strongly Agree,40,i am often early,only to avoid hurting someone,9
+female,30,173,72,1,right handed,secondary school,no,42,20,current smoker,drink a lot,Strongly Disagree,Agree,45,i am often running late,everytime it suits me,12
+female,19,172,60,0,right handed,secondary school,yes,54,67,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,58,i am always on time,sometimes,13
+female,27,173,79,5,right handed,secondary school,no,52,83,current smoker,social drinker,Disagree,Strongly Agree,45,i am often early,never,11
+female,21,173,62,1,right handed,secondary school,no,64,50,tried smoking,social drinker,Agree,Strongly Agree,56,i am often running late,sometimes,12
+female,17,165,53,3,left handed,primary school,no,86,70,former smoker,social drinker,Strongly Agree,Strongly Agree,67,i am often early,sometimes,11
+male,20,184,79,1,right handed,secondary school,no,48,60,tried smoking,social drinker,Agree,Strongly Disagree,18,i am always on time,sometimes,9
+male,20,187,95,0,right handed,secondary school,yes,48,50,current smoker,never,Disagree,Neutral,42,i am often early,only to avoid hurting someone,10
+male,20,181,73,1,right handed,college/bachelor degree,no,34,27,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,48,i am often early,sometimes,13
+male,18,176,76,0,right handed,secondary school,yes,38,70,never smoked,drink a lot,Agree,Agree,32,i am always on time,sometimes,12
+male,20,180,90,1,right handed,college/bachelor degree,no,74,53,current smoker,social drinker,Strongly Disagree,Strongly Agree,61,i am often running late,sometimes,10
+male,20,178,66,1,right handed,secondary school,no,54,67,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,56,i am often running late,sometimes,10
+female,17,175,60,1,right handed,secondary school,no,66,67,never smoked,never,Agree,Strongly Agree,23,i am always on time,sometimes,12
+male,19,181,78,1,right handed,secondary school,no,56,73,never smoked,never,Neither Agree nor Disagree,Strongly Agree,29,i am always on time,sometimes,13
+female,20,165,53,1,right handed,secondary school,yes,84,70,current smoker,social drinker,Agree,Strongly Agree,57,i am often early,sometimes,13
+male,20,183,82,1,right handed,secondary school,no,24,77,tried smoking,social drinker,Agree,Strongly Agree,61,i am often running late,sometimes,13
+male,21,180,63,0,right handed,secondary school,yes,60,87,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,69,i am often early,only to avoid hurting someone,14
+male,23,170,70,0,right handed,primary school,yes,26,33,former smoker,drink a lot,Strongly Disagree,Neutral,47,i am often early,sometimes,5
+male,24,178,80,2,right handed,secondary school,no,38,63,never smoked,social drinker,Neither Agree nor Disagree,Agree,47,i am often early,only to avoid hurting someone,12
+female,17,160,48,0,right handed,secondary school,yes,40,53,never smoked,social drinker,Agree,Strongly Agree,40,i am always on time,sometimes,14
+female,18,162,55,1,right handed,secondary school,no,54,30,tried smoking,social drinker,Agree,Strongly Agree,59,i am always on time,sometimes,14
+male,17,185,99,1,right handed,secondary school,no,72,83,never smoked,never,Neither Agree nor Disagree,Strongly Agree,62,i am always on time,everytime it suits me,5
+female,19,175,60,1,right handed,secondary school,no,46,53,current smoker,drink a lot,Strongly Disagree,Strongly Agree,52,i am often running late,everytime it suits me,10
+male,21,188,81,0,right handed,secondary school,yes,48,30,current smoker,never,Neither Agree nor Disagree,Strongly Agree,40,i am always on time,only to avoid hurting someone,11
+female,29,170,58,1,right handed,college/bachelor degree,no,42,57,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am often early,everytime it suits me,9
+female,21,170,55,1,,college/bachelor degree,no,48,50,tried smoking,drink a lot,Agree,Agree,43,i am often early,sometimes,8
+female,20,158,55,1,right handed,secondary school,no,54,43,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,61,i am always on time,sometimes,8
+female,20,168,55,1,right handed,secondary school,no,48,53,tried smoking,drink a lot,Agree,Strongly Agree,61,i am often early,only to avoid hurting someone,12
+male,19,184,80,1,right handed,college/bachelor degree,no,62,63,tried smoking,social drinker,Disagree,Strongly Disagree,52,i am often early,only to avoid hurting someone,8
+female,20,162,50,0,right handed,college/bachelor degree,yes,36,80,tried smoking,social drinker,Agree,Strongly Agree,57,i am often early,only to avoid hurting someone,10
+female,21,168,70,1,right handed,secondary school,no,58,57,former smoker,drink a lot,Agree,Strongly Agree,53,i am often running late,sometimes,10
+female,17,170,50,2,right handed,,no,54,70,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,66,i am always on time,only to avoid hurting someone,12
+female,20,165,57,1,right handed,secondary school,yes,50,70,tried smoking,social drinker,Disagree,Strongly Agree,66,i am always on time,sometimes,11
+male,19,193,77,1,right handed,secondary school,yes,42,23,current smoker,social drinker,Agree,Neutral,46,i am always on time,sometimes,12
+male,21,179,76,1,right handed,secondary school,no,64,63,tried smoking,social drinker,Agree,Agree,52,i am often early,sometimes,12
+male,19,190,76,0,right handed,secondary school,yes,38,37,never smoked,social drinker,Neither Agree nor Disagree,Agree,45,i am always on time,sometimes,11
+male,19,187,88,0,right handed,secondary school,yes,34,47,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,55,i am often running late,everytime it suits me,13
+male,20,183,65,3,right handed,secondary school,no,44,37,tried smoking,social drinker,Agree,Strongly Agree,65,i am always on time,only to avoid hurting someone,14
+female,21,170,58,0,right handed,college/bachelor degree,yes,56,53,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,52,i am often running late,sometimes,11
+female,23,163,68,1,right handed,masters degree,no,54,50,current smoker,drink a lot,Neither Agree nor Disagree,Agree,50,i am always on time,sometimes,10
+female,24,169,53,1,right handed,college/bachelor degree,no,58,53,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,50,i am always on time,only to avoid hurting someone,11
+male,19,185,65,3,left handed,secondary school,no,64,47,tried smoking,social drinker,Disagree,Strongly Agree,55,i am always on time,only to avoid hurting someone,9
+female,24,164,,2,right handed,college/bachelor degree,yes,76,63,former smoker,social drinker,Neither Agree nor Disagree,#N/A,50,i am often early,sometimes,13
+female,20,177,70,1,right handed,secondary school,no,54,73,former smoker,social drinker,Strongly Agree,Strongly Agree,52,i am always on time,sometimes,14
+male,30,184,78,2,right handed,masters degree,no,28,83,former smoker,never,Strongly Agree,Strongly Agree,65,i am always on time,sometimes,15
+female,20,165,56,1,right handed,secondary school,yes,76,50,current smoker,drink a lot,Neither Agree nor Disagree,Agree,36,i am often running late,sometimes,10
+female,23,171,54,4,right handed,secondary school,no,80,73,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,51,i am often early,only to avoid hurting someone,10
+female,19,170,51,1,left handed,secondary school,no,58,63,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,61,i am always on time,sometimes,10
+male,19,184,60,4,right handed,college/bachelor degree,no,20,50,former smoker,drink a lot,Agree,Strongly Agree,44,i am often running late,everytime it suits me,15
+female,22,174,61,2,left handed,college/bachelor degree,no,56,57,current smoker,never,Neither Agree nor Disagree,Neutral,44,i am often running late,only to avoid hurting someone,13
+female,17,175,68,0,right handed,secondary school,yes,52,67,tried smoking,social drinker,Agree,Agree,43,i am often early,sometimes,11
+male,20,183,67,2,right handed,college/bachelor degree,no,34,57,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,43,i am often early,sometimes,14
+male,19,175,75,2,right handed,secondary school,no,32,63,tried smoking,social drinker,Agree,Strongly Agree,39,i am often early,only to avoid hurting someone,13
+female,30,175,68,4,right handed,masters degree,no,36,80,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,47,i am always on time,sometimes,10
+male,27,180,75,0,left handed,college/bachelor degree,yes,60,47,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,39,i am often running late,sometimes,13
+male,19,180,90,1,right handed,college/bachelor degree,no,52,43,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,62,i am always on time,sometimes,12
+female,17,156,51,1,right handed,secondary school,no,58,50,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,57,i am often early,only to avoid hurting someone,12
+male,20,192,80,1,right handed,secondary school,no,46,53,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,55,i am often early,everytime it suits me,10
+male,20,187,80,2,right handed,secondary school,no,24,27,tried smoking,social drinker,Strongly Disagree,Neutral,45,i am often early,sometimes,8
+male,20,190,125,1,right handed,secondary school,no,46,43,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,55,i am often early,sometimes,10
+male,20,182,88,2,right handed,secondary school,no,34,47,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,57,i am always on time,sometimes,11
+female,18,172,55,1,right handed,secondary school,no,46,37,tried smoking,drink a lot,Disagree,Strongly Agree,42,i am often running late,sometimes,11
+male,21,187,80,2,right handed,college/bachelor degree,no,32,67,current smoker,social drinker,Agree,Strongly Agree,57,i am always on time,sometimes,15
+male,21,195,82,1,right handed,secondary school,no,40,60,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,49,i am often early,everytime it suits me,9
+male,20,185,85,1,right handed,secondary school,no,60,53,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,60,i am often running late,sometimes,8
+female,17,182,79,2,right handed,secondary school,no,56,57,former smoker,social drinker,Neither Agree nor Disagree,Agree,50,i am often early,sometimes,11
+male,23,185,90,1,right handed,college/bachelor degree,no,30,57,tried smoking,drink a lot,Agree,Agree,56,i am often early,sometimes,9
+female,25,172,56,1,right handed,masters degree,no,60,50,never smoked,social drinker,Agree,Strongly Agree,44,i am always on time,never,12
+male,18,187,85,0,right handed,secondary school,yes,54,60,current smoker,drink a lot,Disagree,Strongly Agree,49,i am always on time,everytime it suits me,12
+female,18,170,54,1,right handed,secondary school,no,40,63,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,52,i am always on time,everytime it suits me,8
+female,25,168,63,1,right handed,masters degree,no,62,57,tried smoking,never,Agree,Strongly Agree,43,i am often early,sometimes,12
+male,21,180,73,1,right handed,college/bachelor degree,no,44,53,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,56,i am often early,only to avoid hurting someone,15
+male,20,182,73,1,right handed,secondary school,no,48,37,tried smoking,social drinker,Disagree,Strongly Agree,48,i am often running late,only to avoid hurting someone,10
+male,21,179,74,0,right handed,secondary school,yes,54,47,tried smoking,drink a lot,Neither Agree nor Disagree,Agree,52,i am often running late,sometimes,8
+female,18,162,54,1,right handed,secondary school,no,48,40,current smoker,drink a lot,Strongly Disagree,Strongly Agree,41,i am always on time,sometimes,11
+female,20,173,,2,right handed,secondary school,no,48,57,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,32,i am often early,only to avoid hurting someone,11
+male,19,182,72,1,right handed,secondary school,yes,28,57,former smoker,social drinker,Agree,Strongly Agree,46,i am often early,sometimes,13
+male,22,189,89,2,right handed,secondary school,no,32,83,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,53,i am always on time,sometimes,12
+male,26,182,76,3,left handed,secondary school,yes,56,73,never smoked,never,Strongly Agree,Agree,58,i am often early,only to avoid hurting someone,11
+male,23,185,87,0,right handed,secondary school,yes,36,50,tried smoking,social drinker,Neither Agree nor Disagree,Agree,54,i am always on time,never,12
+female,18,162,54,1,right handed,secondary school,no,44,50,current smoker,drink a lot,Strongly Disagree,Strongly Agree,44,i am always on time,sometimes,12
+female,18,170,54,1,right handed,secondary school,no,44,73,tried smoking,drink a lot,Strongly Agree,Strongly Agree,51,i am always on time,everytime it suits me,8
+female,16,168,54,1,right handed,primary school,no,44,60,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,45,i am often running late,sometimes,11
+female,19,168,57,2,right handed,secondary school,no,54,40,tried smoking,drink a lot,Disagree,Strongly Agree,45,i am always on time,sometimes,9
+female,19,175,58,1,right handed,college/bachelor degree,no,80,57,tried smoking,drink a lot,Agree,Strongly Agree,57,i am always on time,sometimes,12
+female,23,,165,0,right handed,secondary school,yes,40,77,current smoker,social drinker,Disagree,Neutral,49,i am often running late,sometimes,11
+male,21,187,85,1,right handed,secondary school,no,26,40,current smoker,drink a lot,Strongly Disagree,Strongly Agree,45,i am often running late,only to avoid hurting someone,13
+male,19,180,75,1,right handed,secondary school,yes,62,60,tried smoking,drink a lot,Disagree,Agree,47,i am often early,only to avoid hurting someone,10
+female,20,175,58,1,right handed,college/bachelor degree,no,58,60,tried smoking,social drinker,Agree,Strongly Agree,46,i am always on time,sometimes,11
+female,22,170,,1,right handed,college/bachelor degree,no,62,47,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,56,i am often running late,never,9
+male,20,180,57,1,right handed,secondary school,no,42,43,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,43,i am often early,sometimes,12
+male,21,178,75,2,right handed,secondary school,no,40,53,current smoker,social drinker,Disagree,Strongly Agree,46,i am often early,only to avoid hurting someone,9
+male,19,181,70,1,right handed,secondary school,yes,40,33,tried smoking,social drinker,Strongly Disagree,Strongly Agree,45,i am always on time,sometimes,10
+female,17,165,58,0,right handed,primary school,yes,52,60,former smoker,social drinker,Disagree,Strongly Agree,51,i am always on time,only to avoid hurting someone,10
+female,19,158,45,2,right handed,secondary school,no,68,57,tried smoking,social drinker,Agree,Strongly Agree,46,i am always on time,only to avoid hurting someone,12
+male,16,162,65,1,right handed,secondary school,yes,56,47,never smoked,social drinker,Neither Agree nor Disagree,Agree,44,i am often running late,sometimes,9
+male,22,174,83,1,right handed,college/bachelor degree,no,52,40,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,53,i am often early,sometimes,10
+male,23,183,85,2,left handed,college/bachelor degree,no,48,53,current smoker,never,Neither Agree nor Disagree,Strongly Agree,45,i am often running late,only to avoid hurting someone,10
+female,28,172,54,2,,masters degree,no,50,77,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,49,i am always on time,never,11
+male,20,183,69,2,left handed,secondary school,no,26,67,current smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,38,i am always on time,sometimes,14
+male,21,176,80,1,right handed,secondary school,no,60,60,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,42,i am always on time,sometimes,10
+female,22,173,50,1,right handed,secondary school,no,50,60,tried smoking,never,Strongly Disagree,Agree,37,i am often early,sometimes,10
+male,,,,,right handed,masters degree,no,42,50,never smoked,never,Neither Agree nor Disagree,Strongly Agree,44,i am often early,never,12
+male,19,188,75,1,right handed,college/bachelor degree,no,28,30,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,55,i am always on time,sometimes,12
+female,24,160,55,1,right handed,college/bachelor degree,no,30,77,tried smoking,social drinker,Neither Agree nor Disagree,Neutral,43,i am often early,only to avoid hurting someone,11
+male,23,170,63,1,right handed,college/bachelor degree,no,36,63,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,52,i am often early,sometimes,10
+female,21,164,52,2,right handed,secondary school,no,70,63,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,58,i am often running late,sometimes,11
+female,22,167,50,1,right handed,secondary school,no,70,77,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,47,i am always on time,only to avoid hurting someone,12
+male,18,184,81,1,right handed,secondary school,no,56,60,current smoker,social drinker,Agree,Strongly Agree,45,i am always on time,sometimes,11
+female,28,166,58,2,left handed,masters degree,no,70,63,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,56,i am often running late,sometimes,13
+female,18,165,48,0,right handed,secondary school,yes,52,57,tried smoking,social drinker,Agree,Strongly Agree,56,i am often running late,only to avoid hurting someone,11
+female,23,174,69,1,right handed,college/bachelor degree,no,30,67,former smoker,social drinker,Agree,Strongly Agree,58,i am often early,only to avoid hurting someone,11
+female,22,162,55,1,right handed,secondary school,yes,54,63,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am often early,only to avoid hurting someone,10
+female,21,164,52,1,right handed,secondary school,yes,58,53,former smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,55,i am often running late,sometimes,11
+female,20,171,57,1,right handed,secondary school,no,42,57,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,64,i am often running late,sometimes,7
+female,18,170,65,1,right handed,primary school,no,58,60,former smoker,social drinker,Neither Agree nor Disagree,Agree,52,i am often running late,everytime it suits me,10
+male,21,175,55,1,right handed,secondary school,no,36,30,tried smoking,social drinker,Strongly Disagree,Agree,47,i am often early,sometimes,8
+male,20,185,80,1,right handed,college/bachelor degree,no,30,27,current smoker,social drinker,Disagree,Strongly Agree,51,i am always on time,everytime it suits me,9
+female,21,159,52,1,right handed,secondary school,no,48,67,tried smoking,social drinker,Agree,Agree,50,i am often early,sometimes,11
+female,21,165,50,1,left handed,secondary school,no,32,67,former smoker,drink a lot,Disagree,Strongly Agree,50,i am always on time,only to avoid hurting someone,10
+female,20,165,54,2,right handed,secondary school,no,50,53,tried smoking,social drinker,Disagree,Agree,55,i am always on time,sometimes,11
+male,17,185,84,0,right handed,primary school,yes,52,53,never smoked,never,Agree,Strongly Agree,46,i am often early,sometimes,11
+female,20,175,67,1,right handed,secondary school,no,46,57,current smoker,social drinker,Agree,Strongly Agree,45,i am often early,sometimes,12
+female,23,163,59,3,right handed,college/bachelor degree,no,62,40,tried smoking,drink a lot,Neither Agree nor Disagree,Strongly Agree,57,i am often running late,sometimes,10
+female,19,155,50,0,right handed,secondary school,yes,34,50,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,27,i am often running late,only to avoid hurting someone,10
+female,20,170,63,0,right handed,secondary school,no,60,57,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am often running late,sometimes,11
+male,22,183,70,1,right handed,secondary school,no,48,60,never smoked,never,Strongly Disagree,Strongly Agree,43,i am always on time,only to avoid hurting someone,11
+female,19,163,56,1,right handed,secondary school,no,44,67,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,42,i am always on time,sometimes,11
+female,19,153,44,0,right handed,secondary school,yes,56,60,never smoked,social drinker,Disagree,Strongly Agree,57,i am often early,sometimes,10
+female,27,173,58,1,right handed,college/bachelor degree,yes,60,50,tried smoking,never,Neither Agree nor Disagree,Neutral,56,i am always on time,sometimes,13
+female,18,165,45,5,left handed,primary school,no,80,63,former smoker,social drinker,Agree,Strongly Agree,43,i am always on time,only to avoid hurting someone,9
+male,18,178,80,2,right handed,secondary school,no,42,53,current smoker,social drinker,Agree,Strongly Agree,47,i am often running late,only to avoid hurting someone,13
+female,20,155,45,1,right handed,secondary school,no,64,57,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,47,i am often early,sometimes,13
+female,17,170,50,3,right handed,secondary school,no,60,73,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,56,i am often running late,sometimes,10
+,19,163,54,0,right handed,primary school,yes,52,47,tried smoking,social drinker,Disagree,Strongly Agree,50,i am always on time,sometimes,8
+female,16,164,60,1,right handed,secondary school,no,58,47,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,31,i am often running late,sometimes,11
+female,21,171,66,0,right handed,secondary school,yes,64,60,tried smoking,social drinker,Disagree,Agree,51,i am often early,never,9
+female,18,167,62,4,right handed,primary school,yes,66,53,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,73,i am often running late,sometimes,9
+female,19,166,63,0,right handed,secondary school,yes,72,63,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,59,i am often running late,everytime it suits me,6
+female,20,,47,0,right handed,secondary school,yes,46,57,never smoked,never,Neither Agree nor Disagree,Agree,54,i am always on time,only to avoid hurting someone,11
+male,16,172,59,4,right handed,primary school,no,68,63,tried smoking,never,Strongly Disagree,Strongly Agree,41,i am often running late,sometimes,11
+female,18,172,55,3,right handed,primary school,no,60,50,current smoker,,Neither Agree nor Disagree,Strongly Agree,53,i am often running late,everytime it suits me,9
+male,24,175,71,0,right handed,college/bachelor degree,yes,44,47,tried smoking,drink a lot,Strongly Disagree,Strongly Agree,51,i am often early,only to avoid hurting someone,8
+female,22,182,83,2,right handed,secondary school,no,32,57,current smoker,social drinker,Neither Agree nor Disagree,Agree,49,i am often early,only to avoid hurting someone,11
+female,19,162,47,1,right handed,secondary school,no,46,43,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,49,i am often running late,sometimes,11
+male,22,180,70,1,right handed,secondary school,no,26,63,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,60,i am often early,everytime it suits me,11
+male,22,193,100,0,right handed,secondary school,yes,60,43,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,58,i am often early,only to avoid hurting someone,10
+female,16,180,55,1,right handed,secondary school,yes,56,47,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,37,i am often early,only to avoid hurting someone,9
+female,18,170,75,1,right handed,secondary school,no,62,67,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,48,i am often early,sometimes,12
+female,18,164,56,3,right handed,secondary school,no,26,47,tried smoking,social drinker,Disagree,Strongly Agree,46,i am often early,everytime it suits me,9
+male,15,190,85,0,left handed,currently a primary school pupil,yes,54,43,never smoked,never,Disagree,Strongly Agree,58,i am always on time,sometimes,9
+male,26,186,76,3,right handed,masters degree,no,48,30,former smoker,drink a lot,Neither Agree nor Disagree,Agree,50,i am often running late,everytime it suits me,13
+male,19,179,60,1,right handed,secondary school,yes,52,43,never smoked,never,Neither Agree nor Disagree,Strongly Agree,57,i am often early,only to avoid hurting someone,10
+female,20,165,57,1,right handed,secondary school,no,76,47,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,56,i am always on time,sometimes,8
+female,20,175,62,0,right handed,secondary school,no,66,87,former smoker,social drinker,Agree,Strongly Agree,55,i am always on time,everytime it suits me,11
+female,19,166,51,1,right handed,secondary school,no,26,33,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,41,i am often early,sometimes,12
+male,20,178,83,2,right handed,secondary school,yes,40,40,current smoker,drink a lot,Strongly Disagree,Strongly Agree,52,i am always on time,everytime it suits me,6
+male,20,175,65,5,right handed,secondary school,no,38,53,never smoked,social drinker,Strongly Disagree,Strongly Agree,32,i am often running late,sometimes,8
+female,22,169,59,2,right handed,college/bachelor degree,no,72,53,tried smoking,social drinker,Agree,Strongly Agree,47,i am often early,only to avoid hurting someone,11
+female,24,176,48,1,left handed,masters degree,no,60,70,current smoker,social drinker,Neither Agree nor Disagree,Agree,58,i am always on time,sometimes,8
+female,,,,,right handed,masters degree,no,36,70,never smoked,social drinker,Agree,Strongly Agree,60,i am often running late,sometimes,14
+male,20,172,75,3,left handed,secondary school,no,28,83,tried smoking,social drinker,Agree,Strongly Agree,57,i am always on time,everytime it suits me,10
+female,21,167,56,1,right handed,secondary school,no,50,73,never smoked,never,Strongly Agree,Strongly Agree,41,i am often early,never,9
+male,23,185,92,0,left handed,secondary school,yes,24,67,current smoker,social drinker,Strongly Disagree,Agree,51,i am often running late,,10
+male,21,,75,3,right handed,college/bachelor degree,yes,50,63,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,64,i am always on time,sometimes,12
+female,17,170,65,2,right handed,primary school,no,76,63,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,65,i am often running late,everytime it suits me,13
+female,19,170,55,1,left handed,college/bachelor degree,no,20,47,tried smoking,social drinker,Strongly Agree,Strongly Agree,47,i am often running late,everytime it suits me,15
+male,18,187,71,1,right handed,primary school,no,24,47,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,54,i am always on time,only to avoid hurting someone,12
+male,19,184,75,2,left handed,secondary school,no,32,57,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,50,i am always on time,sometimes,11
+male,19,180,70,2,right handed,college/bachelor degree,no,58,23,former smoker,drink a lot,Strongly Disagree,Strongly Agree,47,i am often running late,everytime it suits me,11
+male,22,187,82,1,right handed,masters degree,no,50,27,current smoker,drink a lot,Strongly Disagree,Strongly Agree,60,i am often early,everytime it suits me,7
+male,18,177,60,1,right handed,secondary school,no,68,53,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,56,i am often running late,sometimes,9
+female,19,178,88,0,right handed,secondary school,yes,68,50,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,57,i am always on time,only to avoid hurting someone,11
+female,20,175,120,2,right handed,secondary school,no,54,43,current smoker,social drinker,Strongly Disagree,Strongly Agree,61,i am often early,sometimes,9
+female,21,183,73,0,right handed,secondary school,yes,40,37,current smoker,drink a lot,Agree,Strongly Agree,51,i am often early,everytime it suits me,13
+female,23,175,85,1,right handed,secondary school,yes,58,83,current smoker,drink a lot,Agree,Strongly Agree,88,i am often running late,everytime it suits me,9
+female,19,172,62,1,right handed,secondary school,yes,56,57,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,61,i am always on time,sometimes,13
+male,19,183,83,1,right handed,secondary school,no,48,50,current smoker,drink a lot,Disagree,Strongly Agree,46,i am always on time,everytime it suits me,11
+female,21,165,60,2,right handed,college/bachelor degree,no,62,53,tried smoking,social drinker,Agree,Strongly Agree,51,i am always on time,only to avoid hurting someone,9
+male,19,194,90,0,left handed,secondary school,yes,54,57,never smoked,social drinker,Neither Agree nor Disagree,Strongly Agree,54,i am often running late,sometimes,13
+female,18,166,53,2,right handed,secondary school,no,44,43,,drink a lot,Strongly Disagree,Strongly Agree,52,i am often early,sometimes,12
+female,19,168,57,1,left handed,secondary school,no,62,70,tried smoking,social drinker,Disagree,Strongly Agree,50,i am always on time,sometimes,6
+male,18,178,70,2,right handed,secondary school,no,50,30,tried smoking,drink a lot,Strongly Disagree,Strongly Agree,46,i am often running late,sometimes,11
+female,22,172,60,2,right handed,secondary school,no,70,77,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,48,,only to avoid hurting someone,11
+female,21,165,55,1,right handed,secondary school,yes,50,50,current smoker,drink a lot,Strongly Disagree,Strongly Agree,44,i am often running late,sometimes,9
+female,20,167,53,1,right handed,secondary school,no,54,60,former smoker,social drinker,Disagree,Strongly Agree,49,i am always on time,sometimes,10
+female,19,161,60,3,right handed,secondary school,no,38,67,tried smoking,social drinker,Disagree,Agree,60,i am often running late,sometimes,12
+male,20,184,80,1,right handed,secondary school,no,46,40,current smoker,drink a lot,Neither Agree nor Disagree,Agree,41,i am often running late,sometimes,9
+male,19,183,70,0,right handed,secondary school,yes,20,43,tried smoking,drink a lot,Agree,Strongly Agree,60,i am often running late,only to avoid hurting someone,15
+female,30,168,54,2,right handed,masters degree,no,46,60,former smoker,drink a lot,Strongly Agree,Strongly Agree,66,i am often early,sometimes,10
+male,29,180,93,1,right handed,secondary school,no,24,30,former smoker,social drinker,Disagree,Strongly Agree,37,i am often running late,sometimes,11
+male,21,172,80,0,right handed,secondary school,yes,64,27,tried smoking,social drinker,Strongly Disagree,Strongly Agree,44,i am often running late,sometimes,8
+male,30,200,150,1,right handed,masters degree,no,58,60,never smoked,never,Strongly Disagree,Agree,50,i am often early,only to avoid hurting someone,8
+female,21,173,55,0,right handed,secondary school,yes,50,30,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,38,i am often early,everytime it suits me,10
+female,20,176,78,0,right handed,secondary school,yes,40,67,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,53,i am often running late,sometimes,10
+female,18,163,53,0,right handed,secondary school,yes,32,70,tried smoking,never,Agree,Strongly Agree,40,i am often early,only to avoid hurting someone,9
+male,20,190,74,0,right handed,secondary school,yes,38,30,former smoker,social drinker,Agree,Strongly Agree,39,i am always on time,sometimes,9
+female,19,167,53,1,right handed,secondary school,no,66,80,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,46,i am often running late,sometimes,13
+male,28,192,105,1,right handed,masters degree,no,36,53,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,58,i am always on time,sometimes,11
+male,19,181,70,1,right handed,secondary school,no,26,67,never smoked,social drinker,Agree,Strongly Agree,75,i am always on time,only to avoid hurting someone,11
+female,16,153,62,1,right handed,primary school,no,34,60,never smoked,never,Strongly Agree,Strongly Agree,49,i am always on time,sometimes,12
+female,18,160,63,2,right handed,primary school,no,46,60,former smoker,never,Agree,Strongly Agree,50,i am always on time,sometimes,11
+male,22,181,72,1,right handed,secondary school,no,26,37,current smoker,social drinker,Disagree,Strongly Agree,47,i am often running late,everytime it suits me,10
+female,20,172,63,1,right handed,secondary school,no,58,67,former smoker,social drinker,Neither Agree nor Disagree,Agree,57,i am always on time,sometimes,9
+male,22,175,60,1,right handed,secondary school,no,44,53,former smoker,social drinker,Neither Agree nor Disagree,Strongly Agree,54,i am often running late,sometimes,9
+female,20,164,57,1,right handed,secondary school,no,56,57,current smoker,drink a lot,Neither Agree nor Disagree,Strongly Agree,59,i am often running late,everytime it suits me,10
+male,27,183,80,5,left handed,masters degree,no,38,83,never smoked,social drinker,Neither Agree nor Disagree,Agree,44,i am often early,sometimes,13
+female,18,173,75,0,right handed,secondary school,yes,40,33,tried smoking,social drinker,Disagree,Agree,39,i am often running late,only to avoid hurting someone,6
+female,25,173,58,1,right handed,college/bachelor degree,no,68,57,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,42,i am often running late,sometimes,9
+male,21,185,72,1,right handed,secondary school,no,48,40,tried smoking,social drinker,Neither Agree nor Disagree,Strongly Agree,44,i am often running late,everytime it suits me,10

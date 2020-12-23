@@ -8,14 +8,27 @@ output:
     toc_float: true
 ---
 
+<!-- Welcome to the first Analysis for Math 325! 
+The goal of this first assignment is to have you produce a graphical summary and a numerical summary of the "Rent" data set. The fun part is that you get to decide what type of graph and what type of numerical summary to create! You will need to read through the "green text" instructions of this document to find the places where you are supposed to enter R-code in order to complete the assignment. -->
+
+
 **Week 1 Analysis**
 
-```{r, include=FALSE}
+```{r, message=FALSE, warning=FALSE}
+# This gray area is called an "R-chunk". 
+# These library commands install some powerful functions for your use later on.
 library(mosaic)
 library(pander)
 library(tidyverse)
 library(DT) 
+
+# This read_csv command reads in the "Rent" data set into an object called "Rent"
 Rent <- read_csv("../Data/Rent.csv")
+
+# To load this data set into your R-Console do the following:
+#  1. From your top file menu select "Session -> Set Working Directory -> To Source File Location"
+#  2. Press the green "play button" in the top right corner of this gray box (which is called an "R-chunk").
+#  3. Then in your "Console" window of 
 ```
 
 <br />

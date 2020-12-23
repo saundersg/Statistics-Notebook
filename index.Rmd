@@ -34,10 +34,52 @@ To begin customizing, [download](https://github.com/saundersg/Statistics-Noteboo
 
 [Customization Help](RMarkdownHints.html)
 
+Wow! I typed some words. : )
 
 
 
+Class Notes from Wed 9/23
 
+```{r, eval=FALSE}
+library(mosaic)
+library(tidyverse)
+library(pander)
+View(KidsFeet)
+table(KidsFeet$sex)
+table(KidsFeet$domhand)
+table(KidsFeet$domhand, KidsFeet$sex)
+table(KidsFeet$length)
+summary(KidsFeet$length)
+
+KidsFeetBoys <- KidsFeet %>%
+  filter(sex == "B")
+
+KidsFeetCrazy <- KidsFeet %>%
+  filter(sex == "G", length > 24.50, domhand == "L")
+
+
+KidsFeetBoys <- KidsFeet %>%
+  filter(sex == "B") %>%
+  select(name, birthmonth, birthyear, domhand, width, length)
+
+KidsFeetBoys <- KidsFeet %>% 
+  filter(sex == "B") %>% 
+  select(-sex)
+
+KidsFeet %>%
+  group_by(sex) %>%
+  summarise(Min = min(width), Max = max(width), `Sample Size` = n()) %>%
+  pander()
+
+
+Kids3 <- KidsFeet %>%
+  mutate(season = case_when(birthmonth %in% c(12,1,2) ~ "Winter",
+                            birthmonth %in% c(3,4,5) ~ "Spring",
+                            birthmonth %in% c(6,7,8) ~ "Summer",
+                            birthmonth %in% c(9,10,11) ~ "Fall"))
+
+
+```
 
 
 
@@ -165,12 +207,15 @@ Add your own notes about graphics to use for this type of data here.
 <div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 
-Add your own notes about appropriate inferential procedures for this type of data here.
+
+Use the [Independent Sample t Test](tTests.html#independent-samples-t-test) to test for the equality of means in "Y" for each group "A" and "B."
+
+See my [High School Seniors](./Analyses/t Tests/HighSchoolSeniors.html)
 
 
+Use the [Wilcoxon Rank Sum Test](WilcoxonTests.html) to test for equality of medians, or "stochastical dominance." 
 
-
-
+See my [Recalling Words](./Analyse/Wilcoxon Tests/RecallingWords.html)
 
 
 
@@ -186,6 +231,20 @@ Add your own notes about appropriate inferential procedures for this type of dat
 
 <!--- End of Add content area.  ------------------>
 </div>
+
+### Examples
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Put a practice test <span style="font-size:18pt;background-color:yellow;color:blue;">question or two here.</span>
+
+![](./Images/Kids3.png)
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
 
 ##
 <div style="clear:both;"></div>

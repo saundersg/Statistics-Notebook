@@ -1,5 +1,9 @@
 ---
 title: "Graphical Summaries"
+output: 
+  html_document: 
+    toc: true
+    toc_float: true
 ---
 
 ```{r, include=FALSE}
@@ -77,17 +81,17 @@ To make a histogram in R use the function:
 
 `hist(object)`
 
-* `object` must be quantitative data. R refers to this as a "numeric vector."
+* `object` must be quantitative data. R refers to this as a "numeric vector." Usually this will be the column of a dataset accessed with the `$` sign by `hist(dataSetName$columnName)`.
 
 Type `?hist` in your **R Console** to open the help file in R.
 
-<br>
+<br/>
 
 **Example Code** 
 
-Hover your mouse over the example codes to learn more. 
+Hover your mouse over the example codes to learn more. Click on them to see what they create.
 
-Click to see what they do.
+*Basic histogram*
 
 <a href="javascript:showhide('hist1')">
 <div class="hoverchunk">
@@ -124,6 +128,10 @@ hist(airquality$Temp)
 ```
 </div>
 
+<br/>
+
+*Change Color*
+
 <a href="javascript:showhide('hist3')">
 <div class="hoverchunk">
 <span class="tooltipr">
@@ -146,7 +154,12 @@ col="skyblue" <span class="tooltiprtext">col= allows us to specify the color of 
 hist(airquality$Temp, col="skyblue")
 ```
 </div>  
-  
+
+<br/>
+
+
+*Add Titles*
+
 <a href="javascript:showhide('hist2')">
 <div class="hoverchunk">
 <span class="tooltipr">
@@ -216,9 +229,9 @@ is loaded. Then,
 
 **Example Code** 
 
-Hover your mouse over the example codes to learn more. 
+Hover your mouse over the example codes to learn more. Click on them to see what they create.
 
-Click to see what they do.
+*Basic Histogram*
 
 <a href="javascript:showhide('hist1ggplot')">
 <div class="hoverchunk">
@@ -268,6 +281,10 @@ ggplot(airquality, aes(x=Temp)) +
 ```
 </div>
 
+
+<br/>
+
+*Change Bin Width and Color*
 
 <a href="javascript:showhide('hist2ggplot')">
 <div class="hoverchunk">
@@ -329,6 +346,10 @@ ggplot(airquality, aes(x=Temp)) +
 ```
 </div>
   
+<br/>
+
+*Add Titles*
+
 <a href="javascript:showhide('hist3ggplot')">
 <div class="hoverchunk">
 <span class="tooltipr">
@@ -413,11 +434,13 @@ ggplot(airquality, aes(x=Temp)) +
 
 **Gallery**
 
-<a href="javascript:showhide('histogramgalleryggplot')">Click to view.</a>
+See some ideas from past students...
+
+<a href="javascript:showhide('histogramgalleryggplot')">Show/Hide Gallery</a> 
 
 <div id="histogramgalleryggplot" style="display:none;">
 
-Hover to see code. 
+Hover to see code. Copy the code into R. Play with it. Modify it to create your own graph.
 
 <span class="tooltipgallery">
 <img class="gallerygraphs" src="./Images/histogramggplotgallery1.png">  
@@ -501,7 +524,164 @@ Hover to see code.
 </div>
 
 <div id="plotlyHistogram" class="tabcontent">
-  <p>Not yet available.</p>
+  <p>
+  
+
+To make a histogram in plotly first load
+
+`library(plotly)`
+
+Then, use the function:
+
+`plot_ly(dataName, x=~columnName, type="histogram")`
+
+* `dataName` is the name of a data set
+* `columnName` must be the name of a column of quantitative data. R refers to this as a "numeric vector." 
+* `type="histogram"` tells the plot_ly(...) function to create a histogram.
+
+Visit [plotly.com/r/histograms](https://plotly.com/r/histograms/) for more details.
+
+<br/>
+
+**Example Code** 
+
+Hover your mouse over the example codes to learn more. Click on them to see what they create.
+
+*Basic histogram*
+
+<a href="javascript:showhide('plotlyhist1')">
+<div class="hoverchunk">
+<span class="tooltipr">
+plot_ly
+  <span class="tooltiprtext">An R function "plot_ly" from library(plotly) used to create any plotly plot.</span>
+</span><span class="tooltipr">
+(
+  <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span>
+</span><span class="tooltipr">
+airquality,&nbsp;
+  <span class="tooltiprtext">"airquality" is a dataset. Type "View(airquality)" in R to see it.</span>
+</span><span class="tooltipr">
+x=
+  <span class="tooltiprtext">The x= allows us to declare which column of the data set will become the x-axis of the histogram.</span>
+</span><span class="tooltipr">
+~Temp, &nbsp;
+  <span class="tooltiprtext">"Temp" is a quantitative variable (numeric vector) from the "airquality" dataset. The `~` is required before column names inside all plot_ly(...) commands.</span>
+</span><span class="tooltipr">
+type="histogram"
+  <span class="tooltiprtext">This option tells the plot_ly(...) function what "type" of graph to make. In this case, a histogram.</span>
+</span><span class="tooltipr">
+)  
+  <span class="tooltiprtext">Closing parenthsis for the plot_ly function.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="plotlyhist1" style="display:none;">
+```{r, echo=FALSE, warning=FALSE}
+plot_ly(airquality, x=~Temp, type="histogram")
+```
+</div>
+
+<br/>
+
+*Change Color*
+
+<a href="javascript:showhide('plotlyhist3')">
+<div class="hoverchunk">
+<span class="tooltipr">
+plot_ly(airquality, x=~Temp, type="histogram",&nbsp; <span class="tooltiprtext">This code was explained in the first example code.</span>
+</span><span class="tooltipr">
+marker=list( <span class="tooltiprtext">this "list(...)" of options that will be specified will effect the bars of the histogram.</span>
+</span><span class="tooltipr">
+color = "skyblue",&nbsp; <span class="tooltiprtext">this will change the color of the bars to skyblue.</span>
+</span><span class="tooltipr">
+line = list(,&nbsp; <span class="tooltiprtext">this opens a list of options to specify for the "lines" around the "markers."</span>
+</span><span class="tooltipr">
+color = "darkgray",&nbsp; <span class="tooltiprtext">this will change the color of the lines around the bars to darkgray.</span>
+</span><span class="tooltipr">
+width = 2 <span class="tooltiprtext">this will change the width of the lines around the bars to 2 pixels. Too really see what this does, change it to something crazy like 10.</span>
+</span><span class="tooltipr">
+) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span>
+</span><span class="tooltipr">
+) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span>
+</span><span class="tooltipr">
+) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="plotlyhist3" style="display:none;">
+```{r, echo=FALSE}
+plot_ly(airquality, x=~Temp, type="histogram", marker = list( color="skyblue", line = list(color="darkgray", width=2)))
+```
+</div>  
+
+<br/>
+
+
+*Add Titles*
+
+<a href="javascript:showhide('plotlyhist2')">
+<div class="hoverchunk">
+<span class="tooltipr">
+plot_ly(airquality$Temp, type="histogram",&nbsp; <span class="tooltiprtext">This code was explained in the first example code.</span>
+</span><span class="tooltipr">
+marker=list( <span class="tooltiprtext">this "list(" of options that will be specified will effect the bars of the histogram.</span>
+</span><span class="tooltipr">
+color = "skyblue",&nbsp; <span class="tooltiprtext">this will change the color of the bars to skyblue.</span>
+</span><span class="tooltipr">
+line = list(,&nbsp; <span class="tooltiprtext">this opens a list of options to specify for the "lines" around the "markers."</span>
+</span><span class="tooltipr">
+color = "darkgray",&nbsp; <span class="tooltiprtext">this will change the color of the lines around the bars to darkgray.</span>
+</span><span class="tooltipr">
+width = 10 <span class="tooltiprtext">this will change the width of the lines around the bars to 10 pixels, which is rather large really. Using a width=2 is probably better.</span>
+</span><span class="tooltipr">
+) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span>
+</span><span class="tooltipr">
+) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span>
+</span><span class="tooltipr">
+) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span>
+</span><span class="tooltipr">
+&nbsp;%>% <span class="tooltiprtext">The pipe operator passes the completed plot_ly(...) code into the layout(...) function.</span>
+</span><br/><span class="tooltipr">
+layout( <span class="tooltiprtext">The layout(...) function is used for specifying details about the axes and their labels.</span>
+</span><span class="tooltipr">
+title="La Guardia Airport Daily Mean Temperatures" <span class="tooltiprtext">This declares a main title for the top of the graph.</span>
+</span><span class="tooltipr">
+xaxis=list( <span class="tooltiprtext">This declares a list of options to be specified for the xaxis. The same can be done for the yaxis(...).</span>
+</span><span class="tooltipr">
+title="Temperature in Degrees F" <span class="tooltiprtext">This declares a title underneath the x-axis.</span>
+</span><span class="tooltipr">
+) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span>
+</span><span class="tooltipr">
+) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="plotlyhist2" style="display:none;">
+```{r, echo=FALSE}
+plot_ly(airquality, x=~Temp, type="histogram", marker=list( color="skyblue", line=list(color="darkgray", width=10))) %>%
+  layout(title="La Guardia Airport Daily Mean Temperatures", xaxis=list(title="Temperature in Degrees F"))
+```
+</div>    
+  
+  </p>
 </div>
 
 
@@ -622,6 +802,8 @@ To make side-by-side boxplots:
 
 **Example Code**
 
+*Basic Single Boxplot*
+
 <a href="javascript:showhide('boxplot0')">
 <div class="hoverchunk">
 <span class="tooltipr">
@@ -656,6 +838,10 @@ Temp
 boxplot(airquality$Temp)
 ```
 </div>
+
+<br/>
+
+*More Useful... Basic Side-by-Side Boxplot*
 
 <a href="javascript:showhide('boxplot1')">
 <div class="hoverchunk">
@@ -696,6 +882,9 @@ boxplot(Temp ~ Month, data=airquality)
 ```
 </div>
 
+<br/>
+
+*Add Names under each Box*
 
 <a href="javascript:showhide('boxplot2a')">
 <div class="hoverchunk">
@@ -741,6 +930,10 @@ names=c("May","June","July","Aug","Sep")
 boxplot(Temp ~ Month, data=airquality, names=c("May","June","July","Aug","Sep"))
 ```
 </div>
+
+<br/>
+
+*Add Color and Labels*
 
 <a href="javascript:showhide('boxplot2')">
 <div class="hoverchunk">
@@ -816,9 +1009,7 @@ is loaded. Then,
 
 **Example Code** 
 
-Hover your mouse over the example codes to learn more. 
-
-Click to see what they do.
+*Basic Single Boxplot*
 
 <a href="javascript:showhide('box1ggplot')">
 <div class="hoverchunk">
@@ -868,6 +1059,8 @@ ggplot(airquality, aes(y=Temp)) +
 ```
 </div>
 
+<br/>
+*Side-by-side Boxplot and Color Change*
 
 <a href="javascript:showhide('box2ggplot')">
 <div class="hoverchunk">
@@ -929,8 +1122,9 @@ ggplot(airquality, aes(x=factor(Month), y=Temp)) +
 ```
 </div>
   
-  
+<br/>
 
+*Add Labels*
 <a href="javascript:showhide('box3ggplot')">
 <div class="hoverchunk">
 <span class="tooltipr">
@@ -1014,6 +1208,8 @@ ggplot(airquality, aes(x=factor(Month), y=Temp)) +
 
 **Gallery**
 
+See what past students have done...
+
 <a href="javascript:showhide('boxplotgalleryggplot')">Click to view.</a>
 
 <div id="boxplotgalleryggplot" style="display:none;">
@@ -1068,7 +1264,166 @@ Hover to see code.
 </div>
 
 <div id="plotlyBoxplot" class="tabcontent">
-  <p>Not yet available.</p>
+  <p>
+  
+
+To make a histogram in plotly first load
+
+`library(plotly)`
+
+Then, use the function:
+
+`plot_ly(dataName, y=~columnNameY, x=~columnNameX, type="box")`
+
+* `dataName` is the name of a data set
+* `columnNameY` must be the name of a column of quantitative data. R refers to this as a "numeric vector." This will become the y-axis of the plot.
+* `columnNameX` must be the name of a column of qualitative data. This will provide the "groups" forming each individual box in the boxplot. 
+* `type="box"` tells the plot_ly(...) function to create a boxplot.
+
+Visit [plotly.com/r/box-plots](https://plotly.com/r/box-plots/) for more details.
+
+<br/>
+
+**Example Code** 
+
+Hover your mouse over the example codes to learn more. Click on them to see what they create.
+
+*Basic Boxplot*
+
+<a href="javascript:showhide('plotlybox1')">
+<div class="hoverchunk">
+<span class="tooltipr">
+plot_ly
+  <span class="tooltiprtext">An R function "plot_ly" from library(plotly) used to create any plotly plot.</span>
+</span><span class="tooltipr">
+(
+  <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span>
+</span><span class="tooltipr">
+airquality,&nbsp;
+  <span class="tooltiprtext">"airquality" is a dataset. Type "View(airquality)" in R to see it.</span>
+</span><span class="tooltipr">
+y=
+  <span class="tooltiprtext">The y= allows us to declare which column of the data set will become the y-axis of the boxplot. In other words, the quantitative data we are interested in studying for each group.</span>
+</span><span class="tooltipr">
+~Temp, &nbsp;
+  <span class="tooltiprtext">"Temp" is a quantitative variable (numeric vector) from the "airquality" dataset. The `~` is required before column names inside all plot_ly(...) commands.</span>
+</span><span class="tooltipr">
+x=
+  <span class="tooltiprtext">The x= allows us to declare which column of the data set will become the x-axis of the boxplot. In other words, the "groups" forming each separate box in the boxplot.</span>
+</span><span class="tooltipr">
+~as.factor(Month), &nbsp;
+  <span class="tooltiprtext">since "Month" is a quantitative variable (numeric vector) from the "airquality" dataset we have to change it to a "factor" which forces R to treat it as a qualitative (groups) variable. The `~` is required before column names inside all plot_ly(...) commands.</span>
+</span><span class="tooltipr">
+type="box"
+  <span class="tooltiprtext">This option tells the plot_ly(...) function what "type" of graph to make. In this case, a boxplot.</span>
+</span><span class="tooltipr">
+)  
+  <span class="tooltiprtext">Closing parenthsis for the plot_ly function.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="plotlybox1" style="display:none;">
+```{r, echo=FALSE, warning=FALSE}
+plot_ly(airquality, y=~Temp, x=~as.factor(Month), type="box")
+```
+</div>
+
+<br/>
+
+*Change Color*
+
+<a href="javascript:showhide('plotlybox3')">
+<div class="hoverchunk">
+<span class="tooltipr">
+plot_ly(airquality, y=~Temp, x=~as.factor(Month),  type="box",&nbsp; <span class="tooltiprtext">This code was explained in the first example code.</span>
+</span><span class="tooltipr">
+fillcolor="skyblue",&nbsp; <span class="tooltiprtext">this changes the fill color of the boxes in the boxplot to the color specified, in this case "skyblue."</span>
+</span><span class="tooltipr">
+line=list(color="darkgray", width=3),&nbsp;
+  <span class="tooltiprtext">this "list(...)" of options that will be specified will effect the edges of the boxes in the boxplot. We are changing their color to "darkgray" and their width to 3 pixels wide.</span>
+</span><span class="tooltipr">
+marker=list( <span class="tooltiprtext">this "list(...)" of options that will be specified will effect the outlying dots shown in the boxplots beyond the "fences" of each box.</span>
+</span><span class="tooltipr">
+color = "orange",&nbsp; <span class="tooltiprtext">this will change the color of the dots to orange.</span>
+</span><span class="tooltipr">
+line = list(,&nbsp; <span class="tooltiprtext">this opens a list of options to specify for the "lines" around the "markers."</span>
+</span><span class="tooltipr">
+color = "red",&nbsp; <span class="tooltiprtext">this will change the color of the lines around the outlier dots to red.</span>
+</span><span class="tooltipr">
+width = 1 <span class="tooltiprtext">this will change the width of the lines around the outlier dots to 1 pixel.</span>
+</span><span class="tooltipr">
+) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span>
+</span><span class="tooltipr">
+) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span>
+</span><span class="tooltipr">
+) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="plotlybox3" style="display:none;">
+```{r, echo=FALSE}
+plot_ly(airquality, y=~Temp, x=~as.factor(Month), type="box", fillcolor="skyblue", line=list(color="darkgray", width=3), marker = list(color="orange", line = list(color="red", width=1)))
+```
+</div>  
+
+<br/>
+
+
+*Add Titles*
+
+<a href="javascript:showhide('plotlybox2')">
+<div class="hoverchunk">
+<span class="tooltipr">
+plot_ly(airquality, y=~Temp, x=~as.factor(Month), type="box", fillcolor="skyblue", line=list(color="darkgray", width=3), marker = list(color="orange", line = list(color="red", width=1)))&nbsp; <span class="tooltiprtext">This code was explained in the above example code.</span>
+</span><span class="tooltipr">
+%>% <span class="tooltiprtext">the pipe operator sends the completed plot_ly(...) code into the layout function.</span>
+</span><br/><span class="tooltipr">
+layout( <span class="tooltiprtext">The layout(...) function is used for specifying details about the axes and their labels.</span>
+</span><span class="tooltipr">
+title="La Guardia Airport Daily Mean Temperatures" <span class="tooltiprtext">This declares a main title for the top of the graph.</span>
+</span><span class="tooltipr">
+xaxis=list( <span class="tooltiprtext">This declares a list of options to be specified for the xaxis. The same can be done for the yaxis(...).</span>
+</span><span class="tooltipr">
+title="Month of the Year" <span class="tooltiprtext">This declares a title underneath the x-axis.</span>
+</span><span class="tooltipr">
+),&nbsp; <span class="tooltiprtext">Functions always end with a closing parenthesis.</span>
+</span><span class="tooltipr">
+yaxis=list( <span class="tooltiprtext">This declares a list of options to be specified for the y-axis.</span>
+</span><span class="tooltipr">
+title="Temperature in Degrees F" <span class="tooltiprtext">This declares a title beside the y-axis.</span>
+</span><span class="tooltipr">
+) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span>
+</span><span class="tooltipr">
+) <span class="tooltiprtext">Functions always end with a closing parenthesis.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="plotlybox2" style="display:none;">
+```{r, echo=FALSE}
+plot_ly(airquality, y=~Temp, x=~as.factor(Month), type="box", fillcolor="skyblue", line=list(color="darkgray", width=3), marker = list(color="orange", line = list(color="red", width=1))) %>%
+  layout(title="La Guardia Airport Daily Mean Temperatures", yaxis=list(title="Temperature in Degrees F"), xaxis=list(title="Month of the Year"))
+```
+</div>      
+  
+  </p>
 </div>
 
 

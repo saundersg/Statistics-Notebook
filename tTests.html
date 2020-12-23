@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -20,6 +20,7 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 
@@ -67,7 +68,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -216,6 +216,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -227,18 +228,6 @@ $(document).ready(function () {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -433,7 +422,7 @@ $$</code></pre>
 <li><code>NameOfYourData</code> is the name of your data set, like <code>mtcars</code> or <code>KidsFeet</code>.</li>
 <li><code>Y</code> must be a “numeric” vector of quantitative data.</li>
 <li><code>YourNull</code> is the numeric value from your null hypothesis for <span class="math inline">\(\mu\)</span>.</li>
-<li><code>YourAlternative</code> is one of the three options: <code>&quot;two.sided&quot;</code>, <code>&quot;greater&quot;</code>, <code>&quot;less&quot;</code> and should correspond to your alternative hypothesis.</li>
+<li><code>YourAlternative</code> is one of the three options: <code>"two.sided"</code>, <code>"greater"</code>, <code>"less"</code> and should correspond to your alternative hypothesis.</li>
 <li>The value for <code>conf.level = 0.95</code> can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to <span class="math inline">\(1-\alpha\)</span>.</li>
 </ul>
 <p>Testing Assumptions</p>
@@ -587,7 +576,7 @@ $$</code></pre>
 <li><code>Y1</code> must be a “numeric” vector that represents the quantitative data from the first sample of data.</li>
 <li><code>Y2</code> must be a “numeric” vector that represents the quantitative data from the second sample of data. This vector must be in the same order as the first sample so that the pairing can take place.</li>
 <li><code>YourNull</code> is the numeric value from your null hypothesis for <span class="math inline">\(\mu_d\)</span>.</li>
-<li><code>YourAlternative</code> is one of the three options: <code>&quot;two.sided&quot;</code>, <code>&quot;greater&quot;</code>, <code>&quot;less&quot;</code> and should correspond to your alternative hypothesis.</li>
+<li><code>YourAlternative</code> is one of the three options: <code>"two.sided"</code>, <code>"greater"</code>, <code>"less"</code> and should correspond to your alternative hypothesis.</li>
 <li>The value for <code>conf.level = 0.95</code> can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to <span class="math inline">\(1-\alpha\)</span>.</li>
 </ul>
 <p>Testing Assumptions</p>
@@ -683,7 +672,7 @@ $$</code></pre>
 <li><code>Y2</code> must be a “numeric” vector that represents the quantitative data from the second sample of data. This vector must be in the same order as the first sample so that the pairing can take place.</li>
 <li><code>differences</code> are the resulting differences obtained from subtracting <code>Y1 - Y2</code>.</li>
 <li><code>YourNull</code> is the numeric value from your null hypothesis for <span class="math inline">\(\mu_d\)</span>.</li>
-<li><code>YourAlternative</code> is one of the three options: <code>&quot;two.sided&quot;</code>, <code>&quot;greater&quot;</code>, <code>&quot;less&quot;</code> and should correspond to your alternative hypothesis.</li>
+<li><code>YourAlternative</code> is one of the three options: <code>"two.sided"</code>, <code>"greater"</code>, <code>"less"</code> and should correspond to your alternative hypothesis.</li>
 <li>The value for <code>conf.level = 0.95</code> can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to <span class="math inline">\(1-\alpha\)</span>.</li>
 </ul>
 <p>Testing Assumptions</p>
@@ -826,7 +815,7 @@ $$</code></pre>
 <li><code>Y</code> must be a “numeric” vector from <code>YourData</code> that represents the data for both samples.</li>
 <li><code>X</code> must be a “factor” or “character” vector from <code>YourData</code> that represents the group assignment for each observation. There can only be two groups specified in this column of data.</li>
 <li><code>YourNull</code> is the numeric value from your null hypothesis for <span class="math inline">\(\mu_1-\mu_2\)</span>.</li>
-<li><code>YourAlternative</code> is one of the three options: <code>&quot;two.sided&quot;</code>, <code>&quot;greater&quot;</code>, <code>&quot;less&quot;</code> and should correspond to your alternative hypothesis.</li>
+<li><code>YourAlternative</code> is one of the three options: <code>"two.sided"</code>, <code>"greater"</code>, <code>"less"</code> and should correspond to your alternative hypothesis.</li>
 <li>The value for <code>conf.level = 0.95</code> can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to <span class="math inline">\(1-\alpha\)</span>.</li>
 </ul>
 <p>Testing Assumptions</p>
@@ -920,7 +909,7 @@ $$</code></pre>
 <li><code>Y1</code> must be a “numeric” vector that represents the quantitative data from the first sample.</li>
 <li><code>Y2</code> must be a “numeric” vector that represents the quantitative data from the second sample.</li>
 <li><code>YourNull</code> is the numeric value from your null hypothesis for the difference of <span class="math inline">\(\mu_1-\mu_2\)</span>. This is typically zero.</li>
-<li><code>YourAlternative</code> is one of the three options: <code>&quot;two.sided&quot;</code>, <code>&quot;greater&quot;</code>, <code>&quot;less&quot;</code> and should correspond to your alternative hypothesis.</li>
+<li><code>YourAlternative</code> is one of the three options: <code>"two.sided"</code>, <code>"greater"</code>, <code>"less"</code> and should correspond to your alternative hypothesis.</li>
 <li>The value for <code>conf.level = 0.95</code> can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to <span class="math inline">\(1-\alpha\)</span>.</li>
 </ul>
 <p>Testing Assumptions</p>
@@ -1047,6 +1036,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -23,6 +23,7 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 
@@ -70,7 +71,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -219,6 +219,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -231,48 +232,9 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <style type="text/css">
 
@@ -286,6 +248,12 @@ $(document).ready(function ()  {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -321,8 +289,6 @@ div.tocify {
 
 .tocify-subheader .tocify-item {
   font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
 }
 
 .tocify .list-group-item {
@@ -502,10 +468,7 @@ div.tocify {
 <p>Teacher: “Just try it anyway. Suddenly you’ll understand.”</p>
 <p>Most people that are new to using the “R Software” ask the question, “How do I learn R?” The answer is simple: “start using it.” Really. Seriously. Just start using it, even when you have no idea what you are doing, and suddenly you will start to learn R. So, here we go. The more you use it, the more you will know.</p>
 <p>This page follows a simple learning model: Hover. Click. Try.</p>
-<div class="figure">
-<img src="Images/HoverClickTry.png" />
-
-</div>
+<p><img src="Images/HoverClickTry.png" /></p>
 <p><br/></p>
 <p>Hover over <span class="tooltipr"><code>code</code><span class="tooltipRtext">Yes, just like that. By hovering over “Codes” you will get instructions on what that code does.</span></span> to read about it. Click on a <span class="tooltipr"><a href="javascript:showhide('smileyface')"><code>line of code</code></a><span class="tooltipRtext">Hovering is a good start, try clicking on this one.</span></span> to see what it does. Try typing the code into RStudio yourself to actually start learning R.</p>
 <div id="smileyface" style="display:none;padding-left:20px;">
@@ -523,20 +486,14 @@ div.tocify {
 <div id="CarsOutput" style="display:none;padding-left:20px;">
 <p>R allows you to work with data. So, the first step to understanding R is to open a dataset and begin exploring some data.</p>
 <p>If you type the <code>data()</code> command into your Console of RStudio you will see a list of “built in” data sets that come with R.</p>
-<div class="figure">
-<img src="Images/DataOutput.png" />
-
-</div>
+<p><img src="Images/DataOutput.png" /></p>
 <p><br/></p>
 <p>The <code>cars</code> data set is one of the options that is available. This is a fun “historic” data set from the 1920’s. It shows the <code>speed</code> and stopping <code>dist</code>ance of cars from the 1920’s.</p>
 <p>To see the <code>cars</code> data set in RStudio, use the <code>View</code> command as follows.</p>
 <p><strong>Step 1.</strong> Open RStudio.</p>
 <p><strong>Step 2.</strong> Type the command <code>View(cars)</code> into your <strong>Console</strong>.</p>
 <p><strong>Step 3.</strong> Press <code>Enter</code> or <code>Return</code> and the following output should appear within RStudio.</p>
-<div class="figure">
-<img src="Images/ViewCars.png" />
-
-</div>
+<p><img src="Images/ViewCars.png" /></p>
 <p><br/></p>
 <p>Be sure to <strong>TRY IT</strong> yourself, if you haven’t already. Good work if you did. It’s the only way to learn R.</p>
 <p>Ask someone for help if you aren’t sure how to get started.</p>
@@ -549,10 +506,7 @@ div.tocify {
 </div>
 </a>
 <div id="meancarsdist" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/meancarsdist.png" />
-
-</div>
+<p><img src="Images/meancarsdist.png" /></p>
 <p>You may also be interested in trying any of the following:</p>
 <ul>
 <li><code>sd(cars$dist)</code></li>
@@ -572,11 +526,8 @@ div.tocify {
 </div>
 </a>
 <div id="plotcarsdist" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/plotcarsblue.png" />
-
-</div>
-<p>Try changing the <code>col=&quot;skyblue&quot;</code> statement to <code>col=&quot;firebrick&quot;</code> instead. What do you notice?</p>
+<p><img src="Images/plotcarsblue.png" /></p>
+<p>Try changing the <code>col="skyblue"</code> statement to <code>col="firebrick"</code> instead. What do you notice?</p>
 <p>Try changing the <code>pch=16</code> statement to <code>pch=4</code> or any other number from 1 to 25. What do you notice?</p>
 <p>Hint: pressing the “up” arrow on your keyboard brings up the last command you typed into the Console.</p>
 <p><br/></p>
@@ -609,10 +560,7 @@ div.tocify {
 </div>
 </a>
 <div id="HelpOutput" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/HelpOutputcars.png" />
-
-</div>
+<p><img src="Images/HelpOutputcars.png" /></p>
 </div>
 <a href="javascript:showhide('HelpOutput2')">
 <div class="hoverchunk">
@@ -621,10 +569,7 @@ div.tocify {
 </div>
 </a>
 <div id="HelpOutput2" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/HelpOutputData.png" />
-
-</div>
+<p><img src="Images/HelpOutputData.png" /></p>
 </div>
 <a href="javascript:showhide('HelpOutput3')">
 <div class="hoverchunk">
@@ -633,10 +578,7 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="HelpOutput3" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/helpmean.png" />
-
-</div>
+<p><img src="Images/helpmean.png" /></p>
 </div>
 </div>
 <br />
@@ -660,10 +602,7 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="airqualityDollar" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/airqualityDollar.png" />
-
-</div>
+<p><img src="Images/airqualityDollar.png" /></p>
 </div>
 <p>This allows you to compute things about that column, like the mean or standard deviation.</p>
 <a href="javascript:showhide('airqualityDollarCompute')">
@@ -709,10 +648,7 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="NamingCars1" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/carsNewColumn.png" />
-
-</div>
+<p><img src="Images/carsNewColumn.png" /></p>
 </div>
 </div>
 <br />
@@ -740,10 +676,7 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="cVector" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/cVector.png" />
-
-</div>
+<p><img src="Images/cVector.png" /></p>
 </div>
 </div>
 <br />
@@ -778,7 +711,7 @@ div.tocify {
 </div>
 <a href="javascript:showhide('table2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(mosaic) <span class="tooltipRtext" style="font-size:.8em;"><code>library(mosaic)</code> is needed to access the KidsFeet data set that is used in this example. If you don’t have the mosaic library, you will need to run <code>install.packages(&quot;mosaic&quot;)</code> to install it first. From then on, you can open mosaic to use it with the command library(mosaic). You need only install packages once. You must library them each time you wish to use them.</span> </span><br/><span class="tooltipr"> birthdays &lt;-<br />
+<p><span class="tooltipr"> library(mosaic) <span class="tooltipRtext" style="font-size:.8em;"><code>library(mosaic)</code> is needed to access the KidsFeet data set that is used in this example. If you don’t have the mosaic library, you will need to run <code>install.packages("mosaic")</code> to install it first. From then on, you can open mosaic to use it with the command library(mosaic). You need only install packages once. You must library them each time you wish to use them.</span> </span><br/><span class="tooltipr"> birthdays &lt;-<br />
 <span class="tooltipRtext"><code>birthdays</code> is a new object being created using the assignment operator <code>&lt;-</code> that will contain the counts of how many birthdays occur in each month for each gender in the KidsFeet dataset.</span> </span><span class="tooltipr">  table( <span class="tooltipRtext">The table function <code>table( )</code> is being used in this case to count how many birthdays occur in each month for children of each gender.</span> </span><span class="tooltipr"> KidsFeet <span class="tooltipRtext"> This is the name of the data set.</span> </span><span class="tooltipr"> $ <span class="tooltipRtext">The $ is used to access a given column from the data set.</span> </span><span class="tooltipr"> sex <span class="tooltipRtext">This is the name of the column we are interested in becoming the rows of our final table.</span> </span><span class="tooltipr"> ,  <span class="tooltipRtext">Comma separating the two columns of the data set you want to table.</span> </span><span class="tooltipr"> KidsFeet <span class="tooltipRtext"> This is the name of the data set.</span> </span><span class="tooltipr"> $ <span class="tooltipRtext">The $ is used to access a given column from the data set.</span> </span><span class="tooltipr"> birthmonth <span class="tooltipRtext">This is the name of the column we are interested in becoming the columns of our final table.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><br/><span class="tooltipr"> birthdays <span class="tooltipRtext">Typing the name of an object will print the results to the screen.</span> </span><span class="tooltipr">     <br />
 <span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
@@ -810,10 +743,10 @@ div.tocify {
 <li><code>filteringRules</code> consists of some <strong>Logical Expression</strong> (see table below) that selects only the rows from the original dataset that meet the criterion.</li>
 </ul>
 <div style="padding-left:30px;">
-<table style="width:81%;">
+<table>
 <colgroup>
-<col width="62%" />
-<col width="18%" />
+<col width="78%" />
+<col width="21%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -888,10 +821,7 @@ div.tocify {
 </div>
 </a>
 <div id="filterEqual" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/Kids87.png" />
-
-</div>
+<p><img src="Images/Kids87.png" /></p>
 </div>
 <a href="javascript:showhide('filterEqualCategorical')">
 <div class="hoverchunk">
@@ -900,10 +830,7 @@ div.tocify {
 </div>
 </a>
 <div id="filterEqualCategorical" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/Kids87.png" />
-
-</div>
+<p><img src="Images/KidsBoys.png" /></p>
 </div>
 <p><br/></p>
 <p><em>Equals Any of Several “things”</em>…</p>
@@ -914,10 +841,7 @@ div.tocify {
 </div>
 </a>
 <div id="filterIN" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/KidsSummer.png" />
-
-</div>
+<p><img src="Images/KidsSummer.png" /></p>
 </div>
 <p><br/></p>
 <p><em>Does not equal one thing</em>…</p>
@@ -928,10 +852,7 @@ div.tocify {
 </div>
 </a>
 <div id="filterNotEqual" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/KidsNotJosh.png" />
-
-</div>
+<p><img src="Images/KidsNotJosh.png" /></p>
 </div>
 <p><br/></p>
 <p><em>Less than</em>…</p>
@@ -942,10 +863,7 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="LessThan" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/KidsLength24.png" />
-
-</div>
+<p><img src="Images/KidsLength24.png" /></p>
 </div>
 <p><br/></p>
 <p><em>Less than or equal to</em>…</p>
@@ -956,10 +874,7 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="LessThanorEqualTo" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/KidsLessEq24.png" />
-
-</div>
+<p><img src="Images/KidsLessEq24.png" /></p>
 </div>
 <p><br/></p>
 <p><em>Greater than</em>…</p>
@@ -970,10 +885,7 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="GreaterThan" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/KidsWider9.png" />
-
-</div>
+<p><img src="Images/KidsWider9.png" /></p>
 </div>
 <p><br/></p>
 <p><em>Greater than or equal to</em>…</p>
@@ -984,10 +896,7 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="GreaterThanorEqualTo" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/KidsWiderEq9.png" />
-
-</div>
+<p><img src="Images/KidsWiderEq9.png" /></p>
 </div>
 <p><br/></p>
 <p><em>The “and” statement</em>…</p>
@@ -998,10 +907,7 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="And" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/GirlsWide9.png" />
-
-</div>
+<p><img src="Images/GirlsWide9.png" /></p>
 </div>
 <p><br/></p>
 <p><em>The “or” statement</em>…</p>
@@ -1012,10 +918,7 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="Or" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/KidsWinter.png" />
-
-</div>
+<p><img src="Images/KidsWinter.png" /></p>
 </div>
 </div>
 <br />
@@ -1040,10 +943,7 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="select1" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/KidsNameBirth.png" />
-
-</div>
+<p><img src="Images/KidsNameBirth.png" /></p>
 </div>
 <a href="javascript:showhide('select2')">
 <div class="hoverchunk">
@@ -1052,10 +952,7 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="select2" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/KidsBigLength.png" />
-
-</div>
+<p><img src="Images/KidsBigLength.png" /></p>
 </div>
 </div>
 <br />
@@ -1081,10 +978,7 @@ div.tocify {
 </div>
 </a>
 <div id="filterselect" style="display:none;padding-left:20px;">
-<div class="figure">
-<img src="Images/Kids2.png" />
-
-</div>
+<p><img src="Images/Kids2.png" /></p>
 </div>
 </div>
 <br />
@@ -1119,9 +1013,9 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="summarisegroupby1" style="display:none;padding-left:20px;">
-<table style="width:15%;">
+<table style="width:17%;">
 <colgroup>
-<col width="15%" />
+<col width="16%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1142,11 +1036,11 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="summarisegroupby2" style="display:none;padding-left:20px;">
-<table style="width:49%;">
+<table style="width:50%;">
 <colgroup>
 <col width="16%" />
 <col width="15%" />
-<col width="16%" />
+<col width="18%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1171,12 +1065,12 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="summarisegroupby3" style="display:none;padding-left:20px;">
-<table style="width:57%;">
+<table style="width:58%;">
 <colgroup>
 <col width="8%" />
 <col width="16%" />
 <col width="15%" />
-<col width="16%" />
+<col width="18%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1210,7 +1104,7 @@ div.tocify {
 <div id="mutate" class="section level2">
 <h2>mutate( )</h2>
 <div style="padding-left:15px;">
-<p>Transform a column of data.</p>
+<p>Transform a column or add a new column of data to a data set.</p>
 <p><strong>Usage</strong></p>
 <p><code>NameofDataset %&gt;%</code></p>
 <p>   <code>mutate(nameYouLike = some_transformation)</code></p>
@@ -1243,7 +1137,7 @@ div.tocify {
 <col width="7%" />
 <col width="7%" />
 <col width="13%" />
-<col width="8%" />
+<col width="9%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1748,7 +1642,7 @@ div.tocify {
 </div>
 <a href="javascript:showhide('mutate2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> Kids3 &lt;-  <span class="tooltipRtext"><code>Kids3</code> is a new dataset we are creating that will contain all of <code>KidsFeet</code> data set along with a couple new columns we are creating.</span> </span><span class="tooltipr"> KidsFeet <span class="tooltipRtext"><code>KidsFeet</code> is a dataset found in <code>library(mosaic)</code>.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>KidsFeet</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    mutate( <span class="tooltipRtext">“mutate” is a function from library(tidyverse) that allows us to transform columns of data.</span> </span><br/><span class="tooltipr">          season = case_when( <span class="tooltipRtext">“season” is a name we came up with that will store the results of the transformation of the “birthmonth” column. The case_when(…) function from library(tidyverse) allows us to perform more complicated transformations with columns.</span> </span><br><span class="tooltipr">            birthmonth %in% c(12,1,2) ~ “Winter”, <span class="tooltipRtext">The body of case_when(…) is of the form <code>logical expression ~ &quot;newValueName&quot;</code>. This statement says that we want the values in the column “birthmonth” that are equal to 12, 1, and 2 to be assigned to the value “Winter” in the new “season” column.</span> </span><br><span class="tooltipr">            birthmonth %in% c(3,4,5) ~ “Spring”, <span class="tooltipRtext">The body of case_when(…) is of the form <code>logical expression ~ &quot;newValueName&quot;</code>. This statement says that we want the values in the column “birthmonth” that are equal to 3, 4, and 5 to be assigned to the value “Spring” in the new “season” column.</span> </span><br><span class="tooltipr">            birthmonth %in% c(6,7,8) ~ “Summer”, <span class="tooltipRtext">The body of case_when(…) is of the form <code>logical expression ~ &quot;newValueName&quot;</code>. This statement says that we want the values in the column “birthmonth” that are equal to 6, 7, and 8 to be assigned to the value “Summer” in the new “season” column.</span> </span><br><span class="tooltipr">            birthmonth %in% c(9,10,11) ~ “Fall” <span class="tooltipRtext">The body of case_when(…) is of the form <code>logical expression ~ &quot;newValueName&quot;</code>. This statement says that we want the values in the column “birthmonth” that are equal to 9, 10, and 11 to be assigned to the value “Fall” in the new “season” column.</span> </span><br><span class="tooltipr">           ) <span class="tooltipRtext">Closing parenthesis of the case_when(…) function.</span> </span><br/><span class="tooltipr">         ) <span class="tooltipRtext">Closing parenthesis for the mutate(…) function.</span> </span><span class="tooltipr">     <br />
+<p><span class="tooltipr"> Kids3 &lt;-  <span class="tooltipRtext"><code>Kids3</code> is a new dataset we are creating that will contain all of <code>KidsFeet</code> data set along with a couple new columns we are creating.</span> </span><span class="tooltipr"> KidsFeet <span class="tooltipRtext"><code>KidsFeet</code> is a dataset found in <code>library(mosaic)</code>.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>KidsFeet</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    mutate( <span class="tooltipRtext">“mutate” is a function from library(tidyverse) that allows us to transform columns of data.</span> </span><br/><span class="tooltipr">          season = case_when( <span class="tooltipRtext">“season” is a name we came up with that will store the results of the transformation of the “birthmonth” column. The case_when(…) function from library(tidyverse) allows us to perform more complicated transformations with columns.</span> </span><br><span class="tooltipr">            birthmonth %in% c(12,1,2) ~ “Winter”, <span class="tooltipRtext">The body of case_when(…) is of the form <code>logical expression ~ "newValueName"</code>. This statement says that we want the values in the column “birthmonth” that are equal to 12, 1, and 2 to be assigned to the value “Winter” in the new “season” column.</span> </span><br><span class="tooltipr">            birthmonth %in% c(3,4,5) ~ “Spring”, <span class="tooltipRtext">The body of case_when(…) is of the form <code>logical expression ~ "newValueName"</code>. This statement says that we want the values in the column “birthmonth” that are equal to 3, 4, and 5 to be assigned to the value “Spring” in the new “season” column.</span> </span><br><span class="tooltipr">            birthmonth %in% c(6,7,8) ~ “Summer”, <span class="tooltipRtext">The body of case_when(…) is of the form <code>logical expression ~ "newValueName"</code>. This statement says that we want the values in the column “birthmonth” that are equal to 6, 7, and 8 to be assigned to the value “Summer” in the new “season” column.</span> </span><br><span class="tooltipr">            birthmonth %in% c(9,10,11) ~ “Fall” <span class="tooltipRtext">The body of case_when(…) is of the form <code>logical expression ~ "newValueName"</code>. This statement says that we want the values in the column “birthmonth” that are equal to 9, 10, and 11 to be assigned to the value “Fall” in the new “season” column.</span> </span><br><span class="tooltipr">           ) <span class="tooltipRtext">Closing parenthesis of the case_when(…) function.</span> </span><br/><span class="tooltipr">         ) <span class="tooltipRtext">Closing parenthesis for the mutate(…) function.</span> </span><span class="tooltipr">     <br />
 <span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
@@ -2214,7 +2108,7 @@ div.tocify {
 </div>
 <a href="javascript:showhide('mutate3')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> Kids4 &lt;-  <span class="tooltipRtext"><code>Kids4</code> is a new dataset we are creating that will contain all of <code>KidsFeet</code> data set along with a couple new columns we are creating.</span> </span><span class="tooltipr"> KidsFeet <span class="tooltipRtext"><code>KidsFeet</code> is a dataset found in <code>library(mosaic)</code>.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>KidsFeet</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    mutate( <span class="tooltipRtext">“mutate” is a function from library(tidyverse) that allows us to transform columns of data.</span> </span><br><span class="tooltipr">          lengthIN = length / 2.54, <span class="tooltipRtext">“lengthIN” is a name we came up with that will store the results of the transformation of the “length” column. This is just converting the length data from cm to inches.</span> </span><br/><span class="tooltipr">          widthIN = width / 2.54, <span class="tooltipRtext">“widthIN” is a name we came up with that will store the results of the transformation of the “width” column. This is just converting the width data from cm to inches.</span> </span><br><span class="tooltipr">          lengthSplit = ifelse(length &lt; median(length),<br>          “Under 50th Percentile”,<br>          “50th Percentile or Greater”), <span class="tooltipRtext">“lengthSplit” is a name we came up with that will store the results of the ifelse(…) function. The ifelse(…) function in this case is being used to split the length column by the median of that column. The ifelse(…) function is of the form ifelse( Logical Condition , valueIfConditionTrue, valueIfConditionFalse).</span> </span><br><span class="tooltipr">          gender = case_when( <span class="tooltipRtext">“gender” is a name we came up with that will store the results of the transformation of the “sex” column. The case_when(…) function from library(tidyverse) allows us to perform more complicated transformations with columns.</span> </span><br><span class="tooltipr">            sex == “B” ~ “Boy”, <span class="tooltipRtext">The body of case_when(…) is of the form <code>logical expression ~ &quot;newValueName&quot;</code>. This part of the case_when(…) function is being used to change the value of “B” to “Boy”.</span> </span><br><span class="tooltipr">            sex == “G” ~ “Girl” <span class="tooltipRtext">The body of case_when(…) is of the form <code>logical expression ~ &quot;newValueName&quot;</code>. This part of the case_when(…) function is being used to change the value of “G” to “Girl”.</span> </span><br/><span class="tooltipr">           ) <span class="tooltipRtext">Closing parenthesis for the case_when(…) function.</span> </span><br><span class="tooltipr">         ) <span class="tooltipRtext">Closing parenthesis for the mutate(…) function.</span> </span><span class="tooltipr">     <br />
+<p><span class="tooltipr"> Kids4 &lt;-  <span class="tooltipRtext"><code>Kids4</code> is a new dataset we are creating that will contain all of <code>KidsFeet</code> data set along with a couple new columns we are creating.</span> </span><span class="tooltipr"> KidsFeet <span class="tooltipRtext"><code>KidsFeet</code> is a dataset found in <code>library(mosaic)</code>.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>KidsFeet</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    mutate( <span class="tooltipRtext">“mutate” is a function from library(tidyverse) that allows us to transform columns of data.</span> </span><br><span class="tooltipr">          lengthIN = length / 2.54, <span class="tooltipRtext">“lengthIN” is a name we came up with that will store the results of the transformation of the “length” column. This is just converting the length data from cm to inches.</span> </span><br/><span class="tooltipr">          widthIN = width / 2.54, <span class="tooltipRtext">“widthIN” is a name we came up with that will store the results of the transformation of the “width” column. This is just converting the width data from cm to inches.</span> </span><br><span class="tooltipr">          lengthSplit = ifelse(length &lt; median(length),<br>          “Under 50th Percentile”,<br>          “50th Percentile or Greater”), <span class="tooltipRtext">“lengthSplit” is a name we came up with that will store the results of the ifelse(…) function. The ifelse(…) function in this case is being used to split the length column by the median of that column. The ifelse(…) function is of the form ifelse( Logical Condition , valueIfConditionTrue, valueIfConditionFalse).</span> </span><br><span class="tooltipr">          gender = case_when( <span class="tooltipRtext">“gender” is a name we came up with that will store the results of the transformation of the “sex” column. The case_when(…) function from library(tidyverse) allows us to perform more complicated transformations with columns.</span> </span><br><span class="tooltipr">            sex == “B” ~ “Boy”, <span class="tooltipRtext">The body of case_when(…) is of the form <code>logical expression ~ "newValueName"</code>. This part of the case_when(…) function is being used to change the value of “B” to “Boy”.</span> </span><br><span class="tooltipr">            sex == “G” ~ “Girl” <span class="tooltipRtext">The body of case_when(…) is of the form <code>logical expression ~ "newValueName"</code>. This part of the case_when(…) function is being used to change the value of “G” to “Girl”.</span> </span><br/><span class="tooltipr">           ) <span class="tooltipRtext">Closing parenthesis for the case_when(…) function.</span> </span><br><span class="tooltipr">         ) <span class="tooltipRtext">Closing parenthesis for the mutate(…) function.</span> </span><span class="tooltipr">     <br />
 <span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
@@ -2233,7 +2127,7 @@ div.tocify {
 <col width="7%" />
 <col width="7%" />
 <col width="20%" />
-<col width="5%" />
+<col width="6%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -2816,13 +2710,23 @@ div.tocify {
           length &gt; 25 &amp; width &lt; 9 ~ &quot;Long and Thin&quot;,
           length &lt; 25 &amp; width &lt; 9 ~ &quot;Short and Thin&quot;)</code></pre>
 <p><strong>replace_na( ) Function</strong></p>
-<pre><code>replace_na(columnName, value)</code></pre>
+<pre><code>newDataName &lt;- dataName %&gt;%
+  mutate(newColumnName = replace_na(columnName, value))</code></pre>
 <p><strong>as.numeric( ) Function</strong></p>
-<pre><code>as.numeric(columnName)</code></pre>
+<pre><code>newDataName &lt;- dataName %&gt;%
+  mutate(newColumnName = as.numeric(columnName))</code></pre>
 <p><strong>as.character( ) Function</strong></p>
-<pre><code>as.character(columnName)</code></pre>
+<pre><code>newDataName &lt;- dataName %&gt;%
+  mutate(newColumnName = as.character(columnName))</code></pre>
 <p><strong>as.factor( ) Function</strong></p>
-<pre><code>as.factor(columnName)</code></pre>
+<pre><code>newDataName &lt;- dataName %&gt;%
+  mutate(newColumnName = as.factor(columnName))</code></pre>
+<p><strong>Pull Out Numbers Only with parse_number(…)</strong></p>
+<pre><code>newDataName &lt;- dataName %&gt;%
+  mutate(newColumnName = parse_number(columnName))
+  
+# So stuff like c(&quot;500+&quot;, &quot;20&quot;, &quot;80 &quot;, &quot;15a&quot;) would become
+# just c(500, 20, 80, 15). That&#39;s nice!</code></pre>
 </div>
 <br />
 <hr />
@@ -2830,7 +2734,7 @@ div.tocify {
 <div id="arrange" class="section level2">
 <h2>arrange( )</h2>
 <div style="padding-left:15px;">
-<p>Arrange data by a certain column, or columns, i.e. “sort” the data.</p>
+<p>Arrange data by a certain column, or columns, i.e. “sort” the data.</p>
 <p><strong>Usage</strong></p>
 <p><code>NameofDataset %&gt;%</code></p>
 <p>   <code>arrange(columnName1)</code></p>
@@ -2854,13 +2758,13 @@ div.tocify {
 <table>
 <colgroup>
 <col width="13%" />
-<col width="16%" />
+<col width="15%" />
 <col width="14%" />
-<col width="11%" />
+<col width="10%" />
 <col width="9%" />
 <col width="7%" />
-<col width="16%" />
-<col width="11%" />
+<col width="15%" />
+<col width="12%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -3278,13 +3182,13 @@ div.tocify {
 <table>
 <colgroup>
 <col width="13%" />
-<col width="16%" />
+<col width="15%" />
 <col width="14%" />
-<col width="11%" />
+<col width="10%" />
 <col width="9%" />
 <col width="7%" />
-<col width="16%" />
-<col width="11%" />
+<col width="15%" />
+<col width="12%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -3706,7 +3610,7 @@ div.tocify {
 <p>OR</p>
 <p><code>someCode %&gt;%</code></p>
 <p>   <code>pander( )</code></p>
-<p>Note: <code>pander(stuff, caption=&quot;Some useful caption&quot;, ...)</code> is also possible.</p>
+<p>Note: <code>pander(stuff, caption="Some useful caption", ...)</code> is also possible.</p>
 <ul>
 <li><code>someCode</code> is exactly that, some coding you have done that creates output that you want displayed nicely.</li>
 <li><code>%&gt;%</code> is the pipe operator that “pipes data” down into R commands on the next line.</li>
@@ -3716,7 +3620,7 @@ div.tocify {
 <p><strong>Example Code</strong></p>
 <a href="javascript:showhide('pander1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> pander( <span class="tooltipRtext"><code>pander</code> is an R function that makes output look nice.</span> </span><span class="tooltipr"> table(KidsFeet$sex, KidsFeet$birthmonth), <span class="tooltipRtext">Code that makes a table of how many boys and girls were born in each month of the year.</span> </span><span class="tooltipr">   caption=“Counts of Birthdays by Month” <span class="tooltipRtext">The caption=&quot; &quot; command is very useful for giving your output a small title.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
+<p><span class="tooltipr"> pander( <span class="tooltipRtext"><code>pander</code> is an R function that makes output look nice.</span> </span><span class="tooltipr"> table(KidsFeet$sex, KidsFeet$birthmonth), <span class="tooltipRtext">Code that makes a table of how many boys and girls were born in each month of the year.</span> </span><span class="tooltipr">   caption=“Counts of Birthdays by Month” <span class="tooltipRtext">The caption=" " command is very useful for giving your output a small title.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span> </span><span class="tooltipr">     <br />
 <span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 <p></a></p>
@@ -3796,13 +3700,13 @@ div.tocify {
 </div>
 <p></a></p>
 <div id="pander2" style="display:none;padding-left:20px;">
-<table style="width:57%;">
+<table style="width:58%;">
 <caption>Doesn’t that look nice?</caption>
 <colgroup>
 <col width="8%" />
 <col width="16%" />
 <col width="15%" />
-<col width="16%" />
+<col width="18%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -3860,6 +3764,49 @@ $(document).ready(function () {
 });
 
 
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
 </script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

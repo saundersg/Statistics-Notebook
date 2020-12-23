@@ -10,7 +10,7 @@ output:
 
 **Week 2 Analysis**
 
-```{r, include=FALSE}
+```{r, warning=FALSE, message=FALSE}
 library(mosaic)
 library(tidyverse)
 library(pander)

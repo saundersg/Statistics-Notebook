@@ -862,7 +862,7 @@ sex
 </div>
 </a>
 <div id="filterEqualCategorical" style="display:none;padding-left:20px;">
-![](./Images/Kids87.png)
+![](./Images/KidsBoys.png)
 </div>
 
 
@@ -1550,7 +1550,7 @@ For more uses of `summarise(...)` and `group_by(...)` see the Example codes on t
 
 <div style="padding-left:15px;">
 
-Transform a column of data.
+Transform a column or add a new column of data to a data set.
 
 **Usage** 
 
@@ -1823,27 +1823,40 @@ case_when(length > 25 & width > 9 ~ "Long and Wide",
 **replace_na( ) Function**
 
 ```{}
-replace_na(columnName, value)
+newDataName <- dataName %>%
+  mutate(newColumnName = replace_na(columnName, value))
 ```
 
 **as.numeric( ) Function**
 
 ```{}
-as.numeric(columnName)
+newDataName <- dataName %>%
+  mutate(newColumnName = as.numeric(columnName))
 ```
 
 **as.character( ) Function**
 
 ```{}
-as.character(columnName)
+newDataName <- dataName %>%
+  mutate(newColumnName = as.character(columnName))
 ```
 
 **as.factor( ) Function**
 
 ```{}
-as.factor(columnName)
+newDataName <- dataName %>%
+  mutate(newColumnName = as.factor(columnName))
 ```
 
+**Pull Out Numbers Only with parse_number(...)**
+
+```{}
+newDataName <- dataName %>%
+  mutate(newColumnName = parse_number(columnName))
+  
+# So stuff like c("500+", "20", "80 ", "15a") would become
+# just c(500, 20, 80, 15). That's nice!
+```
 
 
 </div>

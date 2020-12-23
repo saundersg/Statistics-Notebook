@@ -10,19 +10,19 @@ output:
 
 #### Background
 
-<a href="http://www.history.com/topics/challenger-disaster/videos/engineering-disasters---challenger"> Watch the Introductory Movie </a>
+<a href="http://www.history.com/topics/Challenger-disaster/videos/engineering-disasters---Challenger"> Watch the Introductory Movie </a>
 
-```{r, include=FALSE}
-library(alr3)
+```{r, warning=FALSE, message=FALSE}
+library(alr4)
 library(mosaic)
 library(DT)
 ```
 
 ```{r}
-datatable(challeng)
+datatable(Challeng)
 ```
 
-As described in the video, it was known that the o-rings could fail when the tempurature was below 53&deg; F. It then stated that "Nasa had already launched shuttles below 53&deg; and gotten away with it." This second statement is actually false. The lowest temperature of any of the 23 prior launches (before the Challenger explosion) was 53&deg; F [[view source]](http://www.ics.uci.edu/~staceyah/111-202/handouts/Dalal_etal_1989-Challenger.pdf). The "evidence" that the o-rings could fail below 53&deg; was based on a simple conclusion that since the launch at 53&deg; experienced two o-ring failures, it seemed unwise to launch below that temperature. The statement that NASA had launched previously with o-ring failures occurring, but the launch still being successful was true, but all launches had a temperature of at least 53&deg; F. Thus, whether or not temperature was the root cause of the failures was debatable. 
+Past experience had shown that the o-rings could fail when the tempurature was below 53&deg; F. It then stated that "Nasa had already launched shuttles below 53&deg; and gotten away with it." This second statement is actually false. The lowest temperature of any of the 23 prior launches (before the Challenger explosion) was 53&deg; F [[view source]](http://www.ics.uci.edu/~staceyah/111-202/handouts/Dalal_etal_1989-Challenger.pdf). The "evidence" that the o-rings could fail below 53&deg; was based on a simple conclusion that since the launch at 53&deg; experienced two o-ring failures, it seemed unwise to launch below that temperature. The statement that NASA had launched previously with o-ring failures occurring, but the launch still being successful was true, but all launches had a temperature of at least 53&deg; F. Thus, whether or not temperature was the root cause of the failures was debatable. 
 
 <br />
 
@@ -49,10 +49,10 @@ $$
 
 #### Fitting the Model
 
-To obtain estimates of the coefficients $\beta_0$ and $\beta_1$ for the `challeng` data, we apply the following R code.
+To obtain estimates of the coefficients $\beta_0$ and $\beta_1$ for the `Challeng` data, we apply the following R code.
 
 ```{r}
-chall.glm <- glm(Fail>0 ~ Temp, data=challeng, family=binomial)
+chall.glm <- glm(fail>0 ~ temp, data=Challeng, family=binomial)
 summary(chall.glm)
 ```
 
@@ -60,9 +60,9 @@ Thus the estimated model for $\pi_i$ is given by
 $$
   P(Y_i = 1|x_i) \approx \frac{e^{15.043-0.232 x_i}}{1+e^{15.043 - 0.232 x_i}} = \hat{\pi}_i
 $$
-where $b_0 = 15.043$ is the value of the `(Intercept)` which estimates $\beta_0$ and $b_1 = -0.232$ is the value of `Temp` which estimates $\beta_1$.
+where $b_0 = 15.043$ is the value of the `(Intercept)` which estimates $\beta_0$ and $b_1 = -0.232$ is the value of `temp` which estimates $\beta_1$.
 
-Importantly, the $p$-value for the test of `Temp` shows a significant result $(p = 0.0320)$ giving sufficient evidence to conclude that $\beta_1 \neq 0$, which allows us to conclude that temperature effects the probability of an O-ring failure.
+Importantly, the $p$-value for the test of `temp` shows a significant result $(p = 0.0320)$ giving sufficient evidence to conclude that $\beta_1 \neq 0$, which allows us to conclude that temperature effects the probability of an O-ring failure.
 
 <br />
 
@@ -71,7 +71,7 @@ Importantly, the $p$-value for the test of `Temp` shows a significant result $(p
 To visualize this simple logistic regression we could make the following plot.
 
 ```{r}
-plot( Fail>0 ~ Temp, data=challeng, main="", ylab='Probability of O-rings Failing', pch=16)
+plot( fail>0 ~ temp, data=Challeng, main="", ylab='Probability of O-rings Failing', pch=16)
 curve(exp(15.043-0.232*x)/(1+exp(15.043-0.232*x)), from=53, to=85, add=TRUE)
 ```
 
@@ -101,5 +101,5 @@ $$
 $$
 which, using R to do this calculation we get $\hat{\pi_i} \approx$
 ```{r}
-predict(chall.glm, data.frame(Temp=31), type='response')
+predict(chall.glm, data.frame(temp=31), type='response')
 ```

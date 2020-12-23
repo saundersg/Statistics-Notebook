@@ -12,7 +12,7 @@ library(DT)
 library(pander)
 library(readr)
 
-HSS <- read_csv("HighSchoolSeniors.csv")
+HSS <- read_csv("../../Data/HighSchoolSeniors.csv")
 #Remember: select "Session, Set Working Directory, To Source File Location", and then play this R-chunk into your console to read the HSS data into R. 
 ```
 
@@ -36,5 +36,12 @@ HSS <- HSS %>%
 ```
 
 -->
+
+
+
+
+
+
+
 
 
