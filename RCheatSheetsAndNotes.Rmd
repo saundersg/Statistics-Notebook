@@ -32,3 +32,33 @@ Add your own notes here...
 # Using ```{r, eval=FALSE} turns off the chunk, but still shows it.
 # Useful when you want to remember code, but not run it in this file.
 ```
+
+
+
+
+```{r, eval=FALSE}
+set.seed(15)
+
+#Step 1
+myTest <- t.test(length ~ sex, data=KidsFeet)
+observedTestStat <- myTest$statistic
+observedTestStat
+
+#Step 2
+N <- 2000
+permutedTestStats <- rep(NA, 2000)
+for (i in 1:N){
+  permutedData <- sample(KidsFeet$length)
+  permutedTest <- t.test(permutedData ~ sex, data=KidsFeet)
+  permutedTestStats[i] <- permutedTest$statistic
+}
+hist(permutedTestStats)
+abline(v=observedTestStat, col="red")
+
+#Step 3
+2*sum(permutedTestStats >= observedTestStat)/N
+```
+
+
+
+

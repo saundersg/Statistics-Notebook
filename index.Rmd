@@ -207,12 +207,15 @@ Add your own notes about graphics to use for this type of data here.
 <div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 
-Add your own notes about appropriate inferential procedures for this type of data here.
+
+Use the [Independent Sample t Test](tTests.html#independent-samples-t-test) to test for the equality of means in "Y" for each group "A" and "B."
+
+See my [High School Seniors](./Analyses/t Tests/HighSchoolSeniors.html)
 
 
+Use the [Wilcoxon Rank Sum Test](WilcoxonTests.html) to test for equality of medians, or "stochastical dominance." 
 
-
-
+See my [Recalling Words](./Analyse/Wilcoxon Tests/RecallingWords.html)
 
 
 
@@ -228,6 +231,20 @@ Add your own notes about appropriate inferential procedures for this type of dat
 
 <!--- End of Add content area.  ------------------>
 </div>
+
+### Examples
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+
+Put a practice test <span style="font-size:18pt;background-color:yellow;color:blue;">question or two here.</span>
+
+![](./Images/Kids3.png)
+
+
+<!--- End of Add content area.  ------------------>
+</div>
+
+
 
 ##
 <div style="clear:both;"></div>
