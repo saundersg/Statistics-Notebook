@@ -1,5 +1,8 @@
 ---
 title: "Analysis Of Variance (ANOVA)"
+output: 
+  html_document:
+    code_folding: hide
 header-includes: 
   - \usepackage{amsmath}
 ---
@@ -8,6 +11,20 @@ header-includes:
  function showhide(id) {
     var e = document.getElementById(id);
     e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+ }
+ 
+ function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
  }
 </script>
 
@@ -36,19 +53,19 @@ An ANOVA is only appropriate when all of the following are satisfied.
 
 1. The sample(s) of data can be considered to be representative of their population(s).
 
-2. The data is normally distributed in each group. (This can safely be assumed to be satisfied when the *residuals* from the ANOVA are normally distributed.)
+2. The data is normally distributed in each group. (This can safely be assumed to be satisfied when the *residuals* from the ANOVA can be assumed to be normally distributed when seen in a Q-Q Plot.)
 
-3. The population variance of each group can be assumed to be the same. (This can be safely assumed to be satisfied when the *residuals* from the ANOVA show constant variance, i.e., are similarly spread out.)
+3. The population variance of each group can be assumed to be the same. (This can be safely assumed to be satisfied when the *residuals* from the ANOVA show constant variance, i.e., are similarly vertically spread out in a Residuals versus fitted-values plot.)
 
 **Hypotheses**
 
 For a One-way ANOVA
 
 $$
-  H_0: \alpha_1 = \alpha_2 = \ldots = 0
+  H_0: \mu_1 = \mu_2 = \ldots = 0
 $$
 $$
-  H_a: \alpha_i \neq 0 \ \text{for at least one} \ i
+  H_a: \mu_i \neq 0 \ \text{for at least one} \ i
 $$
 
 
@@ -57,9 +74,9 @@ $$
 
 A typical model for a one-way ANOVA is of the form
 $$
-  Y_{ij} = \mu + \alpha_i + \epsilon_{ij}
+  Y_{ij} = \mu_i + \epsilon_{ij}
 $$
-where $\mu$ is the grand mean, $\alpha_i$ is a factor with at least two levels, and $\epsilon_{ijk} \sim N(0,\sigma^2)$ is the error term. 
+where $\mu_i$ is the mean for level (group) $i$, and $\epsilon_{ij} \sim N(0,\sigma^2)$ is the error term for each point $j$ within level (group) $i$. 
 
 
 
@@ -78,7 +95,7 @@ where $\mu$ is the grand mean, $\alpha_i$ is a factor with at least two levels, 
 
 
 
-`myaov <- aov(y ~ A, data=YourDataSet)` **Perform the ANOVA**
+`myaov <- aov(Y ~ X, data=YourDataSet)` **Perform the ANOVA**
 
 `summary(myaov)` **View the ANOVA Results**
 
@@ -86,8 +103,8 @@ where $\mu$ is the grand mean, $\alpha_i$ is a factor with at least two levels, 
 
 
 * `myaov` is some name you come up with to store the results of the `aov()` test.
-* `y` must be a "numeric" vector of the quantitative response variable.
-* `A` is a qualitative variable (should have `class(A)` equal to `factor` or `character`. If it does not, use `as.factor(A)` inside the `aov()` command.
+* `Y` must be a "numeric" vector of the quantitative response variable.
+* `X` is a qualitative variable (should have `class(X)` equal to `factor` or `character`. If it does not, use `as.factor(X)` inside the `aov(Y ~ as.factor(X),...)` command.
 * `YourDataSet` is the name of your data set.
 
 
@@ -107,13 +124,13 @@ aov(
   <span class="tooltiprtext">'aov()' is a function in R used to perform the ANOVA.</span>
 </span><span class="tooltipr">
 weight
-  <span class="tooltiprtext">'weight' is a numeric variable from the chickwts dataset.</span>
+  <span class="tooltiprtext">Y is 'weight', which is a numeric variable from the chickwts dataset.</span>
 </span><span class="tooltipr">
 &nbsp;~&nbsp;
-  <span class="tooltiprtext">'~' is the tilde symbol used to separate the left- and right-hand side in a model formula.</span>
+  <span class="tooltiprtext">'~' is the tilde symbol used to separate the Y and X in a model formula.</span>
 </span><span class="tooltipr">
 feed, 
-  <span class="tooltiprtext"> 'feed' is a qualitative variable in the chickwts dataset. </span>
+  <span class="tooltiprtext">X is 'feed', which is a qualitative variable in the chickwts dataset, or more specifically, a factor with six levels: "casein", "horsebean", and so on... Use str(chickwts) to see this. </span>
 </span><span class="tooltipr">
 &nbsp;data&nbsp;=&nbsp;chickwts)
   <span class="tooltiprtext"> 'chickwts' is a dataset in R.</span>
@@ -615,52 +632,104 @@ plot(tmp, which=1:2, pch=16)
 ### Two-way ANOVA {.tabset .tabset-fade .tabset-pills}
 
 <div style="float:left;width:125px;" align=center>
-<img src="./Images/QuantYQualXg3plus.png" width=58px;>
+<img src="./Images/QuantYMultQualX.png" width=80px;>
 </div>
 
 
-#### Overview
+#### Overview 
 
 <div style="padding-left:125px;">
 
+A two-way ANOVA is only appropriate when all of the following are satisfied.
+
+1. The sample(s) of data can be considered to be representative of their population(s).
+
+2. The data is normally distributed in each group. (This can safely be assumed to be satisfied when the *residuals* from the ANOVA are normally distributed.)
+
+3. The population variance of each group can be assumed to be the same. (This can be safely assumed to be satisfied when the *residuals* from the ANOVA show constant variance, i.e., are similarly vertically spread out.)
+
 **Hypotheses**
 
-With a two-way ANOVA there are three sets of hypotheses.
-
-One for the first factor:
-$$
-  H_0: \alpha_1 = \alpha_2 = \ldots = 0
-$$
-$$
-  H_a: \alpha_i \neq 0 \ \text{for at least one} \ i
-$$
-
-One for the second factor:
-$$
-  H_0: \beta_1 = \beta_2 = \ldots = 0
-$$
-$$
-  H_a: \beta_j \neq 0 \ \text{for at least one} \ j
-$$
-
-One for the interaction of the two factors:
-$$
-  H_0: \text{The effect of} \ \alpha \ \text{is the same for all levels of} \ \beta
-$$
-$$
-  H_a: \text{The effect of} \ \alpha \ \text{is different for at least one level of} \ \beta
-$$
+With a two-way ANOVA there are three sets of hypotheses. Writing out the hypotheses can be very involved depending on whether you use the official "effects model" notation (very mathematically correct) or a simplified "means model" notation (which isn't very mathematically correct, but gets the idea across in an acceptable way).
 
 
-**Mathematical Model**
 
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'meansModel')">Means Model</button>
+  <button class="tablinks" onclick="openTab(event, 'effectsModel')">Effects Model</button>
+</div>
 
+<div id="meansModel" class="tabcontent" style="display:block;">
+  <p>
+
+1. The first set of hypotheses are a "one-way" set of hypotheses for the first *factor* of the ANOVA. Factor: `X1` with say, levels $A$ and $B$.
+
+$$
+  H_0: \mu_A = \mu_B = \mu
+$$
+$$
+  H_a: \mu_A \neq \mu_B 
+$$
+
+2. The second set of hypotheses are also a "one-way" set of hypotheses, but for the second *factor* of the ANOVA. Factor: `X2` with say, levels $C$, $D$, and $E$.
+$$
+  H_0: \mu_C = \mu_D = \mu_E = \mu
+$$
+$$
+  H_a: \mu_i \neq \mu \ \text{for at least one}\ i\in\{1=C,2=D,3=E\}
+$$
+
+3. The third set of hypotheses are the most interesting hypotheses in a two-way ANOVA. These are called the *interaction hypotheses*. They test to see if the levels of one of the factors, say $X1$, impact $Y$ differently for the differing levels of the other factor, $X2$. The hypotheses read formally as
+
+$$
+  H_0: \text{The effect of the first factor on Y} \\ \text{is the same for all levels of the second factor.}
+$$
+$$
+  H_a: \text{The effect of the first factor on Y is not the same} \\ \text{for all levels of the second factor.}
+$$
+
+</p>
+</div>
+
+<div id="effectsModel" class="tabcontent">
+  <p>
+
+A mathematically correct way to state the two-way ANOVA model is with the equation
 $$
   Y_{ijk} = \mu + \alpha_i + \beta_j + \alpha\beta_{ij} + \epsilon_{ijk}
 $$
-where $\mu$ is the grand mean, $\alpha_i$ is one factor with at least two levels, $\beta_j$ is another factor with at least two levels, $\alpha\beta_{ij}$ is the interaction of the two factors, and $\epsilon_{ijk} \sim N(0,\sigma^2)$ is the error term. 
+In this model, $\mu$ is the grand mean (which is the average Y-value ignoring all information contained in the factors); $\alpha_i$ is the first factor $X1$ with levels $A$ and $B$ (though there could be more levels in $X1$ depending on your data); $\beta_j$ is the second factor with levels $C$, $D$, and $E$ (though there could be fewer or more levels to this factor depending on your data); $\alpha\beta_{ij}$ is the interaction of the two factors which has $2\times3=6$ (may differ for your data) levels; and $\epsilon_{ijk} \sim N(0,\sigma^2)$ is the normally distributed error term for each point $k$ found within level $i$ of $X1$ and level $j$ of $X2$. 
 
-Note that more than two factors are allowed, i.e., more than $\alpha_i$ and $\beta_j$, and is sometimes called three-way ANOVA, four-way ANOVA, and so on. It is not required to include interaction terms, like $\alpha\beta_{ij}$. The error term $\epsilon$ is always required.
+This model allows us to more formally state the hypotheses as
+
+1. First factor $X1$ having say, levels $A$ and $B$.
+$$
+  H_0: \alpha_A = \alpha_B = 0
+$$
+$$
+  H_a: \alpha_i \neq 0 \ \text{for at least one}\ i\in\{1=A,2=B\}
+$$
+
+2. Second factor $X2$ with say, levels $C$, $D$, and $E$.
+$$
+  H_0: \beta_C = \beta_D = \beta_E = 0
+$$
+$$
+  H_a: \beta_j \neq 0 \ \text{for at least one}\ j\in\{1=C,2=D,3=E\}
+$$
+
+3. Does the effect of the first factor ($X1$) change for the different levels of the second factor ($X2$)? In other words, is there an interaction between the two factors $X1$ and $X2$?
+
+$$
+  H_0: \alpha\beta_{ij} = 0 \ \text{for all } i,j
+$$
+$$
+  H_a: \alpha\beta_{ij} \neq 0 \ \text{for at least one } i,j
+$$
+
+</p>
+</div>
+
 
 ----
 
@@ -672,7 +741,7 @@ Note that more than two factors are allowed, i.e., more than $\alpha_i$ and $\be
 **Console** Help Command: `?aov()`
 
 
-`myaov <- aov(y ~ A+B+A:B, data=YourDataSet)` **Perform the ANOVA**
+`myaov <- aov(Y ~ X1+X2+X1:X2, data=YourDataSet)` **Perform the ANOVA**
 
 `summary(myaov)` **View the ANOVA Results**
 
@@ -680,11 +749,11 @@ Note that more than two factors are allowed, i.e., more than $\alpha_i$ and $\be
 
 
 * `myaov` is some name you come up with to store the results of the `aov()` test.
-* `y` must be a "numeric" vector of the quantitative response variable.
-* `A` is a qualitative variable (should have `class(A)` equal to `factor` or `character`. If it does not, use `as.factor(A)` inside the `aov()` command.
-* `B` is a second qualitative variable that should also be either a `factor` or a `character` vector.
-* Note that factors `C`, `D`, and so on could also be added `+` to the model if desired.
-* `A:B` denotes the interaction of the factors `A` and `B`. It is not required and should only be included if the interaction term is of interest.
+* `Y` must be a "numeric" vector of the quantitative response variable.
+* `X1` is a qualitative variable (should have `class(X1)` equal to `factor` or `character`. If it does not, use `as.factor(X1)` inside the `aov()` command.
+* `X2` is a second qualitative variable that should also be either a `factor` or a `character` vector.
+* Note that factors `X3`, `X4`, and so on could also be added `+` to the model if desired, but this would create a three-way, or four-way ANOVA model, and so on.
+* `X1:X2` denotes the interaction of the factors `X1` and `X2`. It is not required, but is usually included.
 * `YourDataSet` is the name of your data set.
 
 
@@ -702,19 +771,19 @@ aov(
   <span class="tooltiprtext">'aov()' is a function in R used to perform the ANOVA.</span>
 </span><span class="tooltipr">
 breaks
-  <span class="tooltiprtext">'breaks' is a numeric variable from the warpbreaks dataset.</span>
+  <span class="tooltiprtext">$Y$ is 'breaks', which is a numeric variable from the warpbreaks dataset.</span>
 </span><span class="tooltipr">
 &nbsp;~&nbsp;
   <span class="tooltiprtext">'~' is the tilde symbol used to separate the left- and right-hand side in a model formula.</span>
 </span><span class="tooltipr">
 wool&nbsp; 
-  <span class="tooltiprtext"> 'wool' is a qualitative variable in the warpbreaks dataset. </span>
+  <span class="tooltiprtext">The first factor $X1$ is 'wool', which is a qualitative variable in the warpbreaks dataset. In this case, `wool` is a factor with two levels. Use str(warpbreaks) to see this. </span>
 </span><span class="tooltipr">
 +&nbsp;tension&nbsp; 
-  <span class="tooltiprtext"> 'tension' is another qualitative variable in the warpbreaks dataset. </span>
+  <span class="tooltiprtext">The second factor $X2$ is 'tension', which is another qualitative variable in the warpbreaks dataset. In this case, `tension` is a factor with three levels. Use str(warpbreaks) to see this.</span>
 </span><span class="tooltipr">
 +&nbsp;wool:tension, 
-  <span class="tooltiprtext"> The interaction of wool and tension. </span>
+  <span class="tooltiprtext"> The interaction of the two factors: wool and tension. </span>
 </span><span class="tooltipr">
 &nbsp;data&nbsp;=&nbsp;warpbreaks)
   <span class="tooltiprtext"> 'warpbreaks' is a dataset in R.</span>
@@ -862,7 +931,7 @@ Only one block and one factor is required. Multiple blocks and multiple factors 
 
 **Console** Help Command: `?aov()`
 
-`myaov <- aov(y ~ Block+A+B+A:B, data=YourDataSet)` **Perform the test**
+`myaov <- aov(Y ~ Block+X1+X2+X1:X2, data=YourDataSet)` **Perform the test**
 
 `summary(myaov)` **View the ANOVA Results**
 
@@ -870,12 +939,12 @@ Only one block and one factor is required. Multiple blocks and multiple factors 
 
 
 * `myaov` is some name you come up with to store the results of the `aov()` test.
-* `y` must be a "numeric" vector of the quantitative response variable.
+* `Y` must be a "numeric" vector of the quantitative response variable.
 * `Block` is a qualitative variable that is not of direct interest, but is included in the model to account for variability in the data. It should have `class(Block)` equal to either factor or character. Use `as.factor()` if it does not.
-* `A` is a qualitative variable (should have `class(A)` equal to `factor` or `character`. If it does not, use `as.factor(A)` inside the `aov()` command.
-* `B` is a second qualitative variable that should also be either a `factor` or a `character` vector. If it does not, use `as.factor(B)`.
+* `X1` is a qualitative variable (should have `class(X1)` equal to `factor` or `character`. If it does not, use `as.factor(X1)` inside the `aov()` command.
+* `X2` is a second qualitative variable that should also be either a `factor` or a `character` vector. If it does not, use `as.factor(X2)`.
 * Note that factors `C`, `D`, and so on could also be added `+` to the model if desired.
-* `A:B` denotes the interaction of the factors `A` and `B`. It is not required and should only be included if the interaction term is of interest.
+* `X1:X2` denotes the interaction of the factors `X1` and `X2`. It is not required and should only be included if the interaction term is of interest.
 * `YourDataSet` is the name of your data set.
 
 

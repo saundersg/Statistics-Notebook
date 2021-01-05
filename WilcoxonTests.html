@@ -345,10 +345,31 @@ $(document).ready(function () {
       <a href="./Analyses/StudentHousingPOOR.html">Poor Example Analysis</a>
     </li>
     <li>
-      <a href="./Analyses/Rent.html">Rent Analysis</a>
+      <a href="./Analyses/Rent.html">Rent</a>
     </li>
     <li>
-      <a href="./Analyses/Stephanie.html">Stephanie Analysis</a>
+      <a href="./Analyses/Stephanie.html">Stephanie</a>
+    </li>
+    <li>
+      <a href="./Analyses/t Tests/HighSchoolSeniors.html">High School Seniors</a>
+    </li>
+    <li>
+      <a href="./Analyses/Wilcoxon Tests/RecallingWords.html">Recalling Words</a>
+    </li>
+    <li>
+      <a href="./Analyses/ANOVA/DayCare.html">Day Care</a>
+    </li>
+    <li>
+      <a href="./Analyses/Linear Regression/MySimpleLinearRegression.html">My Simple Linear Regression</a>
+    </li>
+    <li>
+      <a href="./Analyses/Linear Regression/CarPrices.html">Car Prices</a>
+    </li>
+    <li>
+      <a href="./Analyses/Logistic Regression/MyLogisticRegression.html">My Logistic Regression</a>
+    </li>
+    <li>
+      <a href="./Analyses/Chi Squared Tests/MyChiSquaredTest.html">My Chi-sqaured Test</a>
     </li>
   </ul>
 </li>
@@ -417,10 +438,10 @@ $$</code></pre>
 <div style="padding-left:125px;">
 <p><strong>Console</strong> Help Command: <code>?wilcox.test()</code></p>
 <h5 id="paired-data">Paired Data</h5>
-<p><code>wilcox.test(object1, object2, mu = YourNull, alternative = YourAlternative, paired = TRUE, conf.level = 0.95)</code></p>
+<p><code>wilcox.test(Y1, Y2, mu = YourNull, alternative = YourAlternative, paired = TRUE, conf.level = 0.95)</code></p>
 <ul>
-<li><code>object1</code> must be a “numeric” vector. One set of measurements from the pair.</li>
-<li><code>object2</code> also a “numeric” vector. Other set of measurements from the pair.</li>
+<li><code>Y1</code> must be a “numeric” vector. One set of measurements from the pair.</li>
+<li><code>Y2</code> also a “numeric” vector. Other set of measurements from the pair.</li>
 <li><code>YourNull</code> is the numeric value from your null hypothesis for the median of differences from the paired data. Usually zero.</li>
 <li><code>YourAlternative</code> is one of the three options: <code>"two.sided"</code>, <code>"greater"</code>, <code>"less"</code> and should correspond to your alternative hypothesis.</li>
 <li>The value for <code>conf.level = 0.95</code> can be changed to any desired confidence level, like 0.90 or 0.99. It should correspond to <span class="math inline">\(1-\alpha\)</span>.</li>
@@ -437,7 +458,7 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> Wilcoxon signed rank test with continuity correction <span class="tooltiprouttext">EXPLANATION.</span> </span>
+<span class="tooltiprout"> Wilcoxon signed rank test with continuity correction <span class="tooltiprouttext">The phrase “with continuity correction” implies that instead of using the “exact” distribution of the test statistic a “normal approximation” was used instead to compute the p-value. Further, a small correction was made to allow for the change from the “discrete” exact distribution to the “continuous normal distribution” when calculating the p-value.</span> </span>
 </td>
 </tr>
 </table>
@@ -445,18 +466,18 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> data: sleep$extra[sleep$group == 1] and sleep$extra[sleep$group == 2] <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout"> data: sleep$extra[sleep$group == 1] and sleep$extra[sleep$group == 2] <span class="tooltiprouttext">This statement of the output just reminds you of the code you used to perform the test. The important thing is recognizing that the first group listed is “Group 1” and the second group listed is “Group 2.” This is especially important when using alternative hypotheses of “less” or “greater” as the order is always “Group 1” is “less” than “Group 2” or “Group 1” is “greater” than “Group 2.”</span>
 </td>
 <td>
-<span class="tooltiprout"> V = 0, <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout"> V = 0, <span class="tooltiprouttext">This is the test statistic of the test, i.e., the sum of the ranks from the positive group minus the minimum sum of ranks possible.</span>
 </td>
 <td>
-<span class="tooltiprout">  p-value = 0.009091 <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout">  p-value = 0.009091 <span class="tooltiprouttext">This is the p-value of the test. If no warning is displayed when the test is run, then this is the “exact” p-value from the non-parametric Wilcoxon Test Statistic distribution. Sometimes a message will appear stating “Cannot compute exact p-value with ties” or other similar messages. In those cases, the p-value is still considered valid even though it is obtained through a normal approximation to the exact distribution.</span>
 </td>
 </tr>
 <tr>
 <td>
-<span class="tooltiprout"> alternative hypothesis: true location shift is not equal to 0 <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout"> alternative hypothesis: true location shift is not equal to 0 <span class="tooltiprouttext">This reports that the alternative hypothesis was “two-sided.” If the alternative had been “less” or “greater” the wording would change accordingly.</span>
 </td>
 </tr>
 </table>
@@ -482,7 +503,7 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> Wilcoxon signed rank test with continuity correction <span class="tooltiprouttext">EXPLANATION.</span> </span>
+<span class="tooltiprout"> Wilcoxon signed rank test with continuity correction <span class="tooltiprouttext">This reports on the type of test performed. The phrase “with continuity correction” implies the normal approximation was used when calculating the p-value of the test.</span> </span>
 </td>
 </tr>
 </table>
@@ -490,18 +511,18 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> data: mtcars$mpg <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout"> data: mtcars$mpg <span class="tooltiprouttext">This print-out reminds us that the mpg column of the mtcars data was used as “Y” in the test.</span>
 </td>
 <td>
-<span class="tooltiprout"> V = 249, <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout"> V = 249, <span class="tooltiprouttext">The test statistic of the test.</span>
 </td>
 <td>
-<span class="tooltiprout">  p-value = 0.7863 <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout">  p-value = 0.7863 <span class="tooltiprouttext">The p-value of the test.</span>
 </td>
 </tr>
 <tr>
 <td>
-<span class="tooltiprout"> alternative hypothesis: true location is not equal to 20 <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout"> alternative hypothesis: true location is not equal to 20 <span class="tooltiprouttext">The words “not equal” tell us this was a two-sided test. Had it been a one-sided test, either the word “less” or the word “greater” would have appeared instead of “not equal.”</span>
 </td>
 </tr>
 </table>
@@ -803,7 +824,7 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> Wilcoxon rank sum test with continuity correction <span class="tooltiprouttext">EXPLANATION.</span> </span>
+<span class="tooltiprout"> Wilcoxon rank sum test with continuity correction <span class="tooltiprouttext">This states the test that was performed and that a normal approximation to the test statistic was used instead of the exact distribution.</span> </span>
 </td>
 </tr>
 </table>
@@ -811,18 +832,18 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> data: length by sex <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout"> data: length by sex <span class="tooltiprouttext">This states that the length column was split into the two groups found in the “sex” column. Unfortunately, it forgets to remind us that the test used the KidsFeet data set.</span>
 </td>
 <td>
-<span class="tooltiprout"> V = 252, <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout"> V = 252, <span class="tooltiprouttext">The test statistic of the test. In this case, the sum of the ranks from the alphabetically first group minus the minimum sum of ranks possible.</span>
 </td>
 <td>
-<span class="tooltiprout">  p-value = 0.0836 <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout">  p-value = 0.0836 <span class="tooltiprouttext">The p-value of the test.</span>
 </td>
 </tr>
 <tr>
 <td>
-<span class="tooltiprout"> alternative hypothesis: true location shift is not equal to 0 <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout"> alternative hypothesis: true location shift is not equal to 0 <span class="tooltiprouttext">This reports that the test used an alternative hypothesis of “not equal” (a two-sided test). Further, the phrase “true location shift” emphasizes that the Wilcoxon Rank Sum Test is testing to see if one distribution is shifted higher or lower than the other.</span>
 </td>
 </tr>
 </table>
@@ -848,7 +869,7 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> Wilcoxon rank sum test with continuity correction <span class="tooltiprouttext">EXPLANATION.</span> </span>
+<span class="tooltiprout"> Wilcoxon rank sum test with continuity correction <span class="tooltiprouttext">This states the type of test performed.</span> </span>
 </td>
 </tr>
 </table>
@@ -856,18 +877,18 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> data: KidsFeet$length[KidsFeet$sex == “B”] and KidsFeet$length[KidsFeet$sex == “G”] <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout"> data: KidsFeet$length[KidsFeet$sex == “B”] and KidsFeet$length[KidsFeet$sex == “G”] <span class="tooltiprouttext">Reminds you what data was used for the test and points out that the first set of data listed is “Group 1” and the second set of data listed is “Group 2.”</span>
 </td>
 <td>
-<span class="tooltiprout"> V = 252, <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout"> V = 252, <span class="tooltiprouttext">The test statistic of the test.</span>
 </td>
 <td>
-<span class="tooltiprout">  p-value = 0.0836 <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout">  p-value = 0.0836 <span class="tooltiprouttext">The p-value of the test.</span>
 </td>
 </tr>
 <tr>
 <td>
-<span class="tooltiprout"> alternative hypothesis: true location shift is not equal to 0 <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout"> alternative hypothesis: true location shift is not equal to 0 <span class="tooltiprouttext">The alternative hypothesis of the test. The phrase “not equal” implies a “two-sided” alternative was used.</span>
 </td>
 </tr>
 </table>

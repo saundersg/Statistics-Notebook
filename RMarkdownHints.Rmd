@@ -1,38 +1,46 @@
 ---
 title: "R Markdown Hints"
+output: 
+  html_document: 
+    toc: true
+    toc_float: true
 ---
 
 Think of an `R Markdown File`, or `Rmd` for short, as a command center. You write commands, then Knit the file, and an html output file is created according to your commands. 
 
-
+# Overview
 
 ## {.tabset .tabset-pills .tabset-fade}
 
-### Hide Cheatsheet
-
-### Show
+### Click Here to Learn More
 
 Carefully read through all parts of this image to learn...
 
 ![](./Images/Rmd2html.png)
 
+### Close
+
 ##
 
-The above tabs were created with the code:
+----
+
+The above tabs (blue bottons that read "Click Here to Learn More" and "Close") were created with the code:
 
     ## {.tabset .tabset-pills .tabset-fade}
 
-    ### Hide Cheatsheet
+    ### Click Here to Learn More
+    
+    Carefully read through all parts of this image to learn...
 
-    ### Show
+    ![](./Images/Rmd2html.png)
 
-    Text and image were placed here...
+    ### Close
 
     ##
 
+----
 
-
-## Creating Links
+# Creating Links
 
 To make a link use the code `[Name of Link](addressForLink)`. 
 
@@ -47,7 +55,7 @@ Linking to outside resources:
 * `[R Colors](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)` *becomes* [R Colors](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
 
 
-## Creating Headers
+# Creating Headers
 
 There are six available sizes of headings you can use in an Rmd file (left in image) that show up as shown below (right in image).
 
@@ -66,7 +74,7 @@ To *italisize* a word use the asterisk (Shift 8) `*italisize*`. To **bold** a wo
 
 # Bullet Points
 
-#### Simple Lists
+## Simple Lists
 
 <div style="float:left;width:300px;">
 To achieve the result:
@@ -96,7 +104,7 @@ To achieve the result:
 
 <div style="clear:both;"></div>
 
-#### Numbered Lists
+## Numbered Lists
 
 <div style="float:left;width:300px;">
 
@@ -128,7 +136,7 @@ To achieve the result:
 
 <div style="clear:both;"></div>
 
-#### Lettered Lists
+## Lettered Lists
 
 <div style="float:left;width:300px;">
 
@@ -161,7 +169,7 @@ C) This is the third.
 <div style="clear:both;"></div>
 
 
-#### Nested Lists
+## Nested Lists
 
 <div style="float:left;width:300px;">
 
@@ -202,7 +210,7 @@ C) This is the third.
 
 Use the dollar signs `$x=5$` to write $x=5$ or `$z=\frac{x-\mu}{\sigma}$` to write $z=\frac{x-\mu}{\sigma}$. For a nicely centered equation use the double dollar signs `$$ $$` on separate lines 
 
-```{r, eval=FALSE}
+```{}
 $$
   z = \frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}
 $$
@@ -215,12 +223,12 @@ $$
 
 Or
 
-```{r, eval=FALSE}
+```{}
 $$
-  H_0: \mu_1 = \mu_2
+  H_0: \mu_\text{Group 1} = \mu_\text{Group 2}
 $$
 $$ 
-  H_a: \mu_1 \neq \mu_2
+  H_a: \mu_\text{Group 1} \neq \mu_\text{Group 2}
 $$
 ```
 

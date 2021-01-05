@@ -807,7 +807,9 @@ $$
 </div>
 
 $H_0: \mu_1 - \mu_2 = \text{some number, but typically 0}$
+
 $H_a: \mu_1 - \mu_2 \ \left\{\underset{<}{\stackrel{>}{\neq}}\right\} \ \text{some number, but typically 0}$
+
 </div>
 
 **Examples**: [sleepInd](./Analyses/t Tests/Examples/SleepIndependentt.html) [student1](./Analyses/t Tests/Examples/Student1Independent.html) [student2](./Analyses/t Tests/Examples/Student2Independent.html)

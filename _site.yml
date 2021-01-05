@@ -46,10 +46,25 @@ navbar:
           href: ./Analyses/StudentHousing.html
         - text: "Poor Example Analysis"
           href: ./Analyses/StudentHousingPOOR.html
-        - text: "Rent Analysis"
+        - text: "Rent"
           href: ./Analyses/Rent.html
-        - text: "Stephanie Analysis"
+        - text: "Stephanie"
           href: ./Analyses/Stephanie.html
+        - text: "High School Seniors"
+          href: ./Analyses/t Tests/HighSchoolSeniors.html
+        - text: "Recalling Words"
+          href: ./Analyses/Wilcoxon Tests/RecallingWords.html
+        - text: "Day Care"
+          href: ./Analyses/ANOVA/DayCare.html
+        - text: "My Simple Linear Regression"
+          href: ./Analyses/Linear Regression/MySimpleLinearRegression.html
+        - text: "Car Prices"
+          href: ./Analyses/Linear Regression/CarPrices.html
+        - text: "My Logistic Regression"
+          href: ./Analyses/Logistic Regression/MyLogisticRegression.html
+        - text: "My Chi-sqaured Test"
+          href: ./Analyses/Chi Squared Tests/MyChiSquaredTest.html
+
 
           
 output_dir: '.'
