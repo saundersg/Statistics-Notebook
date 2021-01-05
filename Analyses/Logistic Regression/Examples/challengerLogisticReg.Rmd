@@ -8,37 +8,55 @@ output:
 
 <hr />
 
-#### Background
+## Background
 
-<a href="http://www.history.com/topics/Challenger-disaster/videos/engineering-disasters---Challenger"> Watch the Introductory Movie </a>
+<img src="../../../Images/challengerLaunch.jpg" style="width:30%;margin-left:15px;float:right;">
+
+The Space Shuttle Challenger exploded 73 second after liftoff on January 28th, 1986. The disaster claimed the lives of all seven astronauts on board, including school teacher Christa McAuliffe.[^1] The details surrounding this disaster were very involved. If you are interested in learning more, watch this 18-minute video documentary on [PBS.org](https://www.pbs.org/video/retro-report-on-pbs-season-1-episode-7-lessons-space-shuttle-challenger-tragedy/). For the purposes of this analysis, it is sufficient to point out that engineers that manufactured the large boosters that launched the rocket were aware of the possible failures that could happen during cold temperatures. They tried to prevent the launch, but were ultimately ignored and disaster ensued. 
+
+<div style="clear:both;"></div>
+
+
+
+## Data from Previous Launches
+
+The main concern of engineers in launching the Challenger was the evidence that the large O-rings sealing the several sections of the boosters could fail in cold temperatures.
+
+<a href="https://medium.com/rocket-science-falcon-9-and-spacex/space-shuttle-challenger-disaster-1986-7e05fbb03e43" target="_blank"><img src="../../../Images/challengerOrings.png" style="width:30%;margin-left:15px;float:right;"></a>
+
+The lowest temperature of any of the 23 prior launches (before the Challenger explosion) was 53&deg; F [^2]. This is evident in the data set shown below. Engineers prior to the Challenger launch suggested that the launch not be attempted below 53&deg;. The "evidence" that the o-rings could fail below 53&deg; was based on a simple conclusion that since the launch at 53&deg; experienced two o-ring failures, it seemed unwise to launch below that temperature. In the following analysis we demonstrate more fully how dangerous it was to launch on this specific day where the outside temperature at the time of the launch was 31&deg;.
+
+The "fail" column in the data set below records how many O-rings experienced failures during that particular launch. The "temp" column lists the outside temperature at the time of launch.
 
 ```{r, warning=FALSE, message=FALSE}
 library(alr4)
 library(mosaic)
 library(DT)
+library(pander)
 ```
 
 ```{r}
 datatable(Challeng)
 ```
 
-Past experience had shown that the o-rings could fail when the tempurature was below 53&deg; F. It then stated that "Nasa had already launched shuttles below 53&deg; and gotten away with it." This second statement is actually false. The lowest temperature of any of the 23 prior launches (before the Challenger explosion) was 53&deg; F [[view source]](http://www.ics.uci.edu/~staceyah/111-202/handouts/Dalal_etal_1989-Challenger.pdf). The "evidence" that the o-rings could fail below 53&deg; was based on a simple conclusion that since the launch at 53&deg; experienced two o-ring failures, it seemed unwise to launch below that temperature. The statement that NASA had launched previously with o-ring failures occurring, but the launch still being successful was true, but all launches had a temperature of at least 53&deg; F. Thus, whether or not temperature was the root cause of the failures was debatable. 
 
 <br />
 
-#### Logistic Model
+## Logistic Model
 
-To model the probability of the o-rings failing at various temperatures, we could apply the logistic regression model
+The probability of at least one o-ring failing during a shuttle launch based on the known outside temperature at the time of launch is given by the following logistic regression model.
+
 $$
   P(Y_i = 1|x_i) = \frac{e^{\beta_0+\beta_1 x_i}}{1+e^{\beta_0 + \beta_1 x_i}} = \pi_i
 $$
-where for observation $i$: 
 
-* $Y_i = 1$ denotes at least one o-ring failing for a given launch, 
+In this model, for each previous shuttle launch $i$: 
+
+* $Y_i = 1$ denotes at least one o-ring failing for the given launch, 
 * $Y_i=0$ denotes no o-rings failing (successful launch), and 
-* $x_i$ denotes the outside temperature in degrees farenheit at the time of the launch. 
+* $x_i$ denotes the outside temperature in degrees Fahrenheit at the time of the launch. 
 
-Note that if $\beta_1$ is zero in the above model, then $x_i$ (temperature) provides no insight about the probability of a failed O-ring. Thus, we could test the hypothesis that
+If $\beta_1$ is zero in the above model, then $x_i$ (temperature) provides no insight about the probability of a failed O-ring. If not zero however, then temperature plays an important role in the probability of o-rings failing. Using a significance level of $\alpha = 0.05$ we will test the below hypotheses about $\beta_1$.
 
 $$
   H_0: \beta_1 = 0 \\
@@ -47,37 +65,43 @@ $$
 
 <br />
 
-#### Fitting the Model
+### Fitting the Model
 
-To obtain estimates of the coefficients $\beta_0$ and $\beta_1$ for the `Challeng` data, we apply the following R code.
+The estimates of the coefficients $\beta_0$ and $\beta_1$ for the above logistic regression model and data are shown below.
 
 ```{r}
 chall.glm <- glm(fail>0 ~ temp, data=Challeng, family=binomial)
-summary(chall.glm)
+summary(chall.glm) %>% pander()
 ```
 
-Thus the estimated model for $\pi_i$ is given by
+<br/>
+
+This gives the estimated model for $\pi_i$ as
 $$
   P(Y_i = 1|x_i) \approx \frac{e^{15.043-0.232 x_i}}{1+e^{15.043 - 0.232 x_i}} = \hat{\pi}_i
 $$
 where $b_0 = 15.043$ is the value of the `(Intercept)` which estimates $\beta_0$ and $b_1 = -0.232$ is the value of `temp` which estimates $\beta_1$.
 
-Importantly, the $p$-value for the test of `temp` shows a significant result $(p = 0.0320)$ giving sufficient evidence to conclude that $\beta_1 \neq 0$, which allows us to conclude that temperature effects the probability of an O-ring failure.
+Importantly, the $p$-value for the test of `temp` shows a significant result $(p = 0.0320)$ giving sufficient evidence to conclude that $\beta_1 \neq 0$. The outside temperature at the time of launch effects the probability of at least one o-ring failure during the launch.
 
 <br />
 
-#### Visualizing the Model
+### Visualizing the Model
 
-To visualize this simple logistic regression we could make the following plot.
+The following plot shows how much colder it was on the day of the Challenger launch (31&deg;F, shown by the vertical dashed gray line) compared to all 23 previous shuttle launches (black dots in the graph).
 
 ```{r}
-plot( fail>0 ~ temp, data=Challeng, main="", ylab='Probability of O-rings Failing', pch=16)
-curve(exp(15.043-0.232*x)/(1+exp(15.043-0.232*x)), from=53, to=85, add=TRUE)
+plot( fail>0 ~ temp, data=Challeng, xlab="Outside Temperature at Time of Launch (Fahrenheit)", ylab='Probability of At least One O-ring Failing', pch=16, main="NASA Shuttle Launch Data from 1981 to 1985", xlim=c(30,85))
+curve(exp(15.043-0.232*x)/(1+exp(15.043-0.232*x)), add=TRUE)
+abline(v=31, lty=2, col="lightgray")
+text(31,0.3,"Outside Temp on Jan. 28, 1986 was 31", pos=4, cex=0.7, col="lightgray")
+abline(h=c(0,1), lty=1, col=rgb(.2,.2,.2,.2))
+legend("right", bty="n", legend=c("Previous Launches"), pch=16, col="black", cex=0.7)
 ```
 
 <br />
 
-#### Diagnosing the Model
+### Diagnosing the Model
 
 To demonstrate that the logistic regression is a good fit to these data we apply the Hosmer-Lemeshow goodness of fit test (since there are only a couple repeated $x$-values) from the `library(ResourceSelection)`. 
 
@@ -85,21 +109,32 @@ To demonstrate that the logistic regression is a good fit to these data we apply
 library(ResourceSelection)
 ```
 ```{r}
-hoslem.test(chall.glm$y, chall.glm$fitted, g=6)
+hoslem.test(chall.glm$y, chall.glm$fitted, g=6) %>% pander()
 # Note: doesn't give a p-value for g >= 7, default is g=10.
 # Larger g is usually better than smaller g.
 ```
-Recall that the null hypothesis is that the logistic regression is a good fit for the data, thus we conclude the null, and claim that the logistic regression is appropriate.
+Since the null hypothesis is that the logistic regression is a good fit for the data, we claim that the logistic regression is appropriate (p-value = 0.1157).
 
 <br />
 
-#### Interpreting the Model
+## Conclusion
 
-Since the temperature being zero is not really realistic for this model, the value of $e^{b_0}$ is not interpretable. However, the value of $e^{b_1} = e^{-0.232} \approx 0.79$ shows that the odds of the o-rings failing for a given launch decreases by a factor of 0.79 for every 1&deg; F increase in temperature. (Note that this implies that every 1&deg; F decrease in temperature increases the odds of a failed o-ring by a factor of $e^{0.232} \approx 1.26$.) The Challenger shuttle was launched at a tempurature of 31&deg; F. By waiting until 53&deg; F, the odds of failure would have been decreased by a factor of $e^{-0.232(53-31)}\approx 0.006$. Note that for a temperature of 31&deg; F our model puts the probability of a failure at
+Since the temperature being zero is not really realistic for this model, the value of $e^{b_0}$ is not interpretable. However, the value of $e^{b_1} = e^{-0.232} \approx 0.79$ shows that the odds of the o-rings failing for a given launch decreases by a factor of 0.79 for every 1&deg; F increase in temperature. Said differently, the odds of an o-ring failure during launch decrease by 21% (1-0.79) for every 1&deg; F increase in temperature. (Also, from the reverse perspective, every 1&deg; F decrease in temperature increases the odds of a failed o-ring by a factor of $e^{0.232} \approx 1.26$.) The Challenger shuttle was launched at a temperature of 31&deg; F. By waiting until 53&deg; F, the odds of failure would have been decreased by a factor of $e^{-0.232(53-31)}\approx 0.006$, a 99.4% reduction in the odds of an o-ring failure! 
+
+To state it more clearly, for a temperature of 31&deg; F our model puts the probability of a failure at
 $$
   P(Y_i = 1|x_i) \approx \frac{e^{15.043-0.232\cdot 31}}{1+e^{15.043 - 0.232 \cdot 31}} = \hat{\pi}_i
 $$
-which, using R to do this calculation we get $\hat{\pi_i} \approx$
+
 ```{r}
-predict(chall.glm, data.frame(temp=31), type='response')
+pred <- predict(chall.glm, data.frame(temp=31), type='response')
+#The inline code was used below to put this "pred" value into the text:
+#$\hat{\pi_i} \approx `r round(pred,5)`$
 ```
+
+which, using R to do this calculation we get $\hat{\pi_i} \approx `r round(pred,5)`$. This shows that an O-ring failure was sure to happen when the launch temperature was that cold (31&deg;F).
+
+
+
+[^1]: See the article on Britannica.com: [https://www.britannica.com/event/Challenger-disaster](https://www.britannica.com/event/Challenger-disaster)
+[^2]: See this article at ics.uci.edu: [http://www.ics.uci.edu/~staceyah/111-202/handouts/Dalal_etal_1989-Challenger.pdf](http://www.ics.uci.edu/~staceyah/111-202/handouts/Dalal_etal_1989-Challenger.pdf)

@@ -23,6 +23,98 @@
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
 
 
 <style type="text/css">
@@ -345,10 +437,31 @@ $(document).ready(function () {
       <a href="./Analyses/StudentHousingPOOR.html">Poor Example Analysis</a>
     </li>
     <li>
-      <a href="./Analyses/Rent.html">Rent Analysis</a>
+      <a href="./Analyses/Rent.html">Rent</a>
     </li>
     <li>
-      <a href="./Analyses/Stephanie.html">Stephanie Analysis</a>
+      <a href="./Analyses/Stephanie.html">Stephanie</a>
+    </li>
+    <li>
+      <a href="./Analyses/t Tests/HighSchoolSeniors.html">High School Seniors</a>
+    </li>
+    <li>
+      <a href="./Analyses/Wilcoxon Tests/RecallingWords.html">Recalling Words</a>
+    </li>
+    <li>
+      <a href="./Analyses/ANOVA/DayCare.html">Day Care</a>
+    </li>
+    <li>
+      <a href="./Analyses/Linear Regression/MySimpleLinearRegression.html">My Simple Linear Regression</a>
+    </li>
+    <li>
+      <a href="./Analyses/Linear Regression/CarPrices.html">Car Prices</a>
+    </li>
+    <li>
+      <a href="./Analyses/Logistic Regression/MyLogisticRegression.html">My Logistic Regression</a>
+    </li>
+    <li>
+      <a href="./Analyses/Chi Squared Tests/MyChiSquaredTest.html">My Chi-sqaured Test</a>
     </li>
   </ul>
 </li>
@@ -397,46 +510,179 @@ $(document).ready(function () {
 <div id="r-instructions" class="section level4">
 <h4>R Instructions</h4>
 <p><strong>Console</strong> Help Command: <code>?chisq.test()</code></p>
+<div id="to-run-the-test" class="section level5">
+<h5>To Run the Test</h5>
 <p><code>chisq.test(x)</code></p>
-<p><code>x</code> must be a matrix or a table</p>
-<ul>
-<li>To make a matrix:</li>
-</ul>
-<a href="javascript:showhide('matrix1')">
-<div class="hoverchunk">
-<p><span class="tooltipr"> x <span class="tooltiprtext">The name of your created matrix to go in the <code>chisq.test()</code> code.</span> </span><span class="tooltipr">  &lt;-  <span class="tooltiprtext">This is the “left arrow” assignment operator that stores the results of your <code>cbind()</code> code into <code>x</code>.</span> </span><span class="tooltipr"> cbind( <span class="tooltiprtext">cbind stands for“column bind” and is a function that joins together different c() vectors to make them become columns of a table.</span> </span><span class="tooltipr"> column1, <span class="tooltiprtext">The first column you want in the matrix. It can be either a vector c() or a variable called from a dataset using $.</span> </span><span class="tooltipr">  column2, <span class="tooltiprtext">The sescond column you want in the matrix. It can be either a vector c() or a variable called from a dataset using $</span> </span><span class="tooltipr">  … column n) <span class="tooltiprtext">You can use any number of columns.</span> </span></p>
-</div>
-<p></a></p>
-<div id="matrix1" style="display:none;">
-<pre><code>##          Farm 1 Farm 2
-## Pigs         10     15
-## Cats          5      3
-## Dogs         28      8
-## Roosters      3      1</code></pre>
-</div>
-<a href="javascript:showhide('matrix2')">
-<div class="hoverchunk">
-<p><span class="tooltipr"> x <span class="tooltiprtext">The name of your created matrix to go in the <code>chisq.test()</code> code.</span> </span><span class="tooltipr">  &lt;-  <span class="tooltiprtext">This is the “left arrow” assignment operator that stores the results of your <code>rbind()</code> code into <code>x</code>.</span> </span><span class="tooltipr"> rbind( <span class="tooltiprtext">rbind stands for“row bind” and is a function that joins together different c() vectors to make them become rows of a table.</span> </span><span class="tooltipr"> row1, <span class="tooltiprtext">The first row you want in the matrix. It can be either a vector c() or a variable called from a dataset using $.</span> </span><span class="tooltipr">  row2, <span class="tooltiprtext">The second row you want in the matrix. It can be either a vector c() or a variable called from a dataset using $.</span> </span><span class="tooltipr">  … row n) <span class="tooltiprtext">You can use any number of rows.</span> </span></p>
-</div>
-<p></a></p>
-<div id="matrix2" style="display:none;">
-<pre><code>##        Pigs Cats Dogs Roosters
-## Farm 1   10    5   28        3
-## Farm 2   15    3    8        1</code></pre>
-</div>
-<ul>
-<li>To make a table:</li>
-</ul>
+<p><code>x</code> must be a table or a matrix.</p>
+<div id="to-make-a-table" class="section level6">
+<h6>To Make a Table</h6>
+<p>If you have a data set that you want to turn into a table, use the table command.</p>
 <a href="javascript:showhide('table')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> x <span class="tooltiprtext">The name of your created table to go in the <code>chisq.test()</code> code.</span> </span><span class="tooltipr">  &lt;-  <span class="tooltiprtext">This is the “left arrow” assignment operator that stores the results of your <code>table()</code> code into <code>x</code>.</span> </span><span class="tooltipr"> table( <span class="tooltiprtext">table is an R function used to tabulate how many times each value occrus in a given dataset.</span> </span><span class="tooltipr"> Dataset$Variable, <span class="tooltiprtext">Use your dataset to call in a row variable.</span> </span><span class="tooltipr">  Dataset$variable) <span class="tooltiprtext">Use your dataset to call in a column variable.</span> </span></p>
+<p><span class="tooltipr"> x <span class="tooltiprtext">The name of your created table to go in the <code>chisq.test()</code> code.</span> </span><span class="tooltipr">  &lt;-  <span class="tooltiprtext">This is the “left arrow” assignment operator that stores the results of your <code>table()</code> code into <code>x</code>.</span> </span><span class="tooltipr"> table( <span class="tooltiprtext">table is an R function used to tabulate how many times each value occrus in a given dataset.</span> </span><span class="tooltipr"> Dataset$FirstVariable, <span class="tooltiprtext">Use your dataset to call in a row variable.</span> </span><span class="tooltipr">  Dataset$SecondVariable) <span class="tooltiprtext">Use your dataset to call in a column variable.</span> </span></p>
 </div>
 <p></a></p>
 <div id="table" style="display:none;">
-<pre><code>##    
-##      4  6  8
-##   0  3  4 12
-##   1  8  3  2</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>x &lt;-<span class="st"> </span><span class="kw">table</span>(mtcars<span class="op">$</span>am, mtcars<span class="op">$</span>cyl)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">pander</span>(x)</span></code></pre></div>
+<table style="width:31%;">
+<colgroup>
+<col width="12%" />
+<col width="5%" />
+<col width="5%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">4</th>
+<th align="center">6</th>
+<th align="center">8</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>0</strong></td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">12</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>1</strong></td>
+<td align="center">8</td>
+<td align="center">3</td>
+<td align="center">2</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#Rename rows and columns of your table:</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">rownames</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Automatic&quot;</span>, <span class="st">&quot;Manual&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">colnames</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;4 cyl&quot;</span>, <span class="st">&quot;6 cyl&quot;</span>, <span class="st">&quot;8 cyl&quot;</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">pander</span>(x)</span></code></pre></div>
+<table style="width:56%;">
+<colgroup>
+<col width="22%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">4 cyl</th>
+<th align="center">6 cyl</th>
+<th align="center">8 cyl</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Automatic</strong></td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">12</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Manual</strong></td>
+<td align="center">8</td>
+<td align="center">3</td>
+<td align="center">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span style="font-size:.8em;"><em>Click open the example code above for details on how to rename rows and columns in a table.</em></span></p>
+<p><br/></p>
+</div>
+<div id="to-make-a-matrix" class="section level6">
+<h6>To Make a Matrix</h6>
+<p>If you have tally counts of your observations, enter them into RStudio using a matrix.</p>
+<a href="javascript:showhide('matrix1')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> x <span class="tooltiprtext">The name of your created matrix to go in the <code>chisq.test()</code> code.</span> </span><span class="tooltipr">  &lt;-  <span class="tooltiprtext">This is the “left arrow” assignment operator that stores the results of your <code>cbind()</code> code into <code>x</code>.</span> </span><span class="tooltipr"> cbind( <span class="tooltiprtext">cbind stands for“column bind” and is a function that joins together different c() vectors to make them become columns of a table.</span> </span><span class="tooltipr"> `Farm 1` = <span class="tooltiprtext">The name of the first column you want in the matrix. To include spaces in the name, use the back-ticks ` and `.</span> </span><span class="tooltipr">  c(Pigs = 10, Cats = 5, Dogs = 28, Roosters = 3), <span class="tooltiprtext">Specify each of the values by name in a c(…) function to be stored in your first column, in this case, <code>Farm 1</code>.</span> </span><span class="tooltipr">  `Farm 2` = <span class="tooltiprtext">The name of the second column you want in the matrix.</span> </span><span class="tooltipr">  c(Pigs = 15, Cats = 3, Dogs = 8, Roosters = 1) <span class="tooltiprtext">Each new column must contain entries for each named element. Technically, you can leave off the names in all but the first column as only the names from the first column will be used.</span> </span><br/><span class="tooltipr"> pander(x) <span class="tooltiprtext">Print the matrix to the screen using pander(…).</span> </span></p>
+</div>
+<p></a></p>
+<div id="matrix1" style="display:none;">
+<table style="width:46%;">
+<colgroup>
+<col width="20%" />
+<col width="12%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Farm 1</th>
+<th align="center">Farm 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Pigs</strong></td>
+<td align="center">10</td>
+<td align="center">15</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Cats</strong></td>
+<td align="center">5</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Dogs</strong></td>
+<td align="center">28</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Roosters</strong></td>
+<td align="center">3</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Or, notice how you could rbind instead with slightly different results…</p>
+<a href="javascript:showhide('matrix2')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> x <span class="tooltiprtext">The name of your created matrix to go in the <code>chisq.test()</code> code.</span> </span><span class="tooltipr">  &lt;-  <span class="tooltiprtext">This is the “left arrow” assignment operator that stores the results of your <code>cbind()</code> code into <code>x</code>.</span> </span><span class="tooltipr"> rbind( <span class="tooltiprtext">rbind stands for“row bind” and is a function that joins together different c() vectors to make them become rows of a table.</span> </span><span class="tooltipr"> `Farm 1` = <span class="tooltiprtext">The name of the first column you want in the matrix. To include spaces in the name, use the back-ticks ` and `.</span> </span><span class="tooltipr">  c(Pigs = 10, Cats = 5, Dogs = 28, Roosters = 3), <span class="tooltiprtext">Specify each of the values by name in a c(…) function to be stored in your first column, in this case, <code>Farm 1</code>.</span> </span><span class="tooltipr">  `Farm 2` = <span class="tooltiprtext">The name of the second column you want in the matrix.</span> </span><span class="tooltipr">  c(Pigs = 15, Cats = 3, Dogs = 8, Roosters = 1) <span class="tooltiprtext">Each new column must contain entries for each named element. Technically, you can leave off the names in all but the first column as only the names from the first column will be used.</span> </span><br/><span class="tooltipr"> pander(x) <span class="tooltiprtext">Print the matrix to the screen using pander(…).</span> </span></p>
+</div>
+<p></a></p>
+<div id="matrix2" style="display:none;">
+<table style="width:62%;">
+<colgroup>
+<col width="18%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Pigs</th>
+<th align="center">Cats</th>
+<th align="center">Dogs</th>
+<th align="center">Roosters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Farm 1</strong></td>
+<td align="center">10</td>
+<td align="center">5</td>
+<td align="center">28</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Farm 2</strong></td>
+<td align="center">15</td>
+<td align="center">3</td>
+<td align="center">8</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br/></p>
+</div>
 </div>
 <div id="diagnostics" class="section level5">
 <h5>Diagnostics</h5>
@@ -449,7 +695,7 @@ $(document).ready(function () {
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> Pearson’s Chi-squared test <span class="tooltiprouttext">EXPLANATION.</span> </span>
+<span class="tooltiprout"> Pearson’s Chi-squared test <span class="tooltiprouttext">The name of the test being performed.</span> </span>
 </td>
 </tr>
 </table>
@@ -460,20 +706,20 @@ $(document).ready(function () {
 <span class="tooltiprout"> data: x <span class="tooltiprouttext">The data you are using for the Chi-Squared test. <code>x</code> is either a table or matrix that you created.</span>
 </td>
 <td>
-<span class="tooltiprout"> X-squared = 9.2956, <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout"> X-squared = 9.2956, <span class="tooltiprouttext">The test statistic of the test follows a chi-squared distribution with the given degrees of freedom. See the end of the “Making Inference” page of the book to learn more about the Chi-squared Parametric Distribution.</span>
 </td>
 <td>
-<span class="tooltiprout">  df = 3, <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout">  df = 3, <span class="tooltiprouttext">The degrees of freedom of the test. It is found by (number of rows - 1)x(number of columns - 1)</span>
 </td>
 <td>
-<span class="tooltiprout">  p-value = 0.02561 <span class="tooltiprouttext">EXPLANATION.</span>
+<span class="tooltiprout">  p-value = 0.02561 <span class="tooltiprouttext">The p-value of the test is found by computing the probability of being more extreme than given test statistic. In R, you can compute this yourself using the code pchisq(9.2956, 3, lower.tail=FALSE).</span>
 </td>
 </tr>
 </table>
 </div>
 <a href="javascript:showhide('expected')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> yourNamedTestResults <span class="tooltiprtext">This is some name you come up with that will become the R object that stores the results of your Chi-squared test <code>chisq.test()</code> command.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">This allows you to access various elements from the test that was performed.</span> </span><span class="tooltipr"> expected <span class="tooltiprtext">EXPLANATION.</span> </span></p>
+<p><span class="tooltipr"> yourNamedTestResults <span class="tooltiprtext">This is some name you come up with that will become the R object that stores the results of your Chi-squared test <code>chisq.test()</code> command.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">This allows you to access various elements from the test that was performed.</span> </span><span class="tooltipr"> expected <span class="tooltiprtext">The expected counts of the chi-squared test. These are computed for each observed count by using the equation (row tota)*(column total)/(total total).</span> </span></p>
 </div>
 <p></a></p>
 <div id="expected" style="display:none;">
@@ -532,6 +778,7 @@ $(document).ready(function () {
 </tr>
 </table>
 </div>
+<p><br/></p>
 </div>
 <div id="interpretation-pearson-residuals" class="section level5">
 <h5>Interpretation: Pearson Residuals</h5>
@@ -798,7 +1045,7 @@ $(document).ready(function () {
 </tr>
 </table>
 <div style="padding-left:125px;">
-<p><strong>Examples</strong>: <a href="./Analyses/Chi%20Squared%20Tests/Examples/Math325StudentRatings.html">StudentRatings</a> | <a href="./Analyses/Chi%20Squared%20Tests/Examples/HairEyeColorChiSquaredTest.html">HairEyeColor</a></p>
+<p><strong>Examples</strong>: <a href="./Analyses/Chi%20Squared%20Tests/Examples/movies.html">movies</a> | <a href="./Analyses/Chi%20Squared%20Tests/Examples/Math325StudentRatings.html">StudentRatings</a> | <a href="./Analyses/Chi%20Squared%20Tests/Examples/HairEyeColorChiSquaredTest.html">HairEyeColor</a></p>
 </div>
 <hr />
 </div>

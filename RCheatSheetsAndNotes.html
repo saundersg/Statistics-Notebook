@@ -437,10 +437,31 @@ $(document).ready(function () {
       <a href="./Analyses/StudentHousingPOOR.html">Poor Example Analysis</a>
     </li>
     <li>
-      <a href="./Analyses/Rent.html">Rent Analysis</a>
+      <a href="./Analyses/Rent.html">Rent</a>
     </li>
     <li>
-      <a href="./Analyses/Stephanie.html">Stephanie Analysis</a>
+      <a href="./Analyses/Stephanie.html">Stephanie</a>
+    </li>
+    <li>
+      <a href="./Analyses/t Tests/HighSchoolSeniors.html">High School Seniors</a>
+    </li>
+    <li>
+      <a href="./Analyses/Wilcoxon Tests/RecallingWords.html">Recalling Words</a>
+    </li>
+    <li>
+      <a href="./Analyses/ANOVA/DayCare.html">Day Care</a>
+    </li>
+    <li>
+      <a href="./Analyses/Linear Regression/MySimpleLinearRegression.html">My Simple Linear Regression</a>
+    </li>
+    <li>
+      <a href="./Analyses/Linear Regression/CarPrices.html">Car Prices</a>
+    </li>
+    <li>
+      <a href="./Analyses/Logistic Regression/MyLogisticRegression.html">My Logistic Regression</a>
+    </li>
+    <li>
+      <a href="./Analyses/Chi Squared Tests/MyChiSquaredTest.html">My Chi-sqaured Test</a>
     </li>
   </ul>
 </li>
@@ -478,6 +499,26 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Or create other R chunks to put them in like this...</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Using ```{r, eval=FALSE} turns off the chunk, but still shows it.</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co"># Useful when you want to remember code, but not run it in this file.</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">set.seed</span>(<span class="dv">15</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#Step 1</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>myTest &lt;-<span class="st"> </span><span class="kw">t.test</span>(length <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data=</span>KidsFeet)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>observedTestStat &lt;-<span class="st"> </span>myTest<span class="op">$</span>statistic</span>
+<span id="cb4-6"><a href="#cb4-6"></a>observedTestStat</span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#Step 2</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>N &lt;-<span class="st"> </span><span class="dv">2000</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>permutedTestStats &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">2000</span>)</span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>N){</span>
+<span id="cb4-12"><a href="#cb4-12"></a>  permutedData &lt;-<span class="st"> </span><span class="kw">sample</span>(KidsFeet<span class="op">$</span>length)</span>
+<span id="cb4-13"><a href="#cb4-13"></a>  permutedTest &lt;-<span class="st"> </span><span class="kw">t.test</span>(permutedData <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data=</span>KidsFeet)</span>
+<span id="cb4-14"><a href="#cb4-14"></a>  permutedTestStats[i] &lt;-<span class="st"> </span>permutedTest<span class="op">$</span>statistic</span>
+<span id="cb4-15"><a href="#cb4-15"></a>}</span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="kw">hist</span>(permutedTestStats)</span>
+<span id="cb4-17"><a href="#cb4-17"></a><span class="kw">abline</span>(<span class="dt">v=</span>observedTestStat, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb4-18"><a href="#cb4-18"></a></span>
+<span id="cb4-19"><a href="#cb4-19"></a><span class="co">#Step 3</span></span>
+<span id="cb4-20"><a href="#cb4-20"></a><span class="dv">2</span><span class="op">*</span><span class="kw">sum</span>(permutedTestStats <span class="op">&gt;=</span><span class="st"> </span>observedTestStat)<span class="op">/</span>N</span></code></pre></div>
 </div>
 
 

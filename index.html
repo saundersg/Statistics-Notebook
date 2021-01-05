@@ -23,98 +23,6 @@
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  background-color: #f8f8f8; }
-@media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ef2929; } /* Alert */
-code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
-code span.bn { color: #0000cf; } /* BaseN */
-code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
-code span.co { color: #8f5902; font-style: italic; } /* Comment */
-code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code span.dt { color: #204a87; } /* DataType */
-code span.dv { color: #0000cf; } /* DecVal */
-code span.er { color: #a40000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code span.ot { color: #8f5902; } /* Other */
-code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
-code span.ss { color: #4e9a06; } /* SpecialString */
-code span.st { color: #4e9a06; } /* String */
-code span.va { color: #000000; } /* Variable */
-code span.vs { color: #4e9a06; } /* VerbatimString */
-code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-
-</style>
-<script>
-// apply pandoc div.sourceCode style to pre.sourceCode instead
-(function() {
-  var sheets = document.styleSheets;
-  for (var i = 0; i < sheets.length; i++) {
-    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
-    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
-      var rule = rules[j];
-      // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
-      var style = rule.style.cssText;
-      // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
-      // replace div.sourceCode by a pre.sourceCode rule
-      sheets[i].deleteRule(j);
-      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
-    }
-  }
-})();
-</script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
 <style type="text/css">
@@ -437,10 +345,31 @@ $(document).ready(function () {
       <a href="./Analyses/StudentHousingPOOR.html">Poor Example Analysis</a>
     </li>
     <li>
-      <a href="./Analyses/Rent.html">Rent Analysis</a>
+      <a href="./Analyses/Rent.html">Rent</a>
     </li>
     <li>
-      <a href="./Analyses/Stephanie.html">Stephanie Analysis</a>
+      <a href="./Analyses/Stephanie.html">Stephanie</a>
+    </li>
+    <li>
+      <a href="./Analyses/t Tests/HighSchoolSeniors.html">High School Seniors</a>
+    </li>
+    <li>
+      <a href="./Analyses/Wilcoxon Tests/RecallingWords.html">Recalling Words</a>
+    </li>
+    <li>
+      <a href="./Analyses/ANOVA/DayCare.html">Day Care</a>
+    </li>
+    <li>
+      <a href="./Analyses/Linear Regression/MySimpleLinearRegression.html">My Simple Linear Regression</a>
+    </li>
+    <li>
+      <a href="./Analyses/Linear Regression/CarPrices.html">Car Prices</a>
+    </li>
+    <li>
+      <a href="./Analyses/Logistic Regression/MyLogisticRegression.html">My Logistic Regression</a>
+    </li>
+    <li>
+      <a href="./Analyses/Chi Squared Tests/MyChiSquaredTest.html">My Chi-sqaured Test</a>
     </li>
   </ul>
 </li>
@@ -484,46 +413,10 @@ $(document).ready(function () {
 </div>
 <div id="show-notes" class="section level3">
 <h3>Show Notes</h3>
-<!-- This is a great place to add general notes --------------- -->
-<p><a href="RMarkdownHints.html">Customization Help</a></p>
-<p>Wow! I typed some words. : )</p>
-<p>Class Notes from Wed 9/23</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(mosaic)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">library</span>(pander)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">View</span>(KidsFeet)</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">table</span>(KidsFeet<span class="op">$</span>sex)</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="kw">table</span>(KidsFeet<span class="op">$</span>domhand)</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="kw">table</span>(KidsFeet<span class="op">$</span>domhand, KidsFeet<span class="op">$</span>sex)</span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">table</span>(KidsFeet<span class="op">$</span>length)</span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="kw">summary</span>(KidsFeet<span class="op">$</span>length)</span>
-<span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a>KidsFeetBoys &lt;-<span class="st"> </span>KidsFeet <span class="op">%&gt;%</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="st">  </span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &quot;B&quot;</span>)</span>
-<span id="cb1-13"><a href="#cb1-13"></a></span>
-<span id="cb1-14"><a href="#cb1-14"></a>KidsFeetCrazy &lt;-<span class="st"> </span>KidsFeet <span class="op">%&gt;%</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="st">  </span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &quot;G&quot;</span>, length <span class="op">&gt;</span><span class="st"> </span><span class="fl">24.50</span>, domhand <span class="op">==</span><span class="st"> &quot;L&quot;</span>)</span>
-<span id="cb1-16"><a href="#cb1-16"></a></span>
-<span id="cb1-17"><a href="#cb1-17"></a></span>
-<span id="cb1-18"><a href="#cb1-18"></a>KidsFeetBoys &lt;-<span class="st"> </span>KidsFeet <span class="op">%&gt;%</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="st">  </span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &quot;B&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="st">  </span><span class="kw">select</span>(name, birthmonth, birthyear, domhand, width, length)</span>
-<span id="cb1-21"><a href="#cb1-21"></a></span>
-<span id="cb1-22"><a href="#cb1-22"></a>KidsFeetBoys &lt;-<span class="st"> </span>KidsFeet <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="st">  </span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &quot;B&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1-24"><a href="#cb1-24"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>sex)</span>
-<span id="cb1-25"><a href="#cb1-25"></a></span>
-<span id="cb1-26"><a href="#cb1-26"></a>KidsFeet <span class="op">%&gt;%</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="st">  </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Min =</span> <span class="kw">min</span>(width), <span class="dt">Max =</span> <span class="kw">max</span>(width), <span class="st">`</span><span class="dt">Sample Size</span><span class="st">`</span> =<span class="st"> </span><span class="kw">n</span>()) <span class="op">%&gt;%</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="st">  </span><span class="kw">pander</span>()</span>
-<span id="cb1-30"><a href="#cb1-30"></a></span>
-<span id="cb1-31"><a href="#cb1-31"></a></span>
-<span id="cb1-32"><a href="#cb1-32"></a>Kids3 &lt;-<span class="st"> </span>KidsFeet <span class="op">%&gt;%</span></span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">season =</span> <span class="kw">case_when</span>(birthmonth <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>,<span class="dv">1</span>,<span class="dv">2</span>) <span class="op">~</span><span class="st"> &quot;Winter&quot;</span>,</span>
-<span id="cb1-34"><a href="#cb1-34"></a>                            birthmonth <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) <span class="op">~</span><span class="st"> &quot;Spring&quot;</span>,</span>
-<span id="cb1-35"><a href="#cb1-35"></a>                            birthmonth <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>) <span class="op">~</span><span class="st"> &quot;Summer&quot;</span>,</span>
-<span id="cb1-36"><a href="#cb1-36"></a>                            birthmonth <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>) <span class="op">~</span><span class="st"> &quot;Fall&quot;</span>))</span></code></pre></div>
+<!-- This is a great place to add general notes, then "Knit" the file to have your notes show up in your Statistics-Notebook. --------------- -->
+<p>Wow! I typed some words. Some <span style="color:blue;">blue words</span>, some <span style="background-color:yellow;">highlighted words</span>, some <span style="font-size:2em;">big words</span>.</p>
+<p>Make a link to a meaningful page of the Statistics-Notebook: <a href="RMarkdownHints.html">Customization Help</a> &lt;- Read through this page!</p>
+<p>Or to a page on the internet: <a href="http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf">R Colors</a></p>
 <!-- End your notes before here. ------------------------------------- -->
 </div>
 </div>
@@ -578,19 +471,6 @@ $(document).ready(function () {
 <h3>Tests</h3>
 <div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
-<p>Use the <a href="tTests.html#independent-samples-t-test">Independent Sample t Test</a> to test for the equality of means in “Y” for each group “A” and “B.”</p>
-<p>See my <a href="./Analyses/t%20Tests/HighSchoolSeniors.html">High School Seniors</a></p>
-<p>Use the <a href="WilcoxonTests.html">Wilcoxon Rank Sum Test</a> to test for equality of medians, or “stochastical dominance.”</p>
-<p>See my <a href="./Analyse/Wilcoxon%20Tests/RecallingWords.html">Recalling Words</a></p>
-<!--- End of Add content area.  ------------------>
-</div>
-</div>
-<div id="examples" class="section level3">
-<h3>Examples</h3>
-<div style="padding-left:125px;color:lightgray;">
-<!-- Add your customizations in the area below: -->
-<p>Put a practice test <span style="font-size:18pt;background-color:yellow;color:blue;">question or two here.</span></p>
-<p><img src="Images/Kids3.png" /></p>
 <!--- End of Add content area.  ------------------>
 </div>
 </div>
@@ -633,16 +513,16 @@ $(document).ready(function () {
 </div>
 <hr />
 <div class="tooltipimage" style="float:left;width:125px;" align="center">
-<p><img src="Images/QuantYQuantX.png" width=59px;> <span class="tooltipimagetext">Y is a single quantitative variable of interest, like “height”. X is another single quantitative variable of interest, like “shoe-size”. This would imply we are using “shoe-size” (X) to explain “height” (Y).</span></p>
+<p><img src="Images/QuantYMultQualX.png" width=80px;> <span class="tooltipimagetext">Y is a single quantitative variable of interest, like “heights” of BYU-Idaho students. X1 is a categorical (qualitative) variable like gender, with levels “boy” and “girl.” X2 is another categorical (qualitative) variable like “Classrank” with levels “Freshman”, “Sophomore”, and “Junior”. Of course, both X1 and X2 can have as many levels as you want to work with, but must have at least two levels each.</span></p>
 </div>
-<div id="quantitative-y-quantitative-x" class="section level2 tabset tabset-pills">
-<h2>Quantitative Y | Quantitative X</h2>
+<div id="quantitative-y-multiple-categorical-x" class="section level2 tabset tabset-pills">
+<h2>Quantitative Y | Multiple Categorical X</h2>
 <div id="graphics-3" class="section level3">
 <h3>Graphics</h3>
 <div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 <p>Add your own notes about graphics to use for this type of data here.</p>
-<p><a href="GraphicalSummaries.html#scatterplots"> <img class="myhover" src="Images/scatterplot.png" alt="Scatterplot" title="Scatterplot"> </a></p>
+<p><a href="GraphicalSummaries.html#boxplots"> <img class="myhover" src="Images/boxplotthree.png" alt="Side-by-side Boxplots" title="Side-by-side Boxplots 3+ Groups"> </a> <a href="GraphicalSummaries.html#dot-plots"> <img class="myhover" src="Images/dotplottriple.png" alt="Side-by-side Dot Plots" title="Side-by-side Dot Plots 3+ Groups"> </a></p>
 <!--- End of Add content area.  ------------------>
 </div>
 </div>
@@ -663,16 +543,16 @@ $(document).ready(function () {
 </div>
 <hr />
 <div class="tooltipimage" style="float:left;width:125px;" align="center">
-<p><img src="Images/QuantYMultX.png" width=100px;> <span class="tooltipimagetext">Y is a single quantitative variable of interest, like height. While we could use an X1 of “shoe-size” to explain height, we might also want to use a second x-variable, X2, like “gender” to help explain height. Further x-variables could also be used.</span></p>
+<p><img src="Images/QuantYQuantX.png" width=59px;> <span class="tooltipimagetext">Y is a single quantitative variable of interest, like “height”. X is another single quantitative variable of interest, like “shoe-size”. This would imply we are using “shoe-size” (X) to explain “height” (Y).</span></p>
 </div>
-<div id="quantitative-y-multiple-x" class="section level2 tabset tabset-pills">
-<h2>Quantitative Y | Multiple X</h2>
+<div id="quantitative-y-quantitative-x" class="section level2 tabset tabset-pills">
+<h2>Quantitative Y | Quantitative X</h2>
 <div id="graphics-4" class="section level3">
 <h3>Graphics</h3>
 <div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 <p>Add your own notes about graphics to use for this type of data here.</p>
-<p><a href="GraphicalSummaries.html#scatterplots"> <img class="myhover" src="Images/scatterplotmany.png" alt="Scatterplot" title="Scatterplot with Color and Sizing"> </a></p>
+<p><a href="GraphicalSummaries.html#scatterplots"> <img class="myhover" src="Images/scatterplot.png" alt="Scatterplot" title="Scatterplot"> </a></p>
 <!--- End of Add content area.  ------------------>
 </div>
 </div>
@@ -693,16 +573,16 @@ $(document).ready(function () {
 </div>
 <hr />
 <div class="tooltipimage" style="float:left;width:125px;" align="center">
-<p><img src="Images/BinomYQuantX.png" width=59px;> <span class="tooltipimagetext">Y is a single categorical (qualitative) variable of interest where 1 (success) or 0 (failure) are the only possible values for Y. This would be like “getting an A in Math 325” where 1 means you got an A and 0 means you didn’t. We might use an explanatory variable X of “height” to see if taller students are more likely to get an A in Math 325 than shorter students. (They aren’t, if you were wondering.)</span></p>
+<p><img src="Images/QuantYMultX.png" width=100px;> <span class="tooltipimagetext">Y is a single quantitative variable of interest, like height. While we could use an X1 of “shoe-size” to explain height, we might also want to use a second x-variable, X2, like “gender” to help explain height. Further x-variables could also be used.</span></p>
 </div>
-<div id="binomial-y-quantitative-x" class="section level2 tabset tabset-pills">
-<h2>Binomial Y | Quantitative X</h2>
+<div id="quantitative-y-multiple-x" class="section level2 tabset tabset-pills">
+<h2>Quantitative Y | Multiple X</h2>
 <div id="graphics-5" class="section level3">
 <h3>Graphics</h3>
 <div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 <p>Add your own notes about graphics to use for this type of data here.</p>
-<p><a href="GraphicalSummaries.html#scatterplots"> <img class="myhover" src="Images/scatterplotbinomY.png" alt="Scatterplot with Binomial Y" title="Scatterplot with Binomial Y"> </a></p>
+<p><a href="GraphicalSummaries.html#scatterplots"> <img class="myhover" src="Images/scatterplotmany.png" alt="Scatterplot" title="Scatterplot with Color and Sizing"> </a></p>
 <!--- End of Add content area.  ------------------>
 </div>
 </div>
@@ -723,16 +603,16 @@ $(document).ready(function () {
 </div>
 <hr />
 <div class="tooltipimage" style="float:left;width:125px;" align="center">
-<p><img src="Images/BinomYMultX.png" width=100px;> <span class="tooltipimagetext">Y is a single categorical (qualitative) variable of interest where 1 (success) or 0 (failure) are the only possible values for Y. This would be like “getting an A in Math 325” where 1 means you got an A and 0 means you didn’t. We might use an explanatory variable X1 of “height” and a second explanatory variable X2 of “gender” to try to predict whether or not a student will get an A in Math 325.</span></p>
+<p><img src="Images/BinomYQuantX.png" width=59px;> <span class="tooltipimagetext">Y is a single categorical (qualitative) variable of interest where 1 (success) or 0 (failure) are the only possible values for Y. This would be like “getting an A in Math 325” where 1 means you got an A and 0 means you didn’t. We might use an explanatory variable X of “height” to see if taller students are more likely to get an A in Math 325 than shorter students. (They aren’t, if you were wondering.)</span></p>
 </div>
-<div id="binomial-y-multiple-x" class="section level2 tabset tabset-pills">
-<h2>Binomial Y | Multiple X</h2>
+<div id="binomial-y-quantitative-x" class="section level2 tabset tabset-pills">
+<h2>Binomial Y | Quantitative X</h2>
 <div id="graphics-6" class="section level3">
 <h3>Graphics</h3>
 <div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 <p>Add your own notes about graphics to use for this type of data here.</p>
-<p><a href="GraphicalSummaries.html#scatterplots"> <img class="myhover" src="Images/scatterplotbinomYmult.png" alt="Scatterplot with Binomial Y" title="Scatterplot with Binomial Y, including coloring and shading"> </a></p>
+<p><a href="GraphicalSummaries.html#scatterplots"> <img class="myhover" src="Images/scatterplotbinomY.png" alt="Scatterplot with Binomial Y" title="Scatterplot with Binomial Y"> </a></p>
 <!--- End of Add content area.  ------------------>
 </div>
 </div>
@@ -753,16 +633,16 @@ $(document).ready(function () {
 </div>
 <hr />
 <div class="tooltipimage" style="float:left;width:125px;" align="center">
-<p><img src="Images/QualYQualX.png" width=59px;> <span class="tooltipimagetext">Y is a single categorical variable of interest, like gender. X is another categorical variable of interest, like “hair color”. This type of data would help us understand if men or women are more likely to have certain hair colors than the other gender.</span></p>
+<p><img src="Images/BinomYMultX.png" width=100px;> <span class="tooltipimagetext">Y is a single categorical (qualitative) variable of interest where 1 (success) or 0 (failure) are the only possible values for Y. This would be like “getting an A in Math 325” where 1 means you got an A and 0 means you didn’t. We might use an explanatory variable X1 of “height” and a second explanatory variable X2 of “gender” to try to predict whether or not a student will get an A in Math 325.</span></p>
 </div>
-<div id="caterogical-y-categorical-x" class="section level2 tabset tabset-pills">
-<h2>Caterogical Y | Categorical X</h2>
+<div id="binomial-y-multiple-x" class="section level2 tabset tabset-pills">
+<h2>Binomial Y | Multiple X</h2>
 <div id="graphics-7" class="section level3">
 <h3>Graphics</h3>
 <div style="padding-left:125px;color:lightgray;">
 <!-- Add your customizations in the area below: -->
 <p>Add your own notes about graphics to use for this type of data here.</p>
-<p><a href="GraphicalSummaries.html#bar-charts"> <img class="myhover" src="Images/barplot.png" alt="Bar Chart" title="Bar Chart"> </a></p>
+<p><a href="GraphicalSummaries.html#scatterplots"> <img class="myhover" src="Images/scatterplotbinomYmult.png" alt="Scatterplot with Binomial Y" title="Scatterplot with Binomial Y, including coloring and shading"> </a></p>
 <!--- End of Add content area.  ------------------>
 </div>
 </div>
@@ -777,6 +657,36 @@ $(document).ready(function () {
 </div>
 </div>
 <div id="section-9" class="section level1">
+<h1></h1>
+<div style="clear:both;">
+
+</div>
+<hr />
+<div class="tooltipimage" style="float:left;width:125px;" align="center">
+<p><img src="Images/QualYQualX.png" width=59px;> <span class="tooltipimagetext">Y is a single categorical variable of interest, like gender. X is another categorical variable of interest, like “hair color”. This type of data would help us understand if men or women are more likely to have certain hair colors than the other gender.</span></p>
+</div>
+<div id="caterogical-y-categorical-x" class="section level2 tabset tabset-pills">
+<h2>Caterogical Y | Categorical X</h2>
+<div id="graphics-8" class="section level3">
+<h3>Graphics</h3>
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+<p>Add your own notes about graphics to use for this type of data here.</p>
+<p><a href="GraphicalSummaries.html#bar-charts"> <img class="myhover" src="Images/barplot.png" alt="Bar Chart" title="Bar Chart"> </a></p>
+<!--- End of Add content area.  ------------------>
+</div>
+</div>
+<div id="tests-8" class="section level3">
+<h3>Tests</h3>
+<div style="padding-left:125px;color:lightgray;">
+<!-- Add your customizations in the area below: -->
+<p>Add your own notes about appropriate inferential procedures for this type of data here.</p>
+<!--- End of Add content area.  ------------------>
+</div>
+</div>
+</div>
+</div>
+<div id="section-10" class="section level1">
 <h1></h1>
 <div style="clear:both;">
 

@@ -11,6 +11,7 @@ title: "Chi-squared Tests"
 
 ```{r, include=FALSE}
 library(MASS)
+library(pander)
 ```
 
 
@@ -44,81 +45,16 @@ Typically, all expected counts are required to be 5 or greater for the test to b
 
 **Console** Help Command: `?chisq.test()`
 
+##### To Run the Test
+
 `chisq.test(x)`
 
-`x` must be a matrix or a table
+`x` must be a table or a matrix.
 
 
-* To make a matrix:
-      
-<a href="javascript:showhide('matrix1')">
-<div class="hoverchunk">
-<span class="tooltipr">
-x
-  <span class="tooltiprtext">The name of your created matrix to go in the `chisq.test()` code.</span>
-</span><span class="tooltipr">
-&nbsp;<-&nbsp;
-  <span class="tooltiprtext">This is the "left arrow" assignment operator that stores the results of your `cbind()` code into `x`.</span>
-</span><span class="tooltipr">
-cbind(
-  <span class="tooltiprtext">cbind stands for"column bind" and is a function that joins together different c() vectors to make them become columns of a table.</span>
-</span><span class="tooltipr">
-column1,
-  <span class="tooltiprtext">The first column you  want in the matrix. It can be either a vector c() or a variable called from a dataset using \$.</span>
-</span><span class="tooltipr">
-&nbsp;column2,
-  <span class="tooltiprtext">The sescond column you  want in the matrix. It can be either a vector c() or a variable called from a dataset using \$</span>
-</span><span class="tooltipr">
-&nbsp;... column n)
-  <span class="tooltiprtext">You can use any number of columns.</span>
-</span>
-</div>
-</a>
+###### To Make a Table
 
-<div id="matrix1" style="display:none;">
-
-```{r, echo=FALSE}
-x <- cbind('Farm 1' = c(Pigs = 10, Cats = 5, Dogs = 28, Roosters = 3), 'Farm 2' = c(Pigs = 15, Cats = 3, Dogs = 8, Roosters = 1))
-x
-```
-
-</div>
-      
-<a href="javascript:showhide('matrix2')">
-<div class="hoverchunk">
-<span class="tooltipr">
-x
-  <span class="tooltiprtext">The name of your created matrix to go in the `chisq.test()` code.</span>
-</span><span class="tooltipr">
-&nbsp;<-&nbsp;
-  <span class="tooltiprtext">This is the "left arrow" assignment operator that stores the results of your `rbind()` code into `x`.</span>
-</span><span class="tooltipr">
-rbind(
-  <span class="tooltiprtext">rbind stands for"row bind" and is a function that joins together different c() vectors to make them become rows of a table.</span>
-</span><span class="tooltipr">
-row1,
-  <span class="tooltiprtext">The first row you  want in the matrix. It can be either a vector c() or a variable called from a dataset using \$.</span>
-</span><span class="tooltipr">
-&nbsp;row2,
-  <span class="tooltiprtext">The second row you  want in the matrix. It can be either a vector c() or a variable called from a dataset using \$.</span>
-</span><span class="tooltipr">
-&nbsp;... row n)
-  <span class="tooltiprtext">You can use any number of rows.</span>
-</span>
-</div>
-</a>    
-    
-<div id="matrix2" style="display:none;">
-
-```{r, echo=FALSE}
-x <- rbind('Farm 1' = c(Pigs = 10, Cats = 5, Dogs = 28, Roosters = 3), 'Farm 2' = c(Pigs = 15, Cats = 3, Dogs = 8, Roosters = 1))
-x
-```
-
-</div>    
-    
-    
-* To make a table:
+If you have a data set that you want to turn into a table, use the table command.      
       
 <a href="javascript:showhide('table')">
 <div class="hoverchunk">
@@ -132,10 +68,10 @@ x
 table(
   <span class="tooltiprtext">table is an R function used to tabulate how many times each value occrus in a given dataset.</span>
 </span><span class="tooltipr">
-Dataset\$Variable,
+Dataset\$FirstVariable,
   <span class="tooltiprtext">Use your dataset to call in a row variable.</span>
 </span><span class="tooltipr">
-&nbsp;Dataset\$variable)
+&nbsp;Dataset\$SecondVariable)
   <span class="tooltiprtext">Use your dataset to call in a column variable.</span>
 </span>
 </div>
@@ -143,13 +79,108 @@ Dataset\$Variable,
     
 <div id="table" style="display:none;">
 
+```{r}
+x <- table(mtcars$am, mtcars$cyl)
+pander(x)
+
+#Rename rows and columns of your table:
+rownames(x) <- c("Automatic", "Manual")
+colnames(x) <- c("4 cyl", "6 cyl", "8 cyl")
+pander(x)
+```
+
+</div>
+<span style="font-size:.8em;">*Click open the example code above for details on how to rename rows and columns in a table.*</span>
+
+<br/>
+
+###### To Make a Matrix
+
+If you have tally counts of your observations, enter them into RStudio using a matrix.
+      
+<a href="javascript:showhide('matrix1')">
+<div class="hoverchunk">
+<span class="tooltipr">
+x
+  <span class="tooltiprtext">The name of your created matrix to go in the `chisq.test()` code.</span>
+</span><span class="tooltipr">
+&nbsp;<-&nbsp;
+  <span class="tooltiprtext">This is the "left arrow" assignment operator that stores the results of your `cbind()` code into `x`.</span>
+</span><span class="tooltipr">
+cbind(
+  <span class="tooltiprtext">cbind stands for"column bind" and is a function that joins together different c() vectors to make them become columns of a table.</span>
+</span><span class="tooltipr">
+\`Farm 1\` = 
+  <span class="tooltiprtext">The name of the first column you  want in the matrix. To include spaces in the name, use the back-ticks \` and \`.</span>
+</span><span class="tooltipr">
+&nbsp;c(Pigs = 10, Cats = 5, Dogs = 28, Roosters = 3),
+  <span class="tooltiprtext">Specify each of the values by name in a c(...) function to be stored in your first column, in this case, `Farm 1`.</span>
+</span><span class="tooltipr">
+&nbsp;\`Farm 2\` = 
+  <span class="tooltiprtext">The name of the second column you  want in the matrix.</span>
+</span><span class="tooltipr">
+&nbsp;c(Pigs = 15, Cats = 3, Dogs = 8, Roosters = 1)
+  <span class="tooltiprtext">Each new column must contain entries for each named element. Technically, you can leave off the names in all but the first column as only the names from the first column will be used.</span>
+</span><br/><span class="tooltipr">
+pander(x)
+  <span class="tooltiprtext">Print the matrix to the screen using pander(...).</span>
+</span>
+</div>
+</a>
+
+<div id="matrix1" style="display:none;">
+
 ```{r, echo=FALSE}
-table(mtcars$am, mtcars$cyl)
+x <- cbind('Farm 1' = c(Pigs = 10, Cats = 5, Dogs = 28, Roosters = 3), 'Farm 2' = c(Pigs = 15, Cats = 3, Dogs = 8, Roosters = 1))
+pander(x)
 ```
 
 </div>
 
+Or, notice how you could rbind instead with slightly different results...
+      
+<a href="javascript:showhide('matrix2')">
+<div class="hoverchunk">
+<span class="tooltipr">
+x
+  <span class="tooltiprtext">The name of your created matrix to go in the `chisq.test()` code.</span>
+</span><span class="tooltipr">
+&nbsp;<-&nbsp;
+  <span class="tooltiprtext">This is the "left arrow" assignment operator that stores the results of your `cbind()` code into `x`.</span>
+</span><span class="tooltipr">
+rbind(
+  <span class="tooltiprtext">rbind stands for"row bind" and is a function that joins together different c() vectors to make them become rows of a table.</span>
+</span><span class="tooltipr">
+\`Farm 1\` = 
+  <span class="tooltiprtext">The name of the first column you  want in the matrix. To include spaces in the name, use the back-ticks \` and \`.</span>
+</span><span class="tooltipr">
+&nbsp;c(Pigs = 10, Cats = 5, Dogs = 28, Roosters = 3),
+  <span class="tooltiprtext">Specify each of the values by name in a c(...) function to be stored in your first column, in this case, `Farm 1`.</span>
+</span><span class="tooltipr">
+&nbsp;\`Farm 2\` = 
+  <span class="tooltiprtext">The name of the second column you  want in the matrix.</span>
+</span><span class="tooltipr">
+&nbsp;c(Pigs = 15, Cats = 3, Dogs = 8, Roosters = 1)
+  <span class="tooltiprtext">Each new column must contain entries for each named element. Technically, you can leave off the names in all but the first column as only the names from the first column will be used.</span>
+</span><br/><span class="tooltipr">
+pander(x)
+  <span class="tooltiprtext">Print the matrix to the screen using pander(...).</span>
+</span>
+</div>
+</a>
 
+<div id="matrix2" style="display:none;">
+
+```{r, echo=FALSE}
+x <- rbind('Farm 1' = c(Pigs = 10, Cats = 5, Dogs = 28, Roosters = 3), 'Farm 2' = c(Pigs = 15, Cats = 3, Dogs = 8, Roosters = 1))
+pander(x)
+```
+
+</div>
+    
+    
+
+<br/>
 
 ##### Diagnostics 
 
@@ -179,7 +210,7 @@ x)
 <td>
 <span class="tooltiprout">
  Pearson's Chi-squared test
-    <span class="tooltiprouttext">EXPLANATION.</span>
+    <span class="tooltiprouttext">The name of the test being performed.</span>
 </span>
 </td>
 </tr>
@@ -195,15 +226,15 @@ x)
 </td><td>
   <span class="tooltiprout">
     X-squared = 9.2956,
-      <span class="tooltiprouttext">EXPLANATION.</span>
+      <span class="tooltiprouttext">The test statistic of the test follows a chi-squared distribution with the given degrees of freedom. See the end of the "Making Inference" page of the book to learn more about the Chi-squared Parametric Distribution.</span>
 </td><td>
   <span class="tooltiprout">
     &nbsp;df = 3,
-      <span class="tooltiprouttext">EXPLANATION.</span>
+      <span class="tooltiprouttext">The degrees of freedom of the test. It is found by (number of rows - 1)x(number of columns - 1)</span>
 </td><td>
   <span class="tooltiprout">
     &nbsp;p-value = 0.02561
-      <span class="tooltiprouttext">EXPLANATION.</span>
+      <span class="tooltiprouttext">The p-value of the test is found by computing the probability of being more extreme than given test statistic. In R, you can compute this yourself using the code pchisq(9.2956, 3, lower.tail=FALSE).</span>
 </td>
 </tr>
 </table>
@@ -220,7 +251,7 @@ yourNamedTestResults
   <span class="tooltiprtext">This allows you to access various elements from the test that was performed.</span>
 </span><span class="tooltipr">
 expected
-  <span class="tooltiprtext">EXPLANATION.</span>
+  <span class="tooltiprtext">The expected counts of the chi-squared test. These are computed for each observed count by using the equation (row tota)*(column total)/(total total).</span>
 </span>
 </div>
 </a> 
@@ -310,6 +341,7 @@ expected
 
 </div>
 
+<br/>
 
 ##### Interpretation: Pearson Residuals
 
@@ -565,7 +597,7 @@ knitr::kable(tmp$residuals)
 </table>
 
 <div style="padding-left:125px;">
-**Examples**: [StudentRatings](./Analyses/Chi Squared Tests/Examples/Math325StudentRatings.html) | [HairEyeColor](./Analyses/Chi Squared Tests/Examples/HairEyeColorChiSquaredTest.html)
+**Examples**: [movies](./Analyses/Chi Squared Tests/Examples/movies.html) | [StudentRatings](./Analyses/Chi Squared Tests/Examples/Math325StudentRatings.html) | [HairEyeColor](./Analyses/Chi Squared Tests/Examples/HairEyeColorChiSquaredTest.html)
 </div>
 
 ----

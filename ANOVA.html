@@ -20,6 +20,7 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
@@ -230,6 +231,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -345,10 +349,31 @@ $(document).ready(function () {
       <a href="./Analyses/StudentHousingPOOR.html">Poor Example Analysis</a>
     </li>
     <li>
-      <a href="./Analyses/Rent.html">Rent Analysis</a>
+      <a href="./Analyses/Rent.html">Rent</a>
     </li>
     <li>
-      <a href="./Analyses/Stephanie.html">Stephanie Analysis</a>
+      <a href="./Analyses/Stephanie.html">Stephanie</a>
+    </li>
+    <li>
+      <a href="./Analyses/t Tests/HighSchoolSeniors.html">High School Seniors</a>
+    </li>
+    <li>
+      <a href="./Analyses/Wilcoxon Tests/RecallingWords.html">Recalling Words</a>
+    </li>
+    <li>
+      <a href="./Analyses/ANOVA/DayCare.html">Day Care</a>
+    </li>
+    <li>
+      <a href="./Analyses/Linear Regression/MySimpleLinearRegression.html">My Simple Linear Regression</a>
+    </li>
+    <li>
+      <a href="./Analyses/Linear Regression/CarPrices.html">Car Prices</a>
+    </li>
+    <li>
+      <a href="./Analyses/Logistic Regression/MyLogisticRegression.html">My Logistic Regression</a>
+    </li>
+    <li>
+      <a href="./Analyses/Chi Squared Tests/MyChiSquaredTest.html">My Chi-sqaured Test</a>
     </li>
   </ul>
 </li>
@@ -362,6 +387,14 @@ $(document).ready(function () {
 
 <div class="fluid-row" id="header">
 
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
 
 
 <h1 class="title toc-ignore">Analysis Of Variance (ANOVA)</h1>
@@ -373,6 +406,20 @@ $(document).ready(function () {
  function showhide(id) {
     var e = document.getElementById(id);
     e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+ }
+ 
+ function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
  }
 </script>
 <hr />
@@ -393,20 +440,20 @@ Note: A factor is defined as a qualitative variable containing at least two cate
 <p>An ANOVA is only appropriate when all of the following are satisfied.</p>
 <ol style="list-style-type: decimal">
 <li><p>The sample(s) of data can be considered to be representative of their population(s).</p></li>
-<li><p>The data is normally distributed in each group. (This can safely be assumed to be satisfied when the <em>residuals</em> from the ANOVA are normally distributed.)</p></li>
-<li><p>The population variance of each group can be assumed to be the same. (This can be safely assumed to be satisfied when the <em>residuals</em> from the ANOVA show constant variance, i.e., are similarly spread out.)</p></li>
+<li><p>The data is normally distributed in each group. (This can safely be assumed to be satisfied when the <em>residuals</em> from the ANOVA can be assumed to be normally distributed when seen in a Q-Q Plot.)</p></li>
+<li><p>The population variance of each group can be assumed to be the same. (This can be safely assumed to be satisfied when the <em>residuals</em> from the ANOVA show constant variance, i.e., are similarly vertically spread out in a Residuals versus fitted-values plot.)</p></li>
 </ol>
 <p><strong>Hypotheses</strong></p>
 <p>For a One-way ANOVA</p>
 <p><span class="math display">\[
-  H_0: \alpha_1 = \alpha_2 = \ldots = 0
+  H_0: \mu_1 = \mu_2 = \ldots = 0
 \]</span> <span class="math display">\[
-  H_a: \alpha_i \neq 0 \ \text{for at least one} \ i
+  H_a: \mu_i \neq 0 \ \text{for at least one} \ i
 \]</span></p>
 <p><strong>Mathematical Model</strong></p>
 <p>A typical model for a one-way ANOVA is of the form <span class="math display">\[
-  Y_{ij} = \mu + \alpha_i + \epsilon_{ij}
-\]</span> where <span class="math inline">\(\mu\)</span> is the grand mean, <span class="math inline">\(\alpha_i\)</span> is a factor with at least two levels, and <span class="math inline">\(\epsilon_{ijk} \sim N(0,\sigma^2)\)</span> is the error term.</p>
+  Y_{ij} = \mu_i + \epsilon_{ij}
+\]</span> where <span class="math inline">\(\mu_i\)</span> is the mean for level (group) <span class="math inline">\(i\)</span>, and <span class="math inline">\(\epsilon_{ij} \sim N(0,\sigma^2)\)</span> is the error term for each point <span class="math inline">\(j\)</span> within level (group) <span class="math inline">\(i\)</span>.</p>
 <hr />
 </div>
 </div>
@@ -414,20 +461,20 @@ Note: A factor is defined as a qualitative variable containing at least two cate
 <h4>R Instructions</h4>
 <div style="padding-left:125px;">
 <p><strong>Console</strong> Help Command: <code>?aov()</code></p>
-<p><code>myaov &lt;- aov(y ~ A, data=YourDataSet)</code> <strong>Perform the ANOVA</strong></p>
+<p><code>myaov &lt;- aov(Y ~ X, data=YourDataSet)</code> <strong>Perform the ANOVA</strong></p>
 <p><code>summary(myaov)</code> <strong>View the ANOVA Results</strong></p>
 <p><code>plot(myaov, which=1:2)</code> <strong>Check ANOVA Assumptions</strong></p>
 <ul>
 <li><code>myaov</code> is some name you come up with to store the results of the <code>aov()</code> test.</li>
-<li><code>y</code> must be a “numeric” vector of the quantitative response variable.</li>
-<li><code>A</code> is a qualitative variable (should have <code>class(A)</code> equal to <code>factor</code> or <code>character</code>. If it does not, use <code>as.factor(A)</code> inside the <code>aov()</code> command.</li>
+<li><code>Y</code> must be a “numeric” vector of the quantitative response variable.</li>
+<li><code>X</code> is a qualitative variable (should have <code>class(X)</code> equal to <code>factor</code> or <code>character</code>. If it does not, use <code>as.factor(X)</code> inside the <code>aov(Y ~ as.factor(X),...)</code> command.</li>
 <li><code>YourDataSet</code> is the name of your data set.</li>
 </ul>
 <p><strong>Example Code</strong></p>
 <p>Hover your mouse over the example codes to learn more.</p>
 <a href="javascript:showhide('oneWayAnova')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> chick.aov &lt;-  <span class="tooltiprtext"> Saves the results of the ANOVA test as an object named ‘chick.aov’.</span> </span><span class="tooltipr"> aov( <span class="tooltiprtext">‘aov()’ is a function in R used to perform the ANOVA.</span> </span><span class="tooltipr"> weight <span class="tooltiprtext">‘weight’ is a numeric variable from the chickwts dataset.</span> </span><span class="tooltipr">  ~  <span class="tooltiprtext">‘~’ is the tilde symbol used to separate the left- and right-hand side in a model formula.</span> </span><span class="tooltipr"> feed, <span class="tooltiprtext"> ‘feed’ is a qualitative variable in the chickwts dataset. </span> </span><span class="tooltipr">  data = chickwts) <span class="tooltiprtext"> ‘chickwts’ is a dataset in R.</span> </span><br><span class="tooltipr"> summary( <span class="tooltiprtext"> ‘summary()’ shows the results of the ANOVA.</span> </span><span class="tooltipr"> chick.aov) <span class="tooltiprtext"> ‘chick.aov’ is the name of the ANOVA.</span> </span><span class="tooltipr">     <br />
+<p><span class="tooltipr"> chick.aov &lt;-  <span class="tooltiprtext"> Saves the results of the ANOVA test as an object named ‘chick.aov’.</span> </span><span class="tooltipr"> aov( <span class="tooltiprtext">‘aov()’ is a function in R used to perform the ANOVA.</span> </span><span class="tooltipr"> weight <span class="tooltiprtext">Y is ‘weight’, which is a numeric variable from the chickwts dataset.</span> </span><span class="tooltipr">  ~  <span class="tooltiprtext">‘~’ is the tilde symbol used to separate the Y and X in a model formula.</span> </span><span class="tooltipr"> feed, <span class="tooltiprtext">X is ‘feed’, which is a qualitative variable in the chickwts dataset, or more specifically, a factor with six levels: “casein”, “horsebean”, and so on… Use str(chickwts) to see this. </span> </span><span class="tooltipr">  data = chickwts) <span class="tooltiprtext"> ‘chickwts’ is a dataset in R.</span> </span><br><span class="tooltipr"> summary( <span class="tooltiprtext"> ‘summary()’ shows the results of the ANOVA.</span> </span><span class="tooltipr"> chick.aov) <span class="tooltiprtext"> ‘chick.aov’ is the name of the ANOVA.</span> </span><span class="tooltipr">     <br />
 <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to View Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
@@ -678,33 +725,73 @@ r_{ik} = y_{ik} - \bar{y}_{i\bullet}
 <div id="two-way-anova" class="section level3 tabset tabset-fade tabset-pills">
 <h3>Two-way ANOVA</h3>
 <div style="float:left;width:125px;" align="center">
-<p><img src="Images/QuantYQualXg3plus.png" width=58px;></p>
+<p><img src="Images/QuantYMultQualX.png" width=80px;></p>
 </div>
 <div id="overview-1" class="section level4">
 <h4>Overview</h4>
 <div style="padding-left:125px;">
+<p>A two-way ANOVA is only appropriate when all of the following are satisfied.</p>
+<ol style="list-style-type: decimal">
+<li><p>The sample(s) of data can be considered to be representative of their population(s).</p></li>
+<li><p>The data is normally distributed in each group. (This can safely be assumed to be satisfied when the <em>residuals</em> from the ANOVA are normally distributed.)</p></li>
+<li><p>The population variance of each group can be assumed to be the same. (This can be safely assumed to be satisfied when the <em>residuals</em> from the ANOVA show constant variance, i.e., are similarly vertically spread out.)</p></li>
+</ol>
 <p><strong>Hypotheses</strong></p>
-<p>With a two-way ANOVA there are three sets of hypotheses.</p>
-<p>One for the first factor: <span class="math display">\[
-  H_0: \alpha_1 = \alpha_2 = \ldots = 0
-\]</span> <span class="math display">\[
-  H_a: \alpha_i \neq 0 \ \text{for at least one} \ i
-\]</span></p>
-<p>One for the second factor: <span class="math display">\[
-  H_0: \beta_1 = \beta_2 = \ldots = 0
-\]</span> <span class="math display">\[
-  H_a: \beta_j \neq 0 \ \text{for at least one} \ j
-\]</span></p>
-<p>One for the interaction of the two factors: <span class="math display">\[
-  H_0: \text{The effect of} \ \alpha \ \text{is the same for all levels of} \ \beta
-\]</span> <span class="math display">\[
-  H_a: \text{The effect of} \ \alpha \ \text{is different for at least one level of} \ \beta
-\]</span></p>
-<p><strong>Mathematical Model</strong></p>
+<p>With a two-way ANOVA there are three sets of hypotheses. Writing out the hypotheses can be very involved depending on whether you use the official “effects model” notation (very mathematically correct) or a simplified “means model” notation (which isn’t very mathematically correct, but gets the idea across in an acceptable way).</p>
+<div class="tab">
+<p><button class="tablinks" onclick="openTab(event, 'meansModel')">Means Model</button> <button class="tablinks" onclick="openTab(event, 'effectsModel')">Effects Model</button></p>
+</div>
+<div id="meansModel" class="tabcontent" style="display:block;">
+<p>
+<ol style="list-style-type: decimal">
+<li>The first set of hypotheses are a “one-way” set of hypotheses for the first <em>factor</em> of the ANOVA. Factor: <code>X1</code> with say, levels <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</li>
+</ol>
 <p><span class="math display">\[
+  H_0: \mu_A = \mu_B = \mu
+\]</span> <span class="math display">\[
+  H_a: \mu_A \neq \mu_B 
+\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>The second set of hypotheses are also a “one-way” set of hypotheses, but for the second <em>factor</em> of the ANOVA. Factor: <code>X2</code> with say, levels <span class="math inline">\(C\)</span>, <span class="math inline">\(D\)</span>, and <span class="math inline">\(E\)</span>. <span class="math display">\[
+  H_0: \mu_C = \mu_D = \mu_E = \mu
+\]</span> <span class="math display">\[
+  H_a: \mu_i \neq \mu \ \text{for at least one}\ i\in\{1=C,2=D,3=E\}
+\]</span></p></li>
+<li><p>The third set of hypotheses are the most interesting hypotheses in a two-way ANOVA. These are called the <em>interaction hypotheses</em>. They test to see if the levels of one of the factors, say <span class="math inline">\(X1\)</span>, impact <span class="math inline">\(Y\)</span> differently for the differing levels of the other factor, <span class="math inline">\(X2\)</span>. The hypotheses read formally as</p></li>
+</ol>
+<p><span class="math display">\[
+  H_0: \text{The effect of the first factor on Y} \\ \text{is the same for all levels of the second factor.}
+\]</span> <span class="math display">\[
+  H_a: \text{The effect of the first factor on Y is not the same} \\ \text{for all levels of the second factor.}
+\]</span></p>
+</p>
+</div>
+<div id="effectsModel" class="tabcontent">
+<p>
+<p>A mathematically correct way to state the two-way ANOVA model is with the equation <span class="math display">\[
   Y_{ijk} = \mu + \alpha_i + \beta_j + \alpha\beta_{ij} + \epsilon_{ijk}
-\]</span> where <span class="math inline">\(\mu\)</span> is the grand mean, <span class="math inline">\(\alpha_i\)</span> is one factor with at least two levels, <span class="math inline">\(\beta_j\)</span> is another factor with at least two levels, <span class="math inline">\(\alpha\beta_{ij}\)</span> is the interaction of the two factors, and <span class="math inline">\(\epsilon_{ijk} \sim N(0,\sigma^2)\)</span> is the error term.</p>
-<p>Note that more than two factors are allowed, i.e., more than <span class="math inline">\(\alpha_i\)</span> and <span class="math inline">\(\beta_j\)</span>, and is sometimes called three-way ANOVA, four-way ANOVA, and so on. It is not required to include interaction terms, like <span class="math inline">\(\alpha\beta_{ij}\)</span>. The error term <span class="math inline">\(\epsilon\)</span> is always required.</p>
+\]</span> In this model, <span class="math inline">\(\mu\)</span> is the grand mean (which is the average Y-value ignoring all information contained in the factors); <span class="math inline">\(\alpha_i\)</span> is the first factor <span class="math inline">\(X1\)</span> with levels <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> (though there could be more levels in <span class="math inline">\(X1\)</span> depending on your data); <span class="math inline">\(\beta_j\)</span> is the second factor with levels <span class="math inline">\(C\)</span>, <span class="math inline">\(D\)</span>, and <span class="math inline">\(E\)</span> (though there could be fewer or more levels to this factor depending on your data); <span class="math inline">\(\alpha\beta_{ij}\)</span> is the interaction of the two factors which has <span class="math inline">\(2\times3=6\)</span> (may differ for your data) levels; and <span class="math inline">\(\epsilon_{ijk} \sim N(0,\sigma^2)\)</span> is the normally distributed error term for each point <span class="math inline">\(k\)</span> found within level <span class="math inline">\(i\)</span> of <span class="math inline">\(X1\)</span> and level <span class="math inline">\(j\)</span> of <span class="math inline">\(X2\)</span>.</p>
+<p>This model allows us to more formally state the hypotheses as</p>
+<ol style="list-style-type: decimal">
+<li><p>First factor <span class="math inline">\(X1\)</span> having say, levels <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. <span class="math display">\[
+  H_0: \alpha_A = \alpha_B = 0
+\]</span> <span class="math display">\[
+  H_a: \alpha_i \neq 0 \ \text{for at least one}\ i\in\{1=A,2=B\}
+\]</span></p></li>
+<li><p>Second factor <span class="math inline">\(X2\)</span> with say, levels <span class="math inline">\(C\)</span>, <span class="math inline">\(D\)</span>, and <span class="math inline">\(E\)</span>. <span class="math display">\[
+  H_0: \beta_C = \beta_D = \beta_E = 0
+\]</span> <span class="math display">\[
+  H_a: \beta_j \neq 0 \ \text{for at least one}\ j\in\{1=C,2=D,3=E\}
+\]</span></p></li>
+<li><p>Does the effect of the first factor (<span class="math inline">\(X1\)</span>) change for the different levels of the second factor (<span class="math inline">\(X2\)</span>)? In other words, is there an interaction between the two factors <span class="math inline">\(X1\)</span> and <span class="math inline">\(X2\)</span>?</p></li>
+</ol>
+<p><span class="math display">\[
+  H_0: \alpha\beta_{ij} = 0 \ \text{for all } i,j
+\]</span> <span class="math display">\[
+  H_a: \alpha\beta_{ij} \neq 0 \ \text{for at least one } i,j
+\]</span></p>
+</p>
+</div>
 <hr />
 </div>
 </div>
@@ -712,23 +799,23 @@ r_{ik} = y_{ik} - \bar{y}_{i\bullet}
 <h4>R Instructions</h4>
 <div style="padding-left:125px;">
 <p><strong>Console</strong> Help Command: <code>?aov()</code></p>
-<p><code>myaov &lt;- aov(y ~ A+B+A:B, data=YourDataSet)</code> <strong>Perform the ANOVA</strong></p>
+<p><code>myaov &lt;- aov(Y ~ X1+X2+X1:X2, data=YourDataSet)</code> <strong>Perform the ANOVA</strong></p>
 <p><code>summary(myaov)</code> <strong>View the ANOVA Results</strong></p>
 <p><code>plot(myaov, which=1:2)</code> <strong>Check ANOVA assumptions</strong></p>
 <ul>
 <li><code>myaov</code> is some name you come up with to store the results of the <code>aov()</code> test.</li>
-<li><code>y</code> must be a “numeric” vector of the quantitative response variable.</li>
-<li><code>A</code> is a qualitative variable (should have <code>class(A)</code> equal to <code>factor</code> or <code>character</code>. If it does not, use <code>as.factor(A)</code> inside the <code>aov()</code> command.</li>
-<li><code>B</code> is a second qualitative variable that should also be either a <code>factor</code> or a <code>character</code> vector.</li>
-<li>Note that factors <code>C</code>, <code>D</code>, and so on could also be added <code>+</code> to the model if desired.</li>
-<li><code>A:B</code> denotes the interaction of the factors <code>A</code> and <code>B</code>. It is not required and should only be included if the interaction term is of interest.</li>
+<li><code>Y</code> must be a “numeric” vector of the quantitative response variable.</li>
+<li><code>X1</code> is a qualitative variable (should have <code>class(X1)</code> equal to <code>factor</code> or <code>character</code>. If it does not, use <code>as.factor(X1)</code> inside the <code>aov()</code> command.</li>
+<li><code>X2</code> is a second qualitative variable that should also be either a <code>factor</code> or a <code>character</code> vector.</li>
+<li>Note that factors <code>X3</code>, <code>X4</code>, and so on could also be added <code>+</code> to the model if desired, but this would create a three-way, or four-way ANOVA model, and so on.</li>
+<li><code>X1:X2</code> denotes the interaction of the factors <code>X1</code> and <code>X2</code>. It is not required, but is usually included.</li>
 <li><code>YourDataSet</code> is the name of your data set.</li>
 </ul>
 <p><strong>Example Code</strong></p>
 <p>Hover your mouse over the example codes to learn more.</p>
 <a href="javascript:showhide('twoWayAnova')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> warp.aov &lt;-  <span class="tooltiprtext"> Saves the results of the ANOVA test as an object named ‘warp.aov’.</span> </span><span class="tooltipr"> aov( <span class="tooltiprtext">‘aov()’ is a function in R used to perform the ANOVA.</span> </span><span class="tooltipr"> breaks <span class="tooltiprtext">‘breaks’ is a numeric variable from the warpbreaks dataset.</span> </span><span class="tooltipr">  ~  <span class="tooltiprtext">‘~’ is the tilde symbol used to separate the left- and right-hand side in a model formula.</span> </span><span class="tooltipr"> wool  <span class="tooltiprtext"> ‘wool’ is a qualitative variable in the warpbreaks dataset. </span> </span><span class="tooltipr"> + tension  <span class="tooltiprtext"> ‘tension’ is another qualitative variable in the warpbreaks dataset. </span> </span><span class="tooltipr"> + wool:tension, <span class="tooltiprtext"> The interaction of wool and tension. </span> </span><span class="tooltipr">  data = warpbreaks) <span class="tooltiprtext"> ‘warpbreaks’ is a dataset in R.</span> </span><br><span class="tooltipr"> summary( <span class="tooltiprtext"> ‘summary()’ shows the results of the ANOVA.</span> </span><span class="tooltipr"> warp.aov) <span class="tooltiprtext"> ‘warp.aov’ is the name of the ANOVA.</span> </span><span class="tooltipr">     <br />
+<p><span class="tooltipr"> warp.aov &lt;-  <span class="tooltiprtext"> Saves the results of the ANOVA test as an object named ‘warp.aov’.</span> </span><span class="tooltipr"> aov( <span class="tooltiprtext">‘aov()’ is a function in R used to perform the ANOVA.</span> </span><span class="tooltipr"> breaks <span class="tooltiprtext"><span class="math inline">\(Y\)</span> is ‘breaks’, which is a numeric variable from the warpbreaks dataset.</span> </span><span class="tooltipr">  ~  <span class="tooltiprtext">‘~’ is the tilde symbol used to separate the left- and right-hand side in a model formula.</span> </span><span class="tooltipr"> wool  <span class="tooltiprtext">The first factor <span class="math inline">\(X1\)</span> is ‘wool’, which is a qualitative variable in the warpbreaks dataset. In this case, <code>wool</code> is a factor with two levels. Use str(warpbreaks) to see this. </span> </span><span class="tooltipr"> + tension  <span class="tooltiprtext">The second factor <span class="math inline">\(X2\)</span> is ‘tension’, which is another qualitative variable in the warpbreaks dataset. In this case, <code>tension</code> is a factor with three levels. Use str(warpbreaks) to see this.</span> </span><span class="tooltipr"> + wool:tension, <span class="tooltiprtext"> The interaction of the two factors: wool and tension. </span> </span><span class="tooltipr">  data = warpbreaks) <span class="tooltiprtext"> ‘warpbreaks’ is a dataset in R.</span> </span><br><span class="tooltipr"> summary( <span class="tooltiprtext"> ‘summary()’ shows the results of the ANOVA.</span> </span><span class="tooltipr"> warp.aov) <span class="tooltiprtext"> ‘warp.aov’ is the name of the ANOVA.</span> </span><span class="tooltipr">     <br />
 <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to View Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
@@ -807,17 +894,17 @@ r_{ik} = y_{ik} - \bar{y}_{i\bullet}
 <h4>R Instructions</h4>
 <div style="padding-left:125px;">
 <p><strong>Console</strong> Help Command: <code>?aov()</code></p>
-<p><code>myaov &lt;- aov(y ~ Block+A+B+A:B, data=YourDataSet)</code> <strong>Perform the test</strong></p>
+<p><code>myaov &lt;- aov(Y ~ Block+X1+X2+X1:X2, data=YourDataSet)</code> <strong>Perform the test</strong></p>
 <p><code>summary(myaov)</code> <strong>View the ANOVA Results</strong></p>
 <p><code>plot(myaov, which=1:2)</code> <strong>Check ANOVA assumptions</strong></p>
 <ul>
 <li><code>myaov</code> is some name you come up with to store the results of the <code>aov()</code> test.</li>
-<li><code>y</code> must be a “numeric” vector of the quantitative response variable.</li>
+<li><code>Y</code> must be a “numeric” vector of the quantitative response variable.</li>
 <li><code>Block</code> is a qualitative variable that is not of direct interest, but is included in the model to account for variability in the data. It should have <code>class(Block)</code> equal to either factor or character. Use <code>as.factor()</code> if it does not.</li>
-<li><code>A</code> is a qualitative variable (should have <code>class(A)</code> equal to <code>factor</code> or <code>character</code>. If it does not, use <code>as.factor(A)</code> inside the <code>aov()</code> command.</li>
-<li><code>B</code> is a second qualitative variable that should also be either a <code>factor</code> or a <code>character</code> vector. If it does not, use <code>as.factor(B)</code>.</li>
+<li><code>X1</code> is a qualitative variable (should have <code>class(X1)</code> equal to <code>factor</code> or <code>character</code>. If it does not, use <code>as.factor(X1)</code> inside the <code>aov()</code> command.</li>
+<li><code>X2</code> is a second qualitative variable that should also be either a <code>factor</code> or a <code>character</code> vector. If it does not, use <code>as.factor(X2)</code>.</li>
 <li>Note that factors <code>C</code>, <code>D</code>, and so on could also be added <code>+</code> to the model if desired.</li>
-<li><code>A:B</code> denotes the interaction of the factors <code>A</code> and <code>B</code>. It is not required and should only be included if the interaction term is of interest.</li>
+<li><code>X1:X2</code> denotes the interaction of the factors <code>X1</code> and <code>X2</code>. It is not required and should only be included if the interaction term is of interest.</li>
 <li><code>YourDataSet</code> is the name of your data set.</li>
 </ul>
 <hr />
@@ -867,6 +954,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

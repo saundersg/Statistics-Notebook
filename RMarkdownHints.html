@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
@@ -325,6 +328,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -332,6 +398,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -437,10 +513,31 @@ $(document).ready(function () {
       <a href="./Analyses/StudentHousingPOOR.html">Poor Example Analysis</a>
     </li>
     <li>
-      <a href="./Analyses/Rent.html">Rent Analysis</a>
+      <a href="./Analyses/Rent.html">Rent</a>
     </li>
     <li>
-      <a href="./Analyses/Stephanie.html">Stephanie Analysis</a>
+      <a href="./Analyses/Stephanie.html">Stephanie</a>
+    </li>
+    <li>
+      <a href="./Analyses/t Tests/HighSchoolSeniors.html">High School Seniors</a>
+    </li>
+    <li>
+      <a href="./Analyses/Wilcoxon Tests/RecallingWords.html">Recalling Words</a>
+    </li>
+    <li>
+      <a href="./Analyses/ANOVA/DayCare.html">Day Care</a>
+    </li>
+    <li>
+      <a href="./Analyses/Linear Regression/MySimpleLinearRegression.html">My Simple Linear Regression</a>
+    </li>
+    <li>
+      <a href="./Analyses/Linear Regression/CarPrices.html">Car Prices</a>
+    </li>
+    <li>
+      <a href="./Analyses/Logistic Regression/MyLogisticRegression.html">My Logistic Regression</a>
+    </li>
+    <li>
+      <a href="./Analyses/Chi Squared Tests/MyChiSquaredTest.html">My Chi-sqaured Test</a>
     </li>
   </ul>
 </li>
@@ -462,32 +559,39 @@ $(document).ready(function () {
 
 
 <p>Think of an <code>R Markdown File</code>, or <code>Rmd</code> for short, as a command center. You write commands, then Knit the file, and an html output file is created according to your commands.</p>
+<div id="overview" class="section level1">
+<h1>Overview</h1>
 <div id="section" class="section level2 tabset tabset-pills tabset-fade">
 <h2></h2>
-<div id="hide-cheatsheet" class="section level3">
-<h3>Hide Cheatsheet</h3>
-</div>
-<div id="show" class="section level3">
-<h3>Show</h3>
+<div id="click-here-to-learn-more" class="section level3">
+<h3>Click Here to Learn More</h3>
 <p>Carefully read through all parts of this image to learn…</p>
 <p><img src="Images/Rmd2html.png" /></p>
+</div>
+<div id="close" class="section level3">
+<h3>Close</h3>
 </div>
 </div>
 <div id="section-1" class="section level2">
 <h2></h2>
-<p>The above tabs were created with the code:</p>
+<hr />
+<p>The above tabs (blue bottons that read “Click Here to Learn More” and “Close”) were created with the code:</p>
 <pre><code>## {.tabset .tabset-pills .tabset-fade}
 
-### Hide Cheatsheet
+### Click Here to Learn More
 
-### Show
+Carefully read through all parts of this image to learn...
 
-Text and image were placed here...
+![](./Images/Rmd2html.png)
+
+### Close
 
 ##</code></pre>
+<hr />
 </div>
-<div id="creating-links" class="section level2">
-<h2>Creating Links</h2>
+</div>
+<div id="creating-links" class="section level1">
+<h1>Creating Links</h1>
 <p>To make a link use the code <code>[Name of Link](addressForLink)</code>.</p>
 <p>Linking to parts of your textbook:</p>
 <ul>
@@ -500,8 +604,8 @@ Text and image were placed here...
 <li><code>[R Colors](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)</code> <em>becomes</em> <a href="http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf">R Colors</a></li>
 </ul>
 </div>
-<div id="creating-headers" class="section level2">
-<h2>Creating Headers</h2>
+<div id="creating-headers" class="section level1">
+<h1>Creating Headers</h1>
 <p>There are six available sizes of headings you can use in an Rmd file (left in image) that show up as shown below (right in image).</p>
 <p><img src="Images/Rmd2html_Headers.png" /></p>
 <p><br /></p>
@@ -513,8 +617,8 @@ Text and image were placed here...
 </div>
 <div id="bullet-points" class="section level1">
 <h1>Bullet Points</h1>
-<div id="simple-lists" class="section level4">
-<h4>Simple Lists</h4>
+<div id="simple-lists" class="section level2">
+<h2>Simple Lists</h2>
 <div style="float:left;width:300px;">
 <p>To achieve the result:</p>
 <ul>
@@ -537,8 +641,8 @@ Text and image were placed here...
 
 </div>
 </div>
-<div id="numbered-lists" class="section level4">
-<h4>Numbered Lists</h4>
+<div id="numbered-lists" class="section level2">
+<h2>Numbered Lists</h2>
 <div style="float:left;width:300px;">
 <p>To achieve the result:</p>
 <ol style="list-style-type: decimal">
@@ -561,8 +665,8 @@ Text and image were placed here...
 
 </div>
 </div>
-<div id="lettered-lists" class="section level4">
-<h4>Lettered Lists</h4>
+<div id="lettered-lists" class="section level2">
+<h2>Lettered Lists</h2>
 <div style="float:left;width:300px;">
 <p>To achieve the result:</p>
 <ol style="list-style-type: upper-alpha">
@@ -585,8 +689,8 @@ Text and image were placed here...
 
 </div>
 </div>
-<div id="nested-lists" class="section level4">
-<h4>Nested Lists</h4>
+<div id="nested-lists" class="section level2">
+<h2>Nested Lists</h2>
 <div style="float:left;width:300px;">
 <ol style="list-style-type: decimal">
 <li><p>What is <span class="math inline">\(2+2\)</span>?</p>
@@ -619,19 +723,19 @@ Text and image were placed here...
 <div id="math-equations" class="section level1">
 <h1>Math Equations</h1>
 <p>Use the dollar signs <code>$x=5$</code> to write <span class="math inline">\(x=5\)</span> or <code>$z=\frac{x-\mu}{\sigma}$</code> to write <span class="math inline">\(z=\frac{x-\mu}{\sigma}\)</span>. For a nicely centered equation use the double dollar signs <code>$$ $$</code> on separate lines</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">$</span><span class="er">$</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="st">  </span>z =<span class="st"> </span>\frac{\bar{x}<span class="op">-</span>\mu}{\frac{\sigma}{\sqrt{n}}}</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="op">$</span><span class="er">$</span></span></code></pre></div>
+<pre><code>$$
+  z = \frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}
+$$</code></pre>
 <p>to get <span class="math display">\[
   z = \frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}
 \]</span></p>
 <p>Or</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">$</span><span class="er">$</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="st">  </span>H_<span class="dv">0</span><span class="op">:</span><span class="st"> </span>\mu_<span class="dv">1</span> =<span class="st"> </span>\mu_<span class="dv">2</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="op">$</span><span class="er">$</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="er">$$</span><span class="st"> </span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="st">  </span>H_a<span class="op">:</span><span class="st"> </span>\mu_<span class="dv">1</span> \neq \mu_<span class="dv">2</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="op">$</span><span class="er">$</span></span></code></pre></div>
+<pre><code>$$
+  H_0: \mu_\text{Group 1} = \mu_\text{Group 2}
+$$
+$$ 
+  H_a: \mu_\text{Group 1} \neq \mu_\text{Group 2}
+$$</code></pre>
 <p>to get <span class="math display">\[
   H_0: \mu_{\text{Group 1}} = \mu_{\text{Group 2}}
 \]</span> <span class="math display">\[ 
@@ -784,6 +888,8 @@ Text and image were placed here...
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -816,6 +922,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
