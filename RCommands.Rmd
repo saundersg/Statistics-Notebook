@@ -396,7 +396,7 @@ mean(
   <span class="tooltipRtext">The `mean` function computes the mean of a column of quantitative data.</span>
 </span><span class="tooltipr">
 airquality
-  <span class="tooltipRtext">The `airqaulity` dataset. This could be the name of any dataset instead of `airquality`.</span>
+  <span class="tooltipRtext">The `airquality` dataset. This could be the name of any dataset instead of `airquality`.</span>
 </span><span class="tooltipr">
 $
   <span class="tooltipRtext"> Grabs the column, or variable, from the dataset to be used. This is typically used when computing say the mean (or other statistic) of a single column of the data. </span>
@@ -1235,8 +1235,8 @@ KidsBigLength <-&nbsp;
 select(KidsFeet, &nbsp;
   <span class="tooltipRtext">"select" is a function from library(tidyverse) that selects out specified columns from the original dataset in the order specified.</span>
 </span><span class="tooltipr">
-c(name, length)
-  <span class="tooltipRtext">The columns of the KidsFeet dataset that we want to select out of the original dataset. Notice how the concatenation function `c(...)` is used to list out the columns we want.</span>
+c(biggerfoot, length)
+  <span class="tooltipRtext">The columns of the KidsFeet dataset that we want to select out of the original dataset. The order in which columns are selected is the order in which they are placed in the new data set.</span>
 </span><span class="tooltipr">
 ) 
   <span class="tooltipRtext">Always close off your functions in R with a closing parathesis.</span>

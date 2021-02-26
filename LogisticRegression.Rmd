@@ -98,7 +98,7 @@ The coefficents $\beta_0$ and $\beta_1$ are difficult to interpret directly. Typ
 
 ----
 
-**Examples:** [challenger](./Analyses/Logistic Regression/Examples/challengerLogisticReg.html) | [mouse](./Analyses/Logistic Regression/Examples/mouse.html) 
+**Examples:** [challenger](./Analyses/Logistic Regression/Examples/challengerLogisticReg.html) | [mouse](./Analyses/Logistic Regression/Examples/mouseLogisticReg.html) 
 
 ----
 

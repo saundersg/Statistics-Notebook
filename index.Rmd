@@ -43,6 +43,9 @@ Or to a page on the internet: [R Colors](http://www.stat.columbia.edu/~tzheng/fi
 
 
 
+```{r}
+mean(airquality$Temp)
+```
 
 
 
@@ -121,6 +124,8 @@ Add your own notes about appropriate inferential procedures for this type of dat
 <!--- End of Add content area.  ------------------>
 </div>
 
+
+
 #
 <div style="clear:both;"></div>
 
@@ -177,10 +182,9 @@ Add your own notes about graphics to use for this type of data here.
 
 
 
-
-
 <!--- End of Add content area.  ------------------>
 </div>
+
 
 
 
