@@ -29,14 +29,6 @@ output:
 </script>
 
 
-<!-- Find some data of interest to you that can be analyzed with a logistic regression. Complete your Logistic Regression Analysis using this file. 
-
-Hint, run the command 
-
-> data() 
-
-in your Console to see available datasets in R that you could use for this Analysis. You are also welcome to collect data yourself, or find other available datasets online for this Analysis. Just be careful to not use anyone else's "analysis" for this Analysis. Also, no conducting surveys unless you have IRB approval to do so. -->
-
 ```{r, include=FALSE}
 library(mosaic)
 library(ResourceSelection) 
@@ -47,7 +39,7 @@ library(tidyverse)
 library(dplyr)
 library(plotly)
 
-Analysis <- read_csv("../../../Data/mouse.csv")
+Analysis <- read_csv("LogisticRegression - Original.csv")
 Analysis2 <- filter(Analysis, CoefficientK > 2)
 Analysis2<- select(Analysis2, "Mouse", "CoefficientK", "Death")
 
@@ -63,13 +55,13 @@ pander(summary(myglm))
 
 In scientific research, animals are frequently used for testing certain hypotheses and getting answers to important questions. Many times an animal will have to undergo a surgery or a stereotaxic injection to get insight into an existing problem. When that happens, the Animal Welfare Act (AWA)[^1] requires the use of anesthesia during such procedures. Not only it is a morally good idea for an animal to not feel pain, but it is also often imperative that an animal does not move during the procedure so that certain precision could be achieved. However, as with any medical procedures, certain risks come with the use of anesthesia that could vary from mild swelling at the injection site or to a severe shock or death. 
 
-One of the many reasons an animal can die from an anesthetic is an overdose. An animal will not always be knocked out by the first dosage of an analgesic drug, either due to some tolerance to the drug or due to poor quality of the anesthetic itself (sometimes the quality is not good even though the expiration date or a manufacturer does not indicate so). As such, one of the most widely used anesthetic agents on animals is a mix of Ketamine[^2] and Xylozine[^3]. If an animal is not knocked out after the first dosage of the Ketamine-Xylozine mix (which is suggested to be 75‐150 mg/kg and 16‐20 mg/kg [^4 respectively]), an additional 25-50% of the initial Ketamine dose needs to be administrated as is suggested by [JAALAS](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4253583/). However, the question remains, when should one stop after the first dosage was injected to administer the drug to prevent death if it is obvious that it is not working on that animal? The data coming from my notes during my internship in the research lab in the Bohomolets Institute of Physiology of NAS of Ukraine in 2019 was taken to answer that question (click on "The Data" tab for further details). 
+One of the many reasons an animal can die from an anesthetic is an overdose. An animal will not always be knocked out by the first dosage of an analgesic drug, either due to some tolerance to the drug or due to poor quality of the anesthetic itself (sometimes the quality is not good even though the expiration date or a manufacturer does not indicate so). As such, one of the most widely used anesthetic agents on animals is a mix of Ketamine[^2] and Xylozine[^3]. If an animal is not knocked out after the first dosage of the Ketamine-Xylozine mix (which is suggested to be 75‐150 mg/kg and 16‐20 mg/kg respectively)[^4], an additional 25-50% of the initial Ketamine dose needs to be administrated as is suggested by [JAALAS](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4253583/). However, the question remains, when should one stop after the first dosage was injected to administer the drug to prevent death if it is obvious that it is not working on that animal? The data coming from my notes during my internship in a research lab in Ukraine was taken to answer that question (click on "The Data" tab for further details). 
 
 
 
 <br/>
 <center>
-<img src="../../../Images/KetamineCol.jpg" style="width:700px;border:2px white;border-radius:5px;">
+<img src="newmousecollage.jpg" style="width:700px;border:2px white;border-radius:5px;">
 </center>
 <br/>
 
@@ -108,6 +100,9 @@ pander(Analysis2)
 
 Since in this study I am interested in how the probability ($\pi_i$) of death changes given the observed Ketamine dosage coefficient, the following Logistic Regression model is going to be used:
 
+<div style="font-size:0.8em;">Note: "Simple Logistic Regression is used when the response variable is binary ($Y_i=0$ or $1$), and
+there is a single explanatory variable $X$ that is typically quantitative but could be qualitative (if $X$ is binary or ordinal)"([Garrett Saunders](https://www.linkedin.com/in/garrett-saunders-337754123)). In our case mouse's death is the binary response variable and the Ketamine dosage coefficient is the quantitative explanatory variable.</div>
+
 $$
   P(Y_i = 1|x_i) = \frac{e^{\beta_0+\beta_1 x_i}}{1+e^{\beta_0 + \beta_1 x_i}} = \pi_i
 $$
@@ -136,7 +131,7 @@ Let's first see if our data resembles the Logistic Regression mathematical model
 Here is the plot of our data:
 
 ```{r}
-plot(Death~CoefficientK, data = Analysis2,  pch=16, main = "Bohomolets Institute of Physiology of Ukraine\n Anesthesia for Adult Mice", xlab = "Ketamine Dosage Coefficient for a Body of Weight of a Mouse", ylab = "Probability of Mouse's Death", col ="firebrick")
+plot(Death~CoefficientK, data = Analysis2,  pch=16, main = "Institute of Physiology\nAnesthesia of Adult Mice", xlab = "Ketamine Dosage Coefficient for a Body of Weight of a Mouse", ylab = "Probability of Mouse's Death", col ="firebrick")
 curve(exp(-2.911+0.4286*x)/(1+exp(-2.911+0.4286*x)), add = TRUE)
 ```
 
