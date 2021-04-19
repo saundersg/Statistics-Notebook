@@ -56,6 +56,8 @@ navbar:
           href: ./Analyses/Wilcoxon Tests/RecallingWords.html
         - text: "Day Care"
           href: ./Analyses/ANOVA/DayCare.html
+        - text: "Food"
+          href: ./Analyses/Kruskal-Wallis/Food.html
         - text: "My Simple Linear Regression"
           href: ./Analyses/Linear Regression/MySimpleLinearRegression.html
         - text: "Car Prices"
