@@ -53,6 +53,7 @@ To calculate a mean in R use the code:
 `mean(object)`
 
 * `object` must be a quantitative variable, what R calls a "numeric vector." Usually this is a column from a data set.
+* Use `na.rm=TRUE` if there are missing values in `object` so that the code reads `mean(object, na.rm=TRUE)`. 
 
 
 <br>
@@ -97,6 +98,13 @@ mean(airquality$Temp)
 
 Note that the single number showing above is the average `Temp` from the `airquality` dataset.
 </div>
+
+
+
+
+
+
+
 
 
 
@@ -176,6 +184,58 @@ airquality %>%
 ```
 
 </div>
+
+<br/>
+
+A note about missing values in data...
+
+<a href="javascript:showhide('mean1b')">
+<div class="hoverchunk">
+<span class="tooltipr">
+mean
+  <span class="tooltiprtext">"mean" is an R function used to calculate the mean of data.</span>
+</span><span class="tooltipr">
+(
+  <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span>
+</span><span class="tooltipr">
+airquality
+  <span class="tooltiprtext">"airquality" is a dataset. Type "View(airquality)" in R to see it.</span>
+</span><span class="tooltipr">
+$
+  <span class="tooltiprtext">The $ allows us to access any variable from the airquality dataset.</span>
+</span><span class="tooltipr">
+Ozone
+  <span class="tooltiprtext">"Ozone" is a quantitative variable (numeric vector) from the "airquality" dataset.</span>
+</span><span class="tooltipr">
+,&nbsp;
+  <span class="tooltiprtext">The comma allows us to specify optional commands.</span>
+</span><span class="tooltipr">
+na.rm=TRUE
+  <span class="tooltiprtext">Missing values are called "NA" in R. If data contains missing values, `mean(...)` will give "NA" as the result unless we "remove" (rm) the "NA" (na) values.</span>
+</span><span class="tooltipr">
+)  
+  <span class="tooltiprtext">Closing parenthsis for the mean function.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">
+&nbsp;...&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="mean1b" style="display:none;">
+```{r, echo=FALSE}
+mean(airquality$Ozone, na.rm=TRUE)
+```
+
+Note that the single number showing above is the average `Ozone` from the `airquality` dataset. Because the `Ozone` column had missing values, we had to use the option `na.rm=TRUE` to get the mean to calculate. If we had left it off, we would have gotten an "NA" result:
+
+```{r}
+mean(airquality$Ozone)
+```
+</div>
+
 
 
 
