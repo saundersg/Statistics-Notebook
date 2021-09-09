@@ -21,7 +21,7 @@ library(tidyverse)
 # the top right corner of this gray R-Chunk. 
 
 ## Wide data from original article:
-late <- read.csv("../../Data/late.csv", header=TRUE) 
+late <- read.csv("../../../Data/late.csv", header=TRUE) 
 
 ## Change to "long" data for use in R:
 Late <- pivot_longer(late, #Start with wide data set late
@@ -35,11 +35,7 @@ Late <- pivot_longer(late, #Start with wide data set late
 
 
 
-----
-
 <!--If you want to give your critiquers some ideas about what you have questions on and would like help with, place those details here.-->
-
-**Comments to Critiquers:** 
 
 
 
@@ -50,18 +46,7 @@ Late <- pivot_longer(late, #Start with wide data set late
 
 ## Background {.tabset .tabset-fade}
 
-### Overview
-<!-- Be sure to add your own background here before beginning the Analysis. -->
 
-
-
-
-
-
-
-<!--End your background before here.-->
-<!--Click the little black arrow to 
-the left to expand/hide these next sections.-->
 ### Study Details
 
 <div style="color:#a8a8a8;">
@@ -81,7 +66,7 @@ The overall period of the study was 20 weeks. In the first 4 weeks we
 simply recorded the number of parents who arrived late each week. At the
 beginning of the fifth week, we introduced a fine in six of the 10 day-care centers, which had been selected randomly. The announcement of the fine was made with a note posted on the bulletin board of the day-care center. Parents tend to look at this board every day, since important announcements are posted there. The announcement specified that the fine would be NIS 10 for a delay of 10 minutes or more. The fine was per child; thus, if parents had two children in the center and they came late, they had to pay NIS 20. Payment was made to the principal of the day-care center at the end of the month. Since monthly payments are made to the owner during the year, the fines were added to those amounts. The money was paid to the owner, rather then to the teacher who was staying late (and did not get any additional money). The teachers were informed of the fine but not of the study. Registering the names of parents who came late was a common practice in any case.
 
-At the beginning of the seventeenth week, the fine was removed with no explanation. Notice of the cancellation was posted on the board. If parents asked why the fines were removed, the principals were instructed to reply that the fine had been a trial for a limited time and that the results of this trial were now being evaluated.
+At the beginning of the seventeenth (17th) week, the fine was removed with no explanation. Notice of the cancellation was posted on the board. If parents asked why the fines were removed, the principals were instructed to reply that the fine had been a trial for a limited time and that the results of this trial were now being evaluated.
 
 A comparison with other fines in Israel may give an idea of the size of
 the penalty that was introduced. A fine of NIS 10 is relatively small but not insignificant. In comparison, the fine for illegal parking is NIS 75; the fine for driving through a red light is NIS 1,000 plus penalties; the fine for not collecting the droppings of a dog is NIS 360. For many of these violations, however, detection and enforcement are low or, as in the case of dog dirt, nonexistent in practice. A baby-sitter earns between NIS 15 and NIS 20 per hour. The average gross salary per month in Israel at the time of the study was NIS 5,595.
@@ -92,7 +77,7 @@ the penalty that was introduced. A fine of NIS 10 is relatively small but not in
 ### The Data (Wide)
 
 
-The `late` Day Care Center data is shown here in the "wide data format". 
+The `late` Day Care Center data is shown here in the "wide data format" that was provided by the authors of the original research article. But this format is not terribly useful for an ANOVA analysis.
 
 ```{r, out.width=300}
 #Show the full width of the "Wide" version of the late data:
@@ -102,7 +87,7 @@ pander(late, split.tables = Inf)
 
 ### The Data (Long)
 
-The `Late` Day Care Center data is shown here in the "long data format".
+The `Late` Day Care Center data is shown here in the "long data format", a more useable format for analysis.
 
 ```{r}
 pander(Late)
@@ -111,11 +96,44 @@ pander(Late)
 
  
 ##  
-<!-- You can begin writing again after here.-->
+
+
+----
 
 
 
-## Analysis
+## Analysis {.tabset .tabset-fade}
+
+### Hypotheses
+
+<!-- State the hypotheses for this analysis in this section. -->
+
+
+
+### Two-way ANOVA 
+
+<!-- Show the two-way ANOVA summary output in this section. -->
+
+
+
+
+### Graphics & Numerical Summaries
+
+<!-- Show the three graphics of the two-way ANOVA in this section and provide a supporting table of numerical summaries for each graphic. -->
+
+
+
+
+
+### Conclusions
+
+<!-- Interpret the results of the study. Use specific details in your writing like mentioning the actual amount of the fine and the relative cost to babysitting. Mention the average number of late children before the fine, during the fine, and after the fine was removed. -->
+
+
+
+### Diagnostic Plots
+
+<!-- Provide some discussion about how appropriate the ANOVA analysis was for this data. Include the residuals vs. fitted values plot and the Q-Q Plot of residuals. -->
 
 
 

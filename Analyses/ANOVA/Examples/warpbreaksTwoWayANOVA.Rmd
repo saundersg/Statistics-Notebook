@@ -163,13 +163,29 @@ plot(warp.aov, which=1:2, pch=16)
 The following graphics emphasize the results of each of the three hypothesis tests.
 
 
-#### Wool Type
+#### Wool Type {.tabset .tabset-pills}
 
 This first graphic is colored gray to emphasize that the `wool` factor is not significant. In other words, the average number of breaks does not seem to be effected by the type of wool used in the loom. However, if a choice *must* be made on the wool type, we could gamble on Type B being the better choice with an average of 25.26 breaks while Type A wool resulted in 31.04 breaks on average. We just don't have statistical evidence to actually make the conclusion that this pattern would hold for future studies (p-value = 0.05821).
 
-```{r}
-xyplot(breaks ~ wool, data=warpbreaks, type=c("p","a"), main="Nonsignificance of Wool", col='gray') 
+##### xyplot 
 
+```{r}
+xyplot(breaks ~ wool, data=warpbreaks, type=c("p","a"), main="You Can Use Either Type of Wool", col='gray', xlab="Type of Wool", ylab="Number of Warps that Broke") 
+```
+
+##### ggplot
+
+```{r}
+ggplot(warpbreaks, aes(x=wool, y=breaks, group=1)) +
+  geom_point(color="gray") +
+  stat_summary(fun="mean", geom="line") +
+  labs(title="You Can Use Either Type of Wool", x="Type of Wool", y="Number of Warps that Broke") +
+  theme_bw()
+```
+
+####
+
+```{r}
 warpbreaks %>%
   group_by(wool) %>%
   summarise(`Mean Warp Breaks`=mean(breaks)) %>%
@@ -177,31 +193,64 @@ warpbreaks %>%
 ```
 
 
-#### Tension Level
+#### Tension Level {.tabset .tabset-pills}
 
 This second graphic demonstrates that in general, the higher the tension the fewer number of breaks. This is somewhat counter-intuitive, but the result is significant and shows that the average breaks drops to 22 at the highest level of tension, but is as much as 36 at the lowest level of tension. Whether or not there is an advantage of High Tension over Medium Tension is unclear currently. Further testing would be required to reach a firm conclusion.
 
-```{r}
-xyplot(breaks ~ tension, data=warpbreaks, type=c("p","a"), main="Significance of Tension") 
+##### xyplot
 
-warpbreaks %>%
-  group_by(tension) %>%
-  summarise(`Mean Warp Breaks`=mean(breaks)) %>%
-  pander(caption="Mean Warp Breaks according to Tensiol Level")
+```{r}
+xyplot(breaks ~ tension, data=warpbreaks, type=c("p","a"), main="Higher Tension Seems Best", xlab="Tension Level (Low, Medium, High)", ylab="Number of Warps that Broke") 
 ```
 
-#### Tension Choices Depending on Wool Type
+##### ggplot
+
+```{r}
+ggplot(warpbreaks, aes(x=tension, y=breaks, group=1)) +
+  geom_point(color="steelblue") +
+  stat_summary(fun="mean", geom="line") +
+  labs(title="Higher Tension Seems Best", x="Tension Level (Low, Medium, High)", y="Number of Warps that Broke") +
+  theme_bw()
+```
+
+####
+
+```{r}
+warpbreaks %>%
+  group_by(tension) %>%
+  summarise(`Mean Warp Breaks`=mean(breaks), .groups="drop") %>%
+  pander(caption="Mean Warp Breaks according to Tension Level")
+```
+
+#### Tension Choices Depending on Wool Type {.tabset .tabset-pills}
 
 As stated previously, the type of wool used is really up to the manufacturer. Neither wool type (A or B) shows significant advantage over the other. In our particular study, Type B was lower, but not significantly so. However, it turns out that the choice of Wool used does have a determining factor on which Tension level should be selected.
 
 As shown in the graph below, the Medium or High Tension levels are equally acceptable when using Type A Wool. But when using Type B Wool, it is recommended that only the High Tension level is used. The overall fewest breaks are likely achieved by the High Tension, Type B Wool situation, which results in only 18.78 breaks on average. However, if Type A Wool is desired, then either Medium or High Tension levels achieved similar results with 24 to 25 breaks on average. Both of these values came in lower than the Type B Wool on either Medium or Low Tension settings (28 to 29 breaks on average).
 
+##### xyplot
+
 ```{r}
 xyplot(breaks ~ tension, data=warpbreaks, groups=wool, type=c("p","a"), main="Significance of the Interaction", auto.key=list(corner=c(1,1)))
+```
 
+
+##### ggplot
+
+```{r}
+ggplot(warpbreaks, aes(x=tension, y=breaks, group=wool, color=wool)) +
+  geom_point() +
+  stat_summary(fun="mean", geom="line") +
+  labs(title="Higher Tension Seems Best", x="Tension Level (Low, Medium, High)", y="Number of Warps that Broke") +
+  theme_bw()
+```
+
+####
+
+```{r}
 warpbreaks %>%
   group_by(wool, tension) %>%
-  summarise(ave=mean(breaks)) %>%
+  summarise(ave=mean(breaks), .groups="drop") %>%
   spread(tension, ave) %>%
   pander(caption="Mean Warp Breaks according to Wool Type (A,B) and Tension Level (Low, Medium, High)")
 ```

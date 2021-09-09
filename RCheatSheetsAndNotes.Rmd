@@ -37,26 +37,7 @@ Add your own notes here...
 
 
 ```{r, eval=FALSE}
-set.seed(15)
 
-#Step 1
-myTest <- t.test(length ~ sex, data=KidsFeet)
-observedTestStat <- myTest$statistic
-observedTestStat
-
-#Step 2
-N <- 2000
-permutedTestStats <- rep(NA, 2000)
-for (i in 1:N){
-  permutedData <- sample(KidsFeet$length)
-  permutedTest <- t.test(permutedData ~ sex, data=KidsFeet)
-  permutedTestStats[i] <- permutedTest$statistic
-}
-hist(permutedTestStats)
-abline(v=observedTestStat, col="red")
-
-#Step 3
-2*sum(permutedTestStats >= observedTestStat)/N
 ```
 
 
