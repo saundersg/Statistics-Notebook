@@ -13,31 +13,56 @@
 
 <title>Statistics Notebook</title>
 
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -57,7 +82,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {  background-color: #f8f8f8; }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -110,39 +135,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   }
 })();
 </script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
@@ -153,10 +148,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -173,40 +164,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -234,7 +198,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -246,7 +210,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -257,10 +221,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -272,7 +249,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -476,7 +452,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -502,7 +478,7 @@ $(document).ready(function () {
 <!-- This is how to comment text out. You can comment out the above instructions if you wish. Comments allow the text to remain in the Rmd file, but not be displayed in the html file. -->
 </div>
 <div id="section" class="section level2 tabset tabset-fade">
-<h2></h2>
+<h2 class="tabset tabset-fade"></h2>
 <div id="hide" class="section level3">
 <h3>Hide</h3>
 </div>
@@ -512,7 +488,7 @@ $(document).ready(function () {
 <p>Wow! I typed some words. Some <span style="color:blue;">blue words</span>, some <span style="background-color:yellow;">highlighted words</span>, some <span style="font-size:2em;">big words</span>.</p>
 <p>Make a link to a meaningful page of the Statistics-Notebook: <a href="RMarkdownHints.html">Customization Help</a> &lt;- Read through this page!</p>
 <p>Or to a page on the internet: <a href="http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf">R Colors</a></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">mean</span>(airquality<span class="op">$</span>Temp)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(airquality<span class="sc">$</span>Temp)</span></code></pre></div>
 <pre><code>## [1] 77.88235</code></pre>
 <!-- End your notes before here. ------------------------------------- -->
 </div>
@@ -525,7 +501,7 @@ $(document).ready(function () {
 </div>
 </div>
 <div id="one-quantitative-response-variable-y" class="section level2 tabset tabset-pills">
-<h2>One Quantitative Response Variable Y</h2>
+<h2 class="tabset tabset-pills">One Quantitative Response Variable Y</h2>
 <div id="graphics" class="section level3">
 <h3>Graphics</h3>
 <div style="padding-left:125px;color:lightgray;">
@@ -554,7 +530,7 @@ $(document).ready(function () {
 <p><img src="Images/QuantYQualXg2.png" width=59px;> <span class="tooltipimagetext">Y is a single quantitative variable of interest. This would be like “heights” of BYU-Idaho students. X is a qualitative (categorical) variable of interest like “gender” that has just two groups “A” and “B”. So this logo represents situtations where we would want to compare heights of male (group A) and female (group B) students.</span></p>
 </div>
 <div id="quantitative-y-categorical-x-2-groups" class="section level2 tabset tabset-pills">
-<h2>Quantitative Y | Categorical X (2 Groups)</h2>
+<h2 class="tabset tabset-pills">Quantitative Y | Categorical X (2 Groups)</h2>
 <div id="graphics-1" class="section level3">
 <h3>Graphics</h3>
 <div style="padding-left:125px;color:lightgray;">
@@ -583,7 +559,7 @@ $(document).ready(function () {
 </div>
 </div>
 <div id="quantitative-y-categorical-x-3-groups" class="section level2 tabset tabset-pills">
-<h2>Quantitative Y | Categorical X (3+ Groups)</h2>
+<h2 class="tabset tabset-pills">Quantitative Y | Categorical X (3+ Groups)</h2>
 <div id="graphics-2" class="section level3">
 <h3>Graphics</h3>
 <div style="padding-left:125px;color:lightgray;">
@@ -613,7 +589,7 @@ $(document).ready(function () {
 <p><img src="Images/QuantYMultQualX.png" width=80px;> <span class="tooltipimagetext">Y is a single quantitative variable of interest, like “heights” of BYU-Idaho students. X1 is a categorical (qualitative) variable like gender, with levels “boy” and “girl.” X2 is another categorical (qualitative) variable like “Classrank” with levels “Freshman”, “Sophomore”, and “Junior”. Of course, both X1 and X2 can have as many levels as you want to work with, but must have at least two levels each.</span></p>
 </div>
 <div id="quantitative-y-multiple-categorical-x" class="section level2 tabset tabset-pills">
-<h2>Quantitative Y | Multiple Categorical X</h2>
+<h2 class="tabset tabset-pills">Quantitative Y | Multiple Categorical X</h2>
 <div id="graphics-3" class="section level3">
 <h3>Graphics</h3>
 <div style="padding-left:125px;color:lightgray;">
@@ -643,7 +619,7 @@ $(document).ready(function () {
 <p><img src="Images/QuantYQuantX.png" width=59px;> <span class="tooltipimagetext">Y is a single quantitative variable of interest, like “height”. X is another single quantitative variable of interest, like “shoe-size”. This would imply we are using “shoe-size” (X) to explain “height” (Y).</span></p>
 </div>
 <div id="quantitative-y-quantitative-x" class="section level2 tabset tabset-pills">
-<h2>Quantitative Y | Quantitative X</h2>
+<h2 class="tabset tabset-pills">Quantitative Y | Quantitative X</h2>
 <div id="graphics-4" class="section level3">
 <h3>Graphics</h3>
 <div style="padding-left:125px;color:lightgray;">
@@ -673,7 +649,7 @@ $(document).ready(function () {
 <p><img src="Images/QuantYMultX.png" width=100px;> <span class="tooltipimagetext">Y is a single quantitative variable of interest, like height. While we could use an X1 of “shoe-size” to explain height, we might also want to use a second x-variable, X2, like “gender” to help explain height. Further x-variables could also be used.</span></p>
 </div>
 <div id="quantitative-y-multiple-x" class="section level2 tabset tabset-pills">
-<h2>Quantitative Y | Multiple X</h2>
+<h2 class="tabset tabset-pills">Quantitative Y | Multiple X</h2>
 <div id="graphics-5" class="section level3">
 <h3>Graphics</h3>
 <div style="padding-left:125px;color:lightgray;">
@@ -703,7 +679,7 @@ $(document).ready(function () {
 <p><img src="Images/BinomYQuantX.png" width=59px;> <span class="tooltipimagetext">Y is a single categorical (qualitative) variable of interest where 1 (success) or 0 (failure) are the only possible values for Y. This would be like “getting an A in Math 325” where 1 means you got an A and 0 means you didn’t. We might use an explanatory variable X of “height” to see if taller students are more likely to get an A in Math 325 than shorter students. (They aren’t, if you were wondering.)</span></p>
 </div>
 <div id="binomial-y-quantitative-x" class="section level2 tabset tabset-pills">
-<h2>Binomial Y | Quantitative X</h2>
+<h2 class="tabset tabset-pills">Binomial Y | Quantitative X</h2>
 <div id="graphics-6" class="section level3">
 <h3>Graphics</h3>
 <div style="padding-left:125px;color:lightgray;">
@@ -733,7 +709,7 @@ $(document).ready(function () {
 <p><img src="Images/BinomYMultX.png" width=100px;> <span class="tooltipimagetext">Y is a single categorical (qualitative) variable of interest where 1 (success) or 0 (failure) are the only possible values for Y. This would be like “getting an A in Math 325” where 1 means you got an A and 0 means you didn’t. We might use an explanatory variable X1 of “height” and a second explanatory variable X2 of “gender” to try to predict whether or not a student will get an A in Math 325.</span></p>
 </div>
 <div id="binomial-y-multiple-x" class="section level2 tabset tabset-pills">
-<h2>Binomial Y | Multiple X</h2>
+<h2 class="tabset tabset-pills">Binomial Y | Multiple X</h2>
 <div id="graphics-7" class="section level3">
 <h3>Graphics</h3>
 <div style="padding-left:125px;color:lightgray;">
@@ -763,7 +739,7 @@ $(document).ready(function () {
 <p><img src="Images/QualYQualX.png" width=59px;> <span class="tooltipimagetext">Y is a single categorical variable of interest, like gender. X is another categorical variable of interest, like “hair color”. This type of data would help us understand if men or women are more likely to have certain hair colors than the other gender.</span></p>
 </div>
 <div id="caterogical-y-categorical-x" class="section level2 tabset tabset-pills">
-<h2>Caterogical Y | Categorical X</h2>
+<h2 class="tabset tabset-pills">Caterogical Y | Categorical X</h2>
 <div id="graphics-8" class="section level3">
 <h3>Graphics</h3>
 <div style="padding-left:125px;color:lightgray;">
@@ -802,7 +778,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -820,7 +796,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

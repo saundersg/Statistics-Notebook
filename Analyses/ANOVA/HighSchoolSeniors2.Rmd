@@ -1,0 +1,43 @@
+---
+title: "High School Seniors 2"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+
+```{r, warning=FALSE, message=FALSE}
+library(mosaic)
+library(DT)
+library(pander)
+library(car)
+library(tidyverse)
+
+# Read in the data
+HighSchoolSeniors <- read.csv("../../Data/HighSchoolSeniors.csv", header=TRUE) 
+
+
+```
+
+----
+
+
+<!-- Instructions:
+
+Use the HighSchoolSeniors data set to perform an interesting two-way ANOVA analysis. You'll need to study the data set to decide which variables are most interesting to you. You might look at what you did for the t-Test analysis, and dive more deeply into the questions you researched on that analysis.
+
+Here is a link to the survey given to the students that participated in the study:
+https://ww2.amstat.org/censusatschool/pdfs/C@SQuestionnaire.pdf
+(Use the link to learn about what each column of data in the data set represents.)
+
+Remember you need a Quantitative Y variable and two Qualitative explanatory variables (factors) to perform a two-way ANOVA.
+
+While you should use the warpbreaks and DayCare example analyses as your guide on how to properly complete this analysis, you should also be creative in your final delivery of this analysis. If you copy the format and approach of the example analyses, be sure to give credit in your document to these example analyses. You could write something like, "This work is modeled after the [warpbreaks](https://byuistats.github.io/Statistics-Notebook/Analyses/ANOVA/Examples/warpbreaksTwoWayANOVA.html) analysis." Whatever you do, DO NOT use any of the written statements from the example analyses in your analysis unless you quote them directly and give credit. Using someone else's writing as your own without giving credit to the original author is plagiarism and is an Honor Code Violation. So do your own work. Plus, the more you try to write things in your own words, the more you will learn. Also, note that there aren't really any "rules" about exactly how your document should be organized. So be creative and do something that makes sense to you.
+
+-->
+
+
+
+
+

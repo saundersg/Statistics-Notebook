@@ -8,6 +8,7 @@ output:
 
 
 ```{r, include=FALSE}
+library(tidyverse)
 library(mosaic)
 library(pander)
 ```
@@ -36,11 +37,14 @@ ClassSurvey <- read.csv("../../../Data/ClassSurvey.csv", header=TRUE)
 # hour, which is probably a typo and should be deleted.
 
 # Filter out the outlier:
-ClassSurvey <- subset(ClassSurvey, Wage<100)
+ClassSurvey <- filter(ClassSurvey, Wage<100)
 # xyplot(Wage ~ Rank, data=ClassSurvey, type=c("p"))
 
 # Filter out the missing Rank values:
-ClassSurvey <- droplevels(subset(ClassSurvey, Rank %in% c("FR","JR","SO","SR")))
+ClassSurvey <- filter(ClassSurvey, Rank %in% c("FR","JR","SO","SR")) %>%
+  droplevels() %>%
+  mutate(Rank = factor(Rank, levels=c("FR","SO","JR","SR")))
+
 # xyplot(Wage ~ Rank, data=ClassSurvey, type=c("p"))
 ```
 
@@ -58,7 +62,7 @@ Do they earn more as they gain more education?
 Side-by-side boxplots show that in the sample, the Freshman have the highest median wage, while the Sophomores and Seniors have fairly right-skewed distributions with some very high outliers. This suggest that the shape of the distribution of wages is potentially different for the various class ranks. It may be the case that Freshman hourly wages are left skewed, Junior wages are fairly normal, and Sophomore and Senior wages are right-skewed.
 
 ```{r}
-boxplot(Wage ~ as.character(Rank), data=ClassSurvey, col='grey', ylab="Hourly Wage", main="Math 221 Students")
+boxplot(Wage ~ Rank, data=ClassSurvey, col='grey', ylab="Hourly Wage", main="Math 221 Students", xlab="Class Rank")
 ```
 
 $$
@@ -66,6 +70,10 @@ $$
 $$ 
 $$
   H_a: \text{At least one distribution is stochastically different than the others.}
+$$
+
+$$
+  \alpha = 0.05
 $$
 
 <div style="font-size:.8em;color:#888888;">
@@ -76,11 +84,12 @@ According to the original authors, what the alternative to the Kruskal-Wallis te
 kruskal.test(Wage ~ Rank, data=ClassSurvey)
 ```
 
-<center>
+
 ```{r, commen=NA}
-pander(favstats(Wage ~ Rank, data=ClassSurvey)[,-10])
+favstats(Wage ~ Rank, data=ClassSurvey)[,-10] %>%
+  pander(caption="Math 221 Student Wage Summaries by Class Rank")
 ```
-</center>
+
 
 There is insufficient evidence to reject the null hypothesis that each of these represents a sample from the same distribution. We will continue to assume that the hourly wage distributions are the same across all class ranks.
 
@@ -96,6 +105,7 @@ hist(ClassSurvey$Wage, breaks=15, col='sandybrown', xlab="Hourly Wage", main="BY
 
 <center>
 ```{r}
-pander(favstats(ClassSurvey$Wage)[-9], caption="Numerical Summaries of Hourly Wages")
+favstats(ClassSurvey$Wage)[-9] %>%
+  pander(caption="Summaries of BYU-I Students' Hourly Wages")
 ```
 </center>

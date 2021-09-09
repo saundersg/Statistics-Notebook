@@ -93,15 +93,6 @@ where $\mu_i$ is the mean for level (group) $i$, and $\epsilon_{ij} \sim N(0,\si
 
 **Console** Help Command: `?aov()`
 
-
-
-`myaov <- aov(Y ~ X, data=YourDataSet)` **Perform the ANOVA**
-
-`summary(myaov)` **View the ANOVA Results**
-
-`plot(myaov, which=1:2)` **Check ANOVA Assumptions**  
-
-
 * `myaov` is some name you come up with to store the results of the `aov()` test.
 * `Y` must be a "numeric" vector of the quantitative response variable.
 * `X` is a qualitative variable (should have `class(X)` equal to `factor` or `character`. If it does not, use `as.factor(X)` inside the `aov(Y ~ as.factor(X),...)` command.
@@ -109,10 +100,30 @@ where $\mu_i$ is the mean for level (group) $i$, and $\epsilon_{ij} \sim N(0,\si
 
 
 
+**Perform the ANOVA**
+
+`myaov <- aov(Y ~ X, data=YourDataSet)` 
+
+`summary(myaov)` 
+
+
+**Diagnose ANOVA Assumptions**  
+
+`par(mfrow=c(1,2))`
+
+`plot(myaov, which=1:2)` 
+
+
+
+<br/>
+
 
 **Example Code** 
 
 Hover your mouse over the example codes to learn more.
+
+
+*Perform the ANOVA*
 
 <a href="javascript:showhide('oneWayAnova')">
 <div class="hoverchunk">
@@ -156,7 +167,10 @@ summary(chick.aov)
 ```
 
 </div>
+<br/>
 
+
+*Diagnose the ANOVA*
 
 <a href="javascript:showhide('oneWayAnovaCheck')">
 <div class="hoverchunk">
@@ -165,7 +179,7 @@ par(
 <span class="tooltiprtext">'par' is a R function that can be used to set or query graphical parameters.</span>
 </span><span class="tooltipr">
 mfrow&nbsp;=&nbsp;c(1,2))
-<span class="tooltiprtext">Parameter is being set. The first item inside the combine function c() is the number of rows and the second is the number of columns. </span>
+<span class="tooltiprtext">The `mfrow` parameter controls "multiple frames on a row". In this case, the c(1,2) specifies 1 row of 2 plots. This will cause the two diagnostic plots to be placed side-by-side. </span>
 </span><br><span class="tooltipr">
 plot(
 <span class="tooltiprtext">'plot' is a R function for the plotting of R objects.</span>
@@ -174,7 +188,7 @@ chick.aov,
   <span class="tooltiprtext">'chick.aov' is the name of the ANOVA.</span>
 </span><span class="tooltipr">
 &nbsp;which&nbsp;=&nbsp;1:2)
-  <span class="tooltiprtext">Will show the Residuals vs Fitted and the Normal QQ-plot to check the ANOVA assumptions.</span>
+  <span class="tooltiprtext">The `which=1:2` selects "which" of 6 available plots we want to have graphed. In this case, 1 shows the Residuals vs Fitted, and 2 shows the Normal QQ-plot. Both are needed to check the ANOVA assumptions.</span>
   </span><span class="tooltipr" style="float:right;font-size:.8em;">
 &nbsp;Click to View Output&nbsp; 
   <span class="tooltiprtext">Click to View Output.</span>
@@ -205,7 +219,7 @@ Analysis of variance (ANOVA) is often applied to the scenario of testing for the
 
 <br />
 
-#### One-Way ANOVA
+##### One-Way ANOVA
 
 One-way ANOVA is when a completely randomized design is used with a single factor of interest. A typical mathematical model for a one-way ANOVA is of the form
 $$

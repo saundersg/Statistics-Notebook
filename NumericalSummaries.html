@@ -13,47 +13,134 @@
 
 <title>Numerical Summaries</title>
 
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
-
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
 <style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
 </style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
@@ -64,10 +151,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -84,40 +167,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -145,7 +201,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -157,7 +213,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -168,10 +224,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -183,7 +252,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -309,13 +377,13 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
 <div id="TOC" class="tocify">
 </div>
 </div>
 
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
 
 
 
@@ -460,7 +528,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -479,7 +547,7 @@ div.tocify {
 <p>There are many ways to numerically summarize data. The fundamental idea is to describe the center, or most <em>probable</em> values of the data, as well as the spread, or the <em>possible</em> values of the data.</p>
 <hr />
 <div id="mean" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Mean</h3>
+<h3 class="tabset tabset-fade tabset-pills">Mean</h3>
 <div style="float:left;width:150px;">
 <p><span class="math display">\[
   \bar{x} = \frac{\sum_{i=1}^n x_i}{n}
@@ -500,6 +568,7 @@ div.tocify {
 <p><code>mean(object)</code></p>
 <ul>
 <li><code>object</code> must be a quantitative variable, what R calls a “numeric vector.” Usually this is a column from a data set.</li>
+<li>Use <code>na.rm=TRUE</code> if there are missing values in <code>object</code> so that the code reads <code>mean(object, na.rm=TRUE)</code>.</li>
 </ul>
 <p><br></p>
 <p><strong>Example Code</strong></p>
@@ -522,7 +591,6 @@ div.tocify {
 </div>
 </a>
 <div id="mean3" style="display:none;">
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <table style="width:25%;">
 <colgroup>
 <col width="11%" />
@@ -566,6 +634,21 @@ airquality %&gt;%
   summarise(aveTemp = mean(Temp)) %&gt;%
   pander()</code></pre>
 </div>
+<p><br/></p>
+<p>A note about missing values in data…</p>
+<a href="javascript:showhide('mean1b')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> mean <span class="tooltiprtext">“mean” is an R function used to calculate the mean of data.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the airquality dataset.</span> </span><span class="tooltipr"> Ozone <span class="tooltiprtext">“Ozone” is a quantitative variable (numeric vector) from the “airquality” dataset.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">The comma allows us to specify optional commands.</span> </span><span class="tooltipr"> na.rm=TRUE <span class="tooltiprtext">Missing values are called “NA” in R. If data contains missing values, <code>mean(...)</code> will give “NA” as the result unless we “remove” (rm) the “NA” (na) values.</span> </span><span class="tooltipr"> )<br />
+<span class="tooltiprtext">Closing parenthsis for the mean function.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+</div>
+</a>
+<div id="mean1b" style="display:none;">
+<pre><code>## [1] 42.12931</code></pre>
+<p>Note that the single number showing above is the average <code>Ozone</code> from the <code>airquality</code> dataset. Because the <code>Ozone</code> column had missing values, we had to use the option <code>na.rm=TRUE</code> to get the mean to calculate. If we had left it off, we would have gotten an “NA” result:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(airquality<span class="sc">$</span>Ozone)</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+</div>
 </div>
 <hr />
 </div>
@@ -573,18 +656,23 @@ airquality %&gt;%
 <h4>Explanation</h4>
 <div style="padding-left:150px;">
 <p>The mathematical formula used to compute the mean of data is given by the formula to the left. Although the formula looks complicated, all it states is “add all the data values up and divide by the total number of values.” Read on to learn what all the symbols in the formula represent.</p>
-<h5 id="symbols-in-the-formula">Symbols in the Formula</h5>
+<div id="symbols-in-the-formula" class="section level5">
+<h5>Symbols in the Formula</h5>
 <ul>
 <li><p><span class="math inline">\(\bar{x}\)</span> is read “x-bar” and is the symbol typically used for the <strong>sample mean</strong>, the mean computed on a <em>sample</em> of data from a population.</p></li>
 <li><p><span class="math inline">\(\Sigma\)</span>, the capital Greek letter “sigma,” is the symbol used to imply “add all of the data values up.”</p></li>
 <li><p>The <span class="math inline">\(x_i\)</span>’s are the data values. The <span class="math inline">\(i\)</span> in the <span class="math inline">\(x_i\)</span> is stated to go from <span class="math inline">\(i=1\)</span> all the way up to <span class="math inline">\(n\)</span>. In other words, data value 1 is represented by <span class="math inline">\(x_1\)</span>, data value 2: <span class="math inline">\(x_2\)</span>, <span class="math inline">\(\ldots\)</span>, up through the last data value <span class="math inline">\(x_n\)</span>. In general, we just write <span class="math inline">\(x_i\)</span>.</p></li>
 <li><p><span class="math inline">\(n\)</span> represents the sample size, or number of data values.</p></li>
 </ul>
-<h5 id="population-mean">Population Mean</h5>
+</div>
+<div id="population-mean" class="section level5">
+<h5>Population Mean</h5>
 <p>When <strong>all</strong> of the data from a population is available, the <strong>population mean</strong> is calculated instead of the sample mean. The mathematical formula for the <strong>population mean</strong> is the same as the formula for the sample mean, but is written with slightly different notation. <span class="math display">\[
   \mu = \frac{\sum_{i=1}^N x_i}{N}
 \]</span> Notice that the symbol for the population mean is <span class="math inline">\(\mu\)</span>, pronounced “mew,” another Greek letter. (Review your <a href="https://en.wikipedia.org/wiki/Greek_alphabet#Letters">Greek alphabet</a>.) The only other difference between the two formulas is that the sample mean uses a sample of data, denoted by <span class="math inline">\(n\)</span>, while the population mean uses all the population data, denoted by <span class="math inline">\(N\)</span>.</p>
-<h5 id="physicalinterpretation">Physical Interpretation</h5>
+</div>
+<div id="physicalinterpretation" class="section level5">
+<h5>Physical Interpretation</h5>
 <p>The mean is sometimes described as the “balance point” of the data. The following example will demonstrate.</p>
 <p>Say there are <span class="math inline">\(n=5\)</span> data points with the following values.</p>
 <ul>
@@ -597,10 +685,14 @@ airquality %&gt;%
 <p>The sample mean is calculated as follows. <span class="math display">\[
   \bar{x} = \frac{\sum_{i=1}^n x_i}{n} = \frac{2 + 5 + 6 + 7 + 10}{5} = 6
 \]</span> If these values were plotted, and an “infinitely thin bar” connected the points, then the bar would “balance” at the mean (the triangle) as shown below.</p>
-<p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<h5 id="deviations">Middle of the Deviations</h5>
+<p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="deviations" class="section level5">
+<h5>Middle of the Deviations</h5>
 <p>The above plot demonstrates that there are equal, but opposite, “sums of deviations” to either side of the mean. Note that a deviation is defined as the distance from the mean to a given point. Thus, <span class="math inline">\(x_1\)</span> has a deviation of -4 from the mean, <span class="math inline">\(x_2\)</span> a deviation of -1, <span class="math inline">\(x_3\)</span> a deviation of 0, <span class="math inline">\(x_4\)</span> a deviation of 1, and <span class="math inline">\(x_5\)</span> a deviation of 4. To the left there is a sum of deviations equal to -5 and on the right, a sum of deviations equal to 5. This can be verified to hold for any scenario.</p>
-<h5 id="outliers">Effect of Outliers</h5>
+</div>
+<div id="outliers" class="section level5">
+<h5>Effect of Outliers</h5>
 <p>The mean can be strongly influenced by <em>outliers</em>, points that deviate abnormally from the mean. This is shown below by changing <span class="math inline">\(x_5\)</span> to be 20. Note that the deviation of <span class="math inline">\(x_5\)</span> is 12, and the sum of deviations to the left of the mean (<span class="math inline">\(\bar{x}=8\)</span>) is <span class="math inline">\(-1 + -2 + -3 + -6 = -12\)</span>.</p>
 <p>The mean of the altered data</p>
 <ul>
@@ -611,13 +703,14 @@ airquality %&gt;%
 <li><span class="math inline">\(x_5 = 20\)</span></li>
 </ul>
 <p>is now <span class="math inline">\(\bar{x} = \frac{\sum_{i=1}^n x_i}{n} = \frac{2 + 5 + 6 + 7 + 20}{5} = 8\)</span>.</p>
-<p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
 </div>
 <hr />
 </div>
 </div>
 <div id="median" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Median</h3>
+<h3 class="tabset tabset-fade tabset-pills">Median</h3>
 <div style="float:left;width:150px;">
 <span class="math display">\[
   \frac{x_{(n/2)}+x_{(n/2+1)}}{2}
@@ -665,7 +758,6 @@ airquality %&gt;%
 </div>
 </a>
 <div id="median2" style="display:none;">
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <table style="width:25%;">
 <colgroup>
 <col width="11%" />
@@ -722,7 +814,8 @@ airquality %&gt;%
 <p>If <span class="math inline">\(n\)</span> is odd, then the middle data point is the median. <span class="math display">\[
   \text{Median} = x_{((n+1)/2)}
 \]</span></p>
-<h5 id="symbols-in-the-formula-1">Symbols in the Formula</h5>
+<div id="symbols-in-the-formula-1" class="section level5">
+<h5>Symbols in the Formula</h5>
 <p>There is no generally accepted symbol for the median. Sometimes a capital <span class="math inline">\(M\)</span> or even lower-case <span class="math inline">\(m\)</span> is used, but generally the word median is just written out.</p>
 <ul>
 <li><p><span class="math inline">\(x_{(n/2)}\)</span> represents the data value that is in the <span class="math inline">\((n/2)^{th}\)</span> position in the ordered list of values. It only exists when <span class="math inline">\(n\)</span> is even.</p></li>
@@ -730,7 +823,9 @@ airquality %&gt;%
 <li><p><span class="math inline">\(x_{((n+1)/2)}\)</span> represents the data value that is in the <span class="math inline">\(((n+1)/2)^{th}\)</span> position in the ordered list of values. It only exists when <span class="math inline">\(n\)</span> is odd.</p></li>
 <li><p><span class="math inline">\(n\)</span> represents the sample size, or number of data values in the sample.</p></li>
 </ul>
-<h5 id="population-median">Population Median</h5>
+</div>
+<div id="population-median" class="section level5">
+<h5>Population Median</h5>
 <p>When <strong>all</strong> of the data from a population is available, the <strong>population median</strong> is calculated by the above formulas with the slight change that <span class="math inline">\(N\)</span>, the total number of data values in the population, instead of <span class="math inline">\(n\)</span>, the number of values in the sample, is used.</p>
 <p>If <span class="math inline">\(N\)</span> is even, then there is no “middle” data point, so the middle two values are averaged. <span class="math display">\[
   \text{Median} = \frac{x_{(N/2)}+x_{(N/2+1)}}{2}
@@ -738,7 +833,9 @@ airquality %&gt;%
 <p>If <span class="math inline">\(N\)</span> is odd, then the middle data point is the median. <span class="math display">\[
   \text{Median} = x_{((N+1)/2)}
 \]</span></p>
-<h5 id="physical-interpretation">Physical Interpretation</h5>
+</div>
+<div id="physical-interpretation" class="section level5">
+<h5>Physical Interpretation</h5>
 <p>The median is the <span class="math inline">\(50^{th}\)</span> percentile of the data.</p>
 <p>Say there are <span class="math inline">\(n=5\)</span> data points in the sample with the following values.</p>
 <ul>
@@ -751,8 +848,9 @@ airquality %&gt;%
 <p>The sample median is calculated as follows. Note that <span class="math inline">\(n=5\)</span> is odd. <span class="math display">\[
   \text{Median} = x_{((n+1)/2)} = x_{((5+1)/2)} = x_{(3)} = 6
 \]</span> When these values are plotted it is clear that exactly 50% of the data (excluding the median) is to either side of the median.</p>
-<p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<h6 id="second-example">Second Example</h6>
+<p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div id="second-example" class="section level6">
+<h6>Second Example</h6>
 <p>Say there was a sixth value in the data set equal to 10, so that <span class="math inline">\(n=6\)</span> is even.</p>
 <ul>
 <li><span class="math inline">\(x_1 = 2\)</span></li>
@@ -765,16 +863,20 @@ airquality %&gt;%
 <p><span class="math display">\[
   \text{Median} = \frac{x_{(n/2)}+x_{(n/2+1)}}{2} = \frac{x_{(6/2)}+x_{(6/2+1)}}{2} = \frac{x_{(3)}+x_{(4)}}{2} = \frac{6+7}{2} = 6.5
 \]</span></p>
-<p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-<h5 id="effect-of-outliers">Effect of Outliers</h5>
+<p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+</div>
+<div id="effect-of-outliers" class="section level5">
+<h5>Effect of Outliers</h5>
 <p>The median is not greatly influenced by <em>outliers</em>. It is said to be <em>robust</em>. This is shown below by changing <span class="math inline">\(x_6\)</span> to be 20, which does not change the value of the median.</p>
-<p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
 </div>
 <hr />
 </div>
 </div>
 <div id="mode" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Mode</h3>
+<h3 class="tabset tabset-fade tabset-pills">Mode</h3>
 <div style="float:left;width:150px;">
 <center>
 <p><strong>Most</strong></p>
@@ -821,7 +923,6 @@ airquality %&gt;%
 </div>
 </a>
 <div id="mode2" style="display:none;">
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <table style="width:56%;">
 <colgroup>
 <col width="11%" />
@@ -884,7 +985,7 @@ airquality %&gt;%
 </div>
 </div>
 <div id="minimum" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Minimum</h3>
+<h3 class="tabset tabset-fade tabset-pills">Minimum</h3>
 <div style="float:left;width:150px;">
 <p><span class="math display">\[
   x_{(1)}
@@ -927,7 +1028,6 @@ airquality %&gt;%
 </div>
 </a>
 <div id="min2" style="display:none;">
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <table style="width:25%;">
 <colgroup>
 <col width="11%" />
@@ -976,7 +1076,7 @@ airquality %&gt;%
 </div>
 </div>
 <div id="maximum" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Maximum</h3>
+<h3 class="tabset tabset-fade tabset-pills">Maximum</h3>
 <div style="float:left;width:150px;">
 <p><span class="math display">\[
   x_{(n)}
@@ -1019,7 +1119,6 @@ airquality %&gt;%
 </div>
 </a>
 <div id="max2" style="display:none;">
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <table style="width:25%;">
 <colgroup>
 <col width="11%" />
@@ -1068,7 +1167,7 @@ airquality %&gt;%
 </div>
 </div>
 <div id="quartiles-five-number-summary" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Quartiles (five-number summary)</h3>
+<h3 class="tabset tabset-fade tabset-pills">Quartiles (five-number summary)</h3>
 <div style="float:left;width:150px;">
 <center>
 <p><strong>25</strong><span class="math inline">\(^{th}\)</span>, <strong>50</strong><span class="math inline">\(^{th}\)</span>, <strong>75</strong><span class="math inline">\(^{th}\)</span></p>
@@ -1144,7 +1243,6 @@ airquality %&gt;%
 </div>
 </a>
 <div id="summary2" style="display:none;">
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <table style="width:60%;">
 <colgroup>
 <col width="11%" />
@@ -1225,7 +1323,7 @@ airquality %&gt;%
 </div>
 </div>
 <div id="standard-deviation" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Standard Deviation</h3>
+<h3 class="tabset tabset-fade tabset-pills">Standard Deviation</h3>
 <div style="float:left;width:150px;">
 <p><span class="math inline">\(s = \sqrt{\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}}\)</span></p>
 </div>
@@ -1266,7 +1364,6 @@ airquality %&gt;%
 </div>
 </a>
 <div id="sd2" style="display:none;">
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <table style="width:24%;">
 <colgroup>
 <col width="11%" />
@@ -1324,13 +1421,16 @@ airquality %&gt;%
   s = \sqrt{\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}}
 \]</span></p>
 <p>The <em>standard deviation</em> is thus the representative deviation of all deviations in a given data set. It is never negative and only zero if all values are the same in a data set. Larger values of <span class="math inline">\(s\)</span> imply the data is highly variable, very spread out or very inconsistent. Smaller values mean the data is consistent and not as variable.</p>
-<h5 id="population-standard-deviation">Population Standard Deviation</h5>
+<div id="population-standard-deviation" class="section level5">
+<h5>Population Standard Deviation</h5>
 <p>When <strong>all</strong> of the data from a population is available, the <strong>population standard deviation</strong> <span class="math inline">\(\sigma\)</span> (the lower-case Greek letter “sigma”) is calculated by the following formula.</p>
 <p><span class="math display">\[
   \sigma = \sqrt{\frac{\sum_{i=1}^N(x_i-\mu)^2}{N}}
 \]</span></p>
 <p>Note that <span class="math inline">\(N\)</span> is the number of data points in the full population. In this formula the denominator is actually <span class="math inline">\(N\)</span> and the deviations are calculated as the distance each data point is from the population mean <span class="math inline">\(\mu\)</span>.</p>
-<h5 id="an-example">An Example</h5>
+</div>
+<div id="an-example" class="section level5">
+<h5>An Example</h5>
 <p>Say there are five data points given by</p>
 <ul>
 <li><span class="math inline">\(x_1 = 2\)</span></li>
@@ -1369,8 +1469,10 @@ airquality %&gt;%
   s = \sqrt{\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}} = \sqrt{8.5} \approx 2.915
 \]</span></p>
 <p>The red lines below show how the standard deviation represents all deviations in this data set. Recall that the magnitudes of the individual deviations were <span class="math inline">\(4, 1, 0, 1\)</span>, and <span class="math inline">\(4\)</span>. The representative deviation is <span class="math inline">\(2.915\)</span>.</p>
-<p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
-<h5 id="effect-of-outliers-1">Effect of Outliers</h5>
+<p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+</div>
+<div id="effect-of-outliers-1" class="section level5">
+<h5>Effect of Outliers</h5>
 <p>Like the mean, the standard deviation is influenced by outliers. This is shown below by changing <span class="math inline">\(x_5\)</span> to be 20. Note that the deviation of <span class="math inline">\(x_5\)</span> is now 12 (instead of 4 like it was previously) and that the mean is now <span class="math inline">\(8\)</span> (as shown <a href="Mean.html#outliers">here</a>). The standard deviation of the altered data</p>
 <ul>
 <li><span class="math inline">\(x_1 = 2\)</span></li>
@@ -1380,13 +1482,14 @@ airquality %&gt;%
 <li><span class="math inline">\(x_5 = 20\)</span></li>
 </ul>
 <p>is now <span class="math inline">\(s \approx 6.964\)</span>. Not very “representative” of all the deviations. It is biased towards the largest deviation. It is important to be aware of outliers when reporting the standard deviation <span class="math inline">\(s\)</span>.</p>
-<p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+</div>
 </div>
 <hr />
 </div>
 </div>
 <div id="variance" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Variance</h3>
+<h3 class="tabset tabset-fade tabset-pills">Variance</h3>
 <div style="float:left;width:175px;">
 <p><span class="math display">\[s^2 = \frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}\]</span></p>
 </div>
@@ -1427,7 +1530,6 @@ airquality %&gt;%
 </div>
 </a>
 <div id="var2" style="display:none;">
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <table style="width:25%;">
 <colgroup>
 <col width="11%" />
@@ -1470,7 +1572,7 @@ airquality %&gt;%
 </div>
 </div>
 <div id="range" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Range</h3>
+<h3 class="tabset tabset-fade tabset-pills">Range</h3>
 <div style="float:left;width:150px;">
 <p><span class="math display">\[x_{(n)}-x_{(1)}\]</span> <br> <br></p>
 </div>
@@ -1513,7 +1615,6 @@ airquality %&gt;%
 </div>
 </a>
 <div id="range2" style="display:none;">
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <table style="width:28%;">
 <colgroup>
 <col width="11%" />
@@ -1556,7 +1657,7 @@ airquality %&gt;%
 </div>
 </div>
 <div id="percentile-quantile" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Percentile (Quantile)</h3>
+<h3 class="tabset tabset-fade tabset-pills">Percentile (Quantile)</h3>
 <div style="float:left;width:150px;">
 <center>
 <span class="math inline">\(\leftarrow\)</span><strong>To the Left</strong>
@@ -1596,7 +1697,7 @@ airquality %&gt;%
 </div>
 </div>
 <div id="proportion" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Proportion</h3>
+<h3 class="tabset tabset-fade tabset-pills">Proportion</h3>
 <div style="float:left;width:150px;">
 <p><span class="math display">\[\hat{p}=\frac{x}{n}\]</span> <br> <br></p>
 </div>
@@ -1610,7 +1711,7 @@ airquality %&gt;%
 </div>
 </div>
 <div id="correlation" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Correlation</h3>
+<h3 class="tabset tabset-fade tabset-pills">Correlation</h3>
 <div style="float:left;width:175px;">
 <p><span class="math inline">\(r = \frac{\textstyle\sum\left(\frac{x-\bar{x}}{s_x}\right)\left(\frac{y-\bar{y}}{s_y}\right)}{n-1}\)</span></p>
 </div>
@@ -1651,7 +1752,6 @@ airquality %&gt;%
 </div>
 </a>
 <div id="cor2" style="display:none;">
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <table style="width:31%;">
 <colgroup>
 <col width="11%" />
@@ -1706,7 +1806,7 @@ airquality %&gt;%
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -1724,7 +1824,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

@@ -3138,7 +3138,7 @@ $$t = \frac{b_1 - \overbrace{0}^\text{a number}}{s_{b_1}}$$
   </td><td style="text-align:center;">
   $b_0 \pm$<span class="tooltiprbold">
 $t^*$
-  <span class="tooltiprtext">This is called the "critical value" and denotes the number of standard deviations that are needed to obtain a 95% confidence interval from a t distribution with degrees of freedom $n-p$ (sample size - number of parameters in the regression model).</span>
+  <span class="tooltiprtext">This is called the "critical value" and denotes the number of standard deviations that are needed to obtain a 95% confidence interval from a t distribution with degrees of freedom $n-p$. Use `qt(0.975, df)` to get $t*$ in R.</span>
 </span><span class="tooltiprbold">
 $\cdot$
   <span class="tooltiprtext">The critical value is multiplied by the standard error of $b_0$.</span>
@@ -3174,6 +3174,7 @@ $$s^2_{b_1} = \frac{MSE}{\sum(X_i-\bar{X})^2}$$
   </td>
 </tr>
 </table>
+
 
 
 To be more exact, the types of inference we are interested in are the following.

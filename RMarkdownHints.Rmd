@@ -323,7 +323,6 @@ Other highlighting options are
 
 <br />
 
-# 
 
 # More Information
 

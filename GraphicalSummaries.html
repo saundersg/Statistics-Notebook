@@ -13,41 +13,66 @@
 
 <title>Graphical Summaries</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="site_libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="site_libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="site_libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<link href="site_libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="site_libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<link href="site_libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -67,7 +92,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {  background-color: #f8f8f8; }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -120,39 +145,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   }
 })();
 </script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
@@ -163,10 +158,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -183,40 +174,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -244,7 +208,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -256,7 +220,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -267,10 +231,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -282,7 +259,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -408,13 +384,13 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
 <div id="TOC" class="tocify">
 </div>
 </div>
 
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
 
 
 
@@ -559,7 +535,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -593,7 +569,7 @@ div.tocify {
 <p>There are many ways to display data. The fundamental idea is that the graphical depiction of data should communicate the truth the data has to offer about the situation of interest.</p>
 <hr />
 <div id="histograms" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Histograms</h3>
+<h3 class="tabset tabset-fade tabset-pills">Histograms</h3>
 <div style="float:left;width:125px;">
 <p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-2-1.png" width="96" /></p>
 </div>
@@ -608,8 +584,6 @@ div.tocify {
 <div id="r-instructions" class="section level4">
 <h4>R Instructions</h4>
 <div style="padding-left:125px;">
-
-
 <div class="tab">
 <p><button class="tablinks" onclick="openTab(event, 'BaseHistogram')">Base R</button> <button class="tablinks" onclick="openTab(event, 'ggplot2Histogram')">ggplot2</button> <button class="tablinks" onclick="openTab(event, 'plotlyHistogram')">plotly</button></p>
 </div>
@@ -757,8 +731,8 @@ div.tocify {
 </div>
 </a>
 <div id="plotlyhist1" style="display:none;">
-<div id="htmlwidget-a1f479421eab3b77f503" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a1f479421eab3b77f503">{"x":{"visdat":{"11ed35d0b19f2":["function () ","plotlyVisDat"]},"cur_data":"11ed35d0b19f2","attrs":{"11ed35d0b19f2":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"yaxis":{"domain":[0,1],"automargin":true},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"type":"histogram","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-705d36681f3f11197f2c" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-705d36681f3f11197f2c">{"x":{"visdat":{"121cf29249dbb":["function () ","plotlyVisDat"]},"cur_data":"121cf29249dbb","attrs":{"121cf29249dbb":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"yaxis":{"domain":[0,1],"automargin":true},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"type":"histogram","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <p><br/></p>
 <p><em>Change Color</em></p>
@@ -769,8 +743,8 @@ div.tocify {
 </div>
 </a>
 <div id="plotlyhist3" style="display:none;">
-<div id="htmlwidget-3c88a67d9e7286c661c2" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3c88a67d9e7286c661c2">{"x":{"visdat":{"11ed377dd5d77":["function () ","plotlyVisDat"]},"cur_data":"11ed377dd5d77","attrs":{"11ed377dd5d77":{"x":{},"marker":{"color":"skyblue","line":{"color":"darkgray","width":2}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"yaxis":{"domain":[0,1],"automargin":true},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"marker":{"color":"skyblue","line":{"color":"darkgray","width":2}},"type":"histogram","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8fbebb298ae65e7c13dd" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8fbebb298ae65e7c13dd">{"x":{"visdat":{"121cf16f04aec":["function () ","plotlyVisDat"]},"cur_data":"121cf16f04aec","attrs":{"121cf16f04aec":{"x":{},"marker":{"color":"skyblue","line":{"color":"darkgray","width":2}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"yaxis":{"domain":[0,1],"automargin":true},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"marker":{"color":"skyblue","line":{"color":"darkgray","width":2}},"type":"histogram","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <p><br/></p>
 <p><em>Add Titles</em></p>
@@ -781,8 +755,8 @@ div.tocify {
 </div>
 </a>
 <div id="plotlyhist2" style="display:none;">
-<div id="htmlwidget-87bbe4a115f81e2b2bf3" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-87bbe4a115f81e2b2bf3">{"x":{"visdat":{"11ed31fd03c00":["function () ","plotlyVisDat"]},"cur_data":"11ed31fd03c00","attrs":{"11ed31fd03c00":{"x":{},"marker":{"color":"skyblue","line":{"color":"darkgray","width":10}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"La Guardia Airport Daily Mean Temperatures","xaxis":{"domain":[0,1],"automargin":true,"title":"Temperature in Degrees F"},"yaxis":{"domain":[0,1],"automargin":true},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"marker":{"color":"skyblue","line":{"color":"darkgray","width":10}},"type":"histogram","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8da1771c15a7369c2422" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8da1771c15a7369c2422">{"x":{"visdat":{"121cf6d7c6dd6":["function () ","plotlyVisDat"]},"cur_data":"121cf6d7c6dd6","attrs":{"121cf6d7c6dd6":{"x":{},"marker":{"color":"skyblue","line":{"color":"darkgray","width":10}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"La Guardia Airport Daily Mean Temperatures","xaxis":{"domain":[0,1],"automargin":true,"title":"Temperature in Degrees F"},"yaxis":{"domain":[0,1],"automargin":true},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"marker":{"color":"skyblue","line":{"color":"darkgray","width":10}},"type":"histogram","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </p>
 </div>
@@ -912,7 +886,7 @@ div.tocify {
 </div>
 </div>
 <div id="boxplots" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Boxplots</h3>
+<h3 class="tabset tabset-fade tabset-pills">Boxplots</h3>
 <div style="float:left;width:125px;">
 <p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-13-1.png" width="96" /></p>
 </div>
@@ -927,7 +901,6 @@ div.tocify {
 <div id="r-instructions-1" class="section level4">
 <h4>R Instructions</h4>
 <div style="padding-left:125px;">
-
 <div class="tab">
 <p><button class="tablinks" onclick="openTab(event, 'BaseBoxplot')">Base R</button> <button class="tablinks" onclick="openTab(event, 'ggplot2Boxplot')">ggplot2</button> <button class="tablinks" onclick="openTab(event, 'plotlyBoxplot')">plotly</button></p>
 </div>
@@ -1086,8 +1059,8 @@ div.tocify {
 </div>
 </a>
 <div id="plotlybox1" style="display:none;">
-<div id="htmlwidget-372d44ecab684a5fa4d0" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-372d44ecab684a5fa4d0">{"x":{"visdat":{"11ed33b76f4af":["function () ","plotlyVisDat"]},"cur_data":"11ed33b76f4af","attrs":{"11ed33b76f4af":{"y":{},"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"as.factor(Month)","type":"category","categoryorder":"array","categoryarray":["5","6","7","8","9"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(31,119,180,0.5)","y":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"x":["5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9"],"type":"box","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0959ad44e18251d0a2d3" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0959ad44e18251d0a2d3">{"x":{"visdat":{"121cf73793d04":["function () ","plotlyVisDat"]},"cur_data":"121cf73793d04","attrs":{"121cf73793d04":{"y":{},"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"as.factor(Month)","type":"category","categoryorder":"array","categoryarray":["5","6","7","8","9"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(31,119,180,0.5)","y":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"x":["5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9"],"type":"box","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <p><br/></p>
 <p><em>Change Color</em></p>
@@ -1098,8 +1071,8 @@ div.tocify {
 </div>
 </a>
 <div id="plotlybox3" style="display:none;">
-<div id="htmlwidget-2a026aa4ce0744575bb5" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2a026aa4ce0744575bb5">{"x":{"visdat":{"11ed370886397":["function () ","plotlyVisDat"]},"cur_data":"11ed370886397","attrs":{"11ed370886397":{"y":{},"x":{},"fillcolor":"skyblue","line":{"color":"darkgray","width":3},"marker":{"color":"orange","line":{"color":"red","width":1}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"as.factor(Month)","type":"category","categoryorder":"array","categoryarray":["5","6","7","8","9"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"skyblue","y":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"x":["5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9"],"line":{"color":"darkgray","width":3},"marker":{"color":"orange","line":{"color":"red","width":1}},"type":"box","name":"skyblue","xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-6b560fb814946e681af6" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6b560fb814946e681af6">{"x":{"visdat":{"121cf7d7dc442":["function () ","plotlyVisDat"]},"cur_data":"121cf7d7dc442","attrs":{"121cf7d7dc442":{"y":{},"x":{},"fillcolor":"skyblue","line":{"color":"darkgray","width":3},"marker":{"color":"orange","line":{"color":"red","width":1}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"as.factor(Month)","type":"category","categoryorder":"array","categoryarray":["5","6","7","8","9"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"skyblue","y":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"x":["5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9"],"line":{"color":"darkgray","width":3},"marker":{"color":"orange","line":{"color":"red","width":1}},"type":"box","name":"skyblue","xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <p><br/></p>
 <p><em>Add Titles</em></p>
@@ -1110,8 +1083,8 @@ div.tocify {
 </div>
 </a>
 <div id="plotlybox2" style="display:none;">
-<div id="htmlwidget-43ae03570d8b9241748e" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-43ae03570d8b9241748e">{"x":{"visdat":{"11ed315fd5b72":["function () ","plotlyVisDat"]},"cur_data":"11ed315fd5b72","attrs":{"11ed315fd5b72":{"y":{},"x":{},"fillcolor":"skyblue","line":{"color":"darkgray","width":3},"marker":{"color":"orange","line":{"color":"red","width":1}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"La Guardia Airport Daily Mean Temperatures","yaxis":{"domain":[0,1],"automargin":true,"title":"Temperature in Degrees F"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Month of the Year","type":"category","categoryorder":"array","categoryarray":["5","6","7","8","9"]},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"skyblue","y":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"x":["5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9"],"line":{"color":"darkgray","width":3},"marker":{"color":"orange","line":{"color":"red","width":1}},"type":"box","name":"skyblue","xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b11677c4bb1429ef1184" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b11677c4bb1429ef1184">{"x":{"visdat":{"121cf618a76b7":["function () ","plotlyVisDat"]},"cur_data":"121cf618a76b7","attrs":{"121cf618a76b7":{"y":{},"x":{},"fillcolor":"skyblue","line":{"color":"darkgray","width":3},"marker":{"color":"orange","line":{"color":"red","width":1}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"La Guardia Airport Daily Mean Temperatures","yaxis":{"domain":[0,1],"automargin":true,"title":"Temperature in Degrees F"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Month of the Year","type":"category","categoryorder":"array","categoryarray":["5","6","7","8","9"]},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"skyblue","y":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"x":["5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","6","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","7","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","8","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9","9"],"line":{"color":"darkgray","width":3},"marker":{"color":"orange","line":{"color":"red","width":1}},"type":"box","name":"skyblue","xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </p>
 </div>
@@ -1122,7 +1095,8 @@ div.tocify {
 <h4>Explanation</h4>
 <div style="padding-left:125px;">
 <p>Understanding how a boxplot is created is the best way to understand what the boxplot shows.</p>
-<h5 id="how-boxplots-are-made">How Boxplots are Made</h5>
+<div id="how-boxplots-are-made" class="section level5">
+<h5>How Boxplots are Made</h5>
 <ol style="list-style-type: decimal">
 <li>The five-number summary is computed.</li>
 <li>A box is drawn with one edge located at the first quartile and the opposite edge located at the third quartile.</li>
@@ -1133,11 +1107,12 @@ div.tocify {
 <li>Any points beyond the line ending the whisker are marked on the plot as dots. This helps identify possible outliers in the data.</li>
 </ol>
 </div>
+</div>
 <hr />
 </div>
 </div>
 <div id="dot-plots" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Dot Plots</h3>
+<h3 class="tabset tabset-fade tabset-pills">Dot Plots</h3>
 <div style="float:left;width:125px;">
 <p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-24-1.png" width="96" /></p>
 </div>
@@ -1152,7 +1127,6 @@ div.tocify {
 <div id="r-instructions-2" class="section level4">
 <h4>R Instructions</h4>
 <div style="padding-left:125px;">
-
 <div class="tab">
 <p><button class="tablinks" onclick="openTab(event, 'BaseDotplot')">Base R</button> <button class="tablinks" onclick="openTab(event, 'ggplot2Dotplot')">ggplot2</button> <button class="tablinks" onclick="openTab(event, 'plotlyDotplot')">plotly</button></p>
 </div>
@@ -1273,7 +1247,7 @@ Not yet available.
 </div>
 </div>
 <div id="scatterplots" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Scatterplots</h3>
+<h3 class="tabset tabset-fade tabset-pills">Scatterplots</h3>
 <div style="float:left;width:125px;">
 <p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-31-1.png" width="96" /></p>
 </div>
@@ -1288,7 +1262,6 @@ Not yet available.
 <div id="r-instructions-3" class="section level4">
 <h4>R Instructions</h4>
 <div style="padding-left:125px;">
-
 <div class="tab">
 <p><button class="tablinks" onclick="openTab(event, 'BaseScatterplot')">Base R</button> <button class="tablinks" onclick="openTab(event, 'ggplotScatterplot')">ggplot2</button> <button class="tablinks" onclick="openTab(event, 'plotlyScatterplot')">plotly</button></p>
 </div>
@@ -1400,21 +1373,21 @@ Not yet available.
 <li><code>dataColumn2</code> is a column of data from your dataset that is quantitative and will be used as the response variable.</li>
 </ul>
 <p><strong>Example Code</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">plot_ly</span>(airquality, <span class="dt">x=</span> <span class="op">~</span>Wind, <span class="dt">y=</span> <span class="op">~</span>Temp)</span></code></pre></div>
-<div id="htmlwidget-0844ce1a43b32a82d828" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0844ce1a43b32a82d828">{"x":{"visdat":{"11ed323d9b9bf":["function () ","plotlyVisDat"]},"cur_data":"11ed323d9b9bf","attrs":{"11ed323d9b9bf":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Wind"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[7.4,8,12.6,11.5,14.3,14.9,8.6,13.8,20.1,8.6,6.9,9.7,9.2,10.9,13.2,11.5,12,18.4,11.5,9.7,9.7,16.6,9.7,12,16.6,14.9,8,12,14.9,5.7,7.4,8.6,9.7,16.1,9.2,8.6,14.3,9.7,6.9,13.8,11.5,10.9,9.2,8,13.8,11.5,14.9,20.7,9.2,11.5,10.3,6.3,1.7,4.6,6.3,8,8,10.3,11.5,14.9,8,4.1,9.2,9.2,10.9,4.6,10.9,5.1,6.3,5.7,7.4,8.6,14.3,14.9,14.9,14.3,6.9,10.3,6.3,5.1,11.5,6.9,9.7,11.5,8.6,8,8.6,12,7.4,7.4,7.4,9.2,6.9,13.8,7.4,6.9,7.4,4.6,4,10.3,8,8.6,11.5,11.5,11.5,9.7,11.5,10.3,6.3,7.4,10.9,10.3,15.5,14.3,12.6,9.7,3.4,8,5.7,9.7,2.3,6.3,6.3,6.9,5.1,2.8,4.6,7.4,15.5,10.9,10.3,10.9,9.7,14.9,15.5,6.3,10.9,11.5,6.9,13.8,10.3,10.3,8,12.6,9.2,10.3,10.3,16.6,6.9,13.2,14.3,8,11.5],"y":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"type":"scatter","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">plot_ly</span>(KidsFeet, </span>
-<span id="cb2-2"><a href="#cb2-2"></a>        <span class="dt">x=</span> <span class="op">~</span>length, </span>
-<span id="cb2-3"><a href="#cb2-3"></a>        <span class="dt">y=</span> <span class="op">~</span>width, </span>
-<span id="cb2-4"><a href="#cb2-4"></a>        <span class="dt">color=</span> <span class="op">~</span>sex, </span>
-<span id="cb2-5"><a href="#cb2-5"></a>        <span class="dt">size=</span> <span class="op">~</span>birthmonth, </span>
-<span id="cb2-6"><a href="#cb2-6"></a>        <span class="dt">text=</span> <span class="op">~</span><span class="kw">paste</span>(<span class="st">&quot;Name:&quot;</span>, name, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="st">&quot;Birth-Month:&quot;</span>, birthmonth),</span>
-<span id="cb2-7"><a href="#cb2-7"></a>        <span class="dt">colors=</span><span class="kw">c</span>(<span class="st">&quot;skyblue&quot;</span>,<span class="st">&quot;hotpink&quot;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="st">  </span><span class="kw">layout</span>(<span class="dt">title=</span><span class="st">&quot;KidsFeet dataset&quot;</span>, </span>
-<span id="cb2-9"><a href="#cb2-9"></a>         <span class="dt">xaxis=</span><span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;Length of the longer foot in cm&quot;</span>),</span>
-<span id="cb2-10"><a href="#cb2-10"></a>         <span class="dt">yaxis=</span><span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;Width of the longer foot in cm&quot;</span>))</span></code></pre></div>
-<div id="htmlwidget-34619a13acb04cfded52" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-34619a13acb04cfded52">{"x":{"visdat":{"11ed34e6e5a8b":["function () ","plotlyVisDat"]},"cur_data":"11ed34e6e5a8b","attrs":{"11ed34e6e5a8b":{"x":{},"y":{},"text":{},"color":{},"size":{},"colors":["skyblue","hotpink"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"KidsFeet dataset","xaxis":{"domain":[0,1],"automargin":true,"title":"Length of the longer foot in cm"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Width of the longer foot in cm"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[24.4,25.4,24.5,25.2,25.1,25.7,26.1,22.9,27.5,24.8,26.1,27,24,24.4,27.1,25.5,24.2,23.9,23.6,24.7],"y":[8.4,8.8,9.7,9.8,8.9,9.7,9.6,8.8,9.8,8.9,9.1,9.8,9.2,8.6,9.4,9.5,8.9,9.3,9,8.6],"text":["Name: David <br /> Birth-Month: 5","Name: Lars <br /> Birth-Month: 10","Name: Zach <br /> Birth-Month: 12","Name: Josh <br /> Birth-Month: 1","Name: Lang <br /> Birth-Month: 2","Name: Scotty <br /> Birth-Month: 3","Name: Edward <br /> Birth-Month: 2","Name: Damon <br /> Birth-Month: 9","Name: Mark <br /> Birth-Month: 9","Name: Ray <br /> Birth-Month: 3","Name: Cal <br /> Birth-Month: 8","Name: Cam <br /> Birth-Month: 3","Name: Andy <br /> Birth-Month: 6","Name: Josh <br /> Birth-Month: 7","Name: Glen <br /> Birth-Month: 7","Name: David <br /> Birth-Month: 12","Name: Mike <br /> Birth-Month: 11","Name: Dwayne <br /> Birth-Month: 8","Name: Dylan <br /> Birth-Month: 4","Name: Peter <br /> Birth-Month: 4"],"type":"scatter","mode":"markers","name":"B","marker":{"color":"rgba(135,206,235,1)","size":[42.7272727272727,83.6363636363636,100,10,18.1818181818182,26.3636363636364,18.1818181818182,75.4545454545455,75.4545454545455,26.3636363636364,67.2727272727273,26.3636363636364,50.9090909090909,59.0909090909091,59.0909090909091,100,91.8181818181818,67.2727272727273,34.5454545454545,34.5454545454545],"sizemode":"area","line":{"color":"rgba(135,206,235,1)"}},"textfont":{"color":"rgba(135,206,235,1)","size":[42.7272727272727,83.6363636363636,100,10,18.1818181818182,26.3636363636364,18.1818181818182,75.4545454545455,75.4545454545455,26.3636363636364,67.2727272727273,26.3636363636364,50.9090909090909,59.0909090909091,59.0909090909091,100,91.8181818181818,67.2727272727273,34.5454545454545,34.5454545454545]},"error_y":{"color":"rgba(135,206,235,1)","width":[]},"error_x":{"color":"rgba(135,206,235,1)","width":[]},"line":{"color":"rgba(135,206,235,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[23,23.6,26,23.7,24,24.7,26.7,25.5,24,24.5,24.2,26.1,24,22.5,24.5,22.9,26,21.6,24.6],"y":[8.8,9.3,9.3,7.9,8.7,8.8,9,9.5,8.3,9,8.1,9.5,9.3,8.6,8.6,8.5,9,7.9,8.8],"text":["Name: Caitlin <br /> Birth-Month: 6","Name: Eleanor <br /> Birth-Month: 5","Name: Julie <br /> Birth-Month: 11","Name: Kate <br /> Birth-Month: 4","Name: Caroline <br /> Birth-Month: 12","Name: Maggie <br /> Birth-Month: 3","Name: Lee <br /> Birth-Month: 6","Name: Heather <br /> Birth-Month: 3","Name: Laura <br /> Birth-Month: 9","Name: Erica <br /> Birth-Month: 9","Name: Peggy <br /> Birth-Month: 10","Name: Abby <br /> Birth-Month: 2","Name: Danielle <br /> Birth-Month: 6","Name: Caitlin <br /> Birth-Month: 7","Name: Leigh <br /> Birth-Month: 3","Name: Hannah <br /> Birth-Month: 3","Name: Teshanna <br /> Birth-Month: 3","Name: Hayley <br /> Birth-Month: 1","Name: Alisha <br /> Birth-Month: 9"],"type":"scatter","mode":"markers","name":"G","marker":{"color":"rgba(255,105,180,1)","size":[50.9090909090909,42.7272727272727,91.8181818181818,34.5454545454545,100,26.3636363636364,50.9090909090909,26.3636363636364,75.4545454545455,75.4545454545455,83.6363636363636,18.1818181818182,50.9090909090909,59.0909090909091,26.3636363636364,26.3636363636364,26.3636363636364,10,75.4545454545455],"sizemode":"area","line":{"color":"rgba(255,105,180,1)"}},"textfont":{"color":"rgba(255,105,180,1)","size":[50.9090909090909,42.7272727272727,91.8181818181818,34.5454545454545,100,26.3636363636364,50.9090909090909,26.3636363636364,75.4545454545455,75.4545454545455,83.6363636363636,18.1818181818182,50.9090909090909,59.0909090909091,26.3636363636364,26.3636363636364,26.3636363636364,10,75.4545454545455]},"error_y":{"color":"rgba(255,105,180,1)","width":[]},"error_x":{"color":"rgba(255,105,180,1)","width":[]},"line":{"color":"rgba(255,105,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(airquality, <span class="at">x=</span> <span class="sc">~</span>Wind, <span class="at">y=</span> <span class="sc">~</span>Temp)</span></code></pre></div>
+<div id="htmlwidget-acc031ec5ada6f41929c" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-acc031ec5ada6f41929c">{"x":{"visdat":{"121cf761e19c6":["function () ","plotlyVisDat"]},"cur_data":"121cf761e19c6","attrs":{"121cf761e19c6":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Wind"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Temp"},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[7.4,8,12.6,11.5,14.3,14.9,8.6,13.8,20.1,8.6,6.9,9.7,9.2,10.9,13.2,11.5,12,18.4,11.5,9.7,9.7,16.6,9.7,12,16.6,14.9,8,12,14.9,5.7,7.4,8.6,9.7,16.1,9.2,8.6,14.3,9.7,6.9,13.8,11.5,10.9,9.2,8,13.8,11.5,14.9,20.7,9.2,11.5,10.3,6.3,1.7,4.6,6.3,8,8,10.3,11.5,14.9,8,4.1,9.2,9.2,10.9,4.6,10.9,5.1,6.3,5.7,7.4,8.6,14.3,14.9,14.9,14.3,6.9,10.3,6.3,5.1,11.5,6.9,9.7,11.5,8.6,8,8.6,12,7.4,7.4,7.4,9.2,6.9,13.8,7.4,6.9,7.4,4.6,4,10.3,8,8.6,11.5,11.5,11.5,9.7,11.5,10.3,6.3,7.4,10.9,10.3,15.5,14.3,12.6,9.7,3.4,8,5.7,9.7,2.3,6.3,6.3,6.9,5.1,2.8,4.6,7.4,15.5,10.9,10.3,10.9,9.7,14.9,15.5,6.3,10.9,11.5,6.9,13.8,10.3,10.3,8,12.6,9.2,10.3,10.3,16.6,6.9,13.2,14.3,8,11.5],"y":[67,72,74,62,56,66,65,59,61,69,74,69,66,68,58,64,66,57,68,62,59,73,61,61,57,58,57,67,81,79,76,78,74,67,84,85,79,82,87,90,87,93,92,82,80,79,77,72,65,73,76,77,76,76,76,75,78,73,80,77,83,84,85,81,84,83,83,88,92,92,89,82,73,81,91,80,81,82,84,87,85,74,81,82,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,92,86,86,82,80,79,77,79,76,78,78,77,72,75,79,81,86,88,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,77,75,76,68],"type":"scatter","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(KidsFeet, </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">x=</span> <span class="sc">~</span>length, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">y=</span> <span class="sc">~</span>width, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">color=</span> <span class="sc">~</span>sex, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">size=</span> <span class="sc">~</span>birthmonth, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">text=</span> <span class="sc">~</span><span class="fu">paste</span>(<span class="st">&quot;Name:&quot;</span>, name, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="st">&quot;Birth-Month:&quot;</span>, birthmonth),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">colors=</span><span class="fu">c</span>(<span class="st">&quot;skyblue&quot;</span>,<span class="st">&quot;hotpink&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(<span class="at">title=</span><span class="st">&quot;KidsFeet dataset&quot;</span>, </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">xaxis=</span><span class="fu">list</span>(<span class="at">title=</span><span class="st">&quot;Length of the longer foot in cm&quot;</span>),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">yaxis=</span><span class="fu">list</span>(<span class="at">title=</span><span class="st">&quot;Width of the longer foot in cm&quot;</span>))</span></code></pre></div>
+<div id="htmlwidget-08d08c04b9a2cd156c6d" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-08d08c04b9a2cd156c6d">{"x":{"visdat":{"121cf7f3a9355":["function () ","plotlyVisDat"]},"cur_data":"121cf7f3a9355","attrs":{"121cf7f3a9355":{"x":{},"y":{},"text":{},"color":{},"size":{},"colors":["skyblue","hotpink"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"KidsFeet dataset","xaxis":{"domain":[0,1],"automargin":true,"title":"Length of the longer foot in cm"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Width of the longer foot in cm"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[24.4,25.4,24.5,25.2,25.1,25.7,26.1,22.9,27.5,24.8,26.1,27,24,24.4,27.1,25.5,24.2,23.9,23.6,24.7],"y":[8.4,8.8,9.7,9.8,8.9,9.7,9.6,8.8,9.8,8.9,9.1,9.8,9.2,8.6,9.4,9.5,8.9,9.3,9,8.6],"text":["Name: David <br /> Birth-Month: 5","Name: Lars <br /> Birth-Month: 10","Name: Zach <br /> Birth-Month: 12","Name: Josh <br /> Birth-Month: 1","Name: Lang <br /> Birth-Month: 2","Name: Scotty <br /> Birth-Month: 3","Name: Edward <br /> Birth-Month: 2","Name: Damon <br /> Birth-Month: 9","Name: Mark <br /> Birth-Month: 9","Name: Ray <br /> Birth-Month: 3","Name: Cal <br /> Birth-Month: 8","Name: Cam <br /> Birth-Month: 3","Name: Andy <br /> Birth-Month: 6","Name: Josh <br /> Birth-Month: 7","Name: Glen <br /> Birth-Month: 7","Name: David <br /> Birth-Month: 12","Name: Mike <br /> Birth-Month: 11","Name: Dwayne <br /> Birth-Month: 8","Name: Dylan <br /> Birth-Month: 4","Name: Peter <br /> Birth-Month: 4"],"type":"scatter","mode":"markers","name":"B","marker":{"color":"rgba(135,206,235,1)","size":[42.7272727272727,83.6363636363636,100,10,18.1818181818182,26.3636363636364,18.1818181818182,75.4545454545455,75.4545454545455,26.3636363636364,67.2727272727273,26.3636363636364,50.9090909090909,59.0909090909091,59.0909090909091,100,91.8181818181818,67.2727272727273,34.5454545454545,34.5454545454545],"sizemode":"area","line":{"color":"rgba(135,206,235,1)"}},"textfont":{"color":"rgba(135,206,235,1)","size":[42.7272727272727,83.6363636363636,100,10,18.1818181818182,26.3636363636364,18.1818181818182,75.4545454545455,75.4545454545455,26.3636363636364,67.2727272727273,26.3636363636364,50.9090909090909,59.0909090909091,59.0909090909091,100,91.8181818181818,67.2727272727273,34.5454545454545,34.5454545454545]},"error_y":{"color":"rgba(135,206,235,1)","width":[]},"error_x":{"color":"rgba(135,206,235,1)","width":[]},"line":{"color":"rgba(135,206,235,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[23,23.6,26,23.7,24,24.7,26.7,25.5,24,24.5,24.2,26.1,24,22.5,24.5,22.9,26,21.6,24.6],"y":[8.8,9.3,9.3,7.9,8.7,8.8,9,9.5,8.3,9,8.1,9.5,9.3,8.6,8.6,8.5,9,7.9,8.8],"text":["Name: Caitlin <br /> Birth-Month: 6","Name: Eleanor <br /> Birth-Month: 5","Name: Julie <br /> Birth-Month: 11","Name: Kate <br /> Birth-Month: 4","Name: Caroline <br /> Birth-Month: 12","Name: Maggie <br /> Birth-Month: 3","Name: Lee <br /> Birth-Month: 6","Name: Heather <br /> Birth-Month: 3","Name: Laura <br /> Birth-Month: 9","Name: Erica <br /> Birth-Month: 9","Name: Peggy <br /> Birth-Month: 10","Name: Abby <br /> Birth-Month: 2","Name: Danielle <br /> Birth-Month: 6","Name: Caitlin <br /> Birth-Month: 7","Name: Leigh <br /> Birth-Month: 3","Name: Hannah <br /> Birth-Month: 3","Name: Teshanna <br /> Birth-Month: 3","Name: Hayley <br /> Birth-Month: 1","Name: Alisha <br /> Birth-Month: 9"],"type":"scatter","mode":"markers","name":"G","marker":{"color":"rgba(255,105,180,1)","size":[50.9090909090909,42.7272727272727,91.8181818181818,34.5454545454545,100,26.3636363636364,50.9090909090909,26.3636363636364,75.4545454545455,75.4545454545455,83.6363636363636,18.1818181818182,50.9090909090909,59.0909090909091,26.3636363636364,26.3636363636364,26.3636363636364,10,75.4545454545455],"sizemode":"area","line":{"color":"rgba(255,105,180,1)"}},"textfont":{"color":"rgba(255,105,180,1)","size":[50.9090909090909,42.7272727272727,91.8181818181818,34.5454545454545,100,26.3636363636364,50.9090909090909,26.3636363636364,75.4545454545455,75.4545454545455,83.6363636363636,18.1818181818182,50.9090909090909,59.0909090909091,26.3636363636364,26.3636363636364,26.3636363636364,10,75.4545454545455]},"error_y":{"color":"rgba(255,105,180,1)","width":[]},"error_x":{"color":"rgba(255,105,180,1)","width":[]},"line":{"color":"rgba(255,105,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </p>
 </div>
 </div>
@@ -1422,7 +1395,7 @@ Not yet available.
 </div>
 </div>
 <div id="bar-charts" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Bar Charts</h3>
+<h3 class="tabset tabset-fade tabset-pills">Bar Charts</h3>
 <div style="float:left;width:125px;">
 <p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-40-1.png" width="96" /></p>
 </div>
@@ -1437,8 +1410,6 @@ Not yet available.
 <div id="r-instructions-4" class="section level4">
 <h4>R Instructions</h4>
 <div style="padding-left:125px;">
-
-
 <div class="tab">
 <p><button class="tablinks" onclick="openTab(event, 'BaseBarplot')">Base R</button> <button class="tablinks" onclick="openTab(event, 'ggplotBarplot')">ggplot2</button> <button class="tablinks" onclick="openTab(event, 'plotlyBarplot')">plotly</button></p>
 </div>
@@ -1611,7 +1582,7 @@ Not yet available.
 </div>
 </div>
 <div id="custom-plots" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Custom Plots</h3>
+<h3 class="tabset tabset-fade tabset-pills">Custom Plots</h3>
 <div style="float:left;width:125px;">
 <p><img src="GraphicalSummaries_files/figure-html/unnamed-chunk-50-1.png" width="96" /></p>
 </div>
@@ -1628,11 +1599,11 @@ Not yet available.
 <div style="padding-left:125px;">
 <p>You should add links to examples you find of interesting plots made in R.</p>
 <p>Here is the R Code for the graphic to the left:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">plot</span>(<span class="kw">density</span>(CO2<span class="op">$</span>uptake[CO2<span class="op">$</span>Type<span class="op">==</span><span class="st">&quot;Quebec&quot;</span>]), </span>
-<span id="cb3-2"><a href="#cb3-2"></a>     <span class="dt">main=</span><span class="st">&quot;&quot;</span>, <span class="dt">col=</span><span class="st">&#39;skyblue4&#39;</span>,</span>
-<span id="cb3-3"><a href="#cb3-3"></a>     <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">xaxt=</span><span class="st">&#39;n&#39;</span>, <span class="dt">yaxt=</span><span class="st">&#39;n&#39;</span>)</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">lines</span>(<span class="kw">density</span>(CO2<span class="op">$</span>uptake[CO2<span class="op">$</span>Type<span class="op">==</span><span class="st">&quot;Mississippi&quot;</span>]), </span>
-<span id="cb3-5"><a href="#cb3-5"></a>      <span class="dt">col=</span><span class="st">&#39;firebrick&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(CO2<span class="sc">$</span>uptake[CO2<span class="sc">$</span>Type<span class="sc">==</span><span class="st">&quot;Quebec&quot;</span>]), </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;&quot;</span>, <span class="at">col=</span><span class="st">&#39;skyblue4&#39;</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>, <span class="at">xaxt=</span><span class="st">&#39;n&#39;</span>, <span class="at">yaxt=</span><span class="st">&#39;n&#39;</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(CO2<span class="sc">$</span>uptake[CO2<span class="sc">$</span>Type<span class="sc">==</span><span class="st">&quot;Mississippi&quot;</span>]), </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&#39;firebrick&#39;</span>)</span></code></pre></div>
 </div>
 <hr />
 <footer>
@@ -1651,7 +1622,7 @@ Not yet available.
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -1669,7 +1640,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
