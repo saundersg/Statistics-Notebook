@@ -678,7 +678,7 @@ If these hypotheses are used, then the distributions do not have to be identical
 
 
 
-#### R Intstructions
+#### R Instructions
 
 <div style="padding-left:125px;">
 **Console** Help Command: `?wilcox.test()`
