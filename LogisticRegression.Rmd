@@ -430,7 +430,7 @@ Example output from a regression. Hover each piece to learn more.
 There are two ways to check the **goodness of fit** of a logistic regression model.
 
 <div style="padding-left:25px;">
-**Option 1**: Hosmer-Lemeshow Goodness-of-Fit Test
+**Option 1**: Hosmer-Lemeshow Goodness-of-Fit Test (Most Common)
 
 To check the **goodness of fit** of a logistic regression model where there are **few or no replicated $x$-values** use the Hosmer-Lemeshow Test.
 
@@ -474,9 +474,9 @@ Note that the null hypothesis of the goodness-of-fit test is that "the logistic 
 
 <br/>
 
-**Option 2**: Deviance Goodness-of-fit Test
+**Option 2**: Deviance Goodness-of-fit Test (Less Common)
 
-In some cases, there are **many replicated $x$-values** for **all** x-values. Though this is rare, it is good to use the *deviance goodness-of-fit test* whenever this happens.
+In some cases, there are **many replicated $x$-values** for **all** x-values, i.e.,  each value of x is repeated more than 50 times. Though this is rare, it is good to use the *deviance goodness-of-fit test* whenever this happens.
 
 <a href="javascript:showhide('goodnessoffit1')">
 <div class="hoverchunk">

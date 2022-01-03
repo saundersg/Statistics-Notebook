@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Getting Started Tutorial</title>
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Statistics Notebook</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    R Help
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="RCommands.html">R Commands</a>
+    </li>
+    <li>
+      <a href="RMarkdownHints.html">R Markdown Hints</a>
+    </li>
+    <li>
+      <a href="RCheatSheetsAndNotes.html">R Cheatsheets &amp; Notes</a>
+    </li>
+    <li>
+      <a href="DataSources.html">Data Sources</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Describing Data
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="GraphicalSummaries.html">Graphical Summaries</a>
+    </li>
+    <li>
+      <a href="NumericalSummaries.html">Numerical Summaries</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Making Inference
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="MakingInference.html">Making Inference</a>
+    </li>
+    <li>
+      <a href="tTests.html">t Tests</a>
+    </li>
+    <li>
+      <a href="WilcoxonTests.html">Wilcoxon Tests</a>
+    </li>
+    <li>
+      <a href="Kruskal.html">Kruskal-Wallis Test</a>
+    </li>
+    <li>
+      <a href="ANOVA.html">ANOVA</a>
+    </li>
+    <li>
+      <a href="LinearRegression.html">Linear Regression</a>
+    </li>
+    <li>
+      <a href="LogisticRegression.html">Logistic Regression</a>
+    </li>
+    <li>
+      <a href="ChiSquaredTests.html">Chi Squared Tests</a>
+    </li>
+    <li>
+      <a href="PermutationTests.html">Randomization</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Analyses
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="./Analyses/AnalysisRubric.html">Analysis Rubric</a>
+    </li>
+    <li>
+      <a href="./Analyses/StudentHousing.html">Good Example Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/StudentHousingPOOR.html">Poor Example Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/Rent.html">Rent</a>
+    </li>
+    <li>
+      <a href="./Analyses/Stephanie.html">Stephanie</a>
+    </li>
+    <li>
+      <a href="./Analyses/t Tests/HighSchoolSeniors.html">High School Seniors</a>
+    </li>
+    <li>
+      <a href="./Analyses/Wilcoxon Tests/RecallingWords.html">Recalling Words</a>
+    </li>
+    <li>
+      <a href="./Analyses/Kruskal-Wallis/Food.html">Food</a>
+    </li>
+    <li>
+      <a href="./Analyses/ANOVA/HighSchoolSeniors.html">High School Seniors 2</a>
+    </li>
+    <li>
+      <a href="./Analyses/Linear Regression/MySimpleLinearRegression.html">My Simple Linear Regression</a>
+    </li>
+    <li>
+      <a href="./Analyses/Linear Regression/CarPrices.html">Car Prices</a>
+    </li>
+    <li>
+      <a href="./Analyses/Logistic Regression/MyLogisticRegression.html">My Logistic Regression</a>
+    </li>
+    <li>
+      <a href="./Analyses/Chi Squared Tests/MyChiSquaredTest.html">My Chi-sqaured Test</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Getting Started Tutorial</h1>
+
+</div>
+
+
+<script type="text/javascript">
+ function showhide(id) {
+    var e = document.getElementById(id);
+    e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+ }
+</script>
+<p><br/></p>
+<p>Student: “How do I learn R?”</p>
+<p>Teacher: “By using it.”</p>
+<p>Student: “But I don’t know how to use it.”</p>
+<p>Teacher: “Just try it anyway. Suddenly you’ll understand.”</p>
+<p>Most people that are new to using the “R Software” ask the question, “How do I learn R?” The answer is simple: “start using it.” Really. Seriously. Just start using it, even when you have no idea what you are doing, and suddenly you will start to learn R. So, here we go. The more you use it, the more you will know.</p>
+<p>This textbook (the “Statistics-Notebook”) follows a simple learning model:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Hover</strong> your mouse over <span class="tooltipr"><code>code</code><span class="tooltipRtext">Yes, just like that. By hovering over “Codes” you will get instructions on what that code does.</span></span> to read about it.</li>
+<li><strong>Click</strong> on a <span class="tooltipr"><a href="javascript:showhide('smileyface')"><code>line of code</code></a><span class="tooltipRtext">Hovering is a good start, try clicking on this one.</span></span> to see what it does.
+<div id="smileyface" style="display:none;padding-left:20px;">
+<p><img src="Images/smileyfacecongratulations.jpg"></p>
+</div></li>
+<li><strong>Try</strong> typing the code into RStudio yourself to actually start learning R. (This is the most important step! Avoid copying and pasting codes, and type them instead. The more you type codes yourself, even though it is slow and prone to mistakes, the more you will learn.)</li>
+</ol>
+<p>In summary, the most successful students in Math 325 follow the pattern:</p>
+<p><img src="Images/HoverClickTry.png" /></p>
+<p><br/></p>
+<p><strong>Example Codes</strong></p>
+<p>For each of the following examples: (1) hover, (2) click, and (3) try.</p>
+<p>Before you begin working on these <strong>Example Codes</strong>, ensure you have RStudio open. It should look like this:</p>
+<p><img src="Images/RStudioScreen.png" /></p>
+<p><em>Example 1</em></p>
+<p><span style="font-size:.8em;">Remember, “Hover” the code first, then click, then try.</span></p>
+<a href="javascript:showhide('CarsOutput')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> View( <span class="tooltipRtext">The “View” R function (with a CAPTIAL ‘V’ in View) allows us to view a data set. When run, this function will open up a new tab in RStudio showing the data set. </span> </span><span class="tooltipr"> cars <span class="tooltipRtext"><code>cars</code> is a data set that is in R. R has datasets that are available for anyone to use. You can see them using the <code>data()</code> command. It would be good to explore <code>View()</code> for a few different datasets. </span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always be sure to end your function with closing parantheses. </span> </span><span class="tooltipr">     <br />
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Tutorial  <span class="tooltiprtext">Click to see a full tutorial on the “View()” command.</span> </span></p>
+</div>
+</a>
+<div id="CarsOutput" style="display:none;padding-left:20px;">
+<p><br/></p>
+<div style="color:orange;">
+<p>Good work clicking on <em>Example Code 1</em>.</p>
+<p>But… Did you remember to <em>first</em> hover your mouse over the <code>View(cars)</code> example code? Good job if you did.</p>
+<p>If not, go do that right now before continuing.</p>
+</div>
+<p><br/></p>
+<p>R allows you to work with data. So, the first step to understanding R is to open a dataset and begin exploring some data.</p>
+<p>If you type the <code>data()</code> command into your Console of RStudio you will see a list of “built in” data sets that come with R. Go ahead and type <code>data()</code> into your <strong>R Console</strong> (and then press <code>Return</code> or <code>Enter</code>) right now to try it yourself.</p>
+<p><img src="Images/DataOutput.png" /></p>
+<p><br/></p>
+<p>The <code>cars</code> data set is one of the options that is available within the list from the <code>data()</code> command. This is a fun “historic” data set from the 1920’s. It shows the <code>speed</code> and stopping <code>dist</code>ance of cars from the 1920’s.</p>
+<p>To see the <code>cars</code> data set in RStudio, use the <code>View</code> command as follows.</p>
+<p><strong>Step 1.</strong> Open RStudio.</p>
+<p><strong>Step 2.</strong> Type the command <code>View(cars)</code> into your <strong>Console</strong>.</p>
+<p><strong>Step 3.</strong> Press <code>Enter</code> or <code>Return</code> and the following output should appear within RStudio.</p>
+<p><img src="Images/ViewCars.png" /></p>
+<p><br/></p>
+<p>Be sure to <strong>TRY IT</strong> yourself, if you haven’t already. Good work if you did. It’s the only way to learn R.</p>
+<p>Ask someone for help if you aren’t sure how to get started.</p>
+<p>Try <code>View(airquality)</code> as well.</p>
+<p><br/> <br/></p>
+</div>
+<p><br/></p>
+<p><em>Example 2</em></p>
+<a href="javascript:showhide('meancarsdist')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> mean( <span class="tooltipRtext">An R function “mean()” that will compute the mean of a quantitative column of data from a data set.</span> </span><span class="tooltipr"> cars <span class="tooltipRtext"><code>cars</code> is the name of a data set in R. Any data set can be used instead by simply typing the name of that data set instead of <code>cars</code>.</span> </span><span class="tooltipr"> $ <span class="tooltipRtext">The <code>$</code> sign is a powerful operator in R. The <code>$</code> sign allows you to access, or “purchase,” any column from a data set. Try typing <code>cars$</code> into R and notice how a selection menu appears with options <code>dist</code> and <code>speed</code>.</span> </span><span class="tooltipr"> dist <span class="tooltipRtext"><code>dist</code> is one of the two columns from the <code>cars</code> data set. By typing <code>cars$dist</code> we are essentially pulling that column of data out of the data set, and then computing the mean of that column with <code>mean(cars$dist)</code>.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Closing parenthesis for the <code>mean()</code> function.</span> </span><span class="tooltipr">     <br />
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to see output.</span> </span></p>
+</div>
+</a>
+<div id="meancarsdist" style="display:none;padding-left:20px;">
+<p><br/></p>
+<div style="color:orange;">
+<p>Did you remember to <em>first</em> hover your mouse over the <code>mean(cars$dist)</code> example code? Good job if you did.</p>
+<p>If not, go do that right now before continuing.</p>
+</div>
+<p><br/></p>
+<p>Recall that you “Viewed” the <code>cars</code> data set in the first example code. If you look carefully at this data set, you should notice that there are two columns labeled <strong>speed</strong> and <strong>dist</strong> in this data set. Each row of the data set represents a vehicle that was going a certain <strong>speed</strong> (in miles per hour) and once the breaks were applied, the <strong>dist</strong>ance the vehicle took to stop was also recorded (in feet). This data was recorded for 50 different vehicles. So it might make sense to compute something like the average (or mean) distance it took vehicles to stop. This is done with the <code>mean( )</code> function. Notice how the <code>$</code> sign is used to access a column called <strong>dist</strong> from the <code>cars</code> data set. Think of the data set <code>cars</code> as a store, and if you bring your money <code>$</code> then you can “buy” the column <strong>dist</strong> from that data set.</p>
+<p><img src="Images/meancarsdist.png" /></p>
+<p>You may also be interested in trying any of the following:</p>
+<ul>
+<li><code>sd(cars$dist)</code></li>
+<li><code>var(cars$dist)</code></li>
+<li><code>median(cars$dist)</code></li>
+<li><code>min(cars$dist)</code></li>
+<li><code>max(cars$dist)</code></li>
+<li><code>length(cars$dist)</code></li>
+<li><code>sum(cars$dist)</code></li>
+</ul>
+<p>If you are curious, you can begin exploring the <a href="NumericalSummaries.html">Numerical Summaries</a> page of your Statistics-Notebook to learn more. But we won’t officially get to that as a class until later this week. So you don’t need to worry about it for now.</p>
+<p><br/> <br/></p>
+</div>
+<p><br/></p>
+<p><em>Example 3</em></p>
+<a href="javascript:showhide('plotcarsdist')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> plot( <span class="tooltipRtext">The <code>plot(...)</code> function allows us to create a plot (usually a scatterplot) in R.</span> </span><span class="tooltipr"> dist <span class="tooltipRtext"> <code>dist</code> is the name of a column from the <code>cars</code> data set. This is going to be the Y-variable of the plot. The Y-variable always comes first in the plot(Y ~ X) command.</span> </span><span class="tooltipr">  ~  <span class="tooltipRtext"> <code>~</code> is found on the upper-left key of your keyboard. It is called the “tilde” or “tilda” symbol. It is used to state a relationship between Y and X: <code>Y ~ X</code>.</span> </span><span class="tooltipr"> speed <span class="tooltipRtext"> <code>speed</code> is the name of a column. This is going to be the X-variable of the plot. The X-variable always comes after the <code>~</code> in the <code>plot(Y ~ X)</code> command.</span> </span><span class="tooltipr"> ,  <span class="tooltipRtext"> The comma <code>,</code> is used to separate each entry within a command.</span> </span><span class="tooltipr"> data=cars <span class="tooltipRtext"> The <code>data=</code> statement is used to tell R which data set the columns of “dist” and “speed” come from. In this case, the <code>cars</code> data set.</span> </span><span class="tooltipr"> ,  <span class="tooltipRtext"> The comma <code>,</code> is used to separate each entry within a command.</span> </span><span class="tooltipr"> col=“skyblue” <span class="tooltipRtext"> The <code>col=</code> statement is used to tell R which color to use in the plot. Type <code>colors()</code> in your R Console to see what options there are. This code is using the <code>"skyblue"</code> color. Color names are always placed in quotes <code>" "</code>.</span> </span><span class="tooltipr"> ,  <span class="tooltipRtext"> The comma <code>,</code> is used to separate each entry within a command.</span> </span><span class="tooltipr"> pch=16 <span class="tooltipRtext"> The <code>pch=</code> statement is used to tell R which plotting character to use in the plot. Type <code>?pch</code> in your R Console to see what options there are. (You’ll need to scroll down in the help file that appears until you get to the <code>'pch values'</code> section.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Closing parenthesis for the plot(…) function.</span> </span><span class="tooltipr">     <br />
+<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+</div>
+</a>
+<div id="plotcarsdist" style="display:none;padding-left:20px;">
+<p><br/></p>
+<p>Study the image below.</p>
+<p><img src="Images/plotcarsblue.png" /></p>
+<p>Try changing the <code>col="skyblue"</code> statement to <code>col="firebrick"</code> instead. What do you notice?</p>
+<p>Try changing the <code>pch=16</code> statement to <code>pch=4</code> or any other number from 1 to 25. What do you notice?</p>
+<p>Hint: pressing the “up” arrow on your keyboard brings up the last command you typed into the Console.</p>
+<p><br/></p>
+<div style="background-color:skyblue;padding:10px;">
+<p>Good work! You’re all done for now.</p>
+<p><strong>Completion Code:</strong> abc123R</p>
+</div>
+<p><br/></p>
+<p><a href="RCommands.html">Return to the R Commands</a> page of the Statistics-Notebook.</p>
+</div>
+<p><br/> <br/></p>
+<p><span style="color:orange;">This is “the end” of the <em>Getting Started</em> tutorial.</span> <span style="color:gray;">To find the “completion code” you will need to study, and “click open” each of the example codes above.</span></p>
+<p><br/> <br/></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

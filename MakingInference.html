@@ -13,44 +13,37 @@
 
 <title>Making Inference</title>
 
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-
-
-
 
 <style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
@@ -61,10 +54,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -81,40 +70,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -142,7 +104,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -154,7 +116,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -165,10 +127,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -180,7 +155,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -309,10 +283,10 @@ $(document).ready(function () {
       <a href="WilcoxonTests.html">Wilcoxon Tests</a>
     </li>
     <li>
-      <a href="ANOVA.html">ANOVA</a>
+      <a href="Kruskal.html">Kruskal-Wallis Test</a>
     </li>
     <li>
-      <a href="Kruskal.html">Kruskal-Wallis</a>
+      <a href="ANOVA.html">ANOVA</a>
     </li>
     <li>
       <a href="LinearRegression.html">Linear Regression</a>
@@ -324,7 +298,7 @@ $(document).ready(function () {
       <a href="ChiSquaredTests.html">Chi Squared Tests</a>
     </li>
     <li>
-      <a href="PermutationTests.html">Randomization Testing</a>
+      <a href="PermutationTests.html">Randomization</a>
     </li>
   </ul>
 </li>
@@ -357,10 +331,10 @@ $(document).ready(function () {
       <a href="./Analyses/Wilcoxon Tests/RecallingWords.html">Recalling Words</a>
     </li>
     <li>
-      <a href="./Analyses/ANOVA/DayCare.html">Day Care</a>
+      <a href="./Analyses/Kruskal-Wallis/Food.html">Food</a>
     </li>
     <li>
-      <a href="./Analyses/Kruskal-Wallis/Food.html">Food</a>
+      <a href="./Analyses/ANOVA/HighSchoolSeniors.html">High School Seniors 2</a>
     </li>
     <li>
       <a href="./Analyses/Linear Regression/MySimpleLinearRegression.html">My Simple Linear Regression</a>
@@ -384,7 +358,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -413,7 +387,8 @@ $(document).ready(function () {
 <p>See the <a href="http://statistics.byuimath.com/index.php?title=Lesson_2:_The_Statistical_Process_%26_Design_of_Studies#Making_Inferences:_Hypothesis_Testing">BYU-I Math 221 Stats Wiki</a> for another example.</p>
 </div>
 <p><br /></p>
-<h3 id="managing-decision-errors">Managing Decision Errors</h3>
+<div id="managing-decision-errors" class="section level3">
+<h3>Managing Decision Errors</h3>
 <p>When the <span class="math inline">\(p\)</span>-value approaches zero, one of two things must be occurring. Either an extremely rare event has happened or the null hypothesis is incorrect. Since the second option, that the null hypothesis is incorrect, is the more plausible option, we reject the null hypothesis in favor of the alternative whenever the <span class="math inline">\(p\)</span>-value is close to zero. It is important to remember that rejecting the null hypothesis could however be a mistake.</p>
 <div style="padding-left:30px; padding-right:10%;">
 <table>
@@ -439,19 +414,28 @@ $(document).ready(function () {
 </table>
 </div>
 <p><br /></p>
-<h3 id="type-i-error-significance-level-confidence-and-alpha">Type I Error, Significance Level, Confidence and <span class="math inline">\(\alpha\)</span></h3>
+</div>
+<div id="type-i-error-significance-level-confidence-and-alpha" class="section level3">
+<h3>Type I Error, Significance Level, Confidence and <span class="math inline">\(\alpha\)</span></h3>
 <p>A <strong>Type I Error</strong> is defined as rejecting the null hypothesis when it is actually true. (Throwing away truth.) The <strong>significance level</strong>, <span class="math inline">\(\alpha\)</span>, of a hypothesis test controls the probability of a Type I Error. The typical value of <span class="math inline">\(\alpha = 0.05\)</span> came from tradition and is a somewhat arbitrary value. Any value from 0 to 1 could be used for <span class="math inline">\(\alpha\)</span>. When deciding on the level of <span class="math inline">\(\alpha\)</span> for a particular study it is important to remember that as <span class="math inline">\(\alpha\)</span> increases, the probability of a Type I Error increases, and the probability of a Type II Error decreases. When <span class="math inline">\(\alpha\)</span> gets smaller, the probability of a Type I Error gets smaller, while the probability of a Type II Error increases. <strong>Confidence</strong> is defined as <span class="math inline">\(1-\alpha\)</span> or the opposite of a Type I error. That is the probability of accepting the NULL when it is in fact true.</p>
 <p><br /></p>
-<h3 id="type-ii-errors-beta-and-power">Type II Errors, <span class="math inline">\(\beta\)</span>, and Power</h3>
+</div>
+<div id="type-ii-errors-beta-and-power" class="section level3">
+<h3>Type II Errors, <span class="math inline">\(\beta\)</span>, and Power</h3>
 <p>It is also possible to make a <strong>Type II Error</strong>, which is defined as failing to reject the null hypothesis when it is actually false. (Failing to move to truth.) The probability of a Type II Error, <span class="math inline">\(\beta\)</span>, is often unknown. However, practitioners often make an assumption about a detectable difference that is desired which then allows <span class="math inline">\(\beta\)</span> to be prescribed much like <span class="math inline">\(\alpha\)</span>. In essence, the detectable difference prescribes a fixed value for <span class="math inline">\(H_a\)</span>. We can then talk about the <strong>power</strong> of of a hypothesis test, which is 1 minus the probability of a Type II Error, <span class="math inline">\(\beta\)</span>. See <a href="https://en.wikipedia.org/wiki/Statistical_power">Statistical Power</a> in Wikipedia for a starting source if your are interested. <a href="http://rpsychologist.com/d3/NHST/" target="blank">This website</a> provides a novel interactive visualization to help you understand power. It does require a little background on <a href="http://rpsychologist.com/d3/cohend/">Cohen’s D</a>.</p>
 <p><br /></p>
-<h3 id="sufficient-evidence">Sufficient Evidence</h3>
+</div>
+<div id="sufficient-evidence" class="section level3">
+<h3>Sufficient Evidence</h3>
 <p>Statistics comes in to play with hypothesis testing by defining the phrase “sufficient evidence.” When there is “sufficient evidence” in the data, the null hypothesis is rejected and the alternative hypothesis becomes the working hypothesis.</p>
 <p>There are many statistical approaches to this problem of measuring the significance of evidence, but in almost all cases, the final measurement of evidence is given by the <span class="math inline">\(p\)</span>-value of the hypothesis test. The <span class="math inline">\(p\)</span>-value of a test is defined as the probability of the evidence being as extreme or more extreme than what was observed assuming the null hypothesis is true. This is an interesting phrase that is at first difficult to understand.</p>
 <p>The “as extreme or more extreme” part of the definition of the <span class="math inline">\(p\)</span>-value comes from the idea that the null hypothesis will be rejected when the evidence in the data is extremely inconsistent with the null hypothesis. If the data is not extremely different from what we would expect under the null hypothesis, then we will continue to believe the null hypothesis. Although, it is worth emphasizing that this does not prove the null hypothesis to be true.</p>
 <p><br /></p>
-<h3 id="evidence-not-proof">Evidence not Proof</h3>
+</div>
+<div id="evidence-not-proof" class="section level3">
+<h3>Evidence not Proof</h3>
 <p>Hypothesis testing allows us a formal way to decide if we should “conclude the alternative” or “<em>continue</em> to accept the null.” It is important to remember that statistics (and science) cannot <em>prove</em> anything, just show evidence towards. Thus we never really <em>prove</em> a hypothesis is true, we simply show evidence towards or against a hypothesis.</p>
+</div>
 </div>
 <p><br /></p>
 </div>
@@ -466,14 +450,16 @@ $(document).ready(function () {
 </ol>
 <p>A <em>distribution</em> describes how data is spread out. When we know the shape of a distribution, we know which values are possible, but more importantly which values are most plausible (likely) and which are the least plausible (unlikely). The <span class="math inline">\(p\)</span>-value uses the <em>sampling distribution</em> of the test statistic to measure the probability of the observed test statistic being as extreme or more extreme than the one observed.</p>
 <p>All <span class="math inline">\(p\)</span>-value computation methods can be classified into two broad categories, <em>parametric</em> methods and <em>nonparametric</em> methods.</p>
-<h3 id="parametric-methods">Parametric Methods</h3>
+<div id="parametric-methods" class="section level3">
+<h3>Parametric Methods</h3>
 <div style="padding-left:15px;">
 <p>Parametric methods assume that, under the null hypothesis, the test statistic follows a specific theoretical parametric distribution. Parametric methods are typically more statistically powerful than nonparametric methods, but necessarily force more assumptions on the data.</p>
 <p><em>Parametric distributions</em> are theoretical distributions that can be described by a mathematical function. There are many theoretical distributions. (See the <a href="https://en.wikipedia.org/wiki/List_of_probability_distributions">List of Probability Distributions</a> in Wikipedia for details.)</p>
 <p>Four of the most widely used parametric distributions are:</p>
 <div style="padding-left:15px;">
 <hr />
-<h4 id="normal">The Normal Distribution</h4>
+<div id="normal" class="section level4">
+<h4>The Normal Distribution</h4>
 <a href="javascript:showhide('thenormaldistribution')">Click for Details </a>
 <div id="thenormaldistribution" style="display:none;">
 <p>One of the most important distributions in statistics is the normal distribution. It is a theoretical distribution that approximates the distributions of many real life data distributions, like heights of people, heights of corn plants, baseball batting averages, lengths of gestational periods for many species including humans, and so on.</p>
@@ -482,13 +468,18 @@ $(document).ready(function () {
 <li>The parent population is normally distributed.</li>
 <li>The sample size is sufficiently large. (Often <span class="math inline">\(n\geq 30\)</span> is sufficient, but this is a general rule of thumb that is sometimes insufficient.)</li>
 </ol>
-<h5 id="mathematical-formula">Mathematical Formula</h5>
+<div id="mathematical-formula" class="section level5">
+<h5>Mathematical Formula</h5>
 <p><span class="math display">\[
   f(x | \mu,\sigma) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
 \]</span> The symbols <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> are the two <em>parameters</em> of this distribution. The parameter <span class="math inline">\(\mu\)</span> controls the center, or mean of the distribution. The parameter <span class="math inline">\(\sigma\)</span> controls the spread, or standard deviation of the distribution.</p>
-<h5 id="graphical-form">Graphical Form</h5>
+</div>
+<div id="graphical-form" class="section level5">
+<h5>Graphical Form</h5>
 <p><img src="MakingInference_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<h5 id="comments">Comments</h5>
+</div>
+<div id="comments" class="section level5">
+<h5>Comments</h5>
 <p>The usefulness of the normal distribution is that we know which values of data are likely and which are unlikely by just knowing three things:</p>
 <ol style="list-style-type: decimal">
 <li><p>that the data is normally distributed,</p></li>
@@ -498,61 +489,90 @@ $(document).ready(function () {
 <p>For example, as shown in the plot above, a value of <span class="math inline">\(x=-8\)</span> would be very probable for the normal distribution with <span class="math inline">\(\mu=-5\)</span> and <span class="math inline">\(\sigma=2\)</span> (light blue curve). However, the value of <span class="math inline">\(x=-8\)</span> would be very unlikely to occur in the normal distribution with <span class="math inline">\(\mu=3\)</span> and <span class="math inline">\(\sigma=3\)</span> (gray curve). In fact, <span class="math inline">\(x=-8\)</span> would be even more unlikely an occurance for the <span class="math inline">\(\mu=0\)</span> and <span class="math inline">\(\sigma=1\)</span> distribution (dark blue curve).</p>
 <p><br /> <br /></p>
 </div>
+</div>
 <hr />
-<h4 id="chisquared">The Chi Squared Distribution</h4>
+</div>
+<div id="chisquared" class="section level4">
+<h4>The Chi Squared Distribution</h4>
 <a href="javascript:showhide('thechidistribution')">Click for Details </a>
 <div id="thechidistribution" style="display:none;">
 <p>The <em>chi squared</em> distribution only allows for values that are greater than or equal to zero. While it has a few real life applications, by far its greatest use is theoretical.</p>
 <p>The test statistic of the chi squared test is distributed according to a chi squared distribution.</p>
-<h5 id="mathematical-formula-1">Mathematical Formula</h5>
+<div id="mathematical-formula-1" class="section level5">
+<h5>Mathematical Formula</h5>
 <p><span class="math display">\[
   f(x|p) = \frac{1}{\Gamma(p/2)2^{p/2}}x^{(p/2)-1}e^{-x/2}
 \]</span> The only parameter of the chi squared distribution is <span class="math inline">\(p\)</span>, which is known as the degrees of freedom. Larger values of the parameter <span class="math inline">\(p\)</span> move the center of the chi squared distribution farther to the right. As <span class="math inline">\(p\)</span> goes to infinity, the chi squared distribution begins to look more and more normal in shape.</p>
 <p>Note that the symbol in the denominator of the chi squared distribution, <span class="math inline">\(\Gamma(p/2)\)</span>, is the Gamma function of <span class="math inline">\(p/2\)</span>. (See <a href="https://en.wikipedia.org/wiki/Gamma_function">Gamma Function</a> in Wikipedia for details.)</p>
-<h5 id="graphical-form-1">Graphical Form</h5>
+</div>
+<div id="graphical-form-1" class="section level5">
+<h5>Graphical Form</h5>
 <p><img src="MakingInference_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<h5 id="comments-1">Comments</h5>
+</div>
+<div id="comments-1" class="section level5">
+<h5>Comments</h5>
 <p>It is important to remember that the chi squared distribution is only defined for <span class="math inline">\(x\geq 0\)</span> and for positive values of the parameter <span class="math inline">\(p\)</span>. This is unlike the normal distribution which is defined for all numbers <span class="math inline">\(x\)</span> from negative infinity to positive infinity as well as for all values of <span class="math inline">\(\mu\)</span> from negative infinity to positive infinity.</p>
 <p><br /> <br /></p>
 </div>
+</div>
 <hr />
-<h4 id="the-t-distribution">The t Distribution</h4>
+</div>
+<div id="the-t-distribution" class="section level4">
+<h4>The t Distribution</h4>
 <a href="javascript:showhide('thetdistribution')">Click for Details </a>
 <div id="thetdistribution" style="display:none;">
 <p>A close friend of the normal distribution is the t distribution. Although the t distribution is seldom used to model real life data, the distribution is used extensively in hypothesis testing. For example, it is the sampling distribution of the one sample t statistic. It also shows up in many other places, like in regression, in the independent samples t test, and in the paired samples t test.</p>
-<h5 id="mathematical-formula-2">Mathematical Formula</h5>
+<div id="mathematical-formula-2" class="section level5">
+<h5>Mathematical Formula</h5>
 <p><span class="math display">\[
   f(x|p) = \frac{\Gamma\left(\frac{p+1}{2}\right)}{\Gamma\left(\frac{p}{2}\right)}\frac{1}{\sqrt{p\pi}}\frac{1}{\left(1 + \left(\frac{x^2}{p}\right)\right)^{(p+1)/2}}
 \]</span></p>
 <p>Notice that, similar to the chi squared distribution, the t distribution has only one parameter, the degrees of freedom <span class="math inline">\(p\)</span>. As the single parameter <span class="math inline">\(p\)</span> is varied from <span class="math inline">\(p=1\)</span>, to <span class="math inline">\(p=2\)</span>, …, <span class="math inline">\(p=5\)</span>, and larger and larger numbers, the resulting distribution becomes more and more normal in shape.</p>
 <p>Note that the expressions <span class="math inline">\(\Gamma\left(\frac{p+1}{2}\right)\)</span> and <span class="math inline">\(\Gamma(p/2)\)</span>, refer to the Gamma function. (See <a href="https://en.wikipedia.org/wiki/Gamma_function">Gamma Function</a> in Wikipedia for details.)</p>
-<h5 id="graphical-form-2">Graphical Form</h5>
+</div>
+<div id="graphical-form-2" class="section level5">
+<h5>Graphical Form</h5>
 <p><img src="MakingInference_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<h5 id="comments-2">Comments</h5>
+</div>
+<div id="comments-2" class="section level5">
+<h5>Comments</h5>
 <p>When the degrees of freedom <span class="math inline">\(p=30\)</span>, the resulting t distribution is almost indistinguishable visually from the normal distribution. This is one of the reasons that a sample size of 30 is often used as a rule of thumb for the sample size being “large enough” to assume the sampling distribution of the sample mean is approximately normal.</p>
 <p><br /> <br /></p>
 </div>
+</div>
 <hr />
-<h4 id="fdist">The F Distribution</h4>
+</div>
+<div id="fdist" class="section level4">
+<h4>The F Distribution</h4>
 <a href="javascript:showhide('thefdistribution')">Click for Details </a>
 <div id="thefdistribution" style="display:none;">
 <p>Another commonly used distribution for test statistics, like in ANOVA and regression, is the F distribution. Technically speaking, the F distribution is the ratio of two chi squared random variables that are each divided by their respective degrees of freedom.</p>
-<h5 id="mathematical-formula-3">Mathematical Formula</h5>
+<div id="mathematical-formula-3" class="section level5">
+<h5>Mathematical Formula</h5>
 <p><span class="math display">\[
   f(x|p_1,p_2) = \frac{\Gamma\left(\frac{p_1+p_2}{2}\right)}{\Gamma\left(\frac{p_1}{2}\right)\Gamma\left(\frac{p_2}{2}\right)}\frac{\left(\frac{p_1}{p_2}\right)^{p_1/2}x^{(p_1-2)/2}}{\left(1+\left(\frac{p_1}{p_2}\right)x\right)^{(p_1+p_2)/2}}
 \]</span> where <span class="math inline">\(x\geq 0\)</span> and the parameters <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span> are the “numerator” and “denominator” degrees of freedom, respectively.</p>
-<h5 id="graphical-form-3">Graphical Form</h5>
+</div>
+<div id="graphical-form-3" class="section level5">
+<h5>Graphical Form</h5>
 <p><img src="MakingInference_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<h5 id="comments-3">Comments</h5>
+</div>
+<div id="comments-3" class="section level5">
+<h5>Comments</h5>
 <p>The effects of the parameters <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span> on the F distribution are complicated, but generally speaking, as they both increase the distribution becomes more and more normal in shape.</p>
 <p><br /></p>
+</div>
 </div>
 <hr />
 </div>
 </div>
-<h3 id="nonparametric-methods">Nonparametric Methods</h3>
+</div>
+</div>
+<div id="nonparametric-methods" class="section level3">
+<h3>Nonparametric Methods</h3>
 <div style="padding-left:15px;">
 <p>Nonparametric methods place minimal assumptions on the distribution of data. They allow the data to “speak for itself.” They are typically less powerful than the parametric alternatives, but are more broadly applicable because fewer assumptions need to be satisfied. Nonparametric methods include <a href="WilcoxonTests.html">Rank Sum Tests</a> and <a href="PermutationTests.html">Permutation Tests</a>.</p>
+</div>
 </div>
 </div>
 <footer>
@@ -568,7 +588,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -586,7 +606,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

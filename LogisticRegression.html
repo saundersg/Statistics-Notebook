@@ -13,31 +13,56 @@
 
 <title>Logistic Regression</title>
 
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -57,7 +82,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {  background-color: #f8f8f8; }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -110,39 +135,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   }
 })();
 </script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
@@ -153,10 +148,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -173,40 +164,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -234,7 +198,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -246,7 +210,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -257,10 +221,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -272,7 +249,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -401,10 +377,10 @@ $(document).ready(function () {
       <a href="WilcoxonTests.html">Wilcoxon Tests</a>
     </li>
     <li>
-      <a href="ANOVA.html">ANOVA</a>
+      <a href="Kruskal.html">Kruskal-Wallis Test</a>
     </li>
     <li>
-      <a href="Kruskal.html">Kruskal-Wallis</a>
+      <a href="ANOVA.html">ANOVA</a>
     </li>
     <li>
       <a href="LinearRegression.html">Linear Regression</a>
@@ -416,7 +392,7 @@ $(document).ready(function () {
       <a href="ChiSquaredTests.html">Chi Squared Tests</a>
     </li>
     <li>
-      <a href="PermutationTests.html">Randomization Testing</a>
+      <a href="PermutationTests.html">Randomization</a>
     </li>
   </ul>
 </li>
@@ -449,10 +425,10 @@ $(document).ready(function () {
       <a href="./Analyses/Wilcoxon Tests/RecallingWords.html">Recalling Words</a>
     </li>
     <li>
-      <a href="./Analyses/ANOVA/DayCare.html">Day Care</a>
+      <a href="./Analyses/Kruskal-Wallis/Food.html">Food</a>
     </li>
     <li>
-      <a href="./Analyses/Kruskal-Wallis/Food.html">Food</a>
+      <a href="./Analyses/ANOVA/HighSchoolSeniors.html">High School Seniors 2</a>
     </li>
     <li>
       <a href="./Analyses/Linear Regression/MySimpleLinearRegression.html">My Simple Linear Regression</a>
@@ -476,7 +452,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -509,7 +485,7 @@ $(document).ready(function () {
 <p>Regression for a qualitative binary response variable <span class="math inline">\((Y_i = 0\)</span> or <span class="math inline">\(1)\)</span>. The explanatory variables can be either quantitative or qualitative.</p>
 <hr />
 <div id="simple-logistic-regression-model" class="section level2 tabset tabset-pills tabset-fade">
-<h2>Simple Logistic Regression Model</h2>
+<h2 class="tabset tabset-pills tabset-fade">Simple Logistic Regression Model</h2>
 <div style="float:left;width:125px;" align="center">
 <p><img src="Images/BinomYQuantX.png" width=58px;></p>
 </div>
@@ -540,7 +516,8 @@ $$</code></pre>
 <h3>R Instructions</h3>
 <div style="padding-left:125px;">
 <p><strong>Console</strong> Help Command: <code>?glm()</code></p>
-<h4 id="perform-a-logistic-regression">Perform a Logistic Regression</h4>
+<div id="perform-a-logistic-regression" class="section level4">
+<h4>Perform a Logistic Regression</h4>
 <a href="javascript:showhide('logistic1')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> YourGlmName <span class="tooltiprtext">This is some name you come up with that will become the R object that stores the results of your logistic regression <code>glm()</code> command.</span> </span><span class="tooltipr">  &lt;-  <span class="tooltiprtext">This is the “left arrow” assignment operator that stores the results of your <code>glm()</code> code into <code>YourGlmName</code>.</span> </span><span class="tooltipr"> glm( <span class="tooltiprtext">glm( is an R function that stands for “General Linear Model”. It works in a similar way that the <code>lm(</code> function works except that it requires a <code>family=</code> option to be specified at the end of the command.</span> </span><span class="tooltipr"> Y  <span class="tooltiprtext">Y is your binary response variable. It must consist of only 0’s and 1’s. Since TRUE’s = 1’s and FALSE’s = 0’s in R, Y could be a logical statement like (Price &gt; 100) or (Animal == “Cat”) if your Y-variable wasn’t currently coded as 0’s and 1’s.</span> </span><span class="tooltipr"> ~  <span class="tooltiprtext">The tilde symbol ~ is used to tell R that Y should be treated as a function of the explanatory variable X.</span> </span><span class="tooltipr"> X, <span class="tooltiprtext">X is the explanatory variable (typically quantitative) that will be used to explain the probability that the response variable Y is a 1.</span> </span><span class="tooltipr">  data = NameOfYourDataset,<br />
@@ -717,10 +694,12 @@ $$</code></pre>
 </table>
 </div>
 <p><br/></p>
-<h4 id="diagnose-the-goodness-of-fit">Diagnose the Goodness-of-Fit</h4>
+</div>
+<div id="diagnose-the-goodness-of-fit" class="section level4">
+<h4>Diagnose the Goodness-of-Fit</h4>
 <p>There are two ways to check the <strong>goodness of fit</strong> of a logistic regression model.</p>
 <div style="padding-left:25px;">
-<p><strong>Option 1</strong>: Hosmer-Lemeshow Goodness-of-Fit Test</p>
+<p><strong>Option 1</strong>: Hosmer-Lemeshow Goodness-of-Fit Test (Most Common)</p>
 <p>To check the <strong>goodness of fit</strong> of a logistic regression model where there are <strong>few or no replicated <span class="math inline">\(x\)</span>-values</strong> use the Hosmer-Lemeshow Test.</p>
 <a href="javascript:showhide('goodnessoffit2')">
 <div class="hoverchunk">
@@ -736,8 +715,8 @@ $$</code></pre>
 <p>Note that the null hypothesis of the goodness-of-fit test is that “the logistic regression is a good fit.” So we actually don’t want to “reject the null” in this case. So a large p-value here means our logistic regression fits the data satisfactorily. A small p-value implies a poor fit and the results of the logistic regression should not be fully trusted.</p>
 </div>
 <p><br/></p>
-<p><strong>Option 2</strong>: Deviance Goodness-of-fit Test</p>
-<p>In some cases, there are <strong>many replicated <span class="math inline">\(x\)</span>-values</strong> for <strong>all</strong> x-values. Though this is rare, it is good to use the <em>deviance goodness-of-fit test</em> whenever this happens.</p>
+<p><strong>Option 2</strong>: Deviance Goodness-of-fit Test (Less Common)</p>
+<p>In some cases, there are <strong>many replicated <span class="math inline">\(x\)</span>-values</strong> for <strong>all</strong> x-values, i.e., each value of x is repeated more than 50 times. Though this is rare, it is good to use the <em>deviance goodness-of-fit test</em> whenever this happens.</p>
 <a href="javascript:showhide('goodnessoffit1')">
 <div class="hoverchunk">
 <p><span class="tooltipr"> pchisq( <span class="tooltiprtext">The <code>pchisq</code> command allows you to compute p-values from the chi-squared distribution.</span> </span><span class="tooltipr"> residual deviance,  <span class="tooltiprtext">The residual deviance is shown at the bottom of the output of your <code>summary(YourGlmName)</code> and should be typed in here as a number like 25.3.</span> </span><span class="tooltipr"> df for residual deviance,  <span class="tooltiprtext">The df for the residual deviance is also shown at the bottom of the output of your <code>summary(YourGlmName)</code>.</span> </span><span class="tooltipr"> lower.tail=FALSE) <span class="tooltiprtext">This command ensures you find the probability of the chi-squared distribution being as extreme or more extreme than the observed value of residual deviance.</span> </span></p>
@@ -771,7 +750,9 @@ $$</code></pre>
 </div>
 </div>
 <p><br/></p>
-<h4 id="plot-the-regression">Plot the Regression</h4>
+</div>
+<div id="plot-the-regression" class="section level4">
+<h4>Plot the Regression</h4>
 <div class="tab">
 <p><button class="tablinks" onclick="openTab(event, 'LogisticBaseplot')">Base R</button> <button class="tablinks" onclick="openTab(event, 'Logisticggplot')">ggplot2</button></p>
 </div>
@@ -801,7 +782,9 @@ $$</code></pre>
 </p>
 </div>
 <p><br/></p>
-<h4 id="predict-probabilities">Predict Probabilities</h4>
+</div>
+<div id="predict-probabilities" class="section level4">
+<h4>Predict Probabilities</h4>
 <p>To predict the probability that <span class="math inline">\(Y_i=1\)</span> for a given <span class="math inline">\(x\)</span>-value, use the code</p>
 <a href="javascript:showhide('LogisticPredict')">
 <div class="hoverchunk">
@@ -809,12 +792,13 @@ $$</code></pre>
 </div>
 <p></a></p>
 <div id="LogisticPredict" style="display:none;">
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>myglm &lt;-<span class="st"> </span><span class="kw">glm</span>(am <span class="op">~</span><span class="st"> </span>disp, <span class="dt">data =</span> mtcars, <span class="dt">family =</span> binomial)</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">predict</span>(myglm, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">disp =</span> <span class="dv">200</span>), <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>myglm <span class="ot">&lt;-</span> <span class="fu">glm</span>(am <span class="sc">~</span> disp, <span class="at">data =</span> mtcars, <span class="at">family =</span> binomial)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(myglm, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">disp =</span> <span class="dv">200</span>), <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span></code></pre></div>
 <pre><code>##         1 
 ## 0.4280016</code></pre>
 </div>
 <hr />
+</div>
 </div>
 </div>
 <div id="explanation" class="section level3">
@@ -825,38 +809,52 @@ $$</code></pre>
 <li>the response variable is binary <span class="math inline">\((Y_i=0\)</span> or <span class="math inline">\(1)\)</span>, and</li>
 <li>there is a single explanatory variable <span class="math inline">\(X\)</span> that is typically quantitative but could be qualitative (if <span class="math inline">\(X\)</span> is binary or ordinal).</li>
 </ul>
-<h4 id="the-model">The Model</h4>
+<div id="the-model" class="section level4">
+<h4>The Model</h4>
 <p>Since <span class="math inline">\(Y_i\)</span> is binary (can only be 0 or 1) the model focuses on describing the probability that <span class="math inline">\(Y_i=1\)</span> for a given scenario. The probability that <span class="math inline">\(Y_i = 1\)</span> given the observed value of <span class="math inline">\(x_i\)</span> is called <span class="math inline">\(\pi_i\)</span> and is modeled by the equation</p>
 <p><span class="math display">\[
   P(Y_i = 1|\, x_i) = \frac{e^{\beta_0 + \beta_1 x_i}}{1+e^{\beta_0 + \beta_1 x_i}} = \pi_i
 \]</span></p>
 <p>The assumption is that for certain values of <span class="math inline">\(X\)</span> the probability that <span class="math inline">\(Y_i=1\)</span> is higher than for other values of <span class="math inline">\(X\)</span>.</p>
-<h4 id="interpretation">Interpretation</h4>
+</div>
+<div id="interpretation" class="section level4">
+<h4>Interpretation</h4>
 <p>This model for <span class="math inline">\(\pi_i\)</span> comes from modeling the <em>log of the odds</em> that <span class="math inline">\(Y_i=1\)</span> using a linear regression, i.e., <span class="math display">\[
   \log\underbrace{\left(\frac{\pi_i}{1-\pi_i}\right)}_{\text{Odds for}\ Y_i=1} = \underbrace{\beta_0 + \beta_1 x_i}_{\text{linear regression}}
 \]</span> Beginning to solve this equation for <span class="math inline">\(\pi_i\)</span> leads to the intermediate, but important result that <span class="math display">\[
     \underbrace{\frac{\pi_i}{1-\pi_i}}_{\text{Odds for}\ Y_i=1} = e^{\overbrace{\beta_0 + \beta_1 x_i}^{\text{linear regression}}} = e^{\beta_0}e^{\beta_1 x_i}
 \]</span> Thus, while the coefficients <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are difficult to interpret directly, <span class="math inline">\(e^{\beta_0}\)</span> and <span class="math inline">\(e^{\beta_1}\)</span> have a valuable interpretation. The value of <span class="math inline">\(e^{\beta_0}\)</span> is interpreted as the odds for <span class="math inline">\(Y_i=1\)</span> when <span class="math inline">\(x_i = 0\)</span>. It may not be possible for a given model to have <span class="math inline">\(x_i=0\)</span>, in which case <span class="math inline">\(e^{\beta_0}\)</span> has no interpretation. The value of <span class="math inline">\(e^{\beta_1}\)</span> denotes the proportional change in the odds that <span class="math inline">\(Y_i=1\)</span> for every one unit increase in <span class="math inline">\(x_i\)</span>.</p>
 <p>Notice that solving the last equation for <span class="math inline">\(\pi_i\)</span> results in the logistic regression model presented at the beginning of this page.</p>
-<h4 id="hypothesis-testing">Hypothesis Testing</h4>
+</div>
+<div id="hypothesis-testing" class="section level4">
+<h4>Hypothesis Testing</h4>
 <p>Similar to linear regression, the hypothesis that <span class="math display">\[
   H_0: \beta_1 = 0 \\
   H_a: \beta_1 \neq 0
 \]</span> can be tested with a logistic regression. If <span class="math inline">\(\beta_1 = 0\)</span>, then there is no relationship between <span class="math inline">\(x_i\)</span> and the log of the odds that <span class="math inline">\(Y_i = 1\)</span>. In other words, <span class="math inline">\(x_i\)</span> is not useful in predicting the probability that <span class="math inline">\(Y_i = 1\)</span>. If <span class="math inline">\(\beta_1 \neq 0\)</span>, then there is information in <span class="math inline">\(x_i\)</span> that can be utilized to predict the probability that <span class="math inline">\(Y_i = 1\)</span>, i.e., the logistic regression is meaningful.</p>
-<h4 id="diagnostics">Checking Model Assumptions</h4>
+</div>
+<div id="diagnostics" class="section level4">
+<h4>Checking Model Assumptions</h4>
 <p>The model assumptions are not as clear in logistic regression as they are in linear regression. For our purposes we will focus only on considering the goodness of fit of the logistic regression model. If the model appears to fit the data well, then it will be assumed to be appropriate.</p>
 <div style="padding-left:15px;">
-<h5 id="deviance-goodness-of-fit-test">Deviance Goodness of Fit Test</h5>
+<div id="deviance-goodness-of-fit-test" class="section level5">
+<h5>Deviance Goodness of Fit Test</h5>
 <p>If there are replicated values of each <span class="math inline">\(x_i\)</span>, then the deviance goodness of fit test tests the hypotheses <span class="math display">\[
   H_0: \pi_i = \frac{e^{\beta_0 + \beta_1 x_i}}{1+e^{\beta_0 + \beta_1 x_i}}
 \]</span> <span class="math display">\[
   H_a: \pi_i \neq \frac{e^{\beta_0 + \beta_1 x_i}}{1+e^{\beta_0 + \beta_1 x_i}}
 \]</span></p>
-<h5 id="hosmer-lemeshow-goodness-of-fit-test">Hosmer-Lemeshow Goodness of Fit Test</h5>
+</div>
+<div id="hosmer-lemeshow-goodness-of-fit-test" class="section level5">
+<h5>Hosmer-Lemeshow Goodness of Fit Test</h5>
 <p>If there are very few or no replicated values of each <span class="math inline">\(x_i\)</span>, then the Hosmer-Lemeshow goodness of fit test can be used to test these same hypotheses. In each case, the null assumes that logistic regression is a good fit for the data while the alternative is that logistic regression is not a good fit.</p>
 </div>
-<h4 id="prediction">Prediction</h4>
+</div>
+</div>
+<div id="prediction" class="section level4">
+<h4>Prediction</h4>
 <p>One of the great uses of Logistic Regression is that it provides an estimate of the probability that <span class="math inline">\(Y_i=1\)</span> for a given value of <span class="math inline">\(x_i\)</span>. This probability is often referred to as the <em>risk</em> that <span class="math inline">\(Y_i=1\)</span> for a certain individual. For example, if <span class="math inline">\(Y_i=1\)</span> implies a person has a disease, then <span class="math inline">\(\pi_i=P(Y_i=1)\)</span> represents the risk of individual <span class="math inline">\(i\)</span> having the disease based on their value of <span class="math inline">\(x_i\)</span>, perhaps a measure of their cholesterol or some other predictor of the disease.</p>
+</div>
 </div>
 <hr />
 </div>
@@ -866,7 +864,7 @@ $$</code></pre>
 </div>
 </div>
 <div id="multiple-logistic-regression-model" class="section level2 tabset tabset-pills tabset-fade">
-<h2>Multiple Logistic Regression Model</h2>
+<h2 class="tabset tabset-pills tabset-fade">Multiple Logistic Regression Model</h2>
 <div style="float:left;width:125px;" align="center">
 <p><img src="Images/BinomYMultX.png" width=98px;></p>
 </div>
@@ -888,7 +886,8 @@ $$</code></pre>
 <h3>R Instructions</h3>
 <div style="padding-left:125px;">
 <p><strong>Console</strong> Help Command: <code>?glm()</code></p>
-<h4 id="perform-the-logistic-regression">Perform the Logistic Regression</h4>
+<div id="perform-the-logistic-regression" class="section level4">
+<h4>Perform the Logistic Regression</h4>
 <p>To perform a logistic regression in R use the commands</p>
 <a href="javascript:showhide('logistic2')">
 <div class="hoverchunk">
@@ -1178,7 +1177,9 @@ $$</code></pre>
 </table>
 </div>
 <p><br/></p>
-<h4 id="diagnose-the-goodness-of-fit-1">Diagnose the Goodness-of-Fit</h4>
+</div>
+<div id="diagnose-the-goodness-of-fit-1" class="section level4">
+<h4>Diagnose the Goodness-of-Fit</h4>
 <p>There are two ways to check the <strong>goodness of fit</strong> of a logistic regression model.</p>
 <div style="padding-left:25px;">
 <p><strong>Option 1</strong>: Hosmer-Lemeshow Goodness-of-Fit Test</p>
@@ -1206,8 +1207,8 @@ $$</code></pre>
 </div>
 <p></a></p>
 <div id="multipleGOF2" style="display:none;">
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>myglm &lt;-<span class="st"> </span><span class="kw">glm</span>(weight<span class="op">&gt;</span><span class="dv">100</span> <span class="op">~</span><span class="st"> </span>Time<span class="op">*</span>Diet, <span class="dt">data =</span> ChickWeight, <span class="dt">family =</span> binomial)</span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="kw">summary</span>(myglm)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>myglm <span class="ot">&lt;-</span> <span class="fu">glm</span>(weight<span class="sc">&gt;</span><span class="dv">100</span> <span class="sc">~</span> Time<span class="sc">*</span>Diet, <span class="at">data =</span> ChickWeight, <span class="at">family =</span> binomial)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(myglm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = weight &gt; 100 ~ Time * Diet, family = binomial, 
@@ -1237,13 +1238,15 @@ $$</code></pre>
 ## AIC: 272.3
 ## 
 ## Number of Fisher Scoring iterations: 20</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">pchisq</span>(<span class="fl">256.30</span>, <span class="dv">570</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pchisq</span>(<span class="fl">256.30</span>, <span class="dv">570</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 6.585816e-33</code></pre>
 </div>
 <p>The null hypothesis of the goodness-of-fit test is that the logistic regression is a good fit of the data. So a large p-value (like 0.479) is good because it allows us to trust the results of our logistic regression. When the p-value becomes very small, we must “reject the null” and conclude a poor fit, which implies that we should not trust the results of the logistic regression.</p>
 </div>
 <p><br/></p>
-<h4 id="predict-probabilities-1">Predict Probabilities</h4>
+</div>
+<div id="predict-probabilities-1" class="section level4">
+<h4>Predict Probabilities</h4>
 <p>To predict the probability that <span class="math inline">\(Y_i=1\)</span> for a given <span class="math inline">\(x\)</span>-value, use the code</p>
 <a href="javascript:showhide('MultipleLogisticPredict')">
 <div class="hoverchunk">
@@ -1255,7 +1258,9 @@ $$</code></pre>
 ## 0.7314498</code></pre>
 </div>
 <p><br/></p>
-<h4 id="plot-the-regression-1">Plot the Regression</h4>
+</div>
+<div id="plot-the-regression-1" class="section level4">
+<h4>Plot the Regression</h4>
 <div class="tab">
 <p><button class="tablinks" onclick="openTab(event, 'MultipleLogisticBaseplot')">Base R</button> <button class="tablinks" onclick="openTab(event, 'MultipleLogisticggplot')">ggplot2</button></p>
 </div>
@@ -1267,15 +1272,15 @@ $$</code></pre>
 </div>
 <p></a></p>
 <div id="MultipleLogisticBaseplot2" style="display:none;">
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>myglm &lt;-<span class="st"> </span><span class="kw">glm</span>(weight<span class="op">&gt;</span><span class="dv">100</span> <span class="op">~</span><span class="st"> </span>Time<span class="op">*</span>Diet, <span class="dt">data =</span> ChickWeight, <span class="dt">family =</span> binomial)</span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="kw">palette</span>(<span class="kw">c</span>(<span class="st">&quot;firebrick&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;skyblue&quot;</span>, <span class="st">&quot;darkorchid4&quot;</span>))</span>
-<span id="cb15-3"><a href="#cb15-3"></a>b &lt;-<span class="st"> </span>myglm<span class="op">$</span>coefficients</span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="kw">plot</span>(weight<span class="op">&gt;</span><span class="dv">100</span> <span class="op">~</span><span class="st"> </span>Time, <span class="dt">data =</span> ChickWeight, <span class="dt">pch=</span><span class="dv">16</span>)</span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="kw">curve</span>(<span class="kw">exp</span>(b[<span class="dv">1</span>]<span class="op">+</span>b[<span class="dv">2</span>]<span class="op">*</span>x)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>(b[<span class="dv">1</span>]<span class="op">+</span>b[<span class="dv">2</span>]<span class="op">*</span>x)), <span class="dt">add=</span><span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">palette</span>()[<span class="dv">1</span>])</span>
-<span id="cb15-6"><a href="#cb15-6"></a><span class="kw">curve</span>(<span class="kw">exp</span>((b[<span class="dv">1</span>]<span class="op">+</span>b[<span class="dv">3</span>])<span class="op">+</span>(b[<span class="dv">2</span>]<span class="op">+</span>b[<span class="dv">6</span>])<span class="op">*</span>x)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>((b[<span class="dv">1</span>]<span class="op">+</span>b[<span class="dv">3</span>])<span class="op">+</span>(b[<span class="dv">2</span>]<span class="op">+</span>b[<span class="dv">6</span>])<span class="op">*</span>x)), <span class="dt">add=</span><span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">palette</span>()[<span class="dv">2</span>])</span>
-<span id="cb15-7"><a href="#cb15-7"></a><span class="kw">curve</span>(<span class="kw">exp</span>((b[<span class="dv">1</span>]<span class="op">+</span>b[<span class="dv">4</span>])<span class="op">+</span>(b[<span class="dv">2</span>]<span class="op">+</span>b[<span class="dv">7</span>])<span class="op">*</span>x)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>((b[<span class="dv">1</span>]<span class="op">+</span>b[<span class="dv">4</span>])<span class="op">+</span>(b[<span class="dv">2</span>]<span class="op">+</span>b[<span class="dv">7</span>])<span class="op">*</span>x)), <span class="dt">add=</span><span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">palette</span>()[<span class="dv">3</span>])</span>
-<span id="cb15-8"><a href="#cb15-8"></a><span class="kw">curve</span>(<span class="kw">exp</span>((b[<span class="dv">1</span>]<span class="op">+</span>b[<span class="dv">5</span>])<span class="op">+</span>(b[<span class="dv">2</span>]<span class="op">+</span>b[<span class="dv">8</span>])<span class="op">*</span>x)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>((b[<span class="dv">1</span>]<span class="op">+</span>b[<span class="dv">5</span>])<span class="op">+</span>(b[<span class="dv">2</span>]<span class="op">+</span>b[<span class="dv">8</span>])<span class="op">*</span>x)), <span class="dt">add=</span><span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">palette</span>()[<span class="dv">4</span>])</span>
-<span id="cb15-9"><a href="#cb15-9"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Diet 1&quot;</span>, <span class="st">&quot;Diet 2&quot;</span>, <span class="st">&quot;Diet 3&quot;</span>, <span class="st">&quot;Diet 4&quot;</span>), <span class="dt">col =</span> <span class="kw">palette</span>(), <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">bty =</span> <span class="st">&#39;n&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>myglm <span class="ot">&lt;-</span> <span class="fu">glm</span>(weight<span class="sc">&gt;</span><span class="dv">100</span> <span class="sc">~</span> Time<span class="sc">*</span>Diet, <span class="at">data =</span> ChickWeight, <span class="at">family =</span> binomial)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">palette</span>(<span class="fu">c</span>(<span class="st">&quot;firebrick&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;skyblue&quot;</span>, <span class="st">&quot;darkorchid4&quot;</span>))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> myglm<span class="sc">$</span>coefficients</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight<span class="sc">&gt;</span><span class="dv">100</span> <span class="sc">~</span> Time, <span class="at">data =</span> ChickWeight, <span class="at">pch=</span><span class="dv">16</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">exp</span>(b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">2</span>]<span class="sc">*</span>x)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">2</span>]<span class="sc">*</span>x)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">palette</span>()[<span class="dv">1</span>])</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">3</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">6</span>])<span class="sc">*</span>x)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">3</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">6</span>])<span class="sc">*</span>x)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">palette</span>()[<span class="dv">2</span>])</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">4</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">7</span>])<span class="sc">*</span>x)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">4</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">7</span>])<span class="sc">*</span>x)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">palette</span>()[<span class="dv">3</span>])</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">5</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">8</span>])<span class="sc">*</span>x)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">5</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">8</span>])<span class="sc">*</span>x)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">palette</span>()[<span class="dv">4</span>])</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Diet 1&quot;</span>, <span class="st">&quot;Diet 2&quot;</span>, <span class="st">&quot;Diet 3&quot;</span>, <span class="st">&quot;Diet 4&quot;</span>), <span class="at">col =</span> <span class="fu">palette</span>(), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">bty =</span> <span class="st">&#39;n&#39;</span>)</span></code></pre></div>
 <p><img src="LogisticRegression_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 </p>
@@ -1288,17 +1293,18 @@ $$</code></pre>
 </div>
 <p></a></p>
 <div id="MultipleLogisticggplot2" style="display:none;">
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(Time, <span class="kw">as.numeric</span>(weight<span class="op">&gt;</span><span class="dv">100</span>))) <span class="op">+</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="st">  </span><span class="kw">stat_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Diet), <span class="dt">method =</span> <span class="st">&quot;glm&quot;</span>, <span class="dt">method.args =</span> <span class="kw">list</span>(<span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>), <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;weight&gt;100&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ChickWeight, <span class="fu">aes</span>(Time, <span class="fu">as.numeric</span>(weight<span class="sc">&gt;</span><span class="dv">100</span>))) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> Diet), <span class="at">method =</span> <span class="st">&quot;glm&quot;</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>), <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;weight&gt;100&quot;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="LogisticRegression_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 </p>
 </div>
 <hr />
+</div>
 </div>
 </div>
 <div id="explanation-1" class="section level3">
@@ -1309,23 +1315,31 @@ $$</code></pre>
 <li>the response variable is binary <span class="math inline">\((Y_i=0\)</span> or <span class="math inline">\(1)\)</span>, and</li>
 <li>there are multiple explanatory variables <span class="math inline">\(X_1,\ldots,X_p\)</span> that can be either quantitative or qualitative.</li>
 </ul>
-<h4 id="the-model-1">The Model</h4>
+<div id="the-model-1" class="section level4">
+<h4>The Model</h4>
 <p>Very little changes in multiple logistic regression from Simple Logistic Regression. The probability that <span class="math inline">\(Y_i = 1\)</span> given the observed data <span class="math inline">\((x_{i1},\ldots,x_{ip})\)</span> is called <span class="math inline">\(\pi_i\)</span> and is modeled by the expanded equation</p>
 <p><span class="math display">\[
   P(Y_i = 1|\, x_{i1},\ldots,x_{ip}) = \frac{e^{\beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}}}{1+e^{\beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip} }} = \pi_i
 \]</span></p>
 <p>The assumption is that for certain combinations of <span class="math inline">\(X_1,\ldots,X_p\)</span> the probability that <span class="math inline">\(Y_i=1\)</span> is higher than for other combinations.</p>
-<h4 id="interpretation-1">Interpretation</h4>
+</div>
+<div id="interpretation-1" class="section level4">
+<h4>Interpretation</h4>
 <p>The model for <span class="math inline">\(\pi_i\)</span> comes from modeling the <em>log of the odds</em> that <span class="math inline">\(Y_i=1\)</span> using a linear regression, i.e., <span class="math display">\[
   \log\underbrace{\left(\frac{\pi_i}{1-\pi_i}\right)}_{\text{Odds for}\ Y_i=1} = \underbrace{\beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}}_{\text{linear regression}}
 \]</span> Beginning to solve this equation for <span class="math inline">\(\pi_i\)</span> leads to the intermediate, but important result that <span class="math display">\[
     \underbrace{\frac{\pi_i}{1-\pi_i}}_{\text{Odds for}\ Y_i=1} = e^{\overbrace{\beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}}^{\text{liear regression}}} = e^{\beta_0}e^{\beta_1 x_{i1}}\cdots e^{\beta_p x_{ip}}
 \]</span> As in Simple Linear Regression, the values of <span class="math inline">\(e^{\beta_0}\)</span>, <span class="math inline">\(e^{\beta_1}\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(e^{\beta_p}\)</span> are interpreted as the proportional change in odds for <span class="math inline">\(Y_i=1\)</span> when a given <span class="math inline">\(x\)</span>-variable experiences a unit change, <em>all other variables being held constant</em>.</p>
-<h4 id="checking-the-model-assumptions">Checking the Model Assumptions</h4>
+</div>
+<div id="checking-the-model-assumptions" class="section level4">
+<h4>Checking the Model Assumptions</h4>
 <p>Diagnostics are the same in multiple logistic regression as they are in simple logistic regression.</p>
-<h4 id="prediction-1">Prediction</h4>
+</div>
+<div id="prediction-1" class="section level4">
+<h4>Prediction</h4>
 <p>The idea behind prediction in multiple logistic regression is the same as in simple logistic regression. The only difference is that more than one explanatory variable is used to make the prediction of the <em>risk</em> that <span class="math inline">\(Y_i=1\)</span>.</p>
 <hr />
+</div>
 </div>
 </div>
 <div id="section-1" class="section level3">
@@ -1345,7 +1359,7 @@ $$</code></pre>
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -1363,7 +1377,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

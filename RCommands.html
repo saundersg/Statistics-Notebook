@@ -13,47 +13,40 @@
 
 <title>R Commands</title>
 
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-
-
-
 
 <style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
@@ -64,10 +57,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -84,40 +73,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -145,7 +107,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -157,7 +119,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -168,10 +130,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -183,7 +158,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -309,13 +283,13 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
 <div id="TOC" class="tocify">
 </div>
 </div>
 
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
 
 
 
@@ -385,10 +359,10 @@ div.tocify {
       <a href="WilcoxonTests.html">Wilcoxon Tests</a>
     </li>
     <li>
-      <a href="ANOVA.html">ANOVA</a>
+      <a href="Kruskal.html">Kruskal-Wallis Test</a>
     </li>
     <li>
-      <a href="Kruskal.html">Kruskal-Wallis</a>
+      <a href="ANOVA.html">ANOVA</a>
     </li>
     <li>
       <a href="LinearRegression.html">Linear Regression</a>
@@ -400,7 +374,7 @@ div.tocify {
       <a href="ChiSquaredTests.html">Chi Squared Tests</a>
     </li>
     <li>
-      <a href="PermutationTests.html">Randomization Testing</a>
+      <a href="PermutationTests.html">Randomization</a>
     </li>
   </ul>
 </li>
@@ -433,10 +407,10 @@ div.tocify {
       <a href="./Analyses/Wilcoxon Tests/RecallingWords.html">Recalling Words</a>
     </li>
     <li>
-      <a href="./Analyses/ANOVA/DayCare.html">Day Care</a>
+      <a href="./Analyses/Kruskal-Wallis/Food.html">Food</a>
     </li>
     <li>
-      <a href="./Analyses/Kruskal-Wallis/Food.html">Food</a>
+      <a href="./Analyses/ANOVA/HighSchoolSeniors.html">High School Seniors 2</a>
     </li>
     <li>
       <a href="./Analyses/Linear Regression/MySimpleLinearRegression.html">My Simple Linear Regression</a>
@@ -460,7 +434,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -483,86 +457,8 @@ div.tocify {
 <div id="getting-started" class="section level2">
 <h2>Getting Started</h2>
 <div style="padding-left:15px;">
-<span class="tooltipr"> <a href="javascript:showhide('hovertobegin')">Hover your mouse here to begin.</a> <span class="tooltipRtext">Good work! <br/> This book requires that you interact with it to learn. Hovering is the first step. <br/> Now “click” to get started. </span> </span>
-<div id="hovertobegin" style="display:none;padding-left:20px;">
-<p><br/></p>
-<p>Student: “How do I learn R?”</p>
-<p>Teacher: “By using it.”</p>
-<p>Student: “But I don’t know how to use it.”</p>
-<p>Teacher: “Just try it anyway. Suddenly you’ll understand.”</p>
-<p>Most people that are new to using the “R Software” ask the question, “How do I learn R?” The answer is simple: “start using it.” Really. Seriously. Just start using it, even when you have no idea what you are doing, and suddenly you will start to learn R. So, here we go. The more you use it, the more you will know.</p>
-<p>This page follows a simple learning model: Hover. Click. Try.</p>
-<p><img src="Images/HoverClickTry.png" /></p>
-<p><br/></p>
-<p>Hover over <span class="tooltipr"><code>code</code><span class="tooltipRtext">Yes, just like that. By hovering over “Codes” you will get instructions on what that code does.</span></span> to read about it. Click on a <span class="tooltipr"><a href="javascript:showhide('smileyface')"><code>line of code</code></a><span class="tooltipRtext">Hovering is a good start, try clicking on this one.</span></span> to see what it does. Try typing the code into RStudio yourself to actually start learning R.</p>
-<div id="smileyface" style="display:none;padding-left:20px;">
-<p><img src="Images/smileyfacecongratulations.jpg"></p>
-</div>
-<p><strong>Examples</strong></p>
-<p>For each of the following examples: (1) hover, (2) click, and (3) try.</p>
-<p>Before you begin, ensure you have RStudio open. It should look like this:</p>
-<a href="javascript:showhide('CarsOutput')">
-<div class="hoverchunk">
-<p><span class="tooltipr"> View( <span class="tooltipRtext">The “View” R function (with a CAPTIAL ‘V’ in View) allows us to view a data set. When run, this function will open up a new tab in RStudio showing the data set. </span> </span><span class="tooltipr"> cars <span class="tooltipRtext"><code>cars</code> is a data set that is in R. R has datasets that are available for anyone to use. You can see them using the <code>data()</code> command. It would be good to explore <code>View()</code> for a few different datasets. </span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Always be sure to end your function with closing parantheses. </span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Tutorial  <span class="tooltiprtext">Click to see a full tutorial on the “View()” command.</span> </span></p>
-</div>
-</a>
-<div id="CarsOutput" style="display:none;padding-left:20px;">
-<p>R allows you to work with data. So, the first step to understanding R is to open a dataset and begin exploring some data.</p>
-<p>If you type the <code>data()</code> command into your Console of RStudio you will see a list of “built in” data sets that come with R.</p>
-<p><img src="Images/DataOutput.png" /></p>
-<p><br/></p>
-<p>The <code>cars</code> data set is one of the options that is available. This is a fun “historic” data set from the 1920’s. It shows the <code>speed</code> and stopping <code>dist</code>ance of cars from the 1920’s.</p>
-<p>To see the <code>cars</code> data set in RStudio, use the <code>View</code> command as follows.</p>
-<p><strong>Step 1.</strong> Open RStudio.</p>
-<p><strong>Step 2.</strong> Type the command <code>View(cars)</code> into your <strong>Console</strong>.</p>
-<p><strong>Step 3.</strong> Press <code>Enter</code> or <code>Return</code> and the following output should appear within RStudio.</p>
-<p><img src="Images/ViewCars.png" /></p>
-<p><br/></p>
-<p>Be sure to <strong>TRY IT</strong> yourself, if you haven’t already. Good work if you did. It’s the only way to learn R.</p>
-<p>Ask someone for help if you aren’t sure how to get started.</p>
-<p><br/> <br/></p>
-</div>
-<a href="javascript:showhide('meancarsdist')">
-<div class="hoverchunk">
-<p><span class="tooltipr"> mean( <span class="tooltipRtext">An R function “mean()” that will compute the mean of a quantitative column of data from a data set.</span> </span><span class="tooltipr"> cars <span class="tooltipRtext"><code>cars</code> is the name of a data set in R. Any data set can be used instead by simply typing the name of that data set instead of <code>cars</code>.</span> </span><span class="tooltipr"> $ <span class="tooltipRtext">The <code>$</code> sign is a powerful operator in R. The <code>$</code> sign allows you to access, or “purchase,” any column from a data set. Try typing <code>cars$</code> into R and notice how a selection menu appears with options <code>dist</code> and <code>speed</code>.</span> </span><span class="tooltipr"> dist <span class="tooltipRtext"><code>dist</code> is one of the two columns from the <code>cars</code> data set. By typing <code>cars$dist</code> we are essentially pulling that column of data out of the data set, and then computing the mean of that column with <code>mean(cars$dist)</code>.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Closing parenthesis for the <code>mean()</code> function.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to see output.</span> </span></p>
-</div>
-</a>
-<div id="meancarsdist" style="display:none;padding-left:20px;">
-<p><img src="Images/meancarsdist.png" /></p>
-<p>You may also be interested in trying any of the following:</p>
-<ul>
-<li><code>sd(cars$dist)</code></li>
-<li><code>var(cars$dist)</code></li>
-<li><code>median(cars$dist)</code></li>
-<li><code>min(cars$dist)</code></li>
-<li><code>max(cars$dist)</code></li>
-<li><code>length(cars$dist)</code></li>
-<li><code>sum(cars$dist)</code></li>
-</ul>
-<p><br/> <br/></p>
-</div>
-<a href="javascript:showhide('plotcarsdist')">
-<div class="hoverchunk">
-<p><span class="tooltipr"> plot( <span class="tooltipRtext">The <code>plot(...)</code> function allows us to create a plot (usually a scatterplot) in R.</span> </span><span class="tooltipr"> dist <span class="tooltipRtext"> <code>dist</code> is the name of a column. This is going to be the Y-variable of the plot. The Y-variable always comes first in the plot(Y ~ X) command.</span> </span><span class="tooltipr">  ~  <span class="tooltipRtext"> <code>~</code> is found on the upper-left key of your keyboard. It is called the “tilde” or “tilda” symbol. It is used to state a relationship between Y and X: <code>Y ~ X</code>.</span> </span><span class="tooltipr"> speed,  <span class="tooltipRtext"> <code>speed</code> is the name of a column. This is going to be the X-variable of the plot. The X-variable always comes after the <code>~</code> in the <code>plot(Y ~ X)</code> command.</span> </span><span class="tooltipr"> data=cars <span class="tooltipRtext"> The <code>data=</code> statement is used to tell R which data set the columns of “dist” and “speed” come from. In this case, the <code>cars</code> data set.</span> </span><span class="tooltipr"> ) <span class="tooltipRtext">Closing parenthesis for the plot(…) function.</span> </span><span class="tooltipr">     <br />
-<span class="tooltipRtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to Show Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
-</div>
-</a>
-<div id="plotcarsdist" style="display:none;padding-left:20px;">
-<p><img src="Images/plotcarsblue.png" /></p>
-<p>Try changing the <code>col="skyblue"</code> statement to <code>col="firebrick"</code> instead. What do you notice?</p>
-<p>Try changing the <code>pch=16</code> statement to <code>pch=4</code> or any other number from 1 to 25. What do you notice?</p>
-<p>Hint: pressing the “up” arrow on your keyboard brings up the last command you typed into the Console.</p>
-<p><br/></p>
-<div style="background-color:skyblue;padding:10px;">
-<p><strong>Completion Code:</strong> abc123R</p>
-</div>
-</div>
-<p><br/></p>
-<p><span style="color:orange;">This is “the end” of the <em>Getting Started</em> tutorial.</span> <span style="color:gray;">To find the “completion code” you will need to study, and “click open” each of the example codes above.</span></p>
-</div>
-</div>
+
+<p><span class="tooltipr"> <a href="">Hover your mouse here to begin.</a> <span class="tooltipRtext">Good work! <br/> This book requires that you interact with it to learn. Hovering is the first step. <br/> Now <a href="GettingStartedTutorial.html">click here</a> to get started. </span> </span></p>
 <br />
 <hr />
 </div>
@@ -1147,24 +1043,26 @@ div.tocify {
 <p></a></p>
 <div id="mutate1" style="display:none;padding-left:20px;">
 <p>Notice the last two columns of <code>cyl_factor</code> and <code>weight</code> are what we added to the data set <code>mtcars2</code>. As seen by <code>View(mtcars)</code>, the original <code>mtcars</code> data set did not have these two columns. We used the <code>mutate</code> function to create them and saved our work in a new data set called <code>mtcars2</code>.</p>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col width="7%" />
+<col width="21%" />
+<col width="5%" />
+<col width="4%" />
 <col width="6%" />
-<col width="8%" />
+<col width="4%" />
+<col width="5%" />
 <col width="6%" />
-<col width="7%" />
-<col width="8%" />
-<col width="8%" />
+<col width="6%" />
+<col width="4%" />
+<col width="4%" />
 <col width="5%" />
 <col width="5%" />
+<col width="10%" />
 <col width="7%" />
-<col width="7%" />
-<col width="13%" />
-<col width="9%" />
 </colgroup>
 <thead>
 <tr class="header">
+<th align="center"> </th>
 <th align="center">mpg</th>
 <th align="center">cyl</th>
 <th align="center">disp</th>
@@ -1182,6 +1080,7 @@ div.tocify {
 </thead>
 <tbody>
 <tr class="odd">
+<td align="center"><strong>Mazda RX4</strong></td>
 <td align="center">21</td>
 <td align="center">6</td>
 <td align="center">160</td>
@@ -1197,6 +1096,7 @@ div.tocify {
 <td align="center">2620</td>
 </tr>
 <tr class="even">
+<td align="center"><strong>Mazda RX4 Wag</strong></td>
 <td align="center">21</td>
 <td align="center">6</td>
 <td align="center">160</td>
@@ -1212,6 +1112,7 @@ div.tocify {
 <td align="center">2875</td>
 </tr>
 <tr class="odd">
+<td align="center"><strong>Datsun 710</strong></td>
 <td align="center">22.8</td>
 <td align="center">4</td>
 <td align="center">108</td>
@@ -1227,6 +1128,7 @@ div.tocify {
 <td align="center">2320</td>
 </tr>
 <tr class="even">
+<td align="center"><strong>Hornet 4 Drive</strong></td>
 <td align="center">21.4</td>
 <td align="center">6</td>
 <td align="center">258</td>
@@ -1242,6 +1144,7 @@ div.tocify {
 <td align="center">3215</td>
 </tr>
 <tr class="odd">
+<td align="center"><strong>Hornet Sportabout</strong></td>
 <td align="center">18.7</td>
 <td align="center">8</td>
 <td align="center">360</td>
@@ -1257,6 +1160,7 @@ div.tocify {
 <td align="center">3440</td>
 </tr>
 <tr class="even">
+<td align="center"><strong>Valiant</strong></td>
 <td align="center">18.1</td>
 <td align="center">6</td>
 <td align="center">225</td>
@@ -1272,6 +1176,7 @@ div.tocify {
 <td align="center">3460</td>
 </tr>
 <tr class="odd">
+<td align="center"><strong>Duster 360</strong></td>
 <td align="center">14.3</td>
 <td align="center">8</td>
 <td align="center">360</td>
@@ -1287,6 +1192,7 @@ div.tocify {
 <td align="center">3570</td>
 </tr>
 <tr class="even">
+<td align="center"><strong>Merc 240D</strong></td>
 <td align="center">24.4</td>
 <td align="center">4</td>
 <td align="center">146.7</td>
@@ -1302,6 +1208,7 @@ div.tocify {
 <td align="center">3190</td>
 </tr>
 <tr class="odd">
+<td align="center"><strong>Merc 230</strong></td>
 <td align="center">22.8</td>
 <td align="center">4</td>
 <td align="center">140.8</td>
@@ -1317,6 +1224,7 @@ div.tocify {
 <td align="center">3150</td>
 </tr>
 <tr class="even">
+<td align="center"><strong>Merc 280</strong></td>
 <td align="center">19.2</td>
 <td align="center">6</td>
 <td align="center">167.6</td>
@@ -1332,6 +1240,7 @@ div.tocify {
 <td align="center">3440</td>
 </tr>
 <tr class="odd">
+<td align="center"><strong>Merc 280C</strong></td>
 <td align="center">17.8</td>
 <td align="center">6</td>
 <td align="center">167.6</td>
@@ -1347,6 +1256,7 @@ div.tocify {
 <td align="center">3440</td>
 </tr>
 <tr class="even">
+<td align="center"><strong>Merc 450SE</strong></td>
 <td align="center">16.4</td>
 <td align="center">8</td>
 <td align="center">275.8</td>
@@ -1362,6 +1272,7 @@ div.tocify {
 <td align="center">4070</td>
 </tr>
 <tr class="odd">
+<td align="center"><strong>Merc 450SL</strong></td>
 <td align="center">17.3</td>
 <td align="center">8</td>
 <td align="center">275.8</td>
@@ -1377,6 +1288,7 @@ div.tocify {
 <td align="center">3730</td>
 </tr>
 <tr class="even">
+<td align="center"><strong>Merc 450SLC</strong></td>
 <td align="center">15.2</td>
 <td align="center">8</td>
 <td align="center">275.8</td>
@@ -1392,6 +1304,7 @@ div.tocify {
 <td align="center">3780</td>
 </tr>
 <tr class="odd">
+<td align="center"><strong>Cadillac Fleetwood</strong></td>
 <td align="center">10.4</td>
 <td align="center">8</td>
 <td align="center">472</td>
@@ -1407,6 +1320,7 @@ div.tocify {
 <td align="center">5250</td>
 </tr>
 <tr class="even">
+<td align="center"><strong>Lincoln Continental</strong></td>
 <td align="center">10.4</td>
 <td align="center">8</td>
 <td align="center">460</td>
@@ -1422,6 +1336,7 @@ div.tocify {
 <td align="center">5424</td>
 </tr>
 <tr class="odd">
+<td align="center"><strong>Chrysler Imperial</strong></td>
 <td align="center">14.7</td>
 <td align="center">8</td>
 <td align="center">440</td>
@@ -1437,6 +1352,7 @@ div.tocify {
 <td align="center">5345</td>
 </tr>
 <tr class="even">
+<td align="center"><strong>Fiat 128</strong></td>
 <td align="center">32.4</td>
 <td align="center">4</td>
 <td align="center">78.7</td>
@@ -1452,6 +1368,7 @@ div.tocify {
 <td align="center">2200</td>
 </tr>
 <tr class="odd">
+<td align="center"><strong>Honda Civic</strong></td>
 <td align="center">30.4</td>
 <td align="center">4</td>
 <td align="center">75.7</td>
@@ -1467,6 +1384,7 @@ div.tocify {
 <td align="center">1615</td>
 </tr>
 <tr class="even">
+<td align="center"><strong>Toyota Corolla</strong></td>
 <td align="center">33.9</td>
 <td align="center">4</td>
 <td align="center">71.1</td>
@@ -1482,6 +1400,7 @@ div.tocify {
 <td align="center">1835</td>
 </tr>
 <tr class="odd">
+<td align="center"><strong>Toyota Corona</strong></td>
 <td align="center">21.5</td>
 <td align="center">4</td>
 <td align="center">120.1</td>
@@ -1497,6 +1416,7 @@ div.tocify {
 <td align="center">2465</td>
 </tr>
 <tr class="even">
+<td align="center"><strong>Dodge Challenger</strong></td>
 <td align="center">15.5</td>
 <td align="center">8</td>
 <td align="center">318</td>
@@ -1512,6 +1432,7 @@ div.tocify {
 <td align="center">3520</td>
 </tr>
 <tr class="odd">
+<td align="center"><strong>AMC Javelin</strong></td>
 <td align="center">15.2</td>
 <td align="center">8</td>
 <td align="center">304</td>
@@ -1527,6 +1448,7 @@ div.tocify {
 <td align="center">3435</td>
 </tr>
 <tr class="even">
+<td align="center"><strong>Camaro Z28</strong></td>
 <td align="center">13.3</td>
 <td align="center">8</td>
 <td align="center">350</td>
@@ -1542,6 +1464,7 @@ div.tocify {
 <td align="center">3840</td>
 </tr>
 <tr class="odd">
+<td align="center"><strong>Pontiac Firebird</strong></td>
 <td align="center">19.2</td>
 <td align="center">8</td>
 <td align="center">400</td>
@@ -1557,6 +1480,7 @@ div.tocify {
 <td align="center">3845</td>
 </tr>
 <tr class="even">
+<td align="center"><strong>Fiat X1-9</strong></td>
 <td align="center">27.3</td>
 <td align="center">4</td>
 <td align="center">79</td>
@@ -1572,6 +1496,7 @@ div.tocify {
 <td align="center">1935</td>
 </tr>
 <tr class="odd">
+<td align="center"><strong>Porsche 914-2</strong></td>
 <td align="center">26</td>
 <td align="center">4</td>
 <td align="center">120.3</td>
@@ -1587,6 +1512,7 @@ div.tocify {
 <td align="center">2140</td>
 </tr>
 <tr class="even">
+<td align="center"><strong>Lotus Europa</strong></td>
 <td align="center">30.4</td>
 <td align="center">4</td>
 <td align="center">95.1</td>
@@ -1602,6 +1528,7 @@ div.tocify {
 <td align="center">1513</td>
 </tr>
 <tr class="odd">
+<td align="center"><strong>Ford Pantera L</strong></td>
 <td align="center">15.8</td>
 <td align="center">8</td>
 <td align="center">351</td>
@@ -1617,6 +1544,7 @@ div.tocify {
 <td align="center">3170</td>
 </tr>
 <tr class="even">
+<td align="center"><strong>Ferrari Dino</strong></td>
 <td align="center">19.7</td>
 <td align="center">6</td>
 <td align="center">145</td>
@@ -1632,6 +1560,7 @@ div.tocify {
 <td align="center">2770</td>
 </tr>
 <tr class="odd">
+<td align="center"><strong>Maserati Bora</strong></td>
 <td align="center">15</td>
 <td align="center">8</td>
 <td align="center">301</td>
@@ -1647,6 +1576,7 @@ div.tocify {
 <td align="center">3570</td>
 </tr>
 <tr class="even">
+<td align="center"><strong>Volvo 142E</strong></td>
 <td align="center">21.4</td>
 <td align="center">4</td>
 <td align="center">121</td>
@@ -3781,7 +3711,7 @@ div.tocify {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -3799,7 +3729,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

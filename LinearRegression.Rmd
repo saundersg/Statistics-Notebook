@@ -1630,7 +1630,7 @@ Expand each element below to learn more.
 | <span class="tooltipr">$MSE$<span class="tooltiprtext"> `$MSE$`</span> </span><span class="tooltipr"> | "mean squared error" | Estimate of $\sigma^2$ | <span class="tooltipr">$MSE = \frac{SSE}{n-p}$<span class="tooltiprtext">`$MSE = \frac{SSE}{n-p}$`</span> | `sum( lmObject$res^2 ) / (n - p)` |
 | <span class="tooltipr">$SSE$<span class="tooltiprtext"> `$SSE$`</span> </span><span class="tooltipr"> | "sum of squared error" (residuals) | Measure of dot's total deviation from the line |<span class="tooltipr">$SSE = \sum_{i=1}^n (Y_i - \hat{Y}_i)^2$<span class="tooltiprtext">`$SSE = \sum_{i=1}^n` `(Y_i - \hat{Y}_i)^2$`</span> | `sum( lmObject$res^2 )` |
 | <span class="tooltipr">$SSR$<span class="tooltiprtext"> `$SSR$`</span> </span><span class="tooltipr"> | "sum of squared regression error" | Measure of line's deviation from y-bar | <span class="tooltipr"> $SSR = \sum_{i=1}^n (\hat{Y}_i - \bar{Y})^2$<span class="tooltiprtext">`$SSR = \sum_{i=1}^n` `(\hat{Y}_i - \bar{Y})^2$`</span> | `sum( (lmObject$fit - mean(YourData$Y))^2 )` |
-| <span class="tooltipr">$SSTO$<span class="tooltiprtext"> `$SSTO$`</span> </span><span class="tooltipr"> | "total sum of squares" | Measure of total variation in Y | <span class="tooltipr">$SSR + SSE = SSTO = \sum_{i=1}^n (Y_i - \bar{Y})^2$<span class="tooltiprtext">`$SSR + SSE = SSTO = \sum_{i=1}^n` `(Y_i - \bar{Y})^2$`</span> | `sum( (YourData$Y - mean(YourData$Y)^2 )` |
+| <span class="tooltipr">$SSTO$<span class="tooltiprtext"> `$SSTO$`</span> </span><span class="tooltipr"> | "total sum of squares" | Measure of total variation in Y | <span class="tooltipr">$SSR + SSE = SSTO = \sum_{i=1}^n (Y_i - \bar{Y})^2$<span class="tooltiprtext">`$SSR + SSE = SSTO = \sum_{i=1}^n` `(Y_i - \bar{Y})^2$`</span> | `sum( (YourData$Y - mean(YourData$Y))^2 )` |
 | <span class="tooltipr">$R^2$<span class="tooltiprtext"> `$R^2$`</span> </span><span class="tooltipr"> | "R-squared" | Proportion of variation in Y explained by the regression | <span class="tooltipr">$R^2 = \frac{SSR}{SSTO} = 1 - \frac{SSE}{SSTO}$<span class="tooltiprtext">`$R^2 = \frac{SSR}{SSTO} = 1` `- \frac{SSE}{SSTO}$`</span> | `SSR/SSTO` |
 | <span class="tooltipr">$\hat{Y}_h$<span class="tooltiprtext"> `$\hat{Y}_h$`</span> </span><span class="tooltipr"> | "why-hat-aitch" | Estimated mean y-value for some x-value called $X_h$ | <span class="tooltipr">$\hat{Y}_h = b_0 + b_1 X_h$<span class="tooltiprtext">`$\hat{Y}_h = b_0 + b_1 X_h$`</span> | `predict(lmObject, data.frame(XvarName=#))` |
 | <span class="tooltipr">$X_h$<span class="tooltiprtext"> `$X_h$`</span> </span><span class="tooltipr"> | "ex-aitch" | Some x-value, not necessarily one of the $X_i$ values used in the regression | <span class="tooltipr">$X_h =$ some number<span class="tooltiprtext">`$X_h = $`</span> | `Xh = #` |
@@ -1965,7 +1965,9 @@ plot(y3 ~ x, pch=16, col="darkgray", xlim=c(-1,21), yaxt='n', xaxt='n', ylim=c(-
 abline(lm(y3 ~ x), col="gray")
 ```
 
-A common way to measure the fit of a regression is with [correlation](NumericalSummaries.html#correlation). While this can be a useful measurement, there is greater insight in using the square of the correlation, called $R^2$. Before you can understand $R^2$, you must understand three important "sums of squares".
+A common way to measure the fit of a regression is with [correlation](NumericalSummaries.html#correlation). While this can be a useful measurement, there is greater insight in using the square of the correlation, called $R^2$. (If you are a Math 325 student, just stick with correlation for now and skip on to the next section of this Explanation tab. If you are a Math 425 student, it is critical that you come to understand $R^2$ deeply, so read on.) 
+
+Before you can understand $R^2$, you must understand three important "sums of squares".
 
 <div style="padding-left:30px;">
 <a href="javascript:showhide('sumsofsquaresread')" style="font-size:.8em;color:skyblue;">(Read more about sums...)</a>
@@ -2665,6 +2667,13 @@ mtext("Residuals vs Order", side=3)
 
 
 
+----
+
+<br/>
+
+*The material below this section is meant for Math 425 students only.*
+
+<br/>
 
 
 #### Estimating the Model Parameters  <a href="javascript:showhide('estimatingparameters')" style="font-size:.6em;color:skyblue;" id="estMod">(Expand)</a>
@@ -2797,6 +2806,7 @@ $$
 | -2                 |  $Y' = Y^{-2} = 1/Y^2$ | `lm(Y^-2 ~ X)` |
 | -1                 |  $Y' = Y^{-1} = 1/Y$   | `lm(Y^-1 ~ X)` |
 |  0                 |  $Y' = \log(Y)$        | `lm(log(Y) ~ X)` |
+|  0.25              |  $Y' = \sqrt(\sqrt(Y))$| `lm(sqrt(sqrt(Y)) ~ X)` |
 |  0.5               |  $Y' = \sqrt(Y)$       | `lm(sqrt(Y) ~ X)` |
 |  1                 |  $Y' = Y$              | `lm(Y ~ X)` |
 |  2                 |  $Y' = Y^2$            | `lm(Y^2 ~ X)` |
@@ -5355,10 +5365,10 @@ Two other measurements, or information criterion, are popular for use in the mod
 
 The following graph shows three things: (1) a true regression model, (2) a simple linear regression model that doesn't quite capture the full pattern in the data, and (3) a complicated model that seems to overly fit the data as it fits better than even the true model.
 
-```{r, fig.height=3, fig.width=5}
+```{r problem, fig.height=3, fig.width=5}
 set.seed(123) #gives us the same randomness 
 n <- 20 #sample size
-X <- runif(n, -1.5, 3.8) #uniform X from -1.5 to 3.8
+x <- runif(n, -1.5, 3.8) #uniform X from -1.5 to 3.8
 # Coefficients for the true model:
 beta0 <- 2
 beta1 <- -2.5
@@ -5366,26 +5376,26 @@ beta2 <- 1
 beta3 <- 3
 beta4 <- -0.8
 # Get y-value using a true model
-Y <- beta0 + beta1*X + beta2*X^2 + beta3*X^3 + beta4*X^4 + rnorm(n, 0, 0.5) #normal errors
+y <- beta0 + beta1*x + beta2*x^2 + beta3*x^3 + beta4*x^4 + rnorm(n, 0, 0.5) #normal errors
 
-thedata <- data.frame(Y, X)
+thedata <- data.frame(y, x)
 
 # Plot it
 par(mai=c(.1,.5,.2,.1))
-plot(Y ~ X, data=thedata, pch=21, col="lightgray", bg="steelblue", cex=1.3, ylim=c(-5,22), yaxt='n', xaxt='n', ylab="", xlab="")
+plot(y ~ x, data=thedata, pch=21, col="lightgray", bg="steelblue", cex=1.3, ylim=c(-5,22), yaxt='n', xaxt='n', ylab="", xlab="")
 mtext(side=3, text="Original Data (Training Data)", cex=0.7, at=-.8, line=.1)
 
 # Draw true model
 curve(beta0 + beta1*x + beta2*x^2 + beta3*x^3 + beta4*x^4, add=TRUE, col=rgb(0.2745098, 0.5098039, 0.7058824, .5), lwd=4)
-lmt <- lm(Y ~ X + I(X^2) + I(X^3) + I(X^4), data=thedata) #for later
+lmt <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4), data=thedata) #for later
 
 # Draw simple linear model
-lms <- lm(Y ~ X, data=thedata)
+lms <- lm(y ~ x, data=thedata)
 b <- coef(lms)
 curve(b[1] + b[2]*x, add=TRUE, col=rgb(1,0.6470588,0, .3), lwd=2)
 
 # Draw overly complicated model
-lmo <- lm(Y ~ X + I(X^2) + I(X^3) + I(X^4) + I(X^5) + I(X^6) + I(X^7) + I(X^8) + I(X^9) + I(X^10) + I(X^11) + I(X^12) + I(X^13) + I(X^14), data=thedata)
+lmo <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) + I(x^7) + I(x^8) + I(x^9) + I(x^10) + I(x^11) + I(x^12) + I(x^13) + I(x^14), data=thedata)
 b <- coef(lmo)
 curve(b[1] + b[2]*x + b[3]*x^2 + b[4]*x^3 + b[5]*x^4 + b[6]*x^5 + b[7]*x^6 + b[8]*x^7 + b[9]*x^8 + b[10]*x^9 + b[11]*x^10 + b[12]*x^11 + b[13]*x^12 + b[14]*x^13 + b[15]*x^14, add=TRUE, col=rgb(0.6980392, 0.133333, 0.133333, .2), lwd=2)
 
@@ -5410,29 +5420,29 @@ set.seed(14551) #get same random sample
 Xnew <- runif(n, -1.4, 3.7) #uniform X from -1.5 to 3.8
 Ynew <- beta0 + beta1*Xnew + beta2*Xnew^2 + beta3*Xnew^3 + beta4*Xnew^4 + rnorm(n, 0, 0.5) #normal errors
 
-thedata2 <- data.frame(Y=Ynew, X=Xnew)
+thedata2 <- data.frame(y=Ynew, x=Xnew)
 
 # Plot it
 par(mai=c(.1,.5,.2,.1))
-plot(Y ~ X, data=thedata, pch=21, col=rgb(.827451,.827451,.827451, .1), bg=rgb(.2745098,.5098039,.7058824, .2), cex=1.3, ylim=c(-5,22), yaxt='n', xaxt='n', ylab="", xlab="")
+plot(y ~ x, data=thedata, pch=21, col=rgb(.827451,.827451,.827451, .1), bg=rgb(.2745098,.5098039,.7058824, .2), cex=1.3, ylim=c(-5,22), yaxt='n', xaxt='n', ylab="", xlab="")
 mtext(side=3, text="New Data (Testing Data)", cex=0.7, at=-.8, line=.1)
 
 # Draw true model
 curve(beta0 + beta1*x + beta2*x^2 + beta3*x^3 + beta4*x^4, add=TRUE, col=rgb(0.2745098, 0.5098039, 0.7058824, .5), lwd=4)
-lmt <- lm(Y ~ X + I(X^2) + I(X^3) + I(X^4), data=thedata) #for later
+lmt <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4), data=thedata) #for later
 
 # Draw simple linear model
-lms <- lm(Y ~ X, data=thedata)
+lms <- lm(y ~ x, data=thedata)
 b <- coef(lms)
 curve(b[1] + b[2]*x, add=TRUE, col=rgb(1,0.6470588,0, .3), lwd=2)
 
 # Draw overly complicated model
-lmc <- lm(Y ~ X + I(X^2) + I(X^3) + I(X^4) + I(X^5) + I(X^6) + I(X^7) + I(X^8) + I(X^9) + I(X^10) + I(X^11) + I(X^12) + I(X^13) + I(X^14), data=thedata)
+lmc <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) + I(x^7) + I(x^8) + I(x^9) + I(x^10) + I(x^11) + I(x^12) + I(x^13) + I(x^14), data=thedata)
 b <- coef(lmc)
 curve(b[1] + b[2]*x + b[3]*x^2 + b[4]*x^3 + b[5]*x^4 + b[6]*x^5 + b[7]*x^6 + b[8]*x^7 + b[9]*x^8 + b[10]*x^9 + b[11]*x^10 + b[12]*x^11 + b[13]*x^12 + b[14]*x^13 + b[15]*x^14, add=TRUE, col=rgb(0.6980392, 0.133333, 0.133333, .2), lwd=2)
 
 # Add new data to plot
-points(Y ~ X, data=thedata2, pch=21, col=rgb(.827451,.827451,.827451, .5), bg="orange", cex=1.3)
+points(y ~ x, data=thedata2, pch=21, col=rgb(.827451,.827451,.827451, .5), bg="orange", cex=1.3)
 
 # Add legend
 legend("topleft", legend=c("True Model", "Simple Model", "Complicated Model"), lwd=c(4,2,2), col=c(rgb(0.2745098, 0.5098039, 0.7058824, .5), rgb(1,0.6470588,0, .3), rgb(0.6980392, 0.133333, 0.133333, .2)), bty='n')
@@ -5448,15 +5458,15 @@ legend("bottomright", legend=c("Original Sample", "New Sample"), pch=16, col=c(r
   yhc <- predict(lmc, newdata=thedata2)
   
   # Compute y-bar
-  ybar <- mean(thedata2$Y) #Yi is given by Ynew from the new sample of data
+  ybar <- mean(thedata2$y) #Yi is given by Ynew from the new sample of data
   
   # Compute SSTO
-  SSTO <- sum( (thedata2$Y - ybar)^2 )
+  SSTO <- sum( (thedata2$y - ybar)^2 )
   
   # Compute SSE for each model using y - yhat
-  SSEt <- sum( (thedata2$Y - yht)^2 )
-  SSEs <- sum( (thedata2$Y - yhs)^2 )
-  SSEc <- sum( (thedata2$Y - yhc)^2 )
+  SSEt <- sum( (thedata2$y - yht)^2 )
+  SSEs <- sum( (thedata2$y - yhs)^2 )
+  SSEc <- sum( (thedata2$y - yhc)^2 )
   
   # Compute R-squared for each
   rst <- 1 - SSEt/SSTO
@@ -5464,7 +5474,7 @@ legend("bottomright", legend=c("Original Sample", "New Sample"), pch=16, col=c(r
   rsc <- 1 - SSEc/SSTO
   
   # Compute adjusted R-squared for each
-  n <- length(thedata2$Y) #sample size
+  n <- length(thedata2$y) #sample size
   pt <- length(coef(lmt)) #num. parameters in model
   ps <- length(coef(lms)) #num. parameters in model
   pc <- length(coef(lmc)) #num. parameters in model
