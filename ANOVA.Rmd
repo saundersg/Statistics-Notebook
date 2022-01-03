@@ -62,10 +62,10 @@ An ANOVA is only appropriate when all of the following are satisfied.
 For a One-way ANOVA
 
 $$
-  H_0: \mu_1 = \mu_2 = \ldots = 0
+  H_0: \mu_1 = \mu_2 = \ldots = \mu
 $$
 $$
-  H_a: \mu_i \neq 0 \ \text{for at least one} \ i
+  H_a: \mu_i \neq \mu \ \text{for at least one} \ i
 $$
 
 

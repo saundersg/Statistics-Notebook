@@ -72,6 +72,9 @@ myTest <- ...perform the initial test...
 </span><br/><span class="tooltipr">
 observedTestStat <- ...get the test statistic...
   <span class="tooltiprtext">Save the test statistic of your test into the object called `observedTestStat`. For tests that always result in a single test statistic like a `t.test`, `wilcox.test`, `kruskal.test`, and `chisq.test` it is `myTest$statistic`. For an `aov`, `lm`, or `glm` try printing `summary(myTest)[]` to see what values you are interested in using.</span>
+</span><br/><span class="tooltipr">
+observedTestStat
+  <span class="tooltiprtext">Print the value of the test statistic of your test to the screen. This is the value that we now need to use to compute the P-value from by finding the probability that a randomly computed test statistic would be "more extreme" than this originally observed value.</span>
 </span><br/><br/><span class="tooltipr">
 \#Step 2
   <span class="tooltiprtext">Re-sample the data (“shake it up and dump it out”) thousands of times, computing a new test statistic each time, to create a sampling distribution of the test statistic.</span>
@@ -103,14 +106,8 @@ for
 &nbsp;&nbsp;
   <span class="tooltiprtext">Two spaces in front of every line inside of the opening \{ and closing \} brackets helps keep your code organized.</span>
 </span><span class="tooltipr">
-permutedData <- ...randomly permute the data...
-  <span class="tooltiprtext">This is the most important part of the permutation test and takes some thinking. The data must be randomly reorganized in a way consistent with the null hypothesis. What that means exactly is specific to each scenario. Read the Explanation tab for further details on the logic you should use here.</span>
-</span><br/><span class="tooltipr">
-&nbsp;&nbsp;
-  <span class="tooltiprtext">Two spaces in front of every line inside of the opening \{ and closing \} brackets helps keep your code organized.</span>
-</span><span class="tooltipr">
 permutedTest <- ...perform test with permutedData...
-  <span class="tooltiprtext">The same test that was performed on the original data, should be performed again on the randomly permuted data.</span>
+  <span class="tooltiprtext">The same test that was performed on the original data, should be performed again but with randomly permuted data. The easiest way to permute data is with sample(y-variable-name) inside your test. See the Explanation tab for details.</span>
 </span><br/><span class="tooltipr">
 &nbsp;&nbsp;
   <span class="tooltiprtext">Two spaces in front of every line inside of the opening \{ and closing \} brackets helps keep your code organized.</span>
@@ -200,9 +197,60 @@ sum(permutedTestStats <= observedTestStat)/N
 
 The most difficult part of a permutation test is in the random permuting of the data. How the permuting is performed depends on the type of hypothesis test being performed. It is important to remember that the permutation test only changes the way the p-value is calculated. Everything else about the original test is unchanged when switching to a permutation test.
 
+
+##### Independent Samples t Test
+
+For the independent sample t Test, we will use the data from the [independent sleep](Analyses/t Tests/Examples/SleepIndependentt.html) analysis. In that analysis, we were using the `sleep` data to test the hypotheses:
+
+$$
+  H_0: \mu_\text{Extra Hours of Sleep with Drug 1} - \mu_\text{Extra Hours of Sleep with Drug 2} = 0
+$$
+$$
+H_a: \mu_\text{Extra Hours of Sleep with Drug 1} - \mu_\text{Extra Hours of Sleep with Drug 2} \neq 0
+$$
+
+We used a significance level of $\alpha = 0.05$ and obtained a P-value of $0.07939$. Let's demonstrate how a permutation test could be used to obtain this same p-value. (Technically you only need to use a permutation test when the requirements of the original test were not satisfied. However, it is also reasonable to perform a permutation test anytime you want. No requirements need to be checked when performing a permutation test.)
+
+```{r, eval=FALSE}
+# First run the initial test and gain the test statistic:
+myTest <- t.test(extra ~ group, data = sleep, mu = 0)
+observedTestStat <- myTest$statistic
+
+# Now we run the permutations to create a distribution of test statistics
+N <- 2000
+permutedTestStats <- rep(NA, N)
+for (i in 1:N){
+  permutedTest <- t.test(sample(extra) ~ group, data = sleep, mu = 0)
+  permutedTestStats[i] <- permutedTest$statistic
+}
+
+# Now we show a histogram of that distribution
+hist(permutedTestStats, col = "skyblue")
+abline(v = observedTestStat, col = "red", lwd = 3)
+
+#Greater-Than p-value: Not the correct one in this case
+sum(permutedTestStats >= observedTestStat)/N
+
+# Less-Than p-value: Not the correct one for this data
+sum(permutedTestStats <= observedTestStat)/N
+
+# Two-Sided p-value: This is the one we want based on our alternative hypothesis.
+2*sum(permutedTestStats <= observedTestStat)/N
+```
+
+**Note** The Wilcoxon Rank Sum test is run using the same code except with `myTest <- wilcox.test(y ~ x, data=...)` instead of `t.test(...)` in both Step's 1 and 2.
+
+
+
+##### Other Examples
+
+<a href="javascript:showhide('ptTest')">Paired Samples t Test (and Wilcoxon Signed-Rank) <span style="font-size:8pt;">(click to show/hide)</span></a>
+
+<div id="ptTest" style="display:none;">
+
 ##### Paired Data Example
 
-See the [Sleep Paired t Test](./Analyses/SleepPairedt.html) example for the background and context of the study. Here is how to perform the test as a permutation test instead of a t test.
+See the [Sleep Paired t Test](./Analyses/t Tests/Examples/SleepPairedt.html) example for the background and context of the study. Here is how to perform the test as a permutation test instead of a t test.
 
 The question that this `sleep` data can answer concerns which drug is more effective at increasing the amount of extra sleep an individual receives. The associated hypotheses would be
 $$
@@ -226,8 +274,8 @@ observedTestStat <- myTest$statistic
 N <- 2000
 permutedTestStats <- rep(NA, N)
 for (i in 1:N){
-  permuteData <- sample(x=c(-1,1), size=10, replace=TRUE) 
-  permutedTest <- with(sleep, t.test(permuteData*(extra[group==1] - extra[group==2]), mu = 0))
+  permuteValues <- sample(c(-1,1), size=10, replace=TRUE) 
+  permutedTest <- with(sleep, t.test(permuteValues*(extra[group==1] - extra[group==2]), mu = 0))
   #Note, t.test(group1 - group2) is the same as t.test(group1, group2, paired=TRUE).
   permutedTestStats[i] <- permutedTest$statistic
 }
@@ -246,44 +294,7 @@ sum(permutedTestStats <= observedTestStat)/N
 ```
 
 
-
-##### Other Examples from Students
-
-<a href="javascript:showhide('ItTest')">Independent Samples t Test (and Wilcoxon) <span style="font-size:8pt;">(click to show/hide)</span></a>
-
-<div id="ItTest" style="display:none;">
-
-For the independent sample t Test, we will use the data from the [independent sleep](Analyses/SleepIndependentt.html) analysis.
-
-```{r, eval=FALSE}
-# First run the initial test and gain the test statistic:
-myTest <- t.test(extra ~ group, data = sleep, mu = 0)
-observedTestStat <- myTest$statistic
-
-# Now we run the permutation for a distribution of test statistics
-N <- 2000
-permutedTestStats <- rep(NA, N)
-for (i in 1:N){
-  permutedData <- sample(sleep$group)
-  permutedTest <- t.test(extra ~ permutedData, data = sleep, mu = 0)
-  permutedTestStats[i] <- permutedTest$statistic
-}
-
-# Now we create a histogram of that distribution
-hist(permutedTestStats, col = "skyblue")
-abline(v = observedTestStat, col = "red", lwd = 3)
-
-#Greater-Than p-value: Not the correct one in this case
-sum(permutedTestStats >= observedTestStat)/N
-
-# Less-Than p-value: This is the corret one
-sum(permutedTestStats <= observedTestStat)/N
-
-# Two-Sided p-value
-2*sum(permutedTestStats <= observedTestStat)/N
-```
-
-**Note** The Kruskal-Wallis Rank Sum test is ran using the same code except with `myTest <- kruskal.test(y ~ X, data)` instead.
+**Note**: 
 
 </div>
 
@@ -304,8 +315,7 @@ observedTestStat <- summary(myTest)[[1]]$`F value`[1]
 N <- 2000
 permutedTestStats <- rep(NA, N)
 for (i in 1:N){
-  permutedData <- sample(chickwts$weight)
-  permutedTest <- aov(permutedData ~ feed, data = chickwts)
+  permutedTest <- aov(sample(weight) ~ feed, data = chickwts)
   permutedTestStats[i] <- summary(permutedTest)[[1]]$`F value`[1]
 }
 
@@ -342,8 +352,7 @@ permutedTestStatsW <- rep(NA, N)
 permutedTestStatsT <- rep(NA, N)
 permutedTestStatsWT <- rep(NA, N)
 for (i in 1:N){
-  permuteData <- sample(warpbreaks$breaks)
-  permutedTest <- aov(permuteData ~ wool + tension + wool:tension, data=warpbreaks)
+  permutedTest <- aov(sample(breaks) ~ wool + tension + wool:tension, data=warpbreaks)
   permutedTestStatsW[i] <- summary(permutedTest)[[1]]$`F value`[1]
   permutedTestStatsT[i] <- summary(permutedTest)[[1]]$`F value`[2]
   permutedTestStatsWT[i] <- summary(permutedTest)[[1]]$`F value`[3]
@@ -398,8 +407,7 @@ observedTestStat <- summary(myTest)[[4]][2,3]
 N <- 2000
 permutedTestStats <- rep(NA, N)
 for (i in 1:N){
-  permutedData <- sample(trees$Height)
-  permutedTest <- lm(permutedData ~ Girth, data = trees)
+  permutedTest <- lm(sample(Height) ~ Girth, data = trees)
   permutedTestStats[i] <- summary(permutedTest)[[4]][2,3]
 }
 

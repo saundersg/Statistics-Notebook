@@ -1,0 +1,292 @@
+---
+title: "Getting Started Tutorial"
+output: 
+  html_document:
+    theme: cerulean
+    css: styles.css
+    highlight: tango
+---
+
+<script type="text/javascript">
+ function showhide(id) {
+    var e = document.getElementById(id);
+    e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+ }
+</script>
+
+<br/>
+
+Student: "How do I learn R?"
+
+Teacher: "By using it."
+
+Student: "But I don't know how to use it."
+
+Teacher: "Just try it anyway. Suddenly you'll understand."
+
+Most people that are new to using the "R Software" ask the question, "How do I learn R?" The answer is simple: "start using it." Really. Seriously. Just start using it, even when you have no idea what you are doing, and suddenly you will start to learn R. So, here we go. The more you use it, the more you will know.
+
+
+This textbook (the "Statistics-Notebook") follows a simple learning model: 
+
+1. **Hover** your mouse over <span class="tooltipr">`code`<span class="tooltipRtext">Yes, just like that. By hovering over "Codes" you will get instructions on what that code does.</span></span> to read about it.
+2. **Click** on a <span class="tooltipr"><a href="javascript:showhide('smileyface')">`line of code`</a><span class="tooltipRtext">Hovering is a good start, try clicking on this one.</span></span> to see what it does. <div id="smileyface" style="display:none;padding-left:20px;">
+<img src="./Images/smileyfacecongratulations.jpg">
+</div>
+3. **Try** typing the code into RStudio yourself to actually start learning R. (This is the most important step! Avoid copying and pasting codes, and type them instead. The more you type codes yourself, even though it is slow and prone to mistakes, the more you will learn.)
+
+In summary, the most successful students in Math 325 follow the pattern:
+
+![](./Images/HoverClickTry.png)
+
+<br/>
+
+
+
+
+**Example Codes** 
+
+For each of the following examples: (1) hover, (2) click, and (3) try.
+
+Before you begin working on these **Example Codes**, ensure you have RStudio open. It should look like this:
+
+![](./Images/RStudioScreen.png)
+
+
+*Example 1* 
+
+<span style="font-size:.8em;">Remember, "Hover" the code first, then click, then try.</span>
+
+
+<a href="javascript:showhide('CarsOutput')">
+<div class="hoverchunk">
+<span class="tooltipr">
+View(
+  <span class="tooltipRtext">The "View" R function (with a CAPTIAL 'V' in View) allows us to view a data set. When run, this function will open up a new tab in RStudio showing the data set.  </span>
+</span><span class="tooltipr">
+cars
+  <span class="tooltipRtext">`cars` is a data set that is in R. R has datasets that are available for anyone to use. You can see them using the `data()` command. It would be good to explore `View()` for a few different datasets. </span>
+</span><span class="tooltipr">
+)
+  <span class="tooltipRtext">Always be sure to end your function with closing parantheses. </span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Tutorial&nbsp; 
+  <span class="tooltiprtext">Click to see a full tutorial on the "View()" command.</span>
+</span>
+</div>
+</a>
+<div id="CarsOutput" style="display:none;padding-left:20px;">
+
+<br/>
+
+<div style="color:orange;">
+Good work clicking on *Example Code 1*. 
+
+But... Did you remember to *first* hover your mouse over the `View(cars)` example code? Good job if you did.
+
+If not, go do that right now before continuing.
+</div>
+
+<br/>
+
+R allows you to work with data. So, the first step to understanding R is to open a dataset and begin exploring some data. 
+
+If you type the `data()` command into your Console of RStudio you will see a list of "built in" data sets that come with R. Go ahead and type `data()` into your **R Console** (and then press `Return` or `Enter`) right now to try it yourself.
+
+![](./Images/DataOutput.png)
+
+<br/>
+
+The `cars` data set is one of the options that is available within the list from the `data()` command. This is a fun "historic" data set from the 1920's. It shows the `speed` and stopping `dist`ance of cars from the 1920's.
+
+To see the `cars` data set in RStudio, use the `View` command as follows.
+
+**Step 1.** Open RStudio.
+
+**Step 2.** Type the command `View(cars)` into your **Console**.
+
+**Step 3.** Press `Enter` or `Return` and the following output should appear within RStudio.
+
+![](./Images/ViewCars.png)
+
+<br/>
+
+Be sure to **TRY IT** yourself, if you haven't already. Good work if you did. It's the only way to learn R. 
+
+Ask someone for help if you aren't sure how to get started.
+
+Try `View(airquality)` as well.
+
+<br/>
+<br/>
+
+</div>
+
+
+
+<br/>
+
+*Example 2*
+
+<a href="javascript:showhide('meancarsdist')">
+<div class="hoverchunk">
+<span class="tooltipr">
+mean(
+  <span class="tooltipRtext">An R function "mean()" that will compute the mean of a quantitative column of data from a data set.</span>
+</span><span class="tooltipr">
+cars
+  <span class="tooltipRtext">`cars` is the name of a data set in R. Any data set can be used instead by simply typing the name of that data set instead of `cars`.</span>
+</span><span class="tooltipr">
+$
+  <span class="tooltipRtext">The `$` sign is a powerful operator in R. The `$` sign allows you to access, or "purchase," any column from a data set. Try typing `cars$` into R and notice how a selection menu appears with options `dist` and `speed`.</span>
+</span><span class="tooltipr">
+dist
+  <span class="tooltipRtext">`dist` is one of the two columns from the `cars` data set. By typing `cars$dist` we are essentially pulling that column of data out of the data set, and then computing the mean of that column with `mean(cars$dist)`.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltipRtext">Closing parenthesis for the `mean()` function.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to see output.</span>
+</span>
+</div>
+</a>
+<div id="meancarsdist" style="display:none;padding-left:20px;">
+
+<br/>
+
+<div style="color:orange;">
+Did you remember to *first* hover your mouse over the `mean(cars$dist)` example code? Good job if you did.
+
+If not, go do that right now before continuing.
+</div>
+
+<br/>
+
+Recall that you "Viewed" the `cars` data set in the first example code. If you look carefully at this data set, you should notice that there are two columns labeled **speed** and **dist** in this data set. Each row of the data set represents a vehicle that was going a certain **speed** (in miles per hour) and once the breaks were applied, the **dist**ance the vehicle took to stop was also recorded (in feet). This data was recorded for 50 different vehicles. So it might make sense to compute something like the average (or mean) distance it took vehicles to stop. This is done with the `mean( )` function. Notice how the `$` sign is used to access a column called **dist** from the `cars` data set. Think of the data set `cars` as a store, and if you bring your money `$` then you can "buy" the column **dist** from that data set.
+
+![](./Images/meancarsdist.png)
+
+
+You may also be interested in trying any of the following:
+
+* `sd(cars$dist)`
+* `var(cars$dist)`
+* `median(cars$dist)`
+* `min(cars$dist)`
+* `max(cars$dist)`
+* `length(cars$dist)`
+* `sum(cars$dist)`
+
+If you are curious, you can begin exploring the [Numerical Summaries](NumericalSummaries.html) page of your Statistics-Notebook to learn more. But we won't officially get to that as a class until later this week. So you don't need to worry about it for now.
+
+<br/>
+<br/>
+
+</div>
+
+
+
+
+<br/>
+
+*Example 3*
+
+
+<a href="javascript:showhide('plotcarsdist')">
+<div class="hoverchunk">
+<span class="tooltipr">
+plot(
+  <span class="tooltipRtext">The `plot(...)` function allows us to create a plot (usually a scatterplot) in R.</span>
+</span><span class="tooltipr">
+dist
+  <span class="tooltipRtext"> `dist` is the name of a column from the `cars` data set. This is going to be the Y-variable of the plot. The Y-variable always comes first in the plot(Y ~ X) command.</span>
+</span><span class="tooltipr">
+&nbsp;~&nbsp;
+  <span class="tooltipRtext"> `~` is found on the upper-left key of your keyboard. It is called the "tilde" or "tilda" symbol. It is used to state a relationship between Y and X: `Y ~ X`.</span>
+</span><span class="tooltipr">
+speed
+  <span class="tooltipRtext"> `speed` is the name of a column. This is going to be the X-variable of the plot. The X-variable always comes after the `~` in the `plot(Y ~ X)` command.</span>
+</span><span class="tooltipr">
+,&nbsp;
+  <span class="tooltipRtext"> The comma `,` is used to separate each entry within a command.</span>
+</span><span class="tooltipr">
+data=cars
+  <span class="tooltipRtext"> The `data=` statement is used to tell R which data set the columns of "dist" and "speed" come from. In this case, the `cars` data set.</span>
+</span><span class="tooltipr">
+,&nbsp;
+  <span class="tooltipRtext"> The comma `,` is used to separate each entry within a command.</span>
+</span><span class="tooltipr">
+col="skyblue"
+  <span class="tooltipRtext"> The `col=` statement is used to tell R which color to use in the plot. Type `colors()` in your R Console to see what options there are. This code is using the `"skyblue"` color. Color names are always placed in quotes `" "`.</span>
+</span><span class="tooltipr">
+,&nbsp;
+  <span class="tooltipRtext"> The comma `,` is used to separate each entry within a command.</span>
+</span><span class="tooltipr">
+pch=16
+  <span class="tooltipRtext"> The `pch=` statement is used to tell R which plotting character to use in the plot. Type `?pch` in your R Console to see what options there are. (You'll need to scroll down in the help file that appears until you get to the `'pch values'` section.</span>
+</span><span class="tooltipr">
+)
+  <span class="tooltipRtext">Closing parenthesis for the plot(...) function.</span>
+</span><span class="tooltipr">
+&nbsp;&nbsp;&nbsp;&nbsp;  
+  <span class="tooltipRtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+&nbsp;Click to Show Output&nbsp; 
+  <span class="tooltiprtext">Click to View Output.</span>
+</span>
+</div>
+</a>
+<div id="plotcarsdist" style="display:none;padding-left:20px;">
+
+<br/>
+
+Study the image below.
+
+![](./Images/plotcarsblue.png)
+
+Try changing the `col="skyblue"` statement to `col="firebrick"` instead. What do you notice?
+
+Try changing the `pch=16` statement to `pch=4` or any other number from 1 to 25. What do you notice?
+
+Hint: pressing the "up" arrow on your keyboard brings up the last command you typed into the Console. 
+
+<br/>
+
+
+<div style="background-color:skyblue;padding:10px;">
+Good work! You're all done for now.
+
+**Completion Code:** abc123R
+</div>
+
+<br/>
+
+[Return to the R Commands](RCommands.html) page of the Statistics-Notebook.
+
+
+</div>
+
+
+
+<br/>
+<br/>
+
+<span style="color:orange;">This is "the end" of the *Getting Started* tutorial.</span> <span style="color:gray;">To find the "completion code" you will need to study, and "click open" each of the example codes above.</span>
+
+
+<br/>
+<br/>
+
+</div>
+
+
+
+
+

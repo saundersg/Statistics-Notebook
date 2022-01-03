@@ -26,17 +26,17 @@ navbar:
           href: tTests.html
         - text: "Wilcoxon Tests"
           href: WilcoxonTests.html
+        - text: "Kruskal-Wallis Test"
+          href: Kruskal.html
         - text: "ANOVA"
           href: ANOVA.html
-        - text: "Kruskal-Wallis"
-          href: Kruskal.html
         - text: "Linear Regression"
           href: LinearRegression.html
         - text: "Logistic Regression"
           href: LogisticRegression.html
         - text: "Chi Squared Tests"
           href: ChiSquaredTests.html
-        - text: "Randomization Testing"
+        - text: "Randomization"
           href: PermutationTests.html
     - text: "Analyses"
       menu:
@@ -54,10 +54,10 @@ navbar:
           href: ./Analyses/t Tests/HighSchoolSeniors.html
         - text: "Recalling Words"
           href: ./Analyses/Wilcoxon Tests/RecallingWords.html
-        - text: "Day Care"
-          href: ./Analyses/ANOVA/DayCare.html
         - text: "Food"
           href: ./Analyses/Kruskal-Wallis/Food.html
+        - text: "High School Seniors 2"
+          href: ./Analyses/ANOVA/HighSchoolSeniors.html
         - text: "My Simple Linear Regression"
           href: ./Analyses/Linear Regression/MySimpleLinearRegression.html
         - text: "Car Prices"
