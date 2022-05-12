@@ -2,8 +2,8 @@
 title: "R Commands"
 output: 
   html_document: 
-    toc: true
     toc_float: true
+    toc: true
 ---
 
 <script type="text/javascript">
