@@ -1632,9 +1632,9 @@ Expand each element below to learn more.
 | <span class="tooltipr">$SSR$<span class="tooltiprtext"> `$SSR$`</span> </span><span class="tooltipr"> | "sum of squared regression error" | Measure of line's deviation from y-bar | <span class="tooltipr"> $SSR = \sum_{i=1}^n (\hat{Y}_i - \bar{Y})^2$<span class="tooltiprtext">`$SSR = \sum_{i=1}^n` `(\hat{Y}_i - \bar{Y})^2$`</span> | `sum( (lmObject$fit - mean(YourData$Y))^2 )` |
 | <span class="tooltipr">$SSTO$<span class="tooltiprtext"> `$SSTO$`</span> </span><span class="tooltipr"> | "total sum of squares" | Measure of total variation in Y | <span class="tooltipr">$SSR + SSE = SSTO = \sum_{i=1}^n (Y_i - \bar{Y})^2$<span class="tooltiprtext">`$SSR + SSE = SSTO = \sum_{i=1}^n` `(Y_i - \bar{Y})^2$`</span> | `sum( (YourData$Y - mean(YourData$Y))^2 )` |
 | <span class="tooltipr">$R^2$<span class="tooltiprtext"> `$R^2$`</span> </span><span class="tooltipr"> | "R-squared" | Proportion of variation in Y explained by the regression | <span class="tooltipr">$R^2 = \frac{SSR}{SSTO} = 1 - \frac{SSE}{SSTO}$<span class="tooltiprtext">`$R^2 = \frac{SSR}{SSTO} = 1` `- \frac{SSE}{SSTO}$`</span> | `SSR/SSTO` |
-| <span class="tooltipr">$\hat{Y}_h$<span class="tooltiprtext"> `$\hat{Y}_h$`</span> </span><span class="tooltipr"> | "why-hat-aitch" | Estimated mean y-value for some x-value called $X_h$ | <span class="tooltipr">$\hat{Y}_h = b_0 + b_1 X_h$<span class="tooltiprtext">`$\hat{Y}_h = b_0 + b_1 X_h$`</span> | `predict(lmObject, data.frame(XvarName=#))` |
-| <span class="tooltipr">$X_h$<span class="tooltiprtext"> `$X_h$`</span> </span><span class="tooltipr"> | "ex-aitch" | Some x-value, not necessarily one of the $X_i$ values used in the regression | <span class="tooltipr">$X_h =$ some number<span class="tooltiprtext">`$X_h = $`</span> | `Xh = #` |
-| Confidence Interval | "confidence interval" | Estimated bounds at a certain level of confidence for a parameter | $b_0 \pm t^* \cdot s_{b_0}$ or $b_1 \pm t^* \cdot s_{b_1}$ | `confint(mylm, level = someConfidenceLevel)` |
+| <span class="tooltipr">$\hat{Y}_h$<span class="tooltiprtext"> `$\hat{Y}_h$`</span></span> | "why-hat-aitch" | Estimated mean y-value for some x-value called $X_h$ | <span class="tooltipr">$\hat{Y}_h = b_0 + b_1 X_h$<span class="tooltiprtext">`$\hat{Y}_h = b_0 + b_1 X_h$`</span></span> | `predict(lmObject, data.frame(XvarName=#))` |
+| <span class="tooltipr">$X_h$<span class="tooltiprtext"> `$X_h$`</span> </span> | "ex-aitch" | Some x-value, not necessarily one of the $X_i$ values used in the regression | <span class="tooltipr">$X_h =$ some number<span class="tooltiprtext">`$X_h = $`</span></span> | `Xh = #` |
+| Confidence Interval | "confidence interval" | Estimated bounds at a certain level of confidence for a parameter | <span class="tooltipr">$b_0 \pm t^* \cdot s_{b_0}$<span class="tooltiprtext">`b_0 \pm t^* \cdot s_{b_0}`</span></span> or <span class="tooltipr">$b_1 \pm t^* \cdot s_{b_1}$<span class="tooltiprtext">`b_1 \pm t^* \cdot s_{b_1}`</span></span> | `confint(mylm, level = someConfidenceLevel)` |
 
 
 | Parameter | Estimate |
@@ -2656,8 +2656,268 @@ mtext("Residuals vs Order", side=3)
 
 **Unconstant Variance**
 
+When variance of the error term changes across the regression, the regression approximates the "average variance" of the errors because the regression is still assuming the variance is constant across the regression. The estimates of the slope and intercept are still typically quite good, and can be used for interpretation. The residual standard error however should not be considered to be meaningful as it will be too large on one end of the regression and too small on the other end. 
 
-**X 
+```{r, fig.height=7}
+# Create Data from a True Model
+
+n <- 30                           #sample size
+
+beta_0 <- 14.2                    #True y-intercept
+
+beta_1 <- 3.5                     #True slope
+
+X_i <- runif(n, 0, 20)            #Sample of X-values
+
+sigma <- 2.5                      #True standard deviation
+
+epsilon_i <- rnorm(n, 0, sigma + X_i)   
+                                  #normally distributed errors
+                                  #with increasing variance
+
+Y_i <- beta_0 + beta_1*X_i + epsilon_i 
+                                  #Sample of Y-values from model
+
+
+# Plot the Data and Fitted Model
+
+mylm <- lm(Y_i ~ X_i)            #Fit Model to Data
+
+
+layout(matrix(c(1,1,1,2,3,4), 2, 3, byrow = TRUE), 
+   widths=c(2,2,2), heights=c(4,2,2))
+                                 #create plot panel
+
+
+plot(Y_i ~ X_i,                  #Plot the data
+     pch=16, 
+     col="darkgray", 
+     xlim=c(0,20), 
+     ylim=c(0,100),
+     main="Variance Varies (Non-Constant)")
+
+abline(mylm, col="gray")         #Add fitted line to plot
+
+abline(beta_0, beta_1,           #Add True line to plot
+       col="gray", lty=2)
+
+                                 #Summarize the Model Fit
+pander(rbind(`Y-Intercept` = c(True = beta_0, Estimated = mylm$coef[[1]]),
+      Slope = c(True = beta_1, Estimated = mylm$coef[[2]]),
+      Sigma = c(True = sigma, Estimated = summary(mylm)$sigma)))
+
+                                 #Add summary to plot
+legend("topleft", legend=c(paste("Y-Intercept:", round(mylm$coef[[1]], 3), "  (", beta_0, ")"),
+                           paste("Slope:", round(mylm$coef[[2]], 3), "  (", beta_1, ")"),
+                           paste("Sigma:", round(summary(mylm)$sigma, 3), "  (", round(mean(sigma + X_i), 2), ", mean)")), bty='n')
+
+                                 #Draw diagnostic plots
+plot(mylm, which=1:2)
+plot(mylm$residuals, ylab="Residuals")
+mtext("Residuals vs Order", side=3)
+```
+
+
+**Normality Violated**
+
+As silly as it sounds, if the only problem with the regression is the lack of normality of the error terms, it isn't all that big of a problem. Depending on how non-normal the residuals appear, there could be some skewing to the residual standard error, but otherwise, the slope and intercept are still interpretable and meaningful.
+
+
+```{r, fig.height=7}
+# Create Data from a True Model
+
+n <- 30                           #sample size
+
+beta_0 <- 14.2                    #True y-intercept
+
+beta_1 <- 3.5                     #True slope
+
+X_i <- runif(n, 0, 20)            #Sample of X-values
+
+sigma <- 2.5                      #True standard deviation
+
+epsilon_i <- runif(n, -sqrt(12*sigma^2)/2, sqrt(12*sigma^2)/2) #non-normally distributed errors
+
+Y_i <- beta_0 + beta_1*X_i + epsilon_i 
+                                  #Sample of Y-values from model
+
+
+# Plot the Data and Fitted Model
+
+mylm <- lm(Y_i ~ X_i)            #Fit Model to Data
+
+
+layout(matrix(c(1,1,1,2,3,4), 2, 3, byrow = TRUE), 
+   widths=c(2,2,2), heights=c(4,2,2))
+                                 #create plot panel
+
+
+plot(Y_i ~ X_i,                  #Plot the data
+     pch=16, 
+     col="darkgray", 
+     xlim=c(0,20), 
+     ylim=c(0,100),
+     main="Normality Assumption Violated")
+
+abline(mylm, col="gray")         #Add fitted line to plot
+
+abline(beta_0, beta_1,           #Add True line to plot
+       col="gray", lty=2)
+
+
+                                 #Summarize the Model Fit
+pander(rbind(`Y-Intercept` = c(True = beta_0, Estimated = mylm$coef[[1]]),
+      Slope = c(True = beta_1, Estimated = mylm$coef[[2]]),
+      Sigma = c(True = sigma, Estimated = summary(mylm)$sigma)))
+
+
+                                 #Add summary to plot
+legend("topleft", legend=c(paste("Y-Intercept:", round(mylm$coef[[1]], 3), "  (", beta_0, ")"),
+                           paste("Slope:", round(mylm$coef[[2]], 3), "  (", beta_1, ")"),
+                           paste("Sigma:", round(summary(mylm)$sigma, 3), "  (", sigma, ")")), bty='n')
+
+
+                                 #Draw diagnostic plots
+plot(mylm, which=1:2)
+plot(mylm$residuals, ylab="Residuals")
+mtext("Residuals vs Order", side=3)
+```
+
+
+**Independence Assumption Violated**
+
+While the slope and intercept are often still meaningful when the independence assumption is violated, the residual standard error is unnecessarily large in this case.
+
+
+```{r, fig.height=7}
+# Create Data from a True Model
+
+n <- 30                           #sample size
+
+beta_0 <- 14.2                    #True y-intercept
+
+beta_1 <- 3.5                     #True slope
+
+X_i <- runif(n, 0, 20)            #Sample of X-values
+
+sigma <- 2.5                      #True standard deviation
+
+epsilon_i <- rnorm(n, 0, 2.5) + (1:n -n/2)*.5
+                                #normal, but correlated errors
+
+Y_i <- beta_0 + beta_1*X_i + epsilon_i 
+                                  #Sample of Y-values from model
+
+
+# Plot the Data and Fitted Model
+
+mylm <- lm(Y_i ~ X_i)            #Fit Model to Data
+
+
+layout(matrix(c(1,1,1,2,3,4), 2, 3, byrow = TRUE), 
+   widths=c(2,2,2), heights=c(4,2,2))
+                                 #create plot panel
+
+
+plot(Y_i ~ X_i,                  #Plot the data
+     pch=16, 
+     col="darkgray", 
+     xlim=c(0,20), 
+     ylim=c(0,100),
+     main="Independence Assumption Violated")
+
+abline(mylm, col="gray")         #Add fitted line to plot
+
+abline(beta_0, beta_1,           #Add True line to plot
+       col="gray", lty=2)
+
+
+                                 #Summarize the Model Fit
+pander(rbind(`Y-Intercept` = c(True = beta_0, Estimated = mylm$coef[[1]]),
+      Slope = c(True = beta_1, Estimated = mylm$coef[[2]]),
+      Sigma = c(True = sigma, Estimated = summary(mylm)$sigma)))
+
+
+                                 #Add summary to plot
+legend("topleft", legend=c(paste("Y-Intercept:", round(mylm$coef[[1]], 3), "  (", beta_0, ")"),
+                           paste("Slope:", round(mylm$coef[[2]], 3), "  (", beta_1, ")"),
+                           paste("Sigma:", round(summary(mylm)$sigma, 3), "  (", sigma, ")")), bty='n')
+
+
+                                 #Draw diagnostic plots
+plot(mylm, which=1:2)
+plot(mylm$residuals, ylab="Residuals")
+mtext("Residuals vs Order", side=3)
+```
+
+
+**Outliers Present**
+
+While outliers do not violate any of the regression assumptions, they do pose substantial difficulties for the least squares regression estimates of the slope and intercept. 
+
+
+```{r, fig.height=7}
+# Create Data from a True Model
+
+n <- 30                           #sample size
+
+beta_0 <- 14.2                    #True y-intercept
+
+beta_1 <- 3.5                     #True slope
+
+X_i <- runif(n, 0, 20)            #Sample of X-values
+
+sigma <- 2.5                      #True standard deviation
+
+epsilon_i <- rnorm(n, 0, sigma)   #normally distributed errors
+
+
+epsilon_i[3] <- ifelse(X_i[3] < 10, runif(1,25,35), -runif(1,25,35))
+                                  #create outlier
+
+Y_i <- beta_0 + beta_1*X_i + epsilon_i 
+                                  #Sample of Y-values from model
+
+
+
+# Plot the Data and Fitted Model
+
+mylm <- lm(Y_i ~ X_i)            #Fit Model to Data
+
+
+layout(matrix(c(1,1,1,2,3,4), 2, 3, byrow = TRUE), 
+   widths=c(2,2,2), heights=c(4,2,2))
+                                 #create plot panel
+
+
+plot(Y_i ~ X_i,                  #Plot the data
+     pch=16, 
+     col="darkgray", 
+     xlim=c(0,20), 
+     ylim=c(0,100),
+     main="An Outlier Present")
+
+abline(mylm, col="gray")         #Add fitted line to plot
+
+abline(beta_0, beta_1,           #Add True line to plot
+       col="gray", lty=2)
+
+                                 #Summarize the Model Fit
+pander(rbind(`Y-Intercept` = c(True = beta_0, Estimated = mylm$coef[[1]]),
+      Slope = c(True = beta_1, Estimated = mylm$coef[[2]]),
+      Sigma = c(True = sigma, Estimated = summary(mylm)$sigma)))
+
+                                 #Add summary to plot
+legend("topleft", legend=c(paste("Y-Intercept:", round(mylm$coef[[1]], 3), "  (", beta_0, ")"),
+                           paste("Slope:", round(mylm$coef[[2]], 3), "  (", beta_1, ")"),
+                           paste("Sigma:", round(summary(mylm)$sigma, 3), "  (", sigma, ")")), bty='n')
+
+                                 #Draw diagnostic plots
+plot(mylm, which=1:2)
+plot(mylm$residuals, ylab="Residuals")
+mtext("Residuals vs Order", side=3)
+
+```
 
 
 
@@ -3066,9 +3326,12 @@ curve(b[1] + b[2]*x^2, add=TRUE, col="green", lwd=2)
 
 <div id="inference1" style="display:none;">
 
-We are sometimes interested in making inference about $\beta_0$, the y-intercept. However, most inference in regression is focused on the slope, $\beta_1$. Recall that the interpretation of $\beta_1$ is the amount of increase (or decrease) in the expected value (average value) of $Y$ per unit change in $X$. 
+When fitting the regression model given by the equation
 
-Two types of inference about $\beta_1$, or similarly $\beta_0$ when applicable, are of interest.
+$$
+  Y_i = \beta_0 + \beta_1 X_i + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2)
+$$
+to a sample of data, we typically test hypotheses about the parameters $\beta_0$, $\beta_1$, or both.
 
 
 <table class="fancytable">
@@ -3096,6 +3359,9 @@ $$t = \frac{b_0 - \overbrace{0}^\text{a number}}{s_{b_0}}$$
 </span>
 
   </td><td style="text-align:center;width:50%;">
+  
+<a href="https://byuimath.com/apps/normprobwitht.html" target="_blank" title="Go to t applet">
+
 ```{r, fig.height=3, echo=FALSE}
 par(mgp=c(1,1,0), mai=c(.5,0,0,0))
 curve(dt(x, 48), from=-4.2, to=4.2, yaxt='n', lwd=2, col="forestgreen", bty='n', ylab="", xlab="", ylim=c(0,.4))
@@ -3107,6 +3373,8 @@ lines(c(-1.8,-1.8), c(0,dt(-1.8,48)+.1), col="steelblue", lwd=2)
 text(-2,dt(-1.8,48)+.1, "observed\n t-value", pos=3, cex=1)
 polygon(c(myxhi,rev(myxhi)), c(dt(myxhi,48),rep(0,length(myxhi))), col=rgb(.133,.545,.133,.2))
 ```
+
+</a>
   </td>
 </tr><tr>
   <td style="text-align:center;width:25%;">
@@ -3137,7 +3405,99 @@ $$t = \frac{b_1 - \overbrace{0}^\text{a number}}{s_{b_1}}$$
 </tr>
 </table>
 
+<br>
 
+In R, these values correspond to the output summary of an lm as follows.
+
+<br>
+
+<img src="./Images/summaryOutputLabeled.png">
+
+
+<a href="javascript:showhide('ttestexample')" style="font-size:.9em;color:skyblue;">(Show Example)</a>
+
+<div id="ttestexample" style="display:none;">
+
+Consider the `cars` data in R. Suppose we used the regression model given by
+
+$$
+  \underbrace{Y_i}_\text{Feet to Stop} = \beta_0 + \beta_1 \underbrace{X_{i}}_\text{mph} + \epsilon_i \quad \text{where} \ \epsilon_i \quad \sim N(0,\sigma^2)
+$$
+to model the feet a vehicle (from the 1920's) takes to stop when traveling at a certain speed (in miles per hour, mph) prior to stopping. When the regression is performed and summarized in R, it is always testing the following two hypotheses:
+
+$$
+ H_0: \beta_0 = 0 \quad\quad H_0: \beta_1 = 0 \\
+ H_a: \beta_0 \neq 0 \quad\quad H_a: \beta_1 \neq 0
+$$
+
+To perform the test of these hypotheses for the regression stated above, we would run the following codes in R. 
+
+`cars.lm <- lm(dist ~ speed, data=cars)`
+
+`pander(summary(cars.lm)$coefficients)`
+
+These would produce summary output like the following, but the following output has been labeled with the math notation corresponding to each value.
+
+<img src="./Images/summaryOutputLabeled.png">
+
+Let's emphasize what is happening in this summary output table. 
+
+First, here is how the "t value" is calculated for the "(Intercept)" in the summary table above.
+
+$$
+t = \frac{b_0-0}{s_{b_0}} = \frac{-17.58 - 0}{6.758} = -2.601
+$$
+Second, here is a visual representation of how the P-value, the "Pr(>|t|)" as it is called in the summary table above, is calculated for this test statistic. (Click the graph to view an interactive applet showing this calculation.) Notice both ends of the t-distribution are being shaded to compute the P-value because the alternative hypothesis was $H_a: \beta_0 \neq 0$. 
+
+<a href="https://byuimath.com/apps/normprobwitht.html?z=-2.601&df=48" target="_blank" title="Click to View in t Applet">
+
+```{r, fig.height=3, echo=FALSE}
+par(mgp=c(1,1,0), mai=c(.5,0,0,0))
+curve(dt(x, 48), from=-4.2, to=4.2, yaxt='n', lwd=2, col="forestgreen", bty='n', ylab="", xlab="", ylim=c(0,.4))
+abline(h=0, col="darkgray")
+myxlo <- seq(-4.5,-2.601,.01)
+myxhi <- seq(2.601,4.5,.01)
+polygon(c(myxlo,rev(myxlo)), c(dt(myxlo,48),rep(0,length(myxlo))), col=rgb(.133,.545,.133,.2))
+lines(c(-2.601,-2.601), c(0,dt(-2.601,48)+.1), col="steelblue", lwd=2)
+text(-2.5,dt(-2.601,48)+.1, "observed\n t-value", pos=3, cex=1)
+polygon(c(myxhi,rev(myxhi)), c(dt(myxhi,48),rep(0,length(myxhi))), col=rgb(.133,.545,.133,.2))
+```
+
+</a>
+
+To compute the P-value in R, we use the "percentile function for the t-distribution" called `pt( )`. This function requires two things, the t-value and the degrees of freedom, in our case `pt(-2.601, 48)`. Note the degrees of freedom (df) are 48 because the sample size is $n=50$ and there are two parameters ($\beta_0$ and $\beta_1$) in our regression model. 
+
+Running this code in R gives: `pt(-2.601, 48)` = `r round(pt(-2.601, 48), 6)`
+
+However, note that this value is only half of the actual P-value of 0.0123. To get the "two-sided" P-value (note that our alternative hypothesis used a $\neq$ symbol) we need to double this left-tailed P-value.
+
+`2*pt(-2.601, 48))` = `r round(2*pt(-2.601, 48), 4)`
+
+Finally, note that the same procedure can be used to test hypotheses that use a value other than 0 in the null and alternative. For example, to test the hypotheses:
+
+$$
+H_0: \beta_1 = 3 \\
+H_a: \beta_1 \neq 3
+$$
+Use the t-formula
+
+$$
+  t = \frac{b_1 - 3}{s_{b_1}} = \frac{\overbrace{3.932}^{b_1} - \overbrace{3}^{H_0}}{\underbrace{0.4155}_{s_{b_1}}} = 2.243 
+$$
+then the P-value is calculated in R by
+
+`2*pt(-abs(2.243), 48)` = `r 2*pt(-abs(2.243), 48)`
+
+<hr>
+
+
+</div>
+
+
+
+<br/>
+
+To obtain confidence intervals in R use `confint(mylm)`. 
 
 <table class="fancytable">
 <tr>
@@ -3168,7 +3528,7 @@ $$s^2_{b_0} = MSE\left[\frac{1}{n} + \frac{\bar{X}^2}{\sum(X_i-\bar{X})^2}\right
   </td><td style="text-align:center;">
   $b_1 \pm$<span class="tooltiprbold">
 $t^*$
-  <span class="tooltiprtext">This is called the "critical value" and denotes the number of standard deviations that are needed to obtain a 95% confidence interval from a t distribution with degrees of freedom $n-p$ (sample size - number of parameters in the regression model).</span>
+  <span class="tooltiprtext">This is called the "critical value" and denotes the number of standard deviations that are needed to obtain a 95% confidence interval from a t distribution with degrees of freedom $n-p$ (sample size - number of parameters in the regression model). Use `qt(0.975, df)` to get $t*$ in R</span>
 </span><span class="tooltiprbold">
 $\cdot$
   <span class="tooltiprtext">The critical value is multiplied by the standard error of $b_1$.</span>

@@ -189,7 +189,7 @@ The Kruskal-Wallis Rank Sum Test allows for this by extending the idea behind th
 
 The following explanation of how the test works comes mainly from the original 1952 article, [Use of Ranks in One-Criterion Variance Analysis, 1952](http://www.jstor.org/stable/2280779?seq=1#page_scan_tab_contents), but is expanded here for increased clarity.
 
-#### Calculating the Test Statistic
+##### Calculating the Test Statistic
 
 The following artificial data will be used to demonstrate how the Kruskal-Wallis Test statistic is calculated. (Taken from the original article.)
 
