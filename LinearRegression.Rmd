@@ -5709,12 +5709,115 @@ $$
 
 Two other measurements, or information criterion, are popular for use in the model selection process. These are the Akaike Information Criterion (AIC) and the Bayesian Information Criterion (BIC). These are easily computed in R using `AIC(yourlm)` and `BIC(yourlm)`.
 
+The formula for each are given in different ways depending on which source you obtain the equation. Perhaps the easiest formulation to understand is that given by Kutner, Nachtsheim, and Neter in their book *Applied Linear Regression Models* (4th edition, page 360)
+
+$$
+\text{AIC:} \quad n \ln(SSE) - n \ln(n) + 2p
+$$
+where SSE is the usual $\sum_{i=1}^n (Y_i - \hat{Y}_i)^2$ of the current regression model under consideration, $n$ is the sample size, and $p$ is the number of parameters in the current regression model.
+
+$$
+\text{BIC:} \quad n \ln(SSE) - n \ln(n) + p\ln(n)
+$$
+
+This shows how the BIC differs only from the AIC in the final term, where AIC uses $2p$ and BIC uses $p\ln(n)$. Since $\ln(n) \geq 2$ for $n\geq8$, then BIC enforces a larger penalty than the AIC for extra model parameters ($p$) when the sample size is 8 or larger, i.e., most data sets.
+
+The AIC was formulated by [Hirotugu Akaike in 1971](https://www.ism.ac.jp/editsec/aism/pdf/023_2_0163.pdf). (Here is a [short commentary](http://www.garfield.library.upenn.edu/classics1981/A1981MS54100001.pdf) by Akaike about how he developed this information criterion. Note that he named it "an information criterion (AIC)" when he published the method and other people later began calling it the "Akaike Information Criterion.")
+
 
 
 </div>
 
 <br/>
 
+
+#### Model Selection <a href="javascript:showhide('modelselection')" style="font-size:.6em;color:skyblue;">(Expand)</a> 
+
+<span class="expand-caption">pairs plots, added variable plots, and pattern recognition...</span>
+
+<div id="modelselection" style="display:none;">
+
+Model selection is an exploratory analysis tool that is useful for proposing possible regression models for a given response variable $Y$. They should always be followed up by confirmatory analysis that tests the theories proposed by the selected model. However, when confirmatory studies are not possible, model validation is a meaningful tool that can be used to attempt to confirm the utility of a model.
+
+##### Pairs Plots {.tabset .tabset-pills}
+
+A useful visualization tool for model selection is the "pairs plot." This plot shows all possible 2D scatterplots that can be created from a given dataset. 
+
+Here is a pairs plot of the `mtcars` data set in R. 
+
+
+###### Basic View
+
+```{r}
+pairs(mtcars, panel=panel.smooth)
+```
+
+
+
+###### More Detailed View
+
+```{r, eval=FALSE}
+pairs(mtcars, panel=panel.smooth)
+```
+
+![](./Images/pairsPlotGuidance.png)
+
+
+#####
+
+Notice that...
+
+* the y-axis of each plot is found by locating the variable name (like "mpg") that is found to the left or right of the current plot. 
+* the x-axis of each plot is found by locating the variable name (like "disp") that is found above or below each plot.
+* the LOWESS curves have been added to each plot to visualize the type of regression model that would best fit each plot.
+
+
+##### Selecting a Model {.tabset .tabset-pills}
+
+Suppose now that we are trying to come up with a good regression model for predicting the gas mileage of a car, $Y=$`mpg`. 
+
+$$
+  \underbrace{Y_i}_\text{mpg} = \underbrace{?}_\text{Our model} + \  \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2)
+$$
+To find meaningful x-variables that could predict our chosen y-variable of `mpg`, we look at all plots that have `mpg` as the y-axis of the plot. This happens to be the first row of the pairs plot.
+
+When looking at the graph, we are looking for variables that show a strong change in the average y-value (i.e., the LOWESS curve should show steep slope or a meaningful trend). While all variables in the `mtcars` data set seem to have some relationship with `mpg`, the strongest relationships appear to e with `cyl`, `disp`, `hp`, `wt`, `vs`, `am`, and `gear`.
+
+###### Basic View
+
+```{r}
+pairs(mtcars, panel=panel.smooth)
+```
+
+###### More Detailed View
+
+```{r, eval=FALSE}
+pairs(mtcars, panel=panel.smooth)
+```
+
+![](./Images/pairsPossibleX.png)
+
+#####
+
+Also worth noting is that the relationship of `mpg` with each of `disp`, `hp`, and `wt` are all similar, they each look to be an exponential decay type of model. This tells us that we had better check to see if `disp`, `hp`, and `wt` are related to each other. If they are, then we should only use one of them in the regression model as the other two likely wouldn't give any new information about `mpg`.
+
+Sure enough, the pairs plot shows that there is a fairly strong relationship between `disp` and `hp`, `hp` and `wt`, and `disp` and `wt`.
+
+![](./Images/pairsPossibleRelatedX.png)
+
+Now, with all of this in mind, we could start looking at a few possible regression models. Let's start with perhaps the simplest and strongest trend we saw with `mpg` and any of the x-variables, `wt`.
+
+```{r}
+plot(mpg ~ wt, data=mtcars)
+
+lm.wt <- lm(mpg ~ wt, data=mtcars)
+summary(lm.wt) %>% pander()
+```
+
+
+</div>
+
+<br/>
 
 
 #### Model Validation <a href="javascript:showhide('validation')" style="font-size:.6em;color:skyblue;">(Expand)</a>
