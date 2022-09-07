@@ -5709,7 +5709,7 @@ $$
 
 Two other measurements, or information criterion, are popular for use in the model selection process. These are the Akaike Information Criterion (AIC) and the Bayesian Information Criterion (BIC). These are easily computed in R using `AIC(yourlm)` and `BIC(yourlm)`.
 
-The formula for each are given in different ways depending on which source you obtain the equation. Perhaps the easiest formulation to understand is that given by Kutner, Nachtsheim, and Neter in their book *Applied Linear Regression Models* (4th edition, page 360)
+The formula for each are given in different, but equivalent ways depending on which source you obtain the equation. Perhaps the easiest formulation to understand is that given by Kutner, Nachtsheim, and Neter in their book *Applied Linear Regression Models* (4th edition, page 360)
 
 $$
 \text{AIC:} \quad n \ln(SSE) - n \ln(n) + 2p
