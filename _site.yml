@@ -55,9 +55,9 @@ navbar:
         - text: "Recalling Words"
           href: ./Analyses/Wilcoxon Tests/RecallingWords.html
         - text: "Food"
-          href: ./Analyses/Kruskal-Wallis/Food.html
+          href: ./Analyses/Kruskal-Wallis Test/Food.html
         - text: "High School Seniors 2"
-          href: ./Analyses/ANOVA/HighSchoolSeniors.html
+          href: ./Analyses/ANOVA/HighSchoolSeniors2.html
         - text: "My Simple Linear Regression"
           href: ./Analyses/Linear Regression/MySimpleLinearRegression.html
         - text: "Car Prices"

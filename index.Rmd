@@ -493,7 +493,7 @@ Add your own notes about appropriate inferential procedures for this type of dat
   <span class="tooltipimagetext">Y is a single categorical variable of interest, like gender. X is another categorical variable of interest, like "hair color". This type of data would help us understand if men or women are more likely to have certain hair colors than the other gender.</span>
 </div>
 
-## Caterogical Y | Categorical X {.tabset .tabset-pills}
+## Categorical Y | Categorical X {.tabset .tabset-pills}
 
 ### Graphics
 <div style="padding-left:125px;color:lightgray;">
