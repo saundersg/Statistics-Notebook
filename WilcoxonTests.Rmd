@@ -49,10 +49,36 @@ Originally created to test hypotheses about the value of the median, but works a
 
 <div style="padding-left:15px;">
 
+**One Sample of Data**
+
 <div style="float:right;font-size:.8em;background-color:lightgray;padding:5px;border-radius:4px;"><a style="color:darkgray;" href="javascript:showhide('wilcoxonsignedranklatex')">Math Code</a></div>
 
-
 <div id="wilcoxonsignedranklatex" style="display:none;">
+
+```{}
+$$
+  H_0: \text{Median} = \text{(Some Number)}
+$$
+
+$$
+  H_a: \text{Median} \neq \text{(Same Number)}
+$$
+```
+
+</div>
+
+$H_0: \text{Median} = \text{(Some Number)}$
+
+$H_a: \text{Median} \ \left\{\underset{<}{\stackrel{>}{\neq}}\right\} \ \text{(Some Number)}$
+
+<br/>
+
+**Paired Samples of Data**
+
+<div style="float:right;font-size:.8em;background-color:lightgray;padding:5px;border-radius:4px;"><a style="color:darkgray;" href="javascript:showhide('wilcoxonsignedranklatexpaired')">Math Code</a></div>
+
+<div id="wilcoxonsignedranklatexpaired" style="display:none;">
+
 ```{}
 $$
   H_0: \text{median of differences} = 0
@@ -62,12 +88,14 @@ $$
   H_a: \text{median of differences} \neq 0
 $$
 ```
-</div>
 
+</div>
 
 $H_0: \text{median of differences} = 0$
 
 $H_a: \text{median of differences} \ \left\{\underset{<}{\stackrel{>}{\neq}}\right\} \ 0$
+
+
 </div>
 
 **Examples**: [sleep](./Analyses/Wilcoxon Tests/Examples/SleepPairedWilcoxon.html), [CornHeights](./Analyses/Wilcoxon Tests/Examples/CornHeightsPairedWilcoxon.html)
