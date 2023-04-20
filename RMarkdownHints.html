@@ -505,10 +505,10 @@ div.tocify {
       <a href="./Analyses/Wilcoxon Tests/RecallingWords.html">Recalling Words</a>
     </li>
     <li>
-      <a href="./Analyses/Kruskal-Wallis Test/Food.html">Food</a>
+      <a href="./Analyses/ANOVA/MyTwoWayANOVA.html">My Two-way ANOVA</a>
     </li>
     <li>
-      <a href="./Analyses/ANOVA/HighSchoolSeniors2.html">High School Seniors 2</a>
+      <a href="./Analyses/Kruskal-Wallis Test/Food.html">Food</a>
     </li>
     <li>
       <a href="./Analyses/Linear Regression/MySimpleLinearRegression.html">My Simple Linear Regression</a>
@@ -541,10 +541,13 @@ div.tocify {
 </div>
 
 
-<p>Think of an <code>R Markdown File</code>, or <code>Rmd</code> for short, as a command center. You write commands, then Knit the file, and an html output file is created according to your commands.</p>
+<p>Think of an <code>R Markdown File</code>, or <code>Rmd</code> for
+short, as a command center. You write commands, then Knit the file, and
+an html output file is created according to your commands.</p>
 <div id="overview" class="section level1">
 <h1>Overview</h1>
-<div id="section" class="section level2 tabset tabset-pills tabset-fade">
+<div id="section"
+class="section level2 tabset tabset-pills tabset-fade">
 <h2 class="tabset tabset-pills tabset-fade"></h2>
 <div id="click-here-to-learn-more" class="section level3">
 <h3>Click Here to Learn More</h3>
@@ -558,7 +561,8 @@ div.tocify {
 <div id="section-1" class="section level2">
 <h2></h2>
 <hr />
-<p>The above tabs (blue bottons that read “Click Here to Learn More” and “Close”) were created with the code:</p>
+<p>The above tabs (blue bottons that read “Click Here to Learn More” and
+“Close”) were created with the code:</p>
 <pre><code>## {.tabset .tabset-pills .tabset-fade}
 
 ### Click Here to Learn More
@@ -575,27 +579,41 @@ Carefully read through all parts of this image to learn...
 </div>
 <div id="creating-links" class="section level1">
 <h1>Creating Links</h1>
-<p>To make a link use the code <code>[Name of Link](addressForLink)</code>.</p>
+<p>To make a link use the code
+<code>[Name of Link](addressForLink)</code>.</p>
 <p>Linking to parts of your textbook:</p>
 <ul>
-<li><code>[Numerical Summaries](NumericalSummaries.html)</code> <em>becomes</em> <a href="NumericalSummaries.html">Numerical Summaries</a></li>
-<li><code>[Boxplots](GraphicalSummaries.html#boxplots)</code> <em>becomes</em> <a href="GraphicalSummaries.html#boxplots">Boxplots</a></li>
-<li><code>[R Commands](RCommands.html)</code> <em>becomes</em> <a href="RCommands.html">R Commands</a></li>
+<li><code>[Numerical Summaries](NumericalSummaries.html)</code>
+<em>becomes</em> <a href="NumericalSummaries.html">Numerical
+Summaries</a></li>
+<li><code>[Boxplots](GraphicalSummaries.html#boxplots)</code>
+<em>becomes</em> <a
+href="GraphicalSummaries.html#boxplots">Boxplots</a></li>
+<li><code>[R Commands](RCommands.html)</code> <em>becomes</em> <a
+href="RCommands.html">R Commands</a></li>
 </ul>
 <p>Linking to outside resources:</p>
 <ul>
-<li><code>[R Colors](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)</code> <em>becomes</em> <a href="http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf">R Colors</a></li>
+<li><code>[R Colors](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)</code>
+<em>becomes</em> <a
+href="http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf">R
+Colors</a></li>
 </ul>
 </div>
 <div id="creating-headers" class="section level1">
 <h1>Creating Headers</h1>
-<p>There are six available sizes of headings you can use in an Rmd file (left in image) that show up as shown below (right in image).</p>
+<p>There are six available sizes of headings you can use in an Rmd file
+(left in image) that show up as shown below (right in image).</p>
 <p><img src="Images/Rmd2html_Headers.png" /></p>
 <p><br /></p>
 </div>
 <div id="emphasizing-words" class="section level1">
 <h1>Emphasizing Words</h1>
-<p>To <em>italisize</em> a word use the asterisk (Shift 8) <code>*italisize*</code>. To <strong>bold</strong> a word use the double asterisk <code>**bold**</code>. The back tic <code></code> <code>can be used to</code>highlight<code>words by placing back tics on each side of a word:</code> <code></code> highlight <code></code> `.</p>
+<p>To <em>italisize</em> a word use the asterisk (Shift 8)
+<code>*italisize*</code>. To <strong>bold</strong> a word use the double
+asterisk <code>**bold**</code>. The back tic <code></code>
+<code>can be used to</code>highlight<code>words by placing back tics on each side of a word:</code>
+<code></code> highlight <code></code> `.</p>
 <p><br /></p>
 </div>
 <div id="bullet-points" class="section level1">
@@ -705,7 +723,12 @@ Carefully read through all parts of this image to learn...
 </div>
 <div id="math-equations" class="section level1">
 <h1>Math Equations</h1>
-<p>Use the dollar signs <code>$x=5$</code> to write <span class="math inline">\(x=5\)</span> or <code>$z=\frac{x-\mu}{\sigma}$</code> to write <span class="math inline">\(z=\frac{x-\mu}{\sigma}\)</span>. For a nicely centered equation use the double dollar signs <code>$$ $$</code> on separate lines</p>
+<p>Use the dollar signs <code>$x=5$</code> to write <span
+class="math inline">\(x=5\)</span> or
+<code>$z=\frac{x-\mu}{\sigma}$</code> to write <span
+class="math inline">\(z=\frac{x-\mu}{\sigma}\)</span>. For a nicely
+centered equation use the double dollar signs <code>$$ $$</code> on
+separate lines</p>
 <pre><code>$$
   z = \frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}
 $$</code></pre>
@@ -721,7 +744,7 @@ $$
 $$</code></pre>
 <p>to get <span class="math display">\[
   H_0: \mu_{\text{Group 1}} = \mu_{\text{Group 2}}
-\]</span> <span class="math display">\[ 
+\]</span> <span class="math display">\[
   H_a: \mu_{\text{Group 1}} \neq \mu_{\text{Group 2}}
 \]</span></p>
 <p>Symbol list:</p>
@@ -790,28 +813,37 @@ $$</code></pre>
 <td><code>$\text{Type just text}$</code></td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(\overbrace{Y_i}^\text{label}\)</span></td>
+<td><span
+class="math inline">\(\overbrace{Y_i}^\text{label}\)</span></td>
 <td><code>$\overbrace{Y_i}^\text{label}$</code></td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(\underbrace{Y_i}_\text{label}\)</span></td>
+<td><span
+class="math inline">\(\underbrace{Y_i}_\text{label}\)</span></td>
 <td><code>$\underbrace{Y_i}_\text{label}$</code></td>
 </tr>
 </tbody>
 </table>
-<p>Here is a list of <a href="http://docs.mathjax.org/en/latest/input/tex/macros/index.html#tex-commands"><em>all</em> supported LaTeX commands</a>.</p>
+<p>Here is a list of <a
+href="http://docs.mathjax.org/en/latest/input/tex/macros/index.html#tex-commands"><em>all</em>
+supported LaTeX commands</a>.</p>
 <p><br /></p>
 </div>
 <div id="insert-a-picture" class="section level1">
 <h1>Insert a Picture</h1>
-<p>To add a picture to your document, say some notes you took down on paper from class,</p>
-<p>Use the code: <code>![](./Images/insertPictureNotes.jpg)</code> to get…</p>
+<p>To add a picture to your document, say some notes you took down on
+paper from class,</p>
+<p>Use the code: <code>![](./Images/insertPictureNotes.jpg)</code> to
+get…</p>
 <p><img src="Images/insertPictureNotes.jpg" /></p>
 <p><br /></p>
 </div>
 <div id="tables" class="section level1">
 <h1>Tables</h1>
-<p>There are many ways to <a href="http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#tables">make tables</a> in R Markdown. Here is a simple way to make a “pipe” table.</p>
+<p>There are many ways to <a
+href="http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#tables">make
+tables</a> in R Markdown. Here is a simple way to make a “pipe”
+table.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">|</span> Name          <span class="sc">|</span> Age           <span class="sc">|</span> Gender       <span class="sc">|</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="er">|</span><span class="sc">---------------</span><span class="er">|</span><span class="sc">---------------</span><span class="er">|</span><span class="sc">--------------</span><span class="er">|</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="er">|</span> Jill          <span class="sc">|</span> <span class="dv">8</span>             <span class="sc">|</span>  Female      <span class="sc">|</span></span>
@@ -841,13 +873,16 @@ $$</code></pre>
 </div>
 <div id="themes" class="section level1">
 <h1>Themes</h1>
-<p>Notice in the YAML (at the top of the RMD file) there is a line that reads:</p>
+<p>Notice in the YAML (at the top of the RMD file) there is a line that
+reads:</p>
 <p>“theme: cerulean”</p>
 <p>Other possible themes are</p>
 <ul>
-<li>“default”, “cerulean”, “journal”, “flatly”, “readable”, “spacelab”, “united”, and “cosmo”.</li>
+<li>“default”, “cerulean”, “journal”, “flatly”, “readable”, “spacelab”,
+“united”, and “cosmo”.</li>
 </ul>
-<p>You can also change the <code>highlighting</code> by adding the line “highlight: tango” to the YAML as follows.</p>
+<p>You can also change the <code>highlighting</code> by adding the line
+“highlight: tango” to the YAML as follows.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Markdown Hints&quot;</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> </span>
@@ -857,13 +892,16 @@ $$</code></pre>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 <p>Other highlighting options are</p>
 <ul>
-<li>“default”, “tango”, “pygments”, “kate”, “monochrome”, “espresso”, “zenburn”, “haddock”, and “textmate”.</li>
+<li>“default”, “tango”, “pygments”, “kate”, “monochrome”, “espresso”,
+“zenburn”, “haddock”, and “textmate”.</li>
 </ul>
 <p><br /></p>
 </div>
 <div id="more-information" class="section level1">
 <h1>More Information</h1>
-<p>Go to the <a href="http://rmarkdown.rstudio.com/html_document_format.html">rmarkdown.rstudio.com</a> website for more information on how to use R Markdown.</p>
+<p>Go to the <a
+href="http://rmarkdown.rstudio.com/html_document_format.html">rmarkdown.rstudio.com</a>
+website for more information on how to use R Markdown.</p>
 </div>
 
 

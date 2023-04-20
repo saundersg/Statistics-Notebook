@@ -429,10 +429,10 @@ $(document).ready(function () {
       <a href="./Analyses/Wilcoxon Tests/RecallingWords.html">Recalling Words</a>
     </li>
     <li>
-      <a href="./Analyses/Kruskal-Wallis Test/Food.html">Food</a>
+      <a href="./Analyses/ANOVA/MyTwoWayANOVA.html">My Two-way ANOVA</a>
     </li>
     <li>
-      <a href="./Analyses/ANOVA/HighSchoolSeniors2.html">High School Seniors 2</a>
+      <a href="./Analyses/Kruskal-Wallis Test/Food.html">Food</a>
     </li>
     <li>
       <a href="./Analyses/Linear Regression/MySimpleLinearRegression.html">My Simple Linear Regression</a>
@@ -486,20 +486,33 @@ $(document).ready(function () {
  }
 </script>
 <hr />
-<p>Regression for a qualitative binary response variable <span class="math inline">\((Y_i = 0\)</span> or <span class="math inline">\(1)\)</span>. The explanatory variables can be either quantitative or qualitative.</p>
+<p>Regression for a qualitative binary response variable <span
+class="math inline">\((Y_i = 0\)</span> or <span
+class="math inline">\(1)\)</span>. The explanatory variables can be
+either quantitative or qualitative.</p>
 <hr />
-<div id="simple-logistic-regression-model" class="section level2 tabset tabset-pills tabset-fade">
-<h2 class="tabset tabset-pills tabset-fade">Simple Logistic Regression Model</h2>
+<div id="simple-logistic-regression-model"
+class="section level2 tabset tabset-pills tabset-fade">
+<h2 class="tabset tabset-pills tabset-fade">Simple Logistic Regression
+Model</h2>
 <div style="float:left;width:125px;" align="center">
 <p><img src="Images/BinomYQuantX.png" width=58px;></p>
 </div>
-<p>Regression for a qualitative binary response variable <span class="math inline">\((Y_i = 0\)</span> or <span class="math inline">\(1)\)</span> using a single (typically quantitative) explanatory variable.</p>
+<p>Regression for a qualitative binary response variable <span
+class="math inline">\((Y_i = 0\)</span> or <span
+class="math inline">\(1)\)</span> using a single (typically
+quantitative) explanatory variable.</p>
 <div id="overview" class="section level3">
 <h3>Overview</h3>
 <div style="padding-left:125px;">
-<p>The probability that <span class="math inline">\(Y_i = 1\)</span> given the observed value of <span class="math inline">\(x_i\)</span> is called <span class="math inline">\(\pi_i\)</span> and is modeled by the equation</p>
-<div style="float:right;font-size:.8em;background-color:lightgray;padding:5px;border-radius:4px;">
-<a style="color:darkgray;" href="javascript:showhide('simplelogisticlatexrcode')">Math Code</a>
+<p>The probability that <span class="math inline">\(Y_i = 1\)</span>
+given the observed value of <span class="math inline">\(x_i\)</span> is
+called <span class="math inline">\(\pi_i\)</span> and is modeled by the
+equation</p>
+<div
+style="float:right;font-size:.8em;background-color:lightgray;padding:5px;border-radius:4px;">
+<a style="color:darkgray;" href="javascript:showhide('simplelogisticlatexrcode')">Math
+Code</a>
 </div>
 <div id="simplelogisticlatexrcode" style="display:none;">
 <pre><code>$$
@@ -507,12 +520,52 @@ $(document).ready(function () {
 $$</code></pre>
 </div>
 <center>
-<span class="tooltipr"> <span class="math inline">\(P(\)</span> <span class="tooltiprtext">The “P” stands for “Probability that…”</span> </span><span class="tooltipr"> <span class="math inline">\(Y_i\)</span> <span class="tooltiprtext">The response variable. The “i” denotes that this is the y-value for individual “i”, where “i” is 1, 2, 3,… and so on up to <span class="math inline">\(n\)</span>, the sample size.</span> </span><span class="tooltipr"> <span class="math inline">\(= 1\)</span> <span class="tooltiprtext">Equals 1… This states that we are assuming that the probability that the response variable <span class="math inline">\(Y_i\)</span> is a 1 for the current individual.</span> </span><span class="tooltipr"> <span class="math inline">\(| x_i)\)</span> <span class="tooltiprtext">Given <span class="math inline">\(x_i\)</span>… in other words, the “|” says “given” and <span class="math inline">\(x_i\)</span> means the x-value of the current individual.</span> </span><span class="tooltipr"> <span class="math inline">\(=\)</span> <span class="tooltiprtext">Equals sign.</span> </span><span class="tooltipr"> <span class="math inline">\(\displaystyle\frac{e^{\beta_0 + \beta_1 x_i}}{1 + e^{\beta_0 + \beta_1 x_i}}\)</span> <span class="tooltiprtext">The logistic regression equation where <span class="math inline">\(e=2.71828...\)</span> is the “natural constant” number and <span class="math inline">\(\beta_0\)</span> is the y-intercept and <span class="math inline">\(\beta_1\)</span> is teh slope.</span> </span><span class="tooltipr"> <span class="math inline">\(= \pi_i\)</span> <span class="tooltiprtext">The <span class="math inline">\(\pi_i\)</span> stands for the probability of individual <span class="math inline">\(i\)</span> having a y-value equal to 1 given their <span class="math inline">\(x_i\)</span> value. It is the short hand notation for <span class="math inline">\(P(Y_i = 1 |x_i)\)</span>. (It is NOT the number 3.14…)</span> </span>
+<span class="tooltipr"> <span class="math inline">\(P(\)</span> <span
+class="tooltiprtext">The “P” stands for “Probability that…”</span>
+</span><span class="tooltipr"> <span class="math inline">\(Y_i\)</span>
+<span class="tooltiprtext">The response variable. The “i” denotes that
+this is the y-value for individual “i”, where “i” is 1, 2, 3,… and so on
+up to <span class="math inline">\(n\)</span>, the sample size.</span>
+</span><span class="tooltipr"> <span class="math inline">\(= 1\)</span>
+<span class="tooltiprtext">Equals 1… This states that we are assuming
+that the probability that the response variable <span
+class="math inline">\(Y_i\)</span> is a 1 for the current
+individual.</span> </span><span class="tooltipr"> <span
+class="math inline">\(| x_i)\)</span> <span class="tooltiprtext">Given
+<span class="math inline">\(x_i\)</span>… in other words, the “|” says
+“given” and <span class="math inline">\(x_i\)</span> means the x-value
+of the current individual.</span> </span><span class="tooltipr"> <span
+class="math inline">\(=\)</span> <span class="tooltiprtext">Equals
+sign.</span> </span><span class="tooltipr"> <span
+class="math inline">\(\displaystyle\frac{e^{\beta_0 + \beta_1 x_i}}{1 +
+e^{\beta_0 + \beta_1 x_i}}\)</span> <span class="tooltiprtext">The
+logistic regression equation where <span
+class="math inline">\(e=2.71828...\)</span> is the “natural constant”
+number and <span class="math inline">\(\beta_0\)</span> is the
+y-intercept and <span class="math inline">\(\beta_1\)</span> is teh
+slope.</span> </span><span class="tooltipr"> <span
+class="math inline">\(= \pi_i\)</span> <span class="tooltiprtext">The
+<span class="math inline">\(\pi_i\)</span> stands for the probability of
+individual <span class="math inline">\(i\)</span> having a y-value equal
+to 1 given their <span class="math inline">\(x_i\)</span> value. It is
+the short hand notation for <span class="math inline">\(P(Y_i = 1
+|x_i)\)</span>. (It is NOT the number 3.14…)</span> </span>
 </center>
 <p><br/></p>
-<p>The coefficents <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are difficult to interpret directly. Typicall <span class="math inline">\(e^{\beta_0}\)</span> and <span class="math inline">\(e^{\beta_1}\)</span> are interpreted instead. The value of <span class="math inline">\(e^{\beta_0}\)</span> or <span class="math inline">\(e^{\beta_1}\)</span> denotes the relative change in the odds that <span class="math inline">\(Y_i=1\)</span>. The odds that <span class="math inline">\(Y_i=1\)</span> are <span class="math inline">\(\frac{\pi_i}{1-\pi_i}\)</span>.</p>
+<p>The coefficents <span class="math inline">\(\beta_0\)</span> and
+<span class="math inline">\(\beta_1\)</span> are difficult to interpret
+directly. Typicall <span class="math inline">\(e^{\beta_0}\)</span> and
+<span class="math inline">\(e^{\beta_1}\)</span> are interpreted
+instead. The value of <span class="math inline">\(e^{\beta_0}\)</span>
+or <span class="math inline">\(e^{\beta_1}\)</span> denotes the relative
+change in the odds that <span class="math inline">\(Y_i=1\)</span>. The
+odds that <span class="math inline">\(Y_i=1\)</span> are <span
+class="math inline">\(\frac{\pi_i}{1-\pi_i}\)</span>.</p>
 <hr />
-<p><strong>Examples:</strong> <a href="./Analyses/Logistic%20Regression/Examples/challengerLogisticReg.html">challenger</a> | <a href="./Analyses/Logistic%20Regression/Examples/mouseLogisticReg.html">mouse</a></p>
+<p><strong>Examples:</strong> <a
+href="./Analyses/Logistic%20Regression/Examples/challengerLogisticReg.html">challenger</a>
+| <a
+href="./Analyses/Logistic%20Regression/Examples/mouseLogisticReg.html">mouse</a></p>
 <hr />
 </div>
 </div>
@@ -524,8 +577,41 @@ $$</code></pre>
 <h4>Perform a Logistic Regression</h4>
 <a href="javascript:showhide('logistic1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> YourGlmName <span class="tooltiprtext">This is some name you come up with that will become the R object that stores the results of your logistic regression <code>glm()</code> command.</span> </span><span class="tooltipr">  &lt;-  <span class="tooltiprtext">This is the “left arrow” assignment operator that stores the results of your <code>glm()</code> code into <code>YourGlmName</code>.</span> </span><span class="tooltipr"> glm( <span class="tooltiprtext">glm( is an R function that stands for “General Linear Model”. It works in a similar way that the <code>lm(</code> function works except that it requires a <code>family=</code> option to be specified at the end of the command.</span> </span><span class="tooltipr"> Y  <span class="tooltiprtext">Y is your binary response variable. It must consist of only 0’s and 1’s. Since TRUE’s = 1’s and FALSE’s = 0’s in R, Y could be a logical statement like (Price &gt; 100) or (Animal == “Cat”) if your Y-variable wasn’t currently coded as 0’s and 1’s.</span> </span><span class="tooltipr"> ~  <span class="tooltiprtext">The tilde symbol ~ is used to tell R that Y should be treated as a function of the explanatory variable X.</span> </span><span class="tooltipr"> X, <span class="tooltiprtext">X is the explanatory variable (typically quantitative) that will be used to explain the probability that the response variable Y is a 1.</span> </span><span class="tooltipr">  data = NameOfYourDataset,<br />
-<span class="tooltiprtext">NameOfYourDataset is the name of the dataset that contains Y and X. In other words, one column of your dataset would be called Y and another column would be called X.</span> </span><span class="tooltipr">  family=binomial) <span class="tooltiprtext">The family=binomial command tells the <code>glm(</code> function to perform a logistic regression. It turns out that <code>glm</code> can perform many different types of regressions, but we only study it as a tool to perform a logistic regression in this course.</span> </span><br/><span class="tooltipr"> summary(YourGlmName) <span class="tooltiprtext">The <code>summary</code> command allows you to print the results of your logistic regression that were previously saved in <code>YourGlmName</code>.</span> </span></p>
+<p><span class="tooltipr"> YourGlmName <span class="tooltiprtext">This
+is some name you come up with that will become the R object that stores
+the results of your logistic regression <code>glm()</code>
+command.</span> </span><span class="tooltipr">  &lt;-  <span
+class="tooltiprtext">This is the “left arrow” assignment operator that
+stores the results of your <code>glm()</code> code into
+<code>YourGlmName</code>.</span> </span><span class="tooltipr"> glm(
+<span class="tooltiprtext">glm( is an R function that stands for
+“General Linear Model”. It works in a similar way that the
+<code>lm(</code> function works except that it requires a
+<code>family=</code> option to be specified at the end of the
+command.</span> </span><span class="tooltipr"> Y  <span
+class="tooltiprtext">Y is your binary response variable. It must consist
+of only 0’s and 1’s. Since TRUE’s = 1’s and FALSE’s = 0’s in R, Y could
+be a logical statement like (Price &gt; 100) or (Animal == “Cat”) if
+your Y-variable wasn’t currently coded as 0’s and 1’s.</span>
+</span><span class="tooltipr"> ~  <span class="tooltiprtext">The tilde
+symbol ~ is used to tell R that Y should be treated as a function of the
+explanatory variable X.</span> </span><span class="tooltipr"> X, <span
+class="tooltiprtext">X is the explanatory variable (typically
+quantitative) that will be used to explain the probability that the
+response variable Y is a 1.</span> </span><span class="tooltipr">  data
+= NameOfYourDataset,<br />
+<span class="tooltiprtext">NameOfYourDataset is the name of the dataset
+that contains Y and X. In other words, one column of your dataset would
+be called Y and another column would be called X.</span> </span><span
+class="tooltipr">  family=binomial) <span class="tooltiprtext">The
+family=binomial command tells the <code>glm(</code> function to perform
+a logistic regression. It turns out that <code>glm</code> can perform
+many different types of regressions, but we only study it as a tool to
+perform a logistic regression in this course.</span> </span><br/><span
+class="tooltipr"> summary(YourGlmName) <span class="tooltiprtext">The
+<code>summary</code> command allows you to print the results of your
+logistic regression that were previously saved in
+<code>YourGlmName</code>.</span> </span></p>
 </div>
 <p></a></p>
 <div id="logistic1" style="display:none;">
@@ -533,7 +619,11 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> Call:<br/> glm(formula = am ~ disp, family = binomial, data = mtcars) <span class="tooltiprouttext">This is simply a statement of your original glm(…) “call” that you made when performing your regression. It allows you to verify that you ran what you thought you ran in the glm(…).</span> </span>
+<span class="tooltiprout"> Call:<br/> glm(formula = am ~ disp, family =
+binomial, data = mtcars) <span class="tooltiprouttext">This is simply a
+statement of your original glm(…) “call” that you made when performing
+your regression. It allows you to verify that you ran what you thought
+you ran in the glm(…).</span> </span>
 </td>
 </tr>
 </table>
@@ -541,24 +631,55 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td colspan="2">
-<span class="tooltiprout"> Deviance Residuals: <span class="tooltiprouttext">Deviance residuals are a measure of how far the fitted probability for <span class="math inline">\(\pi_i\)</span> has differed from the actual outcome of <span class="math inline">\(Y_i\)</span> in terms of the log of the fitted probability space. (This is a fairly complicated idea.) </span>
+<span class="tooltiprout"> Deviance Residuals: <span
+class="tooltiprouttext">Deviance residuals are a measure of how far the
+fitted probability for <span class="math inline">\(\pi_i\)</span> has
+differed from the actual outcome of <span
+class="math inline">\(Y_i\)</span> in terms of the log of the fitted
+probability space. (This is a fairly complicated idea.) </span>
 </td>
 </tr>
 <tr>
 <td align="right">
-<span class="tooltiprout"> Min<br/>   -1.5651 <span class="tooltiprouttext">“min” gives the value of the residual that is furthest below the regression line. Ideally, the magnitude of this value would be about equal to the magnitude of the largest positive residual (the max) because the hope is that the residuals are normally distributed around the line.</span> </span>
+<span class="tooltiprout"> Min<br/>   -1.5651 <span
+class="tooltiprouttext">“min” gives the value of the residual that is
+furthest below the regression line. Ideally, the magnitude of this value
+would be about equal to the magnitude of the largest positive residual
+(the max) because the hope is that the residuals are normally
+distributed around the line.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> 1Q<br/>   -0.6648 <span class="tooltiprouttext">“1Q” gives the first quartile of the residuals, which will always be negative, and ideally would be about equal in magnitude to the third quartile.</span> </span>
+<span class="tooltiprout"> 1Q<br/>   -0.6648 <span
+class="tooltiprouttext">“1Q” gives the first quartile of the residuals,
+which will always be negative, and ideally would be about equal in
+magnitude to the third quartile.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> Median<br/>   -0.2460 <span class="tooltiprouttext">“Median” gives the median of the residuals, which would ideally would be about equal to zero. Note that because the regression line is the least squares line, the mean of the residuals will ALWAYS be zero, so it is never included in the output summary. This particular median value of -0.2460 is a little smaller than zero than we would hope for and suggests a right skew in the data because the mean (0) is greater than the median (-0.2460) witnessing the residuals are right skewed. This can also be seen in the maximum being much larger in magnitude than the minimum.</span> </span>
+<span class="tooltiprout"> Median<br/>   -0.2460 <span
+class="tooltiprouttext">“Median” gives the median of the residuals,
+which would ideally would be about equal to zero. Note that because the
+regression line is the least squares line, the mean of the residuals
+will ALWAYS be zero, so it is never included in the output summary. This
+particular median value of -0.2460 is a little smaller than zero than we
+would hope for and suggests a right skew in the data because the mean
+(0) is greater than the median (-0.2460) witnessing the residuals are
+right skewed. This can also be seen in the maximum being much larger in
+magnitude than the minimum.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> 3Q<br/>   0.7276 <span class="tooltiprouttext">“3Q” gives the third quartile of the residuals, which would ideally would be about equal in magnitude to the first quartile. In this case, it is pretty close, which helps us see that the first quartile of residuals on either side of the line is behaving fairly normally.</span> </span>
+<span class="tooltiprout"> 3Q<br/>   0.7276 <span
+class="tooltiprouttext">“3Q” gives the third quartile of the residuals,
+which would ideally would be about equal in magnitude to the first
+quartile. In this case, it is pretty close, which helps us see that the
+first quartile of residuals on either side of the line is behaving
+fairly normally.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> Max</br>   2.2691 <span class="tooltiprouttext">“Max” gives the maximum positive residuals, which would ideally would be about equal in magnitude to the minimum residual. In this case, it is much larger than the minimum, which helps us see that the residuals are likely right skewed.</span> </span>
+<span class="tooltiprout"> Max</br>   2.2691 <span
+class="tooltiprouttext">“Max” gives the maximum positive residuals,
+which would ideally would be about equal in magnitude to the minimum
+residual. In this case, it is much larger than the minimum, which helps
+us see that the residuals are likely right skewed.</span> </span>
 </td>
 </tr>
 </table>
@@ -566,63 +687,121 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td colspan="2">
-<span class="tooltiprout"> Coefficients: <span class="tooltiprouttext">Notice that in your glm(…) you used only <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>. You did type out any coefficients, i.e., the <span class="math inline">\(\beta_0\)</span> or <span class="math inline">\(\beta_1\)</span> of the regression model. These coefficients are estimated by the glm(…) function and displayed in this part of the output along with standard errors, t-values, and p-values.</span> </span>
+<span class="tooltiprout"> Coefficients: <span
+class="tooltiprouttext">Notice that in your glm(…) you used only <span
+class="math inline">\(Y\)</span> and <span
+class="math inline">\(X\)</span>. You did type out any coefficients,
+i.e., the <span class="math inline">\(\beta_0\)</span> or <span
+class="math inline">\(\beta_1\)</span> of the regression model. These
+coefficients are estimated by the glm(…) function and displayed in this
+part of the output along with standard errors, t-values, and
+p-values.</span> </span>
 </td>
 </tr>
 <tr>
 <td align="left">
 </td>
 <td align="right">
-<span class="tooltiprout">   Estimate <span class="tooltiprouttext">To learn more about the “Estimates” of the “Coefficients” see the “Explanation” tab, “Estimating the Model Parameters” section for details.</span>
+<span class="tooltiprout">   Estimate <span class="tooltiprouttext">To
+learn more about the “Estimates” of the “Coefficients” see the
+“Explanation” tab, “Estimating the Model Parameters” section for
+details.</span>
 </td>
 <td align="right">
-<span class="tooltiprout">   Std. Error <span class="tooltiprouttext">To learn more about the “Standard Errors” of the “Coefficients” see the “Explanation” tab, “Inference for the Model Parameters” section.</span> </span>
+<span class="tooltiprout">   Std. Error <span class="tooltiprouttext">To
+learn more about the “Standard Errors” of the “Coefficients” see the
+“Explanation” tab, “Inference for the Model Parameters” section.</span>
+</span>
 </td>
 <td align="right">
-<span class="tooltiprout">   z value <span class="tooltiprouttext">The test statistic is a regular old z-score. It is most reliable when the sample size is “large.” It is a measurement of the number of standard errors the estimate is from 0.</span> </span>
+<span class="tooltiprout">   z value <span class="tooltiprouttext">The
+test statistic is a regular old z-score. It is most reliable when the
+sample size is “large.” It is a measurement of the number of standard
+errors the estimate is from 0.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">   Pr(&gt;|z|) <span class="tooltiprouttext">This is the p-value, the probability of observing a test statistic more extreme than Z. </span> </span>
+<span class="tooltiprout">   Pr(&gt;|z|) <span
+class="tooltiprouttext">This is the p-value, the probability of
+observing a test statistic more extreme than Z. </span> </span>
 </td>
 </tr>
 <tr>
 <td align="left">
-<span class="tooltiprout"> (Intercept) <span class="tooltiprouttext">This always says “Intercept” for any glm(…) you run in R. That is because R always assumes there is a y-intercept for your regression function.</span> </span>
+<span class="tooltiprout"> (Intercept) <span
+class="tooltiprouttext">This always says “Intercept” for any glm(…) you
+run in R. That is because R always assumes there is a y-intercept for
+your regression function.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">   2.630849 <span class="tooltiprouttext">This is the estimate of the y-intercept, <span class="math inline">\(\beta_0\)</span>. It is called <span class="math inline">\(b_0\)</span>. It is the value of the log of the odds that <span class="math inline">\(Y_i=1\)</span> when <span class="math inline">\(x_i\)</span> is zero. Remember to use <span class="math inline">\(e^{b_0}\)</span> to interpret this values actual effect on the odds.</span> </span>
+<span class="tooltiprout">   2.630849 <span class="tooltiprouttext">This
+is the estimate of the y-intercept, <span
+class="math inline">\(\beta_0\)</span>. It is called <span
+class="math inline">\(b_0\)</span>. It is the value of the log of the
+odds that <span class="math inline">\(Y_i=1\)</span> when <span
+class="math inline">\(x_i\)</span> is zero. Remember to use <span
+class="math inline">\(e^{b_0}\)</span> to interpret this values actual
+effect on the odds.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">   1.050170 <span class="tooltiprouttext">This is the standard error of <span class="math inline">\(b_0\)</span>. It tells you how much <span class="math inline">\(b_0\)</span> varies from sample to sample. The closer to zero, the better.</span> </span>
+<span class="tooltiprout">   1.050170 <span class="tooltiprouttext">This
+is the standard error of <span class="math inline">\(b_0\)</span>. It
+tells you how much <span class="math inline">\(b_0\)</span> varies from
+sample to sample. The closer to zero, the better.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> 2.505 <span class="tooltiprouttext">The test statistic for testing the hypothesis that <span class="math inline">\(\beta_0 = 0\)</span>.</span> </span>
+<span class="tooltiprout"> 2.505 <span class="tooltiprouttext">The test
+statistic for testing the hypothesis that <span
+class="math inline">\(\beta_0 = 0\)</span>.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> 0.01224 <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that <span class="math inline">\(\beta_0 = 0\)</span>. It measures the probability of observing a z-score as extreme as the one observed. To compute it yourself in R, use <code>pnorm(-abs(your z-value))*2</code>.</span> </span>
+<span class="tooltiprout"> 0.01224 <span class="tooltiprouttext">This is
+the p-value of the test of the hypothesis that <span
+class="math inline">\(\beta_0 = 0\)</span>. It measures the probability
+of observing a z-score as extreme as the one observed. To compute it
+yourself in R, use <code>pnorm(-abs(your z-value))*2</code>.</span>
+</span>
 </td>
 <td align="left">
-<span class="tooltiprout"> * <span class="tooltiprouttext">This is called a “star”. One star means significant at the 0.1 level of <span class="math inline">\(\alpha\)</span>.</span> </span>
+<span class="tooltiprout"> * <span class="tooltiprouttext">This is
+called a “star”. One star means significant at the 0.1 level of <span
+class="math inline">\(\alpha\)</span>.</span> </span>
 </td>
 </tr>
 <tr>
 <td align="left">
-<span class="tooltiprout"> disp <span class="tooltiprouttext">This is always the name of your X-variable in your glm(Y ~ X, …).</span> </span>
+<span class="tooltiprout"> disp <span class="tooltiprouttext">This is
+always the name of your X-variable in your glm(Y ~ X, …).</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">   -0.014604 <span class="tooltiprouttext">This is the estimate of the slope, <span class="math inline">\(\beta_1\)</span>. It is called <span class="math inline">\(b_1\)</span>. It is the change in the log of the odds that <span class="math inline">\(Y_i = 1\)</span> as X is increased by 1 unit. Remember to use <span class="math inline">\(e^{b_1}\)</span> to compute the actual effect on the odds.</span> </span>
+<span class="tooltiprout">   -0.014604 <span
+class="tooltiprouttext">This is the estimate of the slope, <span
+class="math inline">\(\beta_1\)</span>. It is called <span
+class="math inline">\(b_1\)</span>. It is the change in the log of the
+odds that <span class="math inline">\(Y_i = 1\)</span> as X is increased
+by 1 unit. Remember to use <span class="math inline">\(e^{b_1}\)</span>
+to compute the actual effect on the odds.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">   0.005168 <span class="tooltiprouttext">This is the standard error of <span class="math inline">\(b_1\)</span>. It tells you how much <span class="math inline">\(b_1\)</span> varies from sample to sample. The closer to zero, the better.</span> </span>
+<span class="tooltiprout">   0.005168 <span class="tooltiprouttext">This
+is the standard error of <span class="math inline">\(b_1\)</span>. It
+tells you how much <span class="math inline">\(b_1\)</span> varies from
+sample to sample. The closer to zero, the better.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> -2.826 <span class="tooltiprouttext">This is the test statistic for testing the hypothesis that <span class="math inline">\(\beta_1 = 0\)</span>.</span> </span>
+<span class="tooltiprout"> -2.826 <span class="tooltiprouttext">This is
+the test statistic for testing the hypothesis that <span
+class="math inline">\(\beta_1 = 0\)</span>.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> 0.00471 <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that <span class="math inline">\(\beta_1 = 0\)</span>. To compute it yourself in R, use <code>pnorm(-abs(your z-value))*2</code></span> </span>
+<span class="tooltiprout"> 0.00471 <span class="tooltiprouttext">This is
+the p-value of the test of the hypothesis that <span
+class="math inline">\(\beta_1 = 0\)</span>. To compute it yourself in R,
+use <code>pnorm(-abs(your z-value))*2</code></span> </span>
 </td>
 <td align="left">
-<span class="tooltiprout"> ** <span class="tooltiprouttext">This is called a “star”. Three stars means significant at the 0.001 level of <span class="math inline">\(\alpha\)</span>.</span> </span>
+<span class="tooltiprout"> ** <span class="tooltiprouttext">This is
+called a “star”. Three stars means significant at the 0.001 level of
+<span class="math inline">\(\alpha\)</span>.</span> </span>
 </td>
 </tr>
 </table>
@@ -636,7 +815,11 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 <span class="tooltiprouttext">These “codes” explain what significance level the p-value is smaller than based on how many “stars” * the p-value is labeled with in the Coefficients table above.</span> </span>
+<span class="tooltiprout"> Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ’*’
+0.05 ‘.’ 0.1 ‘ ’ 1 <span class="tooltiprouttext">These “codes” explain
+what significance level the p-value is smaller than based on how many
+“stars” * the p-value is labeled with in the Coefficients table
+above.</span> </span>
 </td>
 </tr>
 </table>
@@ -644,7 +827,12 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> (Dispersion parameter for binomial family taken to be 1) <span class="tooltiprouttext">This is a simplifying assumption of the logistic regression. Overdispersion is a common problem with logistic regression data, but is typically ignored. Unless you become an expert in statistics, this is not something you need to worry about.</span> </span>
+<span class="tooltiprout"> (Dispersion parameter for binomial family
+taken to be 1) <span class="tooltiprouttext">This is a simplifying
+assumption of the logistic regression. Overdispersion is a common
+problem with logistic regression data, but is typically ignored. Unless
+you become an expert in statistics, this is not something you need to
+worry about.</span> </span>
 </td>
 </tr>
 </table>
@@ -652,36 +840,65 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout">   Null Deviance: <span class="tooltiprouttext">The deviance of the null model. This is the model that excludes any information from the x-variable, i.e., <span class="math inline">\(\beta_1=0\)</span>.</span> </span>
+<span class="tooltiprout">   Null Deviance: <span
+class="tooltiprouttext">The deviance of the null model. This is the
+model that excludes any information from the x-variable, i.e., <span
+class="math inline">\(\beta_1=0\)</span>.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">  43.230 <span class="tooltiprouttext"></span> </span>
+<span class="tooltiprout">  43.230 <span class="tooltiprouttext"></span>
+</span>
 </td>
 <td align="right">
-<span class="tooltiprout">  on 31 degrees of freedom <span class="tooltiprouttext">The residual degrees of freedom. The higher this number, the more reliable the p-values will be from the logistic regression.</span> </span>
+<span class="tooltiprout">  on 31 degrees of freedom <span
+class="tooltiprouttext">The residual degrees of freedom. The higher this
+number, the more reliable the p-values will be from the logistic
+regression.</span> </span>
 </td>
 </tr>
 </table>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> Residual deviance: <span class="tooltiprouttext">The sum of log of the squared residuals. Essentially the resulting statistic of a goodness of fit test measuring how well the data works with the logistic regression model. Using pchisq(residual deviance, df residual deviance, lower.tail=FALSE) gives the p-value for this goodness of fit test. However, the residual deviance only follows a chi-squared distribution with df residual deviance when there are many repeated x-values, and all x-values have at least a few replicates.</span> </span>
+<span class="tooltiprout"> Residual deviance: <span
+class="tooltiprouttext">The sum of log of the squared residuals.
+Essentially the resulting statistic of a goodness of fit test measuring
+how well the data works with the logistic regression model. Using
+pchisq(residual deviance, df residual deviance, lower.tail=FALSE) gives
+the p-value for this goodness of fit test. However, the residual
+deviance only follows a chi-squared distribution with df residual
+deviance when there are many repeated x-values, and all x-values have at
+least a few replicates.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">  29.732 <span class="tooltiprouttext">This can be calculated by <code>sum(log(myglm$res^2))</code>.</span> </span>
+<span class="tooltiprout">  29.732 <span class="tooltiprouttext">This
+can be calculated by <code>sum(log(myglm$res^2))</code>.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">  on 30 degrees of freedom <span class="tooltiprouttext">This is <span class="math inline">\(n-p\)</span> where <span class="math inline">\(n\)</span> is the sample size and <span class="math inline">\(p\)</span> is the number of parameters in the regression model. In this case, there is a sample size of 32 and two parameters, <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>, so 32-2 = 30.</span> </span>
+<span class="tooltiprout">  on 30 degrees of freedom <span
+class="tooltiprouttext">This is <span class="math inline">\(n-p\)</span>
+where <span class="math inline">\(n\)</span> is the sample size and
+<span class="math inline">\(p\)</span> is the number of parameters in
+the regression model. In this case, there is a sample size of 32 and two
+parameters, <span class="math inline">\(\beta_0\)</span> and <span
+class="math inline">\(\beta_1\)</span>, so 32-2 = 30.</span> </span>
 </td>
 </tr>
 </table>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> AIC: <span class="tooltiprouttext">As stated in the R Help file for ?glm, “A version of Akaike’s An Information Criterion…” The AIC is useful for comparing different models for the same Y-variable. The glm model with the lowest AIC (which can go negative) is the best model.</span> </span>
+<span class="tooltiprout"> AIC: <span class="tooltiprouttext">As stated
+in the R Help file for ?glm, “A version of Akaike’s An Information
+Criterion…” The AIC is useful for comparing different models for the
+same Y-variable. The glm model with the lowest AIC (which can go
+negative) is the best model.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">  33.732 <span class="tooltiprouttext">The AIC for this particular model is 33.732. So if a different model (using the same Y-variable as this model) can get a lower AIC, it is a better model.</span> </span>
+<span class="tooltiprout">  33.732 <span class="tooltiprouttext">The AIC
+for this particular model is 33.732. So if a different model (using the
+same Y-variable as this model) can get a lower AIC, it is a better
+model.</span> </span>
 </td>
 </tr>
 </table>
@@ -689,10 +906,19 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> Number of Fisher Scoring iterations: <span class="tooltiprouttext">If you have taken a class in Numerical Analysis, this tells you how many iterations of the maximization algorithm were required before converging to the “Estimates” of the parameters <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> found in the summary.</span> </span>
+<span class="tooltiprout"> Number of Fisher Scoring iterations: <span
+class="tooltiprouttext">If you have taken a class in Numerical Analysis,
+this tells you how many iterations of the maximization algorithm were
+required before converging to the “Estimates” of the parameters <span
+class="math inline">\(\beta_0\)</span> and <span
+class="math inline">\(\beta_1\)</span> found in the summary.</span>
+</span>
 </td>
 <td align="right">
-<span class="tooltiprout">  5 <span class="tooltiprouttext">This implementation of glm required 5 Fisher Scoring iterations to converge. Fewer iterations hints that the model is a better fit than when many iterations are required.</span> </span>
+<span class="tooltiprout">  5 <span class="tooltiprouttext">This
+implementation of glm required 5 Fisher Scoring iterations to converge.
+Fewer iterations hints that the model is a better fit than when many
+iterations are required.</span> </span>
 </td>
 </tr>
 </table>
@@ -701,13 +927,42 @@ $$</code></pre>
 </div>
 <div id="diagnose-the-goodness-of-fit" class="section level4">
 <h4>Diagnose the Goodness-of-Fit</h4>
-<p>There are two ways to check the <strong>goodness of fit</strong> of a logistic regression model.</p>
+<p>There are two ways to check the <strong>goodness of fit</strong> of a
+logistic regression model.</p>
 <div style="padding-left:25px;">
-<p><strong>Option 1</strong>: Hosmer-Lemeshow Goodness-of-Fit Test (Most Common)</p>
-<p>To check the <strong>goodness of fit</strong> of a logistic regression model where there are <strong>few or no replicated <span class="math inline">\(x\)</span>-values</strong> use the Hosmer-Lemeshow Test.</p>
+<p><strong>Option 1</strong>: Hosmer-Lemeshow Goodness-of-Fit Test (Most
+Common)</p>
+<p>To check the <strong>goodness of fit</strong> of a logistic
+regression model where there are <strong>few or no replicated <span
+class="math inline">\(x\)</span>-values</strong> use the Hosmer-Lemeshow
+Test.</p>
 <a href="javascript:showhide('goodnessoffit2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(ResourceSelection) <span class="tooltiprtext">This loads the ResourceSelection R package so that you can access the hoslem.test() function. You may need to run the code: install.packages(“ResourceSelection”) first.</span> </span><br/><span class="tooltipr"> hoslem.test( <span class="tooltiprtext">This R function performs the Hosmer-Lemeshow Goodness of Fit Test. See the “Explanation” file to learn about this test.</span> </span><span class="tooltipr"> YourGlmName <span class="tooltiprtext"><code>YourGlmName</code> is the name of your glm(…) code that you created previously.</span> </span><span class="tooltipr"> $y,  <span class="tooltiprtext">ALWAYS type a “y” here. This gives you the actual binary (0,1) y-values of your logistic regression. The goodness of fit test will compare these actual values to your predicted probabilities for each value in order to see if the model is a “good fit.”</span> </span><span class="tooltipr"> YourGlmName <span class="tooltiprtext"><code>YourGlmName</code> is the name you used to save the results of your glm(…) code.</span> </span><span class="tooltipr"> $fitted,  <span class="tooltiprtext">ALWAYS type “fitted” here. This gives you the fitted probabilities <span class="math inline">\(\pi_i\)</span> of your logistic regression.</span> </span><span class="tooltipr"> g=10) <span class="tooltiprtext">The “g=10” is the default option for the value of g. The g is the number of groups to run the goodness of fit test on. Just leave it at 10 unless you are told to do otherwise. Ask your teacher for more information if you are interested.</span> </span></p>
+<p><span class="tooltipr"> library(ResourceSelection) <span
+class="tooltiprtext">This loads the ResourceSelection R package so that
+you can access the hoslem.test() function. You may need to run the code:
+install.packages(“ResourceSelection”) first.</span> </span><br/><span
+class="tooltipr"> hoslem.test( <span class="tooltiprtext">This R
+function performs the Hosmer-Lemeshow Goodness of Fit Test. See the
+“Explanation” file to learn about this test.</span> </span><span
+class="tooltipr"> YourGlmName <span
+class="tooltiprtext"><code>YourGlmName</code> is the name of your glm(…)
+code that you created previously.</span> </span><span class="tooltipr">
+$y,  <span class="tooltiprtext">ALWAYS type a “y” here. This gives you
+the actual binary (0,1) y-values of your logistic regression. The
+goodness of fit test will compare these actual values to your predicted
+probabilities for each value in order to see if the model is a “good
+fit.”</span> </span><span class="tooltipr"> YourGlmName <span
+class="tooltiprtext"><code>YourGlmName</code> is the name you used to
+save the results of your glm(…) code.</span> </span><span
+class="tooltipr"> $fitted,  <span class="tooltiprtext">ALWAYS type
+“fitted” here. This gives you the fitted probabilities <span
+class="math inline">\(\pi_i\)</span> of your logistic regression.</span>
+</span><span class="tooltipr"> g=10) <span class="tooltiprtext">The
+“g=10” is the default option for the value of g. The g is the number of
+groups to run the goodness of fit test on. Just leave it at 10 unless
+you are told to do otherwise. Ask your teacher for more information if
+you are interested.</span> </span></p>
 </div>
 <p></a></p>
 <div id="goodnessoffit2" style="display:none;">
@@ -716,14 +971,37 @@ $$</code></pre>
 ## 
 ## data:  myglm$y, myglm$fitted
 ## X-squared = 5.7327, df = 8, p-value = 0.6771</code></pre>
-<p>Note that the null hypothesis of the goodness-of-fit test is that “the logistic regression is a good fit.” So we actually don’t want to “reject the null” in this case. So a large p-value here means our logistic regression fits the data satisfactorily. A small p-value implies a poor fit and the results of the logistic regression should not be fully trusted.</p>
+<p>Note that the null hypothesis of the goodness-of-fit test is that
+“the logistic regression is a good fit.” So we actually don’t want to
+“reject the null” in this case. So a large p-value here means our
+logistic regression fits the data satisfactorily. A small p-value
+implies a poor fit and the results of the logistic regression should not
+be fully trusted.</p>
 </div>
 <p><br/></p>
-<p><strong>Option 2</strong>: Deviance Goodness-of-fit Test (Less Common)</p>
-<p>In some cases, there are <strong>many replicated <span class="math inline">\(x\)</span>-values</strong> for <strong>all</strong> x-values, i.e., each value of x is repeated more than 50 times. Though this is rare, it is good to use the <em>deviance goodness-of-fit test</em> whenever this happens.</p>
+<p><strong>Option 2</strong>: Deviance Goodness-of-fit Test (Less
+Common)</p>
+<p>In some cases, there are <strong>many replicated <span
+class="math inline">\(x\)</span>-values</strong> for
+<strong>all</strong> x-values, i.e., each value of x is repeated more
+than 50 times. Though this is rare, it is good to use the <em>deviance
+goodness-of-fit test</em> whenever this happens.</p>
 <a href="javascript:showhide('goodnessoffit1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> pchisq( <span class="tooltiprtext">The <code>pchisq</code> command allows you to compute p-values from the chi-squared distribution.</span> </span><span class="tooltipr"> residual deviance,  <span class="tooltiprtext">The residual deviance is shown at the bottom of the output of your <code>summary(YourGlmName)</code> and should be typed in here as a number like 25.3.</span> </span><span class="tooltipr"> df for residual deviance,  <span class="tooltiprtext">The df for the residual deviance is also shown at the bottom of the output of your <code>summary(YourGlmName)</code>.</span> </span><span class="tooltipr"> lower.tail=FALSE) <span class="tooltiprtext">This command ensures you find the probability of the chi-squared distribution being as extreme or more extreme than the observed value of residual deviance.</span> </span></p>
+<p><span class="tooltipr"> pchisq( <span class="tooltiprtext">The
+<code>pchisq</code> command allows you to compute p-values from the
+chi-squared distribution.</span> </span><span class="tooltipr"> residual
+deviance,  <span class="tooltiprtext">The residual deviance is shown at
+the bottom of the output of your <code>summary(YourGlmName)</code> and
+should be typed in here as a number like 25.3.</span> </span><span
+class="tooltipr"> df for residual deviance,  <span
+class="tooltiprtext">The df for the residual deviance is also shown at
+the bottom of the output of your
+<code>summary(YourGlmName)</code>.</span> </span><span class="tooltipr">
+lower.tail=FALSE) <span class="tooltiprtext">This command ensures you
+find the probability of the chi-squared distribution being as extreme or
+more extreme than the observed value of residual deviance.</span>
+</span></p>
 </div>
 <p></a></p>
 <div id="goodnessoffit1" style="display:none;">
@@ -750,7 +1028,12 @@ $$</code></pre>
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
 <pre><code>## [1] 0.479439</code></pre>
-<p>The null hypothesis of the goodness-of-fit test is that the logistic regression is a good fit of the data. So a large p-value (like 0.479) is good because it allows us to trust the results of our logistic regression. When the p-value becomes very small, we must “reject the null” and conclude a poor fit, which implies that we should not trust the results of the logistic regression.</p>
+<p>The null hypothesis of the goodness-of-fit test is that the logistic
+regression is a good fit of the data. So a large p-value (like 0.479) is
+good because it allows us to trust the results of our logistic
+regression. When the p-value becomes very small, we must “reject the
+null” and conclude a poor fit, which implies that we should not trust
+the results of the logistic regression.</p>
 </div>
 </div>
 <p><br/></p>
@@ -758,13 +1041,55 @@ $$</code></pre>
 <div id="plot-the-regression" class="section level4">
 <h4>Plot the Regression</h4>
 <div class="tab">
-<p><button class="tablinks" onclick="openTab(event, 'LogisticBaseplot')">Base R</button> <button class="tablinks" onclick="openTab(event, 'Logisticggplot')">ggplot2</button></p>
+<p><button class="tablinks" onclick="openTab(event, 'LogisticBaseplot')">Base
+R</button>
+<button class="tablinks" onclick="openTab(event, 'Logisticggplot')">ggplot2</button></p>
 </div>
 <div id="LogisticBaseplot" class="tabcontent">
 <p>
 <a href="javascript:showhide('LogisticBaseplot2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> plot( <span class="tooltiprtext">The plot function allows us to draw a scatterplot where the y-axis is only 0’s or 1’s and the x-axis is quantitative.</span> </span><span class="tooltipr"> Y <span class="tooltiprtext">Y should be some logical statement like Fail &gt; 0 or sex == “B” or height &lt; 68. In other words, Y needs to be a collection of 0’s and 1’s.</span> </span><span class="tooltipr">  ~  <span class="tooltiprtext">The tilde is read “Y on X.”</span> </span><span class="tooltipr"> X, <span class="tooltiprtext">X is some quantitative variable.</span> </span><span class="tooltipr">  data= <span class="tooltiprtext">Tell the plot which data set to use. X and Y are columns of that data set.</span> </span><span class="tooltipr"> YourDataSet <span class="tooltiprtext">The name of your data set.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis for plot(…) function.</span> </span><br/><span class="tooltipr"> curve( <span class="tooltiprtext">A function in R that draws a “curve” on a plot. Using add=TRUE puts the curve onto the current plot.</span> </span><span class="tooltipr"> exp( <span class="tooltiprtext">This allows you to compute e to the power of something. So exp(1) = e, exp(2) = e^2 and so on.</span> </span><span class="tooltipr"> <span class="math inline">\(b_0\)</span> + <span class="tooltiprtext">This is the “Intercept” estimate from your logistic regression summary output.</span> </span><span class="tooltipr">  <span class="math inline">\(b_1\)</span> <span class="tooltiprtext">This is the slope estimate from your logistic regression summary output.</span> </span><span class="tooltipr"> *x <span class="tooltiprtext">The curve function demands you ALWAYS use a lower-case “x” in this function.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis.</span> </span><span class="tooltipr"> / <span class="tooltiprtext">The division symbol.</span> </span><span class="tooltipr"> (1 + <span class="tooltiprtext">Required for the formula.</span> </span><span class="tooltipr">  exp(<span class="math inline">\(b_0\)</span> + <span class="math inline">\(b_1\)</span>*x) <span class="tooltiprtext">This needs to match exactly the first version of this statement.</span> </span><span class="tooltipr"> ), <span class="tooltiprtext">Closing parenthesis for the denominator.</span> </span><span class="tooltipr">  add = TRUE) <span class="tooltiprtext">This makes the curve be added to the current plot. If it is left out, the curve will be drawn in a new plot.</span> </span></p>
+<p><span class="tooltipr"> plot( <span class="tooltiprtext">The plot
+function allows us to draw a scatterplot where the y-axis is only 0’s or
+1’s and the x-axis is quantitative.</span> </span><span
+class="tooltipr"> Y <span class="tooltiprtext">Y should be some logical
+statement like Fail &gt; 0 or sex == “B” or height &lt; 68. In other
+words, Y needs to be a collection of 0’s and 1’s.</span> </span><span
+class="tooltipr">  ~  <span class="tooltiprtext">The tilde is read “Y on
+X.”</span> </span><span class="tooltipr"> X, <span
+class="tooltiprtext">X is some quantitative variable.</span>
+</span><span class="tooltipr">  data= <span class="tooltiprtext">Tell
+the plot which data set to use. X and Y are columns of that data
+set.</span> </span><span class="tooltipr"> YourDataSet <span
+class="tooltiprtext">The name of your data set.</span> </span><span
+class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis for
+plot(…) function.</span> </span><br/><span class="tooltipr"> curve(
+<span class="tooltiprtext">A function in R that draws a “curve” on a
+plot. Using add=TRUE puts the curve onto the current plot.</span>
+</span><span class="tooltipr"> exp( <span class="tooltiprtext">This
+allows you to compute e to the power of something. So exp(1) = e, exp(2)
+= e^2 and so on.</span> </span><span class="tooltipr"> <span
+class="math inline">\(b_0\)</span> + <span class="tooltiprtext">This is
+the “Intercept” estimate from your logistic regression summary
+output.</span> </span><span class="tooltipr">  <span
+class="math inline">\(b_1\)</span> <span class="tooltiprtext">This is
+the slope estimate from your logistic regression summary output.</span>
+</span><span class="tooltipr"> *x <span class="tooltiprtext">The curve
+function demands you ALWAYS use a lower-case “x” in this
+function.</span> </span><span class="tooltipr"> ) <span
+class="tooltiprtext">Closing parenthesis.</span> </span><span
+class="tooltipr"> / <span class="tooltiprtext">The division
+symbol.</span> </span><span class="tooltipr"> (1 + <span
+class="tooltiprtext">Required for the formula.</span>
+</span><span class="tooltipr">  exp(<span
+class="math inline">\(b_0\)</span> + <span
+class="math inline">\(b_1\)</span>*x) <span class="tooltiprtext">This
+needs to match exactly the first version of this statement.</span>
+</span><span class="tooltipr"> ), <span class="tooltiprtext">Closing
+parenthesis for the denominator.</span> </span><span class="tooltipr">
+ add = TRUE) <span class="tooltiprtext">This makes the curve be added to
+the current plot. If it is left out, the curve will be drawn in a new
+plot.</span> </span></p>
 </div>
 <p></a></p>
 <div id="LogisticBaseplot2" style="display:none;">
@@ -776,7 +1101,48 @@ $$</code></pre>
 <p>
 <a href="javascript:showhide('Logisticggplot2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> ggplot( <span class="tooltiprtext">The ggplot(…) function is used to create a basic ggplot frame.</span> </span><span class="tooltipr"> data=YourDataSetName, <span class="tooltiprtext">Use this to specify the name of your data set.</span> </span><span class="tooltipr">  aes( <span class="tooltiprtext">The aes(…) function stands for “aesthetics” and tells the ggplot which variables to match up with the x-axis and y-axis of the graph as well as other visual things like the type of plotting characters, size of plotting characters, color, fill, and so on.</span> </span><span class="tooltipr"> x=X, <span class="tooltiprtext">Use x=nameOfYourXvariable to declare the x-axis of your graph.</span> </span><span class="tooltipr"> y=Y <span class="tooltiprtext">Use y=nameOfYourYvariable to declare the y-axis of your graph. If your y-variable is a logical expression, like height&gt;60 then you must use y=as.numeric(height&gt;60).</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis for aes(…) function.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis for ggplot(…) function.</span> </span><span class="tooltipr">  + <span class="tooltiprtext">The plus sign adds a new layer to the ggplot.</span> </span><br/><span class="tooltipr">   geom_point( <span class="tooltiprtext">Tells the plot to add the physical geometry of “points” to the plot.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis for the geom_point() function.</span> </span><span class="tooltipr">  + <span class="tooltiprtext">Add another layer to the plot.</span> </span><br/><span class="tooltipr">   geom_smooth( <span class="tooltiprtext">Add a smoothing line to the graph.</span> </span><span class="tooltipr"> method=“glm”, <span class="tooltiprtext">This adds a general linear model to the graph.</span> </span><span class="tooltipr"> method.args = list(family=“binomial”), <span class="tooltiprtext">This tells the method=“glm” to choose specifically the “binomial” model, otherwise known as the “logistic regression” model.</span> </span><span class="tooltipr">  se=FALSE <span class="tooltiprtext">Turn off the displaying of the confidence band around the logistic regression. You can turn this on if you know what it means.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis for the geom_smooth() function.</span> </span><span class="tooltipr">  + <span class="tooltiprtext">Add another layer to the ggplot.</span> </span><br/><span class="tooltipr">   theme_bw() <span class="tooltiprtext">Give the graph a basic black and white theme. Other themes are possible, see ?theme_ in your Console.</span> </span></p>
+<p><span class="tooltipr"> ggplot( <span class="tooltiprtext">The
+ggplot(…) function is used to create a basic ggplot frame.</span>
+</span><span class="tooltipr"> data=YourDataSetName, <span
+class="tooltiprtext">Use this to specify the name of your data
+set.</span> </span><span class="tooltipr">  aes( <span
+class="tooltiprtext">The aes(…) function stands for “aesthetics” and
+tells the ggplot which variables to match up with the x-axis and y-axis
+of the graph as well as other visual things like the type of plotting
+characters, size of plotting characters, color, fill, and so on.</span>
+</span><span class="tooltipr"> x=X, <span class="tooltiprtext">Use
+x=nameOfYourXvariable to declare the x-axis of your graph.</span>
+</span><span class="tooltipr"> y=Y <span class="tooltiprtext">Use
+y=nameOfYourYvariable to declare the y-axis of your graph. If your
+y-variable is a logical expression, like height&gt;60 then you must use
+y=as.numeric(height&gt;60).</span> </span><span class="tooltipr"> )
+<span class="tooltiprtext">Closing parenthesis for aes(…)
+function.</span> </span><span class="tooltipr"> ) <span
+class="tooltiprtext">Closing parenthesis for ggplot(…) function.</span>
+</span><span class="tooltipr">  + <span class="tooltiprtext">The plus
+sign adds a new layer to the ggplot.</span> </span><br/><span
+class="tooltipr">   geom_point( <span class="tooltiprtext">Tells the
+plot to add the physical geometry of “points” to the plot.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Closing
+parenthesis for the geom_point() function.</span> </span><span
+class="tooltipr">  + <span class="tooltiprtext">Add another layer to the
+plot.</span> </span><br/><span class="tooltipr">   geom_smooth( <span
+class="tooltiprtext">Add a smoothing line to the graph.</span>
+</span><span class="tooltipr"> method=“glm”, <span
+class="tooltiprtext">This adds a general linear model to the
+graph.</span> </span><span class="tooltipr"> method.args =
+list(family=“binomial”), <span class="tooltiprtext">This tells the
+method=“glm” to choose specifically the “binomial” model, otherwise
+known as the “logistic regression” model.</span> </span><span
+class="tooltipr">  se=FALSE <span class="tooltiprtext">Turn off the
+displaying of the confidence band around the logistic regression. You
+can turn this on if you know what it means.</span> </span><span
+class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis for
+the geom_smooth() function.</span> </span><span class="tooltipr">  +
+<span class="tooltiprtext">Add another layer to the ggplot.</span>
+</span><br/><span class="tooltipr">   theme_bw() <span
+class="tooltiprtext">Give the graph a basic black and white theme. Other
+themes are possible, see ?theme_ in your Console.</span> </span></p>
 </div>
 <p></a></p>
 <div id="Logisticggplot2" style="display:none;">
@@ -789,10 +1155,34 @@ $$</code></pre>
 </div>
 <div id="predict-probabilities" class="section level4">
 <h4>Predict Probabilities</h4>
-<p>To predict the probability that <span class="math inline">\(Y_i=1\)</span> for a given <span class="math inline">\(x\)</span>-value, use the code</p>
+<p>To predict the probability that <span
+class="math inline">\(Y_i=1\)</span> for a given <span
+class="math inline">\(x\)</span>-value, use the code</p>
 <a href="javascript:showhide('LogisticPredict')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> predict( <span class="tooltiprtext">The predict() function allows us to use the regression model that was obtained from glm() to predict the probability that <span class="math inline">\(Y_i = 1\)</span> for a given <span class="math inline">\(X_i\)</span>.</span> </span><span class="tooltipr"> YourGlmName,  <span class="tooltiprtext"><code>YourGlmName</code> is the name of the object you created when you performed your logistic regression using glm().</span> </span><span class="tooltipr"> newdata =  <span class="tooltiprtext">The <code>newdata =</code> command allows you to specify the x-values for which you want to obtain predicted probabilities that <span class="math inline">\(Y_i=1\)</span>.</span> </span><span class="tooltipr"> data.frame(xVariableName = someNumericValue),  <span class="tooltiprtext">The xVariableName is the same one you used in your glm(y ~ x, …) statement for “x”. Input any desired value for the “someNumericValue” spot. Then, the predict code uses the logistic regression model equation to calculate a predicted probability that <span class="math inline">\(Y_i = 1\)</span> for the given <span class="math inline">\(x_i\)</span> value that you specify.</span> </span><span class="tooltipr"> type = “response”) <span class="tooltiprtext">The type = “response” options specifies that you want predicted probabilities. There are other options available. See ?predict.glm for details.</span> </span></p>
+<p><span class="tooltipr"> predict( <span class="tooltiprtext">The
+predict() function allows us to use the regression model that was
+obtained from glm() to predict the probability that <span
+class="math inline">\(Y_i = 1\)</span> for a given <span
+class="math inline">\(X_i\)</span>.</span> </span><span
+class="tooltipr"> YourGlmName,  <span
+class="tooltiprtext"><code>YourGlmName</code> is the name of the object
+you created when you performed your logistic regression using
+glm().</span> </span><span class="tooltipr"> newdata =  <span
+class="tooltiprtext">The <code>newdata =</code> command allows you to
+specify the x-values for which you want to obtain predicted
+probabilities that <span class="math inline">\(Y_i=1\)</span>.</span>
+</span><span class="tooltipr"> data.frame(xVariableName =
+someNumericValue),  <span class="tooltiprtext">The xVariableName is the
+same one you used in your glm(y ~ x, …) statement for “x”. Input any
+desired value for the “someNumericValue” spot. Then, the predict code
+uses the logistic regression model equation to calculate a predicted
+probability that <span class="math inline">\(Y_i = 1\)</span> for the
+given <span class="math inline">\(x_i\)</span> value that you
+specify.</span> </span><span class="tooltipr"> type = “response”) <span
+class="tooltiprtext">The type = “response” options specifies that you
+want predicted probabilities. There are other options available. See
+?predict.glm for details.</span> </span></p>
 </div>
 <p></a></p>
 <div id="LogisticPredict" style="display:none;">
@@ -810,54 +1200,127 @@ $$</code></pre>
 <div style="padding-left:125px;">
 <p>Simple Logistic Regression is used when</p>
 <ul>
-<li>the response variable is binary <span class="math inline">\((Y_i=0\)</span> or <span class="math inline">\(1)\)</span>, and</li>
-<li>there is a single explanatory variable <span class="math inline">\(X\)</span> that is typically quantitative but could be qualitative (if <span class="math inline">\(X\)</span> is binary or ordinal).</li>
+<li>the response variable is binary <span
+class="math inline">\((Y_i=0\)</span> or <span
+class="math inline">\(1)\)</span>, and</li>
+<li>there is a single explanatory variable <span
+class="math inline">\(X\)</span> that is typically quantitative but
+could be qualitative (if <span class="math inline">\(X\)</span> is
+binary or ordinal).</li>
 </ul>
 <div id="the-model" class="section level4">
 <h4>The Model</h4>
-<p>Since <span class="math inline">\(Y_i\)</span> is binary (can only be 0 or 1) the model focuses on describing the probability that <span class="math inline">\(Y_i=1\)</span> for a given scenario. The probability that <span class="math inline">\(Y_i = 1\)</span> given the observed value of <span class="math inline">\(x_i\)</span> is called <span class="math inline">\(\pi_i\)</span> and is modeled by the equation</p>
+<p>Since <span class="math inline">\(Y_i\)</span> is binary (can only be
+0 or 1) the model focuses on describing the probability that <span
+class="math inline">\(Y_i=1\)</span> for a given scenario. The
+probability that <span class="math inline">\(Y_i = 1\)</span> given the
+observed value of <span class="math inline">\(x_i\)</span> is called
+<span class="math inline">\(\pi_i\)</span> and is modeled by the
+equation</p>
 <p><span class="math display">\[
-  P(Y_i = 1|\, x_i) = \frac{e^{\beta_0 + \beta_1 x_i}}{1+e^{\beta_0 + \beta_1 x_i}} = \pi_i
+  P(Y_i = 1|\, x_i) = \frac{e^{\beta_0 + \beta_1 x_i}}{1+e^{\beta_0 +
+\beta_1 x_i}} = \pi_i
 \]</span></p>
-<p>The assumption is that for certain values of <span class="math inline">\(X\)</span> the probability that <span class="math inline">\(Y_i=1\)</span> is higher than for other values of <span class="math inline">\(X\)</span>.</p>
+<p>The assumption is that for certain values of <span
+class="math inline">\(X\)</span> the probability that <span
+class="math inline">\(Y_i=1\)</span> is higher than for other values of
+<span class="math inline">\(X\)</span>.</p>
 </div>
 <div id="interpretation" class="section level4">
 <h4>Interpretation</h4>
-<p>This model for <span class="math inline">\(\pi_i\)</span> comes from modeling the <em>log of the odds</em> that <span class="math inline">\(Y_i=1\)</span> using a linear regression, i.e., <span class="math display">\[
-  \log\underbrace{\left(\frac{\pi_i}{1-\pi_i}\right)}_{\text{Odds for}\ Y_i=1} = \underbrace{\beta_0 + \beta_1 x_i}_{\text{linear regression}}
-\]</span> Beginning to solve this equation for <span class="math inline">\(\pi_i\)</span> leads to the intermediate, but important result that <span class="math display">\[
-    \underbrace{\frac{\pi_i}{1-\pi_i}}_{\text{Odds for}\ Y_i=1} = e^{\overbrace{\beta_0 + \beta_1 x_i}^{\text{linear regression}}} = e^{\beta_0}e^{\beta_1 x_i}
-\]</span> Thus, while the coefficients <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are difficult to interpret directly, <span class="math inline">\(e^{\beta_0}\)</span> and <span class="math inline">\(e^{\beta_1}\)</span> have a valuable interpretation. The value of <span class="math inline">\(e^{\beta_0}\)</span> is interpreted as the odds for <span class="math inline">\(Y_i=1\)</span> when <span class="math inline">\(x_i = 0\)</span>. It may not be possible for a given model to have <span class="math inline">\(x_i=0\)</span>, in which case <span class="math inline">\(e^{\beta_0}\)</span> has no interpretation. The value of <span class="math inline">\(e^{\beta_1}\)</span> denotes the proportional change in the odds that <span class="math inline">\(Y_i=1\)</span> for every one unit increase in <span class="math inline">\(x_i\)</span>.</p>
-<p>Notice that solving the last equation for <span class="math inline">\(\pi_i\)</span> results in the logistic regression model presented at the beginning of this page.</p>
+<p>This model for <span class="math inline">\(\pi_i\)</span> comes from
+modeling the <em>log of the odds</em> that <span
+class="math inline">\(Y_i=1\)</span> using a linear regression, i.e.,
+<span class="math display">\[
+  \log\underbrace{\left(\frac{\pi_i}{1-\pi_i}\right)}_{\text{Odds for}\
+Y_i=1} = \underbrace{\beta_0 + \beta_1 x_i}_{\text{linear regression}}
+\]</span> Beginning to solve this equation for <span
+class="math inline">\(\pi_i\)</span> leads to the intermediate, but
+important result that <span class="math display">\[
+    \underbrace{\frac{\pi_i}{1-\pi_i}}_{\text{Odds for}\ Y_i=1} =
+e^{\overbrace{\beta_0 + \beta_1 x_i}^{\text{linear regression}}} =
+e^{\beta_0}e^{\beta_1 x_i}
+\]</span> Thus, while the coefficients <span
+class="math inline">\(\beta_0\)</span> and <span
+class="math inline">\(\beta_1\)</span> are difficult to interpret
+directly, <span class="math inline">\(e^{\beta_0}\)</span> and <span
+class="math inline">\(e^{\beta_1}\)</span> have a valuable
+interpretation. The value of <span
+class="math inline">\(e^{\beta_0}\)</span> is interpreted as the odds
+for <span class="math inline">\(Y_i=1\)</span> when <span
+class="math inline">\(x_i = 0\)</span>. It may not be possible for a
+given model to have <span class="math inline">\(x_i=0\)</span>, in which
+case <span class="math inline">\(e^{\beta_0}\)</span> has no
+interpretation. The value of <span
+class="math inline">\(e^{\beta_1}\)</span> denotes the proportional
+change in the odds that <span class="math inline">\(Y_i=1\)</span> for
+every one unit increase in <span class="math inline">\(x_i\)</span>.</p>
+<p>Notice that solving the last equation for <span
+class="math inline">\(\pi_i\)</span> results in the logistic regression
+model presented at the beginning of this page.</p>
 </div>
 <div id="hypothesis-testing" class="section level4">
 <h4>Hypothesis Testing</h4>
-<p>Similar to linear regression, the hypothesis that <span class="math display">\[
+<p>Similar to linear regression, the hypothesis that <span
+class="math display">\[
   H_0: \beta_1 = 0 \\
   H_a: \beta_1 \neq 0
-\]</span> can be tested with a logistic regression. If <span class="math inline">\(\beta_1 = 0\)</span>, then there is no relationship between <span class="math inline">\(x_i\)</span> and the log of the odds that <span class="math inline">\(Y_i = 1\)</span>. In other words, <span class="math inline">\(x_i\)</span> is not useful in predicting the probability that <span class="math inline">\(Y_i = 1\)</span>. If <span class="math inline">\(\beta_1 \neq 0\)</span>, then there is information in <span class="math inline">\(x_i\)</span> that can be utilized to predict the probability that <span class="math inline">\(Y_i = 1\)</span>, i.e., the logistic regression is meaningful.</p>
+\]</span> can be tested with a logistic regression. If <span
+class="math inline">\(\beta_1 = 0\)</span>, then there is no
+relationship between <span class="math inline">\(x_i\)</span> and the
+log of the odds that <span class="math inline">\(Y_i = 1\)</span>. In
+other words, <span class="math inline">\(x_i\)</span> is not useful in
+predicting the probability that <span class="math inline">\(Y_i =
+1\)</span>. If <span class="math inline">\(\beta_1 \neq 0\)</span>, then
+there is information in <span class="math inline">\(x_i\)</span> that
+can be utilized to predict the probability that <span
+class="math inline">\(Y_i = 1\)</span>, i.e., the logistic regression is
+meaningful.</p>
 </div>
 <div id="diagnostics" class="section level4">
 <h4>Checking Model Assumptions</h4>
-<p>The model assumptions are not as clear in logistic regression as they are in linear regression. For our purposes we will focus only on considering the goodness of fit of the logistic regression model. If the model appears to fit the data well, then it will be assumed to be appropriate.</p>
+<p>The model assumptions are not as clear in logistic regression as they
+are in linear regression. For our purposes we will focus only on
+considering the goodness of fit of the logistic regression model. If the
+model appears to fit the data well, then it will be assumed to be
+appropriate.</p>
 <div style="padding-left:15px;">
 <div id="deviance-goodness-of-fit-test" class="section level5">
 <h5>Deviance Goodness of Fit Test</h5>
-<p>If there are replicated values of each <span class="math inline">\(x_i\)</span>, then the deviance goodness of fit test tests the hypotheses <span class="math display">\[
-  H_0: \pi_i = \frac{e^{\beta_0 + \beta_1 x_i}}{1+e^{\beta_0 + \beta_1 x_i}}
+<p>If there are replicated values of each <span
+class="math inline">\(x_i\)</span>, then the deviance goodness of fit
+test tests the hypotheses <span class="math display">\[
+  H_0: \pi_i = \frac{e^{\beta_0 + \beta_1 x_i}}{1+e^{\beta_0 + \beta_1
+x_i}}
 \]</span> <span class="math display">\[
-  H_a: \pi_i \neq \frac{e^{\beta_0 + \beta_1 x_i}}{1+e^{\beta_0 + \beta_1 x_i}}
+  H_a: \pi_i \neq \frac{e^{\beta_0 + \beta_1 x_i}}{1+e^{\beta_0 +
+\beta_1 x_i}}
 \]</span></p>
 </div>
 <div id="hosmer-lemeshow-goodness-of-fit-test" class="section level5">
 <h5>Hosmer-Lemeshow Goodness of Fit Test</h5>
-<p>If there are very few or no replicated values of each <span class="math inline">\(x_i\)</span>, then the Hosmer-Lemeshow goodness of fit test can be used to test these same hypotheses. In each case, the null assumes that logistic regression is a good fit for the data while the alternative is that logistic regression is not a good fit.</p>
+<p>If there are very few or no replicated values of each <span
+class="math inline">\(x_i\)</span>, then the Hosmer-Lemeshow goodness of
+fit test can be used to test these same hypotheses. In each case, the
+null assumes that logistic regression is a good fit for the data while
+the alternative is that logistic regression is not a good fit.</p>
 </div>
 </div>
 </div>
 <div id="prediction" class="section level4">
 <h4>Prediction</h4>
-<p>One of the great uses of Logistic Regression is that it provides an estimate of the probability that <span class="math inline">\(Y_i=1\)</span> for a given value of <span class="math inline">\(x_i\)</span>. This probability is often referred to as the <em>risk</em> that <span class="math inline">\(Y_i=1\)</span> for a certain individual. For example, if <span class="math inline">\(Y_i=1\)</span> implies a person has a disease, then <span class="math inline">\(\pi_i=P(Y_i=1)\)</span> represents the risk of individual <span class="math inline">\(i\)</span> having the disease based on their value of <span class="math inline">\(x_i\)</span>, perhaps a measure of their cholesterol or some other predictor of the disease.</p>
+<p>One of the great uses of Logistic Regression is that it provides an
+estimate of the probability that <span
+class="math inline">\(Y_i=1\)</span> for a given value of <span
+class="math inline">\(x_i\)</span>. This probability is often referred
+to as the <em>risk</em> that <span class="math inline">\(Y_i=1\)</span>
+for a certain individual. For example, if <span
+class="math inline">\(Y_i=1\)</span> implies a person has a disease,
+then <span class="math inline">\(\pi_i=P(Y_i=1)\)</span> represents the
+risk of individual <span class="math inline">\(i\)</span> having the
+disease based on their value of <span
+class="math inline">\(x_i\)</span>, perhaps a measure of their
+cholesterol or some other predictor of the disease.</p>
 </div>
 </div>
 <hr />
@@ -867,22 +1330,40 @@ $$</code></pre>
 <hr />
 </div>
 </div>
-<div id="multiple-logistic-regression-model" class="section level2 tabset tabset-pills tabset-fade">
-<h2 class="tabset tabset-pills tabset-fade">Multiple Logistic Regression Model</h2>
+<div id="multiple-logistic-regression-model"
+class="section level2 tabset tabset-pills tabset-fade">
+<h2 class="tabset tabset-pills tabset-fade">Multiple Logistic Regression
+Model</h2>
 <div style="float:left;width:125px;" align="center">
 <p><img src="Images/BinomYMultX.png" width=98px;></p>
 </div>
-<p>Logistic regression for multiple explanatory variables that can either be quantitative or qualitative or a mixture of the two.</p>
+<p>Logistic regression for multiple explanatory variables that can
+either be quantitative or qualitative or a mixture of the two.</p>
 <div id="overview-1" class="section level3">
 <h3>Overview</h3>
 <div style="padding-left:125px;">
-<p>The probability that <span class="math inline">\(Y_i = 1\)</span> given the observed data <span class="math inline">\((x_{i1},\ldots,x_{ip})\)</span> is called <span class="math inline">\(\pi_i\)</span> and is modeled by the equation</p>
+<p>The probability that <span class="math inline">\(Y_i = 1\)</span>
+given the observed data <span
+class="math inline">\((x_{i1},\ldots,x_{ip})\)</span> is called <span
+class="math inline">\(\pi_i\)</span> and is modeled by the equation</p>
 <p><span class="math display">\[
-  P(Y_i = 1|\, x_{i1},\ldots,x_{ip}) = \frac{e^{\beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}}}{1+e^{\beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip} }} = \pi_i
+  P(Y_i = 1|\, x_{i1},\ldots,x_{ip}) = \frac{e^{\beta_0 + \beta_1 x_{i1}
++ \ldots + \beta_p x_{ip}}}{1+e^{\beta_0 + \beta_1 x_{i1} + \ldots +
+\beta_p x_{ip} }} = \pi_i
 \]</span></p>
-<p>The coefficents <span class="math inline">\(\beta_0,\beta_1,\ldots,\beta_p\)</span> are difficult to interpret directly. Typically <span class="math inline">\(e^{\beta_k}\)</span> for <span class="math inline">\(k=0,1,\ldots,p\)</span> is interpreted instead. The value of <span class="math inline">\(e^{\beta_k}\)</span> denotes the relative change in the odds that <span class="math inline">\(Y_i=1\)</span>. The odds that <span class="math inline">\(Y_i=1\)</span> are <span class="math inline">\(\frac{\pi_i}{1-\pi_i}\)</span>.</p>
+<p>The coefficents <span
+class="math inline">\(\beta_0,\beta_1,\ldots,\beta_p\)</span> are
+difficult to interpret directly. Typically <span
+class="math inline">\(e^{\beta_k}\)</span> for <span
+class="math inline">\(k=0,1,\ldots,p\)</span> is interpreted instead.
+The value of <span class="math inline">\(e^{\beta_k}\)</span> denotes
+the relative change in the odds that <span
+class="math inline">\(Y_i=1\)</span>. The odds that <span
+class="math inline">\(Y_i=1\)</span> are <span
+class="math inline">\(\frac{\pi_i}{1-\pi_i}\)</span>.</p>
 <hr />
-<p><strong>Examples:</strong> <a href="./Analyses/Logistic%20Regression/Examples/GSSMultipleLogisticReg.html">GSS</a></p>
+<p><strong>Examples:</strong> <a
+href="./Analyses/Logistic%20Regression/Examples/GSSMultipleLogisticReg.html">GSS</a></p>
 <hr />
 </div>
 </div>
@@ -895,8 +1376,50 @@ $$</code></pre>
 <p>To perform a logistic regression in R use the commands</p>
 <a href="javascript:showhide('logistic2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> YourGlmName <span class="tooltiprtext">This is some name you come up with that will become the R object that stores the results of your logistic regression <code>glm()</code> command.</span> </span><span class="tooltipr">  &lt;-  <span class="tooltiprtext">This is the “left arrow” assignment operator that stores the results of your <code>glm()</code> code into <code>YourGlmName</code>.</span> </span><span class="tooltipr"> glm( <span class="tooltiprtext">glm( is an R function that stands for “General Linear Model”. It works in a similar way that the <code>lm(</code> function works except that it requires a <code>family=</code> option to be specified at the end of the command.</span> </span><span class="tooltipr"> Y  <span class="tooltiprtext">Y is your binary response variable. It must consist of only 0’s and 1’s. Since TRUE’s = 1’s and FALSE’s = 0’s in R, Y could be a logical statement like (Price &gt; 100) or (Animal == “Cat”) if your Y-variable wasn’t currently coded as 0’s and 1’s.</span> </span><span class="tooltipr"> ~  <span class="tooltiprtext">The tilde symbol ~ is used to tell R that Y should be treated as a function of the explanatory variable X.</span> </span><span class="tooltipr"> X1 <span class="tooltiprtext">X1 is the first explanatory variable (typically quantitative) that will be used to explain the probability that the response variable Y is a 1.</span> </span><span class="tooltipr"> * <span class="tooltiprtext">The times symbol allows a shortcut for writing X1 + X2 + X1:X2 = X1*X2.</span> </span><span class="tooltipr"> X2  <span class="tooltiprtext">X2 is second the explanatory variable either quantitative or qualitative that will be used to explain the probability that the response variable Y is a 1.</span> </span><span class="tooltipr"> …, <span class="tooltiprtext">In theory, you could have many other explanatory variables, interaction terms, or even squared, cubed, or other transformations of terms added to this model.</span> </span><span class="tooltipr">  data = NameOfYourDataset,<br />
-<span class="tooltiprtext">NameOfYourDataset is the name of the dataset that contains Y and X. In other words, one column of your dataset would be called Y and another column would be called X.</span> </span><span class="tooltipr">  family=binomial) <span class="tooltiprtext">The family=binomial command tells the <code>glm(</code> function to perform a logistic regression. It turns out that <code>glm</code> can perform many different types of regressions, but we only study it as a tool to perform a logistic regression in this course.</span> </span><br/><span class="tooltipr"> summary(YourGlmName) <span class="tooltiprtext">The <code>summary</code> command allows you to print the results of your logistic regression that were previously saved in <code>YourGlmName</code>.</span> </span></p>
+<p><span class="tooltipr"> YourGlmName <span class="tooltiprtext">This
+is some name you come up with that will become the R object that stores
+the results of your logistic regression <code>glm()</code>
+command.</span> </span><span class="tooltipr">  &lt;-  <span
+class="tooltiprtext">This is the “left arrow” assignment operator that
+stores the results of your <code>glm()</code> code into
+<code>YourGlmName</code>.</span> </span><span class="tooltipr"> glm(
+<span class="tooltiprtext">glm( is an R function that stands for
+“General Linear Model”. It works in a similar way that the
+<code>lm(</code> function works except that it requires a
+<code>family=</code> option to be specified at the end of the
+command.</span> </span><span class="tooltipr"> Y  <span
+class="tooltiprtext">Y is your binary response variable. It must consist
+of only 0’s and 1’s. Since TRUE’s = 1’s and FALSE’s = 0’s in R, Y could
+be a logical statement like (Price &gt; 100) or (Animal == “Cat”) if
+your Y-variable wasn’t currently coded as 0’s and 1’s.</span>
+</span><span class="tooltipr"> ~  <span class="tooltiprtext">The tilde
+symbol ~ is used to tell R that Y should be treated as a function of the
+explanatory variable X.</span> </span><span class="tooltipr"> X1 <span
+class="tooltiprtext">X1 is the first explanatory variable (typically
+quantitative) that will be used to explain the probability that the
+response variable Y is a 1.</span> </span><span class="tooltipr"> *
+<span class="tooltiprtext">The times symbol allows a shortcut for
+writing X1 + X2 + X1:X2 = X1*X2.</span> </span><span class="tooltipr">
+X2  <span class="tooltiprtext">X2 is second the explanatory variable
+either quantitative or qualitative that will be used to explain the
+probability that the response variable Y is a 1.</span> </span><span
+class="tooltipr"> …, <span class="tooltiprtext">In theory, you could
+have many other explanatory variables, interaction terms, or even
+squared, cubed, or other transformations of terms added to this
+model.</span> </span><span class="tooltipr">  data =
+NameOfYourDataset,<br />
+<span class="tooltiprtext">NameOfYourDataset is the name of the dataset
+that contains Y and X. In other words, one column of your dataset would
+be called Y and another column would be called X.</span> </span><span
+class="tooltipr">  family=binomial) <span class="tooltiprtext">The
+family=binomial command tells the <code>glm(</code> function to perform
+a logistic regression. It turns out that <code>glm</code> can perform
+many different types of regressions, but we only study it as a tool to
+perform a logistic regression in this course.</span> </span><br/><span
+class="tooltipr"> summary(YourGlmName) <span class="tooltiprtext">The
+<code>summary</code> command allows you to print the results of your
+logistic regression that were previously saved in
+<code>YourGlmName</code>.</span> </span></p>
 </div>
 <p></a></p>
 <div id="logistic2" style="display:none;">
@@ -904,7 +1427,12 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> Call:<br/> glm(formula = weight &gt; 100 ~ Time*Diet, family = binomial, data = ChickWeight) <span class="tooltiprouttext">This is simply a statement of your original glm(…) “call” that you made when performing your regression. It allows you to verify that you ran what you thought you ran in the glm(…).</span> </span>
+<span class="tooltiprout"> Call:<br/> glm(formula = weight &gt; 100 ~
+Time*Diet, family = binomial, data = ChickWeight) <span
+class="tooltiprouttext">This is simply a statement of your original
+glm(…) “call” that you made when performing your regression. It allows
+you to verify that you ran what you thought you ran in the
+glm(…).</span> </span>
 </td>
 </tr>
 </table>
@@ -912,24 +1440,51 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td colspan="2">
-<span class="tooltiprout"> Deviance Residuals: <span class="tooltiprouttext">Deviance residuals are a measure of how far the fitted probability for <span class="math inline">\(\pi_i\)</span> has differed from the actual outcome of <span class="math inline">\(Y_i\)</span> in terms of the log of the fitted probability space. (This is a fairly complicated idea.) </span>
+<span class="tooltiprout"> Deviance Residuals: <span
+class="tooltiprouttext">Deviance residuals are a measure of how far the
+fitted probability for <span class="math inline">\(\pi_i\)</span> has
+differed from the actual outcome of <span
+class="math inline">\(Y_i\)</span> in terms of the log of the fitted
+probability space. (This is a fairly complicated idea.) </span>
 </td>
 </tr>
 <tr>
 <td align="right">
-<span class="tooltiprout"> Min<br/>   -2.9446 <span class="tooltiprouttext">“min” gives the value of the residual that is furthest below the regression line. Ideally, the magnitude of this value would be about equal to the magnitude of the largest positive residual (the max) because the hope is that the residuals are normally distributed around the line.</span> </span>
+<span class="tooltiprout"> Min<br/>   -2.9446 <span
+class="tooltiprouttext">“min” gives the value of the residual that is
+furthest below the regression line. Ideally, the magnitude of this value
+would be about equal to the magnitude of the largest positive residual
+(the max) because the hope is that the residuals are normally
+distributed around the line.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> 1Q<br/>   -0.2364 <span class="tooltiprouttext">“1Q” gives the first quartile of the residuals, which will always be negative, and ideally would be about equal in magnitude to the third quartile.</span> </span>
+<span class="tooltiprout"> 1Q<br/>   -0.2364 <span
+class="tooltiprouttext">“1Q” gives the first quartile of the residuals,
+which will always be negative, and ideally would be about equal in
+magnitude to the third quartile.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> Median<br/>   0.0000 <span class="tooltiprouttext">“Median” gives the median of the residuals, which would ideally would be about equal to zero. Note that because the regression line is the least squares line, the mean of the residuals will ALWAYS be zero, so it is never included in the output summary.</span> </span>
+<span class="tooltiprout"> Median<br/>   0.0000 <span
+class="tooltiprouttext">“Median” gives the median of the residuals,
+which would ideally would be about equal to zero. Note that because the
+regression line is the least squares line, the mean of the residuals
+will ALWAYS be zero, so it is never included in the output
+summary.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> 3Q<br/>   0.2776 <span class="tooltiprouttext">“3Q” gives the third quartile of the residuals, which would ideally would be about equal in magnitude to the first quartile. In this case, it is pretty close, which helps us see that the first quartile of residuals on either side of the line is behaving fairly normally.</span> </span>
+<span class="tooltiprout"> 3Q<br/>   0.2776 <span
+class="tooltiprouttext">“3Q” gives the third quartile of the residuals,
+which would ideally would be about equal in magnitude to the first
+quartile. In this case, it is pretty close, which helps us see that the
+first quartile of residuals on either side of the line is behaving
+fairly normally.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> Max</br>   1.9968 <span class="tooltiprouttext">“Max” gives the maximum positive residuals, which would ideally would be about equal in magnitude to the minimum residual. In this case, it is much larger than the minimum, which helps us see that the residuals are likely right skewed.</span> </span>
+<span class="tooltiprout"> Max</br>   1.9968 <span
+class="tooltiprouttext">“Max” gives the maximum positive residuals,
+which would ideally would be about equal in magnitude to the minimum
+residual. In this case, it is much larger than the minimum, which helps
+us see that the residuals are likely right skewed.</span> </span>
 </td>
 </tr>
 </table>
@@ -937,174 +1492,306 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td colspan="2">
-<span class="tooltiprout"> Coefficients: <span class="tooltiprouttext">Notice that in your glm(…) you used only <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>. You did type out any coefficients, i.e., the <span class="math inline">\(\beta_0\)</span> or <span class="math inline">\(\beta_1\)</span> of the regression model. These coefficients are estimated by the glm(…) function and displayed in this part of the output along with standard errors, t-values, and p-values.</span> </span>
+<span class="tooltiprout"> Coefficients: <span
+class="tooltiprouttext">Notice that in your glm(…) you used only <span
+class="math inline">\(Y\)</span> and <span
+class="math inline">\(X\)</span>. You did type out any coefficients,
+i.e., the <span class="math inline">\(\beta_0\)</span> or <span
+class="math inline">\(\beta_1\)</span> of the regression model. These
+coefficients are estimated by the glm(…) function and displayed in this
+part of the output along with standard errors, t-values, and
+p-values.</span> </span>
 </td>
 </tr>
 <tr>
 <td align="left">
 </td>
 <td align="right">
-<span class="tooltiprout">   Estimate <span class="tooltiprouttext">To learn more about the “Estimates” of the “Coefficients” see the “Explanation” tab, “Estimating the Model Parameters” section for details.</span>
+<span class="tooltiprout">   Estimate <span class="tooltiprouttext">To
+learn more about the “Estimates” of the “Coefficients” see the
+“Explanation” tab, “Estimating the Model Parameters” section for
+details.</span>
 </td>
 <td align="right">
-<span class="tooltiprout">   Std. Error <span class="tooltiprouttext">To learn more about the “Standard Errors” of the “Coefficients” see the “Explanation” tab, “Inference for the Model Parameters” section.</span> </span>
+<span class="tooltiprout">   Std. Error <span class="tooltiprouttext">To
+learn more about the “Standard Errors” of the “Coefficients” see the
+“Explanation” tab, “Inference for the Model Parameters” section.</span>
+</span>
 </td>
 <td align="right">
-<span class="tooltiprout">   z value <span class="tooltiprouttext">The Z-score testing the hypothesis that <span class="math inline">\(\beta_j=0\)</span></span> </span>
+<span class="tooltiprout">   z value <span class="tooltiprouttext">The
+Z-score testing the hypothesis that <span
+class="math inline">\(\beta_j=0\)</span></span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">   Pr(&gt;|z|) <span class="tooltiprouttext">The p-value for the corresponding Z-score.</span> </span>
+<span class="tooltiprout">   Pr(&gt;|z|) <span
+class="tooltiprouttext">The p-value for the corresponding
+Z-score.</span> </span>
 </td>
 </tr>
 <tr>
 <td align="left">
-<span class="tooltiprout"> (Intercept) <span class="tooltiprouttext">This always says “Intercept” for any glm(…) you run in R. That is because R always assumes there is a y-intercept for your regression function.</span> </span>
+<span class="tooltiprout"> (Intercept) <span
+class="tooltiprouttext">This always says “Intercept” for any glm(…) you
+run in R. That is because R always assumes there is a y-intercept for
+your regression function.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">   -4.97603 <span class="tooltiprouttext">This is the estimate of the y-intercept, <span class="math inline">\(\beta_0\)</span>. It is called <span class="math inline">\(b_0\)</span>. It is the average y-value when X is zero.</span> </span>
+<span class="tooltiprout">   -4.97603 <span class="tooltiprouttext">This
+is the estimate of the y-intercept, <span
+class="math inline">\(\beta_0\)</span>. It is called <span
+class="math inline">\(b_0\)</span>. It is the average y-value when X is
+zero.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">   0.65316 <span class="tooltiprouttext">This is the standard error of <span class="math inline">\(b_0\)</span>. It tells you how much <span class="math inline">\(b_0\)</span> varies from sample to sample. The closer to zero, the better.</span> </span>
+<span class="tooltiprout">   0.65316 <span class="tooltiprouttext">This
+is the standard error of <span class="math inline">\(b_0\)</span>. It
+tells you how much <span class="math inline">\(b_0\)</span> varies from
+sample to sample. The closer to zero, the better.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> -7.618 <span class="tooltiprouttext">Z-score for <span class="math inline">\(b_0\)</span>.</span> </span>
+<span class="tooltiprout"> -7.618 <span class="tooltiprouttext">Z-score
+for <span class="math inline">\(b_0\)</span>.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> 2.57e-14 <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that <span class="math inline">\(\beta_0 = 0\)</span>. It measures the probability of observing a Z-value as extreme as the one observed. To compute it yourself in R, use <code>pnorm(-abs(your z-value))*2</code>.</span> </span>
+<span class="tooltiprout"> 2.57e-14 <span class="tooltiprouttext">This
+is the p-value of the test of the hypothesis that <span
+class="math inline">\(\beta_0 = 0\)</span>. It measures the probability
+of observing a Z-value as extreme as the one observed. To compute it
+yourself in R, use <code>pnorm(-abs(your z-value))*2</code>.</span>
+</span>
 </td>
 <td align="left">
-<span class="tooltiprout"> *** <span class="tooltiprouttext">This is called a “star”. Three stars means significant at the 0.01 level of <span class="math inline">\(\alpha\)</span>.</span> </span>
+<span class="tooltiprout"> *** <span class="tooltiprouttext">This is
+called a “star”. Three stars means significant at the 0.01 level of
+<span class="math inline">\(\alpha\)</span>.</span> </span>
 </td>
 </tr>
 <tr>
 <td align="left">
-<span class="tooltiprout"> Time <span class="tooltiprouttext">This is always the name of your X-variable in your glm(Y ~ X, …).</span> </span>
+<span class="tooltiprout"> Time <span class="tooltiprouttext">This is
+always the name of your X-variable in your glm(Y ~ X, …).</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">   0.39111 <span class="tooltiprouttext">This is the estimate of the slope, <span class="math inline">\(\beta_1\)</span>. It is called <span class="math inline">\(b_1\)</span>. It is the change in the average y-value as X is increased by 1 unit.</span> </span>
+<span class="tooltiprout">   0.39111 <span class="tooltiprouttext">This
+is the estimate of the slope, <span
+class="math inline">\(\beta_1\)</span>. It is called <span
+class="math inline">\(b_1\)</span>. It is the change in the average
+y-value as X is increased by 1 unit.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">   0.04979 <span class="tooltiprouttext">This is the standard error of <span class="math inline">\(b_1\)</span>. It tells you how much <span class="math inline">\(b_1\)</span> varies from sample to sample. The closer to zero, the better.</span> </span>
+<span class="tooltiprout">   0.04979 <span class="tooltiprouttext">This
+is the standard error of <span class="math inline">\(b_1\)</span>. It
+tells you how much <span class="math inline">\(b_1\)</span> varies from
+sample to sample. The closer to zero, the better.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> 7.854 <span class="tooltiprouttext">Z-score for <span class="math inline">\(b_1\)</span>.</span> </span>
+<span class="tooltiprout"> 7.854 <span class="tooltiprouttext">Z-score
+for <span class="math inline">\(b_1\)</span>.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> 4.02e-15 <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that <span class="math inline">\(\beta_1 = 0\)</span>. To compute it yourself in R, use <code>pt(-abs(your t-value), df of your regression)*2</code></span> </span>
+<span class="tooltiprout"> 4.02e-15 <span class="tooltiprouttext">This
+is the p-value of the test of the hypothesis that <span
+class="math inline">\(\beta_1 = 0\)</span>. To compute it yourself in R,
+use <code>pt(-abs(your t-value), df of your regression)*2</code></span>
+</span>
 </td>
 <td align="left">
-<span class="tooltiprout"> *** <span class="tooltiprouttext">This is called a “star”. Three stars means significant at the 0.01 level of <span class="math inline">\(\alpha\)</span>.</span> </span>
+<span class="tooltiprout"> *** <span class="tooltiprouttext">This is
+called a “star”. Three stars means significant at the 0.01 level of
+<span class="math inline">\(\alpha\)</span>.</span> </span>
 </td>
 </tr>
 <tr>
 <td align="left">
-<span class="tooltiprout"> Diet2 <span class="tooltiprouttext">This is always the name of your X-variable in your glm(Y ~ X, …).</span> </span>
+<span class="tooltiprout"> Diet2 <span class="tooltiprouttext">This is
+always the name of your X-variable in your glm(Y ~ X, …).</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">   0.58283 <span class="tooltiprouttext">This is the estimate of the change in the intercept, <span class="math inline">\(\beta_2\)</span>. It is called <span class="math inline">\(b_2\)</span>.</span> </span>
+<span class="tooltiprout">   0.58283 <span class="tooltiprouttext">This
+is the estimate of the change in the intercept, <span
+class="math inline">\(\beta_2\)</span>. It is called <span
+class="math inline">\(b_2\)</span>.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">   1.04061 <span class="tooltiprouttext">This is the standard error of <span class="math inline">\(b_2\)</span>. It tells you how much <span class="math inline">\(b_2\)</span> varies from sample to sample. The closer to zero, the better.</span> </span>
+<span class="tooltiprout">   1.04061 <span class="tooltiprouttext">This
+is the standard error of <span class="math inline">\(b_2\)</span>. It
+tells you how much <span class="math inline">\(b_2\)</span> varies from
+sample to sample. The closer to zero, the better.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> 0.560 <span class="tooltiprouttext">Z-score for <span class="math inline">\(b_2\)</span>.</span> </span>
+<span class="tooltiprout"> 0.560 <span class="tooltiprouttext">Z-score
+for <span class="math inline">\(b_2\)</span>.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> 0.5754 <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that <span class="math inline">\(\beta_2 = 0\)</span>. To compute it yourself in R, use <code>pt(-abs(your t-value), df of your regression)*2</code></span> </span>
+<span class="tooltiprout"> 0.5754 <span class="tooltiprouttext">This is
+the p-value of the test of the hypothesis that <span
+class="math inline">\(\beta_2 = 0\)</span>. To compute it yourself in R,
+use <code>pt(-abs(your t-value), df of your regression)*2</code></span>
+</span>
 </td>
 </tr>
 <tr>
 <td align="left">
-<span class="tooltiprout"> Diet3 <span class="tooltiprouttext">This is always the name of your X-variable in your glm(Y ~ X, …).</span> </span>
+<span class="tooltiprout"> Diet3 <span class="tooltiprouttext">This is
+always the name of your X-variable in your glm(Y ~ X, …).</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">   -8.44476 <span class="tooltiprouttext">This is the estimate of the change in the intercept, <span class="math inline">\(\beta_3\)</span>. It is called <span class="math inline">\(b_3\)</span>.</span> </span>
+<span class="tooltiprout">   -8.44476 <span class="tooltiprouttext">This
+is the estimate of the change in the intercept, <span
+class="math inline">\(\beta_3\)</span>. It is called <span
+class="math inline">\(b_3\)</span>.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">   4.32324 <span class="tooltiprouttext">This is the standard error of <span class="math inline">\(b_3\)</span>. It tells you how much <span class="math inline">\(b_3\)</span> varies from sample to sample. The closer to zero, the better.</span> </span>
+<span class="tooltiprout">   4.32324 <span class="tooltiprouttext">This
+is the standard error of <span class="math inline">\(b_3\)</span>. It
+tells you how much <span class="math inline">\(b_3\)</span> varies from
+sample to sample. The closer to zero, the better.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> -1.953 <span class="tooltiprouttext">Z-score for <span class="math inline">\(b_3\)</span>.</span> </span>
+<span class="tooltiprout"> -1.953 <span class="tooltiprouttext">Z-score
+for <span class="math inline">\(b_3\)</span>.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> 0.0508 <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that <span class="math inline">\(\beta_3 = 0\)</span>. To compute it yourself in R, use <code>pt(-abs(your t-value), df of your regression)*2</code></span> </span>
+<span class="tooltiprout"> 0.0508 <span class="tooltiprouttext">This is
+the p-value of the test of the hypothesis that <span
+class="math inline">\(\beta_3 = 0\)</span>. To compute it yourself in R,
+use <code>pt(-abs(your t-value), df of your regression)*2</code></span>
+</span>
 </td>
 <td align="left">
-<span class="tooltiprout"> . <span class="tooltiprouttext">This is called a period. It means significant at the 0.1 level of <span class="math inline">\(\alpha\)</span>.</span> </span>
+<span class="tooltiprout"> . <span class="tooltiprouttext">This is
+called a period. It means significant at the 0.1 level of <span
+class="math inline">\(\alpha\)</span>.</span> </span>
 </td>
 </tr>
 <tr>
 <td align="left">
-<span class="tooltiprout"> Diet4 <span class="tooltiprouttext">This is always the name of your X-variable in your glm(Y ~ X, …).</span> </span>
+<span class="tooltiprout"> Diet4 <span class="tooltiprouttext">This is
+always the name of your X-variable in your glm(Y ~ X, …).</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">   -67.41995 <span class="tooltiprouttext">This is the estimate of the change in the intercept, <span class="math inline">\(\beta_4\)</span>. It is called <span class="math inline">\(b_4\)</span>.</span> </span>
+<span class="tooltiprout">   -67.41995 <span
+class="tooltiprouttext">This is the estimate of the change in the
+intercept, <span class="math inline">\(\beta_4\)</span>. It is called
+<span class="math inline">\(b_4\)</span>.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">   3768.10023 <span class="tooltiprouttext">This is the standard error of <span class="math inline">\(b_4\)</span>. It tells you how much <span class="math inline">\(b_4\)</span> varies from sample to sample. The closer to zero, the better.</span> </span>
+<span class="tooltiprout">   3768.10023 <span
+class="tooltiprouttext">This is the standard error of <span
+class="math inline">\(b_4\)</span>. It tells you how much <span
+class="math inline">\(b_4\)</span> varies from sample to sample. The
+closer to zero, the better.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> -0.018 <span class="tooltiprouttext">Z-score for <span class="math inline">\(b_4\)</span>.</span> </span>
+<span class="tooltiprout"> -0.018 <span class="tooltiprouttext">Z-score
+for <span class="math inline">\(b_4\)</span>.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> 0.9857 <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that <span class="math inline">\(\beta_2 = 0\)</span>. To compute it yourself in R, use <code>pt(-abs(your t-value), df of your regression)*2</code></span> </span>
-</td>
-</td>
-</tr>
-<tr>
-<td align="left">
-<span class="tooltiprout"> Time:Diet2 <span class="tooltiprouttext">This is always the name of your X-variable in your glm(Y ~ X, …).</span> </span>
-</td>
-<td align="right">
-<span class="tooltiprout">   0.02391 <span class="tooltiprouttext">This is the estimate of the change in the slope, <span class="math inline">\(\beta_5\)</span>. It is called <span class="math inline">\(b_5\)</span>.</span> </span>
-</td>
-<td align="right">
-<span class="tooltiprout">   0.08679 <span class="tooltiprouttext">This is the standard error of <span class="math inline">\(b_5\)</span>. It tells you how much <span class="math inline">\(b_5\)</span> varies from sample to sample. The closer to zero, the better.</span> </span>
-</td>
-<td align="right">
-<span class="tooltiprout"> 0.275 <span class="tooltiprouttext">Z-score for <span class="math inline">\(b_5\)</span>.</span> </span>
-</td>
-<td align="right">
-<span class="tooltiprout"> 0.7830 <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that <span class="math inline">\(\beta_2 = 0\)</span>. To compute it yourself in R, use <code>pt(-abs(your t-value), df of your regression)*2</code></span> </span>
-</td>
-</td>
-</tr>
-<tr>
-<td align="left">
-<span class="tooltiprout"> Time:Diet3 <span class="tooltiprouttext">This is always the name of your X-variable in your glm(Y ~ X, …).</span> </span>
-</td>
-<td align="right">
-<span class="tooltiprout">   1.20955 <span class="tooltiprouttext">This is the estimate of the change in the slope, <span class="math inline">\(\beta_6\)</span>. It is called <span class="math inline">\(b_6\)</span>.</span> </span>
-</td>
-<td align="right">
-<span class="tooltiprout">   0.51249 <span class="tooltiprouttext">This is the standard error of <span class="math inline">\(b_6\)</span>. It tells you how much <span class="math inline">\(b_6\)</span> varies from sample to sample. The closer to zero, the better.</span> </span>
-</td>
-<td align="right">
-<span class="tooltiprout"> 2.360 <span class="tooltiprouttext">Z-score for <span class="math inline">\(b_6\)</span>.</span> </span>
-</td>
-<td align="right">
-<span class="tooltiprout"> 0.0183 <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that <span class="math inline">\(\beta_2 = 0\)</span>. To compute it yourself in R, use <code>pt(-abs(your t-value), df of your regression)*2</code></span> </span>
-</td>
-<td align="left">
-<span class="tooltiprout"> * <span class="tooltiprouttext">This is called a “star”. One star means significant at the 0.05 level of <span class="math inline">\(\alpha\)</span>.</span> </span>
+<span class="tooltiprout"> 0.9857 <span class="tooltiprouttext">This is
+the p-value of the test of the hypothesis that <span
+class="math inline">\(\beta_2 = 0\)</span>. To compute it yourself in R,
+use <code>pt(-abs(your t-value), df of your regression)*2</code></span>
+</span>
 </td>
 </td>
 </tr>
 <tr>
 <td align="left">
-<span class="tooltiprout"> Time:Diet4 <span class="tooltiprouttext">This is always the name of your X-variable in your glm(Y ~ X, …).</span> </span>
+<span class="tooltiprout"> Time:Diet2 <span class="tooltiprouttext">This
+is always the name of your X-variable in your glm(Y ~ X, …).</span>
+</span>
 </td>
 <td align="right">
-<span class="tooltiprout">   8.83168 <span class="tooltiprouttext">This is the estimate of the change in the slope, <span class="math inline">\(\beta_7\)</span>. It is called <span class="math inline">\(b_7\)</span>.</span> </span>
+<span class="tooltiprout">   0.02391 <span class="tooltiprouttext">This
+is the estimate of the change in the slope, <span
+class="math inline">\(\beta_5\)</span>. It is called <span
+class="math inline">\(b_5\)</span>.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">   471.01259 <span class="tooltiprouttext">This is the standard error of <span class="math inline">\(b_7\)</span>. It tells you how much <span class="math inline">\(b_7\)</span> varies from sample to sample. The closer to zero, the better.</span> </span>
+<span class="tooltiprout">   0.08679 <span class="tooltiprouttext">This
+is the standard error of <span class="math inline">\(b_5\)</span>. It
+tells you how much <span class="math inline">\(b_5\)</span> varies from
+sample to sample. The closer to zero, the better.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> 0.019 <span class="tooltiprouttext">Z-score for <span class="math inline">\(b_7\)</span>.</span> </span>
+<span class="tooltiprout"> 0.275 <span class="tooltiprouttext">Z-score
+for <span class="math inline">\(b_5\)</span>.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout"> 0.9850 <span class="tooltiprouttext">This is the p-value of the test of the hypothesis that <span class="math inline">\(\beta_2 = 0\)</span>. To compute it yourself in R, use <code>pt(-abs(your t-value), df of your regression)*2</code></span> </span>
+<span class="tooltiprout"> 0.7830 <span class="tooltiprouttext">This is
+the p-value of the test of the hypothesis that <span
+class="math inline">\(\beta_2 = 0\)</span>. To compute it yourself in R,
+use <code>pt(-abs(your t-value), df of your regression)*2</code></span>
+</span>
+</td>
+</td>
+</tr>
+<tr>
+<td align="left">
+<span class="tooltiprout"> Time:Diet3 <span class="tooltiprouttext">This
+is always the name of your X-variable in your glm(Y ~ X, …).</span>
+</span>
+</td>
+<td align="right">
+<span class="tooltiprout">   1.20955 <span class="tooltiprouttext">This
+is the estimate of the change in the slope, <span
+class="math inline">\(\beta_6\)</span>. It is called <span
+class="math inline">\(b_6\)</span>.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   0.51249 <span class="tooltiprouttext">This
+is the standard error of <span class="math inline">\(b_6\)</span>. It
+tells you how much <span class="math inline">\(b_6\)</span> varies from
+sample to sample. The closer to zero, the better.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> 2.360 <span class="tooltiprouttext">Z-score
+for <span class="math inline">\(b_6\)</span>.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> 0.0183 <span class="tooltiprouttext">This is
+the p-value of the test of the hypothesis that <span
+class="math inline">\(\beta_2 = 0\)</span>. To compute it yourself in R,
+use <code>pt(-abs(your t-value), df of your regression)*2</code></span>
+</span>
+</td>
+<td align="left">
+<span class="tooltiprout"> * <span class="tooltiprouttext">This is
+called a “star”. One star means significant at the 0.05 level of <span
+class="math inline">\(\alpha\)</span>.</span> </span>
+</td>
+</td>
+</tr>
+<tr>
+<td align="left">
+<span class="tooltiprout"> Time:Diet4 <span class="tooltiprouttext">This
+is always the name of your X-variable in your glm(Y ~ X, …).</span>
+</span>
+</td>
+<td align="right">
+<span class="tooltiprout">   8.83168 <span class="tooltiprouttext">This
+is the estimate of the change in the slope, <span
+class="math inline">\(\beta_7\)</span>. It is called <span
+class="math inline">\(b_7\)</span>.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout">   471.01259 <span
+class="tooltiprouttext">This is the standard error of <span
+class="math inline">\(b_7\)</span>. It tells you how much <span
+class="math inline">\(b_7\)</span> varies from sample to sample. The
+closer to zero, the better.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> 0.019 <span class="tooltiprouttext">Z-score
+for <span class="math inline">\(b_7\)</span>.</span> </span>
+</td>
+<td align="right">
+<span class="tooltiprout"> 0.9850 <span class="tooltiprouttext">This is
+the p-value of the test of the hypothesis that <span
+class="math inline">\(\beta_2 = 0\)</span>. To compute it yourself in R,
+use <code>pt(-abs(your t-value), df of your regression)*2</code></span>
+</span>
 </td>
 </td>
 </tr>
@@ -1119,7 +1806,11 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 <span class="tooltiprouttext">These “codes” explain what significance level the p-value is smaller than based on how many “stars” * the p-value is labeled with in the Coefficients table above.</span> </span>
+<span class="tooltiprout"> Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ’*’
+0.05 ‘.’ 0.1 ‘ ’ 1 <span class="tooltiprouttext">These “codes” explain
+what significance level the p-value is smaller than based on how many
+“stars” * the p-value is labeled with in the Coefficients table
+above.</span> </span>
 </td>
 </tr>
 </table>
@@ -1127,7 +1818,12 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> (Dispersion parameter for binomial family taken to be 1) <span class="tooltiprouttext">A simplifying assumption of the logistic regression. This can be changed if you know what you are doing. See ?summary.glm and look at the dispersion option for details. Unless you are pursuing an advanced degree in statistics, it is not recommended that you explore this option.</span> </span>
+<span class="tooltiprout"> (Dispersion parameter for binomial family
+taken to be 1) <span class="tooltiprouttext">A simplifying assumption of
+the logistic regression. This can be changed if you know what you are
+doing. See ?summary.glm and look at the dispersion option for details.
+Unless you are pursuing an advanced degree in statistics, it is not
+recommended that you explore this option.</span> </span>
 </td>
 </tr>
 </table>
@@ -1135,36 +1831,61 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout">   Null Deviance: <span class="tooltiprouttext">The deviance of the null model.</span> </span>
+<span class="tooltiprout">   Null Deviance: <span
+class="tooltiprouttext">The deviance of the null model.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">  800.44 <span class="tooltiprouttext">In this case, the null deviance is 800.44</span> </span>
+<span class="tooltiprout">  800.44 <span class="tooltiprouttext">In this
+case, the null deviance is 800.44</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">  on 577 degrees of freedom <span class="tooltiprouttext">The residual degrees of freedom for the null model.</span> </span>
+<span class="tooltiprout">  on 577 degrees of freedom <span
+class="tooltiprouttext">The residual degrees of freedom for the null
+model.</span> </span>
 </td>
 </tr>
 </table>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> Residual deviance: <span class="tooltiprouttext">The test statistic from the chi-squared goodness of fit test of the logistic regression.</span> </span>
+<span class="tooltiprout"> Residual deviance: <span
+class="tooltiprouttext">The test statistic from the chi-squared goodness
+of fit test of the logistic regression.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">  256.30 <span class="tooltiprouttext">This is computed by the sum(log(myglm$res^2)). As long as this value is similar in size to the degrees of freedom, then the model is a good fit.</span> </span>
+<span class="tooltiprout">  256.30 <span class="tooltiprouttext">This is
+computed by the sum(log(myglm$res^2)). As long as this value is similar
+in size to the degrees of freedom, then the model is a good fit.</span>
+</span>
 </td>
 <td align="right">
-<span class="tooltiprout">  on 570 degrees of freedom <span class="tooltiprouttext">This is <span class="math inline">\(n-p\)</span> where <span class="math inline">\(n\)</span> is the sample size and <span class="math inline">\(p\)</span> is the number of parameters in the regression model. In this case, there is a sample size of 578 and five parameters, <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span>, <span class="math inline">\(\beta_2\)</span>, <span class="math inline">\(\beta_3\)</span>, <span class="math inline">\(\beta_4\)</span>, <span class="math inline">\(\beta_5\)</span>,<span class="math inline">\(\beta_6\)</span>, and <span class="math inline">\(\beta_7\)</span> so 578-8 = 570.</span> </span>
+<span class="tooltiprout">  on 570 degrees of freedom <span
+class="tooltiprouttext">This is <span class="math inline">\(n-p\)</span>
+where <span class="math inline">\(n\)</span> is the sample size and
+<span class="math inline">\(p\)</span> is the number of parameters in
+the regression model. In this case, there is a sample size of 578 and
+five parameters, <span class="math inline">\(\beta_0\)</span>, <span
+class="math inline">\(\beta_1\)</span>, <span
+class="math inline">\(\beta_2\)</span>, <span
+class="math inline">\(\beta_3\)</span>, <span
+class="math inline">\(\beta_4\)</span>, <span
+class="math inline">\(\beta_5\)</span>,<span
+class="math inline">\(\beta_6\)</span>, and <span
+class="math inline">\(\beta_7\)</span> so 578-8 = 570.</span> </span>
 </td>
 </tr>
 </table>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> AIC: <span class="tooltiprouttext">A form of the Akiake Information Criterion. Smaller values of the AIC indicate a better fitting model.</span> </span>
+<span class="tooltiprout"> AIC: <span class="tooltiprouttext">A form of
+the Akiake Information Criterion. Smaller values of the AIC indicate a
+better fitting model.</span> </span>
 </td>
 <td align="right">
-<span class="tooltiprout">  272.3 <span class="tooltiprouttext">If a model for the same Y-variable can be found with an AIC value lower than 272.3, then it is a better fit of the data.</span> </span>
+<span class="tooltiprout">  272.3 <span class="tooltiprouttext">If a
+model for the same Y-variable can be found with an AIC value lower than
+272.3, then it is a better fit of the data.</span> </span>
 </td>
 </tr>
 </table>
@@ -1172,10 +1893,19 @@ $$</code></pre>
 <table class="rconsole">
 <tr>
 <td>
-<span class="tooltiprout"> Number of Fisher Scoring iterations: <span class="tooltiprouttext">If you have taken a class in Numerical Analysis, this tells you how many iterations of the maximization algorithm were required before converging to the “Estimates” of the parameters <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> found in the summary.</span> </span>
+<span class="tooltiprout"> Number of Fisher Scoring iterations: <span
+class="tooltiprouttext">If you have taken a class in Numerical Analysis,
+this tells you how many iterations of the maximization algorithm were
+required before converging to the “Estimates” of the parameters <span
+class="math inline">\(\beta_0\)</span> and <span
+class="math inline">\(\beta_1\)</span> found in the summary.</span>
+</span>
 </td>
 <td align="right">
-<span class="tooltiprout">  20 <span class="tooltiprouttext">This implementation of glm required 20 Fisher Scoring iterations to converge. Fewer iterations hints that the model is a better fit than when many iterations are required.</span> </span>
+<span class="tooltiprout">  20 <span class="tooltiprouttext">This
+implementation of glm required 20 Fisher Scoring iterations to converge.
+Fewer iterations hints that the model is a better fit than when many
+iterations are required.</span> </span>
 </td>
 </tr>
 </table>
@@ -1184,13 +1914,41 @@ $$</code></pre>
 </div>
 <div id="diagnose-the-goodness-of-fit-1" class="section level4">
 <h4>Diagnose the Goodness-of-Fit</h4>
-<p>There are two ways to check the <strong>goodness of fit</strong> of a logistic regression model.</p>
+<p>There are two ways to check the <strong>goodness of fit</strong> of a
+logistic regression model.</p>
 <div style="padding-left:25px;">
 <p><strong>Option 1</strong>: Hosmer-Lemeshow Goodness-of-Fit Test</p>
-<p>To check the <strong>goodness of fit</strong> of a logistic regression model where there are <strong>few or no replicated <span class="math inline">\(x\)</span>-values</strong> use the Hosmer-Lemeshow Test.</p>
+<p>To check the <strong>goodness of fit</strong> of a logistic
+regression model where there are <strong>few or no replicated <span
+class="math inline">\(x\)</span>-values</strong> use the Hosmer-Lemeshow
+Test.</p>
 <a href="javascript:showhide('goodnessoffit2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(ResourceSelection) <span class="tooltiprtext">This loads the ResourceSelection R package so that you can access the hoslem.test() function. You may need to run the code: install.packages(“ResourceSelection”) first.</span> </span><br/><span class="tooltipr"> hoslem.test( <span class="tooltiprtext">This R function performs the Hosmer-Lemeshow Goodness of Fit Test. See the “Explanation” file to learn about this test.</span> </span><span class="tooltipr"> YourGlmName <span class="tooltiprtext"><code>YourGlmName</code> is the name of your glm(…) code that you created previously.</span> </span><span class="tooltipr"> $y,  <span class="tooltiprtext">ALWAYS type a “y” here. This gives you the actual binary (0,1) y-values of your logistic regression. The goodness of fit test will compare these actual values to your predicted probabilities for each value in order to see if the model is a “good fit.”</span> </span><span class="tooltipr"> YourGlmName <span class="tooltiprtext"><code>YourGlmName</code> is the name you used to save the results of your glm(…) code.</span> </span><span class="tooltipr"> $fitted,  <span class="tooltiprtext">ALWAYS type “fitted” here. This gives you the fitted probabilities <span class="math inline">\(\pi_i\)</span> of your logistic regression.</span> </span><span class="tooltipr"> g=10) <span class="tooltiprtext">The “g=10” is the default option for the value of g. The g is the number of groups to run the goodness of fit test on. Just leave it at 10 unless you are told to do otherwise. Ask your teacher for more information if you are interested.</span> </span></p>
+<p><span class="tooltipr"> library(ResourceSelection) <span
+class="tooltiprtext">This loads the ResourceSelection R package so that
+you can access the hoslem.test() function. You may need to run the code:
+install.packages(“ResourceSelection”) first.</span> </span><br/><span
+class="tooltipr"> hoslem.test( <span class="tooltiprtext">This R
+function performs the Hosmer-Lemeshow Goodness of Fit Test. See the
+“Explanation” file to learn about this test.</span> </span><span
+class="tooltipr"> YourGlmName <span
+class="tooltiprtext"><code>YourGlmName</code> is the name of your glm(…)
+code that you created previously.</span> </span><span class="tooltipr">
+$y,  <span class="tooltiprtext">ALWAYS type a “y” here. This gives you
+the actual binary (0,1) y-values of your logistic regression. The
+goodness of fit test will compare these actual values to your predicted
+probabilities for each value in order to see if the model is a “good
+fit.”</span> </span><span class="tooltipr"> YourGlmName <span
+class="tooltiprtext"><code>YourGlmName</code> is the name you used to
+save the results of your glm(…) code.</span> </span><span
+class="tooltipr"> $fitted,  <span class="tooltiprtext">ALWAYS type
+“fitted” here. This gives you the fitted probabilities <span
+class="math inline">\(\pi_i\)</span> of your logistic regression.</span>
+</span><span class="tooltipr"> g=10) <span class="tooltiprtext">The
+“g=10” is the default option for the value of g. The g is the number of
+groups to run the goodness of fit test on. Just leave it at 10 unless
+you are told to do otherwise. Ask your teacher for more information if
+you are interested.</span> </span></p>
 </div>
 <p></a></p>
 <div id="goodnessoffit2" style="display:none;">
@@ -1200,14 +1958,35 @@ $$</code></pre>
 ## 
 ## data:  myglm$y, myglm$fitted
 ## X-squared = 18.212, df = 8, p-value = 0.0197</code></pre>
-<p>Note that the null hypothesis of the goodness-of-fit test is that “the logistic regression is a good fit.” So we actually don’t want to “reject the null” in this case. So a large p-value here means our logistic regression fits the data satisfactorily. A small p-value implies a poor fit and the results of the logistic regression should not be fully trusted.</p>
+<p>Note that the null hypothesis of the goodness-of-fit test is that
+“the logistic regression is a good fit.” So we actually don’t want to
+“reject the null” in this case. So a large p-value here means our
+logistic regression fits the data satisfactorily. A small p-value
+implies a poor fit and the results of the logistic regression should not
+be fully trusted.</p>
 </div>
 <p><br/></p>
 <p><strong>Option 2</strong>: Deviance Goodness-of-fit Test</p>
-<p>In some cases, there are <strong>many replicated <span class="math inline">\(x\)</span>-values</strong> for <strong>all</strong> x-values. Though this is rare, it is good to use the <em>deviance goodness-of-fit test</em> whenever this happens.</p>
+<p>In some cases, there are <strong>many replicated <span
+class="math inline">\(x\)</span>-values</strong> for
+<strong>all</strong> x-values. Though this is rare, it is good to use
+the <em>deviance goodness-of-fit test</em> whenever this happens.</p>
 <a href="javascript:showhide('goodnessoffit1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> pchisq( <span class="tooltiprtext">The <code>pchisq</code> command allows you to compute p-values from the chi-squared distribution.</span> </span><span class="tooltipr"> residual deviance,  <span class="tooltiprtext">The residual deviance is shown at the bottom of the output of your <code>summary(YourGlmName)</code> and should be typed in here as a number like 25.3.</span> </span><span class="tooltipr"> df for residual deviance,  <span class="tooltiprtext">The df for the residual deviance is also shown at the bottom of the output of your <code>summary(YourGlmName)</code>.</span> </span><span class="tooltipr"> lower.tail=FALSE) <span class="tooltiprtext">This command ensures you find the probability of the chi-squared distribution being as extreme or more extreme than the observed value of residual deviance.</span> </span></p>
+<p><span class="tooltipr"> pchisq( <span class="tooltiprtext">The
+<code>pchisq</code> command allows you to compute p-values from the
+chi-squared distribution.</span> </span><span class="tooltipr"> residual
+deviance,  <span class="tooltiprtext">The residual deviance is shown at
+the bottom of the output of your <code>summary(YourGlmName)</code> and
+should be typed in here as a number like 25.3.</span> </span><span
+class="tooltipr"> df for residual deviance,  <span
+class="tooltiprtext">The df for the residual deviance is also shown at
+the bottom of the output of your
+<code>summary(YourGlmName)</code>.</span> </span><span class="tooltipr">
+lower.tail=FALSE) <span class="tooltiprtext">This command ensures you
+find the probability of the chi-squared distribution being as extreme or
+more extreme than the observed value of residual deviance.</span>
+</span></p>
 </div>
 <p></a></p>
 <div id="multipleGOF2" style="display:none;">
@@ -1245,16 +2024,42 @@ $$</code></pre>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pchisq</span>(<span class="fl">256.30</span>, <span class="dv">570</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 6.585816e-33</code></pre>
 </div>
-<p>The null hypothesis of the goodness-of-fit test is that the logistic regression is a good fit of the data. So a large p-value (like 0.479) is good because it allows us to trust the results of our logistic regression. When the p-value becomes very small, we must “reject the null” and conclude a poor fit, which implies that we should not trust the results of the logistic regression.</p>
+<p>The null hypothesis of the goodness-of-fit test is that the logistic
+regression is a good fit of the data. So a large p-value (like 0.479) is
+good because it allows us to trust the results of our logistic
+regression. When the p-value becomes very small, we must “reject the
+null” and conclude a poor fit, which implies that we should not trust
+the results of the logistic regression.</p>
 </div>
 <p><br/></p>
 </div>
 <div id="predict-probabilities-1" class="section level4">
 <h4>Predict Probabilities</h4>
-<p>To predict the probability that <span class="math inline">\(Y_i=1\)</span> for a given <span class="math inline">\(x\)</span>-value, use the code</p>
+<p>To predict the probability that <span
+class="math inline">\(Y_i=1\)</span> for a given <span
+class="math inline">\(x\)</span>-value, use the code</p>
 <a href="javascript:showhide('MultipleLogisticPredict')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> predict( <span class="tooltiprtext">The predict() function allows us to use the regression model that was obtained from glm() to predict the probability that <span class="math inline">\(Y_i = 1\)</span> for a given <span class="math inline">\(X_i\)</span>.</span> </span><span class="tooltipr"> YourGlmName,  <span class="tooltiprtext"><code>YourGlmName</code> is the name of the object you created when you performed your logistic regression using glm().</span> </span><span class="tooltipr"> newdata =  <span class="tooltiprtext">The <code>newdata =</code> command allows you to specify the x-values for which you want to obtain predicted probabilities that <span class="math inline">\(Y_i=1\)</span>.</span> </span><span class="tooltipr"> NewDataFrame,  <span class="tooltiprtext">Typically, NewDataFrame is created in real time using the data.frame( X1 = c(Value 1, Value 2, …), X2 = c(Value 1, Value 2, …), …) command. You should see the GSS example file for an example of how to use this function.</span> </span><span class="tooltipr"> type = “response”) <span class="tooltiprtext">The type = “response” options specifies that you want predicted probabilities. There are other options available. See ?predict.glm for details.</span> </span></p>
+<p><span class="tooltipr"> predict( <span class="tooltiprtext">The
+predict() function allows us to use the regression model that was
+obtained from glm() to predict the probability that <span
+class="math inline">\(Y_i = 1\)</span> for a given <span
+class="math inline">\(X_i\)</span>.</span> </span><span
+class="tooltipr"> YourGlmName,  <span
+class="tooltiprtext"><code>YourGlmName</code> is the name of the object
+you created when you performed your logistic regression using
+glm().</span> </span><span class="tooltipr"> newdata =  <span
+class="tooltiprtext">The <code>newdata =</code> command allows you to
+specify the x-values for which you want to obtain predicted
+probabilities that <span class="math inline">\(Y_i=1\)</span>.</span>
+</span><span class="tooltipr"> NewDataFrame,  <span
+class="tooltiprtext">Typically, NewDataFrame is created in real time
+using the data.frame( X1 = c(Value 1, Value 2, …), X2 = c(Value 1, Value
+2, …), …) command. You should see the GSS example file for an example of
+how to use this function.</span> </span><span class="tooltipr"> type =
+“response”) <span class="tooltiprtext">The type = “response” options
+specifies that you want predicted probabilities. There are other options
+available. See ?predict.glm for details.</span> </span></p>
 </div>
 <p></a></p>
 <div id="MultipleLogisticPredict" style="display:none;">
@@ -1266,13 +2071,91 @@ $$</code></pre>
 <div id="plot-the-regression-1" class="section level4">
 <h4>Plot the Regression</h4>
 <div class="tab">
-<p><button class="tablinks" onclick="openTab(event, 'MultipleLogisticBaseplot')">Base R</button> <button class="tablinks" onclick="openTab(event, 'MultipleLogisticggplot')">ggplot2</button></p>
+<p><button class="tablinks" onclick="openTab(event, 'MultipleLogisticBaseplot')">Base
+R</button>
+<button class="tablinks" onclick="openTab(event, 'MultipleLogisticggplot')">ggplot2</button></p>
 </div>
 <div id="MultipleLogisticBaseplot" class="tabcontent">
 <p>
 <a href="javascript:showhide('MultipleLogisticBaseplot2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> b &lt;- coef(myglm) <span class="tooltiprtext">This stores the estimated coefficients from the regression into the “b” vector.</span> </span><br/><span class="tooltipr"> palette( <span class="tooltiprtext">The palette() function allows you to specify the colors R chooses for the plot.</span> </span><span class="tooltipr"> c(“SomeColor”,“DifferentColor”,…) <span class="tooltiprtext">Specify as many colors for the palette as you wish. R will choose a color for each group that you specify later on in your plot(…) code.</span> </span><span class="tooltipr"> )) <span class="tooltiprtext">Closing parentheses.</span> </span><br/><span class="tooltipr"> plot( <span class="tooltiprtext">Create the binary scatterplot for the logistic regression.</span> </span><span class="tooltipr"> Y <span class="tooltiprtext">Note that Y must be binary (0,1) values. If it is not, use a logical statement to make it binary, like height&gt;60 or sex==“B”.</span> </span><span class="tooltipr">  ~  <span class="tooltiprtext">The formula operator in R.</span> </span><span class="tooltipr"> X1, <span class="tooltiprtext">The first x-variable in your glm code.</span> </span><span class="tooltipr">  data = YourDataSet, <span class="tooltiprtext">Specify the name of your data set.</span> </span><span class="tooltipr">  pch = 16) <span class="tooltiprtext">Select the type of plotting characters to use for the plot.</span> </span><br/><span class="tooltipr"> curve( <span class="tooltiprtext">Use the curve function to add the logistic regression curve to the plot.</span> </span><span class="tooltipr"> exp( <span class="tooltiprtext">The exp(…) function computes e^(stuff) in R and stands for the “exponential function.”</span> </span><span class="tooltipr"> (b[1]+ <span class="tooltiprtext">The first coefficient found in b is the y-intercept.</span> </span><span class="tooltipr"> b[2] <span class="tooltiprtext">The second coefficient found in b is the slope term.</span> </span><span class="tooltipr"> *x) <span class="tooltiprtext">The curve(…) function requires that you call the x-variable “x” although you can change this behavior using xname=“SomeOtherName” if you want.</span> </span><span class="tooltipr"> / <span class="tooltiprtext">The logistic model is e^(stuff) / (1 + e^(stuff)).</span> </span><span class="tooltipr"> (1+exp(b[1]+b[2]<em>x)) <span class="tooltiprtext">The denominator of the logistic regression. Be careful to group the entire denominator (1+exp(stuff)).</span> </span><span class="tooltipr">  col = palette()[1], <span class="tooltiprtext">Pull the first color from the color palette for the first curve.</span> </span><span class="tooltipr">  add = TRUE) <span class="tooltiprtext">Add the curve to the current plot.</span> </span><br/><span class="tooltipr"> curve(exp((b[1]+b[3])+(b[2]+b[4])</em>x) <span class="tooltiprtext">Note how the numerator of this second logistic curve uses and adjusted y-intercept (b[1]+b[3]) and an adjusted slope (b[2]+b[4])<em>x.</span> </span><span class="tooltipr"> / <span class="tooltiprtext">Begin the denominator.</span> </span><span class="tooltipr"> (1+exp((b[1]+b[3])+(b[2]+b[4])</em>x)) <span class="tooltiprtext">The denominator consists of (1+exp(stuff)).</span> </span><span class="tooltipr"> , <span class="tooltiprtext">Begin optional parameters.</span> </span><span class="tooltipr">  col = palette()[2], <span class="tooltiprtext">Set the color of this second curve to the second color in the palette.</span> </span><span class="tooltipr">  add = TRUE) <span class="tooltiprtext">Add the curve to the current plot.</span> </span><br/><span class="tooltipr"> legend( <span class="tooltiprtext">The legend function adds a legend to the current plot.</span> </span><span class="tooltipr"> “topright”, <span class="tooltiprtext">Typically the legend is placed in the top-right corner of the graph. But it could be placed “top”, “topleft”, “left”, “bottomleft”, “bottom”, “center”, “right”, or “bottomright”.</span> </span><span class="tooltipr">  legend = <span class="tooltiprtext">Why you have to write legend again, no one knows, but you do.</span> </span><span class="tooltipr"> c(“Lable 1”, “Label 2”), <span class="tooltiprtext">These are the values that will appear in the legend, one entry on each line of the legend.</span> </span><span class="tooltipr">  col = palette(), <span class="tooltiprtext">This specifies the colors of the symbols in the legend. First color goes with “Label 1”, and second goes with “Label 2” and so on.</span> </span><span class="tooltipr">  lty = 1, <span class="tooltiprtext">Specifies that solid lines should be used in the legend. If you wanted dots instead, use pch=16. If you wanted dashed lines, use lty=2. Many other options exist.</span> </span><span class="tooltipr">  bty = <span class="tooltiprtext">Specifies the “box type” (bty) that should be drawn around the legend.</span> </span><span class="tooltipr"> ‘n’) <span class="tooltiprtext">By placing a “no” option (‘n’) here, no box is drawn around the legend.</span> </span></p>
+<p><span class="tooltipr"> b &lt;- coef(myglm) <span
+class="tooltiprtext">This stores the estimated coefficients from the
+regression into the “b” vector.</span> </span><br/><span
+class="tooltipr"> palette( <span class="tooltiprtext">The palette()
+function allows you to specify the colors R chooses for the plot.</span>
+</span><span class="tooltipr"> c(“SomeColor”,“DifferentColor”,…) <span
+class="tooltiprtext">Specify as many colors for the palette as you wish.
+R will choose a color for each group that you specify later on in your
+plot(…) code.</span> </span><span class="tooltipr"> )) <span
+class="tooltiprtext">Closing parentheses.</span> </span><br/><span
+class="tooltipr"> plot( <span class="tooltiprtext">Create the binary
+scatterplot for the logistic regression.</span> </span><span
+class="tooltipr"> Y <span class="tooltiprtext">Note that Y must be
+binary (0,1) values. If it is not, use a logical statement to make it
+binary, like height&gt;60 or sex==“B”.</span> </span><span
+class="tooltipr">  ~  <span class="tooltiprtext">The formula operator in
+R.</span> </span><span class="tooltipr"> X1, <span
+class="tooltiprtext">The first x-variable in your glm code.</span>
+</span><span class="tooltipr">  data = YourDataSet, <span
+class="tooltiprtext">Specify the name of your data set.</span>
+</span><span class="tooltipr">  pch = 16) <span
+class="tooltiprtext">Select the type of plotting characters to use for
+the plot.</span> </span><br/><span class="tooltipr"> curve( <span
+class="tooltiprtext">Use the curve function to add the logistic
+regression curve to the plot.</span> </span><span class="tooltipr"> exp(
+<span class="tooltiprtext">The exp(…) function computes e^(stuff) in R
+and stands for the “exponential function.”</span> </span><span
+class="tooltipr"> (b[1]+ <span class="tooltiprtext">The first
+coefficient found in b is the y-intercept.</span> </span><span
+class="tooltipr"> b[2] <span class="tooltiprtext">The second coefficient
+found in b is the slope term.</span> </span><span class="tooltipr"> *x)
+<span class="tooltiprtext">The curve(…) function requires that you call
+the x-variable “x” although you can change this behavior using
+xname=“SomeOtherName” if you want.</span> </span><span class="tooltipr">
+/ <span class="tooltiprtext">The logistic model is e^(stuff) / (1 +
+e^(stuff)).</span> </span><span class="tooltipr">
+(1+exp(b[1]+b[2]<em>x)) <span class="tooltiprtext">The denominator of
+the logistic regression. Be careful to group the entire denominator
+(1+exp(stuff)).</span> </span><span class="tooltipr">  col =
+palette()[1], <span class="tooltiprtext">Pull the first color from the
+color palette for the first curve.</span> </span><span class="tooltipr">
+ add = TRUE) <span class="tooltiprtext">Add the curve to the current
+plot.</span> </span><br/><span class="tooltipr">
+curve(exp((b[1]+b[3])+(b[2]+b[4])</em>x) <span class="tooltiprtext">Note
+how the numerator of this second logistic curve uses and adjusted
+y-intercept (b[1]+b[3]) and an adjusted slope (b[2]+b[4])<em>x.</span>
+</span><span class="tooltipr"> / <span class="tooltiprtext">Begin the
+denominator.</span> </span><span class="tooltipr">
+(1+exp((b[1]+b[3])+(b[2]+b[4])</em>x)) <span class="tooltiprtext">The
+denominator consists of (1+exp(stuff)).</span> </span><span
+class="tooltipr"> , <span class="tooltiprtext">Begin optional
+parameters.</span> </span><span class="tooltipr">  col = palette()[2],
+<span class="tooltiprtext">Set the color of this second curve to the
+second color in the palette.</span> </span><span class="tooltipr">  add
+= TRUE) <span class="tooltiprtext">Add the curve to the current
+plot.</span> </span><br/><span class="tooltipr"> legend( <span
+class="tooltiprtext">The legend function adds a legend to the current
+plot.</span> </span><span class="tooltipr"> “topright”, <span
+class="tooltiprtext">Typically the legend is placed in the top-right
+corner of the graph. But it could be placed “top”, “topleft”, “left”,
+“bottomleft”, “bottom”, “center”, “right”, or “bottomright”.</span>
+</span><span class="tooltipr">  legend = <span class="tooltiprtext">Why
+you have to write legend again, no one knows, but you do.</span>
+</span><span class="tooltipr"> c(“Lable 1”, “Label 2”), <span
+class="tooltiprtext">These are the values that will appear in the
+legend, one entry on each line of the legend.</span> </span><span
+class="tooltipr">  col = palette(), <span class="tooltiprtext">This
+specifies the colors of the symbols in the legend. First color goes with
+“Label 1”, and second goes with “Label 2” and so on.</span> </span><span
+class="tooltipr">  lty = 1, <span class="tooltiprtext">Specifies that
+solid lines should be used in the legend. If you wanted dots instead,
+use pch=16. If you wanted dashed lines, use lty=2. Many other options
+exist.</span> </span><span class="tooltipr">  bty = <span
+class="tooltiprtext">Specifies the “box type” (bty) that should be drawn
+around the legend.</span> </span><span class="tooltipr"> ‘n’) <span
+class="tooltiprtext">By placing a “no” option (‘n’) here, no box is
+drawn around the legend.</span> </span></p>
 </div>
 <p></a></p>
 <div id="MultipleLogisticBaseplot2" style="display:none;">
@@ -1293,7 +2176,34 @@ $$</code></pre>
 <p>
 <a href="javascript:showhide('MultipleLogisticggplot2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> ggplot(data=YourDataName, <span class="tooltiprtext">Initialize a ggplot.</span> </span><span class="tooltipr">  aes( <span class="tooltiprtext">Declare the aesthetics of the graph.</span> </span><span class="tooltipr"> x=X1, <span class="tooltiprtext">Set the x-axis to be your X1 variable.</span> </span><span class="tooltipr"> y=Y <span class="tooltiprtext">Set the y-axis to be your Y-variable.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis for aes(…) function.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis for ggplot(…) function.</span> </span><span class="tooltipr">  + <span class="tooltiprtext">Add a layer to the ggplot.</span> </span><br/><span class="tooltipr">   geom_point( <span class="tooltiprtext">Add dots to the ggplot.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis for the geom_point() function.</span> </span><span class="tooltipr">  + <span class="tooltiprtext">Add a layer to the ggplot.</span> </span><br/><span class="tooltipr">   geom_smooth(method=“glm”, method.args=list(family=“binomial”), se=FALSE, <span class="tooltiprtext">Add the logistic regression curve to the plot.</span> </span><span class="tooltipr">   aes(color="X2) <span class="tooltiprtext">Create a different logistic regression curve for each group found in X2, and give each curve a different color.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis for the geom_smooth() function.</span> </span><span class="tooltipr">  + <span class="tooltiprtext">Add a layer to the plot.</span> </span><br/><span class="tooltipr">   theme_bw() <span class="tooltiprtext">Add a black and white them to the plot.</span> </span></p>
+<p><span class="tooltipr"> ggplot(data=YourDataName, <span
+class="tooltiprtext">Initialize a ggplot.</span> </span><span
+class="tooltipr">  aes( <span class="tooltiprtext">Declare the
+aesthetics of the graph.</span> </span><span class="tooltipr"> x=X1,
+<span class="tooltiprtext">Set the x-axis to be your X1 variable.</span>
+</span><span class="tooltipr"> y=Y <span class="tooltiprtext">Set the
+y-axis to be your Y-variable.</span> </span><span class="tooltipr"> )
+<span class="tooltiprtext">Closing parenthesis for aes(…)
+function.</span> </span><span class="tooltipr"> ) <span
+class="tooltiprtext">Closing parenthesis for ggplot(…) function.</span>
+</span><span class="tooltipr">  + <span class="tooltiprtext">Add a layer
+to the ggplot.</span> </span><br/><span class="tooltipr">   geom_point(
+<span class="tooltiprtext">Add dots to the ggplot.</span> </span><span
+class="tooltipr"> ) <span class="tooltiprtext">Closing parenthesis for
+the geom_point() function.</span> </span><span class="tooltipr">  +
+<span class="tooltiprtext">Add a layer to the ggplot.</span>
+</span><br/><span class="tooltipr">   geom_smooth(method=“glm”,
+method.args=list(family=“binomial”), se=FALSE, <span
+class="tooltiprtext">Add the logistic regression curve to the
+plot.</span> </span><span class="tooltipr">   aes(color=“X2) <span
+class="tooltiprtext">Create a different logistic regression curve for
+each group found in X2, and give each curve a different color.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Closing
+parenthesis for the geom_smooth() function.</span> </span><span
+class="tooltipr">  + <span class="tooltiprtext">Add a layer to the
+plot.</span> </span><br/><span class="tooltipr">   theme_bw() <span
+class="tooltiprtext">Add a black and white them to the plot.</span>
+</span></p>
 </div>
 <p></a></p>
 <div id="MultipleLogisticggplot2" style="display:none;">
@@ -1316,32 +2226,68 @@ $$</code></pre>
 <div style="padding-left:125px;">
 <p>Multiple Logistic Regression is used when</p>
 <ul>
-<li>the response variable is binary <span class="math inline">\((Y_i=0\)</span> or <span class="math inline">\(1)\)</span>, and</li>
-<li>there are multiple explanatory variables <span class="math inline">\(X_1,\ldots,X_p\)</span> that can be either quantitative or qualitative.</li>
+<li>the response variable is binary <span
+class="math inline">\((Y_i=0\)</span> or <span
+class="math inline">\(1)\)</span>, and</li>
+<li>there are multiple explanatory variables <span
+class="math inline">\(X_1,\ldots,X_p\)</span> that can be either
+quantitative or qualitative.</li>
 </ul>
 <div id="the-model-1" class="section level4">
 <h4>The Model</h4>
-<p>Very little changes in multiple logistic regression from Simple Logistic Regression. The probability that <span class="math inline">\(Y_i = 1\)</span> given the observed data <span class="math inline">\((x_{i1},\ldots,x_{ip})\)</span> is called <span class="math inline">\(\pi_i\)</span> and is modeled by the expanded equation</p>
+<p>Very little changes in multiple logistic regression from Simple
+Logistic Regression. The probability that <span
+class="math inline">\(Y_i = 1\)</span> given the observed data <span
+class="math inline">\((x_{i1},\ldots,x_{ip})\)</span> is called <span
+class="math inline">\(\pi_i\)</span> and is modeled by the expanded
+equation</p>
 <p><span class="math display">\[
-  P(Y_i = 1|\, x_{i1},\ldots,x_{ip}) = \frac{e^{\beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}}}{1+e^{\beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip} }} = \pi_i
+  P(Y_i = 1|\, x_{i1},\ldots,x_{ip}) = \frac{e^{\beta_0 + \beta_1 x_{i1}
++ \ldots + \beta_p x_{ip}}}{1+e^{\beta_0 + \beta_1 x_{i1} + \ldots +
+\beta_p x_{ip} }} = \pi_i
 \]</span></p>
-<p>The assumption is that for certain combinations of <span class="math inline">\(X_1,\ldots,X_p\)</span> the probability that <span class="math inline">\(Y_i=1\)</span> is higher than for other combinations.</p>
+<p>The assumption is that for certain combinations of <span
+class="math inline">\(X_1,\ldots,X_p\)</span> the probability that <span
+class="math inline">\(Y_i=1\)</span> is higher than for other
+combinations.</p>
 </div>
 <div id="interpretation-1" class="section level4">
 <h4>Interpretation</h4>
-<p>The model for <span class="math inline">\(\pi_i\)</span> comes from modeling the <em>log of the odds</em> that <span class="math inline">\(Y_i=1\)</span> using a linear regression, i.e., <span class="math display">\[
-  \log\underbrace{\left(\frac{\pi_i}{1-\pi_i}\right)}_{\text{Odds for}\ Y_i=1} = \underbrace{\beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}}_{\text{linear regression}}
-\]</span> Beginning to solve this equation for <span class="math inline">\(\pi_i\)</span> leads to the intermediate, but important result that <span class="math display">\[
-    \underbrace{\frac{\pi_i}{1-\pi_i}}_{\text{Odds for}\ Y_i=1} = e^{\overbrace{\beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}}^{\text{liear regression}}} = e^{\beta_0}e^{\beta_1 x_{i1}}\cdots e^{\beta_p x_{ip}}
-\]</span> As in Simple Linear Regression, the values of <span class="math inline">\(e^{\beta_0}\)</span>, <span class="math inline">\(e^{\beta_1}\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(e^{\beta_p}\)</span> are interpreted as the proportional change in odds for <span class="math inline">\(Y_i=1\)</span> when a given <span class="math inline">\(x\)</span>-variable experiences a unit change, <em>all other variables being held constant</em>.</p>
+<p>The model for <span class="math inline">\(\pi_i\)</span> comes from
+modeling the <em>log of the odds</em> that <span
+class="math inline">\(Y_i=1\)</span> using a linear regression, i.e.,
+<span class="math display">\[
+  \log\underbrace{\left(\frac{\pi_i}{1-\pi_i}\right)}_{\text{Odds for}\
+Y_i=1} = \underbrace{\beta_0 + \beta_1 x_{i1} + \ldots + \beta_p
+x_{ip}}_{\text{linear regression}}
+\]</span> Beginning to solve this equation for <span
+class="math inline">\(\pi_i\)</span> leads to the intermediate, but
+important result that <span class="math display">\[
+    \underbrace{\frac{\pi_i}{1-\pi_i}}_{\text{Odds for}\ Y_i=1} =
+e^{\overbrace{\beta_0 + \beta_1 x_{i1} + \ldots + \beta_p
+x_{ip}}^{\text{liear regression}}} = e^{\beta_0}e^{\beta_1 x_{i1}}\cdots
+e^{\beta_p x_{ip}}
+\]</span> As in Simple Linear Regression, the values of <span
+class="math inline">\(e^{\beta_0}\)</span>, <span
+class="math inline">\(e^{\beta_1}\)</span>, <span
+class="math inline">\(\ldots\)</span>, <span
+class="math inline">\(e^{\beta_p}\)</span> are interpreted as the
+proportional change in odds for <span
+class="math inline">\(Y_i=1\)</span> when a given <span
+class="math inline">\(x\)</span>-variable experiences a unit change,
+<em>all other variables being held constant</em>.</p>
 </div>
 <div id="checking-the-model-assumptions" class="section level4">
 <h4>Checking the Model Assumptions</h4>
-<p>Diagnostics are the same in multiple logistic regression as they are in simple logistic regression.</p>
+<p>Diagnostics are the same in multiple logistic regression as they are
+in simple logistic regression.</p>
 </div>
 <div id="prediction-1" class="section level4">
 <h4>Prediction</h4>
-<p>The idea behind prediction in multiple logistic regression is the same as in simple logistic regression. The only difference is that more than one explanatory variable is used to make the prediction of the <em>risk</em> that <span class="math inline">\(Y_i=1\)</span>.</p>
+<p>The idea behind prediction in multiple logistic regression is the
+same as in simple logistic regression. The only difference is that more
+than one explanatory variable is used to make the prediction of the
+<em>risk</em> that <span class="math inline">\(Y_i=1\)</span>.</p>
 <hr />
 </div>
 </div>

@@ -429,10 +429,10 @@ $(document).ready(function () {
       <a href="./Analyses/Wilcoxon Tests/RecallingWords.html">Recalling Words</a>
     </li>
     <li>
-      <a href="./Analyses/Kruskal-Wallis Test/Food.html">Food</a>
+      <a href="./Analyses/ANOVA/MyTwoWayANOVA.html">My Two-way ANOVA</a>
     </li>
     <li>
-      <a href="./Analyses/ANOVA/HighSchoolSeniors2.html">High School Seniors 2</a>
+      <a href="./Analyses/Kruskal-Wallis Test/Food.html">Food</a>
     </li>
     <li>
       <a href="./Analyses/Linear Regression/MySimpleLinearRegression.html">My Simple Linear Regression</a>
@@ -472,60 +472,272 @@ $(document).ready(function () {
  }
 </script>
 <hr />
-<p>A nonparametric approach to computing the p-value for any test statistic in just about any scenario.</p>
+<p>A nonparametric approach to computing the p-value for any test
+statistic in just about any scenario.</p>
 <hr />
-<div id="section" class="section level3 tabset tabset-pills tabset-fade">
+<div id="section"
+class="section level3 tabset tabset-pills tabset-fade">
 <h3 class="tabset tabset-pills tabset-fade"></h3>
 <div id="overview" class="section level4">
 <h4>Overview</h4>
 <div style="padding-left:30px;">
-<p>In almost all hypothesis testing scenarios, the null hypothesis can be interpreted as follows.</p>
+<p>In almost all hypothesis testing scenarios, the null hypothesis can
+be interpreted as follows.</p>
 <div style="padding-left:15px;padding-right:15px;">
-<p><span class="math inline">\(H_0\)</span>: Any pattern that has been witnessed in the sampled data is simply due to random chance.</p>
+<p><span class="math inline">\(H_0\)</span>: Any pattern that has been
+witnessed in the sampled data is simply due to random chance.</p>
 </div>
-<p>Permutation Tests depend completely on this single idea. If all patterns in the data really are simply due to random chance, then the null hypothesis is true. Further, random <strong>re</strong>-samples of the data should show similar lack of patterns. However, if the pattern in the data is <em>real</em>, then random <strong>re</strong>-samples of the data will show very different patterns from the original.</p>
-<p>Consider the following image. In that image, the toy blocks on the left show a clear pattern or structure. They are nicely organized into colored piles. This suggests a <em>real</em> pattern that is not random. Someone certainly organized those blocks into that pattern. The blocks didn’t land that way by random chance. On the other hand, the pile of toy blocks shown on the right is certainly a random pattern. This is a pattern that would result if the toy blocks were put into a bag, shaken up, and dumped out. This is the idea of the permutation test. If there is structure in the data, then “mixing up the data and dumping it out again” will show very different patterns from the original. However, if the data was just random to begin with, then we would see a similar pattern by “mixing up the data and dumping it out again.”</p>
+<p>Permutation Tests depend completely on this single idea. If all
+patterns in the data really are simply due to random chance, then the
+null hypothesis is true. Further, random <strong>re</strong>-samples of
+the data should show similar lack of patterns. However, if the pattern
+in the data is <em>real</em>, then random <strong>re</strong>-samples of
+the data will show very different patterns from the original.</p>
+<p>Consider the following image. In that image, the toy blocks on the
+left show a clear pattern or structure. They are nicely organized into
+colored piles. This suggests a <em>real</em> pattern that is not random.
+Someone certainly organized those blocks into that pattern. The blocks
+didn’t land that way by random chance. On the other hand, the pile of
+toy blocks shown on the right is certainly a random pattern. This is a
+pattern that would result if the toy blocks were put into a bag, shaken
+up, and dumped out. This is the idea of the permutation test. If there
+is structure in the data, then “mixing up the data and dumping it out
+again” will show very different patterns from the original. However, if
+the data was just random to begin with, then we would see a similar
+pattern by “mixing up the data and dumping it out again.”</p>
 <center>
 <img src="Images/legoPermutationExample.png" width=600px;>
 </center>
 <p>The process of a permutation test is:</p>
 <ol style="list-style-type: decimal">
 <li>Compute a test statistic for the original data.</li>
-<li>Re-sample the data (“shake it up and dump it out”) thousands of times, computing a new test statistic each time, to create a sampling distribution of the test statistic.</li>
-<li>Compute the p-value of the permutation test as the percentage of test statistics that are as extreme or more extreme than the one originally observed.</li>
+<li>Re-sample the data (“shake it up and dump it out”) thousands of
+times, computing a new test statistic each time, to create a sampling
+distribution of the test statistic.</li>
+<li>Compute the p-value of the permutation test as the percentage of
+test statistics that are as extreme or more extreme than the one
+originally observed.</li>
 </ol>
-<p>In review, the sampling distribution is created by permuting (randomly rearranging) the data thousands of times and calculating a test statistic on each permuted version of the data. A histogram of the test statistics then provides the sampling distribution of the test statistic needed to compute the p-value of the original test statistic.</p>
+<p>In review, the sampling distribution is created by permuting
+(randomly rearranging) the data thousands of times and calculating a
+test statistic on each permuted version of the data. A histogram of the
+test statistics then provides the sampling distribution of the test
+statistic needed to compute the p-value of the original test
+statistic.</p>
 </div>
 <hr />
 </div>
 <div id="r-instructions" class="section level4">
 <h4>R Instructions</h4>
 <div style="padding-left:50px;">
-<p>Any permutation test can be performed in R with a <code>for</code> loop.</p>
+<p>Any permutation test can be performed in R with a <code>for</code>
+loop.</p>
 <div style="padding-left:80px;">
 <a href="javascript:showhide('perm1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> #Step 1 <span class="tooltiprtext">Compute a test statistic for the original data.</span> </span><br/><span class="tooltipr"> myTest &lt;- …perform the initial test… <span class="tooltiprtext">This could be a <code>t.test</code>, <code>wilcox.test</code>, <code>aov</code>, <code>kruskal.test</code>, <code>lm</code>, <code>glm</code>, <code>chisq.test</code>, or any other R code that results in a test statistic. It could even simply be the mean or standard deviation of the data.</span> </span><br/><span class="tooltipr"> observedTestStat &lt;- …get the test statistic… <span class="tooltiprtext">Save the test statistic of your test into the object called <code>observedTestStat</code>. For tests that always result in a single test statistic like a <code>t.test</code>, <code>wilcox.test</code>, <code>kruskal.test</code>, and <code>chisq.test</code> it is <code>myTest$statistic</code>. For an <code>aov</code>, <code>lm</code>, or <code>glm</code> try printing <code>summary(myTest)[]</code> to see what values you are interested in using.</span> </span><br/><span class="tooltipr"> observedTestStat <span class="tooltiprtext">Print the value of the test statistic of your test to the screen. This is the value that we now need to use to compute the P-value from by finding the probability that a randomly computed test statistic would be “more extreme” than this originally observed value.</span> </span><br/><br/><span class="tooltipr"> #Step 2 <span class="tooltiprtext">Re-sample the data (“shake it up and dump it out”) thousands of times, computing a new test statistic each time, to create a sampling distribution of the test statistic.</span> </span><br/><span class="tooltipr"> N &lt;- 2000       <span class="tooltiprtext">N is the number of times you will reuse the data to create the sampling distribution of the test statistic. A typical choice is 2000, but sometimes 10000, or 100000 reuses are needed before useful answers can be obtained.</span> </span><br/><span class="tooltipr"> permutedTestStats &lt;-  <span class="tooltiprtext">This is a storage container that will be used to store the test statistics from each of the thousands of reuses of the data.</span> </span><span class="tooltipr"> rep(NA, N) <span class="tooltiprtext">The rep() function repeats a given value N times. This particular statement repeats NA’s or “missing values” N times. This gives us N “empty” storage spots inside of <code>permutedTestStats</code> that we can use to store the N test statistics from the N reuses of the data we will make in our <code>for</code> loop.</span> </span><br/><span class="tooltipr"> for <span class="tooltiprtext">The <code>for</code> loop is a programming tool that lets us tell R to run a certain code over and over again for a certain number of times.</span> </span><span class="tooltipr">  (i in   <span class="tooltiprtext">In R, the <code>for</code> loop must be followed by a space, then an opening parenthesis, then a variable name (in this case the variable is called “i”), then the word “in” then a list of values.</span> </span><span class="tooltipr"> 1:N <span class="tooltiprtext">The 1:N gives R the list of values 1, 2, 3, … and so on all the way up to N. These values are passed into <code>i</code> one at a time and the code inside the <code>for</code> loop is performed first for <code>i=1</code>, then again for <code>i=2</code>, then again for <code>i=3</code> and so on until finally <code>i=N</code>. At that point, the <code>for</code> loop ends.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Required closing parenthesis on the <code>for (i in 1:N)</code> statement.</span> </span><span class="tooltipr"> { <span class="tooltiprtext">This bracket opens the code section of the <code>for</code> loop. Any code placed between the opening { and closing } brackets will be performed over and over again for each value of <code>i=1</code>, <code>i=2</code>, … up through <code>i=N</code>.</span> </span><br/><span class="tooltipr">    <span class="tooltiprtext">Two spaces in front of every line inside of the opening { and closing } brackets helps keep your code organized.</span> </span><span class="tooltipr"> permutedTest &lt;- …perform test with permutedData… <span class="tooltiprtext">The same test that was performed on the original data, should be performed again but with randomly permuted data. The easiest way to permute data is with sample(y-variable-name) inside your test. See the Explanation tab for details.</span> </span><br/><span class="tooltipr">    <span class="tooltiprtext">Two spaces in front of every line inside of the opening { and closing } brackets helps keep your code organized.</span> </span><span class="tooltipr"> permutedTestStats <span class="tooltiprtext">This is the storage container that was built prior to the <code>for (i in 1:N)</code> code. Inside the <code>for</code> loop, this container is filled value by value using the square brackets <code>[i]</code>.</span> </span><span class="tooltipr"> [i] <span class="tooltiprtext">The square brackets <code>[i]</code> allows us to access the “i”th position of <code>permutedTestStats</code>. Remember, since this code is inside of the <code>for</code> loop, <code>i=1</code> the first time through the code, then <code>i=2</code> the second time through the code, <code>i=3</code> the third time through, and so on up until <code>i=N</code> the <code>N</code>th time through the code.</span> </span><span class="tooltipr">  &lt;- …get test statistic… <span class="tooltiprtext">The test statistic from <code>permutedTest</code> is accessed here and stored into <code>permutedTestStats[i]</code>.</span> </span><br/><span class="tooltipr"> } <span class="tooltiprtext">The closing } bracket ends the code that is repeated over and over again inside the <code>for</code> loop.</span> </span><br/><span class="tooltipr"> hist(permutedTestStats) <span class="tooltiprtext">Creating a histogram of the sampling distribution of the test statistics obtained from the reused and permuted data allows us to visually compare the <code>observedTestStat</code> to the distribution of test statistics to visually see the percentage of test statistics that are as extreme or more extreme than the observed test statistic value. This is the p-value.</span> </span><br/><span class="tooltipr"> abline(v=observedTestStat) <span class="tooltiprtext">This adds the <code>observedTestStat</code> to the distribution of test statistics to visually see the percentage of test statistics that are as extreme or more extreme than the observed test statistic value. This is the p-value.</span> </span><br/><br/><span class="tooltipr"> #Step 3 <span class="tooltiprtext">Compute the p-value of the permutation test as the percentage of test statistics that are as extreme or more extreme than the one originally observed.</span> </span><br/><span class="tooltipr"> sum(permutedTestStats &gt;= observedTestStat)/N <span class="tooltiprtext">This computes a “greater than” p-value. A two-sided p-value could be obtained by multiplying this value by 2 if the observed test statistic was on the right hand side of the histogram.</span> </span><br/><span class="tooltipr"> sum(permutedTestStats &lt;= observedTestStat)/N <span class="tooltiprtext">This computes a “less than” p-value. A two-sided p-value could be obtained by multiplying this value by 2 if the observed test statistic was on the left hand side of the histogram.</span> </span></p>
+<p><span class="tooltipr"> #Step 1 <span class="tooltiprtext">Compute a
+test statistic for the original data.</span> </span><br/><span
+class="tooltipr"> myTest &lt;- …perform the initial test… <span
+class="tooltiprtext">This could be a <code>t.test</code>,
+<code>wilcox.test</code>, <code>aov</code>, <code>kruskal.test</code>,
+<code>lm</code>, <code>glm</code>, <code>chisq.test</code>, or any other
+R code that results in a test statistic. It could even simply be the
+mean or standard deviation of the data.</span> </span><br/><span
+class="tooltipr"> observedTestStat &lt;- …get the test statistic… <span
+class="tooltiprtext">Save the test statistic of your test into the
+object called <code>observedTestStat</code>. For tests that always
+result in a single test statistic like a <code>t.test</code>,
+<code>wilcox.test</code>, <code>kruskal.test</code>, and
+<code>chisq.test</code> it is <code>myTest$statistic</code>. For an
+<code>aov</code>, <code>lm</code>, or <code>glm</code> try printing
+<code>summary(myTest)[]</code> to see what values you are interested in
+using.</span> </span><br/><span class="tooltipr"> observedTestStat <span
+class="tooltiprtext">Print the value of the test statistic of your test
+to the screen. This is the value that we now need to use to compute the
+P-value from by finding the probability that a randomly computed test
+statistic would be “more extreme” than this originally observed
+value.</span> </span><br/><br/><span class="tooltipr"> #Step 2 <span
+class="tooltiprtext">Re-sample the data (“shake it up and dump it out”)
+thousands of times, computing a new test statistic each time, to create
+a sampling distribution of the test statistic.</span> </span><br/><span
+class="tooltipr"> N &lt;- 2000       <span class="tooltiprtext">N is the
+number of times you will reuse the data to create the sampling
+distribution of the test statistic. A typical choice is 2000, but
+sometimes 10000, or 100000 reuses are needed before useful answers can
+be obtained.</span> </span><br/><span class="tooltipr">
+permutedTestStats &lt;-  <span class="tooltiprtext">This is a storage
+container that will be used to store the test statistics from each of
+the thousands of reuses of the data.</span> </span><span
+class="tooltipr"> rep(NA, N) <span class="tooltiprtext">The rep()
+function repeats a given value N times. This particular statement
+repeats NA’s or “missing values” N times. This gives us N “empty”
+storage spots inside of <code>permutedTestStats</code> that we can use
+to store the N test statistics from the N reuses of the data we will
+make in our <code>for</code> loop.</span> </span><br/><span
+class="tooltipr"> for <span class="tooltiprtext">The <code>for</code>
+loop is a programming tool that lets us tell R to run a certain code
+over and over again for a certain number of times.</span> </span><span
+class="tooltipr">  (i in   <span class="tooltiprtext">In R, the
+<code>for</code> loop must be followed by a space, then an opening
+parenthesis, then a variable name (in this case the variable is called
+“i”), then the word “in” then a list of values.</span> </span><span
+class="tooltipr"> 1:N <span class="tooltiprtext">The 1:N gives R the
+list of values 1, 2, 3, … and so on all the way up to N. These values
+are passed into <code>i</code> one at a time and the code inside the
+<code>for</code> loop is performed first for <code>i=1</code>, then
+again for <code>i=2</code>, then again for <code>i=3</code> and so on
+until finally <code>i=N</code>. At that point, the <code>for</code> loop
+ends.</span> </span><span class="tooltipr"> ) <span
+class="tooltiprtext">Required closing parenthesis on the
+<code>for (i in 1:N)</code> statement.</span> </span><span
+class="tooltipr"> { <span class="tooltiprtext">This bracket opens the
+code section of the <code>for</code> loop. Any code placed between the
+opening { and closing } brackets will be performed over and over again
+for each value of <code>i=1</code>, <code>i=2</code>, … up through
+<code>i=N</code>.</span> </span><br/><span class="tooltipr">    <span
+class="tooltiprtext">Two spaces in front of every line inside of the
+opening { and closing } brackets helps keep your code organized.</span>
+</span><span class="tooltipr"> permutedTest &lt;- …perform test with
+permutedData… <span class="tooltiprtext">The same test that was
+performed on the original data, should be performed again but with
+randomly permuted data. The easiest way to permute data is with
+sample(y-variable-name) inside your test. See the Explanation tab for
+details.</span> </span><br/><span class="tooltipr">    <span
+class="tooltiprtext">Two spaces in front of every line inside of the
+opening { and closing } brackets helps keep your code organized.</span>
+</span><span class="tooltipr"> permutedTestStats <span
+class="tooltiprtext">This is the storage container that was built prior
+to the <code>for (i in 1:N)</code> code. Inside the <code>for</code>
+loop, this container is filled value by value using the square brackets
+<code>[i]</code>.</span> </span><span class="tooltipr"> [i] <span
+class="tooltiprtext">The square brackets <code>[i]</code> allows us to
+access the “i”th position of <code>permutedTestStats</code>. Remember,
+since this code is inside of the <code>for</code> loop, <code>i=1</code>
+the first time through the code, then <code>i=2</code> the second time
+through the code, <code>i=3</code> the third time through, and so on up
+until <code>i=N</code> the <code>N</code>th time through the
+code.</span> </span><span class="tooltipr">  &lt;- …get test statistic…
+<span class="tooltiprtext">The test statistic from
+<code>permutedTest</code> is accessed here and stored into
+<code>permutedTestStats[i]</code>.</span> </span><br/><span
+class="tooltipr"> } <span class="tooltiprtext">The closing } bracket
+ends the code that is repeated over and over again inside the
+<code>for</code> loop.</span> </span><br/><span class="tooltipr">
+hist(permutedTestStats) <span class="tooltiprtext">Creating a histogram
+of the sampling distribution of the test statistics obtained from the
+reused and permuted data allows us to visually compare the
+<code>observedTestStat</code> to the distribution of test statistics to
+visually see the percentage of test statistics that are as extreme or
+more extreme than the observed test statistic value. This is the
+p-value.</span> </span><br/><span class="tooltipr">
+abline(v=observedTestStat) <span class="tooltiprtext">This adds the
+<code>observedTestStat</code> to the distribution of test statistics to
+visually see the percentage of test statistics that are as extreme or
+more extreme than the observed test statistic value. This is the
+p-value.</span> </span><br/><br/><span class="tooltipr"> #Step 3 <span
+class="tooltiprtext">Compute the p-value of the permutation test as the
+percentage of test statistics that are as extreme or more extreme than
+the one originally observed.</span> </span><br/><span class="tooltipr">
+sum(permutedTestStats &gt;= observedTestStat)/N <span
+class="tooltiprtext">This computes a “greater than” p-value. A two-sided
+p-value could be obtained by multiplying this value by 2 if the observed
+test statistic was on the right hand side of the histogram.</span>
+</span><br/><span class="tooltipr"> sum(permutedTestStats &lt;=
+observedTestStat)/N <span class="tooltiprtext">This computes a “less
+than” p-value. A two-sided p-value could be obtained by multiplying this
+value by 2 if the observed test statistic was on the left hand side of
+the histogram.</span> </span></p>
 </div>
 <p></a></p>
 <div id="perm1" style="display:none;">
 <ul>
 <li><p><code>myTest &lt;- ...perform the initial test...</code></p>
-<p>This could be a <code>t.test</code>, <code>wilcox.test</code>, <code>aov</code>, <code>kruskal.test</code>, <code>lm</code>, <code>glm</code>, <code>chisq.test</code>, or any other R code that results in a test statistic. It could even simply be the mean or standard deviation of the data.</p></li>
+<p>This could be a <code>t.test</code>, <code>wilcox.test</code>,
+<code>aov</code>, <code>kruskal.test</code>, <code>lm</code>,
+<code>glm</code>, <code>chisq.test</code>, or any other R code that
+results in a test statistic. It could even simply be the mean or
+standard deviation of the data.</p></li>
 <li><p><code>observedTestStat &lt;- ...get the test statistic...</code></p>
-<p>Save the test statistic of your test into the object called <code>observedTestStat</code>. For tests that always result in a single test statistic like a <code>t.test</code>, <code>wilcox.test</code>, <code>kruskal.test</code>, and <code>chisq.test</code> it is <code>myTest$statistic</code>. For an <code>aov</code>, <code>lm</code>, or <code>glm</code> try printing <code>summary(myTest)[]</code> to see what values you are interested in using.</p></li>
-<li><p><code>N &lt;- 2000</code> N is the number of times you will reuse the data to create the sampling distribution of the test statistic. A typical choice is 2000, but sometimes 10000, or 100000 reuses are needed before useful answers can be obtained.</p></li>
-<li><p><code>permutedTestStats &lt;- rep(NA, N)</code> This is a storage container that will be used to store the test statistics from each of the thousands of reuses of the data. The <code>rep()</code> function repeats a given value N times. This particular statement repeats NA’s or “missing values” N times. This gives us N “empty” storage spots inside of <code>permutedTestStats</code> that we can use to store the N test statistics from the N reuses of the data we will make in our <code>for</code> loop.</p></li>
-<li><p><code>for (i in 1:N)\{</code> The <code>for</code> loop is a programming tool that lets us tell R to run a certain code over and over again for a certain number of times. In R, the <code>for</code> loop must be followed by a space, then an opening parenthesis, then a variable name (in this case the variable is called “i”), then the word “in” then a list of values. The <code>1:N</code> gives R the list of values 1, 2, 3, … and so on all the way up to N. These values are passed into <code>i</code> one at a time and the code inside the <code>for</code> loop is performed first for <code>i=1</code>, then again for <code>i=2</code>, then again for <code>i=3</code> and so on until finally <code>i=N</code>. At that point, the <code>for</code> loop ends. There is a required closing parenthesis on the <code>for (i in 1:N)</code> statement. Any code placed between the opening { and closing } brackets will be performed over and over again for each value of <code>i=1</code>, <code>i=2</code>, … up through <code>i=N</code>.</p></li>
-<li><p>Two spaces in front of every line inside of the opening { and closing } brackets helps keep your code organized.</p></li>
-<li><p><code>permutedData &lt;- ...randomly permute the data...</code> This is the most important part of the permutation test and takes some thinking. The data must be randomly reorganized in a way consistent with the null hypothesis. What that means exactly is specific to each scenario. Read the Explanation tab for further details on the logic you should use here.</p></li>
-<li><p><code>permutedTest &lt;- ...perform test with permutedData...</code> The same test that was performed on the original data, should be performed again on the randomly permuted data.</p></li>
-<li><p><code>permutedTestStats[i] &lt;- ...get test statistic...</code> This is the storage container that was built prior to the <code>for (i in 1:N)</code> code. Inside the <code>for</code> loop, this container is filled value by value using the square brackets <code>[i]</code>. The square brackets <code>[i]</code> allows us to access the “i”th position of <code>permutedTestStats</code>. Remember, since this code is inside of the <code>for</code> loop, <code>i=1</code> the first time through the code, then <code>i=2</code> the second time through the code, <code>i=3</code> the third time through, and so on up until <code>i=N</code> the <code>N</code>th time through the code. The test statistic from <code>permutedTest</code> is accessed here and stored into <code>permutedTestStats[i]</code>.</p></li>
-<li><p><code>}</code> The closing } bracket ends the code that is repeated over and over again inside the <code>for</code> loop.</p></li>
-<li><p><code>hist(permutedTestStats)</code> Creating a histogram of the sampling distribution of the test statistics obtained from the reused and permuted data allows us to visually compare the <code>observedTestStat</code> to the distribution of test statistics to visually see the percentage of test statistics that are as extreme or more extreme than the observed test statistic value. This is the p-value.</p></li>
-<li><p><code>abline(v=observedTestStat)</code> This adds the <code>observedTestStat</code> to the distribution of test statistics to visually see the percentage of test statistics that are as extreme or more extreme than the observed test statistic value. This is the p-value.</p></li>
-<li><p><code>sum(permutedTestStats &gt;= observedTestStat)/N</code> This computes a “greater than” p-value. A two-sided p-value could be obtained by multiplying this value by 2 if the observed test statistic was on the right hand side of the histogram.</p></li>
-<li><p><code>sum(permutedTestStats &lt;= observedTestStat)/N</code> This computes a “less than” p-value. A two-sided p-value could be obtained by multiplying this value by 2 if the observed test statistic was on the left hand side of the histogram.</p></li>
+<p>Save the test statistic of your test into the object called
+<code>observedTestStat</code>. For tests that always result in a single
+test statistic like a <code>t.test</code>, <code>wilcox.test</code>,
+<code>kruskal.test</code>, and <code>chisq.test</code> it is
+<code>myTest$statistic</code>. For an <code>aov</code>, <code>lm</code>,
+or <code>glm</code> try printing <code>summary(myTest)[]</code> to see
+what values you are interested in using.</p></li>
+<li><p><code>N &lt;- 2000</code> N is the number of times you will reuse
+the data to create the sampling distribution of the test statistic. A
+typical choice is 2000, but sometimes 10000, or 100000 reuses are needed
+before useful answers can be obtained.</p></li>
+<li><p><code>permutedTestStats &lt;- rep(NA, N)</code> This is a storage
+container that will be used to store the test statistics from each of
+the thousands of reuses of the data. The <code>rep()</code> function
+repeats a given value N times. This particular statement repeats NA’s or
+“missing values” N times. This gives us N “empty” storage spots inside
+of <code>permutedTestStats</code> that we can use to store the N test
+statistics from the N reuses of the data we will make in our
+<code>for</code> loop.</p></li>
+<li><p><code>for (i in 1:N)\{</code> The <code>for</code> loop is a
+programming tool that lets us tell R to run a certain code over and over
+again for a certain number of times. In R, the <code>for</code> loop
+must be followed by a space, then an opening parenthesis, then a
+variable name (in this case the variable is called “i”), then the word
+“in” then a list of values. The <code>1:N</code> gives R the list of
+values 1, 2, 3, … and so on all the way up to N. These values are passed
+into <code>i</code> one at a time and the code inside the
+<code>for</code> loop is performed first for <code>i=1</code>, then
+again for <code>i=2</code>, then again for <code>i=3</code> and so on
+until finally <code>i=N</code>. At that point, the <code>for</code> loop
+ends. There is a required closing parenthesis on the
+<code>for (i in 1:N)</code> statement. Any code placed between the
+opening { and closing } brackets will be performed over and over again
+for each value of <code>i=1</code>, <code>i=2</code>, … up through
+<code>i=N</code>.</p></li>
+<li><p>Two spaces in front of every line inside of the opening { and
+closing } brackets helps keep your code organized.</p></li>
+<li><p><code>permutedData &lt;- ...randomly permute the data...</code>
+This is the most important part of the permutation test and takes some
+thinking. The data must be randomly reorganized in a way consistent with
+the null hypothesis. What that means exactly is specific to each
+scenario. Read the Explanation tab for further details on the logic you
+should use here.</p></li>
+<li><p><code>permutedTest &lt;- ...perform test with permutedData...</code>
+The same test that was performed on the original data, should be
+performed again on the randomly permuted data.</p></li>
+<li><p><code>permutedTestStats[i] &lt;- ...get test statistic...</code>
+This is the storage container that was built prior to the
+<code>for (i in 1:N)</code> code. Inside the <code>for</code> loop, this
+container is filled value by value using the square brackets
+<code>[i]</code>. The square brackets <code>[i]</code> allows us to
+access the “i”th position of <code>permutedTestStats</code>. Remember,
+since this code is inside of the <code>for</code> loop, <code>i=1</code>
+the first time through the code, then <code>i=2</code> the second time
+through the code, <code>i=3</code> the third time through, and so on up
+until <code>i=N</code> the <code>N</code>th time through the code. The
+test statistic from <code>permutedTest</code> is accessed here and
+stored into <code>permutedTestStats[i]</code>.</p></li>
+<li><p><code>}</code> The closing } bracket ends the code that is
+repeated over and over again inside the <code>for</code> loop.</p></li>
+<li><p><code>hist(permutedTestStats)</code> Creating a histogram of the
+sampling distribution of the test statistics obtained from the reused
+and permuted data allows us to visually compare the
+<code>observedTestStat</code> to the distribution of test statistics to
+visually see the percentage of test statistics that are as extreme or
+more extreme than the observed test statistic value. This is the
+p-value.</p></li>
+<li><p><code>abline(v=observedTestStat)</code> This adds the
+<code>observedTestStat</code> to the distribution of test statistics to
+visually see the percentage of test statistics that are as extreme or
+more extreme than the observed test statistic value. This is the
+p-value.</p></li>
+<li><p><code>sum(permutedTestStats &gt;= observedTestStat)/N</code> This
+computes a “greater than” p-value. A two-sided p-value could be obtained
+by multiplying this value by 2 if the observed test statistic was on the
+right hand side of the histogram.</p></li>
+<li><p><code>sum(permutedTestStats &lt;= observedTestStat)/N</code> This
+computes a “less than” p-value. A two-sided p-value could be obtained by
+multiplying this value by 2 if the observed test statistic was on the
+left hand side of the histogram.</p></li>
 </ul>
 </div>
 </div>
@@ -535,16 +747,33 @@ $(document).ready(function () {
 <div id="explanation" class="section level4">
 <h4>Explanation</h4>
 <div style="padding-left:30px;">
-<p>The most difficult part of a permutation test is in the random permuting of the data. How the permuting is performed depends on the type of hypothesis test being performed. It is important to remember that the permutation test only changes the way the p-value is calculated. Everything else about the original test is unchanged when switching to a permutation test.</p>
+<p>The most difficult part of a permutation test is in the random
+permuting of the data. How the permuting is performed depends on the
+type of hypothesis test being performed. It is important to remember
+that the permutation test only changes the way the p-value is
+calculated. Everything else about the original test is unchanged when
+switching to a permutation test.</p>
 <div id="independent-samples-t-test" class="section level5">
 <h5>Independent Samples t Test</h5>
-<p>For the independent sample t Test, we will use the data from the <a href="Analyses/t%20Tests/Examples/SleepIndependentt.html">independent sleep</a> analysis. In that analysis, we were using the <code>sleep</code> data to test the hypotheses:</p>
+<p>For the independent sample t Test, we will use the data from the <a
+href="Analyses/t%20Tests/Examples/SleepIndependentt.html">independent
+sleep</a> analysis. In that analysis, we were using the
+<code>sleep</code> data to test the hypotheses:</p>
 <p><span class="math display">\[
-  H_0: \mu_\text{Extra Hours of Sleep with Drug 1} - \mu_\text{Extra Hours of Sleep with Drug 2} = 0
+  H_0: \mu_\text{Extra Hours of Sleep with Drug 1} - \mu_\text{Extra
+Hours of Sleep with Drug 2} = 0
 \]</span> <span class="math display">\[
-H_a: \mu_\text{Extra Hours of Sleep with Drug 1} - \mu_\text{Extra Hours of Sleep with Drug 2} \neq 0
+H_a: \mu_\text{Extra Hours of Sleep with Drug 1} - \mu_\text{Extra Hours
+of Sleep with Drug 2} \neq 0
 \]</span></p>
-<p>We used a significance level of <span class="math inline">\(\alpha = 0.05\)</span> and obtained a P-value of <span class="math inline">\(0.07939\)</span>. Let’s demonstrate how a permutation test could be used to obtain this same p-value. (Technically you only need to use a permutation test when the requirements of the original test were not satisfied. However, it is also reasonable to perform a permutation test anytime you want. No requirements need to be checked when performing a permutation test.)</p>
+<p>We used a significance level of <span class="math inline">\(\alpha =
+0.05\)</span> and obtained a P-value of <span
+class="math inline">\(0.07939\)</span>. Let’s demonstrate how a
+permutation test could be used to obtain this same p-value. (Technically
+you only need to use a permutation test when the requirements of the
+original test were not satisfied. However, it is also reasonable to
+perform a permutation test anytime you want. No requirements need to be
+checked when performing a permutation test.)</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First run the initial test and gain the test statistic:</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>myTest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(extra <span class="sc">~</span> group, <span class="at">data =</span> sleep, <span class="at">mu =</span> <span class="dv">0</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>observedTestStat <span class="ot">&lt;-</span> myTest<span class="sc">$</span>statistic</span>
@@ -569,22 +798,38 @@ H_a: \mu_\text{Extra Hours of Sleep with Drug 1} - \mu_\text{Extra Hours of Slee
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Two-Sided p-value: This is the one we want based on our alternative hypothesis.</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">sum</span>(permutedTestStats <span class="sc">&lt;=</span> observedTestStat)<span class="sc">/</span>N</span></code></pre></div>
-<p><strong>Note</strong> The Wilcoxon Rank Sum test is run using the same code except with <code>myTest &lt;- wilcox.test(y ~ x, data=...)</code> instead of <code>t.test(...)</code> in both Step’s 1 and 2.</p>
+<p><strong>Note</strong> The Wilcoxon Rank Sum test is run using the
+same code except with
+<code>myTest &lt;- wilcox.test(y ~ x, data=...)</code> instead of
+<code>t.test(...)</code> in both Step’s 1 and 2.</p>
 </div>
 <div id="other-examples" class="section level5">
 <h5>Other Examples</h5>
-<p><a href="javascript:showhide('ptTest')">Paired Samples t Test (and Wilcoxon Signed-Rank) <span style="font-size:8pt;">(click to show/hide)</span></a></p>
+<p><a href="javascript:showhide('ptTest')">Paired Samples t Test (and
+Wilcoxon Signed-Rank) <span style="font-size:8pt;">(click to
+show/hide)</span></a></p>
 </div>
 <div id="ptTest" style="display:none;">
 <div id="paired-data-example" class="section level5">
 <h5>Paired Data Example</h5>
-<p>See the <a href="./Analyses/t%20Tests/Examples/SleepPairedt.html">Sleep Paired t Test</a> example for the background and context of the study. Here is how to perform the test as a permutation test instead of a t test.</p>
-<p>The question that this <code>sleep</code> data can answer concerns which drug is more effective at increasing the amount of extra sleep an individual receives. The associated hypotheses would be <span class="math display">\[
+<p>See the <a
+href="./Analyses/t%20Tests/Examples/SleepPairedt.html">Sleep Paired t
+Test</a> example for the background and context of the study. Here is
+how to perform the test as a permutation test instead of a t test.</p>
+<p>The question that this <code>sleep</code> data can answer concerns
+which drug is more effective at increasing the amount of extra sleep an
+individual receives. The associated hypotheses would be <span
+class="math display">\[
   H_0: \mu_d = 0
 \]</span> <span class="math display">\[
   H_a: \mu_d \neq 0
-\]</span> where <span class="math inline">\(\mu_d\)</span> denotes the true mean of the differences between the observations for each drug obtained from each individual. Differences would be obtained by <span class="math inline">\(d_i = \text{extra}_{1i} - \text{extra}_{2i}\)</span>.</p>
-<p>To perform a permutation test of the hypothesis that the drugs are equally effective, we use the following code.</p>
+\]</span> where <span class="math inline">\(\mu_d\)</span> denotes the
+true mean of the differences between the observations for each drug
+obtained from each individual. Differences would be obtained by <span
+class="math inline">\(d_i = \text{extra}_{1i} -
+\text{extra}_{2i}\)</span>.</p>
+<p>To perform a permutation test of the hypothesis that the drugs are
+equally effective, we use the following code.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the initial test:</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>myTest <span class="ot">&lt;-</span> <span class="fu">with</span>(sleep, <span class="fu">t.test</span>(extra[group<span class="sc">==</span><span class="dv">1</span>], extra[group<span class="sc">==</span><span class="dv">2</span>], <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">mu =</span> <span class="dv">0</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the test statistic from the test:</span></span>
@@ -615,11 +860,13 @@ H_a: \mu_\text{Extra Hours of Sleep with Drug 1} - \mu_\text{Extra Hours of Slee
 <p><strong>Note</strong>:</p>
 </div>
 </div>
-<p><a href="javascript:showhide('ANOVA')">ANOVA <span style="font-size:8pt;">(click to show/hide)</span></a></p>
+<p><a href="javascript:showhide('ANOVA')">ANOVA <span
+style="font-size:8pt;">(click to show/hide)</span></a></p>
 <div id="ANOVA" style="display:none;">
 <div id="one-way-anova" class="section level5">
 <h5>One-Way ANOVA</h5>
-<p>For this example, we will use the data from the <a href="Analyses/chickwtsOneWayANOVA.html">chick weights</a> analysis.</p>
+<p>For this example, we will use the data from the <a
+href="Analyses/chickwtsOneWayANOVA.html">chick weights</a> analysis.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Again, we run the initial test and find the test statistic</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>myTest <span class="ot">&lt;-</span> <span class="fu">aov</span>(weight <span class="sc">~</span> feed, <span class="at">data =</span> chickwts)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>observedTestStat <span class="ot">&lt;-</span> <span class="fu">summary</span>(myTest)[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>[<span class="dv">1</span>]</span>
@@ -642,7 +889,8 @@ H_a: \mu_\text{Extra Hours of Sleep with Drug 1} - \mu_\text{Extra Hours of Slee
 </div>
 <div id="two-way-anova" class="section level5">
 <h5>Two-Way ANOVA</h5>
-<p>For the two-way ANOVA, I will use the data from the <a href="Analyses/warpbreaksTwoWayANOVA.html">warpbreaks</a> analysis.</p>
+<p>For the two-way ANOVA, I will use the data from the <a
+href="Analyses/warpbreaksTwoWayANOVA.html">warpbreaks</a> analysis.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The initial test is done in the same way as one-way ANOVA but there is a little more to find the test statistic</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>myTest <span class="ot">&lt;-</span> <span class="fu">aov</span>(breaks <span class="sc">~</span> wool <span class="sc">+</span> tension <span class="sc">+</span> wool<span class="sc">:</span>tension, <span class="at">data=</span>warpbreaks)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -699,9 +947,12 @@ H_a: \mu_\text{Extra Hours of Sleep with Drug 1} - \mu_\text{Extra Hours of Slee
 <span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">sum</span>(permutedTestStatsWT <span class="sc">&gt;=</span> observedTestStatWT)<span class="sc">/</span>N</span></code></pre></div>
 </div>
 </div>
-<p><a href="javascript:showhide('LinR')">Simple Linear Regression <span style="font-size:8pt;">(click to show/hide)</span></a></p>
+<p><a href="javascript:showhide('LinR')">Simple Linear Regression <span
+style="font-size:8pt;">(click to show/hide)</span></a></p>
 <div id="LinR" style="display:none;">
-<p>For this example, I will use the <code>trees</code> dataset to compare the <code>Girth</code> and <code>Height</code> of black cherry trees.</p>
+<p>For this example, I will use the <code>trees</code> dataset to
+compare the <code>Girth</code> and <code>Height</code> of black cherry
+trees.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The test and then the test statistic is found in a similar way to that of an ANOVA (this is the t statistic)</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>myTest <span class="ot">&lt;-</span> <span class="fu">lm</span>(Height <span class="sc">~</span> Girth, <span class="at">data =</span> trees)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>observedTestStat <span class="ot">&lt;-</span> <span class="fu">summary</span>(myTest)[[<span class="dv">4</span>]][<span class="dv">2</span>,<span class="dv">3</span>]</span>

@@ -498,7 +498,7 @@ Example output from a regression. Hover each piece to learn more.
 <td>
   <span class="tooltiprout">
     F-statistic:
-      <span class="tooltiprouttext">The F-statistic is found as the ratio of the MSR/MSP where MSR = SSR/(p-1) and MSE = SSE/(n-p) where n is the sample size and p is the number of parameters in the regression model.</span>
+      <span class="tooltiprouttext">The F-statistic is found as the ratio of the MSR/MSE where MSR = SSR/(p-1) and MSE = SSE/(n-p) where n is the sample size and p is the number of parameters in the regression model.</span>
   </span>
 </td><td align="right">
   <span class="tooltiprout">
