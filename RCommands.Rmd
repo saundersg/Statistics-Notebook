@@ -15,7 +15,7 @@ output:
 
 
 
-----
+<hr/>
 
 *“For the things we have to learn before we can do them, we learn by doing them.”*
 
@@ -24,7 +24,7 @@ output:
 
 <br>
 
-----
+<hr/>
 
 
 ## Getting Started 
@@ -33,9 +33,11 @@ output:
 
 <span class="tooltipr">
 <a href="">Hover your mouse here to begin.</a>
-  <span class="tooltipRtext">Good work! <br/> This book requires that you interact with it to learn. Hovering is the first step. <br/> Now <a href="GettingStartedTutorial.html">click here</a> to get started. </span>
+  <span class="tooltipRtext">Good work! <br/> This book requires that you interact with it to learn. Hovering is the first step. <br/> Now <a href="GettingStartedTutorial.html">click right here on these words</a> to get started. </span>
 </span>
 
+
+</div>
 
 <br />
 <hr />
@@ -1929,9 +1931,9 @@ KidsFeet %>%
 
 </div>
 
-</div>
 
-----
+
+<hr/>
 
 <br/>
  

@@ -339,10 +339,10 @@ $(document).ready(function () {
       <a href="./Analyses/Wilcoxon Tests/RecallingWords.html">Recalling Words</a>
     </li>
     <li>
-      <a href="./Analyses/Kruskal-Wallis Test/Food.html">Food</a>
+      <a href="./Analyses/ANOVA/MyTwoWayANOVA.html">My Two-way ANOVA</a>
     </li>
     <li>
-      <a href="./Analyses/ANOVA/HighSchoolSeniors2.html">High School Seniors 2</a>
+      <a href="./Analyses/Kruskal-Wallis Test/Food.html">Food</a>
     </li>
     <li>
       <a href="./Analyses/Linear Regression/MySimpleLinearRegression.html">My Simple Linear Regression</a>
@@ -404,25 +404,41 @@ $(document).ready(function () {
  }
 </script>
 <hr />
-<p>An ANOVA is for testing the equality of several means simultaneously. A single <em>quantitative</em> response variable is required with one or more <em>qualitative</em> explanatory variables, i.e., factors.</p>
+<p>An ANOVA is for testing the equality of several means simultaneously.
+A single <em>quantitative</em> response variable is required with one or
+more <em>qualitative</em> explanatory variables, i.e., factors.</p>
 <div style="font-size:0.8em;">
-Note: A factor is defined as a qualitative variable containing at least two categories. The categories of the factor are referred to as the “levels” of the factor.
+Note: A factor is defined as a qualitative variable containing at least
+two categories. The categories of the factor are referred to as the
+“levels” of the factor.
 </div>
 <hr />
-<div id="one-way-anova" class="section level3 tabset tabset-fade tabset-pills">
+<div id="one-way-anova"
+class="section level3 tabset tabset-fade tabset-pills">
 <h3 class="tabset tabset-fade tabset-pills">One-way ANOVA</h3>
 <div style="float:left;width:125px;" align="center">
 <p><img src="Images/QuantYQualXg3plus.png" width=58px;></p>
 </div>
-<p>Each experimental unit is assigned to exactly one factor-level combination. Another way to say this is “one measurement per individual” (no repeated measures) and “equal numbers of individuals per group”.</p>
+<p>Each experimental unit is assigned to exactly one factor-level
+combination. Another way to say this is “one measurement per individual”
+(no repeated measures) and “equal numbers of individuals per group”.</p>
 <div id="overview" class="section level4">
 <h4>Overview</h4>
 <div style="padding-left:125px;">
-<p>An ANOVA is only appropriate when all of the following are satisfied.</p>
+<p>An ANOVA is only appropriate when all of the following are
+satisfied.</p>
 <ol style="list-style-type: decimal">
-<li><p>The sample(s) of data can be considered to be representative of their population(s).</p></li>
-<li><p>The data is normally distributed in each group. (This can safely be assumed to be satisfied when the <em>residuals</em> from the ANOVA can be assumed to be normally distributed when seen in a Q-Q Plot.)</p></li>
-<li><p>The population variance of each group can be assumed to be the same. (This can be safely assumed to be satisfied when the <em>residuals</em> from the ANOVA show constant variance, i.e., are similarly vertically spread out in a Residuals versus fitted-values plot.)</p></li>
+<li><p>The sample(s) of data can be considered to be representative of
+their population(s).</p></li>
+<li><p>The data is normally distributed in each group. (This can safely
+be assumed to be satisfied when the <em>residuals</em> from the ANOVA
+can be assumed to be normally distributed when seen in a Q-Q
+Plot.)</p></li>
+<li><p>The population variance of each group can be assumed to be the
+same. (This can be safely assumed to be satisfied when the
+<em>residuals</em> from the ANOVA show constant variance, i.e., are
+similarly vertically spread out in a Residuals versus fitted-values
+plot.)</p></li>
 </ol>
 <p><strong>Hypotheses</strong></p>
 <p>For a One-way ANOVA</p>
@@ -432,9 +448,14 @@ Note: A factor is defined as a qualitative variable containing at least two cate
   H_a: \mu_i \neq \mu \ \text{for at least one} \ i
 \]</span></p>
 <p><strong>Mathematical Model</strong></p>
-<p>A typical model for a one-way ANOVA is of the form <span class="math display">\[
+<p>A typical model for a one-way ANOVA is of the form <span
+class="math display">\[
   Y_{ij} = \mu_i + \epsilon_{ij}
-\]</span> where <span class="math inline">\(\mu_i\)</span> is the mean for level (group) <span class="math inline">\(i\)</span>, and <span class="math inline">\(\epsilon_{ij} \sim N(0,\sigma^2)\)</span> is the error term for each point <span class="math inline">\(j\)</span> within level (group) <span class="math inline">\(i\)</span>.</p>
+\]</span> where <span class="math inline">\(\mu_i\)</span> is the mean
+for level (group) <span class="math inline">\(i\)</span>, and <span
+class="math inline">\(\epsilon_{ij} \sim N(0,\sigma^2)\)</span> is the
+error term for each point <span class="math inline">\(j\)</span> within
+level (group) <span class="math inline">\(i\)</span>.</p>
 <hr />
 </div>
 </div>
@@ -443,9 +464,14 @@ Note: A factor is defined as a qualitative variable containing at least two cate
 <div style="padding-left:125px;">
 <p><strong>Console</strong> Help Command: <code>?aov()</code></p>
 <ul>
-<li><code>myaov</code> is some name you come up with to store the results of the <code>aov()</code> test.</li>
-<li><code>Y</code> must be a “numeric” vector of the quantitative response variable.</li>
-<li><code>X</code> is a qualitative variable (should have <code>class(X)</code> equal to <code>factor</code> or <code>character</code>. If it does not, use <code>as.factor(X)</code> inside the <code>aov(Y ~ as.factor(X),...)</code> command.</li>
+<li><code>myaov</code> is some name you come up with to store the
+results of the <code>aov()</code> test.</li>
+<li><code>Y</code> must be a “numeric” vector of the quantitative
+response variable.</li>
+<li><code>X</code> is a qualitative variable (should have
+<code>class(X)</code> equal to <code>factor</code> or
+<code>character</code>. If it does not, use <code>as.factor(X)</code>
+inside the <code>aov(Y ~ as.factor(X),...)</code> command.</li>
 <li><code>YourDataSet</code> is the name of your data set.</li>
 </ul>
 <p><strong>Perform the ANOVA</strong></p>
@@ -460,8 +486,29 @@ Note: A factor is defined as a qualitative variable containing at least two cate
 <p><em>Perform the ANOVA</em></p>
 <a href="javascript:showhide('oneWayAnova')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> chick.aov &lt;-  <span class="tooltiprtext"> Saves the results of the ANOVA test as an object named ‘chick.aov’.</span> </span><span class="tooltipr"> aov( <span class="tooltiprtext">‘aov()’ is a function in R used to perform the ANOVA.</span> </span><span class="tooltipr"> weight <span class="tooltiprtext">Y is ‘weight’, which is a numeric variable from the chickwts dataset.</span> </span><span class="tooltipr">  ~  <span class="tooltiprtext">‘~’ is the tilde symbol used to separate the Y and X in a model formula.</span> </span><span class="tooltipr"> feed, <span class="tooltiprtext">X is ‘feed’, which is a qualitative variable in the chickwts dataset, or more specifically, a factor with six levels: “casein”, “horsebean”, and so on… Use str(chickwts) to see this. </span> </span><span class="tooltipr">  data = chickwts) <span class="tooltiprtext"> ‘chickwts’ is a dataset in R.</span> </span><br><span class="tooltipr"> summary( <span class="tooltiprtext"> ‘summary()’ shows the results of the ANOVA.</span> </span><span class="tooltipr"> chick.aov) <span class="tooltiprtext"> ‘chick.aov’ is the name of the ANOVA.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to View Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> chick.aov &lt;-  <span class="tooltiprtext">
+Saves the results of the ANOVA test as an object named
+‘chick.aov’.</span> </span><span class="tooltipr"> aov( <span
+class="tooltiprtext">‘aov()’ is a function in R used to perform the
+ANOVA.</span> </span><span class="tooltipr"> weight <span
+class="tooltiprtext">Y is ‘weight’, which is a numeric variable from the
+chickwts dataset.</span> </span><span class="tooltipr">  ~  <span
+class="tooltiprtext">‘~’ is the tilde symbol used to separate the Y and
+X in a model formula.</span> </span><span class="tooltipr"> feed, <span
+class="tooltiprtext">X is ‘feed’, which is a qualitative variable in the
+chickwts dataset, or more specifically, a factor with six levels:
+“casein”, “horsebean”, and so on… Use str(chickwts) to see this. </span>
+</span><span class="tooltipr">  data = chickwts) <span
+class="tooltiprtext"> ‘chickwts’ is a dataset in R.</span>
+</span><br><span class="tooltipr"> summary( <span class="tooltiprtext">
+‘summary()’ shows the results of the ANOVA.</span> </span><span
+class="tooltipr"> chick.aov) <span class="tooltiprtext"> ‘chick.aov’ is
+the name of the ANOVA.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code if you have typed
+it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+ Click to View Output  <span class="tooltiprtext">Click to View
+Output.</span> </span></p>
 </div>
 </a>
 <div id="oneWayAnova" style="display:none;">
@@ -475,7 +522,23 @@ Note: A factor is defined as a qualitative variable containing at least two cate
 <p><em>Diagnose the ANOVA</em></p>
 <a href="javascript:showhide('oneWayAnovaCheck')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> par( <span class="tooltiprtext">‘par’ is a R function that can be used to set or query graphical parameters.</span> </span><span class="tooltipr"> mfrow = c(1,2)) <span class="tooltiprtext">The <code>mfrow</code> parameter controls “multiple frames on a row”. In this case, the c(1,2) specifies 1 row of 2 plots. This will cause the two diagnostic plots to be placed side-by-side. </span> </span><br><span class="tooltipr"> plot( <span class="tooltiprtext">‘plot’ is a R function for the plotting of R objects.</span> </span><span class="tooltipr"> chick.aov, <span class="tooltiprtext">‘chick.aov’ is the name of the ANOVA.</span> </span><span class="tooltipr">  which = 1:2) <span class="tooltiprtext">The <code>which=1:2</code> selects “which” of 6 available plots we want to have graphed. In this case, 1 shows the Residuals vs Fitted, and 2 shows the Normal QQ-plot. Both are needed to check the ANOVA assumptions.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to View Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> par( <span class="tooltiprtext">‘par’ is a R
+function that can be used to set or query graphical parameters.</span>
+</span><span class="tooltipr"> mfrow = c(1,2)) <span
+class="tooltiprtext">The <code>mfrow</code> parameter controls “multiple
+frames on a row”. In this case, the c(1,2) specifies 1 row of 2 plots.
+This will cause the two diagnostic plots to be placed side-by-side.
+</span> </span><br><span class="tooltipr"> plot( <span
+class="tooltiprtext">‘plot’ is a R function for the plotting of R
+objects.</span> </span><span class="tooltipr"> chick.aov, <span
+class="tooltiprtext">‘chick.aov’ is the name of the ANOVA.</span>
+</span><span class="tooltipr">  which = 1:2) <span
+class="tooltiprtext">The <code>which=1:2</code> selects “which” of 6
+available plots we want to have graphed. In this case, 1 shows the
+Residuals vs Fitted, and 2 shows the Normal QQ-plot. Both are needed to
+check the ANOVA assumptions.</span> </span><span class="tooltipr"
+style="float:right;font-size:.8em;">  Click to View Output  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="oneWayAnovaCheck" style="display:none;">
@@ -487,72 +550,181 @@ Note: A factor is defined as a qualitative variable containing at least two cate
 <div id="explanation" class="section level4">
 <h4>Explanation</h4>
 <div style="padding-left:125px;">
-<p>Analysis of variance (ANOVA) is often applied to the scenario of testing for the equality of three or more means from (possibly) separate normal distributions of data. The normality assumption is required. No matter the sample size. If the distributions are skewed then a nonparametric test should be applied instead of ANOVA.</p>
+<p>Analysis of variance (ANOVA) is often applied to the scenario of
+testing for the equality of three or more means from (possibly) separate
+normal distributions of data. The normality assumption is required. No
+matter the sample size. If the distributions are skewed then a
+nonparametric test should be applied instead of ANOVA.</p>
 <p><br /></p>
 <div id="one-way-anova-1" class="section level5">
 <h5>One-Way ANOVA</h5>
-<p>One-way ANOVA is when a completely randomized design is used with a single factor of interest. A typical mathematical model for a one-way ANOVA is of the form <span class="math display">\[
-  Y_{ik} = \mu_i + \epsilon_{ik} \quad (\text{sometimes written}\ Y_{ik} = \mu + \alpha_i + \epsilon_{ik})
-\]</span> where <span class="math inline">\(\mu_i\)</span> is the mean of each group (or level) <span class="math inline">\(i\)</span> of a factor, and <span class="math inline">\(\epsilon_{ik}\sim N(0,\sigma^2)\)</span> is the error term. The plot below demonstrates what these symbols represent. Note that the notation <span class="math inline">\(\epsilon_{ik}\sim N(0,\sigma^2)\)</span> states that we are assuming the error term <span class="math inline">\(\epsilon_{ik}\)</span> is normally distributed with a mean of 0 and a standard deviation of <span class="math inline">\(\sigma\)</span>.</p>
+<p>One-way ANOVA is when a completely randomized design is used with a
+single factor of interest. A typical mathematical model for a one-way
+ANOVA is of the form <span class="math display">\[
+  Y_{ik} = \mu_i + \epsilon_{ik} \quad (\text{sometimes written}\ Y_{ik}
+= \mu + \alpha_i + \epsilon_{ik})
+\]</span> where <span class="math inline">\(\mu_i\)</span> is the mean
+of each group (or level) <span class="math inline">\(i\)</span> of a
+factor, and <span class="math inline">\(\epsilon_{ik}\sim
+N(0,\sigma^2)\)</span> is the error term. The plot below demonstrates
+what these symbols represent. Note that the notation <span
+class="math inline">\(\epsilon_{ik}\sim N(0,\sigma^2)\)</span> states
+that we are assuming the error term <span
+class="math inline">\(\epsilon_{ik}\)</span> is normally distributed
+with a mean of 0 and a standard deviation of <span
+class="math inline">\(\sigma\)</span>.</p>
 <p><img src="ANOVA_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <div id="hypotheses" class="section level6">
 <h6>Hypotheses</h6>
-<p>The aim of ANOVA is to determine which hypothesis is more plausible, that the means of the different distributions are all equal (the null), or that at least one group mean differs (the alternative). Mathematically, <span class="math display">\[
-  H_0: \mu_1 = \mu_2 = \ldots = \mu_m = \mu 
+<p>The aim of ANOVA is to determine which hypothesis is more plausible,
+that the means of the different distributions are all equal (the null),
+or that at least one group mean differs (the alternative).
+Mathematically, <span class="math display">\[
+  H_0: \mu_1 = \mu_2 = \ldots = \mu_m = \mu
 \]</span> <span class="math display">\[
   H_a: \mu_i \neq \mu \quad \text{for at least one}\ i\in\{1,\ldots,m\}.
-\]</span> In other words, the goal is to determine if it is more plausible that each of the <span class="math inline">\(m\)</span> different samples (where each sample is of size <span class="math inline">\(n\)</span>) came from the same normal distribution (this is what the null hypothesis claims) or that at least one of the samples (and possibly several or all) come from different normal distributions (this is what the alternative hypothesis claims).</p>
+\]</span> In other words, the goal is to determine if it is more
+plausible that each of the <span class="math inline">\(m\)</span>
+different samples (where each sample is of size <span
+class="math inline">\(n\)</span>) came from the same normal distribution
+(this is what the null hypothesis claims) or that at least one of the
+samples (and possibly several or all) come from different normal
+distributions (this is what the alternative hypothesis claims).</p>
 </div>
 <div id="visualizing-the-hypotheses" class="section level6">
 <h6>Visualizing the Hypotheses</h6>
-<p>The first figure below demonstrates what a given scenario might look like when all <span class="math inline">\(m=3\)</span> samples of data are from the same normal distribution. In this case, the null hypothesis <span class="math inline">\(H_0\)</span> is true. Notice that the variability of the sample means is smaller than the variability of the points.</p>
+<p>The first figure below demonstrates what a given scenario might look
+like when all <span class="math inline">\(m=3\)</span> samples of data
+are from the same normal distribution. In this case, the null hypothesis
+<span class="math inline">\(H_0\)</span> is true. Notice that the
+variability of the sample means is smaller than the variability of the
+points.</p>
 <p><img src="ANOVA_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<p>The figure below shows what a given scenario might look like for <span class="math inline">\(m=3\)</span> samples of data from three different normal distributions. In this case, the alternative hypothesis <span class="math inline">\(H_a\)</span> is true. Notice that the variability of the sample means, i.e., <span class="math inline">\((\bar{x}_1,\bar{x}_2,\bar{x}_3)\)</span>, is greater than the variability of the points.</p>
+<p>The figure below shows what a given scenario might look like for
+<span class="math inline">\(m=3\)</span> samples of data from three
+different normal distributions. In this case, the alternative hypothesis
+<span class="math inline">\(H_a\)</span> is true. Notice that the
+variability of the sample means, i.e., <span
+class="math inline">\((\bar{x}_1,\bar{x}_2,\bar{x}_3)\)</span>, is
+greater than the variability of the points.</p>
 <p><img src="ANOVA_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 <div id="explaining-the-name" class="section level6">
 <h6>Explaining the Name</h6>
-<p>The above plots are useful in understanding the mathematical details behind ANOVA and why it is called <em>analysis of variance</em>. Recall that variance is a measure of the spread of data. When data is very spread out, the variance is large. When the data is close together, the variance is small. ANOVA utilizes two important variances, the between groups variance and the within groups variance.</p>
+<p>The above plots are useful in understanding the mathematical details
+behind ANOVA and why it is called <em>analysis of variance</em>. Recall
+that variance is a measure of the spread of data. When data is very
+spread out, the variance is large. When the data is close together, the
+variance is small. ANOVA utilizes two important variances, the between
+groups variance and the within groups variance.</p>
 <ul>
-<li><p><strong>Between groups variance</strong>–a measure of the variability in the sample means, the <span class="math inline">\(\bar{x}\)</span>’s.</p></li>
-<li><p><strong>Within groups variance</strong>–a combined measure of the variability of the points within each sample.</p></li>
+<li><p><strong>Between groups variance</strong>–a measure of the
+variability in the sample means, the <span
+class="math inline">\(\bar{x}\)</span>’s.</p></li>
+<li><p><strong>Within groups variance</strong>–a combined measure of the
+variability of the points within each sample.</p></li>
 </ul>
-<p>The plot below combines the information from the previous plots for ease of reference. It emphasizes the fact that when the null hypothesis is true, the points should have a large variance (be really spread out) while the sample means are relatively close together. On the other hand, when the points are relative close together <em>within</em> each sample and the sample means have a large variance (are really spread out) then the alternative hypothesis is true. This is the theory behind analysis of variance, or ANOVA.</p>
+<p>The plot below combines the information from the previous plots for
+ease of reference. It emphasizes the fact that when the null hypothesis
+is true, the points should have a large variance (be really spread out)
+while the sample means are relatively close together. On the other hand,
+when the points are relative close together <em>within</em> each sample
+and the sample means have a large variance (are really spread out) then
+the alternative hypothesis is true. This is the theory behind analysis
+of variance, or ANOVA.</p>
 <p><img src="ANOVA_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 </div>
 <div id="calculating-the-test-statistic-f" class="section level6">
-<h6>Calculating the Test Statistic, <span class="math inline">\(F\)</span></h6>
-<p>The ratio of the “between groups variation” to the “within groups variation” provides the test statistic for ANOVA. Note that the test statistic of ANOVA is an <span class="math inline">\(F\)</span> statistic.</p>
+<h6>Calculating the Test Statistic, <span
+class="math inline">\(F\)</span></h6>
+<p>The ratio of the “between groups variation” to the “within groups
+variation” provides the test statistic for ANOVA. Note that the test
+statistic of ANOVA is an <span class="math inline">\(F\)</span>
+statistic.</p>
 <p><span class="math display">\[
-  F = \frac{\text{Between groups variation}}{\text{Within groups variation}}
+  F = \frac{\text{Between groups variation}}{\text{Within groups
+variation}}
 \]</span></p>
-<p>It would be good to take a minute and <a href="MakingInference.html#fdist">review the <span class="math inline">\(F\)</span> distribution</a>. The <span class="math inline">\(p\)</span>-value for ANOVA thus comes from an <span class="math inline">\(F\)</span> distribution with parameters <span class="math inline">\(p_1 = m-1\)</span> and <span class="math inline">\(p_2 = n-m\)</span> where <span class="math inline">\(m\)</span> is the number of samples and <span class="math inline">\(n\)</span> is the total number of data points.</p>
+<p>It would be good to take a minute and <a
+href="MakingInference.html#fdist">review the <span
+class="math inline">\(F\)</span> distribution</a>. The <span
+class="math inline">\(p\)</span>-value for ANOVA thus comes from an
+<span class="math inline">\(F\)</span> distribution with parameters
+<span class="math inline">\(p_1 = m-1\)</span> and <span
+class="math inline">\(p_2 = n-m\)</span> where <span
+class="math inline">\(m\)</span> is the number of samples and <span
+class="math inline">\(n\)</span> is the total number of data points.</p>
 <p><br /></p>
 </div>
 <div id="a-deeper-look-at-variance" class="section level6">
 <h6>A Deeper Look at Variance</h6>
-<p>It is useful to take a few minutes and explain the word <em>variance</em> as well as mathematically define the terms “<em>within group variance</em>” and “<em>between groups variance</em>.”</p>
-<p>Variance is a statistical measure of the <em>variability</em> in data. The square root of the variance is called the <em>standard deviation</em> and is by far the more typical measure of spread. This is because standard deviation is easier to interpret. However, mathematically speaking, the variance is the more important measurement.</p>
-<p>As mentioned previously, the variance turns out to be the key to determining which hypothesis is the most plausible, <span class="math inline">\(H_0\)</span> or <span class="math inline">\(H_a\)</span>, when several means are under consideration. There are two variances that are important for ANOVA, the “within groups variance” and the “between groups variance.”</p>
-<p>Recall that the formula for computing a <a href="NumericalSummaries.html#variance">sample variance</a> is given by <span class="math display">\[
-  s^2 = \frac{\sum_{i=1}^n(x_i - \bar{x})^2}{n-1} \quad\leftarrow \frac{\text{sum of squares}}{\text{degrees of freedom}}
-\]</span> This formula has a couple of important pieces that are so important they have been given special names. The <span class="math inline">\(n-1\)</span> in the denominator of the formula is called the “degrees of freedom.” The other important part of this formula is the <span class="math inline">\(\sum_{i=1}^n(x_i - \bar{x})^2\)</span>, which is called the “sum of squared errors” or sometimes just the “sum of squares” or “SS” for short. Thus, the sample variance is calculated by computing a “sum of squares” and dividing this by the “degrees of freedom.”</p>
-<p>It turns out that this general approach works for many different contexts. Specifically, it allows us to compute the “within groups variance” and the “between groups variance.” To introduce the mathematical definitions of these two variances, we need to introduce some new notation.</p>
+<p>It is useful to take a few minutes and explain the word
+<em>variance</em> as well as mathematically define the terms “<em>within
+group variance</em>” and “<em>between groups variance</em>.”</p>
+<p>Variance is a statistical measure of the <em>variability</em> in
+data. The square root of the variance is called the <em>standard
+deviation</em> and is by far the more typical measure of spread. This is
+because standard deviation is easier to interpret. However,
+mathematically speaking, the variance is the more important
+measurement.</p>
+<p>As mentioned previously, the variance turns out to be the key to
+determining which hypothesis is the most plausible, <span
+class="math inline">\(H_0\)</span> or <span
+class="math inline">\(H_a\)</span>, when several means are under
+consideration. There are two variances that are important for ANOVA, the
+“within groups variance” and the “between groups variance.”</p>
+<p>Recall that the formula for computing a <a
+href="NumericalSummaries.html#variance">sample variance</a> is given by
+<span class="math display">\[
+  s^2 = \frac{\sum_{i=1}^n(x_i - \bar{x})^2}{n-1} \quad\leftarrow
+\frac{\text{sum of squares}}{\text{degrees of freedom}}
+\]</span> This formula has a couple of important pieces that are so
+important they have been given special names. The <span
+class="math inline">\(n-1\)</span> in the denominator of the formula is
+called the “degrees of freedom.” The other important part of this
+formula is the <span class="math inline">\(\sum_{i=1}^n(x_i -
+\bar{x})^2\)</span>, which is called the “sum of squared errors” or
+sometimes just the “sum of squares” or “SS” for short. Thus, the sample
+variance is calculated by computing a “sum of squares” and dividing this
+by the “degrees of freedom.”</p>
+<p>It turns out that this general approach works for many different
+contexts. Specifically, it allows us to compute the “within groups
+variance” and the “between groups variance.” To introduce the
+mathematical definitions of these two variances, we need to introduce
+some new notation.</p>
 <div style="padding-left:15px;">
-<p>Let <span class="math inline">\(\bar{y}_{i\bullet}\)</span> represent the sample mean of group <span class="math inline">\(i\)</span> for <span class="math inline">\(i=1,\ldots,m\)</span>.</p>
-<p>Let <span class="math inline">\(n_i\)</span> denote the sample size in group <span class="math inline">\(i\)</span>.</p>
-<p>Let <span class="math inline">\(\bar{y}_{\bullet\bullet}\)</span> represent the sample mean of all <span class="math inline">\(n = n_1+n_2+\cdots+n_m\)</span> data points.</p>
+<p>Let <span class="math inline">\(\bar{y}_{i\bullet}\)</span> represent
+the sample mean of group <span class="math inline">\(i\)</span> for
+<span class="math inline">\(i=1,\ldots,m\)</span>.</p>
+<p>Let <span class="math inline">\(n_i\)</span> denote the sample size
+in group <span class="math inline">\(i\)</span>.</p>
+<p>Let <span class="math inline">\(\bar{y}_{\bullet\bullet}\)</span>
+represent the sample mean of all <span class="math inline">\(n =
+n_1+n_2+\cdots+n_m\)</span> data points.</p>
 </div>
-<p>The mathematical calculations for each of these variances is given as follows. <span class="math display">\[
-  \text{Between groups variance} = \frac{\sum_{i=1}^m (\bar{y}_{i\bullet}-\bar{y}_{\bullet\bullet})^2}{m-1} \leftarrow \frac{\text{Between groups sum of squares}}{\text{Between groups degrees of freedom}}
+<p>The mathematical calculations for each of these variances is given as
+follows. <span class="math display">\[
+  \text{Between groups variance} = \frac{\sum_{i=1}^m
+(\bar{y}_{i\bullet}-\bar{y}_{\bullet\bullet})^2}{m-1} \leftarrow
+\frac{\text{Between groups sum of squares}}{\text{Between groups degrees
+of freedom}}
 \]</span> <span class="math display">\[
-  \text{Within groups variance} = \frac{\sum_{i=1}^m\sum_{k=1}^{n_i}(y_{ik}-\bar{y}_{i\bullet})^2}{n-m} \leftarrow \frac{\text{Within groups sum of squares}}{\text{Within groups degrees of freedom}}
+  \text{Within groups variance} =
+\frac{\sum_{i=1}^m\sum_{k=1}^{n_i}(y_{ik}-\bar{y}_{i\bullet})^2}{n-m}
+\leftarrow \frac{\text{Within groups sum of squares}}{\text{Within
+groups degrees of freedom}}
 \]</span></p>
 <p><br /></p>
 </div>
 <div id="a-fabricated-example" class="section level6">
 <h6>A Fabricated Example</h6>
-<p>The following table provides three samples of data: <strong>A</strong>, <strong>B</strong>, and <strong>C</strong>. These samples were randomly generated from normal distributions using a computer. The true means <span class="math inline">\(\mu_1, \mu_2\)</span>, and <span class="math inline">\(\mu_3\)</span> of the normal distributions are thus known, but withheld from you at this point of the example.</p>
+<p>The following table provides three samples of data:
+<strong>A</strong>, <strong>B</strong>, and <strong>C</strong>. These
+samples were randomly generated from normal distributions using a
+computer. The true means <span class="math inline">\(\mu_1,
+\mu_2\)</span>, and <span class="math inline">\(\mu_3\)</span> of the
+normal distributions are thus known, but withheld from you at this point
+of the example.</p>
 <table>
 <thead>
 <tr class="header">
@@ -614,17 +786,41 @@ Note: A factor is defined as a qualitative variable containing at least two cate
 </tr>
 </tbody>
 </table>
-<p>An ANOVA will be performed with the sample data to determine which hypothesis is more plausible: <span class="math display">\[
+<p>An ANOVA will be performed with the sample data to determine which
+hypothesis is more plausible: <span class="math display">\[
   H_0: \mu_1 = \mu_2 = \mu_3 = \mu
 \]</span> <span class="math display">\[
   H_a: \mu_i \neq \mu \ \text{for at least one} \ i \in \{1,\ldots,m\}
 \]</span></p>
-<p>To perform an ANOVA, we must compute the between groups variance and the within groups variance. This requires the Between groups sums of squares, within groups sums of squares, between groups degrees of freedom, and the within groups degrees of freedom. Note that to get the sums of squares, we first had to calculate <span class="math inline">\(\bar{y}_{1\bullet}\)</span>, <span class="math inline">\(\bar{y}_{2\bullet}\)</span>, <span class="math inline">\(\bar{y}_{3\bullet}\)</span>, and <span class="math inline">\(\bar{y}_{\bullet\bullet}\)</span> where the 1, 2, 3 corresponds to Samples A, B, and C, respectively. After some work, we find these values to be <span class="math display">\[
-  \bar{y}_{1\bullet} = 13.55, \quad \bar{y}_{2\bullet} = 12.86 \quad \bar{y}_{3\bullet} = 15.97
+<p>To perform an ANOVA, we must compute the between groups variance and
+the within groups variance. This requires the Between groups sums of
+squares, within groups sums of squares, between groups degrees of
+freedom, and the within groups degrees of freedom. Note that to get the
+sums of squares, we first had to calculate <span
+class="math inline">\(\bar{y}_{1\bullet}\)</span>, <span
+class="math inline">\(\bar{y}_{2\bullet}\)</span>, <span
+class="math inline">\(\bar{y}_{3\bullet}\)</span>, and <span
+class="math inline">\(\bar{y}_{\bullet\bullet}\)</span> where the 1, 2,
+3 corresponds to Samples A, B, and C, respectively. After some work, we
+find these values to be <span class="math display">\[
+  \bar{y}_{1\bullet} = 13.55, \quad \bar{y}_{2\bullet} = 12.86 \quad
+\bar{y}_{3\bullet} = 15.97
 \]</span> and <span class="math display">\[
   \bar{y}_{\bullet\bullet} = \frac{13.55+12.86+15.97}{3} = 14.13
-\]</span> Using these values we can then compute the between groups sum of squares and the within groups sum of squares according to the formulas stated previously. This process is very tedious and will not be demonstrated. Only the results are shown in the following table which summarizes all the important information.</p>
+\]</span> Using these values we can then compute the between groups sum
+of squares and the within groups sum of squares according to the
+formulas stated previously. This process is very tedious and will not be
+demonstrated. Only the results are shown in the following table which
+summarizes all the important information.</p>
 <table>
+<colgroup>
+<col width="11%" />
+<col width="27%" />
+<col width="22%" />
+<col width="13%" />
+<col width="12%" />
+<col width="12%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th> </th>
@@ -681,16 +877,22 @@ Note: A factor is defined as a qualitative variable containing at least two cate
 <tr class="odd">
 <td>Between groups</td>
 <td><span class="math inline">\(m-1\)</span></td>
-<td><span class="math inline">\(\sum_{i=1}^m n_i(\bar{y}_{i\bullet}-\bar{y}_{\bullet\bullet})^2\)</span></td>
-<td><span class="math inline">\(\frac{\text{sum of squares}}{\text{degrees of freedom}}\)</span></td>
-<td><span class="math inline">\(\frac{\text{Between groups variance}}{\text{Within groups variance}}\)</span></td>
-<td><span class="math inline">\(F\)</span>-distribution tail probability</td>
+<td><span class="math inline">\(\sum_{i=1}^m
+n_i(\bar{y}_{i\bullet}-\bar{y}_{\bullet\bullet})^2\)</span></td>
+<td><span class="math inline">\(\frac{\text{sum of
+squares}}{\text{degrees of freedom}}\)</span></td>
+<td><span class="math inline">\(\frac{\text{Between groups
+variance}}{\text{Within groups variance}}\)</span></td>
+<td><span class="math inline">\(F\)</span>-distribution tail
+probability</td>
 </tr>
 <tr class="even">
 <td>Within groups</td>
 <td><span class="math inline">\(n-m\)</span></td>
-<td><span class="math inline">\(\sum_{i=1}^m\sum_{k=1}^{n_i}(y_{ik}-\bar{y}_{i\bullet})^2\)</span></td>
-<td><span class="math inline">\(\frac{\text{sum of squares}}{\text{degrees of freedom}}\)</span></td>
+<td><span
+class="math inline">\(\sum_{i=1}^m\sum_{k=1}^{n_i}(y_{ik}-\bar{y}_{i\bullet})^2\)</span></td>
+<td><span class="math inline">\(\frac{\text{sum of
+squares}}{\text{degrees of freedom}}\)</span></td>
 <td></td>
 <td></td>
 </tr>
@@ -701,19 +903,37 @@ Note: A factor is defined as a qualitative variable containing at least two cate
 </div>
 <div id="residuals" class="section level5">
 <h5>ANOVA Assumptions</h5>
-<p>The requirements for an analysis of variance (the assumptions of the test) are two-fold and concern only the error terms, the <span class="math inline">\(\epsilon_{ik}\)</span>.</p>
+<p>The requirements for an analysis of variance (the assumptions of the
+test) are two-fold and concern only the error terms, the <span
+class="math inline">\(\epsilon_{ik}\)</span>.</p>
 <ol style="list-style-type: decimal">
 <li><p>The errors are normally distributed.</p></li>
 <li><p>The variance of the errors is constant.</p></li>
 </ol>
-<p>Both of these assumptions were stated in the mathematical model where we assumed that <span class="math inline">\(\epsilon_{ik}\sim N(0,\sigma^2)\)</span>.</p>
+<p>Both of these assumptions were stated in the mathematical model where
+we assumed that <span class="math inline">\(\epsilon_{ik}\sim
+N(0,\sigma^2)\)</span>.</p>
 <div id="checking-anova-assumptions" class="section level6">
 <h6>Checking ANOVA Assumptions</h6>
-<p>To check that the ANOVA assumptions are satisfied, it is required to check the data in each group for normality using QQ-Plots. Also, the sample variance of each group must be relatively constant. The fastest way to check these two assumptions is by analyzing the <em>residuals</em>.</p>
+<p>To check that the ANOVA assumptions are satisfied, it is required to
+check the data in each group for normality using QQ-Plots. Also, the
+sample variance of each group must be relatively constant. The fastest
+way to check these two assumptions is by analyzing the
+<em>residuals</em>.</p>
 <ul>
-<li>An ANOVA <strong>residual</strong> is defined as the difference between the observed value of <span class="math inline">\(y_{ik}\)</span> and the mean <span class="math inline">\(\bar{y}_{i\bullet}\)</span>. Mathematically, <span class="math display">\[
+<li>An ANOVA <strong>residual</strong> is defined as the difference
+between the observed value of <span
+class="math inline">\(y_{ik}\)</span> and the mean <span
+class="math inline">\(\bar{y}_{i\bullet}\)</span>. Mathematically, <span
+class="math display">\[
 r_{ik} = y_{ik} - \bar{y}_{i\bullet}
-\]</span> One QQ-Plot of the residuals will provide the necessary evidence to decide if it is reasonable to assume that the error terms are normally distributed. Also, the constant variance can be checked visually by using what is known as a residuals versus fitted values plot. For the <strong>Fabricated Example</strong> above, the QQ-Plot and residuals versus fitted values plots show the two assumptions of ANOVA appear to be satisfied.</li>
+\]</span> One QQ-Plot of the residuals will provide the necessary
+evidence to decide if it is reasonable to assume that the error terms
+are normally distributed. Also, the constant variance can be checked
+visually by using what is known as a residuals versus fitted values
+plot. For the <strong>Fabricated Example</strong> above, the QQ-Plot and
+residuals versus fitted values plots show the two assumptions of ANOVA
+appear to be satisfied.</li>
 </ul>
 <p><img src="ANOVA_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p><br /></p>
@@ -726,11 +946,14 @@ r_{ik} = y_{ik} - \bar{y}_{i\bullet}
 <div id="section" class="section level3">
 <h3></h3>
 <div style="padding-left:125px;">
-<p><strong>Examples:</strong> <a href="./Analyses/ANOVA/Examples/chickwtsOneWayANOVA.html">chickwts</a> (One-way)</p>
+<p><strong>Examples:</strong> <a
+href="./Analyses/ANOVA/Examples/chickwtsOneWayANOVA.html">chickwts</a>
+(One-way)</p>
 </div>
 <hr />
 </div>
-<div id="two-way-anova" class="section level3 tabset tabset-fade tabset-pills">
+<div id="two-way-anova"
+class="section level3 tabset tabset-fade tabset-pills">
 <h3 class="tabset tabset-fade tabset-pills">Two-way ANOVA</h3>
 <div style="float:left;width:125px;" align="center">
 <p><img src="Images/QuantYMultQualX.png" width=80px;></p>
@@ -738,60 +961,121 @@ r_{ik} = y_{ik} - \bar{y}_{i\bullet}
 <div id="overview-1" class="section level4">
 <h4>Overview</h4>
 <div style="padding-left:125px;">
-<p>A two-way ANOVA is only appropriate when all of the following are satisfied.</p>
+<p>A two-way ANOVA is only appropriate when all of the following are
+satisfied.</p>
 <ol style="list-style-type: decimal">
-<li><p>The sample(s) of data can be considered to be representative of their population(s).</p></li>
-<li><p>The data is normally distributed in each group. (This can safely be assumed to be satisfied when the <em>residuals</em> from the ANOVA are normally distributed.)</p></li>
-<li><p>The population variance of each group can be assumed to be the same. (This can be safely assumed to be satisfied when the <em>residuals</em> from the ANOVA show constant variance, i.e., are similarly vertically spread out.)</p></li>
+<li><p>The sample(s) of data can be considered to be representative of
+their population(s).</p></li>
+<li><p>The data is normally distributed in each group. (This can safely
+be assumed to be satisfied when the <em>residuals</em> from the ANOVA
+are normally distributed.)</p></li>
+<li><p>The population variance of each group can be assumed to be the
+same. (This can be safely assumed to be satisfied when the
+<em>residuals</em> from the ANOVA show constant variance, i.e., are
+similarly vertically spread out.)</p></li>
 </ol>
 <p><strong>Hypotheses</strong></p>
-<p>With a two-way ANOVA there are three sets of hypotheses. Writing out the hypotheses can be very involved depending on whether you use the official “effects model” notation (very mathematically correct) or a simplified “means model” notation (which isn’t very mathematically correct, but gets the idea across in an acceptable way).</p>
+<p>With a two-way ANOVA there are three sets of hypotheses. Writing out
+the hypotheses can be very involved depending on whether you use the
+official “effects model” notation (very mathematically correct) or a
+simplified “means model” notation (which isn’t very mathematically
+correct, but gets the idea across in an acceptable way).</p>
 <div class="tab">
-<p><button class="tablinks" onclick="openTab(event, 'meansModel')">Means Model</button> <button class="tablinks" onclick="openTab(event, 'effectsModel')">Effects Model</button></p>
+<p><button class="tablinks" onclick="openTab(event, 'meansModel')">Means
+Model</button>
+<button class="tablinks" onclick="openTab(event, 'effectsModel')">Effects
+Model</button></p>
 </div>
 <div id="meansModel" class="tabcontent" style="display:block;">
 <p>
 <ol style="list-style-type: decimal">
-<li>The first set of hypotheses are a “one-way” set of hypotheses for the first <em>factor</em> of the ANOVA. Factor: <code>X1</code> with say, levels <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</li>
+<li>The first set of hypotheses are a “one-way” set of hypotheses for
+the first <em>factor</em> of the ANOVA. Factor: <code>X1</code> with
+say, levels <span class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span>.</li>
 </ol>
 <p><span class="math display">\[
   H_0: \mu_A = \mu_B = \mu
 \]</span> <span class="math display">\[
-  H_a: \mu_A \neq \mu_B 
+  H_a: \mu_A \neq \mu_B
 \]</span></p>
 <ol start="2" style="list-style-type: decimal">
-<li><p>The second set of hypotheses are also a “one-way” set of hypotheses, but for the second <em>factor</em> of the ANOVA. Factor: <code>X2</code> with say, levels <span class="math inline">\(C\)</span>, <span class="math inline">\(D\)</span>, and <span class="math inline">\(E\)</span>. <span class="math display">\[
+<li><p>The second set of hypotheses are also a “one-way” set of
+hypotheses, but for the second <em>factor</em> of the ANOVA. Factor:
+<code>X2</code> with say, levels <span class="math inline">\(C\)</span>,
+<span class="math inline">\(D\)</span>, and <span
+class="math inline">\(E\)</span>. <span class="math display">\[
   H_0: \mu_C = \mu_D = \mu_E = \mu
 \]</span> <span class="math display">\[
   H_a: \mu_i \neq \mu \ \text{for at least one}\ i\in\{1=C,2=D,3=E\}
 \]</span></p></li>
-<li><p>The third set of hypotheses are the most interesting hypotheses in a two-way ANOVA. These are called the <em>interaction hypotheses</em>. They test to see if the levels of one of the factors, say <span class="math inline">\(X1\)</span>, impact <span class="math inline">\(Y\)</span> differently for the differing levels of the other factor, <span class="math inline">\(X2\)</span>. The hypotheses read formally as</p></li>
+<li><p>The third set of hypotheses are the most interesting hypotheses
+in a two-way ANOVA. These are called the <em>interaction
+hypotheses</em>. They test to see if the levels of one of the factors,
+say <span class="math inline">\(X1\)</span>, impact <span
+class="math inline">\(Y\)</span> differently for the differing levels of
+the other factor, <span class="math inline">\(X2\)</span>. The
+hypotheses read formally as</p></li>
 </ol>
 <p><span class="math display">\[
-  H_0: \text{The effect of the first factor on Y} \\ \text{is the same for all levels of the second factor.}
+  H_0: \text{The effect of the first factor on Y} \\ \text{is the same
+for all levels of the second factor.}
 \]</span> <span class="math display">\[
-  H_a: \text{The effect of the first factor on Y is not the same} \\ \text{for all levels of the second factor.}
+  H_a: \text{The effect of the first factor on Y is not the same} \\
+\text{for all levels of the second factor.}
 \]</span></p>
 </p>
 </div>
 <div id="effectsModel" class="tabcontent">
 <p>
-<p>A mathematically correct way to state the two-way ANOVA model is with the equation <span class="math display">\[
+<p>A mathematically correct way to state the two-way ANOVA model is with
+the equation <span class="math display">\[
   Y_{ijk} = \mu + \alpha_i + \beta_j + \alpha\beta_{ij} + \epsilon_{ijk}
-\]</span> In this model, <span class="math inline">\(\mu\)</span> is the grand mean (which is the average Y-value ignoring all information contained in the factors); <span class="math inline">\(\alpha_i\)</span> is the first factor <span class="math inline">\(X1\)</span> with levels <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> (though there could be more levels in <span class="math inline">\(X1\)</span> depending on your data); <span class="math inline">\(\beta_j\)</span> is the second factor with levels <span class="math inline">\(C\)</span>, <span class="math inline">\(D\)</span>, and <span class="math inline">\(E\)</span> (though there could be fewer or more levels to this factor depending on your data); <span class="math inline">\(\alpha\beta_{ij}\)</span> is the interaction of the two factors which has <span class="math inline">\(2\times3=6\)</span> (may differ for your data) levels; and <span class="math inline">\(\epsilon_{ijk} \sim N(0,\sigma^2)\)</span> is the normally distributed error term for each point <span class="math inline">\(k\)</span> found within level <span class="math inline">\(i\)</span> of <span class="math inline">\(X1\)</span> and level <span class="math inline">\(j\)</span> of <span class="math inline">\(X2\)</span>.</p>
+\]</span> In this model, <span class="math inline">\(\mu\)</span> is the
+grand mean (which is the average Y-value ignoring all information
+contained in the factors); <span class="math inline">\(\alpha_i\)</span>
+is the first factor <span class="math inline">\(X1\)</span> with levels
+<span class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> (though there could be more levels in
+<span class="math inline">\(X1\)</span> depending on your data); <span
+class="math inline">\(\beta_j\)</span> is the second factor with levels
+<span class="math inline">\(C\)</span>, <span
+class="math inline">\(D\)</span>, and <span
+class="math inline">\(E\)</span> (though there could be fewer or more
+levels to this factor depending on your data); <span
+class="math inline">\(\alpha\beta_{ij}\)</span> is the interaction of
+the two factors which has <span
+class="math inline">\(2\times3=6\)</span> (may differ for your data)
+levels; and <span class="math inline">\(\epsilon_{ijk} \sim
+N(0,\sigma^2)\)</span> is the normally distributed error term for each
+point <span class="math inline">\(k\)</span> found within level <span
+class="math inline">\(i\)</span> of <span
+class="math inline">\(X1\)</span> and level <span
+class="math inline">\(j\)</span> of <span
+class="math inline">\(X2\)</span>.</p>
 <p>This model allows us to more formally state the hypotheses as</p>
 <ol style="list-style-type: decimal">
-<li><p>First factor <span class="math inline">\(X1\)</span> having say, levels <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. <span class="math display">\[
+<li><p>First factor <span class="math inline">\(X1\)</span> having say,
+levels <span class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span>. <span class="math display">\[
   H_0: \alpha_A = \alpha_B = 0
 \]</span> <span class="math display">\[
   H_a: \alpha_i \neq 0 \ \text{for at least one}\ i\in\{1=A,2=B\}
 \]</span></p></li>
-<li><p>Second factor <span class="math inline">\(X2\)</span> with say, levels <span class="math inline">\(C\)</span>, <span class="math inline">\(D\)</span>, and <span class="math inline">\(E\)</span>. <span class="math display">\[
+<li><p>Second factor <span class="math inline">\(X2\)</span> with say,
+levels <span class="math inline">\(C\)</span>, <span
+class="math inline">\(D\)</span>, and <span
+class="math inline">\(E\)</span>. <span class="math display">\[
   H_0: \beta_C = \beta_D = \beta_E = 0
 \]</span> <span class="math display">\[
   H_a: \beta_j \neq 0 \ \text{for at least one}\ j\in\{1=C,2=D,3=E\}
 \]</span></p></li>
-<li><p>Does the effect of the first factor (<span class="math inline">\(X1\)</span>) change for the different levels of the second factor (<span class="math inline">\(X2\)</span>)? In other words, is there an interaction between the two factors <span class="math inline">\(X1\)</span> and <span class="math inline">\(X2\)</span>?</p></li>
+<li><p>Does the effect of the first factor (<span
+class="math inline">\(X1\)</span>) change for the different levels of
+the second factor (<span class="math inline">\(X2\)</span>)? In other
+words, is there an interaction between the two factors <span
+class="math inline">\(X1\)</span> and <span
+class="math inline">\(X2\)</span>?</p></li>
 </ol>
 <p><span class="math display">\[
   H_0: \alpha\beta_{ij} = 0 \ \text{for all } i,j
@@ -807,24 +1091,67 @@ r_{ik} = y_{ik} - \bar{y}_{i\bullet}
 <h4>R Instructions</h4>
 <div style="padding-left:125px;">
 <p><strong>Console</strong> Help Command: <code>?aov()</code></p>
-<p><code>myaov &lt;- aov(Y ~ X1+X2+X1:X2, data=YourDataSet)</code> <strong>Perform the ANOVA</strong></p>
-<p><code>summary(myaov)</code> <strong>View the ANOVA Results</strong></p>
-<p><code>plot(myaov, which=1:2)</code> <strong>Check ANOVA assumptions</strong></p>
+<p><code>myaov &lt;- aov(Y ~ X1+X2+X1:X2, data=YourDataSet)</code>
+<strong>Perform the ANOVA</strong></p>
+<p><code>summary(myaov)</code> <strong>View the ANOVA
+Results</strong></p>
+<p><code>plot(myaov, which=1:2)</code> <strong>Check ANOVA
+assumptions</strong></p>
 <ul>
-<li><code>myaov</code> is some name you come up with to store the results of the <code>aov()</code> test.</li>
-<li><code>Y</code> must be a “numeric” vector of the quantitative response variable.</li>
-<li><code>X1</code> is a qualitative variable (should have <code>class(X1)</code> equal to <code>factor</code> or <code>character</code>. If it does not, use <code>as.factor(X1)</code> inside the <code>aov()</code> command.</li>
-<li><code>X2</code> is a second qualitative variable that should also be either a <code>factor</code> or a <code>character</code> vector.</li>
-<li>Note that factors <code>X3</code>, <code>X4</code>, and so on could also be added <code>+</code> to the model if desired, but this would create a three-way, or four-way ANOVA model, and so on.</li>
-<li><code>X1:X2</code> denotes the interaction of the factors <code>X1</code> and <code>X2</code>. It is not required, but is usually included.</li>
+<li><code>myaov</code> is some name you come up with to store the
+results of the <code>aov()</code> test.</li>
+<li><code>Y</code> must be a “numeric” vector of the quantitative
+response variable.</li>
+<li><code>X1</code> is a qualitative variable (should have
+<code>class(X1)</code> equal to <code>factor</code> or
+<code>character</code>. If it does not, use <code>as.factor(X1)</code>
+inside the <code>aov()</code> command.</li>
+<li><code>X2</code> is a second qualitative variable that should also be
+either a <code>factor</code> or a <code>character</code> vector.</li>
+<li>Note that factors <code>X3</code>, <code>X4</code>, and so on could
+also be added <code>+</code> to the model if desired, but this would
+create a three-way, or four-way ANOVA model, and so on.</li>
+<li><code>X1:X2</code> denotes the interaction of the factors
+<code>X1</code> and <code>X2</code>. It is not required, but is usually
+included.</li>
 <li><code>YourDataSet</code> is the name of your data set.</li>
 </ul>
 <p><strong>Example Code</strong></p>
 <p>Hover your mouse over the example codes to learn more.</p>
 <a href="javascript:showhide('twoWayAnova')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> warp.aov &lt;-  <span class="tooltiprtext"> Saves the results of the ANOVA test as an object named ‘warp.aov’.</span> </span><span class="tooltipr"> aov( <span class="tooltiprtext">‘aov()’ is a function in R used to perform the ANOVA.</span> </span><span class="tooltipr"> breaks <span class="tooltiprtext"><span class="math inline">\(Y\)</span> is ‘breaks’, which is a numeric variable from the warpbreaks dataset.</span> </span><span class="tooltipr">  ~  <span class="tooltiprtext">‘~’ is the tilde symbol used to separate the left- and right-hand side in a model formula.</span> </span><span class="tooltipr"> wool  <span class="tooltiprtext">The first factor <span class="math inline">\(X1\)</span> is ‘wool’, which is a qualitative variable in the warpbreaks dataset. In this case, <code>wool</code> is a factor with two levels. Use str(warpbreaks) to see this. </span> </span><span class="tooltipr"> + tension  <span class="tooltiprtext">The second factor <span class="math inline">\(X2\)</span> is ‘tension’, which is another qualitative variable in the warpbreaks dataset. In this case, <code>tension</code> is a factor with three levels. Use str(warpbreaks) to see this.</span> </span><span class="tooltipr"> + wool:tension, <span class="tooltiprtext"> The interaction of the two factors: wool and tension. </span> </span><span class="tooltipr">  data = warpbreaks) <span class="tooltiprtext"> ‘warpbreaks’ is a dataset in R.</span> </span><br><span class="tooltipr"> summary( <span class="tooltiprtext"> ‘summary()’ shows the results of the ANOVA.</span> </span><span class="tooltipr"> warp.aov) <span class="tooltiprtext"> ‘warp.aov’ is the name of the ANOVA.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to View Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> warp.aov &lt;-  <span class="tooltiprtext">
+Saves the results of the ANOVA test as an object named
+‘warp.aov’.</span> </span><span class="tooltipr"> aov( <span
+class="tooltiprtext">‘aov()’ is a function in R used to perform the
+ANOVA.</span> </span><span class="tooltipr"> breaks <span
+class="tooltiprtext"><span class="math inline">\(Y\)</span> is ‘breaks’,
+which is a numeric variable from the warpbreaks dataset.</span>
+</span><span class="tooltipr">  ~  <span class="tooltiprtext">‘~’ is the
+tilde symbol used to separate the left- and right-hand side in a model
+formula.</span> </span><span class="tooltipr"> wool  <span
+class="tooltiprtext">The first factor <span
+class="math inline">\(X1\)</span> is ‘wool’, which is a qualitative
+variable in the warpbreaks dataset. In this case, <code>wool</code> is a
+factor with two levels. Use str(warpbreaks) to see this. </span>
+</span><span class="tooltipr"> + tension  <span class="tooltiprtext">The
+second factor <span class="math inline">\(X2\)</span> is ‘tension’,
+which is another qualitative variable in the warpbreaks dataset. In this
+case, <code>tension</code> is a factor with three levels. Use
+str(warpbreaks) to see this.</span> </span><span class="tooltipr">
++ wool:tension, <span class="tooltiprtext"> The interaction of the two
+factors: wool and tension. </span> </span><span class="tooltipr">
+ data = warpbreaks) <span class="tooltiprtext"> ‘warpbreaks’ is a
+dataset in R.</span> </span><br><span class="tooltipr"> summary( <span
+class="tooltiprtext"> ‘summary()’ shows the results of the ANOVA.</span>
+</span><span class="tooltipr"> warp.aov) <span class="tooltiprtext">
+‘warp.aov’ is the name of the ANOVA.</span> </span><span
+class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code if you have typed
+it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;font-size:.8em;">
+ Click to View Output  <span class="tooltiprtext">Click to View
+Output.</span> </span></p>
 </div>
 </a>
 <div id="twoWayAnova" style="display:none;">
@@ -838,7 +1165,21 @@ r_{ik} = y_{ik} - \bar{y}_{i\bullet}
 </div>
 <a href="javascript:showhide('twoWayAnovaCheck')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> par( <span class="tooltiprtext">‘par’ is a R function that can be used to set or query graphical parameters.</span> </span><span class="tooltipr"> mfrow = c(1,2)) <span class="tooltiprtext">Parameter is being set. The first item inside the combine function c() is the number of rows and the second is the number of columns. </span> </span><br><span class="tooltipr"> plot( <span class="tooltiprtext">‘plot’ is a R function for the plotting of R objects.</span> </span><span class="tooltipr"> warp.aov, <span class="tooltiprtext">‘warp.aov’ is the name of the ANOVA.</span> </span><span class="tooltipr">  which = 1:2) <span class="tooltiprtext">Will show the Residuals vs Fitted and the Normal QQ-plot to check the ANOVA assumptions.</span> </span><span class="tooltipr" style="float:right;font-size:.8em;">  Click to View Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> par( <span class="tooltiprtext">‘par’ is a R
+function that can be used to set or query graphical parameters.</span>
+</span><span class="tooltipr"> mfrow = c(1,2)) <span
+class="tooltiprtext">Parameter is being set. The first item inside the
+combine function c() is the number of rows and the second is the number
+of columns. </span> </span><br><span class="tooltipr"> plot( <span
+class="tooltiprtext">‘plot’ is a R function for the plotting of R
+objects.</span> </span><span class="tooltipr"> warp.aov, <span
+class="tooltiprtext">‘warp.aov’ is the name of the ANOVA.</span>
+</span><span class="tooltipr">  which = 1:2) <span
+class="tooltiprtext">Will show the Residuals vs Fitted and the Normal
+QQ-plot to check the ANOVA assumptions.</span> </span><span
+class="tooltipr" style="float:right;font-size:.8em;">  Click to View
+Output  <span class="tooltiprtext">Click to View Output.</span>
+</span></p>
 </div>
 </a>
 <div id="twoWayAnovaCheck" style="display:none;">
@@ -852,28 +1193,41 @@ r_{ik} = y_{ik} - \bar{y}_{i\bullet}
 <div style="padding-left:125px;">
 <div id="hypotheses-in-two-way-anova" class="section level5">
 <h5>Hypotheses in Two-way ANOVA</h5>
-<p>The hypotheses that can be tested in a two-way ANOVA that includes an interaction term are three-fold.</p>
-<p>Hypotheses about <span class="math inline">\(\alpha\)</span> where <span class="math inline">\(\alpha\)</span> has <span class="math inline">\(m\)</span> levels. <span class="math display">\[
+<p>The hypotheses that can be tested in a two-way ANOVA that includes an
+interaction term are three-fold.</p>
+<p>Hypotheses about <span class="math inline">\(\alpha\)</span> where
+<span class="math inline">\(\alpha\)</span> has <span
+class="math inline">\(m\)</span> levels. <span class="math display">\[
   H_0: \alpha_1 = \alpha_2 = \ldots = \alpha_m = 0
 \]</span> <span class="math display">\[
   H_a: \alpha_i \neq 0\ \text{for at least one}\ i\in\{1,\ldots,m\}
 \]</span></p>
-<p>Hypotheses about <span class="math inline">\(\beta\)</span> where <span class="math inline">\(\beta\)</span> has <span class="math inline">\(q\)</span> levels. <span class="math display">\[
+<p>Hypotheses about <span class="math inline">\(\beta\)</span> where
+<span class="math inline">\(\beta\)</span> has <span
+class="math inline">\(q\)</span> levels. <span class="math display">\[
   H_0: \beta_1 = \beta_2 = \ldots = \beta_q = 0
 \]</span> <span class="math display">\[
   H_a: \beta_j \neq 0\ \text{for at least one}\ i\in\{1,\ldots,q\}
 \]</span></p>
-<p>Hypotheses about the interaction term <span class="math inline">\(\alpha\beta\)</span>. <span class="math display">\[
-  H_0: \text{the effect of one factor is the same across all levels of the other factor}
+<p>Hypotheses about the interaction term <span
+class="math inline">\(\alpha\beta\)</span>. <span
+class="math display">\[
+  H_0: \text{the effect of one factor is the same across all levels of
+the other factor}
 \]</span> <span class="math display">\[
-  H_a: \text{the effect of one factor differs for at least one level of the other factor}
+  H_a: \text{the effect of one factor differs for at least one level of
+the other factor}
 \]</span></p>
 </div>
 <div id="expanding" class="section level5">
 <h5>Expanding the ANOVA Model</h5>
-<p>It turns out that more can be done with ANOVA than simply checking to see if the means of several groups differ. Reconsider the mathematical model of two-way ANOVA. <span class="math display">\[
+<p>It turns out that more can be done with ANOVA than simply checking to
+see if the means of several groups differ. Reconsider the mathematical
+model of two-way ANOVA. <span class="math display">\[
   Y_{ijk} = \mu + \alpha_i + \beta_j + \alpha\beta_{ij} + \epsilon_{ijk}
-\]</span> This model could be expanded to include any number of new terms in the model. The power of this approach is in the several questions (hypotheses) that can be posed to data simultaneously.</p>
+\]</span> This model could be expanded to include any number of new
+terms in the model. The power of this approach is in the several
+questions (hypotheses) that can be posed to data simultaneously.</p>
 <hr />
 </div>
 </div>
@@ -882,23 +1236,40 @@ r_{ik} = y_{ik} - \bar{y}_{i\bullet}
 <div id="section-1" class="section level3">
 <h3></h3>
 <div style="padding-left:125px;">
-<p><strong>Examples:</strong> <a href="./Analyses/ANOVA/Examples/warpbreaksTwoWayANOVA.html">warpbreaks</a> (Two-way), <a href="./Analyses/ANOVA/Examples/CO2ThreeWayANOVA.html">CO2</a> (three-way)</p>
+<p><strong>Examples:</strong> <a
+href="./Analyses/ANOVA/Examples/warpbreaksTwoWayANOVA.html">warpbreaks</a>
+(Two-way), <a
+href="./Analyses/ANOVA/Examples/CO2ThreeWayANOVA.html">CO2</a>
+(three-way)</p>
 </div>
 <hr />
 </div>
-<div id="block-design" class="section level3 tabset tabset-fade tabset-pills">
+<div id="block-design"
+class="section level3 tabset tabset-fade tabset-pills">
 <h3 class="tabset tabset-fade tabset-pills">Block Design</h3>
 <div style="float:left;width:125px;" align="center">
 <p><img src="Images/QuantYQualXg3plus.png" width=58px;></p>
 </div>
-<p>Repeated measures or other factors that group individuals into similar groups (blocks) are included in the study design.</p>
+<p>Repeated measures or other factors that group individuals into
+similar groups (blocks) are included in the study design.</p>
 <div id="overview-2" class="section level4">
 <h4>Overview</h4>
 <div style="padding-left:125px;">
-<p>A typical model for a block design is of the form <span class="math display">\[
-  Y_{lijk} = \mu + B_l + \alpha_i + \beta_j + \alpha\beta_{ij} + \epsilon_{ijlk}
-\]</span> where <span class="math inline">\(\mu\)</span> is the grand mean, <span class="math inline">\(B_l\)</span> is the blocking factor, <span class="math inline">\(\alpha_i\)</span> is one factor with at least two levels, <span class="math inline">\(\beta_j\)</span> is another factor with at least two levels, <span class="math inline">\(\alpha\beta_{ij}\)</span> is the interaction of the two factors, and <span class="math inline">\(\epsilon_{ijlk} \sim N(0,\sigma^2)\)</span> is the error term.</p>
-<p>Only one block and one factor is required. Multiple blocks and multiple factors are allowed. It is not required to include interaction terms. The error term is always required.</p>
+<p>A typical model for a block design is of the form <span
+class="math display">\[
+  Y_{lijk} = \mu + B_l + \alpha_i + \beta_j + \alpha\beta_{ij} +
+\epsilon_{ijlk}
+\]</span> where <span class="math inline">\(\mu\)</span> is the grand
+mean, <span class="math inline">\(B_l\)</span> is the blocking factor,
+<span class="math inline">\(\alpha_i\)</span> is one factor with at
+least two levels, <span class="math inline">\(\beta_j\)</span> is
+another factor with at least two levels, <span
+class="math inline">\(\alpha\beta_{ij}\)</span> is the interaction of
+the two factors, and <span class="math inline">\(\epsilon_{ijlk} \sim
+N(0,\sigma^2)\)</span> is the error term.</p>
+<p>Only one block and one factor is required. Multiple blocks and
+multiple factors are allowed. It is not required to include interaction
+terms. The error term is always required.</p>
 <hr />
 </div>
 </div>
@@ -906,17 +1277,33 @@ r_{ik} = y_{ik} - \bar{y}_{i\bullet}
 <h4>R Instructions</h4>
 <div style="padding-left:125px;">
 <p><strong>Console</strong> Help Command: <code>?aov()</code></p>
-<p><code>myaov &lt;- aov(Y ~ Block+X1+X2+X1:X2, data=YourDataSet)</code> <strong>Perform the test</strong></p>
-<p><code>summary(myaov)</code> <strong>View the ANOVA Results</strong></p>
-<p><code>plot(myaov, which=1:2)</code> <strong>Check ANOVA assumptions</strong></p>
+<p><code>myaov &lt;- aov(Y ~ Block+X1+X2+X1:X2, data=YourDataSet)</code>
+<strong>Perform the test</strong></p>
+<p><code>summary(myaov)</code> <strong>View the ANOVA
+Results</strong></p>
+<p><code>plot(myaov, which=1:2)</code> <strong>Check ANOVA
+assumptions</strong></p>
 <ul>
-<li><code>myaov</code> is some name you come up with to store the results of the <code>aov()</code> test.</li>
-<li><code>Y</code> must be a “numeric” vector of the quantitative response variable.</li>
-<li><code>Block</code> is a qualitative variable that is not of direct interest, but is included in the model to account for variability in the data. It should have <code>class(Block)</code> equal to either factor or character. Use <code>as.factor()</code> if it does not.</li>
-<li><code>X1</code> is a qualitative variable (should have <code>class(X1)</code> equal to <code>factor</code> or <code>character</code>. If it does not, use <code>as.factor(X1)</code> inside the <code>aov()</code> command.</li>
-<li><code>X2</code> is a second qualitative variable that should also be either a <code>factor</code> or a <code>character</code> vector. If it does not, use <code>as.factor(X2)</code>.</li>
-<li>Note that factors <code>C</code>, <code>D</code>, and so on could also be added <code>+</code> to the model if desired.</li>
-<li><code>X1:X2</code> denotes the interaction of the factors <code>X1</code> and <code>X2</code>. It is not required and should only be included if the interaction term is of interest.</li>
+<li><code>myaov</code> is some name you come up with to store the
+results of the <code>aov()</code> test.</li>
+<li><code>Y</code> must be a “numeric” vector of the quantitative
+response variable.</li>
+<li><code>Block</code> is a qualitative variable that is not of direct
+interest, but is included in the model to account for variability in the
+data. It should have <code>class(Block)</code> equal to either factor or
+character. Use <code>as.factor()</code> if it does not.</li>
+<li><code>X1</code> is a qualitative variable (should have
+<code>class(X1)</code> equal to <code>factor</code> or
+<code>character</code>. If it does not, use <code>as.factor(X1)</code>
+inside the <code>aov()</code> command.</li>
+<li><code>X2</code> is a second qualitative variable that should also be
+either a <code>factor</code> or a <code>character</code> vector. If it
+does not, use <code>as.factor(X2)</code>.</li>
+<li>Note that factors <code>C</code>, <code>D</code>, and so on could
+also be added <code>+</code> to the model if desired.</li>
+<li><code>X1:X2</code> denotes the interaction of the factors
+<code>X1</code> and <code>X2</code>. It is not required and should only
+be included if the interaction term is of interest.</li>
 <li><code>YourDataSet</code> is the name of your data set.</li>
 </ul>
 <hr />
@@ -926,7 +1313,8 @@ r_{ik} = y_{ik} - \bar{y}_{i\bullet}
 <div id="section-2" class="section level3">
 <h3></h3>
 <div style="padding-left:125px;">
-<p><strong>Examples</strong>: <a href="./Analyses/ANOVA/Examples/ChickWeightANOVABlock.html">ChickWeight</a></p>
+<p><strong>Examples</strong>: <a
+href="./Analyses/ANOVA/Examples/ChickWeightANOVABlock.html">ChickWeight</a></p>
 </div>
 <hr />
 <footer>

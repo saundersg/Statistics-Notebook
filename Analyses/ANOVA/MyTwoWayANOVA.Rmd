@@ -1,0 +1,36 @@
+---
+title: "My Two-way ANOVA"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+```{r, warning=FALSE, message=FALSE}
+library(mosaic)
+library(DT)
+library(pander)
+library(car)
+library(tidyverse)
+
+# Record your data from your own mini experiment in Excel.
+# Save the data as a .csv file in the Data folder of the Statistics-Notebook.
+
+# Read in the data
+someNameYouWant <- read_csv("../../Data/whatYouNamedYourDataGoesHere.csv") 
+```
+
+<!-- Instructions:
+
+Perform your own mini experiment using two factors that each have at least two levels. Analyze your data using a two-way ANOVA.
+
+Studying reaction time is recommended because the data is quickly collected.
+
+While you should use the warpbreaks example analyses as your guide on how to properly complete this analysis, you should also be creative in your final delivery of this analysis. If you copy the format and approach of the example analyses, be sure to give credit in your document to these example analyses. You could write something like, "This work is modeled after the [warpbreaks](https://byuistats.github.io/Statistics-Notebook/Analyses/ANOVA/Examples/warpbreaksTwoWayANOVA.html) analysis." Whatever you do, DO NOT use any of the written statements from the example analyses in your analysis unless you quote them directly and give credit. Using someone else's writing as your own without giving credit to the original author is plagiarism and is an Honor Code Violation. So do your own work. Plus, the more you try to write things in your own words, the more you will learn. Also, note that there aren't really any "rules" about exactly how your document should be organized. So be creative and organize your file in a way that makes sense to you, but still has all important elements.
+
+-->
+
+
+
+
+

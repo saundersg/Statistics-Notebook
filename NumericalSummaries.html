@@ -505,10 +505,10 @@ div.tocify {
       <a href="./Analyses/Wilcoxon Tests/RecallingWords.html">Recalling Words</a>
     </li>
     <li>
-      <a href="./Analyses/Kruskal-Wallis Test/Food.html">Food</a>
+      <a href="./Analyses/ANOVA/MyTwoWayANOVA.html">My Two-way ANOVA</a>
     </li>
     <li>
-      <a href="./Analyses/ANOVA/HighSchoolSeniors2.html">High School Seniors 2</a>
+      <a href="./Analyses/Kruskal-Wallis Test/Food.html">Food</a>
     </li>
     <li>
       <a href="./Analyses/Linear Regression/MySimpleLinearRegression.html">My Simple Linear Regression</a>
@@ -548,7 +548,10 @@ div.tocify {
  }
 </script>
 <hr />
-<p>There are many ways to numerically summarize data. The fundamental idea is to describe the center, or most <em>probable</em> values of the data, as well as the spread, or the <em>possible</em> values of the data.</p>
+<p>There are many ways to numerically summarize data. The fundamental
+idea is to describe the center, or most <em>probable</em> values of the
+data, as well as the spread, or the <em>possible</em> values of the
+data.</p>
 <hr />
 <div id="mean" class="section level3 tabset tabset-fade tabset-pills">
 <h3 class="tabset tabset-fade tabset-pills">Mean</h3>
@@ -561,7 +564,12 @@ div.tocify {
 <div id="overview" class="section level4">
 <h4>Overview</h4>
 <div style="padding-left:150px;">
-<p>The “balance point” or “center of mass” of quantitative data. It is calculated by taking the numerical sum of the values divided by the number of values. Typically used in tandem with the standard deviation. Most appropriate for describing the most typical values for relatively normally distributed data. Influenced by outliers, so it is not appropriate for describing strongly skewed data.</p>
+<p>The “balance point” or “center of mass” of quantitative data. It is
+calculated by taking the numerical sum of the values divided by the
+number of values. Typically used in tandem with the standard deviation.
+Most appropriate for describing the most typical values for relatively
+normally distributed data. Influenced by outliers, so it is not
+appropriate for describing strongly skewed data.</p>
 </div>
 <hr />
 </div>
@@ -571,27 +579,80 @@ div.tocify {
 <p>To calculate a mean in R use the code:</p>
 <p><code>mean(object)</code></p>
 <ul>
-<li><code>object</code> must be a quantitative variable, what R calls a “numeric vector.” Usually this is a column from a data set.</li>
-<li>Use <code>na.rm=TRUE</code> if there are missing values in <code>object</code> so that the code reads <code>mean(object, na.rm=TRUE)</code>.</li>
+<li><code>object</code> must be a quantitative variable, what R calls a
+“numeric vector.” Usually this is a column from a data set.</li>
+<li>Use <code>na.rm=TRUE</code> if there are missing values in
+<code>object</code> so that the code reads
+<code>mean(object, na.rm=TRUE)</code>.</li>
 </ul>
 <p><br></p>
 <p><strong>Example Code</strong></p>
 <p>Hover your mouse over the example codes to learn more.</p>
 <a href="javascript:showhide('mean1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> mean <span class="tooltiprtext">“mean” is an R function used to calculate the mean of data.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the airquality dataset.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">“Temp” is a quantitative variable (numeric vector) from the “airquality” dataset.</span> </span><span class="tooltipr"> )<br />
-<span class="tooltiprtext">Closing parenthsis for the mean function.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> mean <span class="tooltiprtext">“mean” is an
+R function used to calculate the mean of data.</span> </span><span
+class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the
+function. Must touch the last letter of the function.</span>
+</span><span class="tooltipr"> airquality <span
+class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)”
+in R to see it.</span> </span><span class="tooltipr"> $ <span
+class="tooltiprtext">The $ allows us to access any variable from the
+airquality dataset.</span> </span><span class="tooltipr"> Temp <span
+class="tooltiprtext">“Temp” is a quantitative variable (numeric vector)
+from the “airquality” dataset.</span> </span><span class="tooltipr">
+)<br />
+<span class="tooltiprtext">Closing parenthsis for the mean
+function.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code if you have typed
+it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="mean1" style="display:none;">
 <pre><code>## [1] 77.88235</code></pre>
-<p>Note that the single number showing above is the average <code>Temp</code> from the <code>airquality</code> dataset.</p>
+<p>Note that the single number showing above is the average
+<code>Temp</code> from the <code>airquality</code> dataset.</p>
 </div>
 <a href="javascript:showhide('mean3')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(tidyverse) <span class="tooltiprtext">tidyverse is an R Package that is very useful for working with data.</span> </span><br><span class="tooltipr"> airquality <span class="tooltipRtext"><code>airquality</code> is a dataset in R.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    group_by( <span class="tooltipRtext">“group_by” is a function from library(tidyverse) that allows us to split the airquality dataset into “little” datasets, one dataset for each value in the “Month” column.</span> </span><span class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column from the airquality dataset that can be treated as qualitative.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the grouped version of the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    summarise( <span class="tooltipRtext">“summarise” is a function from library(tidyverse) that allows us to compute numerical summaries on data.</span> </span><span class="tooltipr"> aveTemp =  <span class="tooltiprtext">“AveTemp” is just a name we made up. It will contain the results of the mean(…) function.</span> </span><span class="tooltipr"> mean( <span class="tooltiprtext">“mean” is an R function used to calculate the mean.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">Temp is a quantitative variable (numeric vector) from the airquality dataset.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> library(tidyverse) <span
+class="tooltiprtext">tidyverse is an R Package that is very useful for
+working with data.</span> </span><br><span class="tooltipr"> airquality
+<span class="tooltipRtext"><code>airquality</code> is a dataset in
+R.</span> </span><span class="tooltipr">  %&gt;%  <span
+class="tooltipRtext">The pipe operator that will send the
+<code>airquality</code> dataset down inside of the code on the following
+line.</span> </span><br/><span class="tooltipr">    group_by( <span
+class="tooltipRtext">“group_by” is a function from library(tidyverse)
+that allows us to split the airquality dataset into “little” datasets,
+one dataset for each value in the “Month” column.</span> </span><span
+class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column
+from the airquality dataset that can be treated as qualitative.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Functions
+must always end with a closing parenthesis.</span> </span><span
+class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator
+that will send the grouped version of the <code>airquality</code>
+dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">    summarise( <span
+class="tooltipRtext">“summarise” is a function from library(tidyverse)
+that allows us to compute numerical summaries on data.</span>
+</span><span class="tooltipr"> aveTemp =  <span
+class="tooltiprtext">“AveTemp” is just a name we made up. It will
+contain the results of the mean(…) function.</span> </span><span
+class="tooltipr"> mean( <span class="tooltiprtext">“mean” is an R
+function used to calculate the mean.</span> </span><span
+class="tooltipr"> Temp <span class="tooltiprtext">Temp is a quantitative
+variable (numeric vector) from the airquality dataset.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Functions
+must always end with a closing parenthesis.</span> </span><span
+class="tooltipr"> ) <span class="tooltiprtext">Functions must always end
+with a closing parenthesis.</span> </span><span class="tooltipr">
+    <br />
+<span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="mean3" style="display:none;">
@@ -629,9 +690,12 @@ div.tocify {
 </tr>
 </tbody>
 </table>
-<p>Note that R calculated the mean <code>Temp</code> for each month in <code>Month</code> from the <code>airquality</code> dataset.</p>
-<p>May (5), June (6), July (7), August (8), and September (9), respectively.</p>
-<p>Further, note that to get the “nicely formatted” table, you would have to use</p>
+<p>Note that R calculated the mean <code>Temp</code> for each month in
+<code>Month</code> from the <code>airquality</code> dataset.</p>
+<p>May (5), June (6), July (7), August (8), and September (9),
+respectively.</p>
+<p>Further, note that to get the “nicely formatted” table, you would
+have to use</p>
 <pre><code>library(pander)
 airquality %&gt;% 
   group_by(Month) %&gt;%
@@ -642,14 +706,38 @@ airquality %&gt;%
 <p>A note about missing values in data…</p>
 <a href="javascript:showhide('mean1b')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> mean <span class="tooltiprtext">“mean” is an R function used to calculate the mean of data.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the airquality dataset.</span> </span><span class="tooltipr"> Ozone <span class="tooltiprtext">“Ozone” is a quantitative variable (numeric vector) from the “airquality” dataset.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">The comma allows us to specify optional commands.</span> </span><span class="tooltipr"> na.rm=TRUE <span class="tooltiprtext">Missing values are called “NA” in R. If data contains missing values, <code>mean(...)</code> will give “NA” as the result unless we “remove” (rm) the “NA” (na) values.</span> </span><span class="tooltipr"> )<br />
-<span class="tooltiprtext">Closing parenthsis for the mean function.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> mean <span class="tooltiprtext">“mean” is an
+R function used to calculate the mean of data.</span> </span><span
+class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the
+function. Must touch the last letter of the function.</span>
+</span><span class="tooltipr"> airquality <span
+class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)”
+in R to see it.</span> </span><span class="tooltipr"> $ <span
+class="tooltiprtext">The $ allows us to access any variable from the
+airquality dataset.</span> </span><span class="tooltipr"> Ozone <span
+class="tooltiprtext">“Ozone” is a quantitative variable (numeric vector)
+from the “airquality” dataset.</span> </span><span class="tooltipr"> , 
+<span class="tooltiprtext">The comma allows us to specify optional
+commands.</span> </span><span class="tooltipr"> na.rm=TRUE <span
+class="tooltiprtext">Missing values are called “NA” in R. If data
+contains missing values, <code>mean(...)</code> will give “NA” as the
+result unless we “remove” (rm) the “NA” (na) values.</span> </span><span
+class="tooltipr"> )<br />
+<span class="tooltiprtext">Closing parenthsis for the mean
+function.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code if you have typed
+it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="mean1b" style="display:none;">
 <pre><code>## [1] 42.12931</code></pre>
-<p>Note that the single number showing above is the average <code>Ozone</code> from the <code>airquality</code> dataset. Because the <code>Ozone</code> column had missing values, we had to use the option <code>na.rm=TRUE</code> to get the mean to calculate. If we had left it off, we would have gotten an “NA” result:</p>
+<p>Note that the single number showing above is the average
+<code>Ozone</code> from the <code>airquality</code> dataset. Because the
+<code>Ozone</code> column had missing values, we had to use the option
+<code>na.rm=TRUE</code> to get the mean to calculate. If we had left it
+off, we would have gotten an “NA” result:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(airquality<span class="sc">$</span>Ozone)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 </div>
@@ -659,26 +747,57 @@ airquality %&gt;%
 <div id="explanation" class="section level4">
 <h4>Explanation</h4>
 <div style="padding-left:150px;">
-<p>The mathematical formula used to compute the mean of data is given by the formula to the left. Although the formula looks complicated, all it states is “add all the data values up and divide by the total number of values.” Read on to learn what all the symbols in the formula represent.</p>
+<p>The mathematical formula used to compute the mean of data is given by
+the formula to the left. Although the formula looks complicated, all it
+states is “add all the data values up and divide by the total number of
+values.” Read on to learn what all the symbols in the formula
+represent.</p>
 <div id="symbols-in-the-formula" class="section level5">
 <h5>Symbols in the Formula</h5>
 <ul>
-<li><p><span class="math inline">\(\bar{x}\)</span> is read “x-bar” and is the symbol typically used for the <strong>sample mean</strong>, the mean computed on a <em>sample</em> of data from a population.</p></li>
-<li><p><span class="math inline">\(\Sigma\)</span>, the capital Greek letter “sigma,” is the symbol used to imply “add all of the data values up.”</p></li>
-<li><p>The <span class="math inline">\(x_i\)</span>’s are the data values. The <span class="math inline">\(i\)</span> in the <span class="math inline">\(x_i\)</span> is stated to go from <span class="math inline">\(i=1\)</span> all the way up to <span class="math inline">\(n\)</span>. In other words, data value 1 is represented by <span class="math inline">\(x_1\)</span>, data value 2: <span class="math inline">\(x_2\)</span>, <span class="math inline">\(\ldots\)</span>, up through the last data value <span class="math inline">\(x_n\)</span>. In general, we just write <span class="math inline">\(x_i\)</span>.</p></li>
-<li><p><span class="math inline">\(n\)</span> represents the sample size, or number of data values.</p></li>
+<li><p><span class="math inline">\(\bar{x}\)</span> is read “x-bar” and
+is the symbol typically used for the <strong>sample mean</strong>, the
+mean computed on a <em>sample</em> of data from a population.</p></li>
+<li><p><span class="math inline">\(\Sigma\)</span>, the capital Greek
+letter “sigma,” is the symbol used to imply “add all of the data values
+up.”</p></li>
+<li><p>The <span class="math inline">\(x_i\)</span>’s are the data
+values. The <span class="math inline">\(i\)</span> in the <span
+class="math inline">\(x_i\)</span> is stated to go from <span
+class="math inline">\(i=1\)</span> all the way up to <span
+class="math inline">\(n\)</span>. In other words, data value 1 is
+represented by <span class="math inline">\(x_1\)</span>, data value 2:
+<span class="math inline">\(x_2\)</span>, <span
+class="math inline">\(\ldots\)</span>, up through the last data value
+<span class="math inline">\(x_n\)</span>. In general, we just write
+<span class="math inline">\(x_i\)</span>.</p></li>
+<li><p><span class="math inline">\(n\)</span> represents the sample
+size, or number of data values.</p></li>
 </ul>
 </div>
 <div id="population-mean" class="section level5">
 <h5>Population Mean</h5>
-<p>When <strong>all</strong> of the data from a population is available, the <strong>population mean</strong> is calculated instead of the sample mean. The mathematical formula for the <strong>population mean</strong> is the same as the formula for the sample mean, but is written with slightly different notation. <span class="math display">\[
+<p>When <strong>all</strong> of the data from a population is available,
+the <strong>population mean</strong> is calculated instead of the sample
+mean. The mathematical formula for the <strong>population mean</strong>
+is the same as the formula for the sample mean, but is written with
+slightly different notation. <span class="math display">\[
   \mu = \frac{\sum_{i=1}^N x_i}{N}
-\]</span> Notice that the symbol for the population mean is <span class="math inline">\(\mu\)</span>, pronounced “mew,” another Greek letter. (Review your <a href="https://en.wikipedia.org/wiki/Greek_alphabet#Letters">Greek alphabet</a>.) The only other difference between the two formulas is that the sample mean uses a sample of data, denoted by <span class="math inline">\(n\)</span>, while the population mean uses all the population data, denoted by <span class="math inline">\(N\)</span>.</p>
+\]</span> Notice that the symbol for the population mean is <span
+class="math inline">\(\mu\)</span>, pronounced “mew,” another Greek
+letter. (Review your <a
+href="https://en.wikipedia.org/wiki/Greek_alphabet#Letters">Greek
+alphabet</a>.) The only other difference between the two formulas is
+that the sample mean uses a sample of data, denoted by <span
+class="math inline">\(n\)</span>, while the population mean uses all the
+population data, denoted by <span class="math inline">\(N\)</span>.</p>
 </div>
 <div id="physicalinterpretation" class="section level5">
 <h5>Physical Interpretation</h5>
-<p>The mean is sometimes described as the “balance point” of the data. The following example will demonstrate.</p>
-<p>Say there are <span class="math inline">\(n=5\)</span> data points with the following values.</p>
+<p>The mean is sometimes described as the “balance point” of the data.
+The following example will demonstrate.</p>
+<p>Say there are <span class="math inline">\(n=5\)</span> data points
+with the following values.</p>
 <ul>
 <li><span class="math inline">\(x_1 = 2\)</span></li>
 <li><span class="math inline">\(x_2 = 5\)</span></li>
@@ -686,18 +805,37 @@ airquality %&gt;%
 <li><span class="math inline">\(x_4 = 7\)</span></li>
 <li><span class="math inline">\(x_5 = 10\)</span></li>
 </ul>
-<p>The sample mean is calculated as follows. <span class="math display">\[
-  \bar{x} = \frac{\sum_{i=1}^n x_i}{n} = \frac{2 + 5 + 6 + 7 + 10}{5} = 6
-\]</span> If these values were plotted, and an “infinitely thin bar” connected the points, then the bar would “balance” at the mean (the triangle) as shown below.</p>
+<p>The sample mean is calculated as follows. <span
+class="math display">\[
+  \bar{x} = \frac{\sum_{i=1}^n x_i}{n} = \frac{2 + 5 + 6 + 7 + 10}{5} =
+6
+\]</span> If these values were plotted, and an “infinitely thin bar”
+connected the points, then the bar would “balance” at the mean (the
+triangle) as shown below.</p>
 <p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 <div id="deviations" class="section level5">
 <h5>Middle of the Deviations</h5>
-<p>The above plot demonstrates that there are equal, but opposite, “sums of deviations” to either side of the mean. Note that a deviation is defined as the distance from the mean to a given point. Thus, <span class="math inline">\(x_1\)</span> has a deviation of -4 from the mean, <span class="math inline">\(x_2\)</span> a deviation of -1, <span class="math inline">\(x_3\)</span> a deviation of 0, <span class="math inline">\(x_4\)</span> a deviation of 1, and <span class="math inline">\(x_5\)</span> a deviation of 4. To the left there is a sum of deviations equal to -5 and on the right, a sum of deviations equal to 5. This can be verified to hold for any scenario.</p>
+<p>The above plot demonstrates that there are equal, but opposite, “sums
+of deviations” to either side of the mean. Note that a deviation is
+defined as the distance from the mean to a given point. Thus, <span
+class="math inline">\(x_1\)</span> has a deviation of -4 from the mean,
+<span class="math inline">\(x_2\)</span> a deviation of -1, <span
+class="math inline">\(x_3\)</span> a deviation of 0, <span
+class="math inline">\(x_4\)</span> a deviation of 1, and <span
+class="math inline">\(x_5\)</span> a deviation of 4. To the left there
+is a sum of deviations equal to -5 and on the right, a sum of deviations
+equal to 5. This can be verified to hold for any scenario.</p>
 </div>
 <div id="outliers" class="section level5">
 <h5>Effect of Outliers</h5>
-<p>The mean can be strongly influenced by <em>outliers</em>, points that deviate abnormally from the mean. This is shown below by changing <span class="math inline">\(x_5\)</span> to be 20. Note that the deviation of <span class="math inline">\(x_5\)</span> is 12, and the sum of deviations to the left of the mean (<span class="math inline">\(\bar{x}=8\)</span>) is <span class="math inline">\(-1 + -2 + -3 + -6 = -12\)</span>.</p>
+<p>The mean can be strongly influenced by <em>outliers</em>, points that
+deviate abnormally from the mean. This is shown below by changing <span
+class="math inline">\(x_5\)</span> to be 20. Note that the deviation of
+<span class="math inline">\(x_5\)</span> is 12, and the sum of
+deviations to the left of the mean (<span
+class="math inline">\(\bar{x}=8\)</span>) is <span
+class="math inline">\(-1 + -2 + -3 + -6 = -12\)</span>.</p>
 <p>The mean of the altered data</p>
 <ul>
 <li><span class="math inline">\(x_1 = 2\)</span></li>
@@ -706,7 +844,8 @@ airquality %&gt;%
 <li><span class="math inline">\(x_4 = 7\)</span></li>
 <li><span class="math inline">\(x_5 = 20\)</span></li>
 </ul>
-<p>is now <span class="math inline">\(\bar{x} = \frac{\sum_{i=1}^n x_i}{n} = \frac{2 + 5 + 6 + 7 + 20}{5} = 8\)</span>.</p>
+<p>is now <span class="math inline">\(\bar{x} = \frac{\sum_{i=1}^n
+x_i}{n} = \frac{2 + 5 + 6 + 7 + 20}{5} = 8\)</span>.</p>
 <p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 </div>
@@ -720,7 +859,9 @@ airquality %&gt;%
   \frac{x_{(n/2)}+x_{(n/2+1)}}{2}
 \]</span>
 <center>
-<span class="math inline">\(\uparrow\)</span> <strong>even</strong> <span class="math inline">\(n\)</span> <strong>odd</strong> <span class="math inline">\(\downarrow\)</span>
+<span class="math inline">\(\uparrow\)</span> <strong>even</strong>
+<span class="math inline">\(n\)</span> <strong>odd</strong> <span
+class="math inline">\(\downarrow\)</span>
 </center>
 <p><span class="math display">\[
   x_{((n+1)/2)}
@@ -730,7 +871,13 @@ airquality %&gt;%
 <div id="overview-1" class="section level4">
 <h4>Overview</h4>
 <div style="padding-left:150px;">
-<p>The “middle data point,” i.e., the 50<span class="math inline">\(^{th}\)</span> percentile. Half of the data is below the median and half is above the median. Typically used in tandem with the five-number summary to describe skewed data because it is not heavily influenced by outliers, i.e., it is <em>robust</em>. Can also be used with normally distributed data, but the mean and standard deviation are more useful measures in such cases.</p>
+<p>The “middle data point,” i.e., the 50<span
+class="math inline">\(^{th}\)</span> percentile. Half of the data is
+below the median and half is above the median. Typically used in tandem
+with the five-number summary to describe skewed data because it is not
+heavily influenced by outliers, i.e., it is <em>robust</em>. Can also be
+used with normally distributed data, but the mean and standard deviation
+are more useful measures in such cases.</p>
 </div>
 <hr />
 </div>
@@ -740,25 +887,76 @@ airquality %&gt;%
 <p>To calculate a median in R use the code:</p>
 <p><code>median(object)</code></p>
 <ul>
-<li><code>object</code> must be a quantitative variable, what R calls a “numeric vector.”</li>
+<li><code>object</code> must be a quantitative variable, what R calls a
+“numeric vector.”</li>
 </ul>
 <p><br></p>
 <p><strong>Example Code</strong></p>
 <a href="javascript:showhide('median1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> median <span class="tooltiprtext">“median” is an R function used to calculate the median of data.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the airquality dataset.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">“Temp” is a quantitative variable (numeric vector) from the “airquality” dataset.</span> </span><span class="tooltipr"> )<br />
-<span class="tooltiprtext">Closing parenthsis for the median function.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> median <span class="tooltiprtext">“median” is
+an R function used to calculate the median of data.</span> </span><span
+class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the
+function. Must touch the last letter of the function.</span>
+</span><span class="tooltipr"> airquality <span
+class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)”
+in R to see it.</span> </span><span class="tooltipr"> $ <span
+class="tooltiprtext">The $ allows us to access any variable from the
+airquality dataset.</span> </span><span class="tooltipr"> Temp <span
+class="tooltiprtext">“Temp” is a quantitative variable (numeric vector)
+from the “airquality” dataset.</span> </span><span class="tooltipr">
+)<br />
+<span class="tooltiprtext">Closing parenthsis for the median
+function.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code if you have typed
+it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="median1" style="display:none;">
 <pre><code>## [1] 79</code></pre>
-<p>Note that the single number showing above is the median <code>Temp</code> from the <code>airquality</code> dataset.</p>
+<p>Note that the single number showing above is the median
+<code>Temp</code> from the <code>airquality</code> dataset.</p>
 </div>
 <a href="javascript:showhide('median2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(tidyverse) <span class="tooltiprtext">tidyverse is an R Package that is very useful for working with data.</span> </span><br><span class="tooltipr"> airquality <span class="tooltipRtext"><code>airquality</code> is a dataset in R.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    group_by( <span class="tooltipRtext">“group_by” is a function from library(tidyverse) that allows us to split the airquality dataset into “little” datasets, one dataset for each value in the “Month” column.</span> </span><span class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column from the airquality dataset that can be treated as qualitative.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the grouped version of the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    summarise( <span class="tooltipRtext">“summarise” is a function from library(tidyverse) that allows us to compute numerical summaries on data.</span> </span><span class="tooltipr"> medTemp =  <span class="tooltiprtext">“medTemp” is just a name we made up. It will contain the results of the median(…) function.</span> </span><span class="tooltipr"> median( <span class="tooltiprtext">“median” is an R function used to calculate the median.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">Temp is a quantitative variable (numeric vector) from the airquality dataset.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> library(tidyverse) <span
+class="tooltiprtext">tidyverse is an R Package that is very useful for
+working with data.</span> </span><br><span class="tooltipr"> airquality
+<span class="tooltipRtext"><code>airquality</code> is a dataset in
+R.</span> </span><span class="tooltipr">  %&gt;%  <span
+class="tooltipRtext">The pipe operator that will send the
+<code>airquality</code> dataset down inside of the code on the following
+line.</span> </span><br/><span class="tooltipr">    group_by( <span
+class="tooltipRtext">“group_by” is a function from library(tidyverse)
+that allows us to split the airquality dataset into “little” datasets,
+one dataset for each value in the “Month” column.</span> </span><span
+class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column
+from the airquality dataset that can be treated as qualitative.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Functions
+must always end with a closing parenthesis.</span> </span><span
+class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator
+that will send the grouped version of the <code>airquality</code>
+dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">    summarise( <span
+class="tooltipRtext">“summarise” is a function from library(tidyverse)
+that allows us to compute numerical summaries on data.</span>
+</span><span class="tooltipr"> medTemp =  <span
+class="tooltiprtext">“medTemp” is just a name we made up. It will
+contain the results of the median(…) function.</span> </span><span
+class="tooltipr"> median( <span class="tooltiprtext">“median” is an R
+function used to calculate the median.</span> </span><span
+class="tooltipr"> Temp <span class="tooltiprtext">Temp is a quantitative
+variable (numeric vector) from the airquality dataset.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Functions
+must always end with a closing parenthesis.</span> </span><span
+class="tooltipr"> ) <span class="tooltiprtext">Functions must always end
+with a closing parenthesis.</span> </span><span class="tooltipr">
+    <br />
+<span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="median2" style="display:none;">
@@ -796,8 +994,10 @@ airquality %&gt;%
 </tr>
 </tbody>
 </table>
-<p>Note that R calculated the median <code>Temp</code> for each month in <code>Month</code> from the <code>airquality</code> dataset.</p>
-<p>May (5), June (6), July (7), August (8), and September (9), respectively.</p>
+<p>Note that R calculated the median <code>Temp</code> for each month in
+<code>Month</code> from the <code>airquality</code> dataset.</p>
+<p>May (5), June (6), July (7), August (8), and September (9),
+respectively.</p>
 <p>Further, to get the nicely formatted table you must use:</p>
 <pre><code>library(pander)
 airquality %&gt;% 
@@ -811,37 +1011,68 @@ airquality %&gt;%
 <div id="explanation-1" class="section level4">
 <h4>Explanation</h4>
 <div style="padding-left:150px;">
-<p>The mathematical formula used to compute the median of data depends on whether <span class="math inline">\(n\)</span>, the number of data points in the sample, is even or odd.</p>
-<p>If <span class="math inline">\(n\)</span> is even, then there is no “middle” data point, so the middle two values are averaged. <span class="math display">\[
+<p>The mathematical formula used to compute the median of data depends
+on whether <span class="math inline">\(n\)</span>, the number of data
+points in the sample, is even or odd.</p>
+<p>If <span class="math inline">\(n\)</span> is even, then there is no
+“middle” data point, so the middle two values are averaged. <span
+class="math display">\[
   \text{Median} = \frac{x_{(n/2)}+x_{(n/2+1)}}{2}
 \]</span></p>
-<p>If <span class="math inline">\(n\)</span> is odd, then the middle data point is the median. <span class="math display">\[
+<p>If <span class="math inline">\(n\)</span> is odd, then the middle
+data point is the median. <span class="math display">\[
   \text{Median} = x_{((n+1)/2)}
 \]</span></p>
 <div id="symbols-in-the-formula-1" class="section level5">
 <h5>Symbols in the Formula</h5>
-<p>There is no generally accepted symbol for the median. Sometimes a capital <span class="math inline">\(M\)</span> or even lower-case <span class="math inline">\(m\)</span> is used, but generally the word median is just written out.</p>
+<p>There is no generally accepted symbol for the median. Sometimes a
+capital <span class="math inline">\(M\)</span> or even lower-case <span
+class="math inline">\(m\)</span> is used, but generally the word median
+is just written out.</p>
 <ul>
-<li><p><span class="math inline">\(x_{(n/2)}\)</span> represents the data value that is in the <span class="math inline">\((n/2)^{th}\)</span> position in the ordered list of values. It only exists when <span class="math inline">\(n\)</span> is even.</p></li>
-<li><p><span class="math inline">\(x_{(n/2+1)}\)</span> represents the data value that immediately follows the <span class="math inline">\((n/2)^{th}\)</span> value in the ordered list of values. It only exists when <span class="math inline">\(n\)</span> is even.</p></li>
-<li><p><span class="math inline">\(x_{((n+1)/2)}\)</span> represents the data value that is in the <span class="math inline">\(((n+1)/2)^{th}\)</span> position in the ordered list of values. It only exists when <span class="math inline">\(n\)</span> is odd.</p></li>
-<li><p><span class="math inline">\(n\)</span> represents the sample size, or number of data values in the sample.</p></li>
+<li><p><span class="math inline">\(x_{(n/2)}\)</span> represents the
+data value that is in the <span
+class="math inline">\((n/2)^{th}\)</span> position in the ordered list
+of values. It only exists when <span class="math inline">\(n\)</span> is
+even.</p></li>
+<li><p><span class="math inline">\(x_{(n/2+1)}\)</span> represents the
+data value that immediately follows the <span
+class="math inline">\((n/2)^{th}\)</span> value in the ordered list of
+values. It only exists when <span class="math inline">\(n\)</span> is
+even.</p></li>
+<li><p><span class="math inline">\(x_{((n+1)/2)}\)</span> represents the
+data value that is in the <span
+class="math inline">\(((n+1)/2)^{th}\)</span> position in the ordered
+list of values. It only exists when <span
+class="math inline">\(n\)</span> is odd.</p></li>
+<li><p><span class="math inline">\(n\)</span> represents the sample
+size, or number of data values in the sample.</p></li>
 </ul>
 </div>
 <div id="population-median" class="section level5">
 <h5>Population Median</h5>
-<p>When <strong>all</strong> of the data from a population is available, the <strong>population median</strong> is calculated by the above formulas with the slight change that <span class="math inline">\(N\)</span>, the total number of data values in the population, instead of <span class="math inline">\(n\)</span>, the number of values in the sample, is used.</p>
-<p>If <span class="math inline">\(N\)</span> is even, then there is no “middle” data point, so the middle two values are averaged. <span class="math display">\[
+<p>When <strong>all</strong> of the data from a population is available,
+the <strong>population median</strong> is calculated by the above
+formulas with the slight change that <span
+class="math inline">\(N\)</span>, the total number of data values in the
+population, instead of <span class="math inline">\(n\)</span>, the
+number of values in the sample, is used.</p>
+<p>If <span class="math inline">\(N\)</span> is even, then there is no
+“middle” data point, so the middle two values are averaged. <span
+class="math display">\[
   \text{Median} = \frac{x_{(N/2)}+x_{(N/2+1)}}{2}
 \]</span></p>
-<p>If <span class="math inline">\(N\)</span> is odd, then the middle data point is the median. <span class="math display">\[
+<p>If <span class="math inline">\(N\)</span> is odd, then the middle
+data point is the median. <span class="math display">\[
   \text{Median} = x_{((N+1)/2)}
 \]</span></p>
 </div>
 <div id="physical-interpretation" class="section level5">
 <h5>Physical Interpretation</h5>
-<p>The median is the <span class="math inline">\(50^{th}\)</span> percentile of the data.</p>
-<p>Say there are <span class="math inline">\(n=5\)</span> data points in the sample with the following values.</p>
+<p>The median is the <span class="math inline">\(50^{th}\)</span>
+percentile of the data.</p>
+<p>Say there are <span class="math inline">\(n=5\)</span> data points in
+the sample with the following values.</p>
 <ul>
 <li><span class="math inline">\(x_1 = 2\)</span></li>
 <li><span class="math inline">\(x_2 = 5\)</span></li>
@@ -849,13 +1080,16 @@ airquality %&gt;%
 <li><span class="math inline">\(x_4 = 7\)</span></li>
 <li><span class="math inline">\(x_5 = 10\)</span></li>
 </ul>
-<p>The sample median is calculated as follows. Note that <span class="math inline">\(n=5\)</span> is odd. <span class="math display">\[
+<p>The sample median is calculated as follows. Note that <span
+class="math inline">\(n=5\)</span> is odd. <span class="math display">\[
   \text{Median} = x_{((n+1)/2)} = x_{((5+1)/2)} = x_{(3)} = 6
-\]</span> When these values are plotted it is clear that exactly 50% of the data (excluding the median) is to either side of the median.</p>
+\]</span> When these values are plotted it is clear that exactly 50% of
+the data (excluding the median) is to either side of the median.</p>
 <p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <div id="second-example" class="section level6">
 <h6>Second Example</h6>
-<p>Say there was a sixth value in the data set equal to 10, so that <span class="math inline">\(n=6\)</span> is even.</p>
+<p>Say there was a sixth value in the data set equal to 10, so that
+<span class="math inline">\(n=6\)</span> is even.</p>
 <ul>
 <li><span class="math inline">\(x_1 = 2\)</span></li>
 <li><span class="math inline">\(x_2 = 5\)</span></li>
@@ -865,14 +1099,19 @@ airquality %&gt;%
 <li><span class="math inline">\(x_6 = 10\)</span></li>
 </ul>
 <p><span class="math display">\[
-  \text{Median} = \frac{x_{(n/2)}+x_{(n/2+1)}}{2} = \frac{x_{(6/2)}+x_{(6/2+1)}}{2} = \frac{x_{(3)}+x_{(4)}}{2} = \frac{6+7}{2} = 6.5
+  \text{Median} = \frac{x_{(n/2)}+x_{(n/2+1)}}{2} =
+\frac{x_{(6/2)}+x_{(6/2+1)}}{2} = \frac{x_{(3)}+x_{(4)}}{2} =
+\frac{6+7}{2} = 6.5
 \]</span></p>
 <p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 </div>
 <div id="effect-of-outliers" class="section level5">
 <h5>Effect of Outliers</h5>
-<p>The median is not greatly influenced by <em>outliers</em>. It is said to be <em>robust</em>. This is shown below by changing <span class="math inline">\(x_6\)</span> to be 20, which does not change the value of the median.</p>
+<p>The median is not greatly influenced by <em>outliers</em>. It is said
+to be <em>robust</em>. This is shown below by changing <span
+class="math inline">\(x_6\)</span> to be 20, which does not change the
+value of the median.</p>
 <p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 </div>
@@ -888,42 +1127,94 @@ airquality %&gt;%
 <strong>Value</strong>
 </center>
 </div>
-<p><strong>Measure of Center | 1 Quantitative or Qualitative Variable</strong></p>
+<p><strong>Measure of Center | 1 Quantitative or Qualitative
+Variable</strong></p>
 <div id="overview-2" class="section level4">
 <h4>Overview</h4>
 <div style="padding-left:150px;">
-<p>The most commonly occurring value. There may be more than one mode. Seldom used, but sometimes useful.</p>
+<p>The most commonly occurring value. There may be more than one mode.
+Seldom used, but sometimes useful.</p>
 </div>
 <hr />
 </div>
 <div id="r-instructions-2" class="section level4">
 <h4>R Instructions</h4>
 <div style="padding-left:150px;">
-<p>R will not calculate a mode directly. However, to tabulate the number of times each value occurs in a dataset, use the code:</p>
+<p>R will not calculate a mode directly. However, to tabulate the number
+of times each value occurs in a dataset, use the code:</p>
 <p><code>table(object)</code></p>
 <ul>
-<li><code>object</code> can be quantitative or qualitative, but should contain at least one repeated value or <code>table()</code> is not useful.</li>
+<li><code>object</code> can be quantitative or qualitative, but should
+contain at least one repeated value or <code>table()</code> is not
+useful.</li>
 </ul>
 <p><br></p>
 <p><strong>Example Code</strong></p>
 <p>Hover your mouse over the example codes to learn more.</p>
 <a href="javascript:showhide('table1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> table <span class="tooltiprtext">“table” is an R function used to count how many times each observation occurs in a list of data.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the airquality dataset.</span> </span><span class="tooltipr"> Month <span class="tooltiprtext">“Month” is a qualitative variable (technically a numeric vector) from the “airquality” dataset that contains repeated values.</span> </span><span class="tooltipr"> )<br />
-<span class="tooltiprtext">Closing parenthsis for the function.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> table <span class="tooltiprtext">“table” is
+an R function used to count how many times each observation occurs in a
+list of data.</span> </span><span class="tooltipr"> ( <span
+class="tooltiprtext">Parenthesis to begin the function. Must touch the
+last letter of the function.</span> </span><span class="tooltipr">
+airquality <span class="tooltiprtext">“airquality” is a dataset. Type
+“View(airquality)” in R to see it.</span> </span><span class="tooltipr">
+$ <span class="tooltiprtext">The $ allows us to access any variable from
+the airquality dataset.</span> </span><span class="tooltipr"> Month
+<span class="tooltiprtext">“Month” is a qualitative variable
+(technically a numeric vector) from the “airquality” dataset that
+contains repeated values.</span> </span><span class="tooltipr"> )<br />
+<span class="tooltiprtext">Closing parenthsis for the function.</span>
+</span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code if you have typed
+it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="table1" style="display:none;">
 <pre><code>## 
 ##  5  6  7  8  9 
 ## 31 30 31 31 30</code></pre>
-<p>Note that the modes would be 5, 7, and 8 because these months all have the most (31) days in them.</p>
+<p>Note that the modes would be 5, 7, and 8 because these months all
+have the most (31) days in them.</p>
 </div>
 <a href="javascript:showhide('mode2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(tidyverse) <span class="tooltiprtext">tidyverse is an R Package that is very useful for working with data.</span> </span><br><span class="tooltipr"> airquality <span class="tooltipRtext"><code>airquality</code> is a dataset in R.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    group_by( <span class="tooltipRtext">“group_by” is a function from library(tidyverse) that allows us to split the airquality dataset into “little” datasets, one dataset for each value in the “Month” column.</span> </span><span class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column from the airquality dataset that can be treated as qualitative.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the grouped version of the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    summarise( <span class="tooltipRtext">“summarise” is a function from library(tidyverse) that allows us to compute numerical summaries on data.</span> </span><span class="tooltipr"> aveTemp = mean(Temp),  <span class="tooltiprtext">Computes the mean of the Temp column.</span> </span><span class="tooltipr"> medTemp = median(Temp),  <span class="tooltiprtext">Computes the median of the Temp column.</span> </span><span class="tooltipr"> sampleSize = n( ) <span class="tooltiprtext">Counts how many times each Month (the group_by statement) occurs in the dataset.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> library(tidyverse) <span
+class="tooltiprtext">tidyverse is an R Package that is very useful for
+working with data.</span> </span><br><span class="tooltipr"> airquality
+<span class="tooltipRtext"><code>airquality</code> is a dataset in
+R.</span> </span><span class="tooltipr">  %&gt;%  <span
+class="tooltipRtext">The pipe operator that will send the
+<code>airquality</code> dataset down inside of the code on the following
+line.</span> </span><br/><span class="tooltipr">    group_by( <span
+class="tooltipRtext">“group_by” is a function from library(tidyverse)
+that allows us to split the airquality dataset into “little” datasets,
+one dataset for each value in the “Month” column.</span> </span><span
+class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column
+from the airquality dataset that can be treated as qualitative.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Functions
+must always end with a closing parenthesis.</span> </span><span
+class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator
+that will send the grouped version of the <code>airquality</code>
+dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">    summarise( <span
+class="tooltipRtext">“summarise” is a function from library(tidyverse)
+that allows us to compute numerical summaries on data.</span>
+</span><span class="tooltipr"> aveTemp = mean(Temp),  <span
+class="tooltiprtext">Computes the mean of the Temp column.</span>
+</span><span class="tooltipr"> medTemp = median(Temp),  <span
+class="tooltiprtext">Computes the median of the Temp column.</span>
+</span><span class="tooltipr"> sampleSize = n( ) <span
+class="tooltiprtext">Counts how many times each Month (the group_by
+statement) occurs in the dataset.</span> </span><span class="tooltipr">
+) <span class="tooltiprtext">Functions must always end with a closing
+parenthesis.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="mode2" style="display:none;">
@@ -975,8 +1266,10 @@ airquality %&gt;%
 </tr>
 </tbody>
 </table>
-<p>Note that R calculated the median <code>Temp</code> for each month in <code>Month</code> from the <code>airquality</code> dataset.</p>
-<p>May (5), June (6), July (7), August (8), and September (9), respectively.</p>
+<p>Note that R calculated the median <code>Temp</code> for each month in
+<code>Month</code> from the <code>airquality</code> dataset.</p>
+<p>May (5), June (6), July (7), August (8), and September (9),
+respectively.</p>
 <p>Further, to get the nicely formatted table you must use:</p>
 <pre><code>library(pander)
 airquality %&gt;% 
@@ -988,7 +1281,8 @@ airquality %&gt;%
 <hr />
 </div>
 </div>
-<div id="minimum" class="section level3 tabset tabset-fade tabset-pills">
+<div id="minimum"
+class="section level3 tabset tabset-fade tabset-pills">
 <h3 class="tabset tabset-fade tabset-pills">Minimum</h3>
 <div style="float:left;width:150px;">
 <p><span class="math display">\[
@@ -999,7 +1293,10 @@ airquality %&gt;%
 <div id="overview-3" class="section level4">
 <h4>Overview</h4>
 <div style="padding-left:150px;">
-<p>The smallest occurring data value. One of the numerical summaries in the five-number summary. Typically not useful on its own. Gives a good feel for the spread in the left tail of the distribution when used with the five-number summary.</p>
+<p>The smallest occurring data value. One of the numerical summaries in
+the five-number summary. Typically not useful on its own. Gives a good
+feel for the spread in the left tail of the distribution when used with
+the five-number summary.</p>
 </div>
 <hr />
 </div>
@@ -1009,26 +1306,76 @@ airquality %&gt;%
 <p>To calculate a minimum in R use the code:</p>
 <p><code>min(object)</code></p>
 <ul>
-<li><code>object</code> must be a quantitative variable, what R calls a “numeric vector.”</li>
+<li><code>object</code> must be a quantitative variable, what R calls a
+“numeric vector.”</li>
 </ul>
 <p><br></p>
 <p><strong>Example Code</strong></p>
 <p>Hover your mouse over the example codes to learn more.</p>
 <a href="javascript:showhide('min1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> min <span class="tooltiprtext">“min” is an R function used to calculate the minimum of data.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the airquality dataset.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">“Temp” is a quantitative variable (numeric vector) from the “airquality” dataset.</span> </span><span class="tooltipr"> )<br />
-<span class="tooltiprtext">Closing parenthsis for the function.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> min <span class="tooltiprtext">“min” is an R
+function used to calculate the minimum of data.</span> </span><span
+class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the
+function. Must touch the last letter of the function.</span>
+</span><span class="tooltipr"> airquality <span
+class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)”
+in R to see it.</span> </span><span class="tooltipr"> $ <span
+class="tooltiprtext">The $ allows us to access any variable from the
+airquality dataset.</span> </span><span class="tooltipr"> Temp <span
+class="tooltiprtext">“Temp” is a quantitative variable (numeric vector)
+from the “airquality” dataset.</span> </span><span class="tooltipr">
+)<br />
+<span class="tooltiprtext">Closing parenthsis for the function.</span>
+</span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code if you have typed
+it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="min1" style="display:none;">
 <pre><code>## [1] 56</code></pre>
-<p>Note that the single number showing above is the minimum <code>Temp</code> from the <code>airquality</code> dataset.</p>
+<p>Note that the single number showing above is the minimum
+<code>Temp</code> from the <code>airquality</code> dataset.</p>
 </div>
 <a href="javascript:showhide('min2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(tidyverse) <span class="tooltiprtext">tidyverse is an R Package that is very useful for working with data.</span> </span><br><span class="tooltipr"> airquality <span class="tooltipRtext"><code>airquality</code> is a dataset in R.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    group_by( <span class="tooltipRtext">“group_by” is a function from library(tidyverse) that allows us to split the airquality dataset into “little” datasets, one dataset for each value in the “Month” column.</span> </span><span class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column from the airquality dataset that can be treated as qualitative.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the grouped version of the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    summarise( <span class="tooltipRtext">“summarise” is a function from library(tidyverse) that allows us to compute numerical summaries on data.</span> </span><span class="tooltipr"> minTemp =  <span class="tooltiprtext">“minTemp” is just a name we made up. It will contain the results of the median(…) function.</span> </span><span class="tooltipr"> min( <span class="tooltiprtext">“min” is an R function used to calculate the minimum.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">Temp is a quantitative variable (numeric vector) from the airquality dataset.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> library(tidyverse) <span
+class="tooltiprtext">tidyverse is an R Package that is very useful for
+working with data.</span> </span><br><span class="tooltipr"> airquality
+<span class="tooltipRtext"><code>airquality</code> is a dataset in
+R.</span> </span><span class="tooltipr">  %&gt;%  <span
+class="tooltipRtext">The pipe operator that will send the
+<code>airquality</code> dataset down inside of the code on the following
+line.</span> </span><br/><span class="tooltipr">    group_by( <span
+class="tooltipRtext">“group_by” is a function from library(tidyverse)
+that allows us to split the airquality dataset into “little” datasets,
+one dataset for each value in the “Month” column.</span> </span><span
+class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column
+from the airquality dataset that can be treated as qualitative.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Functions
+must always end with a closing parenthesis.</span> </span><span
+class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator
+that will send the grouped version of the <code>airquality</code>
+dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">    summarise( <span
+class="tooltipRtext">“summarise” is a function from library(tidyverse)
+that allows us to compute numerical summaries on data.</span>
+</span><span class="tooltipr"> minTemp =  <span
+class="tooltiprtext">“minTemp” is just a name we made up. It will
+contain the results of the median(…) function.</span> </span><span
+class="tooltipr"> min( <span class="tooltiprtext">“min” is an R function
+used to calculate the minimum.</span> </span><span class="tooltipr">
+Temp <span class="tooltiprtext">Temp is a quantitative variable (numeric
+vector) from the airquality dataset.</span> </span><span
+class="tooltipr"> ) <span class="tooltiprtext">Functions must always end
+with a closing parenthesis.</span> </span><span class="tooltipr"> )
+<span class="tooltiprtext">Functions must always end with a closing
+parenthesis.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="min2" style="display:none;">
@@ -1066,8 +1413,10 @@ airquality %&gt;%
 </tr>
 </tbody>
 </table>
-<p>Note that R calculated the minimum <code>Temp</code> for each month in <code>Month</code> from the <code>airquality</code> dataset.</p>
-<p>May (5), June (6), July (7), August (8), and September (9), respectively.</p>
+<p>Note that R calculated the minimum <code>Temp</code> for each month
+in <code>Month</code> from the <code>airquality</code> dataset.</p>
+<p>May (5), June (6), July (7), August (8), and September (9),
+respectively.</p>
 <p>Further, to get the nicely formatted table you must use:</p>
 <pre><code>library(pander)
 airquality %&gt;% 
@@ -1079,7 +1428,8 @@ airquality %&gt;%
 <hr />
 </div>
 </div>
-<div id="maximum" class="section level3 tabset tabset-fade tabset-pills">
+<div id="maximum"
+class="section level3 tabset tabset-fade tabset-pills">
 <h3 class="tabset tabset-fade tabset-pills">Maximum</h3>
 <div style="float:left;width:150px;">
 <p><span class="math display">\[
@@ -1090,7 +1440,10 @@ airquality %&gt;%
 <div id="overview-4" class="section level4">
 <h4>Overview</h4>
 <div style="padding-left:150px;">
-<p>The largest occurring data value. One of the numerical summaries in the five-number summary. Typically not useful on its own. Gives a good feel for the spread in the right tail of the distribution when used in the five-number summary.</p>
+<p>The largest occurring data value. One of the numerical summaries in
+the five-number summary. Typically not useful on its own. Gives a good
+feel for the spread in the right tail of the distribution when used in
+the five-number summary.</p>
 </div>
 <hr />
 </div>
@@ -1100,26 +1453,76 @@ airquality %&gt;%
 <p>To calculate a maximum in R use the code:</p>
 <p><code>max(object)</code></p>
 <ul>
-<li><code>object</code> must be a quantitative variable, what R calls a “numeric vector.”</li>
+<li><code>object</code> must be a quantitative variable, what R calls a
+“numeric vector.”</li>
 </ul>
 <p><br></p>
 <p><strong>Example Code</strong></p>
 <p>Hover your mouse over the example codes to learn more.</p>
 <a href="javascript:showhide('max1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> max <span class="tooltiprtext">“max” is an R function used to calculate the maximum of data.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the airquality dataset.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">“Temp” is a quantitative variable (numeric vector) from the “airquality” dataset.</span> </span><span class="tooltipr"> )<br />
-<span class="tooltiprtext">Closing parenthsis for the function.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> max <span class="tooltiprtext">“max” is an R
+function used to calculate the maximum of data.</span> </span><span
+class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the
+function. Must touch the last letter of the function.</span>
+</span><span class="tooltipr"> airquality <span
+class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)”
+in R to see it.</span> </span><span class="tooltipr"> $ <span
+class="tooltiprtext">The $ allows us to access any variable from the
+airquality dataset.</span> </span><span class="tooltipr"> Temp <span
+class="tooltiprtext">“Temp” is a quantitative variable (numeric vector)
+from the “airquality” dataset.</span> </span><span class="tooltipr">
+)<br />
+<span class="tooltiprtext">Closing parenthsis for the function.</span>
+</span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code if you have typed
+it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="max1" style="display:none;">
 <pre><code>## [1] 97</code></pre>
-<p>Note that the single number showing above is the maximum <code>Temp</code> from the <code>airquality</code> dataset.</p>
+<p>Note that the single number showing above is the maximum
+<code>Temp</code> from the <code>airquality</code> dataset.</p>
 </div>
 <a href="javascript:showhide('max2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(tidyverse) <span class="tooltiprtext">tidyverse is an R Package that is very useful for working with data.</span> </span><br><span class="tooltipr"> airquality <span class="tooltipRtext"><code>airquality</code> is a dataset in R.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    group_by( <span class="tooltipRtext">“group_by” is a function from library(tidyverse) that allows us to split the airquality dataset into “little” datasets, one dataset for each value in the “Month” column.</span> </span><span class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column from the airquality dataset that can be treated as qualitative.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the grouped version of the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    summarise( <span class="tooltipRtext">“summarise” is a function from library(tidyverse) that allows us to compute numerical summaries on data.</span> </span><span class="tooltipr"> maxTemp =  <span class="tooltiprtext">“maxTemp” is just a name we made up. It will contain the results of the median(…) function.</span> </span><span class="tooltipr"> max( <span class="tooltiprtext">“max” is an R function used to calculate the maximum.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">Temp is a quantitative variable (numeric vector) from the airquality dataset.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> library(tidyverse) <span
+class="tooltiprtext">tidyverse is an R Package that is very useful for
+working with data.</span> </span><br><span class="tooltipr"> airquality
+<span class="tooltipRtext"><code>airquality</code> is a dataset in
+R.</span> </span><span class="tooltipr">  %&gt;%  <span
+class="tooltipRtext">The pipe operator that will send the
+<code>airquality</code> dataset down inside of the code on the following
+line.</span> </span><br/><span class="tooltipr">    group_by( <span
+class="tooltipRtext">“group_by” is a function from library(tidyverse)
+that allows us to split the airquality dataset into “little” datasets,
+one dataset for each value in the “Month” column.</span> </span><span
+class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column
+from the airquality dataset that can be treated as qualitative.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Functions
+must always end with a closing parenthesis.</span> </span><span
+class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator
+that will send the grouped version of the <code>airquality</code>
+dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">    summarise( <span
+class="tooltipRtext">“summarise” is a function from library(tidyverse)
+that allows us to compute numerical summaries on data.</span>
+</span><span class="tooltipr"> maxTemp =  <span
+class="tooltiprtext">“maxTemp” is just a name we made up. It will
+contain the results of the median(…) function.</span> </span><span
+class="tooltipr"> max( <span class="tooltiprtext">“max” is an R function
+used to calculate the maximum.</span> </span><span class="tooltipr">
+Temp <span class="tooltiprtext">Temp is a quantitative variable (numeric
+vector) from the airquality dataset.</span> </span><span
+class="tooltipr"> ) <span class="tooltiprtext">Functions must always end
+with a closing parenthesis.</span> </span><span class="tooltipr"> )
+<span class="tooltiprtext">Functions must always end with a closing
+parenthesis.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="max2" style="display:none;">
@@ -1157,8 +1560,10 @@ airquality %&gt;%
 </tr>
 </tbody>
 </table>
-<p>Note that R calculated the maximum <code>Temp</code> for each month in <code>Month</code> from the <code>airquality</code> dataset.</p>
-<p>May (5), June (6), July (7), August (8), and September (9), respectively.</p>
+<p>Note that R calculated the maximum <code>Temp</code> for each month
+in <code>Month</code> from the <code>airquality</code> dataset.</p>
+<p>May (5), June (6), July (7), August (8), and September (9),
+respectively.</p>
 <p>Further, to get the nicely formatted table you must use:</p>
 <pre><code>library(pander)
 airquality %&gt;% 
@@ -1170,20 +1575,38 @@ airquality %&gt;%
 <hr />
 </div>
 </div>
-<div id="quartiles-five-number-summary" class="section level3 tabset tabset-fade tabset-pills">
-<h3 class="tabset tabset-fade tabset-pills">Quartiles (five-number summary)</h3>
+<div id="quartiles-five-number-summary"
+class="section level3 tabset tabset-fade tabset-pills">
+<h3 class="tabset tabset-fade tabset-pills">Quartiles (five-number
+summary)</h3>
 <div style="float:left;width:150px;">
 <center>
-<p><strong>25</strong><span class="math inline">\(^{th}\)</span>, <strong>50</strong><span class="math inline">\(^{th}\)</span>, <strong>75</strong><span class="math inline">\(^{th}\)</span></p>
-<p><em>and</em> <strong>100</strong><span class="math inline">\(^{th}\)</span></p>
+<p><strong>25</strong><span class="math inline">\(^{th}\)</span>,
+<strong>50</strong><span class="math inline">\(^{th}\)</span>,
+<strong>75</strong><span class="math inline">\(^{th}\)</span></p>
+<p><em>and</em> <strong>100</strong><span
+class="math inline">\(^{th}\)</span></p>
 <strong><em>Percentiles</em></strong>
 </center>
 </div>
-<p><strong>Measure of Center &amp; Spread | 1 Quantitative Variable</strong></p>
+<p><strong>Measure of Center &amp; Spread | 1 Quantitative
+Variable</strong></p>
 <div id="overview-5" class="section level4">
 <h4>Overview</h4>
 <div style="padding-left:150px;">
-<p>Good for describing the spread of data, typically for skewed distributions. There are four quartiles. They make up the <strong><em>five-number summary</em></strong> when combined with the minimum. The second quartile is the median (50<span class="math inline">\(^{th}\)</span> percentile) and the fourth quartile is the maximum (100<span class="math inline">\(^{th}\)</span> percentile). The first quartile (<span class="math inline">\(Q_1\)</span> or lower quartile) and third quartile (<span class="math inline">\(Q_3\)</span> or upper quartile) show the spread of the “middle 50%” of the data, which is often called the <strong><em>interquartile range</em></strong>. Comparing the interquartile range to the minimum and maximum shows how the possible values spread out around the more probable values.</p>
+<p>Good for describing the spread of data, typically for skewed
+distributions. There are four quartiles. They make up the
+<strong><em>five-number summary</em></strong> when combined with the
+minimum. The second quartile is the median (50<span
+class="math inline">\(^{th}\)</span> percentile) and the fourth quartile
+is the maximum (100<span class="math inline">\(^{th}\)</span>
+percentile). The first quartile (<span
+class="math inline">\(Q_1\)</span> or lower quartile) and third quartile
+(<span class="math inline">\(Q_3\)</span> or upper quartile) show the
+spread of the “middle 50%” of the data, which is often called the
+<strong><em>interquartile range</em></strong>. Comparing the
+interquartile range to the minimum and maximum shows how the possible
+values spread out around the more probable values.</p>
 </div>
 <hr />
 </div>
@@ -1193,17 +1616,34 @@ airquality %&gt;%
 <p>To calculate a five-number summary (and mean) in R use the code:</p>
 <p><code>quantile(object, percentile)</code></p>
 <ul>
-<li><code>object</code> must be a quantitative variable, what R calls a “numeric vector.”</li>
-<li><code>percentile</code> must be a value between 0 and 1. For the first quartile, it would be 0.25. For the third, it would be 0.75.</li>
+<li><code>object</code> must be a quantitative variable, what R calls a
+“numeric vector.”</li>
+<li><code>percentile</code> must be a value between 0 and 1. For the
+first quartile, it would be 0.25. For the third, it would be 0.75.</li>
 </ul>
 <p><br></p>
 <p><strong>Example Code</strong></p>
 <p>Hover your mouse over the example codes to learn more.</p>
 <a href="javascript:showhide('summary1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> summary <span class="tooltiprtext">“summary” is an R function used to calculate the five-number summary (and mean) of data.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the airquality dataset.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">“Temp” is a quantitative variable (numeric vector) from the “airquality” dataset.</span> </span><span class="tooltipr"> )<br />
-<span class="tooltiprtext">Closing parenthsis for the function.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> summary <span class="tooltiprtext">“summary”
+is an R function used to calculate the five-number summary (and mean) of
+data.</span> </span><span class="tooltipr"> ( <span
+class="tooltiprtext">Parenthesis to begin the function. Must touch the
+last letter of the function.</span> </span><span class="tooltipr">
+airquality <span class="tooltiprtext">“airquality” is a dataset. Type
+“View(airquality)” in R to see it.</span> </span><span class="tooltipr">
+$ <span class="tooltiprtext">The $ allows us to access any variable from
+the airquality dataset.</span> </span><span class="tooltipr"> Temp <span
+class="tooltiprtext">“Temp” is a quantitative variable (numeric vector)
+from the “airquality” dataset.</span> </span><span class="tooltipr">
+)<br />
+<span class="tooltiprtext">Closing parenthsis for the function.</span>
+</span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code if you have typed
+it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="summary1" style="display:none;">
@@ -1237,13 +1677,50 @@ airquality %&gt;%
 </tr>
 </tbody>
 </table>
-<p>Showing above are the five-number summary and mean of <code>Temp</code> from the <code>airquality</code> dataset.</p>
-<p>Note, you must use <code>pander(summary(airquality$Temp))</code> to get the nicely formatted output.</p>
+<p>Showing above are the five-number summary and mean of
+<code>Temp</code> from the <code>airquality</code> dataset.</p>
+<p>Note, you must use <code>pander(summary(airquality$Temp))</code> to
+get the nicely formatted output.</p>
 </div>
 <a href="javascript:showhide('summary2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(tidyverse) <span class="tooltiprtext">tidyverse is an R Package that is very useful for working with data.</span> </span><br><span class="tooltipr"> airquality <span class="tooltipRtext"><code>airquality</code> is a dataset in R.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    group_by( <span class="tooltipRtext">“group_by” is a function from library(tidyverse) that allows us to split the airquality dataset into “little” datasets, one dataset for each value in the “Month” column.</span> </span><span class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column from the airquality dataset that can be treated as qualitative.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the grouped version of the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    summarise( <span class="tooltipRtext">“summarise” is a function from library(tidyverse) that allows us to compute numerical summaries on data.</span> </span><span class="tooltipr"> min = min(Temp),  <span class="tooltiprtext">Computes the min of the Temp column.</span> </span><span class="tooltipr"> Q1 = quantile(Temp, 0.25),  <span class="tooltiprtext">Computes the first quartile of the Temp column.</span> </span><span class="tooltipr"> med = median(Temp),  <span class="tooltiprtext">Computes the second quartile of the Temp column, known as the median.</span> </span><span class="tooltipr"> Q3 = quantile(Temp, 0.75),  <span class="tooltiprtext">Computes the third quartile of the Temp column.</span> </span><span class="tooltipr"> max = max(Temp) <span class="tooltiprtext">Computes the max of the Temp column.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> library(tidyverse) <span
+class="tooltiprtext">tidyverse is an R Package that is very useful for
+working with data.</span> </span><br><span class="tooltipr"> airquality
+<span class="tooltipRtext"><code>airquality</code> is a dataset in
+R.</span> </span><span class="tooltipr">  %&gt;%  <span
+class="tooltipRtext">The pipe operator that will send the
+<code>airquality</code> dataset down inside of the code on the following
+line.</span> </span><br/><span class="tooltipr">    group_by( <span
+class="tooltipRtext">“group_by” is a function from library(tidyverse)
+that allows us to split the airquality dataset into “little” datasets,
+one dataset for each value in the “Month” column.</span> </span><span
+class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column
+from the airquality dataset that can be treated as qualitative.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Functions
+must always end with a closing parenthesis.</span> </span><span
+class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator
+that will send the grouped version of the <code>airquality</code>
+dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">    summarise( <span
+class="tooltipRtext">“summarise” is a function from library(tidyverse)
+that allows us to compute numerical summaries on data.</span>
+</span><span class="tooltipr"> min = min(Temp),  <span
+class="tooltiprtext">Computes the min of the Temp column.</span>
+</span><span class="tooltipr"> Q1 = quantile(Temp, 0.25),  <span
+class="tooltiprtext">Computes the first quartile of the Temp
+column.</span> </span><span class="tooltipr"> med = median(Temp),  <span
+class="tooltiprtext">Computes the second quartile of the Temp column,
+known as the median.</span> </span><span class="tooltipr"> Q3 =
+quantile(Temp, 0.75),  <span class="tooltiprtext">Computes the third
+quartile of the Temp column.</span> </span><span class="tooltipr"> max =
+max(Temp) <span class="tooltiprtext">Computes the max of the Temp
+column.</span> </span><span class="tooltipr"> ) <span
+class="tooltiprtext">Functions must always end with a closing
+parenthesis.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="summary2" style="display:none;">
@@ -1309,8 +1786,11 @@ airquality %&gt;%
 </tr>
 </tbody>
 </table>
-<p>Note that R calculated the five-number summary for <code>Temp</code> for each month in <code>Month</code> from the <code>airquality</code> dataset.</p>
-<p>May (5), June (6), July (7), August (8), and September (9), respectively.</p>
+<p>Note that R calculated the five-number summary for <code>Temp</code>
+for each month in <code>Month</code> from the <code>airquality</code>
+dataset.</p>
+<p>May (5), June (6), July (7), August (8), and September (9),
+respectively.</p>
 <p>Further, to get the nicely formatted table you must use:</p>
 <pre><code>library(pander)
 airquality %&gt;% 
@@ -1326,16 +1806,27 @@ airquality %&gt;%
 <hr />
 </div>
 </div>
-<div id="standard-deviation" class="section level3 tabset tabset-fade tabset-pills">
+<div id="standard-deviation"
+class="section level3 tabset tabset-fade tabset-pills">
 <h3 class="tabset tabset-fade tabset-pills">Standard Deviation</h3>
 <div style="float:left;width:150px;">
-<p><span class="math inline">\(s = \sqrt{\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}}\)</span></p>
+<p><span class="math inline">\(s =
+\sqrt{\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}}\)</span></p>
 </div>
 <p><strong>Measure of Spread | 1 Quantitative Variable</strong></p>
 <div id="overview-6" class="section level4">
 <h4>Overview</h4>
 <div style="padding-left:150px;">
-<p>Measures how spread out the data are from the mean. It is never negative and typically not zero. Larger values mean the data is highly variable. Smaller values mean the data is consistent and not as variable. It is typically used with the mean to describe the spread of relatively normally distributed data. The order of operations in the formula is important and for this reason it is sometimes called the “root mean squared error,” though the calculations are performed in reverse of that. (Study the formula on the left to understand.) The denominator <span class="math inline">\(n-1\)</span> is called the <strong><em>degrees of freedom</em></strong>.</p>
+<p>Measures how spread out the data are from the mean. It is never
+negative and typically not zero. Larger values mean the data is highly
+variable. Smaller values mean the data is consistent and not as
+variable. It is typically used with the mean to describe the spread of
+relatively normally distributed data. The order of operations in the
+formula is important and for this reason it is sometimes called the
+“root mean squared error,” though the calculations are performed in
+reverse of that. (Study the formula on the left to understand.) The
+denominator <span class="math inline">\(n-1\)</span> is called the
+<strong><em>degrees of freedom</em></strong>.</p>
 </div>
 <hr />
 </div>
@@ -1345,26 +1836,76 @@ airquality %&gt;%
 <p>To calculate the standard deviation in R use the code:</p>
 <p><code>sd(object)</code></p>
 <ul>
-<li><code>object</code> must be a quantitative variable, what R calls a “numeric vector.”</li>
+<li><code>object</code> must be a quantitative variable, what R calls a
+“numeric vector.”</li>
 </ul>
 <p><br></p>
 <p><strong>Example Code</strong></p>
 <p>Hover your mouse over the example codes to learn more.</p>
 <a href="javascript:showhide('sd1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> sd <span class="tooltiprtext">“sd” is an R function used to calculate the standard deviation of data.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the airquality dataset.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">“Temp” is a quantitative variable (numeric vector) from the “airquality” dataset.</span> </span><span class="tooltipr"> )<br />
-<span class="tooltiprtext">Closing parenthsis for the function.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> sd <span class="tooltiprtext">“sd” is an R
+function used to calculate the standard deviation of data.</span>
+</span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis
+to begin the function. Must touch the last letter of the
+function.</span> </span><span class="tooltipr"> airquality <span
+class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)”
+in R to see it.</span> </span><span class="tooltipr"> $ <span
+class="tooltiprtext">The $ allows us to access any variable from the
+airquality dataset.</span> </span><span class="tooltipr"> Temp <span
+class="tooltiprtext">“Temp” is a quantitative variable (numeric vector)
+from the “airquality” dataset.</span> </span><span class="tooltipr">
+)<br />
+<span class="tooltiprtext">Closing parenthsis for the function.</span>
+</span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code if you have typed
+it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="sd1" style="display:none;">
 <pre><code>## [1] 9.46527</code></pre>
-<p>Note that the single number showing above is the standard deviation of <code>Temp</code> from the <code>airquality</code> dataset.</p>
+<p>Note that the single number showing above is the standard deviation
+of <code>Temp</code> from the <code>airquality</code> dataset.</p>
 </div>
 <a href="javascript:showhide('sd2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(tidyverse) <span class="tooltiprtext">tidyverse is an R Package that is very useful for working with data.</span> </span><br><span class="tooltipr"> airquality <span class="tooltipRtext"><code>airquality</code> is a dataset in R.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    group_by( <span class="tooltipRtext">“group_by” is a function from library(tidyverse) that allows us to split the airquality dataset into “little” datasets, one dataset for each value in the “Month” column.</span> </span><span class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column from the airquality dataset that can be treated as qualitative.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the grouped version of the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    summarise( <span class="tooltipRtext">“summarise” is a function from library(tidyverse) that allows us to compute numerical summaries on data.</span> </span><span class="tooltipr"> sdTemp =  <span class="tooltiprtext">“sdTemp” is just a name we made up. It will contain the results of the sd(…) function.</span> </span><span class="tooltipr"> sd( <span class="tooltiprtext">“sd” is an R function used to calculate the standard deviation</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">Temp is a quantitative variable (numeric vector) from the airquality dataset.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> library(tidyverse) <span
+class="tooltiprtext">tidyverse is an R Package that is very useful for
+working with data.</span> </span><br><span class="tooltipr"> airquality
+<span class="tooltipRtext"><code>airquality</code> is a dataset in
+R.</span> </span><span class="tooltipr">  %&gt;%  <span
+class="tooltipRtext">The pipe operator that will send the
+<code>airquality</code> dataset down inside of the code on the following
+line.</span> </span><br/><span class="tooltipr">    group_by( <span
+class="tooltipRtext">“group_by” is a function from library(tidyverse)
+that allows us to split the airquality dataset into “little” datasets,
+one dataset for each value in the “Month” column.</span> </span><span
+class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column
+from the airquality dataset that can be treated as qualitative.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Functions
+must always end with a closing parenthesis.</span> </span><span
+class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator
+that will send the grouped version of the <code>airquality</code>
+dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">    summarise( <span
+class="tooltipRtext">“summarise” is a function from library(tidyverse)
+that allows us to compute numerical summaries on data.</span>
+</span><span class="tooltipr"> sdTemp =  <span
+class="tooltiprtext">“sdTemp” is just a name we made up. It will contain
+the results of the sd(…) function.</span> </span><span class="tooltipr">
+sd( <span class="tooltiprtext">“sd” is an R function used to calculate
+the standard deviation</span> </span><span class="tooltipr"> Temp <span
+class="tooltiprtext">Temp is a quantitative variable (numeric vector)
+from the airquality dataset.</span> </span><span class="tooltipr"> )
+<span class="tooltiprtext">Functions must always end with a closing
+parenthesis.</span> </span><span class="tooltipr"> ) <span
+class="tooltiprtext">Functions must always end with a closing
+parenthesis.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="sd2" style="display:none;">
@@ -1402,8 +1943,11 @@ airquality %&gt;%
 </tr>
 </tbody>
 </table>
-<p>Note that R calculated the standard deviation of <code>Temp</code> for each month in <code>Month</code> from the <code>airquality</code> dataset.</p>
-<p>May (5), June (6), July (7), August (8), and September (9), respectively.</p>
+<p>Note that R calculated the standard deviation of <code>Temp</code>
+for each month in <code>Month</code> from the <code>airquality</code>
+dataset.</p>
+<p>May (5), June (6), July (7), August (8), and September (9),
+respectively.</p>
 </div>
 </div>
 <hr />
@@ -1411,27 +1955,73 @@ airquality %&gt;%
 <div id="explanation-2" class="section level4">
 <h4>Explanation</h4>
 <div style="padding-left:150px;">
-<p>Data often varies. The values are not all the same. To capture, or measure how much data varies with a single number is difficult. There are a few different ideas on how to do it, but by far the most used measurement of the variability in data is the standard deviation.</p>
-<p>The first idea in measuring the variability in data is that there must be a reference point. Something from which everything varies. The most widely accepted reference point is the <a href="../NumericalSummaries.html#mean">mean</a>.</p>
-<p>A <strong>deviation</strong> is defined as the distance an observation lies from the reference point, the mean. This distance is obtained by subtraction in the order <span class="math inline">\(x_i - \bar{x}\)</span>, where <span class="math inline">\(x_i\)</span> is the data point value and <span class="math inline">\(\bar{x}\)</span> is the mean of the data. There are thus <span class="math inline">\(n\)</span> deviations because there are <span class="math inline">\(n\)</span> data points.</p>
-<p>Unfortunately, because of the order of subtraction in obtaining deviations, the average deviation will always work out to be zero. This is because the mean by nature splits the deviations evenly. <a href="Mean.html#deviations">Click here for details</a>.</p>
-<p>One solution would be to take the absolute value of the deviations and obtain what is known as the “absolute mean deviation.” This is sometimes done, but a far more attractive choice (to mathematicians and statisticians) is to square each deviation. You’ll have to trust us that this is the better choice.</p>
-<p>Squaring a deviation results in the expression <span class="math inline">\((x_i-\bar{x})^2\)</span>. <strong>SQUARE</strong></p>
-<p>Summing up all of the squared deviations results in the expression <span class="math inline">\(\sum_{i=1}^n (x_i-\bar{x})^2\)</span>.</p>
-<p>Dividing the sum of the squared deviations by <span class="math inline">\(n\)</span> would seem like an appropriate thing to do. Experience (and some fantastic statistical theory!) demonstrated that this is wrong. Dividing by <span class="math inline">\(n-1\)</span>, the <em>degrees of freedom</em> is right. <strong>MEAN</strong></p>
-<p>To undo the squaring of the deviations, the final results are square rooted. <strong>ROOT</strong></p>
-<p>The end result is the beautiful formula for <span class="math inline">\(s\)</span>, the standard deviation! (At least the symbol for standard deviation is a simple <span class="math inline">\(s\)</span>.) It is also know as the <strong>ROOT-MEAN-SQUARED ERROR</strong>. Error is another word for deviation.</p>
+<p>Data often varies. The values are not all the same. To capture, or
+measure how much data varies with a single number is difficult. There
+are a few different ideas on how to do it, but by far the most used
+measurement of the variability in data is the standard deviation.</p>
+<p>The first idea in measuring the variability in data is that there
+must be a reference point. Something from which everything varies. The
+most widely accepted reference point is the <a
+href="../NumericalSummaries.html#mean">mean</a>.</p>
+<p>A <strong>deviation</strong> is defined as the distance an
+observation lies from the reference point, the mean. This distance is
+obtained by subtraction in the order <span class="math inline">\(x_i -
+\bar{x}\)</span>, where <span class="math inline">\(x_i\)</span> is the
+data point value and <span class="math inline">\(\bar{x}\)</span> is the
+mean of the data. There are thus <span class="math inline">\(n\)</span>
+deviations because there are <span class="math inline">\(n\)</span> data
+points.</p>
+<p>Unfortunately, because of the order of subtraction in obtaining
+deviations, the average deviation will always work out to be zero. This
+is because the mean by nature splits the deviations evenly. <a
+href="Mean.html#deviations">Click here for details</a>.</p>
+<p>One solution would be to take the absolute value of the deviations
+and obtain what is known as the “absolute mean deviation.” This is
+sometimes done, but a far more attractive choice (to mathematicians and
+statisticians) is to square each deviation. You’ll have to trust us that
+this is the better choice.</p>
+<p>Squaring a deviation results in the expression <span
+class="math inline">\((x_i-\bar{x})^2\)</span>.
+<strong>SQUARE</strong></p>
+<p>Summing up all of the squared deviations results in the expression
+<span class="math inline">\(\sum_{i=1}^n (x_i-\bar{x})^2\)</span>.</p>
+<p>Dividing the sum of the squared deviations by <span
+class="math inline">\(n\)</span> would seem like an appropriate thing to
+do. Experience (and some fantastic statistical theory!) demonstrated
+that this is wrong. Dividing by <span
+class="math inline">\(n-1\)</span>, the <em>degrees of freedom</em> is
+right. <strong>MEAN</strong></p>
+<p>To undo the squaring of the deviations, the final results are square
+rooted. <strong>ROOT</strong></p>
+<p>The end result is the beautiful formula for <span
+class="math inline">\(s\)</span>, the standard deviation! (At least the
+symbol for standard deviation is a simple <span
+class="math inline">\(s\)</span>.) It is also know as the
+<strong>ROOT-MEAN-SQUARED ERROR</strong>. Error is another word for
+deviation.</p>
 <p><span class="math display">\[
   s = \sqrt{\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}}
 \]</span></p>
-<p>The <em>standard deviation</em> is thus the representative deviation of all deviations in a given data set. It is never negative and only zero if all values are the same in a data set. Larger values of <span class="math inline">\(s\)</span> imply the data is highly variable, very spread out or very inconsistent. Smaller values mean the data is consistent and not as variable.</p>
+<p>The <em>standard deviation</em> is thus the representative deviation
+of all deviations in a given data set. It is never negative and only
+zero if all values are the same in a data set. Larger values of <span
+class="math inline">\(s\)</span> imply the data is highly variable, very
+spread out or very inconsistent. Smaller values mean the data is
+consistent and not as variable.</p>
 <div id="population-standard-deviation" class="section level5">
 <h5>Population Standard Deviation</h5>
-<p>When <strong>all</strong> of the data from a population is available, the <strong>population standard deviation</strong> <span class="math inline">\(\sigma\)</span> (the lower-case Greek letter “sigma”) is calculated by the following formula.</p>
+<p>When <strong>all</strong> of the data from a population is available,
+the <strong>population standard deviation</strong> <span
+class="math inline">\(\sigma\)</span> (the lower-case Greek letter
+“sigma”) is calculated by the following formula.</p>
 <p><span class="math display">\[
   \sigma = \sqrt{\frac{\sum_{i=1}^N(x_i-\mu)^2}{N}}
 \]</span></p>
-<p>Note that <span class="math inline">\(N\)</span> is the number of data points in the full population. In this formula the denominator is actually <span class="math inline">\(N\)</span> and the deviations are calculated as the distance each data point is from the population mean <span class="math inline">\(\mu\)</span>.</p>
+<p>Note that <span class="math inline">\(N\)</span> is the number of
+data points in the full population. In this formula the denominator is
+actually <span class="math inline">\(N\)</span> and the deviations are
+calculated as the distance each data point is from the population mean
+<span class="math inline">\(\mu\)</span>.</p>
 </div>
 <div id="an-example" class="section level5">
 <h5>An Example</h5>
@@ -1443,41 +2033,69 @@ airquality %&gt;%
 <li><span class="math inline">\(x_4 = 7\)</span></li>
 <li><span class="math inline">\(x_5 = 10\)</span></li>
 </ul>
-<p>The mean of these values is <span class="math inline">\(\bar{x}=6\)</span> as shown <a href="Mean.html#physicalinterpretation">here</a>.</p>
+<p>The mean of these values is <span
+class="math inline">\(\bar{x}=6\)</span> as shown <a
+href="Mean.html#physicalinterpretation">here</a>.</p>
 <p>The five deviations are</p>
 <ul>
-<li><span class="math inline">\((x_1 - \bar{x}) = (2 - 6) = -4\)</span></li>
-<li><span class="math inline">\((x_2 - \bar{x}) = (5 - 6) = -1\)</span></li>
-<li><span class="math inline">\((x_3 - \bar{x}) = (6 - 6) = 0\)</span></li>
-<li><span class="math inline">\((x_4 - \bar{x}) = (7 - 6) = 1\)</span></li>
-<li><span class="math inline">\((x_5 - \bar{x}) = (10 - 6) = 4\)</span></li>
+<li><span class="math inline">\((x_1 - \bar{x}) = (2 - 6) =
+-4\)</span></li>
+<li><span class="math inline">\((x_2 - \bar{x}) = (5 - 6) =
+-1\)</span></li>
+<li><span class="math inline">\((x_3 - \bar{x}) = (6 - 6) =
+0\)</span></li>
+<li><span class="math inline">\((x_4 - \bar{x}) = (7 - 6) =
+1\)</span></li>
+<li><span class="math inline">\((x_5 - \bar{x}) = (10 - 6) =
+4\)</span></li>
 </ul>
 <p>The squared deviations are</p>
 <ul>
-<li><span class="math inline">\((x_1 - \bar{x})^2 = (2 - 6)^2 = (-4)^2 = 16\)</span></li>
-<li><span class="math inline">\((x_2 - \bar{x})^2 = (5 - 6)^2 = (-1)^2 = 1\)</span></li>
-<li><span class="math inline">\((x_3 - \bar{x})^2 = (6 - 6)^2 = (0)^2 = 0\)</span></li>
-<li><span class="math inline">\((x_4 - \bar{x})^2 = (7 - 6)^2 = (1)^2 = 1\)</span></li>
-<li><span class="math inline">\((x_5 - \bar{x})^2 = (10 - 6)^2 = (4)^2 = 16\)</span></li>
+<li><span class="math inline">\((x_1 - \bar{x})^2 = (2 - 6)^2 = (-4)^2 =
+16\)</span></li>
+<li><span class="math inline">\((x_2 - \bar{x})^2 = (5 - 6)^2 = (-1)^2 =
+1\)</span></li>
+<li><span class="math inline">\((x_3 - \bar{x})^2 = (6 - 6)^2 = (0)^2 =
+0\)</span></li>
+<li><span class="math inline">\((x_4 - \bar{x})^2 = (7 - 6)^2 = (1)^2 =
+1\)</span></li>
+<li><span class="math inline">\((x_5 - \bar{x})^2 = (10 - 6)^2 = (4)^2 =
+16\)</span></li>
 </ul>
 <p>The sum of the squared deviations is</p>
 <p><span class="math display">\[
   \sum_{i=1}^n (x_i-\bar{x})^2 = 16 + 1 + 0 + 1 + 16 = 34
 \]</span></p>
-<p>Dividing this by the degrees of freedom, <span class="math inline">\(n-1\)</span>, gives</p>
+<p>Dividing this by the degrees of freedom, <span
+class="math inline">\(n-1\)</span>, gives</p>
 <p><span class="math display">\[
-  \frac{\sum_{i=1}^n (x_i-\bar{x})^2}{n-1} = \frac{34}{5-1} = \frac{34}{4} = 8.5
+  \frac{\sum_{i=1}^n (x_i-\bar{x})^2}{n-1} = \frac{34}{5-1} =
+\frac{34}{4} = 8.5
 \]</span></p>
-<p>Finally, <span class="math inline">\(s\)</span> is obtained by taking the square root</p>
+<p>Finally, <span class="math inline">\(s\)</span> is obtained by taking
+the square root</p>
 <p><span class="math display">\[
-  s = \sqrt{\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}} = \sqrt{8.5} \approx 2.915
+  s = \sqrt{\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}} = \sqrt{8.5}
+\approx 2.915
 \]</span></p>
-<p>The red lines below show how the standard deviation represents all deviations in this data set. Recall that the magnitudes of the individual deviations were <span class="math inline">\(4, 1, 0, 1\)</span>, and <span class="math inline">\(4\)</span>. The representative deviation is <span class="math inline">\(2.915\)</span>.</p>
+<p>The red lines below show how the standard deviation represents all
+deviations in this data set. Recall that the magnitudes of the
+individual deviations were <span class="math inline">\(4, 1, 0,
+1\)</span>, and <span class="math inline">\(4\)</span>. The
+representative deviation is <span
+class="math inline">\(2.915\)</span>.</p>
 <p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 </div>
 <div id="effect-of-outliers-1" class="section level5">
 <h5>Effect of Outliers</h5>
-<p>Like the mean, the standard deviation is influenced by outliers. This is shown below by changing <span class="math inline">\(x_5\)</span> to be 20. Note that the deviation of <span class="math inline">\(x_5\)</span> is now 12 (instead of 4 like it was previously) and that the mean is now <span class="math inline">\(8\)</span> (as shown <a href="Mean.html#outliers">here</a>). The standard deviation of the altered data</p>
+<p>Like the mean, the standard deviation is influenced by outliers. This
+is shown below by changing <span class="math inline">\(x_5\)</span> to
+be 20. Note that the deviation of <span
+class="math inline">\(x_5\)</span> is now 12 (instead of 4 like it was
+previously) and that the mean is now <span
+class="math inline">\(8\)</span> (as shown <a
+href="Mean.html#outliers">here</a>). The standard deviation of the
+altered data</p>
 <ul>
 <li><span class="math inline">\(x_1 = 2\)</span></li>
 <li><span class="math inline">\(x_2 = 5\)</span></li>
@@ -1485,23 +2103,31 @@ airquality %&gt;%
 <li><span class="math inline">\(x_4 = 7\)</span></li>
 <li><span class="math inline">\(x_5 = 20\)</span></li>
 </ul>
-<p>is now <span class="math inline">\(s \approx 6.964\)</span>. Not very “representative” of all the deviations. It is biased towards the largest deviation. It is important to be aware of outliers when reporting the standard deviation <span class="math inline">\(s\)</span>.</p>
+<p>is now <span class="math inline">\(s \approx 6.964\)</span>. Not very
+“representative” of all the deviations. It is biased towards the largest
+deviation. It is important to be aware of outliers when reporting the
+standard deviation <span class="math inline">\(s\)</span>.</p>
 <p><img src="NumericalSummaries_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 </div>
 </div>
 <hr />
 </div>
 </div>
-<div id="variance" class="section level3 tabset tabset-fade tabset-pills">
+<div id="variance"
+class="section level3 tabset tabset-fade tabset-pills">
 <h3 class="tabset tabset-fade tabset-pills">Variance</h3>
 <div style="float:left;width:175px;">
-<p><span class="math display">\[s^2 = \frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}\]</span></p>
+<p><span class="math display">\[s^2 =
+\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}\]</span></p>
 </div>
 <p><strong>Measure of Spread | 1 Quantitative Variable</strong></p>
 <div id="overview-7" class="section level4">
 <h4>Overview</h4>
 <div style="padding-left:175px;">
-<p>Great theoretical properties, but seldom used when describing data. Difficult to interpret in context of data because it is in squared units. The standard deviation is typically used instead because it is in the original units and is thus easier to interpret.</p>
+<p>Great theoretical properties, but seldom used when describing data.
+Difficult to interpret in context of data because it is in squared
+units. The standard deviation is typically used instead because it is in
+the original units and is thus easier to interpret.</p>
 </div>
 <hr />
 </div>
@@ -1511,26 +2137,76 @@ airquality %&gt;%
 <p>To calculate the variance in R use the code:</p>
 <p><code>var(object)</code></p>
 <ul>
-<li><code>object</code> must be a quantitative variable, what R calls a “numeric vector.”</li>
+<li><code>object</code> must be a quantitative variable, what R calls a
+“numeric vector.”</li>
 </ul>
 <p><br></p>
 <p><strong>Example Code</strong></p>
 <p>Hover your mouse over the example codes to learn more.</p>
 <a href="javascript:showhide('var1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> var <span class="tooltiprtext">“var” is an R function used to calculate the variance of data.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the airquality dataset.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">“Temp” is a quantitative variable (numeric vector) from the “airquality” dataset.</span> </span><span class="tooltipr"> )<br />
-<span class="tooltiprtext">Closing parenthsis for the function.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> var <span class="tooltiprtext">“var” is an R
+function used to calculate the variance of data.</span> </span><span
+class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the
+function. Must touch the last letter of the function.</span>
+</span><span class="tooltipr"> airquality <span
+class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)”
+in R to see it.</span> </span><span class="tooltipr"> $ <span
+class="tooltiprtext">The $ allows us to access any variable from the
+airquality dataset.</span> </span><span class="tooltipr"> Temp <span
+class="tooltiprtext">“Temp” is a quantitative variable (numeric vector)
+from the “airquality” dataset.</span> </span><span class="tooltipr">
+)<br />
+<span class="tooltiprtext">Closing parenthsis for the function.</span>
+</span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code if you have typed
+it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="var1" style="display:none;">
 <pre><code>## [1] 89.59133</code></pre>
-<p>Note that the single number showing above is the variance of <code>Temp</code> from the <code>airquality</code> dataset.</p>
+<p>Note that the single number showing above is the variance of
+<code>Temp</code> from the <code>airquality</code> dataset.</p>
 </div>
 <a href="javascript:showhide('var2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(tidyverse) <span class="tooltiprtext">tidyverse is an R Package that is very useful for working with data.</span> </span><br><span class="tooltipr"> airquality <span class="tooltipRtext"><code>airquality</code> is a dataset in R.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    group_by( <span class="tooltipRtext">“group_by” is a function from library(tidyverse) that allows us to split the airquality dataset into “little” datasets, one dataset for each value in the “Month” column.</span> </span><span class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column from the airquality dataset that can be treated as qualitative.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the grouped version of the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    summarise( <span class="tooltipRtext">“summarise” is a function from library(tidyverse) that allows us to compute numerical summaries on data.</span> </span><span class="tooltipr"> varTemp =  <span class="tooltiprtext">“varTemp” is just a name we made up. It will contain the results of the var(…) function.</span> </span><span class="tooltipr"> var( <span class="tooltiprtext">“var” is an R function used to calculate the variance</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">Temp is a quantitative variable (numeric vector) from the airquality dataset.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> library(tidyverse) <span
+class="tooltiprtext">tidyverse is an R Package that is very useful for
+working with data.</span> </span><br><span class="tooltipr"> airquality
+<span class="tooltipRtext"><code>airquality</code> is a dataset in
+R.</span> </span><span class="tooltipr">  %&gt;%  <span
+class="tooltipRtext">The pipe operator that will send the
+<code>airquality</code> dataset down inside of the code on the following
+line.</span> </span><br/><span class="tooltipr">    group_by( <span
+class="tooltipRtext">“group_by” is a function from library(tidyverse)
+that allows us to split the airquality dataset into “little” datasets,
+one dataset for each value in the “Month” column.</span> </span><span
+class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column
+from the airquality dataset that can be treated as qualitative.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Functions
+must always end with a closing parenthesis.</span> </span><span
+class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator
+that will send the grouped version of the <code>airquality</code>
+dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">    summarise( <span
+class="tooltipRtext">“summarise” is a function from library(tidyverse)
+that allows us to compute numerical summaries on data.</span>
+</span><span class="tooltipr"> varTemp =  <span
+class="tooltiprtext">“varTemp” is just a name we made up. It will
+contain the results of the var(…) function.</span> </span><span
+class="tooltipr"> var( <span class="tooltiprtext">“var” is an R function
+used to calculate the variance</span> </span><span class="tooltipr">
+Temp <span class="tooltiprtext">Temp is a quantitative variable (numeric
+vector) from the airquality dataset.</span> </span><span
+class="tooltipr"> ) <span class="tooltiprtext">Functions must always end
+with a closing parenthesis.</span> </span><span class="tooltipr"> )
+<span class="tooltiprtext">Functions must always end with a closing
+parenthesis.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="var2" style="display:none;">
@@ -1568,8 +2244,11 @@ airquality %&gt;%
 </tr>
 </tbody>
 </table>
-<p>Note that R calculated the variance of <code>Temp</code> for each month in <code>Month</code> from the <code>airquality</code> dataset.</p>
-<p>May (5), June (6), July (7), August (8), and September (9), respectively.</p>
+<p>Note that R calculated the variance of <code>Temp</code> for each
+month in <code>Month</code> from the <code>airquality</code>
+dataset.</p>
+<p>May (5), June (6), July (7), August (8), and September (9),
+respectively.</p>
 </div>
 </div>
 <hr />
@@ -1584,38 +2263,116 @@ airquality %&gt;%
 <div id="overview-8" class="section level4">
 <h4>Overview</h4>
 <div style="padding-left:150px;">
-<p>The difference between the maximum and minimum values. A general rule of thumb is that the range divided by four is roughly the standard deviation. Quick to obtain, but not as good as using the standard deviation. Was used more frequently before the advent of modern calculators.</p>
+<p>The difference between the maximum and minimum values. A general rule
+of thumb is that the range divided by four is roughly the standard
+deviation. Quick to obtain, but not as good as using the standard
+deviation. Was used more frequently before the advent of modern
+calculators.</p>
 </div>
 <hr />
 </div>
 <div id="r-instructions-8" class="section level4">
 <h4>R Instructions</h4>
 <div style="padding-left:150px;">
-<p>R will not automatically compute the range. It is easiest to compute the <code>max()</code> and <code>min()</code> and perform the subtraction <code>max</code> - <code>min</code> yourself.</p>
+<p>R will not automatically compute the range. It is easiest to compute
+the <code>max()</code> and <code>min()</code> and perform the
+subtraction <code>max</code> - <code>min</code> yourself.</p>
 <p>To calculate the variance in R use the code:</p>
 <p><code>var(object)</code></p>
 <ul>
-<li><code>object</code> must be a quantitative variable, what R calls a “numeric vector.”</li>
+<li><code>object</code> must be a quantitative variable, what R calls a
+“numeric vector.”</li>
 </ul>
 <p><br></p>
 <p><strong>Example Code</strong></p>
 <p>Hover your mouse over the example codes to learn more.</p>
 <a href="javascript:showhide('range1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> max <span class="tooltiprtext">“max” is an R function used to calculate the maximum of data.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the airquality dataset.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">“Temp” is a quantitative variable (numeric vector) from the “airquality” dataset.</span> </span><span class="tooltipr"> )<br />
-<span class="tooltiprtext">Closing parenthsis for the function.</span> </span><span class="tooltipr">  -  <span class="tooltiprtext">Subtraction symbol.</span> </span><span class="tooltipr"> min <span class="tooltiprtext">“min” is an R function used to calculate the minimum of data.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the airquality dataset.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">“Temp” is a quantitative variable (numeric vector) from the “airquality” dataset.</span> </span><span class="tooltipr"> )<br />
-<span class="tooltiprtext">Closing parenthsis for the function.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> max <span class="tooltiprtext">“max” is an R
+function used to calculate the maximum of data.</span> </span><span
+class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the
+function. Must touch the last letter of the function.</span>
+</span><span class="tooltipr"> airquality <span
+class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)”
+in R to see it.</span> </span><span class="tooltipr"> $ <span
+class="tooltiprtext">The $ allows us to access any variable from the
+airquality dataset.</span> </span><span class="tooltipr"> Temp <span
+class="tooltiprtext">“Temp” is a quantitative variable (numeric vector)
+from the “airquality” dataset.</span> </span><span class="tooltipr">
+)<br />
+<span class="tooltiprtext">Closing parenthsis for the function.</span>
+</span><span class="tooltipr">  -  <span
+class="tooltiprtext">Subtraction symbol.</span> </span><span
+class="tooltipr"> min <span class="tooltiprtext">“min” is an R function
+used to calculate the minimum of data.</span> </span><span
+class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the
+function. Must touch the last letter of the function.</span>
+</span><span class="tooltipr"> airquality <span
+class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)”
+in R to see it.</span> </span><span class="tooltipr"> $ <span
+class="tooltiprtext">The $ allows us to access any variable from the
+airquality dataset.</span> </span><span class="tooltipr"> Temp <span
+class="tooltiprtext">“Temp” is a quantitative variable (numeric vector)
+from the “airquality” dataset.</span> </span><span class="tooltipr">
+)<br />
+<span class="tooltiprtext">Closing parenthsis for the function.</span>
+</span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code if you have typed
+it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="range1" style="display:none;">
 <pre><code>## [1] 41</code></pre>
-<p>Note that the single number showing above is the range of <code>Temp</code> from the <code>airquality</code> dataset.</p>
+<p>Note that the single number showing above is the range of
+<code>Temp</code> from the <code>airquality</code> dataset.</p>
 </div>
 <a href="javascript:showhide('range2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(tidyverse) <span class="tooltiprtext">tidyverse is an R Package that is very useful for working with data.</span> </span><br><span class="tooltipr"> airquality <span class="tooltipRtext"><code>airquality</code> is a dataset in R.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    group_by( <span class="tooltipRtext">“group_by” is a function from library(tidyverse) that allows us to split the airquality dataset into “little” datasets, one dataset for each value in the “Month” column.</span> </span><span class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column from the airquality dataset that can be treated as qualitative.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the grouped version of the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    summarise( <span class="tooltipRtext">“summarise” is a function from library(tidyverse) that allows us to compute numerical summaries on data.</span> </span><span class="tooltipr"> rangeTemp =  <span class="tooltiprtext">“rangeTemp” is just a name we made up. It will contain the results of the range calculation.</span> </span><span class="tooltipr"> max( <span class="tooltiprtext">“max” is an R function used to calculate the maximum</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">Temp is a quantitative variable (numeric vector) from the airquality dataset.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">  -  <span class="tooltiprtext">Minus sign to perform subtraction.</span> </span><span class="tooltipr"> min( <span class="tooltiprtext">“min” is an R function used to calculate the minimum</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">Temp is a quantitative variable (numeric vector) from the airquality dataset.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> library(tidyverse) <span
+class="tooltiprtext">tidyverse is an R Package that is very useful for
+working with data.</span> </span><br><span class="tooltipr"> airquality
+<span class="tooltipRtext"><code>airquality</code> is a dataset in
+R.</span> </span><span class="tooltipr">  %&gt;%  <span
+class="tooltipRtext">The pipe operator that will send the
+<code>airquality</code> dataset down inside of the code on the following
+line.</span> </span><br/><span class="tooltipr">    group_by( <span
+class="tooltipRtext">“group_by” is a function from library(tidyverse)
+that allows us to split the airquality dataset into “little” datasets,
+one dataset for each value in the “Month” column.</span> </span><span
+class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column
+from the airquality dataset that can be treated as qualitative.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Functions
+must always end with a closing parenthesis.</span> </span><span
+class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator
+that will send the grouped version of the <code>airquality</code>
+dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">    summarise( <span
+class="tooltipRtext">“summarise” is a function from library(tidyverse)
+that allows us to compute numerical summaries on data.</span>
+</span><span class="tooltipr"> rangeTemp =  <span
+class="tooltiprtext">“rangeTemp” is just a name we made up. It will
+contain the results of the range calculation.</span> </span><span
+class="tooltipr"> max( <span class="tooltiprtext">“max” is an R function
+used to calculate the maximum</span> </span><span class="tooltipr"> Temp
+<span class="tooltiprtext">Temp is a quantitative variable (numeric
+vector) from the airquality dataset.</span> </span><span
+class="tooltipr"> ) <span class="tooltiprtext">Functions must always end
+with a closing parenthesis.</span> </span><span class="tooltipr">  - 
+<span class="tooltiprtext">Minus sign to perform subtraction.</span>
+</span><span class="tooltipr"> min( <span class="tooltiprtext">“min” is
+an R function used to calculate the minimum</span> </span><span
+class="tooltipr"> Temp <span class="tooltiprtext">Temp is a quantitative
+variable (numeric vector) from the airquality dataset.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Functions
+must always end with a closing parenthesis.</span> </span><span
+class="tooltipr"> ) <span class="tooltiprtext">Functions must always end
+with a closing parenthesis.</span> </span><span class="tooltipr">
+    <br />
+<span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="range2" style="display:none;">
@@ -1653,18 +2410,22 @@ airquality %&gt;%
 </tr>
 </tbody>
 </table>
-<p>Note that R calculated the range of <code>Temp</code> for each month in <code>Month</code> from the <code>airquality</code> dataset.</p>
-<p>May (5), June (6), July (7), August (8), and September (9), respectively.</p>
+<p>Note that R calculated the range of <code>Temp</code> for each month
+in <code>Month</code> from the <code>airquality</code> dataset.</p>
+<p>May (5), June (6), July (7), August (8), and September (9),
+respectively.</p>
 </div>
 </div>
 <hr />
 </div>
 </div>
-<div id="percentile-quantile" class="section level3 tabset tabset-fade tabset-pills">
+<div id="percentile-quantile"
+class="section level3 tabset tabset-fade tabset-pills">
 <h3 class="tabset tabset-fade tabset-pills">Percentile (Quantile)</h3>
 <div style="float:left;width:150px;">
 <center>
-<span class="math inline">\(\leftarrow\)</span><strong>To the Left</strong>
+<span class="math inline">\(\leftarrow\)</span><strong>To the
+Left</strong>
 </center>
 <p><br> <br></p>
 </div>
@@ -1672,7 +2433,11 @@ airquality %&gt;%
 <div id="overview-9" class="section level4">
 <h4>Overview</h4>
 <div style="padding-left:150px;">
-<p>The percent of data that is equal to or less than a given data point. Useful for describing the relative position of a data point within a data set. If the percentile is close to 100, then the observation is one of the largest. If it is close to zero, then the observation is one of the smallest.</p>
+<p>The percent of data that is equal to or less than a given data point.
+Useful for describing the relative position of a data point within a
+data set. If the percentile is close to 100, then the observation is one
+of the largest. If it is close to zero, then the observation is one of
+the smallest.</p>
 </div>
 <hr />
 </div>
@@ -1682,48 +2447,78 @@ airquality %&gt;%
 <p>To compute the quantile in R for a given percentile:</p>
 <p><code>quantile(object, percentile)</code></p>
 <ul>
-<li><p><code>object</code> must be a quantitative variable, or as R terms it, a “numeric vector”.</p></li>
-<li><p><code>percentile</code> must be a value between 0 and 1 or a “numeric vector” of such values.</p></li>
+<li><p><code>object</code> must be a quantitative variable, or as R
+terms it, a “numeric vector”.</p></li>
+<li><p><code>percentile</code> must be a value between 0 and 1 or a
+“numeric vector” of such values.</p></li>
 </ul>
 <a href="javascript:showhide('perc1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> quantile( <span class="tooltiprtext">“quantile” is an R function used to calculate the data value corresponding to a given percentile.</span> </span><span class="tooltipr"> airquality$Temp <span class="tooltiprtext">Temp is a quantitative variable (numeric vector) being accessed from the airquality dataset with the $ sign.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">Comma separating the two commands of the quantile function.</span> </span><span class="tooltipr"> 0.8 <span class="tooltiprtext">The value of 0.8 specifies the 80th percentile. Any other value from 0 to 1 inclusive could be used.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> quantile( <span
+class="tooltiprtext">“quantile” is an R function used to calculate the
+data value corresponding to a given percentile.</span> </span><span
+class="tooltipr"> airquality$Temp <span class="tooltiprtext">Temp is a
+quantitative variable (numeric vector) being accessed from the
+airquality dataset with the $ sign.</span> </span><span
+class="tooltipr"> ,  <span class="tooltiprtext">Comma separating the two
+commands of the quantile function.</span> </span><span class="tooltipr">
+0.8 <span class="tooltiprtext">The value of 0.8 specifies the 80th
+percentile. Any other value from 0 to 1 inclusive could be used.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Functions
+must always end with a closing parenthesis.</span> </span><span
+class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="perc1" style="display:none;">
 <pre><code>## 80% 
 ##  86</code></pre>
-<p>The 80th percentile for <code>Temp</code> is shown in the output above.</p>
+<p>The 80th percentile for <code>Temp</code> is shown in the output
+above.</p>
 </div>
 </div>
 <hr />
 </div>
 </div>
-<div id="proportion" class="section level3 tabset tabset-fade tabset-pills">
+<div id="proportion"
+class="section level3 tabset tabset-fade tabset-pills">
 <h3 class="tabset tabset-fade tabset-pills">Proportion</h3>
 <div style="float:left;width:150px;">
-<p><span class="math display">\[\hat{p}=\frac{x}{n}\]</span> <br> <br></p>
+<p><span class="math display">\[\hat{p}=\frac{x}{n}\]</span> <br>
+<br></p>
 </div>
 <p><strong>Measure of Center | 1 Qualitative Variable</strong></p>
 <div id="overview-10" class="section level4">
 <h4>Overview</h4>
 <div style="padding-left:150px;">
-<p>The percent of observations in the data that satisfy some requirement. Obtained by dividing the number of <em>successes</em> <span class="math inline">\(x\)</span> by the number of total observations <span class="math inline">\(n\)</span>. Often referred to as a percentage.</p>
+<p>The percent of observations in the data that satisfy some
+requirement. Obtained by dividing the number of <em>successes</em> <span
+class="math inline">\(x\)</span> by the number of total observations
+<span class="math inline">\(n\)</span>. Often referred to as a
+percentage.</p>
 </div>
 <hr />
 </div>
 </div>
-<div id="correlation" class="section level3 tabset tabset-fade tabset-pills">
+<div id="correlation"
+class="section level3 tabset tabset-fade tabset-pills">
 <h3 class="tabset tabset-fade tabset-pills">Correlation</h3>
 <div style="float:left;width:175px;">
-<p><span class="math inline">\(r = \frac{\textstyle\sum\left(\frac{x-\bar{x}}{s_x}\right)\left(\frac{y-\bar{y}}{s_y}\right)}{n-1}\)</span></p>
+<p><span class="math inline">\(r =
+\frac{\textstyle\sum\left(\frac{x-\bar{x}}{s_x}\right)\left(\frac{y-\bar{y}}{s_y}\right)}{n-1}\)</span></p>
 </div>
-<p><strong>Measure of Association | 2 Quantitative Variables</strong></p>
+<p><strong>Measure of Association | 2 Quantitative
+Variables</strong></p>
 <div id="overview-11" class="section level4">
 <h4>Overview</h4>
 <div style="padding-left:175px;">
-<p>Describes the strength and direction of the association between two quantitative variables. Restricted to values between -1 and 1. A value of zero denotes no association between the two variables. A value of 1 or -1 implies a perfect positive or perfect negative association, respectively.</p>
+<p>Describes the strength and direction of the association between two
+quantitative variables. Restricted to values between -1 and 1. A value
+of zero denotes no association between the two variables. A value of 1
+or -1 implies a perfect positive or perfect negative association,
+respectively.</p>
 </div>
 <hr />
 </div>
@@ -1733,26 +2528,89 @@ airquality %&gt;%
 <p>To calculate the correlation in R use the code:</p>
 <p><code>cor(object1,object2)</code></p>
 <ul>
-<li><code>object1</code> and <code>object2</code> must both be a quantitative variables, what R calls “numeric vectors.”</li>
+<li><code>object1</code> and <code>object2</code> must both be a
+quantitative variables, what R calls “numeric vectors.”</li>
 </ul>
 <p><br></p>
 <p><strong>Example Code</strong></p>
 <p>Hover your mouse over the example codes to learn more.</p>
 <a href="javascript:showhide('cor1')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> cor <span class="tooltiprtext">“cor” is an R function used to calculate the standard deviation of data.</span> </span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis to begin the function. Must touch the last letter of the function.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the airquality dataset.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">“Temp” is a quantitative variable (numeric vector) from the “airquality” dataset.</span> </span><span class="tooltipr"> ,  <span class="tooltiprtext">The comma is needed to separate the two quantitative variables of the cor() function. The space after the comma is not required. It just looks nice.</span> </span><span class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)” in R to see it.</span> </span><span class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access any variable from the airquality dataset.</span> </span><span class="tooltipr"> Wind <span class="tooltiprtext">“Wind” is a quantitative variable (numeric vector) from the “airquality” dataset.</span> </span><span class="tooltipr"> )<br />
-<span class="tooltiprtext">Closing parenthsis for the function.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code if you have typed it in yourself. You can also click here to view the output.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> cor <span class="tooltiprtext">“cor” is an R
+function used to calculate the standard deviation of data.</span>
+</span><span class="tooltipr"> ( <span class="tooltiprtext">Parenthesis
+to begin the function. Must touch the last letter of the
+function.</span> </span><span class="tooltipr"> airquality <span
+class="tooltiprtext">“airquality” is a dataset. Type “View(airquality)”
+in R to see it.</span> </span><span class="tooltipr"> $ <span
+class="tooltiprtext">The $ allows us to access any variable from the
+airquality dataset.</span> </span><span class="tooltipr"> Temp <span
+class="tooltiprtext">“Temp” is a quantitative variable (numeric vector)
+from the “airquality” dataset.</span> </span><span class="tooltipr"> , 
+<span class="tooltiprtext">The comma is needed to separate the two
+quantitative variables of the cor() function. The space after the comma
+is not required. It just looks nice.</span> </span><span
+class="tooltipr"> airquality <span class="tooltiprtext">“airquality” is
+a dataset. Type “View(airquality)” in R to see it.</span> </span><span
+class="tooltipr"> $ <span class="tooltiprtext">The $ allows us to access
+any variable from the airquality dataset.</span> </span><span
+class="tooltipr"> Wind <span class="tooltiprtext">“Wind” is a
+quantitative variable (numeric vector) from the “airquality”
+dataset.</span> </span><span class="tooltipr"> )<br />
+<span class="tooltiprtext">Closing parenthsis for the function.</span>
+</span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code if you have typed
+it in yourself. You can also click here to view the output.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="cor1" style="display:none;">
 <pre><code>## [1] -0.4579879</code></pre>
-<p>Note that the single number showing next to the [1] above is the correlation of <code>Temp</code> and <code>Wind</code> from the <code>airquality</code> dataset.</p>
+<p>Note that the single number showing next to the [1] above is the
+correlation of <code>Temp</code> and <code>Wind</code> from the
+<code>airquality</code> dataset.</p>
 </div>
 <a href="javascript:showhide('cor2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(tidyverse) <span class="tooltiprtext">tidyverse is an R Package that is very useful for working with data.</span> </span><br><span class="tooltipr"> airquality <span class="tooltipRtext"><code>airquality</code> is a dataset in R.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    group_by( <span class="tooltipRtext">“group_by” is a function from library(tidyverse) that allows us to split the airquality dataset into “little” datasets, one dataset for each value in the “Month” column.</span> </span><span class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column from the airquality dataset that can be treated as qualitative.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the grouped version of the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    summarise( <span class="tooltipRtext">“summarise” is a function from library(tidyverse) that allows us to compute numerical summaries on data.</span> </span><span class="tooltipr"> corTempWind =  <span class="tooltiprtext">“corTempWind” is just a name we made up. It will contain the results of the cor(…) function.</span> </span><span class="tooltipr"> cor( <span class="tooltiprtext">“cor” is an R function used to calculate the mean.</span> </span><span class="tooltipr"> Temp,  <span class="tooltiprtext">Temp is a quantitative variable (numeric vector) from the airquality dataset.</span> </span><span class="tooltipr"> Wind <span class="tooltiprtext">Wind is a quantitative variable (numeric vector) from the airquality dataset.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  …  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> library(tidyverse) <span
+class="tooltiprtext">tidyverse is an R Package that is very useful for
+working with data.</span> </span><br><span class="tooltipr"> airquality
+<span class="tooltipRtext"><code>airquality</code> is a dataset in
+R.</span> </span><span class="tooltipr">  %&gt;%  <span
+class="tooltipRtext">The pipe operator that will send the
+<code>airquality</code> dataset down inside of the code on the following
+line.</span> </span><br/><span class="tooltipr">    group_by( <span
+class="tooltipRtext">“group_by” is a function from library(tidyverse)
+that allows us to split the airquality dataset into “little” datasets,
+one dataset for each value in the “Month” column.</span> </span><span
+class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column
+from the airquality dataset that can be treated as qualitative.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Functions
+must always end with a closing parenthesis.</span> </span><span
+class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator
+that will send the grouped version of the <code>airquality</code>
+dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">    summarise( <span
+class="tooltipRtext">“summarise” is a function from library(tidyverse)
+that allows us to compute numerical summaries on data.</span>
+</span><span class="tooltipr"> corTempWind =  <span
+class="tooltiprtext">“corTempWind” is just a name we made up. It will
+contain the results of the cor(…) function.</span> </span><span
+class="tooltipr"> cor( <span class="tooltiprtext">“cor” is an R function
+used to calculate the mean.</span> </span><span class="tooltipr"> Temp, 
+<span class="tooltiprtext">Temp is a quantitative variable (numeric
+vector) from the airquality dataset.</span> </span><span
+class="tooltipr"> Wind <span class="tooltiprtext">Wind is a quantitative
+variable (numeric vector) from the airquality dataset.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Functions
+must always end with a closing parenthesis.</span> </span><span
+class="tooltipr"> ) <span class="tooltiprtext">Functions must always end
+with a closing parenthesis.</span> </span><span class="tooltipr">
+    <br />
+<span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="cor2" style="display:none;">
@@ -1790,7 +2648,9 @@ airquality %&gt;%
 </tr>
 </tbody>
 </table>
-<p>Note that R calculated the correlation of <code>Temp</code> and <code>Wind</code> for each <code>Month</code> from the <code>airquality</code> dataset.</p>
+<p>Note that R calculated the correlation of <code>Temp</code> and
+<code>Wind</code> for each <code>Month</code> from the
+<code>airquality</code> dataset.</p>
 </div>
 </div>
 <hr />

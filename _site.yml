@@ -54,10 +54,10 @@ navbar:
           href: ./Analyses/t Tests/HighSchoolSeniors.html
         - text: "Recalling Words"
           href: ./Analyses/Wilcoxon Tests/RecallingWords.html
+        - text: "My Two-way ANOVA"
+          href: ./Analyses/ANOVA/MyTwoWayANOVA.html
         - text: "Food"
           href: ./Analyses/Kruskal-Wallis Test/Food.html
-        - text: "High School Seniors 2"
-          href: ./Analyses/ANOVA/HighSchoolSeniors2.html
         - text: "My Simple Linear Regression"
           href: ./Analyses/Linear Regression/MySimpleLinearRegression.html
         - text: "Car Prices"
