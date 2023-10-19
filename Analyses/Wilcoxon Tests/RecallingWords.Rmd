@@ -6,13 +6,6 @@ output:
     code_folding: hide
 ---
 
-<script type="text/javascript">
- function showhide(id) {
-    var e = document.getElementById(id);
-    e.style.display = (e.style.display == 'block') ? 'none' : 'block';
- }
-</script>
-
 ```{r, include=FALSE}
 library(mosaic)
 library(car)
@@ -29,7 +22,7 @@ View(Friendly)
 
 <br />
 
-#### Background
+## Background 
 
 Many teachers and other educators are interested in understanding how to best deliver new content to students. In general, they have two choices of how to do this.
 
@@ -41,12 +34,12 @@ Many teachers and other educators are interested in understanding how to best de
 
 A study was performed to determine whether the *Meshed* or *Before* approaches to delivering content had any positive benefits on memory recall. 
 
-<div style="padding-left:15px;">
 
-##### <a href="javascript:showhide('uniquename')">The Experiment <span style="font-size:8pt;">(click to view)</span></a>
+## {.tabet .tabset-pills}
 
+### Hide
 
-<div id="uniquename" style="display:none;">
+### Show the Experiment Details
 
 Individuals were seated at a computer and shown a list of words. Words appeared on the screen one at a time, for two seconds each, until all words had been shown (40 total). After all words were shown, they were required to perform a few two-digit mathematical additions (like 15 + 25) for 15 seconds to avoid immediate memory recall of the words. They were then asked to write down as many of the 40 words as they could remember. They were given a maximum of 5.3 minutes to recall words.
 
@@ -64,11 +57,13 @@ The `Meshed` group also used the same 40 words during each trial. However, words
 
 The data records the number of correctly recalled words (out of the 40 possible) from the fourth trial. Results were obtained for 30 students, 10 in each of the three treatment groups: `SFR`, `Before`, and `Meshed`. 
 
-</div>
 
-##### <a href="javascript:showhide('uniquename2')">The Data <span style="font-size:8pt;">(click to view)</span></a>
 
-<div id="uniquename2" style="display:none;">
+## {.tabet .tabset-pills}
+
+### Hide
+
+### Show the Data
 
 The results from the study can be found in the `Friendly` data set in R after loading `library(car)`. 
 
@@ -80,18 +75,12 @@ datatable(Friendly, options=list(lengthMenu = c(3,10,30)))
 ```
 
 
-</div>
-</div>
-
-<br />
+## Analysis
 
 
 <!-- Begin writing your analysis below here. -->
 
 <!-- Note that your goal is to use the Friendly data to show whether or not the Meshed or Before methods have any positive benefit on memory recall. -->
-
-
-
 
 
 
