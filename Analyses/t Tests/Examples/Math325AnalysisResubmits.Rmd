@@ -1,0 +1,88 @@
+---
+title: "Analysis Scores -- One Sample t Test"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+```{r, warning=FALSE, message=FALSE}
+library(mosaic)
+library(tidyverse)
+library(car)
+library(pander)
+library(DT)
+
+resub <- read_csv("../../../Data/analysisResubmitTimes.csv")
+```
+
+## Background {.tabset .tabset-pills}
+
+In the Math 325 Intermediate Statistics course at BYU-Idaho, the weekly analyses that students are required to complete make up a large portion of their grade in the class, 40\% to be exact. One of the unique features of the course is that students are allowed to improve and resubmit their work, even after the deadline has passed. In fact, resubmissions are encouraged until students are awarded full credit. Ideally, students would resubmit within one day of receiving feedback on their analysis, but most teachers allow a week or two for resubmissions. The following looks to see how long students take on average to resubmit, and if it is significantly different from 7 days on average.
+
+$$
+H_0: \mu_\text{resubmission days} = 7
+$$
+$$
+H_a: \mu_\text{resubmission days} \neq 7
+$$
+
+The significance level for this study will be set at $\alpha = 0.05$.
+
+### Hide
+
+### Show Data
+
+Data was selected by convenience sample from a teacher who did not have a deadline on when students could resubmit their analyses. Some students have missing values for `DaysToResubmit` and `FinalScore` because they never resubmit, or never submitted an analysis, respectively. So only the 18 students who both submit an analysis and resubmit their work will be included in this study.
+
+```{r}
+datatable(arrange(resub, desc(DaysToResubmit)))
+```
+
+
+## Analysis {.tabset .tabset-pills}
+
+Somewhat surprisingly, the average days to resubmit the t Test analysis is a little over a month at 35.2 days (of those who choose to resubmit). The fastest resubmission was 7 days after the original feedback was given.
+
+*Note that only the last resubmission time was recorded. A few students resubmit several times before their final resubmission, and those intermediate resubmissions were not recorded.*
+
+```{r, fig.height=2.5}
+stripchart(resub$DaysToResubmit, pch=16, method="stack", cex=2, col="orange", main="Math 325 Student Resubmissions, t Test Analysis", xlab="Days Til Final Resubmission")
+lines(c(7,7), c(0.5,1.5), lty=1, col="skyblue", lwd=4)
+points(mean(resub$DaysToResubmit, na.rm=TRUE), 1, pch=3, cex=2, col="skyblue")
+text(mean(resub$DaysToResubmit, na.rm=TRUE), 1, "Sample Mean", pos=1, cex=0.8, col="skyblue")
+text(7,0.5, "Null Hypothesis", pos=4, col="skyblue", cex=0.8)
+abline(h=1, col=rgb(.1,.1,.1,.1))
+```
+
+The QQ-Plot below (click tab to view) demonstrates that the population data for all student resubmission times can be assumed to be normally distributed as all points remain within the dotted lines. This shows that the results of the t Test should be valid, so long as we can assume that this convenience sample of one class of students accurately represents the full population of students who take Math 325.
+
+### Hide
+
+### Show Q-Q Plot
+
+```{r}
+qqPlot(resub$DaysToResubmit, id=FALSE)
+```
+
+### 
+
+```{r, warning=FALSE}
+t.test(resub$DaysToResubmit, mu = 7, alternative = "two.sided", conf.level = 0.95) %>%
+  pander(caption="One Sample t-Test: Hours of Extra Sleep", split.table=Inf) 
+```
+
+There is sufficient evidence to reject the null hypothesis $(p = 2.986e-05 < \alpha = 0.05)$ and conclude that the average time of 35.2 days is significantly longer than the 7 days that was expected.
+
+## Interpretation
+
+```{r}
+favstats(resub$DaysToResubmit) %>%
+  pander(caption="Summary Statistics for Days til Final Resubmission")
+```
+
+It looks like students find it difficult to resubmit their work quickly after receiving feedback. Again, the average time it takes for those who choose to resubmit is a little over a month at 35.2 days. There is a cluster of five students on the left of the distribution sitting at 7 days, or just over, causing the first quartile to land at 11.75 days. But more than half of the students are taking over 40 days (median 41.5) to resubmit. It is worth noting that 11/29 or 39.9% of students chose not to resubmit (or submit) this analysis. Fortunately, steps are being taken to try to remedy all of these issues within the Math 325 course as teachers are modifying the way they deliver this particular analysis. Only time will tell if the changes are effective or not.
+
+
+
+

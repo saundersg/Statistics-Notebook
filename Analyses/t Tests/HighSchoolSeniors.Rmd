@@ -13,8 +13,12 @@ library(pander)
 library(readr)
 
 HSS <- read_csv("../../Data/HighSchoolSeniors.csv")
-#Remember: select "Session, Set Working Directory, To Source File Location", and then play this R-chunk into your console to read the HSS data into R. 
+#If this code does not work: 
+#Use the top menu from RStudio's window to select "Session, Set Working Directory, To Source File Location", and then play this R-chunk into your console to read the HSS data into R. 
+
+## In your Console run View(HSS) to ensure the data has loaded correctly.
 ```
+
 
 <!-- Instructions
 
@@ -26,7 +30,7 @@ https://ww2.amstat.org/censusatschool/pdfs/C@SQuestionnaire.pdf
 
 2. Establish why your question is interesting and rephrase the question using a statistical "null" and "alternative" hypothesis. (Hint, see the "Math 325 Notebook -> R Help -> R-Markdown Hints" page of your textbook for instructions on how to write mathematical hypotheses.)
 
-3. Clearly answer your question using statistics. Be sure to compute a p-value and provide supporting numerical and graphical summaries.
+3. Clearly answer your question using statistics. Be sure to compute a p-value and provide supporting numerical and graphical summaries. If your conclusions don't have numbers in them, they likely are not detailed enough to be meaningful conclusions.
 
 Note: you can create "groups" from the data in many ways. For example, suppose you wanted to create a variable that grouped people according to whether they thought recycling was more important than conserving water. You could do this by:
 
@@ -34,6 +38,9 @@ Note: you can create "groups" from the data in many ways. For example, suppose y
 HSS <- HSS %>%
   mutate(recycling_than_water = ifelse(Importance_recycling_rubbish >	Importance_conserving_water, "Recycling More Important", "Water Conservation More Important"))
 ```
+
+4. Include Q-Q Plots checking the normality of the data and discuss if the requirements of the test are satisfied for your data or not. Note that Q-Q Plots are not graphics, they are diagnostic plots diagnosing the normality of the data.
+
 
 -->
 

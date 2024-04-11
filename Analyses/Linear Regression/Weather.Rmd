@@ -1,0 +1,48 @@
+---
+title: "Weather"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+## Background
+
+Delete these words and write your own background here motivating why you are studying the weather in the following two cities that you pick.  
+
+```{r, warning=FALSE, message=FALSE, ev}
+library(GSODR) #run: install.packages("GSODR") 
+# to get the GSODR package. You'll need this package to pull in your weather data.
+load(system.file("extdata", "isd_history.rda", package = "GSODR"))
+```
+
+```{r, eval=FALSE}
+#Run this in your console to see the Country Names you can pick from:
+View(isd_history)
+#Search "United States" in the search bar of the top-right corner of the data Viewer that pops up.
+#Or search for any other country you are interested in.
+#Goal, select the STNID (station ID) for two different weather stations. 
+#For example, Rexburg is STNID == "726818-94194"
+#Once you have two STNID values selected, go to the next R-chunk.
+```
+
+```{r}
+rexburg <- get_GSOD(years = 2023, station = "726818-94194")
+#Run: View(rexburg)
+#To see what columns mean, go here: https://cran.r-project.org/web/packages/GSODR/vignettes/GSODR.html#appendices
+
+#Then run a similar code to get your station information for your weather stations.
+#(If you want to use rexburg, then just use one of the following codes)
+#cityName1 <- get_GSOD(years = 2023, station = "yourchoice1")
+#cityName2 <- get_GSOD(years = 2023, station = "yourchoice2")
+
+#Finally, join your two datasets together into one dataset:
+weather <- rbind(cityName1, cityName2)
+```
+
+<!-- Now write up an analysis that studies something like how well the MIN temperature predicts the MAX temperature of the day in the two cities you selected. Of course, you are welcome to do any multiple regression you want with the data, but the recommendation would be to just run a "two-lines" model with the x=MIN, y=MAX, and color of the dots the NAME column. -->
+
+## Analysis
+
+Delete these words and put in your multiple regression analysis here.
+

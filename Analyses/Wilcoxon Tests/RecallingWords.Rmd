@@ -6,7 +6,7 @@ output:
     code_folding: hide
 ---
 
-```{r, include=FALSE}
+```{r, warning=FALSE, message=FALSE}
 library(mosaic)
 library(car)
 library(pander)
@@ -15,6 +15,8 @@ library(DT) #You may need to run: install.packages("DT")
 
 ```{r, eval=FALSE}
 # Play the chunk above and this one to get the data into your Console
+# Note the eval=FALSE statement in this R-chunk will exclude this code
+# from running when you Knit and will only work in the Console.
 View(Friendly)
 ?Friendly
 ```
