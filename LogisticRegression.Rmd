@@ -1716,4 +1716,3 @@ The idea behind prediction in multiple logistic regression is the same as in sim
 
 
 
-

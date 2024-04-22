@@ -25,7 +25,7 @@ Much of statistical inference concerns the location of the population mean $\mu$
 
 
 <div style="float:left;width:125px;" align=center>
-<img src="./Images/QuantY.png" width=35px;>
+<a href="index.html#one-quantitative-response-variable-y"><img src="./Images/QuantY.png" width=35px;></a>
 </div>
 
 A one sample t test is used when there is a hypothesized value for the population mean $\mu$ of a single quantitative variable. 
@@ -33,11 +33,23 @@ A one sample t test is used when there is a hypothesized value for the populatio
 #### Overview 
 
 <div style="padding-left:125px;">
+**Questions**
+
+The one sample t test can be used to answer questions like:
+
+* How long does it take to drive from Rexburg, ID to Salt Lake City, UT on average?
+* Is human body temperature really 98.6\&deg; F on average?
+* Do I spend less than $3 a day, on average, purchasing snacks?
+
+**Requirements**
+
 This test is only appropriate when both of the following are satisfied.
 
 (1) The sample is **representative** of the population. (Having a simple random sample is the best way to do this.)
 
 (2) The sampling distribution of the sample mean $\bar{x}$ *can be assumed to be normal*. This is a safe assumption when either (a) the population data can be assumed to be normally distributed using a Q-Q Plot or (b) the size of the sample (n) that was taken from the population is large (at least n > 30, but "large" really depends on how badly the data is skewed).
+
+If the requirements listed above are satisfied, then the results of the test can be trusted to give meaningful inference about the population. If the requirements are not met, then that doesn't mean the results of the test are necessarily bad, but there is no guarantee that they are good.
 
 **Hypotheses** 
 
@@ -63,7 +75,7 @@ $H_0: \mu = \text{some number}$
 $H_a: \mu \ \left\{\underset{<}{\stackrel{>}{\neq}}\right\} \ \text{some number}$
 </div>
 
-**Examples**: [sleepOne](./Analyses/t Tests/Examples/SleepOneSamplet.html)
+**Examples**: [analysis resubmits](./Analyses/t Tests/Examples/Math325AnalysisResubmits.html)
 
 </div>
 
@@ -301,7 +313,7 @@ If the probability (the p-value) is close enough to zero (smaller than $\alpha$)
 ### Paired Samples t Test {.tabset .tabset-fade .tabset-pills}
 
 <div style="float:left;width:125px;" align=center>
-<img src="./Images/QuantY.png" width=35px;>
+<a href="index.html#one-quantitative-response-variable-y"><img src="./Images/QuantY.png" width=35px;></a>
 </div>
 
 The paired samples t test is used when a value is hypothesized for the popluation mean of the differences, $\mu_d$, obtained from paired observations. 
@@ -310,7 +322,13 @@ The paired samples t test is used when a value is hypothesized for the popluatio
 
 <div style="padding-left:125px;">
 
-Paired samples include pre-test post-test scenarios and matched-pairs scenarios, where the only interest is in the difference between the two scores. Such scenarios begin with two sets of measurements for each individual (or each matched-pair). However, in the end, these two measurements are reduced to a single set of "differences". Thus, paired data is essentially one sample of differences. 
+**Questions**
+
+The Paired Samples t Test can be used to answer questions like:
+
+* From pre-test to post-test is there an improvement on average in the subjects?
+* How much taller are husbands than their wives, on average?
+* Do hospital patients that are *carefully matched* together according to reason for being in the hospital, age, gender, ethnicity, height, and weight show increased stay times in the hospital when infected with a nosocomial infection compared to those who were not infected?
 
 **Requirements**
 
@@ -770,7 +788,7 @@ for (i in 1:length(s1)){
 ### Independent Samples t Test {.tabset .tabset-fade .tabset-pills}
 
 <div style="float:left;width:125px;" align=center>
-<img src="./Images/QuantYQualXg2.png" width=62px;>
+<a href="index.html#quantitative-y-categorical-x-2-groups"><img src="./Images/QuantYQualXg2.png" width=62px;></a>
 </div>
 
 The independent samples t test is used when a value is hypothesized for the difference between two (possibly) different population means, $\mu_1 - \mu_2$. 
@@ -779,6 +797,16 @@ The independent samples t test is used when a value is hypothesized for the diff
 #### Overview 
 
 <div style="padding-left:125px;">
+
+**Questions**
+
+The Independent Samples t Test can be used to answer questions like:
+
+* Are boys taller than girls on average?
+* Do students who show up to class everyday get higher scores on average than those who don't?
+* Do you take more steps on average on weekdays or on weekends?
+
+**Requirements**
 
 The test is only appropriate when both of the following are satisfied.
 

@@ -257,5 +257,5 @@ warpbreaks %>%
 
 ## Final Thoughts
 
-In general, we recommend using higher tension levels rather than lower tension levels. While the type of wool used does not seem to matter, we wish to note that the best reduction in warp breakage seems to be through the Type B Wool--High Tension combination at 18.78 breaks on average. We do recommend avoiding using the Low Tension--Type B Wool combination as that resulting in the highest breakage of 44.56 breaks on average.
+In general, we recommend using higher tension levels rather than lower tension levels. While the type of wool used does not seem to matter, we wish to note that the best reduction in warp breakage seems to be through the Type B Wool--High Tension combination at 18.78 breaks on average. We suggest avoiding the Low Tension--Type A Wool combination as that results in the highest breakage of 44.56 breaks on average.
 
