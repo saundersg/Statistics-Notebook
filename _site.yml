@@ -40,8 +40,6 @@ navbar:
           href: PermutationTests.html
     - text: "Analyses"
       menu:
-        - text: "Analysis Rubric"
-          href: ./Analyses/AnalysisRubric.html
         - text: "Good Example Analysis"
           href: ./Analyses/StudentHousing.html
         - text: "Poor Example Analysis"
