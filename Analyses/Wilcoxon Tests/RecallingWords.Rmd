@@ -37,7 +37,7 @@ Many teachers and other educators are interested in understanding how to best de
 A study was performed to determine whether the *Meshed* or *Before* approaches to delivering content had any positive benefits on memory recall. 
 
 
-## {.tabet .tabset-pills}
+## {.tabset .tabset-pills}
 
 ### Hide
 
@@ -61,7 +61,7 @@ The data records the number of correctly recalled words (out of the 40 possible)
 
 
 
-## {.tabet .tabset-pills}
+## {.tabset .tabset-pills}
 
 ### Hide
 

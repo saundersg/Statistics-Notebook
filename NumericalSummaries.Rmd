@@ -1091,10 +1091,9 @@ Good for describing the spread of data, typically for skewed distributions. Ther
 <div style="padding-left:150px;">
 To calculate a five-number summary (and mean) in R use the code:
 
-`quantile(object, percentile)`
+`summary(object)`
 
-* `object` must be a quantitative variable, what R calls a "numeric vector."
-* `percentile` must be a value between 0 and 1. For the first quartile, it would be 0.25. For the third, it would be 0.75.
+* `object` must be a quantitative variable, what R calls a "numeric vector" typically accessed by `dataName$columnName`.
 
 <br>
 

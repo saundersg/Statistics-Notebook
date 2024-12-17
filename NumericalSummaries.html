@@ -400,7 +400,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Statistics Notebook</a>
+      <a class="navbar-brand" href="index.html"><img src='Images/snlogo.png' alt='Statistics Notebook Logo' style='height: 30px; margin: -5px 0px'></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -1611,12 +1611,11 @@ values spread out around the more probable values.</p>
 <h4>R Instructions</h4>
 <div style="padding-left:150px;">
 <p>To calculate a five-number summary (and mean) in R use the code:</p>
-<p><code>quantile(object, percentile)</code></p>
+<p><code>summary(object)</code></p>
 <ul>
 <li><code>object</code> must be a quantitative variable, what R calls a
-“numeric vector.”</li>
-<li><code>percentile</code> must be a value between 0 and 1. For the
-first quartile, it would be 0.25. For the third, it would be 0.75.</li>
+“numeric vector” typically accessed by
+<code>dataName$columnName</code>.</li>
 </ul>
 <p><br></p>
 <p><strong>Example Code</strong></p>
