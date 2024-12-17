@@ -35,7 +35,7 @@ Rent <- read_csv("../Data/Rent.csv")
 
 ## Background
 
-Here is a data table showing the available approved housing apartment options at BYU-Idaho for single students. There are 122 entries comprising 57 female and 65 male apartment options.
+Here is a data table showing the available approved housing apartment options at BYU-Idaho for single students. There are 110 entries comprising 54 female and 56 male apartment options.
 
 ```{r, warning=FALSE}
 # Code to get you started. 

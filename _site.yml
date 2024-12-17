@@ -1,6 +1,6 @@
 name: "statistics-notebook"
 navbar:
-  title: "Statistics Notebook"
+  title: "<img src='Images/snlogo.png' alt='Statistics Notebook Logo' style='height: 30px; margin: -5px 0px'>"
   left:
     - text: "R Help"
       menu:
@@ -74,4 +74,5 @@ output:
     theme: cerulean
     css: styles.css
     highlight: tango
-  
+    include:
+      in-header: /header.html
