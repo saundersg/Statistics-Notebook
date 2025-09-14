@@ -1,0 +1,60 @@
+Your Wilcoxon Test analysis is contained inside your High School Seniors analysis 
+in the t Tests section.
+
+There, you are supposed to follow the instructions in Canvas:
+
+1. Apply your peer feedback and improve your t Test analysis accordingly.
+
+2. Add a section to the document that performs a Wilcoxon Test appropriate for
+your data and discusses which test, the t Test or Wilcoxon Test, was more 
+appropriate for your data and situation. Be sure to also state the hypotheses
+for the Wilcoxon Test as they differ slightly from the hypotheses of the t Test.
+
+
+Tabsets are a great way to introduce this second section.
+
+Suppose you had performed an Independent Samples t Test previously like this:
+
+## Analysis
+
+```{r}
+library(mosaic) #loads the KidsFeet data set
+t.test(length ~ sex, data=KidsFeet) %>%
+  pander(caption="Independent Samples t Test")
+```
+
+Then, you could expand your analysis section to include buttons for the t Test
+and Wilcoxon Test using code like this:
+
+## Analysis {.tabset .tabset-pills}
+
+### t Test
+
+```{r}
+library(mosaic) #loads the KidsFeet data set
+t.test(length ~ sex, data=KidsFeet) %>%
+  pander(caption="Independent Samples t Test")
+```
+
+### Wilcoxon Test
+
+$$
+  H_0: new hypothesis for wilcoxon test
+$$
+$$
+  H_a: new alternative for wilcoxon test
+$$
+
+```{r}
+wilcox.test(length ~ sex, data=KidsFeet) %>%
+  pander(caption="Wilcoxon Rank Sum Test")
+```
+
+##
+
+
+Note that the "##" ends the tabset so that any content after the ## goes back
+to the regular flow of the document rather than being hidden behind a button.
+
+
+Good luck!

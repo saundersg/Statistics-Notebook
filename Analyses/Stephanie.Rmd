@@ -18,7 +18,7 @@ library(DT) # If you get an error stating:
             # Error in library(DT): there is no package called 'DT'
             # You will need to run: install.packages("DT") 
             # in your Console, then try "Knit HTML" again.
-Rent <- read_csv("../Data/Rent.csv")
+Rent <- read_csv("../Data/rent.csv")
 ```
 
 <br />
