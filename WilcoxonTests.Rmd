@@ -695,7 +695,7 @@ If these hypotheses are used, then the distributions do not have to be identical
 (Note: Men's heights are *stochastically greater* than women's heights because men are generally taller than women, but not all men are taller than all women.) 
 
 
-**Examples**: [BugSpray](./Analyses/Wilcoxon Tests/Examples/BugSprayWilcoxonRankSum.html), [MoralIntegration](./Analyses/Wilcoxon Tests/Examples/MoralIntegration.html)
+**Examples**: [RecallingWords](./Analyses/Wilcoxon Tests/Examples/RecallingWords.html),  [BugSpray](./Analyses/Wilcoxon Tests/Examples/BugSprayWilcoxonRankSum.html),  [MoralIntegration](./Analyses/Wilcoxon Tests/Examples/MoralIntegration.html)
 
 </div>
 

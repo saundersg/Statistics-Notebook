@@ -38,11 +38,11 @@ library(reshape2)
 library(RColorBrewer)
 ```
 
-----
+<hr>
 
 Determine which explanatory variables have a significant effect on the mean of the quantitative response variable.
 
-----
+<hr>
 
 ## Simple Linear Regression {.tabset .tabset-fade .tabset-pills}
 
@@ -67,7 +67,7 @@ The true regression model assumed by a regression analysis is given by
 <div id="simplelinearlatexrcode" style="display:none;">
 ```{}
 $$
-  \underbrace{Y_i}_\text{Some Label} = \overbrace{\beta_0}^\text{y-int} + \overbrace{\beta_1}^\text{slope} \underbrace{X_i}_\text{Some Label} + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2)
+\underbrace{Y_i}_\text{Some Label} = \overbrace{\beta_0}^\text{y-int} + \overbrace{\beta_1}^\text{slope} \underbrace{X_i}_\text{Some Label} + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2)
 $$
 ```
 </div>
@@ -80,7 +80,7 @@ $Y_i$
 $=$
   <span class="tooltiprtext">This states that we are assuming $Y_i$ was created, or is "equal to" the formula that will follow on the right-hand-side of the equation.</span>
 </span><span class="tooltipr">
-$\underbrace{\overbrace{\beta_0}^\text{y-intercept} + \overbrace{\beta_1}^\text{slope} X_i \ }_\text{true regression relation}$
+$\overbrace{\beta_0}^\stackrel{\text{true}}{\text{y-intercept}} + \overbrace{\beta_1}^\stackrel{\text{true}}{\text{slope}} X_i$
   <span class="tooltiprtext">The true regression relation is a line, a line that is typically unknown in real life. It can be likened to "God's Law" or "Natural Law". Something that governs the way the data behaves, but is unkown to us.</span>
 </span><span class="tooltipr">
 $+$
@@ -92,8 +92,8 @@ $\overbrace{\epsilon_i}^\text{error term}$
 $\quad \text{where}$
   <span class="tooltiprtext">Some extra comments are needed about $\epsilon_i$...</span>
 </span><span class="tooltipr">
-$\ \overbrace{\epsilon_i \sim N(0, \sigma^2)}^\text{error term normally distributed}$
-  <span class="tooltiprtext">The error terms $\epsilon_i$ are assumed to be normally distributed with constant variance. Pay special note that the $\sigma$ does not have an $i$ in it, so it is the same for each individual. In other words, the variance is constant. The mean of the errors is zero, which causes the dots to be spread out symmetrically both above and below the line.</span>
+$\ \epsilon_i \sim N(0, \sigma^2)$
+  <span class="tooltiprtext">The error terms $\epsilon_i$ are assumed to be independent and identically distributed normal random variables with constant variance. Pay special note that the $\sigma$ does not have an $i$ in it, so it is the same for each individual. In other words, the variance is constant. The mean of the errors is zero, which causes the dots to be spread out symmetrically both above and below the line.</span>
 </span>
 </center>
 
@@ -115,13 +115,13 @@ $$
 
 <center>
 <span class="tooltipr">
-$\hat{Y}_i$
+$\hat{Y_i}$
   <span class="tooltiprtext">The estimated average y-value for individual $i$ is denoted by $\hat{Y}_i$. It is important to recognize that $Y_i$ is the actual value for individual $i$, and $\hat{Y}_i$ is the average y-value for all individuals with the same $X_i$ value.</span>
 </span><span class="tooltipr">
 $=$
   <span class="tooltiprtext">The formula for the average y-value, $\hat{Y}_i$ is equal to what follows...</span>
 </span><span class="tooltipr">
-$\underbrace{\overbrace{\ b_0 \ }^\text{y-intercept} + \overbrace{b_1}^\text{slope} X_i \ }_\text{estimated regression relation}$
+$\overbrace{\ b_0 \ }^\stackrel{\text{est.}}{\text{y-intercept}} + \overbrace{b_1}^\stackrel{\text{est.}}{\text{slope}} X_i$
   <span class="tooltiprtext">Two things are important to notice about this equation. First, it uses $b_0$ and $b_1$ instead of $\beta_0$ and $\beta_1$. This is because $b_0$ and $b_1$ are the estimated y-intercept and slope, respectively, not the true y-intercept $\beta_0$ and true slope $\beta_1$. Second, this equation does not include $\epsilon_i$. In other words, it is the estimated regression line, so it only describes the average y-values, not the actual y-values.</span>
 </span>
 </center>
@@ -3147,22 +3147,22 @@ The `boxCox(...)` function in `library(car)` can also be helpful on finding valu
 
 par(mfrow=c(2,3), mai=c(.4,.4,.3,.2), mgp=c(2,0.5,0))
 
-boxCox(lm(Ya ~ X))
+boxCox(lm(Ya ~ X), main="")
 mtext(side=3, text=expression(paste("Use ", lambda == -2)), line=.5)
 
-boxCox(lm(Yb ~ X))
+boxCox(lm(Yb ~ X), main="")
 mtext(side=3, text=expression(paste("Use ", lambda == -1)), line=.5)
 
-boxCox(lm(Yc ~ X))
+boxCox(lm(Yc ~ X), main="")
 mtext(side=3, text=expression(paste("Use ", lambda == 0, " i.e., log(...)")), line=.5)
 
-boxCox(lm(Yd ~ X))
+boxCox(lm(Yd ~ X), main="")
 mtext(side=3, text=expression(paste("Use ", lambda == 0.5)), line=.5)
 
-boxCox(lm(Ye ~ X))
+boxCox(lm(Ye ~ X), main="")
 mtext(side=3, text=expression(paste("Use ", lambda == 1, " (No Transformation)")), line=.5)
 
-boxCox(lm(Yf ~ X))
+boxCox(lm(Yf ~ X), main="")
 mtext(side=3, text=expression(paste("Use ", lambda == 2)), line=.5)
 
 ```
@@ -3209,7 +3209,7 @@ cars.lm <-lm(dist ~ speed,data=cars)
 boxCox(cars.lm)
 ```
 
-This plot tells use to use the $\lambda = 0.5$ transformation, so that $Y' = Y^0.5 = \sqrt{Y}$. (To see this yourself, click on the "Box-Cox Suggestion" tab above, as well as on the "Scatterplot Recognition" tab.)
+This plot tells use to use the $\lambda = 0.5$ transformation, so that $Y' = Y^{0.5} = \sqrt{Y}$. (To see this yourself, click on the "Box-Cox Suggestion" tab above, as well as on the "Scatterplot Recognition" tab.)
 
 Now, a transformation regression is performed using `sqrt(Y)` in place of `Y` as follows:
 

@@ -23,7 +23,7 @@ library(tidyverse)
 library(DT) 
 
 # This read_csv command reads in the "Rent" data set into an object called "Rent"
-Rent <- read_csv("../Data/Rent.csv")
+Rent <- read_csv("../Data/rent.csv")
 
 # To load this data set into your R-Console do the following:
 #  1. From your top file menu select "Session -> Set Working Directory -> To Source File Location"

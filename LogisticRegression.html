@@ -30,6 +30,14 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -114,6 +122,15 @@ code span.va { color: #000000; } /* Variable */
 code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -302,6 +319,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -324,7 +344,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Statistics Notebook</a>
+      <a class="navbar-brand" href="index.html"><img src='Images/snlogo.png' alt='Statistics Notebook Logo' style='height: 30px; margin: -5px 0px'></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -454,6 +474,14 @@ $(document).ready(function () {
 </div><!--/.navbar -->
 
 <div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
 
@@ -1339,6 +1367,1226 @@ either be quantitative or qualitative or a mixture of the two.</p>
 <div id="overview-1" class="section level3">
 <h3>Overview</h3>
 <div style="padding-left:125px;">
+<p>Select a model to see interpretation details, an example, and R Code
+help.</p>
+<div class="tab">
+<p><button class="tablinks" onclick="openTab(event, 'LearnMoresimpleLogisticModel')">Simple</button>
+<button class="tablinks" onclick="openTab(event, 'LearnMoreQuadraticModel')">Quadratic</button>
+<button class="tablinks" onclick="openTab(event, 'LearnMoreCubicModel')">Cubic</button>
+<button class="tablinks" onclick="openTab(event, 'LearnMoreTwoLinesModel')">Two-Lines</button>
+<button class="tablinks" onclick="openTab(event, 'LearnMorethreeDModel')">3D</button>
+<button class="tablinks" onclick="openTab(event, 'LearnMoreHDModel')">HD</button></p>
+</div>
+<div id="LearnMoresimpleLogisticModel" class="tabcontent"
+style="display:block;">
+<p>
+<table>
+<tr>
+<td>
+<p><img src="LogisticRegression_files/figure-html/unnamed-chunk-7-1.png" width="144" /></p>
+</td>
+<td style="text-align: center;padding-left:15px;">
+<p><span class="math display">\[
+  P(Y_i = 1|\, x_i) = \frac{e^{\beta_0 + \beta_1 x_i}}{1+e^{\beta_0 +
+\beta_1 x_i}} = \pi_i
+\]</span></p>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<p>The Simple Logistic Regression model uses a single x-variable once:
+<span class="math inline">\(X_i\)</span>.</p>
+<table>
+<colgroup>
+<col width="57%" />
+<col width="42%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\beta_0\)</span></td>
+<td>Y-intercept of the Model. Only interpreted by computing <span
+class="math inline">\(e^{\beta_0}\)</span>, which gives the “baseline
+odds” of the model. Technically only meaningful for when <span
+class="math inline">\(x_i=0\)</span> is a reasonable value.</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta_1\)</span></td>
+<td>Slope term of the model. Interpreted by computing <span
+class="math inline">\(e^{\beta_1}\)</span>, which gives the
+multiplicative change in the odds for each 1 unit increase in x. Say,
+<span class="math inline">\(e^{\beta_1} = 1.2\)</span>, then the odds
+are 1.2 times what they were before whenever x is increased by 1 unit.
+That’s a twenty percent increase in odds.</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+<div id="LearnMoreQuadraticModel" class="tabcontent">
+<p>
+<table>
+<tr>
+<td>
+<p><img src="LogisticRegression_files/figure-html/unnamed-chunk-8-1.png" width="144" /></p>
+</td>
+<td style="text-align: center;padding-left:15px;">
+<p><span class="math display">\[
+P(Y_i = 1| X_i) = \frac{e^{\beta_0 + \beta_1 X_i + \beta_2 X_i^2}}{1 +
+e^{\beta_0 + \beta_1 X_{i } + \beta_2 X_{i}^2}}
+\]</span></p>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<p>The Quadratic Logistic Regression model uses the same <span
+class="math inline">\(X\)</span>-variable twice, once with a <span
+class="math inline">\(\beta_1 X_i\)</span> <em>slope term</em> and once
+with a <span class="math inline">\(\beta_2 X_i^2\)</span> <em>quadratic
+term</em>.</p>
+<table>
+<colgroup>
+<col width="13%" />
+<col width="86%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\beta_0\)</span></td>
+<td>Y-intercept of the Model. Interpreted by computing <span
+class="math inline">\(e^{\beta_0}\)</span>, which gives the baseline
+odds of a success. Only interpreteable when <span
+class="math inline">\(X_i=0\)</span> is meaningful.</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta_1\)</span></td>
+<td>Controls the x-position of the center point of the “vertex” of the
+quadratic logistic model by <span
+class="math inline">\(\frac{-\beta_1}{2\cdot\beta_2}\)</span>. Not
+directly interpretable, even with <span
+class="math inline">\(e^{\beta_1}\)</span>, as the effect of <span
+class="math inline">\(\beta_1\)</span> is not independent of <span
+class="math inline">\(\beta_2\)</span>.</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\beta_2\)</span></td>
+<td>Controls the concavity and “steepness” of the Model: negative values
+result in a logistic model with a maximum point on the curve, positive
+values result in a minimum point on the curve; large values imply
+“steeper” curves and low values imply “flatter” curves. Also involved in
+the position of the vertex, see <span
+class="math inline">\(\beta_1\)</span>’s explanation. Not directly
+interpretable.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>An Example</strong></p>
+<p>Using the <code>airquality</code> data set, we run the following
+“quadratic” logistic regression. Pay careful attention to how the
+mathematical model for <span class="math inline">\(P(Y_i=1 | X_i) =
+\ldots\)</span> is translated to R-Code inside of <code>glm(...)</code>
+by using the log(Odds) model instead of the <span
+class="math inline">\(P(Y_i = 1 | X_i)\)</span> model.</p>
+<p><span class="math display">\[
+  \underbrace{\log\left(\overbrace{\frac{\pi_i}{1-\pi_i}}^{\text{Odds}\
+Y_i = 1}\right)}_\text{Temp&gt;80} \underbrace{=}_{\sim}
+\overbrace{\beta_0}^{\text{y-int}} +
+\overbrace{\beta_1}^{\stackrel{\text{slope}}{\text{term}}}
+\underbrace{X_{i}}_\text{Month} \underbrace{+}_{+}
+\overbrace{\beta_2}^{\stackrel{\text{quadratic}}{\text{term}}}  \underbrace{X_{i}^2}_\text{I(Month^2)}
+\]</span> Then, by using the statement in
+<code>glm(..., family=binomial)</code> the model that is put into the
+glm is translated back to the logistic model for you. Note that whether
+we look at the log(Odds) model or the <span
+class="math inline">\(P(Y_i=1)\)</span> model, the values of each <span
+class="math inline">\(\beta\)</span> are the same.</p>
+<a href="javascript:showhide('quadraticregressionexamplecode')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> glm.quad &lt;- <span class="tooltiprtext">A
+name we made up for our “quadratic” logistic regression.</span>
+</span><span class="tooltipr"> glm( <span class="tooltiprtext">R
+function glm used to perform generalized linear regressions, among which
+the logistic regression model is a specific example. But glm can do much
+more. </span> </span><span class="tooltipr"> Temp &gt; 75 <span
+class="tooltiprtext">Y-variable, should be 0’s and 1’s. In this case the
+<code>Temp &gt; 75</code> statement is translated into TRUE (1) and
+FALSE (0) values. It may be preferred to use a
+<code>mutate(y = ifelse(Temp &gt; 75, 1, 0))</code> statement prior to
+running the glm to create a column of 0’s and 1’s.</span> </span><span
+class="tooltipr">  ~  <span class="tooltiprtext">The tilde
+<code>~</code> is what glm(…) uses to state the regression equation
+<span class="math inline">\(Y_i = ...\)</span> for the log of the odds
+linear equation. Notice that the <code>~</code> is not followed by <span
+class="math inline">\(\beta_0 + \beta_1\)</span> like <span
+class="math inline">\(Y_i = ...\)</span>. Instead, <span
+class="math inline">\(X_{i}\)</span> (Month in this case) is the first
+term following <code>~</code>. This is because the <span
+class="math inline">\(\beta\)</span>’s are going to be estimated by the
+glm(…). These “Estimates” can be found using summary(glmObject) and
+looking at the <strong>Estimates</strong> column in the output.</span>
+</span><span class="tooltipr"> Month <span class="tooltiprtext"><span
+class="math inline">\(X_{i}\)</span>, should be quantitative.</span>
+</span><span class="tooltipr">  +  <span class="tooltiprtext">The plus
+<code>+</code> is used between each term in the model. Note that only
+the x-variables are included in the glm(…) from the <span
+class="math inline">\(\text{log of the odds} = ...\)</span> model. No
+beta’s are included.</span> </span><span class="tooltipr"> I(Month^2)
+<span class="tooltiprtext"><span class="math inline">\(X_{i}^2\)</span>,
+where the function I(…) protects the squaring of Month from how glm(…)
+would otherwise interpret that statement. The I(…) function must be used
+anytime you raise an x-variable to a power in the glm(…)
+statement.</span> </span><span class="tooltipr"> , data=airquality <span
+class="tooltiprtext">This is the data set we are using for the
+regression.</span> </span><span class="tooltipr"> , family=binomial
+<span class="tooltiprtext">This declares that a logistic regression will
+be performed instead of a linear regression.</span> </span><span
+class="tooltipr"> )<br />
+<span class="tooltiprtext">Closing parenthsis for the glm(…)
+function.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
+</div>
+</a>
+<div id="quadraticregressionexamplecode" style="display:none;">
+<p>Pay special attention to how the glm(…) code uses <span
+class="math inline">\(Y_i \sim X_{i} + X_{i}^2\)</span> and drops all
+<span class="math inline">\(\beta\)</span>’s from the model statement.
+This is because the estimates for the <span
+class="math inline">\(\beta\)</span>’s are given by the output of the
+glm(…) funtion in the “Estimates” column of summary(….).</p>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>glm.quad <span class="ot">&lt;-</span> <span class="fu">glm</span>(Temp <span class="sc">&gt;</span> <span class="dv">75</span> <span class="sc">~</span> Month <span class="sc">+</span> <span class="fu">I</span>(Month<span class="sc">^</span><span class="dv">2</span>), <span class="at">data=</span>airquality, <span class="at">family=</span>binomial)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">emphasize.strong.cols</span>(<span class="dv">1</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pander</span>(<span class="fu">summary</span>(glm.quad)<span class="sc">$</span>coefficients, )</span></code></pre></div>
+<table style="width:93%;">
+<colgroup>
+<col width="25%" />
+<col width="19%" />
+<col width="18%" />
+<col width="13%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">z value</th>
+<th align="center">Pr(&gt;|z|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center"><strong>-47.99</strong></td>
+<td align="center">7.733</td>
+<td align="center">-6.206</td>
+<td align="center">5.442e-10</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Month</strong></td>
+<td align="center"><strong>13.87</strong></td>
+<td align="center">2.23</td>
+<td align="center">6.22</td>
+<td align="center">4.978e-10</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>I(Month^2)</strong></td>
+<td align="center"><strong>-0.9452</strong></td>
+<td align="center">0.1543</td>
+<td align="center">-6.124</td>
+<td align="center">9.13e-10</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>estimates</strong> shown in the summary output table
+above approximate the <span class="math inline">\(\beta\)</span>’s in
+the log of the odds logistic regression model:</p>
+<ul>
+<li><span class="math inline">\(\beta_0\)</span> is estimated by the
+(Intercept) value of -47.99,</li>
+<li><span class="math inline">\(\beta_1\)</span> is estimated by the
+<code>Month</code> value of 13.87, and</li>
+<li><span class="math inline">\(\beta_2\)</span> is estimated by the
+<code>I(Month^2)</code> value of -0.9452.</li>
+</ul>
+<p>Because the estimate of the <span
+class="math inline">\(\beta_2\)</span> term is negative (-0.9452), this
+parabola will “open down” (concave). This tells us that probabilitiy of
+the high temperature exceeding 75 degrees F will increase to a point,
+then decrease again. The vertex of this parabola will be at <span
+class="math inline">\(-b_1/(2b_2) = -(13.87)/(2\cdot (-0.9452)) =
+7.337072\)</span> months, which tells us that the highest average
+temperature will occur around mid July (7.34 months to be exact). The
+y-intercept is -47.99, which would be an odds of nearly zero, <span
+class="math inline">\(e^{-47.99}\approx 1.44e-21\)</span>, that the
+temperature would exceed 75 degrees F if it were possible for the month
+to be “month zero.” Since this is not possible, the y-intercept is not
+meaningful for this model.</p>
+<p>Note that interpreting either <span
+class="math inline">\(\beta_1\)</span> or <span
+class="math inline">\(\beta_2\)</span> by themselves is quite difficult
+because they both work with together with <span
+class="math inline">\(X_{i}\)</span>.</p>
+<p><span class="math display">\[
+\log\left(\overbrace{\frac{\pi_i}{1-\pi_i}}^\text{odds of Temp
+&gt;75}\right) \approx \overbrace{-47.99}^\text{y-int} +
+\overbrace{13.87}^{\stackrel{\text{slope}}{\text{term}}} X_{i} +
+\overbrace{-0.9452}^{\stackrel{\text{quadratic}}{\text{term}}} X_{i}^2
+\]</span></p>
+<p>The regression function is drawn as follows. Be sure to look at the
+“Code” to understand how this graph was created using the ideas in the
+equation above.</p>
+<table>
+<tr>
+<td>
+<p><strong>Using Base R</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Temp<span class="sc">&gt;</span><span class="dv">75</span> <span class="sc">~</span> Month, <span class="at">data=</span>airquality, <span class="at">col=</span><span class="st">&quot;skyblue&quot;</span>, <span class="at">pch=</span><span class="dv">21</span>, <span class="at">bg=</span><span class="st">&quot;gray83&quot;</span>, <span class="at">main=</span><span class="st">&quot;Quadratic Model using airquality data set&quot;</span>, <span class="at">cex.main=</span><span class="dv">1</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#get the &quot;Estimates&quot; automatically:</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">coef</span>(glm.quad)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Then b will have 3 numbers stored inside:</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># b[1] is the estimate of beta_0: -47.99</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># b[2] is the estimate of beta_1: 13.87</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># b[3] is the estimate of beta_2: -0.9452</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">exp</span>(b[<span class="dv">1</span>] <span class="sc">+</span> b[<span class="dv">2</span>]<span class="sc">*</span>x <span class="sc">+</span> b[<span class="dv">3</span>]<span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(b[<span class="dv">1</span>] <span class="sc">+</span> b[<span class="dv">2</span>]<span class="sc">*</span>x <span class="sc">+</span> b[<span class="dv">3</span>]<span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span>)), <span class="at">col=</span><span class="st">&quot;skyblue&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="LogisticRegression_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</td>
+<td>
+<p><strong>Using ggplot2</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#get the &quot;Estimates&quot; automatically:</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">coef</span>(glm.quad)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Then b will have 3 estimates:</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># b[1] is the estimate of beta_0: -47.99</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># b[2] is the estimate of beta_1: 13.87</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># b[3] is the estimate of beta_2: -0.9452</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">ifelse</span>(Temp<span class="sc">&gt;</span><span class="dv">75</span>,<span class="dv">1</span>,<span class="dv">0</span>), <span class="at">x=</span>Month)) <span class="sc">+</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">pch=</span><span class="dv">21</span>, <span class="at">bg=</span><span class="st">&quot;gray83&quot;</span>, <span class="at">color=</span><span class="st">&quot;skyblue&quot;</span>, <span class="at">alpha=</span><span class="fl">0.1</span>, <span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_smooth(method=&quot;lm&quot;, se=F, formula = y ~ poly(x, 2)) + #easy way, but the more involved manual way using stat_function (see below) is more dynamic.</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(b[<span class="dv">1</span>] <span class="sc">+</span> b[<span class="dv">2</span>]<span class="sc">*</span>x <span class="sc">+</span> b[<span class="dv">3</span>]<span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(b[<span class="dv">1</span>] <span class="sc">+</span> b[<span class="dv">2</span>]<span class="sc">*</span>x <span class="sc">+</span> b[<span class="dv">3</span>]<span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span>)), <span class="at">color=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Quadratic Model using airquality data set&quot;</span>) </span></code></pre></div>
+<p><img src="LogisticRegression_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</td>
+</tr>
+</table>
+</p>
+</div>
+<div id="LearnMoreCubicModel" class="tabcontent" style="display:none;">
+<p>
+<table>
+<tr>
+<td>
+<p><img src="LogisticRegression_files/figure-html/unnamed-chunk-12-1.png" width="144" /></p>
+</td>
+<td style="text-align: center;padding-left:15px;">
+<p><span class="math display">\[
+Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_i + \beta_2 X_i^2 +
+\beta_3 X_i^3}_{E\{Y_i\}}}^\text{Cubic Model} + \epsilon_i
+\]</span></p>
+</td>
+</tr>
+</table>
+<p><br/></p>
+<p>The Cubic model uses the same <span
+class="math inline">\(X\)</span>-variable thrice, once with a <span
+class="math inline">\(\beta_1 X_i\)</span> term, once with a <span
+class="math inline">\(\beta_2 X_i^2\)</span> term, and once with a <span
+class="math inline">\(\beta_3 X_i^3\)</span> term. The <span
+class="math inline">\(X_i^3\)</span> term is called the “cubic”
+term.</p>
+<table>
+<colgroup>
+<col width="13%" />
+<col width="86%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\beta_0\)</span></td>
+<td>Y-intercept of the Model.</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta_1\)</span></td>
+<td>No clear interpretation, but could be called the “base slope
+coefficient” and contributes to the position of the inflection points of
+the cubic function.</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\beta_2\)</span></td>
+<td>No clear interpretation, but it also contributes to the location of
+the inflection points.</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta_3\)</span></td>
+<td>This is the coefficient of the cubic term. No clear interpretation,
+but it determines the concavity of the model by its sign.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>An Example</strong></p>
+<p>Using the <code>CO2</code> data set, we run the following “cubic”
+regression.</p>
+<p><span class="math display">\[
+  \underbrace{Y_i}_\text{uptake} \underbrace{=}_{\sim}
+\overbrace{\beta_0}^{\text{y-int}} +
+\overbrace{\beta_1}^{\stackrel{\text{slope}}{\text{term}}}
+\underbrace{X_{i}}_\text{conc} +
+\overbrace{\beta_2}^{\stackrel{\text{quadratic}}{\text{term}}}  \underbrace{X_{i}^2}_\text{I(conc^2)}
++  \overbrace{\beta_3}^{\stackrel{\text{cubic}}{\text{term}}}  \underbrace{X_{i}^3}_\text{I(conc^3)}
++ \epsilon_i
+\]</span></p>
+<a href="javascript:showhide('cubicregressionexamplecode')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> lm.cubic &lt;- <span class="tooltiprtext">A
+name we made up for our “cubic” regression.</span> </span><span
+class="tooltipr"> lm( <span class="tooltiprtext">R function lm used to
+perform linear regressions in R. The lm stands for “linear
+model”.</span> </span><span class="tooltipr"> uptake <span
+class="tooltiprtext">Y-variable, should be quantitative.</span>
+</span><span class="tooltipr">  ~  <span class="tooltiprtext">The tilde
+<code>~</code> is what lm(…) uses to state the regression equation <span
+class="math inline">\(Y_i = ...\)</span>. Notice that the <code>~</code>
+is not followed by <span class="math inline">\(\beta_0 +
+\beta_1\)</span> like <span class="math inline">\(Y_i = ...\)</span>.
+Instead, <span class="math inline">\(X_i\)</span> is the first term
+following <code>~</code>. This is because the <span
+class="math inline">\(\beta\)</span>’s are going to be estimated by the
+lm(…). These estimates can be found using summary(lmObject).</span>
+</span><span class="tooltipr"> conc <span class="tooltiprtext"><span
+class="math inline">\(X_{i}\)</span>, should be quantitative.</span>
+</span><span class="tooltipr">  +  <span class="tooltiprtext">The plus
+<code>+</code> is used between each term in the model. Note that only
+the x-variables are included in the lm(…) from the <span
+class="math inline">\(Y_i = ...\)</span> model. No beta’s are
+included.</span> </span><span class="tooltipr"> I(conc^2) <span
+class="tooltiprtext"><span class="math inline">\(X_{i}^2\)</span>, where
+the function I(…) protects the squaring of conc from how lm(…) would
+otherwise interpret that statement. The I(…) function must be used
+anytime you raise an x-variable to a power in the lm(…)
+statement.</span> </span><span class="tooltipr">  +  <span
+class="tooltiprtext">The plus <code>+</code> is used between each term
+in the model. Note that only the x-variables are included in the lm(…)
+from the <span class="math inline">\(Y_i = ...\)</span> model. No beta’s
+are included.</span> </span><span class="tooltipr"> I(conc^3) <span
+class="tooltiprtext"><span class="math inline">\(X_{i}^3\)</span>, where
+the function I(…) protects the cubing of conc from how lm(…) would
+otherwise interpret that statement. The I(…) function must be used
+anytime you raise an x-variable to a power in the lm(…)
+statement.</span> </span><span class="tooltipr"> , data=CO2 <span
+class="tooltiprtext">This is the data set we are using for the
+regression.</span> </span><span class="tooltipr"> )<br />
+<span class="tooltiprtext">Closing parenthsis for the lm(…)
+function.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
+</div>
+</a>
+<div id="cubicregressionexamplecode" style="display:none;">
+<p>Pay special attention to how the lm(…) code uses <span
+class="math inline">\(Y_i \sim X_{i} + X_{i}^2\)</span> and drops all
+<span class="math inline">\(\beta\)</span>’s and <span
+class="math inline">\(\epsilon\)</span> from the model statement. This
+is because the estimates for the <span
+class="math inline">\(\beta\)</span>’s and <span
+class="math inline">\(\epsilon\)</span> are given by the output of the
+lm(…) funtion in the “Estimates” column of summary(….) and in
+<code>lmObject$residuals</code>.</p>
+</div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>lm.cubic <span class="ot">&lt;-</span> <span class="fu">lm</span>(uptake <span class="sc">~</span> conc <span class="sc">+</span> <span class="fu">I</span>(conc<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(conc<span class="sc">^</span><span class="dv">3</span>), <span class="at">data=</span>CO2)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pander</span>(<span class="fu">summary</span>(lm.cubic)<span class="sc">$</span>coefficients)</span></code></pre></div>
+<table style="width:90%;">
+<colgroup>
+<col width="25%" />
+<col width="18%" />
+<col width="18%" />
+<col width="13%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">-1.483</td>
+<td align="center">5.043</td>
+<td align="center">-0.2941</td>
+<td align="center">0.7694</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>conc</strong></td>
+<td align="center">0.1814</td>
+<td align="center">0.0416</td>
+<td align="center">4.36</td>
+<td align="center">3.83e-05</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>I(conc^2)</strong></td>
+<td align="center">-0.0003063</td>
+<td align="center">9.067e-05</td>
+<td align="center">-3.378</td>
+<td align="center">0.00113</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>I(conc^3)</strong></td>
+<td align="center">1.601e-07</td>
+<td align="center">5.512e-08</td>
+<td align="center">2.905</td>
+<td align="center">0.004745</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>estimates</strong> shown above approximate the <span
+class="math inline">\(\beta\)</span>’s in the regression model: <span
+class="math inline">\(\beta_0\)</span> is estimated by the (Intercept)
+value of -1.483, <span class="math inline">\(\beta_1\)</span> is
+estimated by the <code>conc</code> value of 0.1814, <span
+class="math inline">\(\beta_2\)</span> is estimated by the
+<code>I(conc^2)</code> value of -0.0003063, and <span
+class="math inline">\(\beta_3\)</span> is estimated by the
+<code>I(conc^3)</code> value of 1.601e-07, which translates to
+0.0000001601.</p>
+<p>Because the estimate of the <span
+class="math inline">\(\beta_3\)</span> term is positive, this cubic
+model will “open up”. In other words, as the function moves from left to
+right, it will go off to positive infinity (up). If the term would have
+been negative, then the function would head to negative infinity (down)
+instead.</p>
+<p><span class="math display">\[
+\hat{Y}_i = \overbrace{-1.483}^\text{y-int} +
+\overbrace{0.1814}^{\stackrel{\text{slope}}{\text{term}}} X_{i} +
+\overbrace{-0.0003063}^{\stackrel{\text{quadratic}}{\text{term}}}
+X_{i}^2 + \overbrace{1.601e-07}^{\stackrel{\text{cubic}}{\text{term}}}
+X_{i}^3
+\]</span></p>
+<p>The regression function is drawn as follows. Be sure to look at the
+“Code” to understand how this graph was created using the ideas in the
+equation above.</p>
+<table>
+<tr>
+<td>
+<p><strong>Using Base R</strong></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(uptake <span class="sc">~</span> conc, <span class="at">data=</span>CO2, <span class="at">col=</span><span class="st">&quot;skyblue&quot;</span>, <span class="at">pch=</span><span class="dv">21</span>, <span class="at">bg=</span><span class="st">&quot;gray83&quot;</span>, <span class="at">main=</span><span class="st">&quot;Cubic Model using CO2 data set&quot;</span>, <span class="at">cex.main=</span><span class="dv">1</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#get the &quot;Estimates&quot; automatically:</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">coef</span>(lm.cubic)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Then b will have 4 estimates:</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># b[1] is the estimate of beta_0: -1.483</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># b[2] is the estimate of beta_1: 0.1814</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># b[3] is the estimate of beta_2: -0.0003063</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># b[4] is the estimate of beta_3: 1.601e-07</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(b[<span class="dv">1</span>] <span class="sc">+</span> b[<span class="dv">2</span>]<span class="sc">*</span>x <span class="sc">+</span> b[<span class="dv">3</span>]<span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> b[<span class="dv">4</span>]<span class="sc">*</span>x<span class="sc">^</span><span class="dv">3</span>, <span class="at">col=</span><span class="st">&quot;skyblue&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="LogisticRegression_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</td>
+<td>
+<p><strong>Using ggplot2</strong></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#get the &quot;Estimates&quot; automatically:</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">coef</span>(lm.cubic)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Then b will have 4 estimates:</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># b[1] is the estimate of beta_0: -1.483</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># b[2] is the estimate of beta_1: 0.1814</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># b[3] is the estimate of beta_2: -0.0003063</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># b[4] is the estimate of beta_3: 1.601e-07</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(CO2, <span class="fu">aes</span>(<span class="at">y=</span>uptake, <span class="at">x=</span>conc)) <span class="sc">+</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">pch=</span><span class="dv">21</span>, <span class="at">bg=</span><span class="st">&quot;gray83&quot;</span>, <span class="at">color=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_smooth(method=&quot;lm&quot;, se=F, formula = y ~ poly(x, 3)) + #easy way, but the more involved manual way using stat_function (see below) is more dynamic.</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) b[<span class="dv">1</span>] <span class="sc">+</span> b[<span class="dv">2</span>]<span class="sc">*</span>x <span class="sc">+</span> b[<span class="dv">3</span>]<span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> b[<span class="dv">4</span>]<span class="sc">*</span>x<span class="sc">^</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Cubic Model using CO2 data set&quot;</span>) </span></code></pre></div>
+<p><img src="LogisticRegression_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</td>
+</tr>
+</table>
+<p>It should be stated, that the cubic function is not the best fit for
+this data. However, it is a lot better than just a simple line, or a
+quadratic model, as shown below.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(uptake <span class="sc">~</span> conc, <span class="at">data=</span>CO2, <span class="at">col=</span><span class="st">&quot;skyblue&quot;</span>, <span class="at">pch=</span><span class="dv">21</span>, <span class="at">bg=</span><span class="st">&quot;gray83&quot;</span>, <span class="at">main=</span><span class="st">&quot;Cubic Model using CO2 data set&quot;</span>, <span class="at">cex.main=</span><span class="dv">1</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#get the &quot;Estimates&quot; automatically:</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">coef</span>(lm.cubic)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Then b will have 4 estimates:</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># b[1] is the estimate of beta_0: -1.483</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># b[2] is the estimate of beta_1: 0.1814</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># b[3] is the estimate of beta_2: -0.0003063</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># b[4] is the estimate of beta_3: 1.601e-07</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(b[<span class="dv">1</span>] <span class="sc">+</span> b[<span class="dv">2</span>]<span class="sc">*</span>x <span class="sc">+</span> b[<span class="dv">3</span>]<span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> b[<span class="dv">4</span>]<span class="sc">*</span>x<span class="sc">^</span><span class="dv">3</span>, <span class="at">col=</span><span class="st">&quot;skyblue&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">lm</span>(uptake <span class="sc">~</span> conc <span class="sc">+</span> <span class="fu">I</span>(conc<span class="sc">^</span><span class="dv">2</span>), <span class="at">data=</span>CO2))</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(b[<span class="dv">1</span>] <span class="sc">+</span> b[<span class="dv">2</span>]<span class="sc">*</span>x <span class="sc">+</span> b[<span class="dv">3</span>]<span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;firebrick&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">lm</span>(uptake <span class="sc">~</span> conc, <span class="at">data=</span>CO2))</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(b[<span class="dv">1</span>] <span class="sc">+</span> b[<span class="dv">2</span>]<span class="sc">*</span>x, <span class="at">col=</span><span class="st">&quot;orange&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="LogisticRegression_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</p>
+</div>
+<div id="LearnMoreTwoLinesModel" class="tabcontent">
+<p>
+<table>
+<tr>
+<td>
+<p><img src="LogisticRegression_files/figure-html/unnamed-chunk-17-1.png" width="144" /></p>
+</td>
+<td style="text-align: center;padding-left:15px;">
+<p><span class="math display">\[
+Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} +
+\beta_3 X_{1i} X_{2i}}_{E\{Y_i\}}}^\text{Two-lines Model} + \epsilon_i
+\]</span></p>
+<p><span class="math display">\[
+X_{2i} = \left\{\begin{array}{ll} 1, &amp; \text{Group B} \\ 0, &amp;
+\text{Group A} \end{array}\right.
+\]</span></p>
+</td>
+</tr>
+</table>
+<p>The so called “two-lines” model uses a quantitative <span
+class="math inline">\(X_{1i}\)</span> variable and a 0,1 indicator
+variable <span class="math inline">\(X_{2i}\)</span>. It is a basic
+example of how a “dummy variable” or “indicator variable” can be used to
+turn qualitative variables into quantitative terms. In this case, the
+indicator variable <span class="math inline">\(X_{2i}\)</span>, which is
+either 0 or 1, produces two separate lines: one line for Group A, and
+one line for Group B.</p>
+<table>
+<colgroup>
+<col width="13%" />
+<col width="86%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\beta_0\)</span></td>
+<td>Y-intercept of the Model.</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta_1\)</span></td>
+<td>Controls the slope of the “base-line” of the model, the “Group 0”
+line.</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\beta_2\)</span></td>
+<td>Controls the <strong>change in y-intercept</strong> for the second
+line in the model as compared to the y-intercept of the “base-line”
+line.</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta_3\)</span></td>
+<td>Called the “interaction” term. Controls the <strong>change in the
+slope</strong> for the second line in the model as compared to the slope
+of the “base-line” line.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>An Example</strong></p>
+<p>Using the <code>mtcars</code> data set, we run the following
+“two-lines” regression. Note that <code>am</code> has only 0 or 1
+values: <code>View(mtcars)</code>.</p>
+<p><span class="math display">\[
+  \underbrace{Y_i}_\text{mpg} \underbrace{=}_{\sim}
+\overbrace{\beta_0}^{\stackrel{\text{y-int}}{\text{baseline}}} +
+\overbrace{\beta_1}^{\stackrel{\text{slope}}{\text{baseline}}}
+\underbrace{X_{1i}}_\text{qsec} +
+\overbrace{\beta_2}^{\stackrel{\text{change
+in}}{\text{y-int}}}  \underbrace{X_{2i}}_\text{am} +
+\overbrace{\beta_3}^{\stackrel{\text{change in}}{\text{slope}}}
+\underbrace{X_{1i}X_{2i}}_\text{qsec:am} + \epsilon_i
+\]</span></p>
+<a href="javascript:showhide('twolinesregressionexamplecode')">
+<div class="hoverchunk">
+<p><span class="tooltipr"> lm.2lines &lt;- <span class="tooltiprtext">A
+name we made up for our “two-lines” regression.</span> </span><span
+class="tooltipr"> lm( <span class="tooltiprtext">R function lm used to
+perform linear regressions in R. The lm stands for “linear
+model”.</span> </span><span class="tooltipr"> mpg <span
+class="tooltiprtext">Y-variable, should be quantitative.</span>
+</span><span class="tooltipr">  ~  <span class="tooltiprtext">The tilde
+<code>~</code> is what lm(…) uses to state the regression equation <span
+class="math inline">\(Y_i = ...\)</span>. Notice that the <code>~</code>
+is not followed by <span class="math inline">\(\beta_0 +
+\beta_1\)</span> like <span class="math inline">\(Y_i = ...\)</span>.
+Instead, <span class="math inline">\(X_{1i}\)</span> is the first term
+following <code>~</code>. This is because <span
+class="math inline">\(\beta\)</span>’s are going to be estimated by the
+lm(…). These estimates can be found using summary(lmObject).</span>
+</span><span class="tooltipr"> qsec <span class="tooltiprtext"><span
+class="math inline">\(X_{1i}\)</span>, should be quantitative.</span>
+</span><span class="tooltipr">  +  <span class="tooltiprtext">The plus
+<code>+</code> is used between each term in the model. Note that only
+the x-variables are included in the lm(…) from the <span
+class="math inline">\(Y_i = ...\)</span> model. No beta’s are
+included.</span> </span><span class="tooltipr"> am <span
+class="tooltiprtext"><span class="math inline">\(X_{2i}\)</span>, an
+indicator or 0,1 variable. This term allows the y-intercept of the two
+lines to differ.</span> </span><span class="tooltipr">  +  <span
+class="tooltiprtext">The plus <code>+</code> is used between each term
+in the model. Note that only the x-variables are included in the lm(…)
+from the <span class="math inline">\(Y_i = ...\)</span> model. No beta’s
+are included.</span> </span><span class="tooltipr"> qsec:am <span
+class="tooltiprtext"><span class="math inline">\(X_{1i}X_{2i}\)</span>
+the interaction term. This allows the slopes of the two lines to
+differ.</span> </span><span class="tooltipr"> , data=mtcars <span
+class="tooltiprtext">This is the data set we are using for the
+regression.</span> </span><span class="tooltipr"> )<br />
+<span class="tooltiprtext">Closing parenthsis for the lm(…)
+function.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">  …  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
+</div>
+</a>
+<div id="twolinesregressionexamplecode" style="display:none;">
+<p>Pay special attention to how the lm(…) code uses <span
+class="math inline">\(Y_i \sim X_{1i} + X_{2i} + X_{1i}X_{2i}\)</span>
+and drops all <span class="math inline">\(\beta\)</span>’s and <span
+class="math inline">\(\epsilon\)</span> from the model statement. This
+is because the estimates for the <span
+class="math inline">\(\beta\)</span>’s and <span
+class="math inline">\(\epsilon\)</span> are given by the output of the
+lm(…) funtion in the “Estimates” column of summary(….) and in
+<code>lm.2lines$residuals</code>.</p>
+</div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>lm<span class="fl">.2</span>lines <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> qsec <span class="sc">+</span> am <span class="sc">+</span> qsec<span class="sc">:</span>am, <span class="at">data=</span>mtcars)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pander</span>(<span class="fu">summary</span>(lm<span class="fl">.2</span>lines)<span class="sc">$</span>coefficients)</span></code></pre></div>
+<table style="width:88%;">
+<colgroup>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">-9.01</td>
+<td align="center">8.218</td>
+<td align="center">-1.096</td>
+<td align="center">0.2823</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>qsec</strong></td>
+<td align="center">1.439</td>
+<td align="center">0.45</td>
+<td align="center">3.197</td>
+<td align="center">0.003432</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>am</strong></td>
+<td align="center">-14.51</td>
+<td align="center">12.48</td>
+<td align="center">-1.163</td>
+<td align="center">0.2548</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>qsec:am</strong></td>
+<td align="center">1.321</td>
+<td align="center">0.7017</td>
+<td align="center">1.883</td>
+<td align="center">0.07012</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>estimates</strong> shown above approximate the <span
+class="math inline">\(\beta\)</span>’s in the regression model: <span
+class="math inline">\(\beta_0\)</span> is estimated by the (Intercept),
+<span class="math inline">\(\beta_1\)</span> is estimated by the
+<code>qsec</code> value of 1.439, <span
+class="math inline">\(\beta_2\)</span> is estimated by the
+<code>am</code> value of -14.51, and <span
+class="math inline">\(\beta_3\)</span> is estimated by the
+<code>qsec:am</code> value of 1.321.</p>
+<p>This gives two separate equations of lines.</p>
+<p><strong>Automatic Transmission (am==0, <span
+class="math inline">\(X_{2i} = 0\)</span>) Line</strong></p>
+<p><span class="math display">\[
+\hat{Y}_i = \overbrace{-9.01}^{\stackrel{\text{y-int}}{\text{baseline}}}
++ \overbrace{1.439}^{\stackrel{\text{slope}}{\text{baseline}}} X_{1i}
+\]</span></p>
+<p><strong>Manual Transmission (am==1 , <span
+class="math inline">\(X_{2i} = 1\)</span>) Line</strong></p>
+<p><span class="math display">\[
+\hat{Y}_i =
+\underbrace{(\overbrace{-9.01}^{\stackrel{\text{y-int}}{\text{baseline}}}
++ \overbrace{-14.51}^{\stackrel{\text{change
+in}}{\text{y-int}}})}_{\stackrel{\text{y-intercept}}{-23.52}} +
+\underbrace{(\overbrace{1.439}^{\stackrel{\text{slope}}{\text{baseline}}}
++\overbrace{1.321}^{\stackrel{\text{change
+in}}{\text{slope}}})}_{\stackrel{\text{slope}}{2.76}} X_{1i}
+\]</span></p>
+<p>These lines are drawn as follows. Be sure to look at the “Code” to
+understand how this graph was created using the ideas in the two
+equations above.</p>
+<table>
+<tr>
+<td>
+<p><strong>Using Base R</strong></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mpg <span class="sc">~</span> qsec, <span class="at">data=</span>mtcars, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;skyblue&quot;</span>,<span class="st">&quot;orange&quot;</span>)[<span class="fu">as.factor</span>(am)], <span class="at">pch=</span><span class="dv">21</span>, <span class="at">bg=</span><span class="st">&quot;gray83&quot;</span>, <span class="at">main=</span><span class="st">&quot;Two-lines Model using mtcars data set&quot;</span>, <span class="at">cex.main=</span><span class="dv">1</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;Baseline (am==0)&quot;</span>, <span class="st">&quot;Changed-line (am==1)&quot;</span>), <span class="at">bty=</span><span class="st">&quot;n&quot;</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;skyblue&quot;</span>,<span class="st">&quot;orange&quot;</span>), <span class="at">cex=</span><span class="fl">0.8</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#get the &quot;Estimates&quot; automatically:</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">coef</span>(lm<span class="fl">.2</span>lines)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Then b will have 4 estimates:</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># b[1] is the estimate of beta_0: -9.0099</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># b[2] is the estimate of beta_1:  1.4385</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># b[3] is the estimate of beta_2: -14.5107</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># b[4] is the estimate of beta_3: 1.3214</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(b[<span class="dv">1</span>] <span class="sc">+</span> b[<span class="dv">2</span>]<span class="sc">*</span>x, <span class="at">col=</span><span class="st">&quot;skyblue&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">add=</span><span class="cn">TRUE</span>)  <span class="co">#baseline (in blue)</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>((b[<span class="dv">1</span>] <span class="sc">+</span> b[<span class="dv">3</span>]) <span class="sc">+</span> (b[<span class="dv">2</span>] <span class="sc">+</span> b[<span class="dv">4</span>])<span class="sc">*</span>x, <span class="at">col=</span><span class="st">&quot;orange&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">add=</span><span class="cn">TRUE</span>) <span class="co">#changed line (in orange)</span></span></code></pre></div>
+<p><img src="LogisticRegression_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+</td>
+<td>
+<p><strong>Using ggplot2</strong></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#get the &quot;Estimates&quot; automatically:</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">coef</span>(lm<span class="fl">.2</span>lines)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Then b will have 4 estimates:</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># b[1] is the estimate of beta_0: -9.0099</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># b[2] is the estimate of beta_1:  1.4385</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># b[3] is the estimate of beta_2: -14.5107</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># b[4] is the estimate of beta_3: 1.3214</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg, <span class="at">x=</span>qsec, <span class="at">color=</span><span class="fu">factor</span>(am))) <span class="sc">+</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">pch=</span><span class="dv">21</span>, <span class="at">bg=</span><span class="st">&quot;gray83&quot;</span>) <span class="sc">+</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_smooth(method=&quot;lm&quot;, se=F) + #easy way, but only draws the full interaction model. The manual way using stat_function (see below) is more involved, but more dynamic.</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) b[<span class="dv">1</span>] <span class="sc">+</span> b[<span class="dv">2</span>]<span class="sc">*</span>x, <span class="at">color=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span> <span class="co">#am==0 line</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) (b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">3</span>]) <span class="sc">+</span> (b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">4</span>])<span class="sc">*</span>x,<span class="at">color=</span><span class="st">&quot;orange&quot;</span>) <span class="sc">+</span> <span class="co">#am==1 line </span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name=</span><span class="st">&quot;Transmission (am)&quot;</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;skyblue&quot;</span>,<span class="st">&quot;orange&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Two-lines Model using mtcars data set&quot;</span>) </span></code></pre></div>
+<p><img src="LogisticRegression_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+</td>
+</tr>
+</table>
+</p>
+</div>
+<div id="LearnMorethreeDModel" class="tabcontent">
+<p>
+<table>
+<tr>
+<td>
+<p><img src="LogisticRegression_files/figure-html/volcano-1.png" width="144" /></p>
+</td>
+<td style="text-align: center;padding-left:15px;">
+<p><span class="math display">\[
+Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} +
+\beta_3 X_{1i}X_{2i}}_{E\{Y_i\}}}^\text{3D Model} + \epsilon_i
+\]</span></p>
+</td>
+</tr>
+</table>
+<p>The so called “3D” regression model uses two different quantitative
+x-variables, an <span class="math inline">\(X_{1i}\)</span> and an <span
+class="math inline">\(X_{2i}\)</span>. Unlike the two-lines model where
+<span class="math inline">\(X_{2i}\)</span> could only be a 0 or a 1,
+this <span class="math inline">\(X_{2i}\)</span> variable is
+quantitative, and can take on any quantitative value.</p>
+<table>
+<colgroup>
+<col width="12%" />
+<col width="87%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\beta_0\)</span></td>
+<td>Y-intercept of the Model</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta_1\)</span></td>
+<td>Slope of the line in the <span class="math inline">\(X_1\)</span>
+direction.</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\beta_2\)</span></td>
+<td>Slope of the line in the <span class="math inline">\(X_2\)</span>
+direction.</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta_3\)</span></td>
+<td>Interaction term that allows the model, which is a plane in
+three-dimensional space, to “bend”. If this term is zero, then the
+regression surface is just a flat plane.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>An Example</strong></p>
+<p>Here is what a 3D regression looks like when there is no interaction
+term. The two x-variables of <code>Month</code> and <code>Temp</code>
+are being used to predict the y-variable of <code>Ozone</code>.</p>
+<p><span class="math display">\[
+  \underbrace{Y_i}_\text{Ozone} \underbrace{=}_{\sim}
+\overbrace{\beta_0}^{\stackrel{\text{y-int}}{\text{baseline}}} +
+\overbrace{\beta_1}^{\stackrel{\text{slope}}{\text{baseline}}}
+\underbrace{X_{1i}}_\text{Temp} +
+\overbrace{\beta_2}^{\stackrel{\text{change
+in}}{\text{y-int}}}  \underbrace{X_{2i}}_\text{Month} + \epsilon_i
+\]</span></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>air_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Ozone <span class="sc">~</span> Temp <span class="sc">+</span> Month, <span class="at">data=</span> airquality)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pander</span>(air_lm<span class="sc">$</span>coefficients)</span></code></pre></div>
+<table style="width:43%;">
+<colgroup>
+<col width="19%" />
+<col width="11%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">(Intercept)</th>
+<th align="center">Temp</th>
+<th align="center">Month</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">-139.6</td>
+<td align="center">2.659</td>
+<td align="center">-3.522</td>
+</tr>
+</tbody>
+</table>
+<p>Notice how the slope, <span class="math inline">\(\beta_1\)</span>,
+in the “Temp” direction is estimated to be 2.659 and the slope in the
+“Month” direction, <span class="math inline">\(\beta_2\)</span>, is
+estimated to be -3.522. Also, the y-intercept, <span
+class="math inline">\(\beta_0\)</span>, is estimated to be -139.6.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Hint: library(car) has a scatterplot 3d function which is simple to use</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  but the code should only be run in your console, not knit.</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="do">## library(car)</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="do">## scatter3d(Y ~ X1 + X2, data=yourdata)</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="do">## To embed the 3d-scatterplot inside of your html document is harder.</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co">#library(plotly)</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co">#library(reshape2)</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Perform the multiple regression</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>air_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Ozone <span class="sc">~</span> Temp <span class="sc">+</span> Month, <span class="at">data=</span> airquality)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Graph Resolution (more important for more complex shapes)</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>graph_reso <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="co">#Setup Axis</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>axis_x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(airquality<span class="sc">$</span>Temp), <span class="fu">max</span>(airquality<span class="sc">$</span>Temp), <span class="at">by =</span> graph_reso)</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>axis_y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(airquality<span class="sc">$</span>Month), <span class="fu">max</span>(airquality<span class="sc">$</span>Month), <span class="at">by =</span> graph_reso)</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="co">#Sample points</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>air_surface <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">Temp =</span> axis_x, <span class="at">Month =</span> axis_y, <span class="at">KEEP.OUT.ATTRS=</span>F)</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>air_surface<span class="sc">$</span>Z <span class="ot">&lt;-</span> <span class="fu">predict.lm</span>(air_lm, <span class="at">newdata =</span> air_surface)</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>air_surface <span class="ot">&lt;-</span> <span class="fu">acast</span>(air_surface, Month <span class="sc">~</span> Temp, <span class="at">value.var =</span> <span class="st">&quot;Z&quot;</span>) <span class="co">#y ~ x</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a><span class="co">#Create scatterplot</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(airquality, </span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="sc">~</span>Temp, </span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="sc">~</span>Month, </span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>        <span class="at">z =</span> <span class="sc">~</span>Ozone,</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">rownames</span>(airquality), </span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">&quot;scatter3d&quot;</span>, </span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>        <span class="at">mode =</span> <span class="st">&quot;markers&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_trace</span>(<span class="at">z =</span> air_surface,</span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> axis_x,</span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> axis_y,</span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>            <span class="at">type =</span> <span class="st">&quot;surface&quot;</span>)</span></code></pre></div>
+<div id="htmlwidget-a6aee9c724a0bb7e87f7" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a6aee9c724a0bb7e87f7">{"x":{"visdat":{"b45b37cc63d1":["function () ","plotlyVisDat"]},"cur_data":"b45b37cc63d1","attrs":{"b45b37cc63d1":{"x":{},"y":{},"z":{},"text":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153"],"mode":"markers","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d"},"b45b37cc63d1.1":{"x":[56,56.5,57,57.5,58,58.5,59,59.5,60,60.5,61,61.5,62,62.5,63,63.5,64,64.5,65,65.5,66,66.5,67,67.5,68,68.5,69,69.5,70,70.5,71,71.5,72,72.5,73,73.5,74,74.5,75,75.5,76,76.5,77,77.5,78,78.5,79,79.5,80,80.5,81,81.5,82,82.5,83,83.5,84,84.5,85,85.5,86,86.5,87,87.5,88,88.5,89,89.5,90,90.5,91,91.5,92,92.5,93,93.5,94,94.5,95,95.5,96,96.5,97],"y":[5,5.5,6,6.5,7,7.5,8,8.5,9],"z":[[-8.2930156346032753,-6.9632802100885236,-5.6335447855737719,-4.3038093610590202,-2.974073936544297,-1.6443385120295453,-0.3146030875147936,1.0151323369999581,2.3448677615147098,3.6746031860294615,5.0043386105442131,6.3340740350589648,7.6638094595737165,8.9935448840884682,10.32328030860322,11.653015733117972,12.982751157632723,14.312486582147475,15.642222006662227,16.971957431176978,18.30169285569173,19.631428280206482,20.961163704721233,22.290899129235985,23.620634553750737,24.950369978265488,26.28010540278024,27.609840827294992,28.939576251809743,30.269311676324467,31.599047100839218,32.928782525353967,34.258517949868718,35.58825337438347,36.917988798898222,38.247724223412973,39.577459647927725,40.907195072442477,42.236930496957228,43.56666592147198,44.896401345986732,46.226136770501483,47.555872195016235,48.885607619530987,50.215343044045738,51.54507846856049,52.874813893075242,54.204549317589994,55.534284742104745,56.864020166619497,58.193755591134249,59.523491015649,60.853226440163752,62.182961864678504,63.512697289193255,64.842432713707979,66.17216813822273,67.501903562737482,68.831638987252234,70.161374411766985,71.491109836281737,72.820845260796489,74.15058068531124,75.480316109825992,76.810051534340744,78.139786958855495,79.469522383370247,80.799257807884999,82.12899323239975,83.458728656914502,84.788464081429254,86.118199505944006,87.447934930458757,88.777670354973509,90.107405779488261,91.437141204003012,92.766876628517764,94.096612053032516,95.426347477547267,96.756082902062019,98.085818326576742,99.415553751091494,100.74528917560625],[-10.053971968669664,-8.7242365441549126,-7.3945011196401609,-6.0647656951254092,-4.7350302706106859,-3.4052948460959342,-2.0755594215811826,-0.74582399706643088,0.58391142744832081,1.9136468519630725,3.2433822764778242,4.5731177009925759,5.9028531255073275,7.2325885500220792,8.5623239745368309,9.8920593990515826,11.221794823566334,12.551530248081086,13.881265672595838,15.211001097110589,16.540736521625341,17.870471946140093,19.200207370654844,20.529942795169596,21.859678219684348,23.189413644199099,24.519149068713851,25.848884493228603,27.178619917743355,28.508355342258078,29.838090766772829,31.167826191287581,32.497561615802333,33.827297040317085,35.157032464831836,36.486767889346588,37.81650331386134,39.146238738376091,40.475974162890843,41.805709587405595,43.135445011920346,44.465180436435098,45.79491586094985,47.124651285464601,48.454386709979353,49.784122134494105,51.113857559008856,52.443592983523608,53.77332840803836,55.103063832553111,56.432799257067863,57.762534681582615,59.092270106097367,60.422005530612118,61.75174095512687,63.081476379641593,64.411211804156352,65.740947228671104,67.070682653185855,68.400418077700607,69.730153502215359,71.05988892673011,72.389624351244862,73.719359775759614,75.049095200274365,76.378830624789117,77.708566049303869,79.03830147381862,80.368036898333372,81.697772322848124,83.027507747362876,84.357243171877627,85.686978596392379,87.016714020907131,88.346449445421882,89.676184869936634,91.005920294451386,92.335655718966137,93.665391143480889,94.995126567995641,96.324861992510364,97.654597417025116,98.984332841539867],[-11.814928302736053,-10.485192878221302,-9.1554574537065498,-7.8257220291917982,-6.4959866046770749,-5.1662511801623232,-3.8365157556475715,-2.5067803311328198,-1.1770449066180682,0.15269051789668353,1.4824259424114352,2.8121613669261869,4.1418967914409386,5.4716322159556903,6.801367640470442,8.1311030649851936,9.4608384894999453,10.790573914014697,12.120309338529449,13.4500447630442,14.779780187558952,16.109515612073704,17.439251036588455,18.768986461103207,20.098721885617959,21.42845731013271,22.758192734647462,24.087928159162214,25.417663583676966,26.747399008191689,28.07713443270644,29.406869857221192,30.736605281735944,32.066340706250699,33.396076130765451,34.725811555280202,36.055546979794954,37.385282404309706,38.715017828824458,40.044753253339209,41.374488677853961,42.704224102368713,44.033959526883464,45.363694951398216,46.693430375912968,48.023165800427719,49.352901224942471,50.682636649457223,52.012372073971974,53.342107498486726,54.671842923001478,56.001578347516229,57.331313772030981,58.661049196545733,59.990784621060484,61.320520045575208,62.650255470089959,63.979990894604711,65.309726319119463,66.639461743634214,67.969197168148966,69.298932592663718,70.62866801717847,71.958403441693221,73.288138866207973,74.617874290722725,75.947609715237476,77.277345139752228,78.60708056426698,79.936815988781731,81.266551413296483,82.596286837811235,83.926022262325986,85.255757686840738,86.58549311135549,87.915228535870241,89.244963960384993,90.574699384899745,91.904434809414496,93.234170233929248,94.563905658443971,95.893641082958723,97.223376507473475],[-13.575884636802442,-12.24614921228769,-10.916413787772939,-9.5866783632581871,-8.2569429387434639,-6.9272075142287122,-5.5974720897139605,-4.2677366651992088,-2.9380012406844571,-1.6082658161697054,-0.27853039165495375,1.0512050328597979,2.3809404573745496,3.7106758818893013,5.040411306404053,6.3701467309188047,7.6998821554335564,9.029617579948308,10.35935300446306,11.689088428977811,13.018823853492563,14.348559278007315,15.678294702522066,17.008030127036818,18.33776555155157,19.667500976066322,20.997236400581073,22.326971825095825,23.656707249610577,24.9864426741253,26.316178098640052,27.645913523154803,28.975648947669555,30.305384372184307,31.635119796699058,32.96485522121381,34.294590645728562,35.624326070243313,36.954061494758065,38.283796919272817,39.613532343787568,40.94326776830232,42.273003192817072,43.602738617331823,44.932474041846575,46.262209466361327,47.591944890876078,48.92168031539083,50.251415739905582,51.581151164420334,52.910886588935085,54.240622013449837,55.570357437964589,56.90009286247934,58.229828286994092,59.559563711508815,60.889299136023567,62.219034560538319,63.54876998505307,64.878505409567822,66.208240834082574,67.537976258597325,68.867711683112077,70.197447107626829,71.52718253214158,72.856917956656332,74.186653381171084,75.516388805685835,76.846124230200587,78.175859654715339,79.505595079230091,80.835330503744842,82.165065928259594,83.494801352774346,84.824536777289097,86.154272201803849,87.484007626318601,88.813743050833352,90.143478475348104,91.473213899862856,92.802949324377579,94.132684748892331,95.462420173407082],[-15.336840970868831,-14.007105546354079,-12.677370121839328,-11.347634697324576,-10.017899272809853,-8.6881638482951011,-7.3584284237803494,-6.0286929992655978,-4.6989575747508461,-3.3692221502360944,-2.0394867257213427,-0.70975130120659102,0.61998412330816066,1.9497195478229123,3.279454972337664,4.6091903968524157,5.9389258213671674,7.2686612458819191,8.5983966703966708,9.9281320949114225,11.257867519426174,12.587602943940926,13.917338368455678,15.247073792970429,16.576809217485181,17.906544641999933,19.236280066514684,20.566015491029436,21.895750915544188,23.225486340058911,24.555221764573663,25.884957189088414,27.214692613603166,28.544428038117918,29.874163462632669,31.203898887147421,32.533634311662169,33.863369736176921,35.193105160691672,36.522840585206424,37.852576009721176,39.182311434235928,40.512046858750679,41.841782283265431,43.171517707780183,44.501253132294934,45.830988556809686,47.160723981324438,48.490459405839189,49.820194830353941,51.149930254868693,52.479665679383444,53.809401103898196,55.139136528412948,56.468871952927699,57.798607377442423,59.128342801957174,60.458078226471926,61.787813650986678,63.117549075501429,64.447284500016181,65.777019924530933,67.106755349045685,68.436490773560436,69.766226198075188,71.09596162258994,72.425697047104691,73.755432471619443,75.085167896134195,76.414903320648946,77.744638745163698,79.07437416967845,80.404109594193201,81.733845018707953,83.063580443222705,84.393315867737456,85.723051292252208,87.05278671676696,88.382522141281711,89.712257565796463,91.041992990311186,92.371728414825938,93.70146383934069],[-17.09779730493522,-15.768061880420468,-14.438326455905717,-13.108591031390965,-11.778855606876242,-10.44912018236149,-9.1193847578467384,-7.7896493333319867,-6.459913908817235,-5.1301784843024834,-3.8004430597877317,-2.47070763527298,-1.1409722107582283,0.18876321375652338,1.5184986382712751,2.8482340627860268,4.1779694873007784,5.5077049118155301,6.8374403363302818,8.1671757608450335,9.4969111853597852,10.826646609874537,12.156382034389289,13.48611745890404,14.815852883418792,16.145588307933544,17.475323732448295,18.805059156963047,20.134794581477799,21.464530005992522,22.794265430507274,24.124000855022025,25.453736279536777,26.783471704051529,28.11320712856628,29.442942553081032,30.772677977595784,32.102413402110535,33.432148826625287,34.761884251140039,36.09161967565479,37.421355100169542,38.751090524684294,40.080825949199046,41.410561373713797,42.740296798228549,44.070032222743301,45.399767647258052,46.729503071772804,48.059238496287556,49.388973920802307,50.718709345317059,52.048444769831811,53.378180194346562,54.707915618861314,56.037651043376037,57.367386467890789,58.697121892405541,60.026857316920292,61.356592741435044,62.686328165949796,64.01606359046454,65.345799014979292,66.675534439494044,68.005269864008795,69.335005288523547,70.664740713038299,71.99447613755305,73.324211562067802,74.653946986582554,75.983682411097305,77.313417835612057,78.643153260126809,79.972888684641561,81.302624109156312,82.632359533671064,83.962094958185816,85.291830382700567,86.621565807215319,87.951301231730071,89.281036656244794,90.610772080759546,91.940507505274297],[-18.858753639001609,-17.529018214486857,-16.199282789972106,-14.869547365457354,-13.539811940942631,-12.210076516427879,-10.880341091913127,-9.5506056673983757,-8.220870242883624,-6.8911348183688723,-5.5613993938541206,-4.2316639693393689,-2.9019285448246173,-1.5721931203098656,-0.24245769579511389,1.0872777287196378,2.4170131532343895,3.7467485777491412,5.0764840022638928,6.4062194267786445,7.7359548512933962,9.0656902758081479,10.3954257003229,11.725161124837651,13.054896549352403,14.384631973867155,15.714367398381906,17.044102822896658,18.37383824741141,19.703573671926133,21.033309096440885,22.363044520955636,23.692779945470388,25.02251536998514,26.352250794499891,27.681986219014643,29.011721643529395,30.341457068044146,31.671192492558898,33.000927917073653,34.330663341588405,35.660398766103157,36.990134190617908,38.31986961513266,39.649605039647412,40.979340464162163,42.309075888676915,43.638811313191667,44.968546737706419,46.29828216222117,47.628017586735922,48.957753011250674,50.287488435765425,51.617223860280177,52.946959284794929,54.276694709309652,55.606430133824404,56.936165558339155,58.265900982853907,59.595636407368659,60.92537183188341,62.255107256398162,63.584842680912914,64.914578105427665,66.244313529942417,67.574048954457169,68.90378437897192,70.233519803486672,71.563255228001424,72.892990652516175,74.222726077030927,75.552461501545679,76.882196926060431,78.211932350575182,79.541667775089934,80.871403199604686,82.201138624119437,83.530874048634189,84.860609473148941,86.190344897663692,87.520080322178416,88.849815746693167,90.179551171207919],[-20.619709973067998,-19.289974548553246,-17.960239124038495,-16.630503699523743,-15.30076827500902,-13.971032850494268,-12.641297425979516,-11.311562001464765,-9.981826576950013,-8.6520911524352613,-7.3223557279205096,-5.9926203034057579,-4.6628848788910062,-3.3331494543762545,-2.0034140298615029,-0.67367860534675117,0.65605681916800052,1.9857922436827522,3.3155276681975039,4.6452630927122556,5.9749985172270073,7.3047339417417589,8.6344693662565106,9.9642047907712623,11.293940215286014,12.623675639800766,13.953411064315517,15.283146488830269,16.612881913345021,17.942617337859744,19.272352762374496,20.602088186889247,21.931823611403999,23.261559035918751,24.591294460433502,25.921029884948254,27.250765309463006,28.580500733977757,29.910236158492509,31.239971583007261,32.569707007522013,33.899442432036764,35.229177856551516,36.558913281066268,37.888648705581019,39.218384130095771,40.548119554610523,41.877854979125274,43.207590403640026,44.537325828154778,45.867061252669529,47.196796677184281,48.526532101699033,49.856267526213784,51.186002950728536,52.515738375243259,53.845473799758011,55.175209224272763,56.504944648787514,57.834680073302266,59.164415497817018,60.494150922331769,61.823886346846521,63.153621771361273,64.483357195876025,65.813092620390776,67.142828044905528,68.47256346942028,69.802298893935031,71.132034318449783,72.461769742964535,73.791505167479286,75.121240591994038,76.45097601650879,77.780711441023541,79.110446865538293,80.440182290053045,81.769917714567796,83.099653139082548,84.4293885635973,85.759123988112023,87.088859412626775,88.418594837141526],[-22.380666307134387,-21.050930882619635,-19.721195458104884,-18.391460033590132,-17.061724609075409,-15.731989184560657,-14.402253760045905,-13.072518335531154,-11.742782911016402,-10.41304748650165,-9.0833120619868986,-7.7535766374721469,-6.4238412129573952,-5.0941057884426435,-3.7643703639278918,-2.4346349394131401,-1.1048995148983884,0.22483590961636324,1.5545713341311149,2.8843067586458666,4.2140421831606183,5.54377760767537,6.8735130321901217,8.2032484567048733,9.532983881219625,10.862719305734377,12.192454730249128,13.52219015476388,14.851925579278632,16.181661003793355,17.511396428308107,18.841131852822858,20.17086727733761,21.500602701852362,22.830338126367113,24.160073550881865,25.489808975396617,26.819544399911369,28.14927982442612,29.479015248940872,30.808750673455624,32.138486097970372,33.468221522485123,34.797956946999875,36.127692371514627,37.457427796029378,38.78716322054413,40.116898645058882,41.446634069573633,42.776369494088385,44.106104918603137,45.435840343117889,46.76557576763264,48.095311192147392,49.425046616662144,50.754782041176867,52.084517465691619,53.41425289020637,54.743988314721122,56.073723739235874,57.403459163750625,58.733194588265377,60.062930012780129,61.39266543729488,62.722400861809632,64.052136286324384,65.381871710839135,66.711607135353887,68.041342559868639,69.37107798438339,70.700813408898142,72.030548833412894,73.360284257927646,74.690019682442397,76.019755106957149,77.349490531471901,78.679225955986652,80.008961380501404,81.338696805016156,82.668432229530907,83.998167654045631,85.327903078560382,86.657638503075134]],"text":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153"],"mode":"markers","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"surface","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"Temp"},"yaxis":{"title":"Month"},"zaxis":{"title":"Ozone"}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[67,72,74,62,66,65,59,61,74,69,66,68,58,64,66,57,68,62,59,73,61,61,67,81,79,76,82,90,87,82,77,72,65,73,76,84,85,81,83,83,88,92,92,89,73,81,80,81,82,84,87,85,74,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,86,82,80,77,79,76,78,78,77,72,79,81,86,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,75,76,68],"y":[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9],"z":[41,36,12,18,28,23,19,8,7,16,11,14,18,14,34,6,30,11,1,11,4,32,23,45,115,37,29,71,39,23,21,37,20,12,13,135,49,32,64,40,77,97,97,85,10,27,7,48,35,61,79,63,16,80,108,20,52,82,50,64,59,39,9,16,78,35,66,122,89,110,44,28,65,22,59,23,31,44,21,9,45,168,73,76,118,84,85,96,78,73,91,47,32,20,23,21,24,44,21,28,9,13,46,18,13,24,16,13,23,36,7,14,30,14,18,20],"text":["1","2","3","4","6","7","8","9","11","12","13","14","15","16","17","18","19","20","21","22","23","24","28","29","30","31","38","40","41","44","47","48","49","50","51","62","63","64","66","67","68","69","70","71","73","74","76","77","78","79","80","81","82","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","104","105","106","108","109","110","111","112","113","114","116","117","118","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","151","152","153"],"mode":"markers","type":"scatter3d","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null},{"colorbar":{"title":"Ozone","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"x":[56,56.5,57,57.5,58,58.5,59,59.5,60,60.5,61,61.5,62,62.5,63,63.5,64,64.5,65,65.5,66,66.5,67,67.5,68,68.5,69,69.5,70,70.5,71,71.5,72,72.5,73,73.5,74,74.5,75,75.5,76,76.5,77,77.5,78,78.5,79,79.5,80,80.5,81,81.5,82,82.5,83,83.5,84,84.5,85,85.5,86,86.5,87,87.5,88,88.5,89,89.5,90,90.5,91,91.5,92,92.5,93,93.5,94,94.5,95,95.5,96,96.5,97],"y":[5,5.5,6,6.5,7,7.5,8,8.5,9],"z":[[-8.2930156346032753,-6.9632802100885236,-5.6335447855737719,-4.3038093610590202,-2.974073936544297,-1.6443385120295453,-0.3146030875147936,1.0151323369999581,2.3448677615147098,3.6746031860294615,5.0043386105442131,6.3340740350589648,7.6638094595737165,8.9935448840884682,10.32328030860322,11.653015733117972,12.982751157632723,14.312486582147475,15.642222006662227,16.971957431176978,18.30169285569173,19.631428280206482,20.961163704721233,22.290899129235985,23.620634553750737,24.950369978265488,26.28010540278024,27.609840827294992,28.939576251809743,30.269311676324467,31.599047100839218,32.928782525353967,34.258517949868718,35.58825337438347,36.917988798898222,38.247724223412973,39.577459647927725,40.907195072442477,42.236930496957228,43.56666592147198,44.896401345986732,46.226136770501483,47.555872195016235,48.885607619530987,50.215343044045738,51.54507846856049,52.874813893075242,54.204549317589994,55.534284742104745,56.864020166619497,58.193755591134249,59.523491015649,60.853226440163752,62.182961864678504,63.512697289193255,64.842432713707979,66.17216813822273,67.501903562737482,68.831638987252234,70.161374411766985,71.491109836281737,72.820845260796489,74.15058068531124,75.480316109825992,76.810051534340744,78.139786958855495,79.469522383370247,80.799257807884999,82.12899323239975,83.458728656914502,84.788464081429254,86.118199505944006,87.447934930458757,88.777670354973509,90.107405779488261,91.437141204003012,92.766876628517764,94.096612053032516,95.426347477547267,96.756082902062019,98.085818326576742,99.415553751091494,100.74528917560625],[-10.053971968669664,-8.7242365441549126,-7.3945011196401609,-6.0647656951254092,-4.7350302706106859,-3.4052948460959342,-2.0755594215811826,-0.74582399706643088,0.58391142744832081,1.9136468519630725,3.2433822764778242,4.5731177009925759,5.9028531255073275,7.2325885500220792,8.5623239745368309,9.8920593990515826,11.221794823566334,12.551530248081086,13.881265672595838,15.211001097110589,16.540736521625341,17.870471946140093,19.200207370654844,20.529942795169596,21.859678219684348,23.189413644199099,24.519149068713851,25.848884493228603,27.178619917743355,28.508355342258078,29.838090766772829,31.167826191287581,32.497561615802333,33.827297040317085,35.157032464831836,36.486767889346588,37.81650331386134,39.146238738376091,40.475974162890843,41.805709587405595,43.135445011920346,44.465180436435098,45.79491586094985,47.124651285464601,48.454386709979353,49.784122134494105,51.113857559008856,52.443592983523608,53.77332840803836,55.103063832553111,56.432799257067863,57.762534681582615,59.092270106097367,60.422005530612118,61.75174095512687,63.081476379641593,64.411211804156352,65.740947228671104,67.070682653185855,68.400418077700607,69.730153502215359,71.05988892673011,72.389624351244862,73.719359775759614,75.049095200274365,76.378830624789117,77.708566049303869,79.03830147381862,80.368036898333372,81.697772322848124,83.027507747362876,84.357243171877627,85.686978596392379,87.016714020907131,88.346449445421882,89.676184869936634,91.005920294451386,92.335655718966137,93.665391143480889,94.995126567995641,96.324861992510364,97.654597417025116,98.984332841539867],[-11.814928302736053,-10.485192878221302,-9.1554574537065498,-7.8257220291917982,-6.4959866046770749,-5.1662511801623232,-3.8365157556475715,-2.5067803311328198,-1.1770449066180682,0.15269051789668353,1.4824259424114352,2.8121613669261869,4.1418967914409386,5.4716322159556903,6.801367640470442,8.1311030649851936,9.4608384894999453,10.790573914014697,12.120309338529449,13.4500447630442,14.779780187558952,16.109515612073704,17.439251036588455,18.768986461103207,20.098721885617959,21.42845731013271,22.758192734647462,24.087928159162214,25.417663583676966,26.747399008191689,28.07713443270644,29.406869857221192,30.736605281735944,32.066340706250699,33.396076130765451,34.725811555280202,36.055546979794954,37.385282404309706,38.715017828824458,40.044753253339209,41.374488677853961,42.704224102368713,44.033959526883464,45.363694951398216,46.693430375912968,48.023165800427719,49.352901224942471,50.682636649457223,52.012372073971974,53.342107498486726,54.671842923001478,56.001578347516229,57.331313772030981,58.661049196545733,59.990784621060484,61.320520045575208,62.650255470089959,63.979990894604711,65.309726319119463,66.639461743634214,67.969197168148966,69.298932592663718,70.62866801717847,71.958403441693221,73.288138866207973,74.617874290722725,75.947609715237476,77.277345139752228,78.60708056426698,79.936815988781731,81.266551413296483,82.596286837811235,83.926022262325986,85.255757686840738,86.58549311135549,87.915228535870241,89.244963960384993,90.574699384899745,91.904434809414496,93.234170233929248,94.563905658443971,95.893641082958723,97.223376507473475],[-13.575884636802442,-12.24614921228769,-10.916413787772939,-9.5866783632581871,-8.2569429387434639,-6.9272075142287122,-5.5974720897139605,-4.2677366651992088,-2.9380012406844571,-1.6082658161697054,-0.27853039165495375,1.0512050328597979,2.3809404573745496,3.7106758818893013,5.040411306404053,6.3701467309188047,7.6998821554335564,9.029617579948308,10.35935300446306,11.689088428977811,13.018823853492563,14.348559278007315,15.678294702522066,17.008030127036818,18.33776555155157,19.667500976066322,20.997236400581073,22.326971825095825,23.656707249610577,24.9864426741253,26.316178098640052,27.645913523154803,28.975648947669555,30.305384372184307,31.635119796699058,32.96485522121381,34.294590645728562,35.624326070243313,36.954061494758065,38.283796919272817,39.613532343787568,40.94326776830232,42.273003192817072,43.602738617331823,44.932474041846575,46.262209466361327,47.591944890876078,48.92168031539083,50.251415739905582,51.581151164420334,52.910886588935085,54.240622013449837,55.570357437964589,56.90009286247934,58.229828286994092,59.559563711508815,60.889299136023567,62.219034560538319,63.54876998505307,64.878505409567822,66.208240834082574,67.537976258597325,68.867711683112077,70.197447107626829,71.52718253214158,72.856917956656332,74.186653381171084,75.516388805685835,76.846124230200587,78.175859654715339,79.505595079230091,80.835330503744842,82.165065928259594,83.494801352774346,84.824536777289097,86.154272201803849,87.484007626318601,88.813743050833352,90.143478475348104,91.473213899862856,92.802949324377579,94.132684748892331,95.462420173407082],[-15.336840970868831,-14.007105546354079,-12.677370121839328,-11.347634697324576,-10.017899272809853,-8.6881638482951011,-7.3584284237803494,-6.0286929992655978,-4.6989575747508461,-3.3692221502360944,-2.0394867257213427,-0.70975130120659102,0.61998412330816066,1.9497195478229123,3.279454972337664,4.6091903968524157,5.9389258213671674,7.2686612458819191,8.5983966703966708,9.9281320949114225,11.257867519426174,12.587602943940926,13.917338368455678,15.247073792970429,16.576809217485181,17.906544641999933,19.236280066514684,20.566015491029436,21.895750915544188,23.225486340058911,24.555221764573663,25.884957189088414,27.214692613603166,28.544428038117918,29.874163462632669,31.203898887147421,32.533634311662169,33.863369736176921,35.193105160691672,36.522840585206424,37.852576009721176,39.182311434235928,40.512046858750679,41.841782283265431,43.171517707780183,44.501253132294934,45.830988556809686,47.160723981324438,48.490459405839189,49.820194830353941,51.149930254868693,52.479665679383444,53.809401103898196,55.139136528412948,56.468871952927699,57.798607377442423,59.128342801957174,60.458078226471926,61.787813650986678,63.117549075501429,64.447284500016181,65.777019924530933,67.106755349045685,68.436490773560436,69.766226198075188,71.09596162258994,72.425697047104691,73.755432471619443,75.085167896134195,76.414903320648946,77.744638745163698,79.07437416967845,80.404109594193201,81.733845018707953,83.063580443222705,84.393315867737456,85.723051292252208,87.05278671676696,88.382522141281711,89.712257565796463,91.041992990311186,92.371728414825938,93.70146383934069],[-17.09779730493522,-15.768061880420468,-14.438326455905717,-13.108591031390965,-11.778855606876242,-10.44912018236149,-9.1193847578467384,-7.7896493333319867,-6.459913908817235,-5.1301784843024834,-3.8004430597877317,-2.47070763527298,-1.1409722107582283,0.18876321375652338,1.5184986382712751,2.8482340627860268,4.1779694873007784,5.5077049118155301,6.8374403363302818,8.1671757608450335,9.4969111853597852,10.826646609874537,12.156382034389289,13.48611745890404,14.815852883418792,16.145588307933544,17.475323732448295,18.805059156963047,20.134794581477799,21.464530005992522,22.794265430507274,24.124000855022025,25.453736279536777,26.783471704051529,28.11320712856628,29.442942553081032,30.772677977595784,32.102413402110535,33.432148826625287,34.761884251140039,36.09161967565479,37.421355100169542,38.751090524684294,40.080825949199046,41.410561373713797,42.740296798228549,44.070032222743301,45.399767647258052,46.729503071772804,48.059238496287556,49.388973920802307,50.718709345317059,52.048444769831811,53.378180194346562,54.707915618861314,56.037651043376037,57.367386467890789,58.697121892405541,60.026857316920292,61.356592741435044,62.686328165949796,64.01606359046454,65.345799014979292,66.675534439494044,68.005269864008795,69.335005288523547,70.664740713038299,71.99447613755305,73.324211562067802,74.653946986582554,75.983682411097305,77.313417835612057,78.643153260126809,79.972888684641561,81.302624109156312,82.632359533671064,83.962094958185816,85.291830382700567,86.621565807215319,87.951301231730071,89.281036656244794,90.610772080759546,91.940507505274297],[-18.858753639001609,-17.529018214486857,-16.199282789972106,-14.869547365457354,-13.539811940942631,-12.210076516427879,-10.880341091913127,-9.5506056673983757,-8.220870242883624,-6.8911348183688723,-5.5613993938541206,-4.2316639693393689,-2.9019285448246173,-1.5721931203098656,-0.24245769579511389,1.0872777287196378,2.4170131532343895,3.7467485777491412,5.0764840022638928,6.4062194267786445,7.7359548512933962,9.0656902758081479,10.3954257003229,11.725161124837651,13.054896549352403,14.384631973867155,15.714367398381906,17.044102822896658,18.37383824741141,19.703573671926133,21.033309096440885,22.363044520955636,23.692779945470388,25.02251536998514,26.352250794499891,27.681986219014643,29.011721643529395,30.341457068044146,31.671192492558898,33.000927917073653,34.330663341588405,35.660398766103157,36.990134190617908,38.31986961513266,39.649605039647412,40.979340464162163,42.309075888676915,43.638811313191667,44.968546737706419,46.29828216222117,47.628017586735922,48.957753011250674,50.287488435765425,51.617223860280177,52.946959284794929,54.276694709309652,55.606430133824404,56.936165558339155,58.265900982853907,59.595636407368659,60.92537183188341,62.255107256398162,63.584842680912914,64.914578105427665,66.244313529942417,67.574048954457169,68.90378437897192,70.233519803486672,71.563255228001424,72.892990652516175,74.222726077030927,75.552461501545679,76.882196926060431,78.211932350575182,79.541667775089934,80.871403199604686,82.201138624119437,83.530874048634189,84.860609473148941,86.190344897663692,87.520080322178416,88.849815746693167,90.179551171207919],[-20.619709973067998,-19.289974548553246,-17.960239124038495,-16.630503699523743,-15.30076827500902,-13.971032850494268,-12.641297425979516,-11.311562001464765,-9.981826576950013,-8.6520911524352613,-7.3223557279205096,-5.9926203034057579,-4.6628848788910062,-3.3331494543762545,-2.0034140298615029,-0.67367860534675117,0.65605681916800052,1.9857922436827522,3.3155276681975039,4.6452630927122556,5.9749985172270073,7.3047339417417589,8.6344693662565106,9.9642047907712623,11.293940215286014,12.623675639800766,13.953411064315517,15.283146488830269,16.612881913345021,17.942617337859744,19.272352762374496,20.602088186889247,21.931823611403999,23.261559035918751,24.591294460433502,25.921029884948254,27.250765309463006,28.580500733977757,29.910236158492509,31.239971583007261,32.569707007522013,33.899442432036764,35.229177856551516,36.558913281066268,37.888648705581019,39.218384130095771,40.548119554610523,41.877854979125274,43.207590403640026,44.537325828154778,45.867061252669529,47.196796677184281,48.526532101699033,49.856267526213784,51.186002950728536,52.515738375243259,53.845473799758011,55.175209224272763,56.504944648787514,57.834680073302266,59.164415497817018,60.494150922331769,61.823886346846521,63.153621771361273,64.483357195876025,65.813092620390776,67.142828044905528,68.47256346942028,69.802298893935031,71.132034318449783,72.461769742964535,73.791505167479286,75.121240591994038,76.45097601650879,77.780711441023541,79.110446865538293,80.440182290053045,81.769917714567796,83.099653139082548,84.4293885635973,85.759123988112023,87.088859412626775,88.418594837141526],[-22.380666307134387,-21.050930882619635,-19.721195458104884,-18.391460033590132,-17.061724609075409,-15.731989184560657,-14.402253760045905,-13.072518335531154,-11.742782911016402,-10.41304748650165,-9.0833120619868986,-7.7535766374721469,-6.4238412129573952,-5.0941057884426435,-3.7643703639278918,-2.4346349394131401,-1.1048995148983884,0.22483590961636324,1.5545713341311149,2.8843067586458666,4.2140421831606183,5.54377760767537,6.8735130321901217,8.2032484567048733,9.532983881219625,10.862719305734377,12.192454730249128,13.52219015476388,14.851925579278632,16.181661003793355,17.511396428308107,18.841131852822858,20.17086727733761,21.500602701852362,22.830338126367113,24.160073550881865,25.489808975396617,26.819544399911369,28.14927982442612,29.479015248940872,30.808750673455624,32.138486097970372,33.468221522485123,34.797956946999875,36.127692371514627,37.457427796029378,38.78716322054413,40.116898645058882,41.446634069573633,42.776369494088385,44.106104918603137,45.435840343117889,46.76557576763264,48.095311192147392,49.425046616662144,50.754782041176867,52.084517465691619,53.41425289020637,54.743988314721122,56.073723739235874,57.403459163750625,58.733194588265377,60.062930012780129,61.39266543729488,62.722400861809632,64.052136286324384,65.381871710839135,66.711607135353887,68.041342559868639,69.37107798438339,70.700813408898142,72.030548833412894,73.360284257927646,74.690019682442397,76.019755106957149,77.349490531471901,78.679225955986652,80.008961380501404,81.338696805016156,82.668432229530907,83.998167654045631,85.327903078560382,86.657638503075134]],"text":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153"],"mode":"markers","type":"surface","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Here is a second view of this same regression with what is called a
+contour plot, contour map, or density plot.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mycolorpalette <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;skyblue2&quot;</span>, <span class="st">&quot;orange&quot;</span>))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filled.contour</span>(<span class="at">x=</span>axis_x, <span class="at">y=</span>axis_y, <span class="at">z=</span><span class="fu">matrix</span>(air_surface<span class="sc">$</span>Z, <span class="fu">length</span>(axis_x), <span class="fu">length</span>(axis_y)), <span class="at">col=</span><span class="fu">mycolorpalette</span>(<span class="dv">26</span>))</span></code></pre></div>
+<p><strong>Including the Interaction Term</strong></p>
+<p>Here is what a 3D regression looks like when the interaction term is
+present. The two x-variables of <code>Month</code> and <code>Temp</code>
+are being used to predict the y-variable of <code>Ozone</code>.</p>
+<p><span class="math display">\[
+  \underbrace{Y_i}_\text{Ozone} \underbrace{=}_{\sim}
+\overbrace{\beta_0}^{\stackrel{\text{y-int}}{\text{baseline}}} +
+\overbrace{\beta_1}^{\stackrel{\text{slope}}{\text{baseline}}}
+\underbrace{X_{1i}}_\text{Temp} +
+\overbrace{\beta_2}^{\stackrel{\text{change
+in}}{\text{y-int}}}  \underbrace{X_{2i}}_\text{Month} +
+\overbrace{\beta_3}^{\stackrel{\text{change in}}{\text{slope}}}
+\underbrace{X_{1i}X_{2i}}_\text{Temp:Month} + \epsilon_i
+\]</span></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>air_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Ozone <span class="sc">~</span> Temp <span class="sc">+</span> Month <span class="sc">+</span> Temp<span class="sc">:</span>Month, <span class="at">data=</span> airquality)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pander</span>(air_lm<span class="sc">$</span>coefficients)</span></code></pre></div>
+<table style="width:60%;">
+<colgroup>
+<col width="19%" />
+<col width="9%" />
+<col width="12%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">(Intercept)</th>
+<th align="center">Temp</th>
+<th align="center">Month</th>
+<th align="center">Temp:Month</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">-3.915</td>
+<td align="center">0.77</td>
+<td align="center">-23.01</td>
+<td align="center">0.2678</td>
+</tr>
+</tbody>
+</table>
+<p>Notice how all coefficient estimates have changed. The y-intercept,
+<span class="math inline">\(\beta_0\)</span> is now estimated to be
+<span class="math inline">\(-3.915\)</span>. The slope term, <span
+class="math inline">\(\beta_1\)</span>, in the Temp-direction is
+estimated as <span class="math inline">\(0.77\)</span>, while the slope
+term, <span class="math inline">\(\beta_2\)</span>, in the
+Month-direction is estimated to be <span
+class="math inline">\(-23.01\)</span>. This change in estimated
+coefficiets is due to the presence of the interaction term’s
+coefficient, <span class="math inline">\(\beta_3\)</span>, which is
+estimated to be <span class="math inline">\(0.2678\)</span>. As you
+should notice in the graphic, the interaction model allows the “slopes”
+in each direction to change, creating a “curved” surface for the
+regression surface instead of a flat surface.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Perform the multiple regression</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>air_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Ozone <span class="sc">~</span> Temp <span class="sc">+</span> Month <span class="sc">+</span> Temp<span class="sc">:</span>Month, <span class="at">data=</span> airquality)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Graph Resolution (more important for more complex shapes)</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>graph_reso <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Setup Axis</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>axis_x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(airquality<span class="sc">$</span>Temp), <span class="fu">max</span>(airquality<span class="sc">$</span>Temp), <span class="at">by =</span> graph_reso)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>axis_y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(airquality<span class="sc">$</span>Month), <span class="fu">max</span>(airquality<span class="sc">$</span>Month), <span class="at">by =</span> graph_reso)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Sample points</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>air_surface <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">Temp =</span> axis_x, <span class="at">Month =</span> axis_y, <span class="at">KEEP.OUT.ATTRS=</span>F)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>air_surface <span class="ot">&lt;-</span> air_surface <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Z=</span><span class="fu">predict.lm</span>(air_lm, <span class="at">newdata =</span> air_surface))</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>air_surface <span class="ot">&lt;-</span> <span class="fu">acast</span>(air_surface, Month <span class="sc">~</span> Temp, <span class="at">value.var =</span> <span class="st">&quot;Z&quot;</span>) <span class="co">#y ~ x</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Create scatterplot</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(airquality, </span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="sc">~</span>Temp, </span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="sc">~</span>Month, </span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">z =</span> <span class="sc">~</span>Ozone,</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">rownames</span>(airquality), </span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">&quot;scatter3d&quot;</span>, </span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">mode =</span> <span class="st">&quot;markers&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_trace</span>(<span class="at">z =</span> air_surface,</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> axis_x,</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> axis_y,</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>            <span class="at">type =</span> <span class="st">&quot;surface&quot;</span>)</span></code></pre></div>
+<div id="htmlwidget-cd0408de64cff19a352e" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cd0408de64cff19a352e">{"x":{"visdat":{"b45b4292b5d7":["function () ","plotlyVisDat"]},"cur_data":"b45b4292b5d7","attrs":{"b45b4292b5d7":{"x":{},"y":{},"z":{},"text":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153"],"mode":"markers","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d"},"b45b4292b5d7.1":{"x":[56,56.5,57,57.5,58,58.5,59,59.5,60,60.5,61,61.5,62,62.5,63,63.5,64,64.5,65,65.5,66,66.5,67,67.5,68,68.5,69,69.5,70,70.5,71,71.5,72,72.5,73,73.5,74,74.5,75,75.5,76,76.5,77,77.5,78,78.5,79,79.5,80,80.5,81,81.5,82,82.5,83,83.5,84,84.5,85,85.5,86,86.5,87,87.5,88,88.5,89,89.5,90,90.5,91,91.5,92,92.5,93,93.5,94,94.5,95,95.5,96,96.5,97],"y":[5,5.5,6,6.5,7,7.5,8,8.5,9],"z":[[-0.83442089392806906,0.22012837686895637,1.274677647665996,2.3292269184630356,3.3837761892600753,4.4383254600571291,5.4928747308541546,6.5474240016511942,7.6019732724482481,8.6565225432452735,9.7110718140423273,10.765621084839353,11.820170355636407,12.874719626433446,13.929268897230472,14.983818168027511,16.038367438824565,17.092916709621605,18.147465980418644,19.202015251215684,20.256564522012724,21.311113792809763,22.365663063606789,23.420212334403857,24.474761605200882,25.529310875997922,26.583860146794962,27.638409417592001,28.692958688389055,29.74750795918608,30.80205722998312,31.856606500780167,32.911155771577207,33.965705042374239,35.020254313171279,36.074803583968325,37.129352854765365,38.183902125562398,39.238451396359451,40.293000667156491,41.347549937953524,42.402099208750563,43.45664847954761,44.51119775034465,45.565747021141682,46.620296291938722,47.674845562735769,48.729394833532808,49.783944104329848,50.83849337512688,51.893042645923934,52.947591916720967,54.002141187518006,55.056690458315053,56.111239729112093,57.165788999909125,58.220338270706165,59.274887541503219,60.329436812300244,61.383986083097284,62.438535353894324,63.493084624691377,64.547633895488417,65.602183166285442,66.656732437082482,67.711281707879536,68.765830978676576,69.820380249473601,70.874929520270641,71.929478791067694,72.984028061864734,74.038577332661774,75.093126603458813,76.147675874255853,77.202225145052893,78.256774415849932,79.311323686646972,80.365872957444012,81.420422228241051,82.474971499038091,83.529520769835116,84.584070040632156,85.638619311429224],[-4.8386227932523411,-3.7171209728019505,-2.5956191523515599,-1.4741173319011693,-0.35261551145077874,0.76888630899962607,1.8903881294500025,3.0118899499004073,4.1333917703507979,5.2548935908011742,6.376395411251579,7.4978972317019696,8.6193990521523602,9.7409008726027508,10.862402693053141,11.983904513503532,13.105406333953923,14.226908154404313,15.348409974854718,16.469911795305094,17.591413615755485,18.71291543620589,19.834417256656266,20.955919077106671,22.077420897557047,23.198922718007452,24.320424538457843,25.441926358908219,26.563428179358638,27.684929999809015,28.806431820259405,29.927933640709796,31.049435461160186,32.170937281610577,33.292439102060968,34.413940922511358,35.535442742961763,36.656944563412139,37.778446383862544,38.899948204312935,40.021450024763311,41.142951845213716,42.264453665664107,43.385955486114497,44.507457306564888,45.628959127015278,46.750460947465669,47.87196276791606,48.99346458836645,50.114966408816855,51.236468229267231,52.357970049717622,53.479471870168027,54.600973690618403,55.722475511068808,56.843977331519184,57.965479151969589,59.08698097241998,60.208482792870356,61.329984613320761,62.451486433771151,63.572988254221542,64.694490074671933,65.815991895122323,66.937493715572728,68.058995536023104,69.180497356473509,70.301999176923871,71.423500997374276,72.545002817824681,73.666504638275057,74.788006458725462,75.909508279175853,77.031010099626229,78.152511920076634,79.274013740527039,80.395515560977401,81.517017381427806,82.638519201878211,83.760021022328587,84.881522842778978,86.003024663229354,87.124526483679759],[-8.842824692576599,-7.6543703224728574,-6.4659159523691159,-5.2774615822653743,-4.0890072121616328,-2.900552842057877,-1.7120984719541497,-0.52364410185039389,0.66481026825334766,1.853264638357075,3.041719008460845,4.2301733785645723,5.4186277486683139,6.6070821187720696,7.795536488875797,8.9839908589795385,10.17244522908328,11.360899599187036,12.549353969290777,13.737808339394505,14.926262709498261,16.114717079602002,17.303171449705729,18.491625819809499,19.680080189913227,20.868534560016968,22.056988930120724,23.245443300224451,24.433897670328207,25.622352040431949,26.81080641053569,27.999260780639432,29.187715150743173,30.376169520846915,31.564623890950656,32.753078261054398,33.941532631158154,35.129987001261881,36.318441371365623,37.506895741469378,38.695350111573106,39.883804481676862,41.072258851780603,42.260713221884345,43.449167591988086,44.637621962091828,45.826076332195569,47.014530702299311,48.202985072403052,49.391439442506794,50.57989381261055,51.768348182714291,52.956802552818033,54.14525692292176,55.333711293025516,56.522165663129243,57.710620033233013,58.899074403336755,60.087528773440482,61.275983143544224,62.464437513647965,63.652891883751707,64.841346253855477,66.029800623959204,67.218254994062946,68.406709364166687,69.595163734270429,70.783618104374156,71.972072474477898,73.160526844581668,74.348981214685409,75.537435584789151,76.725889954892878,77.91434432499662,79.102798695100361,80.291253065204131,81.479707435307859,82.6681618054116,83.856616175515342,85.045070545619083,86.233524915722811,87.421979285826581,88.610433655930322],[-12.847026591900885,-11.591619672143793,-10.3362127523867,-9.0808058326296077,-7.8253989128725152,-6.5699919931154085,-5.3145850733583302,-4.0591781536012235,-2.803771233844131,-1.5483643140870527,-0.29295739432993173,0.96244952542714657,2.2178564451842533,3.4732633649413458,4.7286702846984241,5.9840772044555308,7.2394841242126233,8.4948910439697158,9.7502979637268226,11.005704883483901,12.261111803240993,13.5165187229981,14.771925642755178,16.027332562512285,17.282739482269378,18.53814640202647,19.793553321783563,21.048960241540655,22.304367161297762,23.55977408105484,24.815181000811947,26.070587920569039,27.325994840326118,28.581401760083224,29.836808679840317,31.092215599597395,32.347622519354502,33.603029439111594,34.858436358868701,36.113843278625779,37.369250198382872,38.624657118139993,39.880064037897057,41.135470957654164,42.39087787741127,43.646284797168335,44.901691716925441,46.157098636682548,47.412505556439626,48.667912476196733,49.923319395953826,51.178726315710904,52.434133235468011,53.689540155225103,54.944947074982196,56.200353994739288,57.455760914496395,58.711167834253473,59.966574754010566,61.221981673767672,62.477388593524751,63.732795513281857,64.988202433038964,66.243609352796028,67.499016272553135,68.754423192310242,70.009830112067348,71.265237031824412,72.520643951581519,73.776050871338626,75.031457791095704,76.286864710852811,77.542271630609903,78.797678550366982,80.053085470124088,81.308492389881195,82.563899309638259,83.819306229395366,85.074713149152473,86.330120068909551,87.585526988666643,88.84093390842375,90.096340828180828],[-16.851228491225143,-15.5288690218147,-14.206509552404256,-12.884150082993813,-11.561790613583369,-10.239431144172912,-8.9170716747624681,-7.5947122053520246,-6.2723527359415812,-4.9499932665311377,-3.62763379712068,-2.3052743277102508,-0.98291485829979308,0.33944461111065038,1.6618040805210939,2.9841635499315373,4.3065230193419808,5.6288824887524385,6.9512419581628819,8.2736014275733112,9.5959608969837689,10.918320366394212,12.240679835804642,13.563039305215113,14.885398774625543,16.207758244035986,17.53011771344643,18.852477182856887,20.174836652267345,21.497196121677774,22.819555591088218,24.141915060498661,25.464274529909119,26.786633999319562,28.108993468730006,29.431352938140435,30.753712407550893,32.07607187696135,33.398431346371794,34.720790815782237,36.043150285192667,37.365509754603124,38.687869224013554,40.010228693424025,41.332588162834469,42.654947632244898,43.977307101655342,45.299666571065785,46.622026040476257,47.9443855098867,49.26674497929713,50.589104448707573,51.911463918118017,53.233823387528446,54.556182856938932,55.878542326349361,57.200901795759805,58.523261265170248,59.845620734580677,61.167980203991149,62.490339673401593,63.812699142812036,65.13505861222248,66.457418081632909,67.779777551043352,69.102137020453824,70.424496489864268,71.746855959274697,73.069215428685141,74.391574898095584,75.713934367506056,77.036293836916499,78.358653306326929,79.681012775737372,81.003372245147816,82.325731714558287,83.648091183968717,84.97045065337916,86.292810122789604,87.615169592200047,88.937529061610476,90.259888531020948,91.582248000431392],[-20.855430390549429,-19.466118371485635,-18.076806352421855,-16.687494333358046,-15.298182314294252,-13.908870295230443,-12.519558276166649,-11.130246257102868,-9.7409342380390598,-8.3516222189752654,-6.9623101999114567,-5.5729981808476623,-4.1836861617838821,-2.7943741427200735,-1.405062123656279,-0.015750104592484604,1.3735619144713098,2.7628739335351185,4.1521859525989271,5.5414979716626931,6.9308099907265017,8.3201220097903104,9.7094340288540764,11.098746047917899,12.488058066981694,13.877370086045502,15.266682105109282,16.655994124173077,18.0453061432369,19.434618162300666,20.823930181364474,22.213242200428283,23.602554219492049,24.991866238555858,26.381178257619666,27.770490276683461,29.159802295747255,30.54911431481105,31.938426333874858,33.327738352938638,34.717050372002433,36.106362391066256,37.495674410130022,38.88498642919383,40.274298448257639,41.663610467321433,43.052922486385214,44.442234505449022,45.831546524512831,47.220858543576611,48.610170562640405,49.999482581704214,51.388794600767994,52.778106619831789,54.167418638895612,55.556730657959406,56.946042677023186,58.335354696086995,59.724666715150789,61.113978734214569,62.503290753278378,63.892602772342187,65.281914791405967,66.671226810469761,68.06053882953357,69.449850848597379,70.839162867661159,72.228474886724953,73.617786905788762,75.007098924852542,76.396410943916351,77.785722962980159,79.175034982043925,80.564347001107734,81.953659020171543,83.342971039235323,84.732283058299117,86.121595077362926,87.510907096426735,88.900219115490515,90.289531134554309,91.678843153618118,93.068155172681898],[-24.859632289873687,-23.403367721156542,-21.947103152439411,-20.490838583722237,-19.034574015005106,-17.578309446287946,-16.122044877570801,-14.66578030885367,-13.20951574013651,-11.75325117141935,-10.296986602702191,-8.8407220339850596,-7.3844574652679285,-5.9281928965507689,-4.4719283278336093,-3.0156637591164497,-1.5593991903993185,-0.10313462168218734,1.3531299470349722,2.8093945157521318,4.2656590844692914,5.7219236531864226,7.1781882219035538,8.6344527906207134,10.090717359337873,11.546981928055033,13.003246496772164,14.459511065489295,15.915775634206483,17.372040202923614,18.828304771640774,20.284569340357905,21.740833909075036,23.197098477792196,24.653363046509355,26.109627615226486,27.565892183943646,29.022156752660777,30.478421321377937,31.934685890095096,33.390950458812227,34.847215027529387,36.303479596246518,37.759744164963678,39.216008733680837,40.672273302397969,42.128537871115114,43.584802439832288,45.041067008549433,46.497331577266579,47.95359614598371,49.409860714700855,50.866125283418029,52.32238985213516,53.77865442085232,55.234918989569451,56.691183558286596,58.14744812700377,59.603712695720901,61.059977264438047,62.516241833155192,63.972506401872337,65.428770970589511,66.885035539306642,68.341300108023788,69.797564676740933,71.253829245458107,72.710093814175238,74.166358382892383,75.622622951609529,77.078887520326674,78.535152089043848,79.991416657760979,81.447681226478124,82.90394579519527,84.360210363912415,85.816474932629575,87.27273950134672,88.729004070063866,90.185268638781011,91.641533207498142,93.097797776215316,94.554062344932461],[-28.863834189197945,-27.340617070827449,-25.817399952456952,-24.294182834086456,-22.77096571571596,-21.247748597345435,-19.724531478974967,-18.201314360604471,-16.678097242233946,-15.15488012386345,-13.631663005492953,-12.108445887122457,-10.585228768751961,-9.0620116503814359,-7.5387945320109679,-6.0155774136404432,-4.4923602952699468,-2.9691431768994789,-1.4459260585289542,0.077291059841542165,1.6005081782120669,3.1237252965825348,4.6469424149530312,6.1701595333235559,7.6933766516940238,9.2165937700645486,10.739810888435045,12.263028006805541,13.786245125176038,15.309462243546534,16.832679361917059,18.355896480287555,19.879113598658023,21.402330717028519,22.925547835399044,24.448764953769512,25.971982072140037,27.495199190510533,29.018416308881029,30.541633427251526,32.064850545622022,33.588067663992547,35.111284782363043,36.634501900733511,38.157719019104036,39.680936137474532,41.204153255845029,42.727370374215525,44.250587492586021,45.773804610956546,47.297021729327014,48.820238847697539,50.343455966068035,51.866673084438503,53.389890202809028,54.913107321179524,56.436324439550049,57.959541557920517,59.482758676291013,61.005975794661509,62.529192913032034,64.05241003140253,65.575627149773027,67.098844268143523,68.622061386513991,70.145278504884516,71.668495623255041,73.191712741625537,74.714929859996005,76.238146978366501,77.761364096737026,79.284581215107551,80.807798333478019,82.331015451848515,83.854232570219025,85.377449688589508,86.900666806960004,88.423883925330514,89.947101043701025,91.470318162071507,92.993535280442003,94.516752398812514,96.039969517182996],[-32.868036088522217,-31.277866420498384,-29.687696752474523,-28.097527084450689,-26.507357416426828,-24.917187748402966,-23.327018080379133,-21.736848412355272,-20.146678744331439,-18.556509076307577,-16.966339408283716,-15.376169740259883,-13.786000072236021,-12.19583040421216,-10.605660736188327,-9.0154910681644935,-7.425321400140632,-5.8351517321167421,-4.244982064092909,-2.6548123960690759,-1.0646427280452428,0.52552693997864708,2.1156966080024802,3.7058662760263417,5.2960359440501747,6.8862056120740363,8.4763752800978978,10.066544948121731,11.656714616145592,13.246884284169425,14.837053952193287,16.427223620217148,18.017393288240982,19.607562956264843,21.197732624288705,22.787902292312538,24.378071960336399,25.968241628360232,27.558411296384122,29.148580964407955,30.738750632431788,32.32892030045565,33.919089968479511,35.509259636503373,37.099429304527206,38.689598972551039,40.279768640574872,41.869938308598762,43.460107976622623,45.050277644646457,46.64044731267029,48.230616980694151,49.820786648718013,51.410956316741846,53.001125984765707,54.591295652789569,56.181465320813402,57.771634988837263,59.361804656861096,60.951974324884986,62.542143992908819,64.132313660932653,65.722483328956514,67.312652996980376,68.902822665004237,70.49299233302807,72.083162001051903,73.673331669075736,75.263501337099626,76.853671005123488,78.443840673147321,80.034010341171154,81.624180009195015,83.214349677218877,84.804519345242738,86.394689013266571,87.984858681290433,89.575028349314266,91.165198017338128,92.755367685361989,94.345537353385851,95.935707021409684,97.525876689433517]],"text":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153"],"mode":"markers","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"surface","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"Temp"},"yaxis":{"title":"Month"},"zaxis":{"title":"Ozone"}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[67,72,74,62,66,65,59,61,74,69,66,68,58,64,66,57,68,62,59,73,61,61,67,81,79,76,82,90,87,82,77,72,65,73,76,84,85,81,83,83,88,92,92,89,73,81,80,81,82,84,87,85,74,86,85,82,86,88,86,83,81,81,81,82,86,85,87,89,90,90,86,82,80,77,79,76,78,78,77,72,79,81,86,97,94,96,94,91,92,93,93,87,84,80,78,75,73,81,76,77,71,71,78,67,76,68,82,64,71,81,69,63,70,75,76,68],"y":[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9],"z":[41,36,12,18,28,23,19,8,7,16,11,14,18,14,34,6,30,11,1,11,4,32,23,45,115,37,29,71,39,23,21,37,20,12,13,135,49,32,64,40,77,97,97,85,10,27,7,48,35,61,79,63,16,80,108,20,52,82,50,64,59,39,9,16,78,35,66,122,89,110,44,28,65,22,59,23,31,44,21,9,45,168,73,76,118,84,85,96,78,73,91,47,32,20,23,21,24,44,21,28,9,13,46,18,13,24,16,13,23,36,7,14,30,14,18,20],"text":["1","2","3","4","6","7","8","9","11","12","13","14","15","16","17","18","19","20","21","22","23","24","28","29","30","31","38","40","41","44","47","48","49","50","51","62","63","64","66","67","68","69","70","71","73","74","76","77","78","79","80","81","82","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","104","105","106","108","109","110","111","112","113","114","116","117","118","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","151","152","153"],"mode":"markers","type":"scatter3d","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null},{"colorbar":{"title":"Ozone","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"x":[56,56.5,57,57.5,58,58.5,59,59.5,60,60.5,61,61.5,62,62.5,63,63.5,64,64.5,65,65.5,66,66.5,67,67.5,68,68.5,69,69.5,70,70.5,71,71.5,72,72.5,73,73.5,74,74.5,75,75.5,76,76.5,77,77.5,78,78.5,79,79.5,80,80.5,81,81.5,82,82.5,83,83.5,84,84.5,85,85.5,86,86.5,87,87.5,88,88.5,89,89.5,90,90.5,91,91.5,92,92.5,93,93.5,94,94.5,95,95.5,96,96.5,97],"y":[5,5.5,6,6.5,7,7.5,8,8.5,9],"z":[[-0.83442089392806906,0.22012837686895637,1.274677647665996,2.3292269184630356,3.3837761892600753,4.4383254600571291,5.4928747308541546,6.5474240016511942,7.6019732724482481,8.6565225432452735,9.7110718140423273,10.765621084839353,11.820170355636407,12.874719626433446,13.929268897230472,14.983818168027511,16.038367438824565,17.092916709621605,18.147465980418644,19.202015251215684,20.256564522012724,21.311113792809763,22.365663063606789,23.420212334403857,24.474761605200882,25.529310875997922,26.583860146794962,27.638409417592001,28.692958688389055,29.74750795918608,30.80205722998312,31.856606500780167,32.911155771577207,33.965705042374239,35.020254313171279,36.074803583968325,37.129352854765365,38.183902125562398,39.238451396359451,40.293000667156491,41.347549937953524,42.402099208750563,43.45664847954761,44.51119775034465,45.565747021141682,46.620296291938722,47.674845562735769,48.729394833532808,49.783944104329848,50.83849337512688,51.893042645923934,52.947591916720967,54.002141187518006,55.056690458315053,56.111239729112093,57.165788999909125,58.220338270706165,59.274887541503219,60.329436812300244,61.383986083097284,62.438535353894324,63.493084624691377,64.547633895488417,65.602183166285442,66.656732437082482,67.711281707879536,68.765830978676576,69.820380249473601,70.874929520270641,71.929478791067694,72.984028061864734,74.038577332661774,75.093126603458813,76.147675874255853,77.202225145052893,78.256774415849932,79.311323686646972,80.365872957444012,81.420422228241051,82.474971499038091,83.529520769835116,84.584070040632156,85.638619311429224],[-4.8386227932523411,-3.7171209728019505,-2.5956191523515599,-1.4741173319011693,-0.35261551145077874,0.76888630899962607,1.8903881294500025,3.0118899499004073,4.1333917703507979,5.2548935908011742,6.376395411251579,7.4978972317019696,8.6193990521523602,9.7409008726027508,10.862402693053141,11.983904513503532,13.105406333953923,14.226908154404313,15.348409974854718,16.469911795305094,17.591413615755485,18.71291543620589,19.834417256656266,20.955919077106671,22.077420897557047,23.198922718007452,24.320424538457843,25.441926358908219,26.563428179358638,27.684929999809015,28.806431820259405,29.927933640709796,31.049435461160186,32.170937281610577,33.292439102060968,34.413940922511358,35.535442742961763,36.656944563412139,37.778446383862544,38.899948204312935,40.021450024763311,41.142951845213716,42.264453665664107,43.385955486114497,44.507457306564888,45.628959127015278,46.750460947465669,47.87196276791606,48.99346458836645,50.114966408816855,51.236468229267231,52.357970049717622,53.479471870168027,54.600973690618403,55.722475511068808,56.843977331519184,57.965479151969589,59.08698097241998,60.208482792870356,61.329984613320761,62.451486433771151,63.572988254221542,64.694490074671933,65.815991895122323,66.937493715572728,68.058995536023104,69.180497356473509,70.301999176923871,71.423500997374276,72.545002817824681,73.666504638275057,74.788006458725462,75.909508279175853,77.031010099626229,78.152511920076634,79.274013740527039,80.395515560977401,81.517017381427806,82.638519201878211,83.760021022328587,84.881522842778978,86.003024663229354,87.124526483679759],[-8.842824692576599,-7.6543703224728574,-6.4659159523691159,-5.2774615822653743,-4.0890072121616328,-2.900552842057877,-1.7120984719541497,-0.52364410185039389,0.66481026825334766,1.853264638357075,3.041719008460845,4.2301733785645723,5.4186277486683139,6.6070821187720696,7.795536488875797,8.9839908589795385,10.17244522908328,11.360899599187036,12.549353969290777,13.737808339394505,14.926262709498261,16.114717079602002,17.303171449705729,18.491625819809499,19.680080189913227,20.868534560016968,22.056988930120724,23.245443300224451,24.433897670328207,25.622352040431949,26.81080641053569,27.999260780639432,29.187715150743173,30.376169520846915,31.564623890950656,32.753078261054398,33.941532631158154,35.129987001261881,36.318441371365623,37.506895741469378,38.695350111573106,39.883804481676862,41.072258851780603,42.260713221884345,43.449167591988086,44.637621962091828,45.826076332195569,47.014530702299311,48.202985072403052,49.391439442506794,50.57989381261055,51.768348182714291,52.956802552818033,54.14525692292176,55.333711293025516,56.522165663129243,57.710620033233013,58.899074403336755,60.087528773440482,61.275983143544224,62.464437513647965,63.652891883751707,64.841346253855477,66.029800623959204,67.218254994062946,68.406709364166687,69.595163734270429,70.783618104374156,71.972072474477898,73.160526844581668,74.348981214685409,75.537435584789151,76.725889954892878,77.91434432499662,79.102798695100361,80.291253065204131,81.479707435307859,82.6681618054116,83.856616175515342,85.045070545619083,86.233524915722811,87.421979285826581,88.610433655930322],[-12.847026591900885,-11.591619672143793,-10.3362127523867,-9.0808058326296077,-7.8253989128725152,-6.5699919931154085,-5.3145850733583302,-4.0591781536012235,-2.803771233844131,-1.5483643140870527,-0.29295739432993173,0.96244952542714657,2.2178564451842533,3.4732633649413458,4.7286702846984241,5.9840772044555308,7.2394841242126233,8.4948910439697158,9.7502979637268226,11.005704883483901,12.261111803240993,13.5165187229981,14.771925642755178,16.027332562512285,17.282739482269378,18.53814640202647,19.793553321783563,21.048960241540655,22.304367161297762,23.55977408105484,24.815181000811947,26.070587920569039,27.325994840326118,28.581401760083224,29.836808679840317,31.092215599597395,32.347622519354502,33.603029439111594,34.858436358868701,36.113843278625779,37.369250198382872,38.624657118139993,39.880064037897057,41.135470957654164,42.39087787741127,43.646284797168335,44.901691716925441,46.157098636682548,47.412505556439626,48.667912476196733,49.923319395953826,51.178726315710904,52.434133235468011,53.689540155225103,54.944947074982196,56.200353994739288,57.455760914496395,58.711167834253473,59.966574754010566,61.221981673767672,62.477388593524751,63.732795513281857,64.988202433038964,66.243609352796028,67.499016272553135,68.754423192310242,70.009830112067348,71.265237031824412,72.520643951581519,73.776050871338626,75.031457791095704,76.286864710852811,77.542271630609903,78.797678550366982,80.053085470124088,81.308492389881195,82.563899309638259,83.819306229395366,85.074713149152473,86.330120068909551,87.585526988666643,88.84093390842375,90.096340828180828],[-16.851228491225143,-15.5288690218147,-14.206509552404256,-12.884150082993813,-11.561790613583369,-10.239431144172912,-8.9170716747624681,-7.5947122053520246,-6.2723527359415812,-4.9499932665311377,-3.62763379712068,-2.3052743277102508,-0.98291485829979308,0.33944461111065038,1.6618040805210939,2.9841635499315373,4.3065230193419808,5.6288824887524385,6.9512419581628819,8.2736014275733112,9.5959608969837689,10.918320366394212,12.240679835804642,13.563039305215113,14.885398774625543,16.207758244035986,17.53011771344643,18.852477182856887,20.174836652267345,21.497196121677774,22.819555591088218,24.141915060498661,25.464274529909119,26.786633999319562,28.108993468730006,29.431352938140435,30.753712407550893,32.07607187696135,33.398431346371794,34.720790815782237,36.043150285192667,37.365509754603124,38.687869224013554,40.010228693424025,41.332588162834469,42.654947632244898,43.977307101655342,45.299666571065785,46.622026040476257,47.9443855098867,49.26674497929713,50.589104448707573,51.911463918118017,53.233823387528446,54.556182856938932,55.878542326349361,57.200901795759805,58.523261265170248,59.845620734580677,61.167980203991149,62.490339673401593,63.812699142812036,65.13505861222248,66.457418081632909,67.779777551043352,69.102137020453824,70.424496489864268,71.746855959274697,73.069215428685141,74.391574898095584,75.713934367506056,77.036293836916499,78.358653306326929,79.681012775737372,81.003372245147816,82.325731714558287,83.648091183968717,84.97045065337916,86.292810122789604,87.615169592200047,88.937529061610476,90.259888531020948,91.582248000431392],[-20.855430390549429,-19.466118371485635,-18.076806352421855,-16.687494333358046,-15.298182314294252,-13.908870295230443,-12.519558276166649,-11.130246257102868,-9.7409342380390598,-8.3516222189752654,-6.9623101999114567,-5.5729981808476623,-4.1836861617838821,-2.7943741427200735,-1.405062123656279,-0.015750104592484604,1.3735619144713098,2.7628739335351185,4.1521859525989271,5.5414979716626931,6.9308099907265017,8.3201220097903104,9.7094340288540764,11.098746047917899,12.488058066981694,13.877370086045502,15.266682105109282,16.655994124173077,18.0453061432369,19.434618162300666,20.823930181364474,22.213242200428283,23.602554219492049,24.991866238555858,26.381178257619666,27.770490276683461,29.159802295747255,30.54911431481105,31.938426333874858,33.327738352938638,34.717050372002433,36.106362391066256,37.495674410130022,38.88498642919383,40.274298448257639,41.663610467321433,43.052922486385214,44.442234505449022,45.831546524512831,47.220858543576611,48.610170562640405,49.999482581704214,51.388794600767994,52.778106619831789,54.167418638895612,55.556730657959406,56.946042677023186,58.335354696086995,59.724666715150789,61.113978734214569,62.503290753278378,63.892602772342187,65.281914791405967,66.671226810469761,68.06053882953357,69.449850848597379,70.839162867661159,72.228474886724953,73.617786905788762,75.007098924852542,76.396410943916351,77.785722962980159,79.175034982043925,80.564347001107734,81.953659020171543,83.342971039235323,84.732283058299117,86.121595077362926,87.510907096426735,88.900219115490515,90.289531134554309,91.678843153618118,93.068155172681898],[-24.859632289873687,-23.403367721156542,-21.947103152439411,-20.490838583722237,-19.034574015005106,-17.578309446287946,-16.122044877570801,-14.66578030885367,-13.20951574013651,-11.75325117141935,-10.296986602702191,-8.8407220339850596,-7.3844574652679285,-5.9281928965507689,-4.4719283278336093,-3.0156637591164497,-1.5593991903993185,-0.10313462168218734,1.3531299470349722,2.8093945157521318,4.2656590844692914,5.7219236531864226,7.1781882219035538,8.6344527906207134,10.090717359337873,11.546981928055033,13.003246496772164,14.459511065489295,15.915775634206483,17.372040202923614,18.828304771640774,20.284569340357905,21.740833909075036,23.197098477792196,24.653363046509355,26.109627615226486,27.565892183943646,29.022156752660777,30.478421321377937,31.934685890095096,33.390950458812227,34.847215027529387,36.303479596246518,37.759744164963678,39.216008733680837,40.672273302397969,42.128537871115114,43.584802439832288,45.041067008549433,46.497331577266579,47.95359614598371,49.409860714700855,50.866125283418029,52.32238985213516,53.77865442085232,55.234918989569451,56.691183558286596,58.14744812700377,59.603712695720901,61.059977264438047,62.516241833155192,63.972506401872337,65.428770970589511,66.885035539306642,68.341300108023788,69.797564676740933,71.253829245458107,72.710093814175238,74.166358382892383,75.622622951609529,77.078887520326674,78.535152089043848,79.991416657760979,81.447681226478124,82.90394579519527,84.360210363912415,85.816474932629575,87.27273950134672,88.729004070063866,90.185268638781011,91.641533207498142,93.097797776215316,94.554062344932461],[-28.863834189197945,-27.340617070827449,-25.817399952456952,-24.294182834086456,-22.77096571571596,-21.247748597345435,-19.724531478974967,-18.201314360604471,-16.678097242233946,-15.15488012386345,-13.631663005492953,-12.108445887122457,-10.585228768751961,-9.0620116503814359,-7.5387945320109679,-6.0155774136404432,-4.4923602952699468,-2.9691431768994789,-1.4459260585289542,0.077291059841542165,1.6005081782120669,3.1237252965825348,4.6469424149530312,6.1701595333235559,7.6933766516940238,9.2165937700645486,10.739810888435045,12.263028006805541,13.786245125176038,15.309462243546534,16.832679361917059,18.355896480287555,19.879113598658023,21.402330717028519,22.925547835399044,24.448764953769512,25.971982072140037,27.495199190510533,29.018416308881029,30.541633427251526,32.064850545622022,33.588067663992547,35.111284782363043,36.634501900733511,38.157719019104036,39.680936137474532,41.204153255845029,42.727370374215525,44.250587492586021,45.773804610956546,47.297021729327014,48.820238847697539,50.343455966068035,51.866673084438503,53.389890202809028,54.913107321179524,56.436324439550049,57.959541557920517,59.482758676291013,61.005975794661509,62.529192913032034,64.05241003140253,65.575627149773027,67.098844268143523,68.622061386513991,70.145278504884516,71.668495623255041,73.191712741625537,74.714929859996005,76.238146978366501,77.761364096737026,79.284581215107551,80.807798333478019,82.331015451848515,83.854232570219025,85.377449688589508,86.900666806960004,88.423883925330514,89.947101043701025,91.470318162071507,92.993535280442003,94.516752398812514,96.039969517182996],[-32.868036088522217,-31.277866420498384,-29.687696752474523,-28.097527084450689,-26.507357416426828,-24.917187748402966,-23.327018080379133,-21.736848412355272,-20.146678744331439,-18.556509076307577,-16.966339408283716,-15.376169740259883,-13.786000072236021,-12.19583040421216,-10.605660736188327,-9.0154910681644935,-7.425321400140632,-5.8351517321167421,-4.244982064092909,-2.6548123960690759,-1.0646427280452428,0.52552693997864708,2.1156966080024802,3.7058662760263417,5.2960359440501747,6.8862056120740363,8.4763752800978978,10.066544948121731,11.656714616145592,13.246884284169425,14.837053952193287,16.427223620217148,18.017393288240982,19.607562956264843,21.197732624288705,22.787902292312538,24.378071960336399,25.968241628360232,27.558411296384122,29.148580964407955,30.738750632431788,32.32892030045565,33.919089968479511,35.509259636503373,37.099429304527206,38.689598972551039,40.279768640574872,41.869938308598762,43.460107976622623,45.050277644646457,46.64044731267029,48.230616980694151,49.820786648718013,51.410956316741846,53.001125984765707,54.591295652789569,56.181465320813402,57.771634988837263,59.361804656861096,60.951974324884986,62.542143992908819,64.132313660932653,65.722483328956514,67.312652996980376,68.902822665004237,70.49299233302807,72.083162001051903,73.673331669075736,75.263501337099626,76.853671005123488,78.443840673147321,80.034010341171154,81.624180009195015,83.214349677218877,84.804519345242738,86.394689013266571,87.984858681290433,89.575028349314266,91.165198017338128,92.755367685361989,94.345537353385851,95.935707021409684,97.525876689433517]],"text":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153"],"mode":"markers","type":"surface","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>And here is that same plot as a contour plot.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>air_surface <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">Temp =</span> axis_x, <span class="at">Month =</span> axis_y, <span class="at">KEEP.OUT.ATTRS=</span>F)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>air_surface<span class="sc">$</span>Z <span class="ot">&lt;-</span> <span class="fu">predict.lm</span>(air_lm, <span class="at">newdata =</span> air_surface)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>mycolorpalette <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;skyblue2&quot;</span>, <span class="st">&quot;orange&quot;</span>))</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">filled.contour</span>(<span class="at">x=</span>axis_x, <span class="at">y=</span>axis_y, <span class="at">z=</span><span class="fu">matrix</span>(air_surface<span class="sc">$</span>Z, <span class="fu">length</span>(axis_x), <span class="fu">length</span>(axis_y)), <span class="at">col=</span><span class="fu">mycolorpalette</span>(<span class="dv">27</span>))</span></code></pre></div>
+</p>
+</div>
+<div id="LearnMoreHDModel" class="tabcontent" style="display:none;">
+<p>
+<table>
+<tr>
+<td>
+<p><img src="LogisticRegression_files/figure-html/unnamed-chunk-27-1.png" width="144" /></p>
+</td>
+<td style="text-align: center;padding-left:15px;">
+<p><span class="math display">\[
+  Y_i = \overbrace{\underbrace{\beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i}
++ \ldots + \beta_{p-1}X_{p-1,i}}_{E\{Y_i\}}}^\text{&quot;High
+Dimensional Models&quot;} + \epsilon_i
+\]</span></p>
+</td>
+</tr>
+</table>
+<p>The so called “HD”, or “High Dimensional”, regression model uses
+three or more different quantitative x-variables, an <span
+class="math inline">\(X_{1i}\)</span>, an <span
+class="math inline">\(X_{2i}\)</span>, and at least an <span
+class="math inline">\(X_{3i}\)</span>, but could use many, many other
+variables as well. Unlike the 3D model where the final regression could
+be shown as either a contour plot or a 3D-graphic, the high dimensional
+model exists in 4 or more dimensions. Thus, it is impossible to graph
+this model in its full form. Further, it isn’t really even possible to
+“mentally connect” with this type of model is it exists beyond what our
+3D minds can really comprehend.</p>
+<table>
+<colgroup>
+<col width="12%" />
+<col width="87%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\beta_0\)</span></td>
+<td>Y-intercept of the Model</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta_1\)</span></td>
+<td>Slope of the line in the <span class="math inline">\(X_1\)</span>
+direction.</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\beta_2\)</span></td>
+<td>Slope of the line in the <span class="math inline">\(X_2\)</span>
+direction.</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(...\)</span></td>
+<td>Slopes in other directions depending on how many other variables are
+included in the model.</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\beta_{p-1}\)</span></td>
+<td>Final term in the model where there are <span
+class="math inline">\(p\)</span> total <span
+class="math inline">\(\beta\)</span>’s. The reason for the <span
+class="math inline">\(p-1\)</span> on the last term is because we
+started with <span class="math inline">\(\beta_0\)</span> for the first
+term, leaving <span class="math inline">\(\beta_{p-1}\)</span> as the
+last term.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>An Example</strong></p>
+<p>Suppose we used three x-variables of <code>Wind</code>,
+<code>Temp</code>, and <code>Solar.R</code> to predict the y-variable of
+<code>Ozone</code>.</p>
+<p><span class="math display">\[
+  \underbrace{Y_i}_\text{Ozone} \underbrace{=}_{\sim}
+\overbrace{\beta_0}^{\stackrel{\text{y-int}}{\text{baseline}}} +
+\overbrace{\beta_1}^{\stackrel{\text{slope in}}{\text{Wind Direction}}}
+\underbrace{X_{1i}}_\text{Wind} +
+\overbrace{\beta_2}^{\stackrel{\text{slope in}}{\text{Temp
+Direction}}}  \underbrace{X_{2i}}_\text{Temp} +
+\overbrace{\beta_3}^{\stackrel{\text{slope in}}{\text{Solar.R
+Direction}}}  \underbrace{X_{3i}}_\text{Solar.R} + \epsilon_i
+\]</span></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>air_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Ozone <span class="sc">~</span> Wind <span class="sc">+</span> Temp <span class="sc">+</span> Solar.R, <span class="at">data=</span> airquality)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pander</span>(air_lm<span class="sc">$</span>coefficients)</span></code></pre></div>
+<table style="width:57%;">
+<colgroup>
+<col width="19%" />
+<col width="12%" />
+<col width="11%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">(Intercept)</th>
+<th align="center">Wind</th>
+<th align="center">Temp</th>
+<th align="center">Solar.R</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">-64.34</td>
+<td align="center">-3.334</td>
+<td align="center">1.652</td>
+<td align="center">0.05982</td>
+</tr>
+</tbody>
+</table>
+<p>Notice how the slope, <span class="math inline">\(\beta_1\)</span>,
+in the “Wind” direction is estimated to be -3.334. The slope in the
+“Temp” direction, <span class="math inline">\(\beta_2\)</span>, is
+estimated to be 1.652. The slope in the “Solar.R” direction, <span
+class="math inline">\(\beta_3\)</span>, is estimated to be 0.05982.
+Also, the y-intercept, <span class="math inline">\(\beta_0\)</span>, is
+estimated to be -64.34.</p>
+<p>Visualizing this model is not really possible in its full form.
+However, we can draw the regression from three different angles or
+vantage points. This is a limited view of the full regression model, but
+at least provides some visual understanding. To do this, we draw <span
+class="math inline">\(Y\)</span> against each <span
+class="math inline">\(X\)</span>-variable in separate scatterplots, one
+for each <span class="math inline">\(X\)</span>-variable used in our
+model.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">coef</span>(air_lm)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(Ozone <span class="sc">~</span> Wind, <span class="at">data=</span>airquality)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">curve</span>(b[<span class="dv">1</span>] <span class="sc">+</span> b[<span class="dv">2</span>]<span class="sc">*</span>x <span class="sc">+</span> b[<span class="dv">3</span>]<span class="sc">*</span><span class="dv">79</span> <span class="sc">+</span> b[<span class="dv">4</span>]<span class="sc">*</span><span class="dv">205</span>, <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col=</span><span class="st">&quot;skyblue&quot;</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The x-variable of this plot is &quot;Wind&quot;</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The values of Temp=79 and Solar.R=205 are fixed at some interesting value,</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># in this case, their respective medians.</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(Ozone <span class="sc">~</span> Temp, <span class="at">data=</span>airquality)</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">curve</span>(b[<span class="dv">1</span>] <span class="sc">+</span> b[<span class="dv">2</span>]<span class="sc">*</span><span class="fl">9.7</span> <span class="sc">+</span> b[<span class="dv">3</span>]<span class="sc">*</span>x <span class="sc">+</span> b[<span class="dv">4</span>]<span class="sc">*</span><span class="dv">205</span>, <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col=</span><span class="st">&quot;orange&quot;</span>)</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The x-variable of this plot is &quot;Temp&quot;</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The values of Wind=9.7 and Solar.R=205 are fixed at some interesting value,</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># in this case, their respective medians.</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(Ozone <span class="sc">~</span> Solar.R, <span class="at">data=</span>airquality)</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">curve</span>(b[<span class="dv">1</span>] <span class="sc">+</span> b[<span class="dv">2</span>]<span class="sc">*</span><span class="fl">9.7</span> <span class="sc">+</span> b[<span class="dv">3</span>]<span class="sc">*</span><span class="dv">79</span> <span class="sc">+</span> b[<span class="dv">4</span>]<span class="sc">*</span>x, <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col=</span><span class="st">&quot;firebrick&quot;</span>)</span></code></pre></div>
+<p><img src="LogisticRegression_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The x-variable of this plot is &quot;Solar.R&quot;</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The values of Wind = 9.7 and Temp=79 are fixed at some interesting value,</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># in this case, their respective medians.</span></span></code></pre></div>
+</p>
+</div>
+<hr />
+<p>The coefficient <span class="math inline">\(\beta_j\)</span> is
+interpreted as the change in the expected value of <span
+class="math inline">\(Y\)</span> for a unit increase in <span
+class="math inline">\(X_{j}\)</span>, holding all other variables
+constant, for <span class="math inline">\(j=1,\ldots,p-1\)</span>.
+However, this interpretation breaks down when higher order terms (like
+<span class="math inline">\(X^2\)</span>) or interaction terms (like
+<span class="math inline">\(X1:X2\)</span>) are included in the
+model.</p>
+<p>See the <strong>Explanation</strong> tab for details about possible
+hypotheses here.</p>
+<hr />
+</div>
+<div style="padding-left:125px;">
 <p>The probability that <span class="math inline">\(Y_i = 1\)</span>
 given the observed data <span
 class="math inline">\((x_{i1},\ldots,x_{ip})\)</span> is called <span
@@ -1987,8 +3235,8 @@ more extreme than the observed value of residual deviance.</span>
 </div>
 <p></a></p>
 <div id="multipleGOF2" style="display:none;">
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>myglm <span class="ot">&lt;-</span> <span class="fu">glm</span>(weight<span class="sc">&gt;</span><span class="dv">100</span> <span class="sc">~</span> Time<span class="sc">*</span>Diet, <span class="at">data =</span> ChickWeight, <span class="at">family =</span> binomial)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(myglm)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>myglm <span class="ot">&lt;-</span> <span class="fu">glm</span>(weight<span class="sc">&gt;</span><span class="dv">100</span> <span class="sc">~</span> Time<span class="sc">*</span>Diet, <span class="at">data =</span> ChickWeight, <span class="at">family =</span> binomial)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(myglm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = weight &gt; 100 ~ Time * Diet, family = binomial, 
@@ -2018,7 +3266,7 @@ more extreme than the observed value of residual deviance.</span>
 ## AIC: 272.3
 ## 
 ## Number of Fisher Scoring iterations: 20</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pchisq</span>(<span class="fl">256.30</span>, <span class="dv">570</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pchisq</span>(<span class="fl">256.30</span>, <span class="dv">570</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 6.585816e-33</code></pre>
 </div>
 <p>The null hypothesis of the goodness-of-fit test is that the logistic
@@ -2156,16 +3404,16 @@ drawn around the legend.</span> </span></p>
 </div>
 <p></a></p>
 <div id="MultipleLogisticBaseplot2" style="display:none;">
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>myglm <span class="ot">&lt;-</span> <span class="fu">glm</span>(weight<span class="sc">&gt;</span><span class="dv">100</span> <span class="sc">~</span> Time<span class="sc">*</span>Diet, <span class="at">data =</span> ChickWeight, <span class="at">family =</span> binomial)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">palette</span>(<span class="fu">c</span>(<span class="st">&quot;firebrick&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;skyblue&quot;</span>, <span class="st">&quot;darkorchid4&quot;</span>))</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> myglm<span class="sc">$</span>coefficients</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight<span class="sc">&gt;</span><span class="dv">100</span> <span class="sc">~</span> Time, <span class="at">data =</span> ChickWeight, <span class="at">pch=</span><span class="dv">16</span>)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">exp</span>(b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">2</span>]<span class="sc">*</span>x)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">2</span>]<span class="sc">*</span>x)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">palette</span>()[<span class="dv">1</span>])</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">3</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">6</span>])<span class="sc">*</span>x)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">3</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">6</span>])<span class="sc">*</span>x)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">palette</span>()[<span class="dv">2</span>])</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">4</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">7</span>])<span class="sc">*</span>x)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">4</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">7</span>])<span class="sc">*</span>x)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">palette</span>()[<span class="dv">3</span>])</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">5</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">8</span>])<span class="sc">*</span>x)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">5</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">8</span>])<span class="sc">*</span>x)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">palette</span>()[<span class="dv">4</span>])</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Diet 1&quot;</span>, <span class="st">&quot;Diet 2&quot;</span>, <span class="st">&quot;Diet 3&quot;</span>, <span class="st">&quot;Diet 4&quot;</span>), <span class="at">col =</span> <span class="fu">palette</span>(), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">bty =</span> <span class="st">&#39;n&#39;</span>)</span></code></pre></div>
-<p><img src="LogisticRegression_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>myglm <span class="ot">&lt;-</span> <span class="fu">glm</span>(weight<span class="sc">&gt;</span><span class="dv">100</span> <span class="sc">~</span> Time<span class="sc">*</span>Diet, <span class="at">data =</span> ChickWeight, <span class="at">family =</span> binomial)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">palette</span>(<span class="fu">c</span>(<span class="st">&quot;firebrick&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;skyblue&quot;</span>, <span class="st">&quot;darkorchid4&quot;</span>))</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> myglm<span class="sc">$</span>coefficients</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight<span class="sc">&gt;</span><span class="dv">100</span> <span class="sc">~</span> Time, <span class="at">data =</span> ChickWeight, <span class="at">pch=</span><span class="dv">16</span>)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">exp</span>(b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">2</span>]<span class="sc">*</span>x)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">2</span>]<span class="sc">*</span>x)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">palette</span>()[<span class="dv">1</span>])</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">3</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">6</span>])<span class="sc">*</span>x)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">3</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">6</span>])<span class="sc">*</span>x)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">palette</span>()[<span class="dv">2</span>])</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">4</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">7</span>])<span class="sc">*</span>x)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">4</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">7</span>])<span class="sc">*</span>x)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">palette</span>()[<span class="dv">3</span>])</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">5</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">8</span>])<span class="sc">*</span>x)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>((b[<span class="dv">1</span>]<span class="sc">+</span>b[<span class="dv">5</span>])<span class="sc">+</span>(b[<span class="dv">2</span>]<span class="sc">+</span>b[<span class="dv">8</span>])<span class="sc">*</span>x)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">palette</span>()[<span class="dv">4</span>])</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Diet 1&quot;</span>, <span class="st">&quot;Diet 2&quot;</span>, <span class="st">&quot;Diet 3&quot;</span>, <span class="st">&quot;Diet 4&quot;</span>), <span class="at">col =</span> <span class="fu">palette</span>(), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">bty =</span> <span class="st">&#39;n&#39;</span>)</span></code></pre></div>
+<p><img src="LogisticRegression_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 </div>
 </p>
 </div>
@@ -2204,13 +3452,13 @@ class="tooltiprtext">Add a black and white them to the plot.</span>
 </div>
 <p></a></p>
 <div id="MultipleLogisticggplot2" style="display:none;">
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ChickWeight, <span class="fu">aes</span>(Time, <span class="fu">as.numeric</span>(weight<span class="sc">&gt;</span><span class="dv">100</span>))) <span class="sc">+</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> Diet), <span class="at">method =</span> <span class="st">&quot;glm&quot;</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>), <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;weight&gt;100&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ChickWeight, <span class="fu">aes</span>(Time, <span class="fu">as.numeric</span>(weight<span class="sc">&gt;</span><span class="dv">100</span>))) <span class="sc">+</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> Diet), <span class="at">method =</span> <span class="st">&quot;glm&quot;</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>), <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;weight&gt;100&quot;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
-<p><img src="LogisticRegression_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="LogisticRegression_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 </div>
 </p>
 </div>
@@ -2330,6 +3578,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
