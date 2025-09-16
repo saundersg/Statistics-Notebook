@@ -1596,9 +1596,10 @@ mylm,
 
 </div>
 
-----
+<hr/>
 
 </div>
+
 
 ### Explanation
 
@@ -3789,6 +3790,8 @@ and note that $SSTO = SSR + SSE$. Important to note is that $SSTO$ uses the diff
 
 </div>
 
+</div>
+
 <br />
 
 
@@ -4141,16 +4144,16 @@ Note that the default of the `loess` function in R is to use quadratic regressio
 
 </div>
 
-
+</div>
 
 <br />
 
 ----
 
+
+</div>
 </div>
 
-
-##
 
 <div style="padding-left:125px;">
 **Examples:** [bodyweight](./Analyses/Linear Regression/Examples/BodyWeightSLR.html), [cars](./Analyses/Linear Regression/Examples/carsSLR.html) 
