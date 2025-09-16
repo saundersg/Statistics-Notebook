@@ -10,35 +10,50 @@ Think of an `R Markdown File`, or `Rmd` for short, as a command center. You writ
 
 # Overview
 
-## {.tabset .tabset-pills .tabset-fade}
-
-### Click Here to Learn More
 
 Carefully read through all parts of this image to learn...
 
 ![](./Images/Rmd2html.png)
 
-### Close
 
-##
+## {.tabset .tabset-pills .tabset-fade}
 
 ----
 
-The above tabs (blue bottons that read "Click Here to Learn More" and "Close") were created with the code:
+### Making tabsets (buttons)
+
+Sometimes you want buttons to split up sections of your document.
+
+----
+
+### Click here to see how
+
+
+These tabs (blue bottons) were created with the code:
 
     ## {.tabset .tabset-pills .tabset-fade}
 
-    ### Click Here to Learn More
+    ### Label for first button
     
-    Carefully read through all parts of this image to learn...
+    ...stuff you want displayed goes here...
 
-    ![](./Images/Rmd2html.png)
+    ### Label for second button
+    
+    ...stuff to display when button is clicked goes here...
 
-    ### Close
+    ### Make as many buttons as you want
+    
+    ...and put as much content as you want, then end the buttons 
+    with:
 
     ##
 
 ----
+
+
+##
+
+
 
 # Creating Links
 
@@ -68,7 +83,7 @@ There are six available sizes of headings you can use in an Rmd file (left in im
 
 # Emphasizing Words
 
-To *italisize* a word use the asterisk (Shift 8) `*italisize*`. To **bold** a word use the double asterisk `**bold**`. The back tic ` ` ` can be used to `highlight` words by placing back tics on each side of a word: ` ` ` highlight ` ` `.
+To *italicize* a word use the asterisk (Shift 8) `*italisize*`. To **bold** a word use the double asterisk `**bold**`. The back tic ` ` ` can be used to `highlight` words by placing back tics on each side of a word: ` ` ` highlight ` ` `.
 
 <br />
 

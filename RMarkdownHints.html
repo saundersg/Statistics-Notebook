@@ -547,35 +547,41 @@ short, as a command center. You write commands, then Knit the file, and
 an html output file is created according to your commands.</p>
 <div id="overview" class="section level1">
 <h1>Overview</h1>
+<p>Carefully read through all parts of this image to learn…</p>
+<p><img src="Images/Rmd2html.png" /></p>
 <div id="section"
 class="section level2 tabset tabset-pills tabset-fade">
 <h2 class="tabset tabset-pills tabset-fade"></h2>
-<div id="click-here-to-learn-more" class="section level3">
-<h3>Click Here to Learn More</h3>
-<p>Carefully read through all parts of this image to learn…</p>
-<p><img src="Images/Rmd2html.png" /></p>
+<hr />
+<div id="making-tabsets-buttons" class="section level3">
+<h3>Making tabsets (buttons)</h3>
+<p>Sometimes you want buttons to split up sections of your document.</p>
+<hr />
 </div>
-<div id="close" class="section level3">
-<h3>Close</h3>
+<div id="click-here-to-see-how" class="section level3">
+<h3>Click here to see how</h3>
+<p>These tabs (blue bottons) were created with the code:</p>
+<pre><code>## {.tabset .tabset-pills .tabset-fade}
+
+### Label for first button
+
+...stuff you want displayed goes here...
+
+### Label for second button
+
+...stuff to display when button is clicked goes here...
+
+### Make as many buttons as you want
+
+...and put as much content as you want, then end the buttons 
+with:
+
+##</code></pre>
+<hr />
 </div>
 </div>
 <div id="section-1" class="section level2">
 <h2></h2>
-<hr />
-<p>The above tabs (blue bottons that read “Click Here to Learn More” and
-“Close”) were created with the code:</p>
-<pre><code>## {.tabset .tabset-pills .tabset-fade}
-
-### Click Here to Learn More
-
-Carefully read through all parts of this image to learn...
-
-![](./Images/Rmd2html.png)
-
-### Close
-
-##</code></pre>
-<hr />
 </div>
 </div>
 <div id="creating-links" class="section level1">
@@ -610,7 +616,7 @@ Colors</a></li>
 </div>
 <div id="emphasizing-words" class="section level1">
 <h1>Emphasizing Words</h1>
-<p>To <em>italisize</em> a word use the asterisk (Shift 8)
+<p>To <em>italicize</em> a word use the asterisk (Shift 8)
 <code>*italisize*</code>. To <strong>bold</strong> a word use the double
 asterisk <code>**bold**</code>. The back tic <code></code>
 <code>can be used to</code>highlight<code>words by placing back tics on each side of a word:</code>
