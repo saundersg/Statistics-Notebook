@@ -28,14 +28,14 @@ Rent <- read_csv("../Data/rent.csv")
 # To load this data set into your R-Console do the following:
 #  1. From your top file menu select "Session -> Set Working Directory -> To Source File Location"
 #  2. Press the green "play button" in the top right corner of this gray box (which is called an "R-chunk").
-#  3. Then in your "Console" window of 
+#  3. Then in your "Console" window run View(Rent)
 ```
 
 <br />
 
 ## Background
 
-Here is a data table showing the available approved housing apartment options at BYU-Idaho for single students. There are 110 entries comprising 54 female and 56 male apartment options.
+Here is a data table showing the available approved housing apartment options at BYU-Idaho for single students. 
 
 ```{r, warning=FALSE}
 # Code to get you started. 
