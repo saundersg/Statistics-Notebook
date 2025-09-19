@@ -83,7 +83,7 @@ There are six available sizes of headings you can use in an Rmd file (left in im
 
 # Emphasizing Words
 
-To *italicize* a word use the asterisk (Shift 8) `*italisize*`. To **bold** a word use the double asterisk `**bold**`. The back tic ` ` ` can be used to `highlight` words by placing back tics on each side of a word: ` ` ` highlight ` ` `.
+To *italicize* a word use the asterisk (Shift 8) `*italicize*`. To **bold** a word use the double asterisk `**bold**`. The back tic ` ` ` can be used to `highlight` words by placing back tics on each side of a word: ` ` ` highlight ` ` `.
 
 <br />
 
