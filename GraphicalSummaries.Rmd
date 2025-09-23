@@ -2024,7 +2024,7 @@ Wind
   <span class="tooltiprtext">The "," is required to start specifying additional commands for the function.</span>
 </span><span class="tooltipr">
 data=airquality
-  <span class="tooltiprtext">data= is used to tell R that the "Temp" and "Month" variables are located in the <span style="font-weight:bold">airquality</span> dataset. Without this, R will not know where to find "Temp" and "Month" and the command will give an error.</span>
+  <span class="tooltiprtext">data= is used to tell R that the "Temp" and "Wind" variables are located in the <span style="font-weight:bold">airquality</span> dataset. Without this, R will not know where to find "Temp" and "Wind" and the command will give an error.</span>
 </span><span class="tooltipr">
 ,&nbsp;  
   <span class="tooltiprtext">The "," is required to start specifying additional commands for the function.</span>
@@ -2057,7 +2057,7 @@ plot(Temp ~ Wind
   <span class="tooltiprtext">The "," is required to start specifying additional commands for the function.</span>
 </span><span class="tooltipr">
 data=airquality
-  <span class="tooltiprtext">data= is used to tell R that the "Temp" and "Month" variables are located in the <span style="font-weight:bold">airquality</span> dataset. Without this, R will not know where to find "Temp" and "Month" and the command will give an error.</span>
+  <span class="tooltiprtext">data= is used to tell R that the "Temp" and "Wind" variables are located in the <span style="font-weight:bold">airquality</span> dataset. Without this, R will not know where to find "Temp" and "Wind" and the command will give an error.</span>
 </span><span class="tooltipr">
 ,&nbsp;  
   <span class="tooltiprtext">The "," is required to start specifying additional commands for the function.</span>
